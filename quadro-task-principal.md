@@ -22,28 +22,31 @@
 | **Data e Hora de Início:** | 2026-10-11 22:13 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** (Nenhum outro agente pode assumir esta tarefa) |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot)
+### 🔒 TRAVA ADICIONAL — Codex (OpenAI)
 
 | Propriedade | Valor Atual |
 |---|---|
-| **Status da Trava:** | 🟢 **LIVRE** |
-| **Sub-task em Execução:** | nenhuma |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Bloqueio para Outras IAs:** | DESATIVADO |
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-27** |
+| **Título da Sub-task:** | Autenticação e Login com Supabase Auth |
+| **Agente Responsável:** | Codex (OpenAI) |
+| **Data e Hora de Início:** | 2026-10-11 22:27 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
 
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (1)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-01.1** | Inicialização do package.json, Vite, React e TypeScript | Gemini (Antigravity) | 2026-10-11 22:13 | Nenhuma |
+| **SUB-27** | Autenticação e Login com Supabase Auth | Codex (OpenAI) | 2026-10-11 22:27 | SUB-03 |
 
 ---
 
-### ⏳ PENDENTES (24)
+### ⏳ PENDENTES (23)
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
@@ -70,7 +73,6 @@
 | **SUB-23** | Diagnóstico de Travas e Saúde da Fila | 4 | Fase 8 | SUB-09, SUB-11, SUB-12 |
 | **SUB-25** | Validação de Build e Execução Local | 5 | Fase 10 | SUB-01 a SUB-24 |
 | **SUB-26** | Documentação Completa e Manual Operacional no `README.md` | 5 | Fase 10 | SUB-25 |
-| **SUB-27** | Autenticação e Login com Supabase Auth | 1 (Alta) | Fase 5 | SUB-03 |
 
 ---
 

@@ -8,8 +8,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 27
-- **Em Execução:** 1 (`SUB-01.1`)
-- **Pendentes:** 24
+- **Em Execução:** 2 (`SUB-01.1`, `SUB-27`)
+- **Pendentes:** 23
 - **Concluídas:** 4
 - **Canceladas:** 0
 
@@ -343,12 +343,12 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-### [ ] SUB-27: Autenticação e Login com Supabase Auth
-- **Status:** pendente
-- **Executor:** nenhum
+### [🔄] SUB-27: Autenticação e Login com Supabase Auth
+- **Status:** em_execucao
+- **Executor:** Codex (OpenAI) (início: 2026-10-11 22:27)
 - **Depende de:** SUB-03
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Implementar tela e fluxo de login do Dashboard usando Supabase Auth, mantendo a sessão do usuário, protegendo as áreas autenticadas e oferecendo logout.
 - **Critérios de Aceitação:** Login e logout funcionam via Supabase Auth; sessão é restaurada e páginas privadas redirecionam usuários não autenticados; chamadas ao banco usam o JWT do usuário e respeitam RLS; somente a chave pública anon pode estar no frontend, sem senha persistida nem chave service_role exposta.
 - **Commit:** pendente
-- **Anotação:** pendente
+- **Anotação:** Iniciado por solicitação do usuário; a dependência SUB-03 permanece pendente e a integração com o cliente Supabase depende da conclusão dela.
