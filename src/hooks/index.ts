@@ -17,3 +17,5 @@ export { useLogs } from './useLogs';
 export { useSalvarMemoria } from './useSalvarMemoria';
 export { useSaudeFila } from './useSaudeFila';
 export { useDebounce } from './useDebounce';
+export { AuthProvider, AuthContext, type AuthContextValue } from './AuthContext';
+export { useAuth } from './useAuth';
