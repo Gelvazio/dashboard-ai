@@ -69,6 +69,7 @@ export async function executarUmaTask(deps: DepsExecucao): Promise<ResultadoExec
       taskId: task.taskId,
       status: 'erro',
       execucaoId,
+      agente: deps.agente,
       erroMensagem: mensagem,
       classeFalha: classificarFalha(erro),
     });

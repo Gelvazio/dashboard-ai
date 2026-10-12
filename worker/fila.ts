@@ -16,6 +16,8 @@ export interface FinalizarArgs {
   passoFalho?: string;
   execucaoId: string;
   chaves?: string[];
+  /** Agente que detém a trava; a RPC recusa se a trava for de outro. */
+  agente?: string;
 }
 
 /**
@@ -59,12 +61,14 @@ export async function finalizar(args: FinalizarArgs): Promise<void> {
     p_task_id: args.taskId,
     p_status: args.status,
     p_resultado: args.resultado ?? null,
-    p_erro_mensagem: args.erroMensagem ?? null,
+    p_agente: args.agente ?? null,
+    // `finalizar_task` não tem parâmetro de erro: a mensagem vai em `p_metadados.erro_mensagem` (log da execução).
     p_metadados: {
       execucao_id: args.execucaoId,
       chaves: args.chaves ?? [],
       classe_falha: args.classeFalha ?? null,
       passo_falho: args.passoFalho ?? null,
+      erro_mensagem: args.erroMensagem ?? null,
     },
   });
 }

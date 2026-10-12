@@ -50,7 +50,7 @@ describe('executarUmaTask', () => {
     const { deps, finalizacoes } = fakes({ falha: new Error('timeout no modelo') });
     expect(await executarUmaTask(deps)).toMatchObject({ situacao: 'erro', motivo: 'timeout no modelo' });
     expect(finalizacoes).toEqual([
-      { taskId: 42, status: 'erro', execucaoId: 'task-42-t2', erroMensagem: 'timeout no modelo', classeFalha: 'transitoria' },
+      { taskId: 42, status: 'erro', execucaoId: 'task-42-t2', agente: 'Worker A', erroMensagem: 'timeout no modelo', classeFalha: 'transitoria' },
     ]);
   });
 

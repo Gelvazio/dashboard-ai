@@ -32,6 +32,7 @@ export async function finalizarNode(state: typeof EstadoExecucao.State, deps: De
     taskId,
     status,
     execucaoId,
+    agente: state.agente,
     resultado: resumoSeguro(resultados),
     erroMensagem: status === 'erro' ? String(erro).slice(0, LIMITE_RESUMO) : status === 'recusada' ? 'Aprovação recusada' : undefined,
     passoFalho: status === 'erro' && passoAtual ? passoAtual : undefined,

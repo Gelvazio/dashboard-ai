@@ -73,6 +73,7 @@ describe('finalizar', () => {
       resultado: 'ok',
       execucaoId: 'exec-1',
       chaves: ['exec-1:0'],
+      agente: 'Worker 1',
     });
     expect(chamadas).toEqual([
       {
@@ -81,8 +82,8 @@ describe('finalizar', () => {
           p_task_id: 42,
           p_status: 'concluida',
           p_resultado: 'ok',
-          p_erro_mensagem: null,
-          p_metadados: { execucao_id: 'exec-1', chaves: ['exec-1:0'], classe_falha: null, passo_falho: null },
+          p_agente: 'Worker 1',
+          p_metadados: { execucao_id: 'exec-1', chaves: ['exec-1:0'], classe_falha: null, passo_falho: null, erro_mensagem: null },
         },
       },
     ]);
@@ -101,8 +102,20 @@ describe('finalizar', () => {
       p_task_id: 7,
       p_status: 'erro',
       p_resultado: null,
-      p_erro_mensagem: 'timeout',
-      p_metadados: { execucao_id: 'exec-2', chaves: [], classe_falha: 'transitoria', passo_falho: 'executar' },
+      p_agente: null,
+      p_metadados: {
+        execucao_id: 'exec-2',
+        chaves: [],
+        classe_falha: 'transitoria',
+        passo_falho: 'executar',
+        erro_mensagem: 'timeout',
+      },
     });
+  });
+
+  it('só envia parâmetros que existem em finalizar_task (database/04_rpc_functions.sql)', async () => {
+    await finalizar({ taskId: 1, status: 'erro', erroMensagem: 'x', execucaoId: 'e', agente: 'A' });
+    const reais = ['p_task_id', 'p_status', 'p_resultado', 'p_pr_url', 'p_commit_sha', 'p_agente', 'p_rotina', 'p_metadados'];
+    for (const parametro of Object.keys(chamadas[0].args)) expect(reais).toContain(parametro);
   });
 });
