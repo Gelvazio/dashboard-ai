@@ -916,7 +916,7 @@
   - `SUB-21.5`: Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx` (`concluido`, `197eb97`)
   - `SUB-21.6`: Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` (`pendente`)
   - `SUB-21.7`: Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` (`pendente`)
-  - `SUB-21.8`: Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` (`pendente`)
+  - `SUB-21.8`: Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` (`em_execucao`)
   - `SUB-21.9`: Montar a `MemoriaView` (toolbar + grade) (`pendente`)
   - `SUB-21.10`: Validação visual da SUB-21 (screenshots) (`pendente`)
   - `SUB-21.11`: Ligar detalhe e exclusão na `MemoriaView` (`pendente`)
@@ -1000,8 +1000,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-21.8: Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 00:59)
 - **Depende de:** SUB-21.14
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Busca instantânea, filtro por tag (`tagsDisponiveis`), escopo (todas/projeto/globais), contador filtradas/total e botão Recarregar.

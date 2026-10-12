@@ -55,21 +55,33 @@
 | **Data e Hora de Início:** | 2026-10-12 00:58 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 05 (Grok Bot) — SUB-21.8
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-21.8** |
+| **Título da Sub-task:** | Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` |
+| **Agente Responsável:** | DashboardAI-Clone 05 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 00:59 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (2)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-21.8** | Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 00:59 | SUB-21.14 |
 | **SUB-23.7** | Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx` | DashboardAI-Clone 02 | 2026-10-12 00:58 | SUB-23.10, SUB-23.11 |
 | **SUB-20.6** | Modal `MemoriaFormModal` em `src/components/memoria/` | DashboardAI-Clone 06 | 2026-10-12 00:55 | SUB-20.1, SUB-20.3, SUB-20.4, SUB-20.5, SUB-20.8, SUB-20.9 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
 
-### ⏳ PENDENTES (171)
+### ⏳ PENDENTES (170)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -109,7 +121,6 @@
 | **SUB-21.3** | Hook `useMemorias` em `src/hooks/useMemorias.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-21.6** | Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` | 4 | Fase 7 | SUB-21.13 — 🟢 livre |
 | **SUB-21.7** | Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` | 4 | Fase 7 | SUB-21.3 — ⛓️ bloqueada |
-| **SUB-21.8** | Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` | 4 | Fase 7 | SUB-21.14 — ⛓️ bloqueada |
 | **SUB-21.9** | Montar a `MemoriaView` (toolbar + grade) | 4 | Fase 7 | SUB-21.3, SUB-21.5, SUB-21.8 — ⛓️ bloqueada |
 | **SUB-21.10** | Validação visual da SUB-21 (screenshots) | 4 | Fase 7 | SUB-21.11 — ⛓️ bloqueada |
 | **SUB-21.11** | Ligar detalhe e exclusão na `MemoriaView` | 4 | Fase 7 | SUB-21.9, SUB-21.6, SUB-21.7 — ⛓️ bloqueada |
@@ -508,3 +519,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:58 | DashboardAI-Clone 04 (Grok Bot) | SUB-19.2 | `ac94aa6` | Criado `src/hooks/useDebounce.ts` com `useDebounce<T>(valor, ms = 400): T` (`useState` + `setTimeout` no `useEffect`, `clearTimeout` no cleanup ao mudar valor/ms ou desmontar) e exportado em `src/hooks/index.ts`. `npm run typecheck`, `npm test` e `npm run build` OK. |
 | 2026-10-12 00:59 | DashboardAI-Clone 08 (Grok Bot) | SUB-08.9 | `dd2b3d5` | Adicionado `main(raiz)` + execução direta em `scripts/checar-env.mjs` e `"check:env": "node scripts/checar-env.mjs"` no `package.json`: varre `src/`, `api/` e `scripts/` com `listarArquivosFonte` (pula o próprio script), extrai com `extrairVariaveis` (ignora embutidas do Vite: DEV/PROD/MODE/BASE_URL/SSR), compara com `variaveisDoExemplo`; sai 1 listando as faltantes com os arquivos e avisa as não usadas. `npm run check:env` passa (14 variáveis); removendo `EMBEDDING_MODEL` do `.env.example` falha com código 1. 2 testes de `main` em `tests/unit/checar-env.test.ts`. typecheck e `npm test` verdes. |
 | 2026-10-12 00:59 | DashboardAI-Clone 01 | SUB-27.26 | `9a947eb` | Criado `src/hooks/useAuth.ts` (`useAuth()` lê o `AuthContext` e lança erro fora do `AuthProvider`); `AuthProvider`, `AuthContext` e `useAuth` exportados em `src/hooks/index.ts` mantendo os exports existentes. typecheck OK. |
+| 2026-10-12 00:59 | DashboardAI-Clone 05 (Grok Bot) | SUB-21.8 | — | Lock: assumindo SUB-21.8 (Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx`) |
