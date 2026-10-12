@@ -33,20 +33,30 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhuma tarefa reservada para Codex |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — SUB-08.2
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-08.2** |
+| **Título da Sub-task:** | Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` |
+| **Agente Responsável:** | DashboardAI (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 00:33 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém mais assume a SUB-08.2 |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (0)
+### 🔄 EM EXECUÇÃO (1)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
-
-*(Nenhuma tarefa em execução)*
+| **SUB-08.2** | Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` | DashboardAI (Grok Bot) | 2026-10-12 00:33 | SUB-08.1 |
 
 ---
 
-### ⏳ PENDENTES (149)
+### ⏳ PENDENTES (148)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -54,12 +64,11 @@
 
 > **SUB-27 liberada a pedido do usuário** (2026-10-11 23:55): mãe e 22 subtarefas estão disponíveis; cada agente deve respeitar as dependências indicadas. Nenhum código da SUB-27 havia sido enviado à main.
 
-**🟢 Livres agora (28):** SUB-33.5, SUB-33.9, SUB-08.2, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.5, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.5, SUB-23.12, SUB-25.1, SUB-26.1, SUB-27.1
+**🟢 Livres agora (27):** SUB-33.5, SUB-33.9, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.5, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.5, SUB-23.12, SUB-25.1, SUB-26.1, SUB-27.1
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` (mãe) | 3 | Fase 3 | SUB-06; SUB-08.1 a SUB-08.11 |
-| **SUB-08.2** | Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` | 3 | Fase 3 | SUB-08.1 — 🟢 livre |
 | **SUB-08.4** | Seção Embeddings: `OPENAI_API_KEY`, `EMBEDDING_API_URL`, `EMBEDDING_MODEL` | 3 | Fase 3 | SUB-08.1 — 🟢 livre |
 | **SUB-08.5** | Seção MCP: `MCP_AUTH_TOKEN`, `MCP_CORS_ORIGIN`, `MCP_DEFAULT_PROJECT`, `MCP_ALLOWED_PROJECTS` | 3 | Fase 3 | SUB-08.1 — 🟢 livre |
 | **SUB-08.6** | Seção Scripts: `DASHBOARD_AI_PROJECT` | 3 | Fase 3 | SUB-08.1 — 🟢 livre |
@@ -341,3 +350,4 @@
 | 2026-10-12 00:30 | DashboardAI (Grok Bot) | SUB-08.3 | `35aff13` | Preenchida a seção Servidor Supabase do `.env.example` com `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` (só servidor/scripts, nunca `VITE_`), `SUPABASE_ANON_KEY` (validação de sessão do `/api/embedding`, SUB-33.2) e `SUPABASE_REST_URL` (opcional, só testes locais com PostgREST), conforme `api/_lib/supabase.ts`, `api/_lib/auth.ts` e `scripts/sincronizar_tasks.py`. Valores vazios; arquivo segue fora do `.gitignore`. |
 | 2026-10-12 00:32 | DashboardAI (Grok Bot) | SUB-33.8 | — | Lock: assumindo SUB-33.8 (Testes de `embeddingService` em `tests/unit/embeddingService.test.ts`) |
 | 2026-10-12 00:32 | DashboardAI (Grok Bot) | SUB-33.8 | `c0b75b6` | Criado `tests/unit/embeddingService.test.ts` com `fetch` simulado e cliente falso (`auth.getSession`): sem sessão (pede login, não chama o servidor), 401 (pede login), 500 (`ServiceError` com a mensagem do servidor), vetor com tamanho errado (erro cita 1536) e sucesso (POST com `Authorization: Bearer` e `{ texto }`, devolve 1536 números). typecheck (app + api) e `npm test` verdes (62 passed). |
+| 2026-10-12 00:33 | DashboardAI (Grok Bot) | SUB-08.2 | — | Lock: assumindo SUB-08.2 (Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY`) |
