@@ -45,14 +45,25 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
+### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.8
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-28.8** |
+| **Título da Sub-task:** | Nó `politica` (aprovação humana) em `worker/nos/politica.ts` |
+| **Agente Responsável:** | Devin (Cognition AI) |
+| **Data e Hora de Início:** | 2026-10-12 12:44 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202
-- **Em Execução:** 0
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 32 subtarefas
-  - livres agora: 9 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.8, SUB-28.9, SUB-28.13, SUB-28.14, SUB-35.32, SUB-35.33)
+- **Em Execução:** 1 (SUB-28.8, Devin (Cognition AI), desde 2026-10-12 12:44)
+- **Pendentes:** 4 principais (25, 26, 28, 35) + 31 subtarefas
+  - livres agora: 8 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.9, SUB-28.13, SUB-28.14, SUB-35.32, SUB-35.33)
   - bloqueadas por dependência: 23
   - reservadas: 0
 - **Concluídas:** 203 de 239 blocos (33 principais + 170 subtarefas)
@@ -1968,7 +1979,7 @@
   - `SUB-28.5`: Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts` (`concluido`, `999d1e0`)
   - `SUB-28.6`: Nó `carregarContexto` em `worker/nos/carregarContexto.ts` (`concluido`, `463b3d9`)
   - `SUB-28.7`: Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts` (`concluido`, `07ca06f`)
-  - `SUB-28.8`: Nó `politica` (aprovação humana) em `worker/nos/politica.ts` (`pendente`)
+  - `SUB-28.8`: Nó `politica` (aprovação humana) em `worker/nos/politica.ts` (`em_execucao`)
   - `SUB-28.9`: Nó `executar` em `worker/nos/executar.ts` (`pendente`)
   - `SUB-28.10`: Nó `revisar` (roteamento) em `worker/nos/revisar.ts` (`concluido`, `b1c35a9`)
   - `SUB-28.11`: Nó `finalizar` em `worker/nos/finalizar.ts` (`concluido`, `9575b13`)
@@ -2077,8 +2088,8 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:43 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
 #### [ ] SUB-28.8: Nó `politica` (aprovação humana) em `worker/nos/politica.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:44)
 - **Depende de:** SUB-28.19
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Valida passos contra a allowlist e, para passo sensível, chama `interrupt()` com pedido de aprovação.
