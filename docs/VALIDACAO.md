@@ -55,3 +55,21 @@ CSS: `index.css` com 63.42 kB (10.79 kB gzip).
 ## Falhas encontradas
 
 Nenhuma. Nenhuma subtarefa SUB-25.8+ foi criada.
+
+## Suíte do banco (SUB-25.3)
+
+`database/tests/run_tests.sh` em 2026-10-12 13:37 UTC, commit `24c10c5`, contra PostgreSQL 16.15 com pgvector (imagem `pgvector/pgvector:pg16` em Docker local, banco descartável `dashai_test`):
+
+```bash
+PSQL="docker exec -i -w /repo/database pg-dash psql -U postgres" bash database/tests/run_tests.sh
+```
+
+| Verificação | Resultado |
+|---|---|
+| Schema `00`–`06` aplicado 2x (idempotência) | OK |
+| `tests/test_multi_projeto.sql` (RLS, fila, memória) | OK, 72 verificações |
+| `tests/test_recados_regras.sql` (SUB-31) | OK, 46 verificações |
+| `tests/test_paralelo.sh`: 12 agentes em paralelo | OK, 60 tasks de 3 projetos sem duplicidade |
+| `tests/test_paralelo.sh`: `p_exclusivo=true` com 10 chamadas simultâneas | OK, 1 task entregue |
+
+Saída: exit 0. Nenhuma falha, então nenhuma SUB-25.8+ foi criada.
