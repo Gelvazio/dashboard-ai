@@ -45,14 +45,25 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
+### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.11
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-28.11** |
+| **Título da Sub-task:** | Nó `finalizar` em `worker/nos/finalizar.ts` |
+| **Agente Responsável:** | Devin (Cognition AI) |
+| **Data e Hora de Início:** | 2026-10-12 12:40 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202
-- **Em Execução:** 0
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 36 subtarefas
-  - livres agora: 13 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.6, SUB-28.7, SUB-28.8, SUB-28.9, SUB-28.10, SUB-28.11, SUB-28.13, SUB-28.14, SUB-35.32, SUB-35.33)
+- **Em Execução:** 1 (SUB-28.11, Devin (Cognition AI), desde 2026-10-12 12:40)
+- **Pendentes:** 4 principais (25, 26, 28, 35) + 35 subtarefas
+  - livres agora: 12 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.6, SUB-28.7, SUB-28.8, SUB-28.9, SUB-28.10, SUB-28.13, SUB-28.14, SUB-35.32, SUB-35.33)
   - bloqueadas por dependência: 23
   - reservadas: 0
 - **Concluídas:** 199 de 239 blocos (33 principais + 166 subtarefas)
@@ -1971,7 +1982,7 @@
   - `SUB-28.8`: Nó `politica` (aprovação humana) em `worker/nos/politica.ts` (`pendente`)
   - `SUB-28.9`: Nó `executar` em `worker/nos/executar.ts` (`pendente`)
   - `SUB-28.10`: Nó `revisar` (roteamento) em `worker/nos/revisar.ts` (`pendente`)
-  - `SUB-28.11`: Nó `finalizar` em `worker/nos/finalizar.ts` (`pendente`)
+  - `SUB-28.11`: Nó `finalizar` em `worker/nos/finalizar.ts` (`em_execucao`)
   - `SUB-28.12`: Montagem do `StateGraph` em `worker/grafo.ts` (`pendente`)
   - `SUB-28.13`: Checkpointer durável em `worker/checkpointer.ts` (`pendente`)
   - `SUB-28.14`: Reconciliação na retomada em `worker/reconciliar.ts` (`pendente`)
@@ -2110,8 +2121,8 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (reaberta: critérios de aceitação não atendidos)
 
 #### [ ] SUB-28.11: Nó `finalizar` em `worker/nos/finalizar.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:40)
 - **Depende de:** SUB-28.30
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Chama `finalizar` (RPC `finalizar_task`) com `concluida`/`recusada`/`erro`, resumo seguro e `execucaoId` nos metadados.
