@@ -2198,6 +2198,17 @@
 - **Anotação:** Criei `api/aprovacao.ts` (POST, CORS/OPTIONS/405 como `api/embedding.ts`): JWT via `bearerToken` + `verificarSessaoSupabase` (401 com `WWW-Authenticate`), corpo `{ taskId, aprovado, motivo? }` validado por `lerPedidoAprovacao` (400), `project_id` da task pelo service_role (404) e `tem_acesso_projeto(projeto, editor)` chamado no PostgREST com o JWT do usuário (403); falha da validação de sessão/papel -> 503. Deps injetáveis em `criarHandlerAprovacao`; sem `retomar` o pedido autorizado recebe 501, que a SUB-28.23 substitui pela retomada. `tests/unit/api-aprovacao.test.ts` (8 testes). `npm test` 298 aprovados / 30 pulados; `typecheck`, `typecheck:api`, `check:env` e `build` OK.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:50 (confirmado por Devin (Cognition AI))
 
+#### [x] SUB-28.2: Dependências do worker no `package.json`
+- **Status:** concluido
+- **Executor:** DeepSeek Harness (deepseek-flash) (início: 2026-10-12 14:53, conclusão: 2026-10-12 15:12)
+- **Depende de:** SUB-28.27
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Adicionar `@langchain/langgraph`, `@langchain/core`, `@langchain/langgraph-checkpoint-postgres` e `zod` ao `package.json` (versões fixadas no lockfile). O `worker/tsconfig.json` fica na SUB-28.28.
+- **Critérios de Aceitação:** `npm ci` sem vulnerabilidades altas; `npm test` segue verde.
+- **Commit:** `3642a8d`
+- **Anotação:** **Causa:** `@langchain/core@0.3.80` declara `langsmith: ^0.3.67`, resolvido em `langsmith@0.3.87`, que está na faixa vulnerável das 4 advisories abertas (GHSA-v34v-rq6j-cj6p `>=0.3.41 <0.4.6`, GHSA-fw9q-39r9-c252 `<=0.5.17`, GHSA-rr7j-v2q5-chgv `<=0.5.18`, GHSA-3644-q5cj-c5c7 `<0.6.0`) — nenhuma versão 0.3.x/0.4.x/0.5.x corrige todas, e não havia versão 0.3.x corrigida. **Correção:** bloco `overrides` em `package.json` fixando `"langsmith": "^0.6.0"`, resolvido em `langsmith@0.6.3`; lockfile regerado (o langsmith 0.6.x removeu 10 dependências transitivas do 0.3.x: 169 → 159 pacotes no `npm ci`). **Evidência:** `npm audit` antes `total=8/high=1` → depois `total=7/high=0` (as 7 moderadas remanescentes vêm de `uuid` e do próprio `@langchain/*`; não são altas, portanto fora do critério); `npm ci` a partir do lockfile OK; `npm test` 43 arquivos / 300 passaram / 30 pulados, idêntico ao baseline medido antes da alteração. **Protocolo:** trava publicada em `7eb6ba9` — o push inicial (`266b9ed`) foi recusado por corrida com outro agente e refeito após `git pull --rebase origin main`, sem sobrescrever a trava de ninguém. **Ressalva:** a versão forçada fica fora do `^0.3.67` declarado pelo `@langchain/core`; o `langsmith` é usado apenas para tracing (não há import direto no repositório) e a suíte cobre o worker — a correção definitiva seria subir `@langchain/*` para a linha 1.x, o que é uma migração do worker e não cabe nesta subtarefa atômica. **Achado fora do escopo:** `npm run typecheck` falha por erro pré-existente `tests/unit/api-aprovacao.test.ts(111,21): error TS6133: 'deps' is declared but its value is never read`; já falhava antes desta alteração e não foi introduzido por ela — recomenda-se abrir subtarefa própria para corrigi-lo (o `build` começa com o mesmo `tsc -b`, logo para no mesmo erro).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 15:12 (confirmado por DeepSeek Harness (deepseek-flash))
+
 ---
 
 ## 📡 FASE 12: Monitor em Tempo Real dos Agentes

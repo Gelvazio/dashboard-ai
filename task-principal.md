@@ -33,12 +33,12 @@
 
 | Propriedade | Valor Atual |
 |---|---|
-| **Status da Trava:** | 🔒 **OCUPADA** |
-| **Sub-task em Execução:** | **SUB-28.2** |
-| **Título da Sub-task:** | Dependências do worker no `package.json` |
-| **Agente Responsável:** | DeepSeek Harness (deepseek-flash) |
-| **Data e Hora de Início:** | 2026-10-12 14:53 |
-| **Bloqueio para Outras IAs:** | Nenhuma outra IA pode assumir a SUB-28.2 |
+| **Status da Trava:** | ✅ **LIVRE** |
+| **Sub-task em Execução:** | **—** |
+| **Título da Sub-task:** | — |
+| **Agente Responsável:** | — |
+| **Data e Hora de Início:** | — |
+| **Bloqueio para Outras IAs:** | Nenhum lock ativo para as subtarefas normais (a 🔒 TRAVA ESPECIAL do KIRO-DEV-CLONE continua ativa logo abaixo) |
 
 ---
 
@@ -62,12 +62,12 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 38
 - **Subtarefas atômicas (~3 min):** 204
-- **Em Execução:** 1 (SUB-28.2)
-- **Pendentes:** 5 principais (25, 26, 28, 35, KIRO-DEV-CLONE) + 7 subtarefas
-  - livres agora: 4 — SUB-25.4, SUB-25.7, SUB-35.32 e a atômica KIRO-DEV-CLONE (correção de 2026-10-12 14:53 por DeepSeek Harness: o resumo dizia 0, mas as dependências dessas 4 já estavam `concluido`)
+- **Em Execução:** 0
+- **Pendentes:** 5 principais (25, 26, 28, 35, KIRO-DEV-CLONE) + 6 subtarefas
+  - livres agora: 3 — SUB-25.4, SUB-25.7 e SUB-35.32 (a atômica KIRO-DEV-CLONE está 🔴 travada para todas as IAs)
   - bloqueadas por dependência: 3 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente) e SUB-35.46 (depende da SUB-35.32)
   - reservadas: 0
-- **Concluídas:** 225 de 241 blocos (33 principais + 192 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 226 de 241 blocos (33 principais + 193 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -162,7 +162,7 @@
 - **Depende de:** SUB-01 a SUB-27, SUB-29, SUB-30 (todas as tasks anteriores concluídas); subtarefas SUB-28.1 a SUB-28.32
 - **Subtarefas:** (subdividida em 18 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 25 em 2026-10-11 23:51; nova revisão para 32 em 2026-10-12 00:17)
   - `SUB-28.1`: Contrato: identificadores e estado mínimo em `docs/langgraph-contrato.md` (`concluido`, `fc379a6`)
-  - `SUB-28.2`: Dependências do worker no `package.json` (`concluido`, package.json já tem @langchain/*)
+  - `SUB-28.2`: Dependências do worker no `package.json` (`concluido`, `3642a8d`)
   - `SUB-28.3`: Annotation `EstadoExecucao` em `worker/estado.ts` (`concluido`, `21c908b`)
   - `SUB-28.4`: `reivindicar(agente, projeto)` em `worker/fila.ts` (`concluido`, `06e7e4b`)
   - `SUB-28.5`: Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts` (`concluido`, `999d1e0`)
@@ -200,18 +200,6 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-
-#### [ ] SUB-28.2: Dependências do worker no `package.json`
-- **Status:** em_execucao
-- **Executor:** DeepSeek Harness (deepseek-flash) (início: 2026-10-12 14:53)
-- **Depende de:** SUB-28.27
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Adicionar `@langchain/langgraph`, `@langchain/core`, `@langchain/langgraph-checkpoint-postgres` e `zod` ao `package.json` (versões fixadas no lockfile). O `worker/tsconfig.json` fica na SUB-28.28.
-- **Critérios de Aceitação:** `npm ci` sem vulnerabilidades altas; `npm test` segue verde.
-- **Commit:** pendente (código parcial em `fbef4e8`)
-- **Anotação:** Reaberta na revisão de 2026-10-12 (Devin (revisão do quadro)): marcada como concluída em `310fab9`, mas dependências instaladas, mas `npm audit` aponta 1 vulnerabilidade alta (`langsmith`, SSRF, transitiva de `@langchain/core`; a correção exige versão major), contrariando o critério.
-- **Trava:** assumida por DeepSeek Harness (deepseek-flash) em 2026-10-12 14:53, commit de lock `pendente`. Constatação inicial: o lockfile fixa `langsmith@0.3.87`, que está na faixa vulnerável das 4 advisories abertas (GHSA-v34v-rq6j-cj6p, GHSA-fw9q-39r9-c252, GHSA-rr7j-v2q5-chgv, GHSA-3644-q5cj-c5c7; todas corrigidas em ≥ 0.6.0), e `node_modules` não existe nesta cópia.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (reaberta: critérios de aceitação não atendidos)
 
 #### [x] SUB-28.18: Atualizar `LangChain_LangGraph.md` (status e desvios)
 - **Status:** concluido
