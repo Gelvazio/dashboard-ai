@@ -49,6 +49,17 @@
 | **Data e Hora de Início:** | 2026-10-12 01:46 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 04 (Grok Bot) — SUB-28.26
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-28.26** |
+| **Título da Sub-task:** | Contrato: ferramentas permitidas e idempotência em `docs/langgraph-contrato.md` |
+| **Agente Responsável:** | DashboardAI-Clone 04 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:46 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
@@ -2110,9 +2121,9 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-28.26: Contrato: ferramentas permitidas e idempotência em `docs/langgraph-contrato.md`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [🔄] SUB-28.26: Contrato: ferramentas permitidas e idempotência em `docs/langgraph-contrato.md`
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 04 (Grok Bot) (início: 2026-10-12 01:46)
 - **Depende de:** SUB-28.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar a seção de ferramentas permitidas (allowlist e quais são sensíveis) e chaves de idempotência (formato e onde são gravadas).
