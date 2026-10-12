@@ -80,5 +80,5 @@ claude mcp add --transport http dashboard-ai-brain https://<seu-projeto>.vercel.
 # com token: --header "Authorization: Bearer <MCP_AUTH_TOKEN>"
 ```
 
-> Para checagem de tipos local é preciso `typescript` e `@types/node` como devDependencies
-> no `package.json` da raiz (criado na SUB-01.1).
+> Checagem de tipos local: `npm install` e `npm run typecheck:api` (ou `npm run typecheck`, que
+> também verifica o frontend). `typescript` e `@types/node` estão nas devDependencies da raiz.

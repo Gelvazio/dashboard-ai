@@ -1,0 +1,29 @@
+{
+  "name": "dashboard-ai",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Gerenciador genérico de tasks de IA multi-projeto: fila, memória persistente e monitor do agendador.",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -b && tsc -p api/tsconfig.json",
+    "typecheck:api": "tsc -p api/tsconfig.json"
+  },
+  "dependencies": {
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "typescript": "~5.9",
+    "vite": "^8.3.4"
+  }
+}
