@@ -1,5 +1,6 @@
 import { EstadoExecucao } from '../estado.js';
 import { criarFerramentaLangChain } from '../ferramentas.js';
+import { listTools } from '../../api/_lib/tools.js';
 
 /**
  * Nó que executa o passo atual (SUB-28.9).
@@ -32,7 +33,11 @@ export async function executar(state: typeof EstadoExecucao.State) {
   const chaveIdempotencia = `${execucaoId}:passo-${passoIndex}`;
 
   // Criar e executar a ferramenta
-  const ferramenta = criarFerramentaLangChain(passo.ferramenta, async (args) => {
+  const definicao = (await listTools()).find((t) => t.name === passo.ferramenta);
+  if (!definicao) {
+    throw new Error(`Ferramenta não disponível: ${passo.ferramenta}`);
+  }
+  const ferramenta = criarFerramentaLangChain(definicao, async (args) => {
     // Placeholder: implementação real chamará MCP
     return `Resultado de ${passo.ferramenta}`;
   });
