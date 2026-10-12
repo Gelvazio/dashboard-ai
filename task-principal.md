@@ -10,12 +10,12 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
 - **Subtarefas atômicas (~3 min):** 153 (SUB-08.x, SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x; atualizado em 2026-10-12 00:17)
-- **Em Execução:** 2 (SUB-21.13, SUB-23.1)
-- **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 144 subtarefas
-  - livres agora: 27 (SUB-33.5, SUB-33.6, SUB-33.7, SUB-33.9, SUB-33.12, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.3, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
-  - bloqueadas por dependência: 115
+- **Em Execução:** 1 (SUB-23.1)
+- **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 143 subtarefas
+  - livres agora: 30 (SUB-33.5, SUB-33.6, SUB-33.7, SUB-33.9, SUB-33.12, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
+  - bloqueadas por dependência: 112
   - reservadas: 0
-- **Concluídas:** 34
+- **Concluídas:** 35
 - **Canceladas:** 0
 
 ---
@@ -921,7 +921,7 @@
   - `SUB-21.10`: Validação visual da SUB-21 (screenshots) (`pendente`)
   - `SUB-21.11`: Ligar detalhe e exclusão na `MemoriaView` (`pendente`)
   - `SUB-21.12`: Conferir exclusão com editor e viewer (`pendente`)
-  - `SUB-21.13`: `escopoMemoria` em `src/lib/memorias.ts` (`em_execucao`)
+  - `SUB-21.13`: `escopoMemoria` em `src/lib/memorias.ts` (`concluido`)
   - `SUB-21.14`: `tagsDisponiveis` em `src/lib/memorias.ts` (`pendente`)
 - **Descrição:** Exibição em cartões de todas as memórias cadastradas, com botão para copiar conteúdo Markdown, visualizar detalhes e excluir memória.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
@@ -1049,15 +1049,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-21.13: `escopoMemoria` em `src/lib/memorias.ts`
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (desde 2026-10-12 00:26)
+#### [x] SUB-21.13: `escopoMemoria` em `src/lib/memorias.ts`
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:26 → 2026-10-12 00:27)
 - **Depende de:** SUB-21.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `escopoMemoria(m): 'global' | 'projeto'` (`project_id` nulo = global). Testes em `tests/unit/memorias.test.ts`.
 - **Critérios de Aceitação:** `npm test` passa.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `de3cc15`
+- **Anotação:** Adicionado `escopoMemoria(m): 'global' | 'projeto'` em `src/lib/memorias.ts` (`project_id` nulo/indefinido = global; 0 conta como projeto) e reutilizado em `memoriaComoMarkdown`. Testes em `tests/unit/memorias.test.ts`. typecheck (app + api) e `npm test` verdes.
 
 #### [ ] SUB-21.14: `tagsDisponiveis` em `src/lib/memorias.ts`
 - **Status:** pendente
