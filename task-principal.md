@@ -793,7 +793,7 @@
   - `SUB-20.3`: `sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts` (`concluido`, `e5e67e5`)
   - `SUB-20.4`: Componente `TagInput` em `src/components/ui/TagInput.tsx` (`concluido`, `3d44cd1`)
   - `SUB-20.5`: Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts` (`concluido`, `3208e66`)
-  - `SUB-20.6`: Modal `MemoriaFormModal` em `src/components/memoria/` (`pendente`)
+  - `SUB-20.6`: Modal `MemoriaFormModal` em `src/components/memoria/` (`em_execucao`)
   - `SUB-20.7`: Botão "Nova memória" na `src/views/MemoriaView.tsx` (`pendente`)
   - `SUB-20.8`: `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` (`pendente`)
   - `SUB-20.9`: Componente `TagSugestoes` em `src/components/ui/TagSugestoes.tsx` (`pendente`)
@@ -855,8 +855,8 @@
 - **Anotação:** Criado `src/hooks/useSalvarMemoria.ts` (exportado em `src/hooks/index.ts`): `{ salvar(projectId | null, dados): Promise<Memoria | null>, salvando }` chamando `salvarMemoria` (SUB-10) com o gerador de `criarGeradorEmbedding()` (SUB-33.7, memoizado). Se o gerador falhar (marcado com erro próprio para não confundir com erro do banco), salva de novo sem vetor e avisa em toast (`info`) que a memória não aparece na busca semântica; sucesso -> `toast.sucesso`; erro do banco/RLS -> `toast.erro` e devolve `null`. Ignora cliques repetidos enquanto salva. `npm run typecheck`, `npm test` e `npm run build` OK.
 
 #### [ ] SUB-20.6: Modal `MemoriaFormModal` em `src/components/memoria/`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 00:55)
 - **Depende de:** SUB-20.1, SUB-20.3, SUB-20.4, SUB-20.5, SUB-20.8, SUB-20.9
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/components/memoria/MemoriaFormModal.tsx` (usa `Modal`/`Botao`): Título, Conteúdo com `MarkdownEditor` (SUB-20.8), Tags (`TagInput` + `TagSugestoes` alimentado por `sugerirTags`), opção "Memória global" (erro da RLS exibido no modal). Validação com `validarMemoria`; `onSalvo(memoria)`.
