@@ -47,9 +47,9 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 204
-- **Em Execução:** 1 (SUB-26.5, Devin (Cognition AI), desde 2026-10-12 14:10)
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 12 subtarefas
-  - livres agora: 5 (SUB-26.5, SUB-28.2, SUB-35.32, SUB-25.4, SUB-25.7)
+- **Em Execução:** 0
+- **Pendentes:** 4 principais (25, 26, 28, 35) + 11 subtarefas
+  - livres agora: 4 (SUB-28.2, SUB-35.32, SUB-25.4, SUB-25.7)
   - bloqueadas por dependência: 7
   - reservadas: 0
 - **Concluídas:** 225 de 241 blocos (33 principais + 192 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
@@ -125,16 +125,6 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-
-#### [x] SUB-26.5: Seção Deploy na Vercel
-- **Status:** concluido
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:10, conclusão: 2026-10-12 14:20)
-- **Depende de:** SUB-26.1, SUB-08.9, SUB-33
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Node 22 no projeto Vercel, variáveis de frontend (`VITE_*`) e de servidor (Supabase, OpenAI/embeddings, `MCP_*`), rewrite `/mcp`, limites de `maxDuration`.
-- **Critérios de Aceitação:** Lista de variáveis igual ao `.env.example` (`npm run check:env` verde).
-- **Commit:** a5c2a8a
-- **Anotação:** Criada seção completa no README.md com: configuração do projeto na Vercel (Node 22, Vite), tabela de variáveis de ambiente (frontend e servidor), limits/timeouts, rewrite `/mcp`, deploy automático, validação pós-deploy e instruções do worker LangGraph. typecheck OK, npm test OK (298 passed), check:env OK (variáveis LANGGRAPH_DATABASE_URL e WORKER_MODELO usadas no worker).
 
 #### [ ] SUB-26.9: Revisão final do README
 - **Status:** pendente
