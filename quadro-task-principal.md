@@ -55,17 +55,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:16 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.17
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-27.17** |
-| **Título da Sub-task:** | Documentar configuração do Supabase Auth em `src/README.md` |
-| **Agente Responsável:** | DashboardAI-Clone 01 |
-| **Data e Hora de Início:** | 2026-10-12 01:16 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 06 — SUB-27.21
 
 | Propriedade | Valor Atual |
@@ -86,7 +75,6 @@
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27.21** | Documentar primeiro administrador e membros em `database/README.md` | DashboardAI-Clone 06 | 2026-10-12 01:16 | SUB-27.13 |
-| **SUB-27.17** | Documentar configuração do Supabase Auth em `src/README.md` | DashboardAI-Clone 01 | 2026-10-12 01:16 | SUB-27.13 |
 | **SUB-35.12** | Testes de `eventService` em `tests/unit/eventService.test.ts` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:16 | SUB-35.11 |
 | **SUB-35.16** | `contarPorStatus()` em `src/lib/monitor.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:15 | SUB-35.15 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
@@ -172,7 +160,6 @@
 | **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) (mãe) | 3 | Fase 2B | SUB-07, SUB-03; SUB-33.1 a SUB-33.13 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | 3 | Fase 2B | SUB-33.11 — 🔄 em execução por Codex (OpenAI) |
 | **SUB-27** | Autenticação e Login com Supabase Auth (mãe; pendente, liberada) | 3 | Fase 10 | SUB-03, SUB-29; SUB-27.1 a SUB-27.28 — 🟢 livre |
-| **SUB-27.17** | Documentar configuração do Supabase Auth em `src/README.md` | 3 | Fase 10 | SUB-27.13 — ⛓️ bloqueada |
 | **SUB-27.18** | Validação automatizada da SUB-27 | 3 | Fase 10 | SUB-27.6, SUB-27.8, SUB-27.13, SUB-27.27, SUB-27.15, SUB-27.16, SUB-27.17, SUB-27.20, SUB-27.21 — ⛓️ bloqueada |
 | **SUB-27.21** | Documentar primeiro administrador e membros em `database/README.md` | 3 | Fase 10 | SUB-27.13 — 🔄 em execução por DashboardAI-Clone 06 |
 | **SUB-27.22** | Conferência no navegador (entrar, sair, restaurar sessão) — SUB-27 | 3 | Fase 10 | SUB-27.18 — ⛓️ bloqueada |
@@ -209,6 +196,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-27.17** | Documentar configuração do Supabase Auth em `src/README.md` | DashboardAI-Clone 01 | 2026-10-12 01:16 | 2026-10-12 01:16 | `1a25734` |
 | **SUB-35.28** | Feed `FeedEventos` em `src/components/monitor/FeedEventos.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:13 | 2026-10-12 01:16 | `0d90464` |
 | **SUB-35.13** | Teste de integração de `listarEventos`/`atividadeAtual` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:15 | 2026-10-12 01:16 | `8628ec3` |
 | **SUB-27.13** | Integrar autenticação no `src/App.tsx` | DashboardAI-Clone 06 | 2026-10-12 01:14 | 2026-10-12 01:16 | `d6a9129` |
@@ -653,3 +641,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:16 | DashboardAI-Clone 01 | SUB-35.28 | `0d90464` | Criado `src/components/monitor/FeedEventos.tsx` (`{ eventos, limite?=100, className? }`, eventos do mais novo ao mais antigo): linhas com hora, agente, selo do tipo (cor por `TipoEventoAgente`), task, etapa e mensagem; Pausar/Retomar congela a lista e mostra "+N novos" (`aria-pressed`, `aria-live` desligado quando pausado); eventos novos destacados por 2 s com `motion-safe:` (respeita `prefers-reduced-motion`). Exportado em `src/components/monitor/index.ts`. typecheck e build OK. |
 | 2026-10-12 01:16 | DashboardAI-Clone 01 | SUB-27.17 | — | Lock: assumindo SUB-27.17 (Documentar configuração do Supabase Auth em `src/README.md`) |
 | 2026-10-12 01:16 | DashboardAI-Clone 06 | SUB-27.21 | — | Lock: assumindo SUB-27.21 (Documentar primeiro administrador e membros em `database/README.md`) |
+| 2026-10-12 01:16 | DashboardAI-Clone 01 | SUB-27.17 | `1a25734` | Seção "Autenticação (Supabase Auth)" no `src/README.md`: habilitar o provedor Email (confirmação de e-mail, cadastro aberto opcional já que o link mágico usa `shouldCreateUser: false`), Site URL e Redirect URLs (localhost 5173/4173, produção e previews da Vercel) usadas por `urlDeRetorno`, e persistência da sessão (`persistSession`/`autoRefreshToken`/`detectSessionInUrl`, `AuthProvider`, `useAuth`, `RotaProtegida`, `sair`). Sem chaves reais. |

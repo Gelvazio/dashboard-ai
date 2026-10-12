@@ -1650,15 +1650,15 @@
 - **Commit:** `1e3240c`
 - **Anotação:** Adicionado `urlDeRetorno(loc)` em `src/lib/auth.ts`: origem + caminho + tela do hash (`#/rota`), descartando tokens/parâmetros anteriores. 4 testes em `tests/unit/auth.test.ts`; vitest e typecheck verdes.
 
-#### [ ] SUB-27.17: Documentar configuração do Supabase Auth em `src/README.md`
-- **Status:** em_execucao
+#### [x] SUB-27.17: Documentar configuração do Supabase Auth em `src/README.md`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.13
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** No `src/README.md`: habilitar provedor e-mail no Supabase Auth, URLs de redirecionamento (local e Vercel) usadas por `urlDeRetorno`, e como a sessão é persistida. Sem chaves reais.
 - **Critérios de Aceitação:** Documentação revisada.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `1a25734`
+- **Anotação:** Seção "Autenticação (Supabase Auth)" no `src/README.md`: habilitar o provedor Email (confirmação de e-mail, cadastro aberto opcional já que o link mágico usa `shouldCreateUser: false`), Site URL e Redirect URLs (localhost 5173/4173, produção e previews da Vercel) usadas por `urlDeRetorno`, e persistência da sessão (`persistSession`/`autoRefreshToken`/`detectSessionInUrl`, `AuthProvider`, `useAuth`, `RotaProtegida`, `sair`). Sem chaves reais.
 
 #### [ ] SUB-27.18: Validação automatizada da SUB-27
 - **Status:** pendente
