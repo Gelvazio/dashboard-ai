@@ -87,6 +87,15 @@ Plano: [`docs/login-cadastro-admin-inicial.md`](docs/login-cadastro-admin-inicia
 | 7.7 | SUB-40.7 Aplicar SQL no Supabase (só com autorização) | ✅ Concluído | 2026-10-12 18:39 | scripts 00 a 08 aplicados com autorização; conferido pelo MCP (9 tabelas com RLS, trigger ativa) |
 | 7.8 | Aceite do usuário | ⬜ Pendente | — | — |
 
+## Etapa 8 — Tarefas pendentes de banco: validação das telas em produção (pedida em 2026-10-12)
+Plano: [`docs/validacao-telas-producao.md`](docs/validacao-telas-producao.md). Exceção à regra "nunca abrir navegador" liberada pelo usuário só para estas tarefas.
+| Item | Descrição | Status | Concluído em | Verificação |
+|------|-----------|--------|--------------|-------------|
+| 8.1 | SUB-25.4 Telas Fila e Logs | 🔄 Em progresso | — | — |
+| 8.2 | SUB-25.7 Telas Memória e Configurações | ⬜ Pendente | — | — |
+| 8.3 | SUB-35.32 Monitor em tempo real | ⬜ Pendente | — | — |
+| 8.4 | Aceite do usuário | ⬜ Pendente | — | — |
+
 ## Riscos
 | Risco | Chance | Impacto | Plano B | Situação |
 |-------|--------|---------|---------|----------|
