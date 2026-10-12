@@ -2183,6 +2183,19 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:35 (confirmado por Devin (Cognition AI))
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
+#### [x] SUB-25.8: Corrigir erro de tipagem TS6133 em `tests/unit/api-aprovacao.test.ts`
+- **Status:** concluido
+- **Prioridade:** ALTA
+- **Executor:** DeepSeek Harness (deepseek-flash) (início: 2026-10-12 15:15, conclusão: 2026-10-12 15:28)
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Remover a variável `deps` não utilizada na desestruturação da linha 111 de `tests/unit/api-aprovacao.test.ts` (erro `TS6133`), para que `npm run typecheck` e `npm run build` voltem a passar.
+- **Critérios de Aceitação:** `npm run typecheck` sem erros; `npm test` segue verde; `npm run build` gera `dist/`.
+- **Commit:** `c933a99`
+- **Anotação:** Subtarefa criada e assumida por DeepSeek Harness (deepseek-flash) em 2026-10-12 15:15, a partir do achado da SUB-28.2 (a validação daquela entrega esbarrou no erro, que não tinha relação com dependências). **Diagnóstico:** `git blame` localizou a linha 111 no commit `ff049de4` (SUB-28.32) — o teste `regista auditoria da aprovação nos metadados` reaproveitou a desestruturação `{ chamar, deps }` do teste anterior sem usar `deps`. **Correção:** removido apenas o `deps` da desestruturação (1 linha alterada), sem `@ts-expect-error`, sem `void deps` e sem afrouxar o `tsconfig` — o erro era real e a variável era de fato desnecessária. **Evidência:** `npm run typecheck` (`tsc -b && tsc -p api/tsconfig.json`) exit 0, sem nenhum erro adicional depois do primeiro, e com o projeto `api/` também aprovado; `npm test` 43 arquivos / 300 passaram / 30 pulados; `npm run build` concluído em 1,03 s gerando `dist/` com 35 arquivos. **Impacto:** remove o impedimento do critério da mãe SUB-25 ("Build gerado com sucesso na pasta `dist/` sem alertas impeditivos") e destrava a SUB-26.9, que depende da SUB-25. **Protocolo:** trava publicada em `105cb2b`. **Conformidade com o procedimento da mãe:** a própria anotação da SUB-25.2 já previa este caminho ("Sem corrigir nada aqui: cada falha encontrada vira uma subtarefa nova (SUB-25.8, 25.9…), atômica, criada no quadro com lock + commit + push") — na época não havia falha, e a regressão só apareceu depois, com o teste acrescentado pela SUB-28.32 (`ff049de4`), confirmando que o `typecheck` passava no commit `d284472` daquela validação. **Rebase:** ao publicar, o `origin` já trazia as regras novas de prioridade (commit `4a615a1`) e o `task-principal.md` conflitou no resumo; o conflito foi resolvido à mão, preservando as prioridades do `origin` e a contagem da minha conclusão (227 de 243), e o commit da correção foi reaplicado como `c933a99` — o `88e48c4` era o SHA antes do rebase. **Prioridade `ALTA`:** aplica a definição da seção 1.2 do `AGENTS.md` ("quebra a validação: build, typecheck, testes") e cumpre a instrução que o verificador deixou na anotação da SUB-38 ("incluir quando a trava for liberada"), que já havia fixado o valor `ALTA`.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 15:28 (confirmado por DeepSeek Harness (deepseek-flash))
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
 ---
 
 ## 🚀 FASE 11: Orquestração de Tasks com LangChain/LangGraph (última fase)

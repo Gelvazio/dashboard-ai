@@ -33,12 +33,12 @@
 
 | Propriedade | Valor Atual |
 |---|---|
-| **Status da Trava:** | 🔒 **OCUPADA** |
-| **Sub-task em Execução:** | **SUB-25.8** |
-| **Título da Sub-task:** | Corrigir erro de tipagem TS6133 em `tests/unit/api-aprovacao.test.ts` |
-| **Agente Responsável:** | DeepSeek Harness (deepseek-flash) |
-| **Data e Hora de Início:** | 2026-10-12 15:15 |
-| **Bloqueio para Outras IAs:** | Nenhuma outra IA pode assumir a SUB-25.8 (a 🔒 TRAVA ESPECIAL do KIRO-DEV-CLONE continua ativa logo abaixo) |
+| **Status da Trava:** | ✅ **LIVRE** |
+| **Sub-task em Execução:** | **—** |
+| **Título da Sub-task:** | — |
+| **Agente Responsável:** | — |
+| **Data e Hora de Início:** | — |
+| **Bloqueio para Outras IAs:** | Nenhum lock ativo para as subtarefas normais (a 🔒 TRAVA ESPECIAL do KIRO-DEV-CLONE continua ativa logo abaixo) |
 
 ---
 
@@ -62,13 +62,12 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 39
 - **Subtarefas atômicas (~3 min):** 205
-- **Em Execução:** 1 (SUB-25.8)
-- **Pendentes:** 6 principais (SUB-38, 25, 26, 28, 35, KIRO-DEV-CLONE) + 7 subtarefas
+- **Em Execução:** 0
+- **Pendentes:** 6 principais (SUB-38, 25, 26, 28, 35, KIRO-DEV-CLONE) + 6 subtarefas
   - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 4 — **SUB-38 (`MAXIMA`)**; depois SUB-25.4, SUB-25.7 e SUB-35.32 (`MEDIA`). A atômica KIRO-DEV-CLONE (`BAIXA`) está 🔴 travada para todas as IAs
   - bloqueadas por dependência: 3 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente) e SUB-35.46 (depende da SUB-35.32)
-  - em execução: 1 — SUB-25.8 (criada em 2026-10-12 15:15 para desbloquear `typecheck` e `build`)
   - reservadas: 0
-- **Concluídas:** 226 de 243 blocos (33 principais + 193 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 227 de 243 blocos (33 principais + 194 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -103,7 +102,7 @@
   - `SUB-25.4`: Teste rápido local: telas Fila e Logs (`pendente`)
   - `SUB-25.6`: Rodar `npm run test:integration` (`concluido`, `7c9891f`)
   - `SUB-25.7`: Teste rápido local: telas Memória e Configurações (`pendente`)
-  - `SUB-25.8`: Corrigir erro de tipagem TS6133 em `tests/unit/api-aprovacao.test.ts` (`em_execucao` — DeepSeek Harness (deepseek-flash), desde 2026-10-12 15:15)
+  - `SUB-25.8`: Corrigir erro de tipagem TS6133 em `tests/unit/api-aprovacao.test.ts` (`concluido`, `c933a99`)
 - **Descrição:** Rodar compilação de produção (`npm run build`), validar ausência de erros de tipagem TypeScript e verificar integridade de pacotes.
 - **Critérios de Aceitação:** Build gerado com sucesso na pasta `dist/` sem alertas impeditivos.
 - **Commit:** pendente
@@ -133,16 +132,6 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 - **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:25 (Claude Code): pendente, sem executor. Não há registro das telas Memória e Configurações no `docs/VALIDACAO.md`; depende de navegador (não usado nesta verificação).
-
-#### [ ] SUB-25.8: Corrigir erro de tipagem TS6133 em `tests/unit/api-aprovacao.test.ts`
-- **Status:** em_execucao
-- **Executor:** DeepSeek Harness (deepseek-flash) (início: 2026-10-12 15:15)
-- **Depende de:** Nenhuma
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Remover a variável `deps` não utilizada na desestruturação da linha 111 de `tests/unit/api-aprovacao.test.ts` (erro `TS6133`), para que `npm run typecheck` e `npm run build` voltem a passar.
-- **Critérios de Aceitação:** `npm run typecheck` sem erros; `npm test` segue verde; `npm run build` gera `dist/`.
-- **Commit:** pendente
-- **Anotação:** Subtarefa criada por DeepSeek Harness (deepseek-flash) em 2026-10-12 15:15, ao concluir a SUB-28.2: a validação daquela entrega revelou o erro, pré-existente e sem relação com as dependências. O `git blame` aponta a linha para o commit `ff049de4` (SUB-28.32, "Registro de auditoria da aprovação"), que acrescentou o teste `regista auditoria da aprovação nos metadados` reaproveitando a desestruturação `{ chamar, deps }` do teste anterior sem usar `deps`.
 
 ### [ ] SUB-26: Documentação Completa e Manual Operacional no `README.md`
 - **Status:** pendente (aguardando subtarefas)
