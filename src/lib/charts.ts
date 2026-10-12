@@ -6,10 +6,14 @@
  * tree-shaking manter o bundle pequeno. A linha do tempo usa `LinearScale` com
  * timestamps em milissegundos, dispensando o `TimeScale` e um adaptador de
  * datas. Importar este módulo antes de renderizar qualquer gráfico.
+ *
+ * O Chart.js 4 exige o controller de cada tipo usado em `new Chart(...)`: sem o
+ * `BarController`, os gráficos de barras quebram com `"bar" is not a registered
+ * controller`. A rosca usa o `<Doughnut>` do react-chartjs-2, que registra o seu.
  */
-import { ArcElement, BarElement, CategoryScale, Chart, Legend, LinearScale, Tooltip } from 'chart.js';
+import { ArcElement, BarController, BarElement, CategoryScale, Chart, Legend, LinearScale, Tooltip } from 'chart.js';
 
-Chart.register(ArcElement, BarElement, CategoryScale, LinearScale, Tooltip, Legend);
+Chart.register(ArcElement, BarController, BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 export { Chart };
 
