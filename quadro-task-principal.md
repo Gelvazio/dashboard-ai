@@ -44,17 +44,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:55 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-23.7
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-23.7** |
-| **Título da Sub-task:** | Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx` |
-| **Agente Responsável:** | DashboardAI-Clone 02 |
-| **Data e Hora de Início:** | 2026-10-12 00:58 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 05 (Grok Bot) — SUB-21.8
 
 | Propriedade | Valor Atual |
@@ -75,7 +64,6 @@
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-21.8** | Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 00:59 | SUB-21.14 |
-| **SUB-23.7** | Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx` | DashboardAI-Clone 02 | 2026-10-12 00:58 | SUB-23.10, SUB-23.11 |
 | **SUB-20.6** | Modal `MemoriaFormModal` em `src/components/memoria/` | DashboardAI-Clone 06 | 2026-10-12 00:55 | SUB-20.1, SUB-20.3, SUB-20.4, SUB-20.5, SUB-20.8, SUB-20.9 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
@@ -100,7 +88,6 @@
 | **SUB-23.1** | `minutosDeTrava` em `src/lib/saudeFila.ts` | 4 | Fase 8 | Nenhuma — 🟢 livre |
 | **SUB-23.4** | `liberarTrava()` em `src/services/taskService.ts` | 4 | Fase 8 | Nenhuma — 🟢 livre |
 | **SUB-23.5** | Teste de integração de `liberarTrava`: expirada e forçada | 4 | Fase 8 | SUB-23.4 — 🟢 livre |
-| **SUB-23.7** | Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx` | 4 | Fase 8 | SUB-23.10, SUB-23.11 — 🔄 em execução por DashboardAI-Clone 02 |
 | **SUB-23.8** | Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` | 4 | Fase 8 | SUB-23.7 — ⛓️ bloqueada |
 | **SUB-23.9** | Alerta de trava presa na `src/views/FilaView.tsx` | 4 | Fase 8 | SUB-23.3 — ⛓️ bloqueada |
 | **SUB-23.12** | Teste de integração de `liberarTrava`: viewer e outro projeto | 4 | Fase 8 | SUB-23.4 — 🟢 livre |
@@ -342,6 +329,7 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | **SUB-23.3** | `diagnosticarFila(tasks)` em `src/lib/saudeFila.ts` | DashboardAI-Clone 02 | 2026-10-12 00:53 | 2026-10-12 00:54 | `40fa920` |
 | **SUB-23.6** | Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts` | DashboardAI-Clone 02 | 2026-10-12 00:54 | 2026-10-12 00:57 | `40bb5e0` |
 | **SUB-23.10** | `TravaItem` em `src/components/tasks/TravaItem.tsx` | DashboardAI-Clone 02 | 2026-10-12 00:58 | 2026-10-12 00:58 | `e617cbf` |
+| **SUB-23.7** | Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx` | DashboardAI-Clone 02 | 2026-10-12 00:58 | 2026-10-12 00:59 | `e587121` |
 ---
 
 ### ⛔ CANCELADAS (0)
@@ -520,3 +508,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:59 | DashboardAI-Clone 08 (Grok Bot) | SUB-08.9 | `dd2b3d5` | Adicionado `main(raiz)` + execução direta em `scripts/checar-env.mjs` e `"check:env": "node scripts/checar-env.mjs"` no `package.json`: varre `src/`, `api/` e `scripts/` com `listarArquivosFonte` (pula o próprio script), extrai com `extrairVariaveis` (ignora embutidas do Vite: DEV/PROD/MODE/BASE_URL/SSR), compara com `variaveisDoExemplo`; sai 1 listando as faltantes com os arquivos e avisa as não usadas. `npm run check:env` passa (14 variáveis); removendo `EMBEDDING_MODEL` do `.env.example` falha com código 1. 2 testes de `main` em `tests/unit/checar-env.test.ts`. typecheck e `npm test` verdes. |
 | 2026-10-12 00:59 | DashboardAI-Clone 01 | SUB-27.26 | `9a947eb` | Criado `src/hooks/useAuth.ts` (`useAuth()` lê o `AuthContext` e lança erro fora do `AuthProvider`); `AuthProvider`, `AuthContext` e `useAuth` exportados em `src/hooks/index.ts` mantendo os exports existentes. typecheck OK. |
 | 2026-10-12 00:59 | DashboardAI-Clone 05 (Grok Bot) | SUB-21.8 | — | Lock: assumindo SUB-21.8 (Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx`) |
+| 2026-10-12 00:59 | DashboardAI-Clone 02 | SUB-23.7 | `e587121` | Criado `src/components/tasks/SaudeFilaPanel.tsx` (`{ diagnostico, liberando, onLiberar, className? }`, ligado ao `useSaudeFila`): título 'Saúde da fila' com selo 'Trava expirada' quando `alerta`, lista de `TravaItem` (contagem) ou 'Nenhuma trava ativa', e `PendentesResumo`. Exportado em `src/components/tasks/index.ts`. typecheck e build OK. |

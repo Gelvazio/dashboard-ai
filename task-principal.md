@@ -1095,7 +1095,7 @@
   - `SUB-23.4`: `liberarTrava()` em `src/services/taskService.ts` (`pendente`)
   - `SUB-23.5`: Teste de integração de `liberarTrava`: expirada e forçada (`pendente`)
   - `SUB-23.6`: Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts` (`concluido`)
-  - `SUB-23.7`: Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx` (`em_execucao`)
+  - `SUB-23.7`: Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx` (`concluido`)
   - `SUB-23.8`: Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` (`pendente`)
   - `SUB-23.9`: Alerta de trava presa na `src/views/FilaView.tsx` (`pendente`)
   - `SUB-23.10`: `TravaItem` em `src/components/tasks/TravaItem.tsx` (`concluido`)
@@ -1168,15 +1168,15 @@
 - **Commit:** `40bb5e0`
 - **Anotação:** Criado `src/hooks/useSaudeFila.ts`: `useSaudeFila({ projectId, tasks, recarregar, limite? })` -> `{ diagnostico, liberando, liberar(task, forcar?) }`; recalcula `diagnosticarFila` com relógio de 30 s (`useMemo` + `setInterval` com cleanup); `liberar` chama `liberarTrava` (SUB-23.4), avisa por toast (sucesso/erro), marca `liberando` e recarrega. Exportado em `src/hooks/index.ts`. typecheck e build OK.
 
-#### [🔄] SUB-23.7: Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx`
-- **Status:** em_execucao
+#### [x] SUB-23.7: Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-23.10, SUB-23.11
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Compor o painel: título, lista de `TravaItem` (SUB-23.10) ou mensagem "Nenhuma trava ativa", e `PendentesResumo` (SUB-23.11). Exportar em `src/components/tasks/index.ts`.
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `e587121`
+- **Anotação:** Criado `src/components/tasks/SaudeFilaPanel.tsx` (`{ diagnostico, liberando, onLiberar, className? }`, ligado ao `useSaudeFila`): título 'Saúde da fila' com selo 'Trava expirada' quando `alerta`, lista de `TravaItem` (contagem) ou 'Nenhuma trava ativa', e `PendentesResumo`. Exportado em `src/components/tasks/index.ts`. typecheck e build OK.
 
 #### [ ] SUB-23.8: Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx`
 - **Status:** pendente
