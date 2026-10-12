@@ -68,6 +68,19 @@
 
 ---
 
+### 🔒 TRAVA ADICIONAL — Claude Code (Opus 5.5) — SUB-35.32
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.32** |
+| **Título da Sub-task:** | Validação visual do monitor (SUB-35) |
+| **Agente Responsável:** | Claude Code (Opus 5.5) |
+| **Data e Hora de Início:** | 2026-10-12 18:57 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-35.32 |
+
+---
+
 ### 🔒 TRAVA ESPECIAL: KIRO-DEV-CLONE
 
 > **ATENÇÃO:** A tarefa `KIRO-DEV-CLONE` está **TRAVADA PARA TODAS AS IAS**.
@@ -88,11 +101,11 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 46
 - **Subtarefas atômicas (~3 min):** 269
-- **Em Execução:** 2 (SUB-38, SUB-41.1)
+- **Em Execução:** 3 (SUB-38, SUB-41.1, SUB-35.32)
 - **Pendentes:** 8 principais (SUB-38, 26, 28, 35, 41, 42, 45, KIRO-DEV-CLONE) + 54 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 3 — SUB-35.32, SUB-45.2 e SUB-26.3 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 2 — SUB-45.2 e SUB-26.3 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
   - bloqueadas por dependência: 21 — SUB-26.9 (depende da SUB-26.3), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41) e SUB-42 (depende da SUB-41); SUB-45.3 a SUB-45.18 (cadeia da SUB-45)
-  - em execução: 2 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI))
+  - em execução: 3 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI)); SUB-35.32 (Claude Code (Opus 5.5))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
 - **Concluídas:** 249 de 315 blocos (38 principais + 211 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
@@ -257,7 +270,7 @@
   - `SUB-35.29`: Indicador `IndicadorAoVivo` em `src/components/monitor/IndicadorAoVivo.tsx` (`concluido`, `9c2edf5`)
   - `SUB-35.30`: Tela `MonitorView` em `src/views/MonitorView.tsx` (`concluido`, `2d1cd0a`)
   - `SUB-35.31`: Registrar a tela `monitor` (rota `#/monitor` e menu) (`concluido`, `8dff43b`)
-  - `SUB-35.32`: Validação visual do monitor (SUB-35) (`pendente`)
+  - `SUB-35.32`: Validação visual do monitor (SUB-35) (`em_execucao`, Claude Code (Opus 5.5))
   - `SUB-35.33`: `emitirEvento()` em `worker/eventos.ts` (`concluido`, `2750ba4`)
   - `SUB-35.34`: Testes de `emitirEvento` em `tests/unit/worker-eventos.test.ts` (`concluido`, `8e63d4c`)
   - `SUB-35.35`: `comEventos(nome, no)` em `worker/eventos.ts` (`concluido`, `bd6563e`)
@@ -281,9 +294,9 @@
 - **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:45 (Devin): tarefa-mãe pendente: 45 de 46 subtarefas concluídas (SUB-35.1 a SUB-35.45) com commits verificados (9f5692f, 54cdea9, 2d714d4, 95f12ff, d9d9a6c, e7a39cd, b518611, 5a09109, 89c6a43, 47fb521, c43ad04, b045c12, 8628ec3, 7e268fb, c47df6b, 860e0c9, 7d2181e, 6391c1b, 7d2181e, a7beb5a, 73d73ad, cabdbc0, da9ff65, 4bc0b25, a2d2ed9, 6456092, 173fc36, 0d90464, 9c2edf5, 2d1cd0a, 8dff43b, 2750ba4, 8e63d4c, bd6563e, 469ce5c, 64c0b11, 34bf1c1, 4a1156d, 176aadb, 0263ae9, 53a5c93, e8917a3, 9b785dc, dcdbc96). Arquivos do monitor presentes (src/components/monitor/, src/hooks/, src/lib/monitor.ts, src/views/MonitorView.tsx, database/07_agent_events.sql). Restam: SUB-35.32 (validação visual) e SUB-35.46 (validação automatizada).
 
 #### [ ] SUB-35.32: Validação visual do monitor (SUB-35)
-- **Status:** pendente
+- **Status:** em_execucao
 - **Prioridade:** MEDIA
-- **Executor:** nenhum
+- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 18:57)
 - **Depende de:** SUB-35.31
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Contra o banco local, inserir eventos (SQL ou MCP `agent_event`) e conferir que cards, gráficos e feed atualizam sem recarregar; screenshots 1280x800 e 390x844, tema claro e escuro; registrar na anotação da SUB-35.
