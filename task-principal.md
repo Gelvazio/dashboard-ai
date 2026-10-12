@@ -2327,15 +2327,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [🔄] SUB-35.14: `mesclarEvento()` em `src/lib/monitor.ts`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 04 (Grok Bot) (início: 2026-10-12 01:13)
+#### [x] SUB-35.14: `mesclarEvento()` em `src/lib/monitor.ts`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 04 (Grok Bot) (2026-10-12 01:13 → 2026-10-12 01:14)
 - **Depende de:** SUB-35.8
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/lib/monitor.ts` com `mesclarEvento(lista, novo, max = 200)`: ignora `id` repetido, mantém ordem por `created_at` desc e corta em `max`. Testes em `tests/unit/monitor.test.ts`.
 - **Critérios de Aceitação:** `npm test` passa.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `7e268fb`
+- **Anotação:** Criado `src/lib/monitor.ts` com `mesclarEvento(lista, novo, max = 200)`: `id` repetido devolve a mesma lista; insere na posição certa por `created_at` desc (evento atrasado do Realtime não vai para o topo; empate pelo `id` maior); corta em `max`; não altera a lista recebida. 6 testes em `tests/unit/monitor.test.ts`. `npm test` e `npm run typecheck` verdes.
 
 #### [ ] SUB-35.15: `estadoDoAgente()` em `src/lib/monitor.ts`
 - **Status:** pendente
