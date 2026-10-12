@@ -77,14 +77,26 @@
 | **Data e Hora de Início:** | 2026-10-12 00:56 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-08.11
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-08.11** |
+| **Título da Sub-task:** | `listarArquivosFonte(dirs)` em `scripts/checar-env.mjs` + teste |
+| **Agente Responsável:** | DashboardAI-Clone 08 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 00:57 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (4)
+### 🔄 EM EXECUÇÃO (5)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-08.11** | `listarArquivosFonte(dirs)` em `scripts/checar-env.mjs` + teste | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:57 | SUB-08.10 |
 | **SUB-21.4** | Componente `MemoriaCard` em `src/components/memoria/MemoriaCard.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:56 | SUB-21.13 |
 | **SUB-19.2** | Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 00:56 | SUB-19.1 |
 | **SUB-27.26** | Hook `useAuth` em `src/hooks/useAuth.ts` | DashboardAI-Clone 01 | 2026-10-12 00:56 | SUB-27.9 |
@@ -93,7 +105,7 @@
 
 ---
 
-### ⏳ PENDENTES (177)
+### ⏳ PENDENTES (176)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -109,7 +121,6 @@
 |---|---|---|---|---|
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` (mãe) | 3 | Fase 3 | SUB-06; SUB-08.1 a SUB-08.11 |
 | **SUB-08.9** | CLI `npm run check:env` (toda variável usada está no `.env.example`) | 3 | Fase 3 | SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.11 — ⛓️ bloqueada |
-| **SUB-08.11** | `listarArquivosFonte(dirs)` em `scripts/checar-env.mjs` + teste | 3 | Fase 3 | SUB-08.10 — ⛓️ bloqueada |
 | **SUB-23** | Diagnóstico de Travas e Saúde da Fila (mãe) | 4 | Fase 8 | SUB-09, SUB-11, SUB-12; SUB-23.1 a SUB-23.13 |
 | **SUB-23.1** | `minutosDeTrava` em `src/lib/saudeFila.ts` | 4 | Fase 8 | Nenhuma — 🟢 livre |
 | **SUB-23.4** | `liberarTrava()` em `src/services/taskService.ts` | 4 | Fase 8 | Nenhuma — 🟢 livre |
@@ -518,3 +529,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:56 | DashboardAI-Clone 10 (Grok Bot) | SUB-21.4 | — | Lock: assumindo SUB-21.4 (Componente `MemoriaCard` em `src/components/memoria/MemoriaCard.tsx`) |
 | 2026-10-12 00:56 | DashboardAI-Clone 08 (Grok Bot) | SUB-08.10 | `ad56d9b` | Adicionado `variaveisDoExemplo(texto)` em `scripts/checar-env.mjs`: nomes das linhas `NOME=` (aceita `export NOME=` e CRLF) do `.env.example`, ignorando comentários e linhas vazias; sem repetidos, ordenada. No `.env.example` atual devolve as 14 variáveis. 2 testes novos em `tests/unit/checar-env.test.ts`. `npm run typecheck` e `npm test` verdes. |
 | 2026-10-12 00:57 | DashboardAI-Clone 02 | SUB-23.6 | `40bb5e0` | Criado `src/hooks/useSaudeFila.ts`: `useSaudeFila({ projectId, tasks, recarregar, limite? })` -> `{ diagnostico, liberando, liberar(task, forcar?) }`; recalcula `diagnosticarFila` com relógio de 30 s (`useMemo` + `setInterval` com cleanup); `liberar` chama `liberarTrava` (SUB-23.4), avisa por toast (sucesso/erro), marca `liberando` e recarrega. Exportado em `src/hooks/index.ts`. typecheck e build OK. |
+| 2026-10-12 00:57 | DashboardAI-Clone 08 (Grok Bot) | SUB-08.11 | — | Lock: assumindo SUB-08.11 (`listarArquivosFonte(dirs)` em `scripts/checar-env.mjs` + teste) |

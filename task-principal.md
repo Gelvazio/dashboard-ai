@@ -451,8 +451,8 @@
 - **Anotação:** Adicionado `variaveisDoExemplo(texto)` em `scripts/checar-env.mjs`: nomes das linhas `NOME=` (aceita `export NOME=` e CRLF) do `.env.example`, ignorando comentários e linhas vazias; sem repetidos, ordenada. No `.env.example` atual devolve as 14 variáveis. 2 testes novos em `tests/unit/checar-env.test.ts`. `npm run typecheck` e `npm test` verdes.
 
 #### [ ] SUB-08.11: `listarArquivosFonte(dirs)` em `scripts/checar-env.mjs` + teste
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 00:57)
 - **Depende de:** SUB-08.10
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `listarArquivosFonte(dirs: string[]): string[]` (varre `src/`, `api/` e `scripts/` recursivamente, só `.ts/.tsx/.js/.mjs/.py`, ignorando `node_modules`, `dist` e `tests`). Teste com pasta temporária.
