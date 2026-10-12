@@ -10,8 +10,8 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
 - **Subtarefas atômicas (~3 min) criadas em 2026-10-11 23:38:** 69 (SUB-19.x, SUB-20.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-28.x, SUB-33.x, SUB-34.x)
-- **Em Execução:** 4 (`SUB-27`, `SUB-08`, `SUB-21`, `SUB-33`)
-- **Pendentes:** 7 principais (aguardando subtarefas) + 69 subtarefas
+- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-33`)
+- **Pendentes:** 8 principais (aguardando subtarefas) + 69 subtarefas
   - livres agora: 9 (SUB-19.1, SUB-19.3, SUB-20.1, SUB-23.1, SUB-23.4, SUB-34.1, SUB-34.4, SUB-25.1, SUB-26.1)
   - reservadas sob a trava da SUB-33 (DashboardAI (Grok Bot)): 9
   - bloqueadas por dependência: 51
@@ -673,16 +673,16 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-### [🔄] SUB-21: Grid de Gerenciamento e Exclusão de Memórias
-- **Status:** em_execucao
-- **Executor:** Codex (OpenAI) (início: 2026-10-11 23:28)
+### [ ] SUB-21: Grid de Gerenciamento e Exclusão de Memórias
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-10, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Exibição em cartões de todas as memórias cadastradas, com botão para copiar conteúdo Markdown, visualizar detalhes e excluir memória.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Grid responsivo com paginação/scroll e feedback de exclusão.
-- **Commit:** pendente (lock ainda precisa de commit/push)
-- **Anotação:** Lock assumido; implementação ainda não iniciada.
+- **Commit:** pendente
+- **Anotação:** Reserva liberada a pedido do usuário antes do início da implementação; disponível para outro agente.
 
 ---
 

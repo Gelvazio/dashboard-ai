@@ -15,12 +15,12 @@
 
 | Propriedade | Valor Atual |
 |---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-21** |
-| **Título da Sub-task:** | Grid de Gerenciamento e Exclusão de Memórias |
-| **Agente Responsável:** | Codex (OpenAI) |
-| **Data e Hora de Início:** | 2026-10-11 23:28 |
-| **Bloqueio para Outras IAs:** | **ATIVADO**; SUB-21 depende de SUB-10 e SUB-12, concluídas |
+| **Status da Trava:** | 🟢 **LIVRE** |
+| **Sub-task em Execução:** | — |
+| **Título da Sub-task:** | — |
+| **Agente Responsável:** | — |
+| **Data e Hora de Início:** | — |
+| **Bloqueio para Outras IAs:** | Nenhum lock ativo no quadro principal |
 
 ### 🔒 TRAVA ADICIONAL — Codex (OpenAI)
 
@@ -44,17 +44,6 @@
 | **Data e Hora de Início:** | 2026-10-11 22:41 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — Codex (OpenAI) — SUB-21
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-21** |
-| **Título da Sub-task:** | Grid de Gerenciamento e Exclusão de Memórias |
-| **Agente Responsável:** | Codex (OpenAI) |
-| **Data e Hora de Início:** | 2026-10-11 23:28 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot)
 
 | Propriedade | Valor Atual |
@@ -68,18 +57,17 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (4)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27** | Autenticação e Login com Supabase Auth | Codex (OpenAI) | 2026-10-11 22:27 | SUB-03, SUB-29 |
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` | xAI (Grok) | 2026-10-11 22:41 | SUB-06 |
-| **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias | Codex (OpenAI) | 2026-10-11 23:28 | SUB-10, SUB-12 |
 | **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) — subtarefas SUB-33.1 a SUB-33.9 reservadas | DashboardAI (Grok Bot) | 2026-10-11 23:34 | SUB-07, SUB-03 |
 
 ---
 
-### ⏳ PENDENTES (76)
+### ⏳ PENDENTES (77)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -107,6 +95,7 @@
 | **SUB-19.7** | Painel `BuscaSemanticaPanel` em `src/components/memoria/` | 4 | Fase 7 | SUB-19.5, SUB-19.6 — ⛓️ bloqueada |
 | **SUB-19.8** | Integrar a busca na `src/views/MemoriaView.tsx` | 4 | Fase 7 | SUB-19.7, SUB-21 — ⛓️ bloqueada |
 | **SUB-20** | Formulário de Nova Memória Canônica (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-20.1 a SUB-20.7 |
+| **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias | 4 | Fase 7 | SUB-10, SUB-12 — 🟢 livre |
 | **SUB-20.1** | `validarMemoria(dados)` em `src/lib/memoriaForm.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-20.2** | `parseTags(texto)` em `src/lib/memoriaForm.ts` | 4 | Fase 7 | SUB-20.1 — ⛓️ bloqueada |
 | **SUB-20.3** | `sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts` | 4 | Fase 7 | SUB-20.1 — ⛓️ bloqueada |
