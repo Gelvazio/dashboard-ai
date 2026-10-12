@@ -1403,8 +1403,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-26.6: Seção Agentes de IA: configurar clientes MCP
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 01:06)
 - **Depende de:** SUB-26.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Como configurar o MCP em clientes (Claude Code, Codex etc.) com `Authorization: Bearer <MCP_AUTH_TOKEN>`, URL `/mcp`, argumento `project` e protocolo do quadro (`AGENTS.md`).
