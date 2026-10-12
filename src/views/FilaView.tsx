@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { filtrarTasks, type FiltroLocal } from '@/lib/tasks';
-import { AlertCircle, ListTodo, Plus } from 'lucide-react';
+import { diagnosticarFila, LIMITE_TRAVA_MIN } from '@/lib/saudeFila';
+import { AlertCircle, AlertTriangle, ListTodo, Plus } from 'lucide-react';
 import { useProjetoAtual } from '@/hooks/useProjetoAtual';
 import { useTasks } from '@/hooks/useTasks';
 import { useIndicadores } from '@/hooks/useIndicadores';
@@ -17,6 +18,7 @@ export function FilaView() {
   const { projeto } = useProjetoAtual();
   const { tasks, carregando, erro, recarregar, substituir, remover, atualizadoEm } = useTasks(projeto?.id);
   const [filtro, setFiltro] = useState<FiltroLocal>({ busca: '', status: 'todos' });
+  const presas = useMemo(() => diagnosticarFila(tasks).travas.filter((t) => t.expirada).length, [tasks]);
   const visiveis = useMemo(() => filtrarTasks(tasks, filtro), [tasks, filtro]);
   const contagem = useMemo(() => tasks.reduce<Record<string, number>>((a, t) => ({ ...a, [t.status]: (a[t.status] ?? 0) + 1 }), {}), [tasks]);
   const indicadores = useIndicadores(projeto?.id);
@@ -39,6 +41,15 @@ export function FilaView() {
   return (
     <div className="flex flex-col gap-4 sm:gap-6">
       <KpiCards dados={indicadores} />
+      {presas > 0 && (
+        <div role="alert" className="flex flex-wrap items-center gap-2 rounded-xl border border-rose-300 bg-rose-50 px-4 py-3 text-sm text-rose-800 dark:border-rose-800 dark:bg-rose-950/40 dark:text-rose-200">
+          <AlertTriangle className="size-4 shrink-0" aria-hidden />
+          <span>
+            {presas} task(s) presa(s) há mais de {LIMITE_TRAVA_MIN} min.
+          </span>
+          <a href="#/logs" className="font-medium underline hover:no-underline">Ver saúde da fila</a>
+        </div>
+      )}
       <section className="card animate-fade-in overflow-hidden">
         <header className="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-slate-200 px-4 py-3 dark:border-slate-800">
           <h2 className="flex items-center gap-2 font-semibold">
