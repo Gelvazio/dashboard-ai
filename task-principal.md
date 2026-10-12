@@ -45,14 +45,25 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
+### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.30
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-28.30** |
+| **Título da Sub-task:** | `finalizar(...)` em `worker/fila.ts` |
+| **Agente Responsável:** | Devin (Cognition AI) |
+| **Data e Hora de Início:** | 2026-10-12 12:35 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202
-- **Em Execução:** 0
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 40 subtarefas
-  - livres agora: 10 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.5, SUB-28.10, SUB-28.13, SUB-28.30, SUB-28.31, SUB-35.32, SUB-35.33)
+- **Em Execução:** 1 (SUB-28.30, Devin (Cognition AI), desde 2026-10-12 12:35)
+- **Pendentes:** 4 principais (25, 26, 28, 35) + 39 subtarefas
+  - livres agora: 9 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.5, SUB-28.10, SUB-28.13, SUB-28.31, SUB-35.32, SUB-35.33)
   - bloqueadas por dependência: 30
   - reservadas: 0
 - **Concluídas:** 195 de 239 blocos (33 principais + 162 subtarefas)
@@ -1990,7 +2001,7 @@
   - `SUB-28.27`: Contrato: mapeamento de erros para `finalizar_task` em `docs/langgraph-contrato.md` (`concluido`, `52df1e7`)
   - `SUB-28.28`: `worker/tsconfig.json` e `typecheck:worker` (`concluido`, `fbef4e8`)
   - `SUB-28.29`: Schema zod `EstadoSchema` em `worker/estado.ts` (`concluido`, `0e7a40c`)
-  - `SUB-28.30`: `finalizar(...)` em `worker/fila.ts` (`pendente`)
+  - `SUB-28.30`: `finalizar(...)` em `worker/fila.ts` (`em_execucao`)
   - `SUB-28.31`: `montarPromptPlano(estado)` em `worker/plano.ts` (`pendente`)
   - `SUB-28.32`: Registro de auditoria da aprovação (`pendente`)
 - **Descrição:** Implementar a orquestração multi-etapas de execução descrita em `LangChain_LangGraph.md`, mantendo Supabase como autoridade sobre a fila, dependências, locks, tentativas e resultado. Integrar o worker LangGraph às RPCs existentes e às ferramentas MCP autorizadas, com checkpoint durável, retomada, tratamento de falhas e aprovação humana para ações sensíveis.
@@ -2319,8 +2330,8 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:15 — Devin (revisão do quadro): commit e arquivos conferidos na `main`; `npm run typecheck`, `npm test` e `npm run build` verdes
 
 #### [ ] SUB-28.30: `finalizar(...)` em `worker/fila.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:35)
 - **Depende de:** SUB-28.4
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `finalizar(taskId, status, resultado, agente, metadados)` (RPC `finalizar_task`), reutilizando `db()`. Teste com cliente falso cobrindo `reivindicar` e `finalizar`.
