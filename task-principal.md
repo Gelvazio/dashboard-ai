@@ -1581,8 +1581,8 @@
 - **Anotação:** Criado `src/hooks/AuthContext.tsx` com `AuthContext`/`AuthProvider` (`sessao, usuario, papelGlobal, carregando, sair`): `obterSessao()` ao montar, `onAuthStateChange` com unsubscribe no cleanup, `papelGlobal` recarregado quando o usuário muda; sem Supabase configurado: `carregando=false`, `sessao=null`. typecheck e vitest verdes.
 
 #### [ ] SUB-27.10: Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.2, SUB-27.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Formulário acessível (labels, `autocomplete=email/current-password`, mostrar/ocultar senha) com validação `validarLogin`, botão Entrar com estado carregando (`Botao`) e erro em `role=alert`. Criar `src/components/auth/index.ts`. Recuperação de acesso fica na SUB-27.19.
