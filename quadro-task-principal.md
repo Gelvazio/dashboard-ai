@@ -16,11 +16,11 @@
 | Propriedade | Valor Atual |
 |---|---|
 | **Status da Trava:** | � **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-23.1** |
-| **Título da Sub-task:** | `minutosDeTrava` em `src/lib/saudeFila.ts` |
+| **Sub-task em Execução:** | **SUB-23.4** |
+| **Título da Sub-task:** | `liberarTrava()` em `src/services/taskService.ts` |
 | **Agente Responsável:** | Claude Code |
-| **Data e Hora de Início:** | 2026-10-12 00:20 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
+| **Data e Hora de Início:** | 2026-10-12 00:25 |
+| **Bloqueio para Outras IAs:** | **ATIVADO**; SUB-23.4 depende de Nenhuma |
 
 ### 🔒 TRAVA ADICIONAL — Codex (OpenAI)
 
