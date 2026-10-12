@@ -1631,8 +1631,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.15: Rechecar conexão no login/logout em `src/hooks/useConexao.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.26
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Em `useConexao`, verificar a conexão de novo quando `auth.onAuthStateChange` disparar (estado `sem_sessao` -> `conectado` sem esperar 60 s), cancelando a assinatura no cleanup.
