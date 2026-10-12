@@ -4,8 +4,9 @@ import type { DashboardClient } from '@/services/supabase';
 import type { Project } from '@/types';
 import { criarProjeto, integracaoDisponivel, novoUsuario, servico, usuario } from '../helpers/postgrest';
 
-// `agent_events` (database/07_agent_events.sql, SUB-35.1–35.3) ainda não está no tipo
-// `Database` (SUB-35.8); o teste usa o cliente sem tipagem de tabelas.
+// `agent_events` (database/07_agent_events.sql, SUB-35.1–35.3) é só-inclusão: no tipo
+// `Database` (SUB-35.8) o `Update` é `never`. O teste usa o cliente sem tipagem de
+// tabelas para conseguir tentar o update proibido.
 const semTipo = (c: DashboardClient) => c as unknown as SupabaseClient;
 const eventos = (c: DashboardClient) => semTipo(c).from('agent_events');
 

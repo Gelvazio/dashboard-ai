@@ -143,6 +143,41 @@ export type AgentMessage = {
   updated_at: string;
 };
 
+/** Tipos de `agent_events.tipo` (check em database/07_agent_events.sql, SUB-35). */
+export const TIPOS_EVENTO_AGENTE = ['inicio', 'progresso', 'fim', 'erro', 'heartbeat', 'trava', 'liberacao', 'commit'] as const;
+export type TipoEventoAgente = (typeof TIPOS_EVENTO_AGENTE)[number];
+
+/** Evento de um agente (`agent_events`): só-inclusão, lido pelo monitor em tempo real. */
+export type AgentEvent = {
+  id: number;
+  project_id: number;
+  task_id: number | null;
+  task_codigo: string | null;
+  agente: string;
+  execucao_id: string | null;
+  etapa: string | null;
+  tipo: TipoEventoAgente;
+  status: string | null;
+  mensagem: string | null;
+  metadados: Json;
+  chave_idempotencia: string | null;
+  criado_por: string | null;
+  created_at: string;
+};
+
+/** Linha de `atividade_atual_agentes(p_project_id)`: último evento de cada agente. */
+export type AtividadeAgente = {
+  agente: string;
+  task_codigo: string | null;
+  etapa: string | null;
+  tipo: TipoEventoAgente;
+  status: string | null;
+  mensagem: string | null;
+  execucao_id: string | null;
+  ultimo_em: string;
+  ultimo_heartbeat_em: string | null;
+};
+
 export type ProjectRule = {
   id: number;
   project_id: number;
@@ -205,6 +240,11 @@ export type ProjectRuleInsert = Opcionais<
   'id' | 'secao' | 'ordem' | 'commit_sha' | 'sincronizado_em' | 'ativo' | 'criado_por' | 'atualizado_por' | 'created_at' | 'updated_at'
 >;
 
+export type AgentEventInsert = Opcionais<
+  AgentEvent,
+  'id' | 'task_id' | 'task_codigo' | 'execucao_id' | 'etapa' | 'status' | 'mensagem' | 'metadados' | 'chave_idempotencia' | 'criado_por' | 'created_at'
+>;
+
 type Tabela<Row, Insert, Update> = { Row: Row; Insert: Insert; Update: Update; Relationships: [] };
 
 // ----------------------------------------------------------------- Database (supabase-js)
@@ -219,6 +259,7 @@ export type Database = {
       ai_memories: Tabela<AiMemory, AiMemoryInsert, AiMemoryUpdate>;
       agent_messages: Tabela<AgentMessage, AgentMessageInsert, Pick<Partial<AgentMessage>, 'lido_em' | 'lido_por' | 'arquivado'>>;
       project_rules: Tabela<ProjectRule, ProjectRuleInsert, Partial<Omit<ProjectRule, 'md5'>>>;
+      agent_events: Tabela<AgentEvent, AgentEventInsert, never>; // só-inclusão (sem update/delete pela interface)
     };
     Views: { [_ in never]: never };
     Functions: {
@@ -250,6 +291,7 @@ export type Database = {
         };
         Returns: AgentMessage[];
       };
+      atividade_atual_agentes: { Args: { p_project_id: number }; Returns: AtividadeAgente[] };
       conferir_regras: {
         Args: { p_projeto: string; p_secoes: Json };
         Returns: { arquivo: string; secao: string; situacao: 'igual' | 'diverge' | 'so_local' | 'so_banco'; md5_local: string | null; md5_banco: string | null }[];
