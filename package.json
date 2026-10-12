@@ -16,7 +16,8 @@
     "test": "vitest run",
     "test:integration": "bash tests/integration/run.sh",
     "check:env": "node scripts/checar-env.mjs",
-    "validar": "bash scripts/validar.sh"
+    "validar": "bash scripts/validar.sh",
+    "check:chunks": "node scripts/checar-chunks.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.117.3",
