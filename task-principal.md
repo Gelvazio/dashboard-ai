@@ -144,7 +144,7 @@
 - **Critérios de Aceitação:** Documentação clara, completa e em conformidade com as regras do projeto.
 - **Commit:** pendente
 - **Anotação:** pendente
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:25 (Claude Code): tarefa-mãe pendente: o `README.md` já tem Arquitetura, Banco de dados, Deploy na Vercel, Agentes de IA, Memória via MCP, Segurança e Monitor; faltam as filhas 26.3 (Execução local, linha 90 ainda diz "Seção provisória") e 26.9 (Validação, linha 535 "Seção provisória").
 
 #### [ ] SUB-26.3: Seção Execução local
 - **Status:** pendente
