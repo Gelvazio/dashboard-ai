@@ -915,7 +915,7 @@
   - `SUB-21.4`: Componente `MemoriaCard` em `src/components/memoria/MemoriaCard.tsx` (`concluido`, `c03ffa6`)
   - `SUB-21.5`: Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx` (`concluido`, `197eb97`)
   - `SUB-21.6`: Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` (`concluido`, `4cab033`)
-  - `SUB-21.7`: Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` (`em_execucao`)
+  - `SUB-21.7`: Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` (`concluido`, `ad9bd52`)
   - `SUB-21.8`: Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` (`concluido`)
   - `SUB-21.9`: Montar a `MemoriaView` (toolbar + grade) (`em_execucao`)
   - `SUB-21.10`: Validação visual da SUB-21 (screenshots) (`pendente`)
@@ -989,15 +989,15 @@
 - **Commit:** `4cab033`
 - **Anotação:** Criado `src/components/memoria/MemoriaDetailModal.tsx` (`{ memoria: Memoria | null, onFechar, onExcluir? }`; `null` = fechado) sobre `components/ui/Modal` (xl): metadados Escopo (Global/Projeto via `escopoMemoria`), Autor (`criado_por`), Criada em e Atualizada em (`formatarDataHora`, `title` relativo), tags, conteúdo com abas Formatado (`components/ui/Markdown`, sem HTML cru) / Texto (`pre`) e botão copiar conteúdo; rodapé com "Copiar tudo em Markdown" (`memoriaComoMarkdown`), Excluir (`Botao` perigo, só com `onExcluir`) e Fechar. Exportado em `src/components/memoria/index.ts` (mantidos os exports de MemoriaFormModal/MemoriaToolbar). `npm run typecheck`, `npm test` e `npm run build` OK.
 
-#### [ ] SUB-21.7: Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 01:03)
+#### [x] SUB-21.7: Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 01:03; conclusão: 2026-10-12 01:05)
 - **Depende de:** SUB-21.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Exclusão com remoção otimista: recebe `remover`/`reinserir` do `useMemorias`, chama `excluirMemoria` (SUB-10), reinsere e mostra toast de erro se a RLS recusar; toast de sucesso. Expõe `{ excluir(memoria), excluindo }`.
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `ad9bd52`
+- **Anotação:** Criado `src/hooks/useExcluirMemoria.ts` (exportado em `src/hooks/index.ts`): `useExcluirMemoria({ remover, reinserir, onExcluida? })` -> `{ excluir(memoria): Promise<boolean>, excluindo: Set<id> }`. Remove da lista na hora (otimista), chama `excluirMemoria` (SUB-10, que já recusa quando a RLS não apaga nenhuma linha); em erro reinsere a memória e mostra `toast.erro`, em sucesso `toast.sucesso` e `onExcluida`. `npm run typecheck` e `npm test` OK.
 
 #### [x] SUB-21.8: Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx`
 - **Status:** concluido

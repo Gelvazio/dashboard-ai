@@ -33,17 +33,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 06 — SUB-21.7
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-21.7** |
-| **Título da Sub-task:** | Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` |
-| **Agente Responsável:** | DashboardAI-Clone 06 |
-| **Data e Hora de Início:** | 2026-10-12 01:03 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-21.9
 
 | Propriedade | Valor Atual |
@@ -81,19 +70,18 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (4)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-35.3** | RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:05 | SUB-35.1 |
 | **SUB-19.7** | Painel `BuscaSemanticaPanel` (campo, grade e estados) | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:04 | SUB-19.5, SUB-19.6, SUB-19.9 |
 | **SUB-21.9** | Montar a `MemoriaView` (toolbar + grade) | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:04 | SUB-21.3, SUB-21.5, SUB-21.8 |
-| **SUB-21.7** | Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` | DashboardAI-Clone 06 | 2026-10-12 01:03 | SUB-21.3 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
 
-### ⏳ PENDENTES (158)
+### ⏳ PENDENTES (157)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -124,7 +112,6 @@
 | **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-20.9** | Componente `TagSugestoes` em `src/components/ui/TagSugestoes.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias (mãe) | 4 | Fase 7 | SUB-10, SUB-12; SUB-21.1 a SUB-21.14 |
-| **SUB-21.7** | Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` | 4 | Fase 7 | SUB-21.3 — 🔄 em execução por DashboardAI-Clone 06 |
 | **SUB-21.9** | Montar a `MemoriaView` (toolbar + grade) | 4 | Fase 7 | SUB-21.3, SUB-21.5, SUB-21.8 — 🔄 em execução por DashboardAI-Clone 10 (Grok Bot) |
 | **SUB-21.10** | Validação visual da SUB-21 (screenshots) | 4 | Fase 7 | SUB-21.11 — ⛓️ bloqueada |
 | **SUB-21.11** | Ligar detalhe e exclusão na `MemoriaView` | 4 | Fase 7 | SUB-21.9, SUB-21.6, SUB-21.7 — ⛓️ bloqueada |
@@ -244,10 +231,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (81)
+### ✅ CONCLUÍDAS (82)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-21.7** | Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` | DashboardAI-Clone 06 | 2026-10-12 01:03 | 2026-10-12 01:05 | `ad9bd52` |
 | **SUB-27.15** | Rechecar conexão no login/logout em `src/hooks/useConexao.ts` | DashboardAI-Clone 01 | 2026-10-12 01:04 | 2026-10-12 01:05 | `65932ae` |
 | **SUB-26.7** | Seção Memória via MCP | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:03 | 2026-10-12 01:04 | `7fa647b` |
 | **SUB-35.2** | Trigger `validar_agent_event` em `database/07_agent_events.sql` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:02 | 2026-10-12 01:03 | `54cdea9` |
@@ -573,3 +561,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:04 | DashboardAI-Clone 08 (Grok Bot) | SUB-26.7 | `7fa647b` | Seção Memória via MCP do `README.md`: visão geral (`ai_memories`, embedding 1536, `match_memories`, exige `MCP_AUTH_TOKEN`), escopo projeto (`project` → `MCP_DEFAULT_PROJECT` → `default`, título único por projeto/upsert) x global (`global: true`, não combina com `project`, recusada com `MCP_ALLOWED_PROJECTS`, busca inclui globais por padrão), tabela de argumentos e limites de `brain_store`/`brain_search`/`brain_delete`, explicação do limiar (padrão 0.5) e das tags (todas precisam casar), exemplos JSON-RPC `tools/call` (store por projeto, search com tags/limit/threshold, store global, delete) e `curl`, e boas práticas. Tudo conferido com `api/_lib/brain-tools.ts`, `api/_lib/args.ts`, `api/mcp.ts` e `database/04_rpc_functions.sql`; JSONs validados. Só documentação. |
 | 2026-10-12 01:05 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.3 | — | Lock: assumindo SUB-35.3 (RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql`) |
 | 2026-10-12 01:05 | DashboardAI-Clone 01 | SUB-27.15 | `65932ae` | Em `src/hooks/useConexao.ts`, assinatura de `auth.onAuthStateChange` (só com Supabase configurado) que roda a verificação na hora (sem_sessao -> conectado sem esperar 60 s), cancelada no cleanup junto com o intervalo. typecheck e vitest verdes. |
+| 2026-10-12 01:05 | DashboardAI-Clone 06 | SUB-21.7 | `ad9bd52` | Criado `src/hooks/useExcluirMemoria.ts` (exportado em `src/hooks/index.ts`): `useExcluirMemoria({ remover, reinserir, onExcluida? })` -> `{ excluir(memoria): Promise<boolean>, excluindo: Set<id> }`. Remove da lista na hora (otimista), chama `excluirMemoria` (SUB-10, que já recusa quando a RLS não apaga nenhuma linha); em erro reinsere a memória e mostra `toast.erro`, em sucesso `toast.sucesso` e `onExcluida`. `npm run typecheck` e `npm test` OK. |
