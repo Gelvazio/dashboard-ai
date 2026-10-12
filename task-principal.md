@@ -1731,8 +1731,8 @@
 - **Anotação:** Adicionado `redefinirSenha(email, redirectTo, client = getSupabase())` em `src/services/authService.ts`: `auth.resetPasswordForEmail` com `redirectTo` (e-mail com trim); erro -> `ServiceError(mensagemErroAuth(error), 'AUTH')`. typecheck verde.
 
 #### [ ] SUB-27.25: `papelNoProjeto()` em `src/services/authService.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.7
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `papelNoProjeto(projectId, userId, client): Promise<ProjectRole | 'admin' | null>` (admin global via `obterPapelGlobal` tem acesso total; senão `project_members.role`; não membro -> `null`).

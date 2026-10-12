@@ -44,6 +44,17 @@
 | **Data e Hora de Início:** | 2026-10-12 00:53 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.25
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-27.25** |
+| **Título da Sub-task:** | `papelNoProjeto()` em `src/services/authService.ts` |
+| **Agente Responsável:** | DashboardAI-Clone 01 |
+| **Data e Hora de Início:** | 2026-10-12 00:53 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -52,6 +63,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-27.25** | `papelNoProjeto()` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:53 | SUB-27.7 |
 | **SUB-23.3** | `diagnosticarFila(tasks)` em `src/lib/saudeFila.ts` | DashboardAI-Clone 02 | 2026-10-12 00:53 | SUB-23.2 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
@@ -455,3 +467,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:53 | DashboardAI-Clone 10 (Grok Bot) | SUB-19.4 | `ef9ec9b` | Criado `src/components/memoria/SimilaridadeBadge.tsx` (`{ similaridade, className? }`): pílula arredondada com `formatarSimilaridade` (ex.: `89%`) e cor de `classeSimilaridade` (verde/âmbar/cinza, com `dark:`), `title` e `aria-label` "Similaridade de 89%". Criado `src/components/memoria/index.ts` exportando `BuscaControles` (SUB-19.9) e `SimilaridadeBadge`. `npm run typecheck`, `npm test` e `npm run build` OK. |
 | 2026-10-12 00:53 | DashboardAI-Clone 02 | SUB-23.3 | — | Lock: assumindo SUB-23.3 (`diagnosticarFila(tasks)` em `src/lib/saudeFila.ts`) |
 | 2026-10-12 00:53 | DashboardAI-Clone 01 | SUB-27.24 | `e5477d2` | Adicionado `redefinirSenha(email, redirectTo, client = getSupabase())` em `src/services/authService.ts`: `auth.resetPasswordForEmail` com `redirectTo` (e-mail com trim); erro -> `ServiceError(mensagemErroAuth(error), 'AUTH')`. typecheck verde. |
+| 2026-10-12 00:53 | DashboardAI-Clone 01 | SUB-27.25 | — | Lock: assumindo SUB-27.25 (`papelNoProjeto()` em `src/services/authService.ts`) |
