@@ -38,25 +38,14 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — Codex (OpenAI)
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-33.9** |
-| **Título da Sub-task:** | Documentar `/api/embedding` no `api/README.md` |
-| **Agente Responsável:** | Codex (OpenAI) |
-| **Data e Hora de Início:** | 2026-10-12 00:43 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 35
 - **Subtarefas atômicas (~3 min):** 199 (SUB-08.x, SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x, SUB-35.x; atualizado em 2026-10-12 00:39)
-- **Em Execução:** 1 (SUB-33.9 — Codex (OpenAI))
+- **Em Execução:** 0
 - **Pendentes:** 12 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34, 35) + 176 subtarefas
-  - livres agora: 0 (recalculado em 2026-10-12 01:45; os pendentes aguardam dependências ou estão travados)
+  - livres agora: 1 (SUB-33.9, trava do Codex liberada pelo usuário em 2026-10-12 01:46)
   - bloqueadas por dependência: 150
   - reservadas: 0
 - **Concluídas:** 45
@@ -299,9 +288,9 @@
 - **Commit:** `c0b75b6`
 - **Anotação:** Criado `tests/unit/embeddingService.test.ts` com `fetch` simulado e cliente falso (`auth.getSession`): sem sessão (pede login, não chama o servidor), 401 (pede login), 500 (`ServiceError` com a mensagem do servidor), vetor com tamanho errado (erro cita 1536) e sucesso (POST com `Authorization: Bearer` e `{ texto }`, devolve 1536 números). typecheck (app + api) e `npm test` verdes (62 passed).
 
-#### [🔄] SUB-33.9: Documentar `/api/embedding` no `api/README.md`
-- **Status:** em_execucao
-- **Executor:** Codex (OpenAI) (início: 2026-10-12 00:43)
+#### [ ] SUB-33.9: Documentar `/api/embedding` no `api/README.md`
+- **Status:** pendente
+- **Executor:** —
 - **Depende de:** SUB-33.11
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Seção no `api/README.md`: contrato (request/response, códigos 401/405/413/502), variáveis (`SUPABASE_URL`, `SUPABASE_ANON_KEY` ou service role, `OPENAI_API_KEY`, `EMBEDDING_MODEL`, `EMBEDDING_API_URL`) e exemplo `curl`. Conferir que o `.env.example` lista `SUPABASE_ANON_KEY` (SUB-08.3).
