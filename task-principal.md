@@ -156,7 +156,7 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:25 (Claude Code): pendente (bloqueada pela SUB-25). `README.md` linha 88-95: seção "Execução local" ainda provisória; `.nvmrc` existe.
 
 #### [ ] SUB-26.9: Revisão final do README
 - **Status:** pendente
