@@ -1469,7 +1469,7 @@
   - `SUB-27.10`: Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx` (`pendente`)
   - `SUB-27.11`: Tela `LoginView` em `src/views/LoginView.tsx` (`concluido`, `213f237`)
   - `SUB-27.12`: Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` (`concluido`, `e3157a1`)
-  - `SUB-27.13`: Integrar autenticação no `src/App.tsx` (`pendente`)
+  - `SUB-27.13`: Integrar autenticação no `src/App.tsx` (`em_execucao`)
   - `SUB-27.14`: Componente `UserMenu` em `src/components/layout/UserMenu.tsx` (`pendente`)
   - `SUB-27.15`: Rechecar conexão no login/logout em `src/hooks/useConexao.ts` (`pendente`)
   - `SUB-27.16`: `urlDeRetorno()` para link mágico e redefinição de senha (`pendente`)
@@ -1611,8 +1611,8 @@
 - **Anotação:** Criado `src/components/auth/RotaProtegida.tsx` (`{ children }`) com `useAuth`: `carregando` -> `CarregandoTela` ("Verificando sessão..."); sem sessão -> `LoginView` (SUB-27.11); com sessão -> `children`. Preserva a rota pedida: guarda o hash de app (`#/...`, ignorando fragmentos do Supabase como `#access_token=`) inicial e os `hashchange` enquanto deslogado e, quando a sessão chega com o hash trocado (link mágico/redefinição), restaura via `history.replaceState` + evento `hashchange` (o `useNavegacao` reage). Exportado em `src/components/auth/index.ts`. Integração no `App` fica na SUB-27.13. `npm run typecheck`, `npm test` e `npm run build` OK.
 
 #### [ ] SUB-27.13: Integrar autenticação no `src/App.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 01:14)
 - **Depende de:** SUB-27.12
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Envolver a árvore em `AuthProvider` e `RotaProtegida` (acima de `ProjetoProvider`), e dar `key={usuario?.id}` ao `ProjetoProvider` para recarregar os projetos (RLS) quando o usuário trocar.

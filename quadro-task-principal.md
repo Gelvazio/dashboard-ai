@@ -66,14 +66,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:14 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 06 — SUB-27.13
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-27.13** |
+| **Título da Sub-task:** | Integrar autenticação no `src/App.tsx` |
+| **Agente Responsável:** | DashboardAI-Clone 06 |
+| **Data e Hora de Início:** | 2026-10-12 01:14 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (2)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-27.13** | Integrar autenticação no `src/App.tsx` | DashboardAI-Clone 06 | 2026-10-12 01:14 | SUB-27.12 |
 | **SUB-35.15** | `estadoDoAgente()` em `src/lib/monitor.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:14 | SUB-35.14 |
 | **SUB-35.10** | `atividadeAtual()` em `src/services/eventService.ts` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:13 | SUB-35.9 |
 | **SUB-35.28** | Feed `FeedEventos` em `src/components/monitor/FeedEventos.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:13 | SUB-35.8 |
@@ -160,7 +172,7 @@
 | **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) (mãe) | 3 | Fase 2B | SUB-07, SUB-03; SUB-33.1 a SUB-33.13 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | 3 | Fase 2B | SUB-33.11 — 🔄 em execução por Codex (OpenAI) |
 | **SUB-27** | Autenticação e Login com Supabase Auth (mãe; pendente, liberada) | 3 | Fase 10 | SUB-03, SUB-29; SUB-27.1 a SUB-27.28 — 🟢 livre |
-| **SUB-27.13** | Integrar autenticação no `src/App.tsx` | 3 | Fase 10 | SUB-27.12 — ⛓️ bloqueada |
+| **SUB-27.13** | Integrar autenticação no `src/App.tsx` | 3 | Fase 10 | SUB-27.12 — 🔄 em execução por DashboardAI-Clone 06 |
 | **SUB-27.17** | Documentar configuração do Supabase Auth em `src/README.md` | 3 | Fase 10 | SUB-27.13 — ⛓️ bloqueada |
 | **SUB-27.18** | Validação automatizada da SUB-27 | 3 | Fase 10 | SUB-27.6, SUB-27.8, SUB-27.13, SUB-27.27, SUB-27.15, SUB-27.16, SUB-27.17, SUB-27.20, SUB-27.21 — ⛓️ bloqueada |
 | **SUB-27.21** | Documentar primeiro administrador e membros em `database/README.md` | 3 | Fase 10 | SUB-27.13 — ⛓️ bloqueada |
@@ -630,3 +642,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:14 | DashboardAI-Clone 04 (Grok Bot) | SUB-35.15 | — | Lock: assumindo SUB-35.15 (`estadoDoAgente()` em `src/lib/monitor.ts`) |
 | 2026-10-12 01:14 | DashboardAI (Grok Bot) | SUB-37 | `d12bd32` | Cartão "Ranking e prêmios" no dashboard-task-principal.html: entregas por agente (histórico com SHA + CONCLUÍDAS, 1 por código, nomes normalizados), pódio 🥇🥈🥉 com troféu/coroa, tabela, medalhas 🔥 última hora / ⚡ última entrega / 🎯 marcos 10-25-50-100, destaque animado quando o líder muda. Cérebro dos agentes movido para o topo (altura até 680px; corrigido canvas limitado a 280px). Validado em Chrome headless sem erros de console; contagens conferidas manualmente |
 | 2026-10-12 01:14 | DashboardAI-Clone 10 (Grok Bot) | SUB-27.12 | `e3157a1` | Criado `src/components/auth/RotaProtegida.tsx` (`{ children }`) com `useAuth`: `carregando` -> `CarregandoTela` ("Verificando sessão..."); sem sessão -> `LoginView` (SUB-27.11); com sessão -> `children`. Preserva a rota pedida: guarda o hash de app (`#/...`, ignorando fragmentos do Supabase como `#access_token=`) inicial e os `hashchange` enquanto deslogado e, quando a sessão chega com o hash trocado (link mágico/redefinição), restaura via `history.replaceState` + evento `hashchange` (o `useNavegacao` reage). Exportado em `src/components/auth/index.ts`. Integração no `App` fica na SUB-27.13. `npm run typecheck`, `npm test` e `npm run build` OK. |
+| 2026-10-12 01:14 | DashboardAI-Clone 06 | SUB-27.13 | — | Lock: assumindo SUB-27.13 (Integrar autenticação no `src/App.tsx`) |
