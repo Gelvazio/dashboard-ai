@@ -80,3 +80,41 @@ export function classificarPendentes(tasks: readonly Task[], agora: number = Dat
   }
   return grupos;
 }
+
+/** Uma task em execução com o tempo de trava calculado. */
+export interface TravaDiagnostico {
+  task: Task;
+  minutos: number;
+  expirada: boolean;
+}
+
+/** Diagnóstico completo da fila: travas ativas, pendentes classificadas e alerta. */
+export interface DiagnosticoFila {
+  travas: TravaDiagnostico[];
+  pendentes: PendentesClassificadas;
+  alerta: boolean;
+}
+
+/**
+ * Diagnostica a fila: lista as travas (tasks `em_execucao` não excluídas,
+ * da mais antiga para a mais recente), classifica as pendentes e sinaliza
+ * `alerta` quando alguma trava passou do limite.
+ *
+ * @param tasks - Lista completa do projeto
+ * @param agora - Timestamp atual em ms (padrão: Date.now())
+ * @param limite - Limite da trava em minutos (padrão: LIMITE_TRAVA_MIN)
+ */
+export function diagnosticarFila(
+  tasks: readonly Task[],
+  agora: number = Date.now(),
+  limite: number = LIMITE_TRAVA_MIN,
+): DiagnosticoFila {
+  const travas = tasks
+    .filter((t) => !t.excluido && t.status === 'em_execucao')
+    .map((task) => {
+      const minutos = minutosDeTrava(task, agora) ?? 0;
+      return { task, minutos, expirada: travaExpirada(task, agora, limite) };
+    })
+    .sort((a, b) => b.minutos - a.minutos);
+  return { travas, pendentes: classificarPendentes(tasks, agora), alerta: travas.some((t) => t.expirada) };
+}

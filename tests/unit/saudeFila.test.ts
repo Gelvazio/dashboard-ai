@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { LIMITE_TRAVA_MIN, classificarPendentes, minutosDeTrava, travaExpirada } from '@/lib/saudeFila';
+import { LIMITE_TRAVA_MIN, classificarPendentes, diagnosticarFila, minutosDeTrava, travaExpirada } from '@/lib/saudeFila';
 import type { Task } from '@/types';
 
 describe('minutosDeTrava', () => {
@@ -96,5 +96,38 @@ describe('classificarPendentes', () => {
     expect(cod(g.desligadas)).toEqual(['C']);
     expect(cod(g.agendadas)).toEqual(['D']);
     expect(cod(g.sem_tentativas)).toEqual(['E']);
+  });
+});
+
+describe('diagnosticarFila', () => {
+  const agora = Date.parse('2026-10-12T12:00:00Z');
+  const min = (m: number) => new Date(agora - m * 60000).toISOString();
+  const t = (codigo: string, extra: Partial<Task> = {}): Task =>
+    ({
+      codigo, status: 'pendente', executar: true, tentativas: 0, max_tentativas: 3,
+      executar_apos: null, dependencias: [], excluido: false, trava_em: null, ...extra,
+    }) as Task;
+
+  it('ordena travas pela mais antiga e sinaliza alerta quando expirada', () => {
+    const d = diagnosticarFila(
+      [
+        t('A', { status: 'em_execucao', trava_em: min(10) }),
+        t('B', { status: 'em_execucao', trava_em: min(120) }),
+        t('C', { status: 'em_execucao', trava_em: min(5), excluido: true }),
+        t('D'),
+      ],
+      agora,
+    );
+    expect(d.travas.map((x) => x.task.codigo)).toEqual(['B', 'A']);
+    expect(d.travas[0].expirada).toBe(true);
+    expect(d.travas[1].expirada).toBe(false);
+    expect(d.alerta).toBe(true);
+    expect(d.pendentes.prontas.map((x) => x.codigo)).toEqual(['D']);
+  });
+
+  it('sem alerta quando nenhuma trava passou do limite', () => {
+    const d = diagnosticarFila([t('A', { status: 'em_execucao', trava_em: min(30) })], agora, 60);
+    expect(d.alerta).toBe(false);
+    expect(d.travas[0].minutos).toBeCloseTo(30, 5);
   });
 });
