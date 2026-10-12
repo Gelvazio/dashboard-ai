@@ -5,6 +5,7 @@ import type { BaseCheckpointSaver } from '@langchain/langgraph';
 import { criarCheckpointer } from './checkpointer.js';
 import { executarUmaTask, type DepsExecucao, type GrafoExecucao, type ResultadoExecucao } from './executar.js';
 import { criarGrafo } from './grafo.js';
+import { iniciarHeartbeat } from './heartbeat.js';
 
 export interface OpcoesWorker {
   projeto: string;
@@ -69,9 +70,22 @@ export async function rodarWorker(
   return execucoes;
 }
 
+const CODIGO_SAIDA_SINAL = { SIGINT: 130, SIGTERM: 143 } as const;
+
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  rodarWorker(lerOpcoes(process.argv.slice(2))).catch((erro: unknown) => {
-    console.error(`worker: ${erro instanceof Error ? erro.message : String(erro)}`);
-    process.exit(1);
-  });
+  const opcoes = lerOpcoes(process.argv.slice(2));
+  // Heartbeat do monitor (SUB-35.38): para no fim do loop e em SIGINT/SIGTERM.
+  const pararHeartbeat = iniciarHeartbeat({ agente: opcoes.agente, projeto: opcoes.projeto });
+  for (const sinal of ['SIGINT', 'SIGTERM'] as const) {
+    process.once(sinal, () => {
+      pararHeartbeat();
+      process.exit(CODIGO_SAIDA_SINAL[sinal]);
+    });
+  }
+  rodarWorker(opcoes)
+    .finally(pararHeartbeat)
+    .catch((erro: unknown) => {
+      console.error(`worker: ${erro instanceof Error ? erro.message : String(erro)}`);
+      process.exit(1);
+    });
 }
