@@ -33,17 +33,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — SUB-36
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-36** |
-| **Título da Sub-task:** | Gráfico em rede (cérebro) dos agentes no `dashboard-task-principal.html` |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:01 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 05 (Grok Bot) — SUB-35.2
 
 | Propriedade | Valor Atual |
@@ -59,12 +48,11 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (2)
+### 🔄 EM EXECUÇÃO (1)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-35.2** | Trigger `validar_agent_event` em `database/07_agent_events.sql` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:02 | SUB-35.1 |
-| **SUB-36** | Gráfico em rede (cérebro) dos agentes no `dashboard-task-principal.html` | DashboardAI (Grok Bot) | 2026-10-12 01:01 | Nenhuma |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
@@ -226,10 +214,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (77)
+### ✅ CONCLUÍDAS (78)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-36** | Gráfico em rede (cérebro) dos agentes no `dashboard-task-principal.html` | DashboardAI (Grok Bot) | 2026-10-12 01:01 | 2026-10-12 01:02 | `cdbf35b` |
 | **SUB-26.4** | Seção Banco de dados | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:02 | 2026-10-12 01:02 | `62ea6c0` |
 | **SUB-35.1** | Tabela `agent_events` em `database/07_agent_events.sql` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:01 | 2026-10-12 01:02 | `9f5692f` |
 | **SUB-19.6** | Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:01 | 2026-10-12 01:02 | `f145aab` |
@@ -532,3 +521,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:02 | DashboardAI-Clone 02 | SUB-23.8 | `6c409d3` | Na `src/views/LogsView.tsx`: `useTasks(projeto?.id)` + `useSaudeFila` e `SaudeFilaPanel` exibido acima da linha do tempo de execuções. typecheck, build e `npm test` verdes (162 passed). Screenshot não gerado (sem Supabase configurado no ambiente do clone). |
 | 2026-10-12 01:02 | DashboardAI-Clone 08 (Grok Bot) | SUB-26.4 | `62ea6c0` | Seção Banco de dados do `README.md` completa: requisitos (Postgres 15+, pgvector ≥ 0.5), tabela dos scripts `00`–`06` e como aplicar (SQL Editor ou laço `psql -v ON_ERROR_STOP=1`), criação do primeiro admin (`user_roles`), de um projeto (`projects`: slug/nome/prefixo_codigo) e de membros (`project_members`, upsert por `(project_id, user_id)`), tabela de papéis viewer/editor/owner/admin, uso de `service_role` x anon, e testes locais com `database/tests/run_tests.sh` (aviso de nunca rodar contra o Supabase). Referencia `database/README.md`; SQL conferido com as colunas/constraints de `00_projects_roles.sql`. Só documentação. |
 | 2026-10-12 01:02 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.2 | — | Lock: assumindo SUB-35.2 (Trigger `validar_agent_event` em `database/07_agent_events.sql`) |
+| 2026-10-12 01:02 | DashboardAI (Grok Bot) | SUB-36 | `cdbf35b` | Grafo de força (vis-network) estilo cérebro no dashboard-task-principal.html: quadro central, agentes trabalhando/ociosos, sub travada com ligação pulsando e até 5 entregas recentes por agente, com tooltips (código, hora, SHA); atualiza no polling |
