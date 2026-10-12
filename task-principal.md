@@ -40,28 +40,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-35.34
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.34** |
-| **Título da Sub-task:** | Testes de `emitirEvento` em `tests/unit/worker-eventos.test.ts` |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 13:37 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 203
-- **Em Execução:** 1 (SUB-35.34, Devin (Cognition AI), desde 2026-10-12 13:37)
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 21 subtarefas
+- **Em Execução:** 0
+- **Pendentes:** 4 principais (25, 26, 28, 35) + 20 subtarefas
   - livres agora: 10 (SUB-26.5, SUB-28.2, SUB-28.16, SUB-28.17, SUB-28.24, SUB-35.32, SUB-25.4, SUB-25.7, SUB-35.35, SUB-35.37)
   - bloqueadas por dependência: 10
   - reservadas: 0
-- **Concluídas:** 215 de 240 blocos (33 principais + 182 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 216 de 240 blocos (33 principais + 183 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -335,7 +324,7 @@
   - `SUB-35.31`: Registrar a tela `monitor` (rota `#/monitor` e menu) (`concluido`, `8dff43b`)
   - `SUB-35.32`: Validação visual do monitor (SUB-35) (`pendente`)
   - `SUB-35.33`: `emitirEvento()` em `worker/eventos.ts` (`concluido`, `2750ba4`)
-  - `SUB-35.34`: Testes de `emitirEvento` em `tests/unit/worker-eventos.test.ts` (`em_execucao`)
+  - `SUB-35.34`: Testes de `emitirEvento` em `tests/unit/worker-eventos.test.ts` (`concluido`, `8e63d4c`)
   - `SUB-35.35`: `comEventos(nome, no)` em `worker/eventos.ts` (`pendente`)
   - `SUB-35.36`: Envolver os nós em `worker/grafo.ts` com `comEventos` (`pendente`)
   - `SUB-35.37`: `iniciarHeartbeat()` em `worker/heartbeat.ts` (`pendente`)
@@ -364,17 +353,6 @@
 - **Critérios de Aceitação:** Screenshots conferidos; nenhum erro no console.
 - **Commit:** pendente
 - **Anotação:** Trava de DashboardAI-Clone 07 (Grok Bot) (desde 2026-10-12 01:49, commit `8d700c5`) liberada em 2026-10-12 a pedido do usuário, sem entrega registrada; tarefa volta a ficar livre.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-
-#### [ ] SUB-35.34: Testes de `emitirEvento` em `tests/unit/worker-eventos.test.ts`
-- **Status:** em_execucao
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:37)
-- **Depende de:** SUB-35.33
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Com `db` falso: payload correto (projeto, agente, execução, etapa, tipo), mensagem cortada, falha do banco não lança.
-- **Critérios de Aceitação:** `npm test` passa.
-- **Commit:** pendente
-- **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-35.35: `comEventos(nome, no)` em `worker/eventos.ts`

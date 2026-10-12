@@ -2545,4 +2545,15 @@
 - **Anotação:** Criei `worker/eventos.ts` com `emitirEvento(evento, deps = { db })` e `montarLinhaEvento()`: resolve `project_id` pelo slug (`projects`, não excluído), insere em `agent_events` com a service_role de `db()` (com `chave_idempotencia` usa upsert ignorando duplicatas, como a ferramenta MCP), corta `mensagem` em 2000 caracteres e só aceita `metadados` objeto (senão `{}`). Nunca lança: devolve `false` e avisa no log só o tipo do evento e a mensagem do erro (até 200 caracteres), sem payload nem chaves. `npm run typecheck:worker`, `typecheck`, `npm test` (268) e `build` OK; checagem manual com cliente falso confirmou o corte e o não-lançamento.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:37 (confirmado por Devin (Cognition AI))
 
+#### [x] SUB-35.34: Testes de `emitirEvento` em `tests/unit/worker-eventos.test.ts`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:37, conclusão: 2026-10-12 13:38)
+- **Depende de:** SUB-35.33
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Com `db` falso: payload correto (projeto, agente, execução, etapa, tipo), mensagem cortada, falha do banco não lança.
+- **Critérios de Aceitação:** `npm test` passa.
+- **Commit:** `8e63d4c`
+- **Anotação:** Criei `tests/unit/worker-eventos.test.ts` (6 testes) com cliente `db` falso que registra as chamadas: payload de `agent_events` (project_id resolvido pelo slug, agente, execucao_id, etapa, tipo, task, status, mensagem, metadados), corte da mensagem em 2000 caracteres, `metadados` não-objeto virando `{}`, upsert com `chave_idempotencia`, e falha do banco, cliente quebrado ou projeto inexistente devolvendo `false` sem lançar e sem o payload no aviso. `npm test` 274 aprovados / 30 pulados; `typecheck` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:38 (confirmado por Devin (Cognition AI))
+
 ---
