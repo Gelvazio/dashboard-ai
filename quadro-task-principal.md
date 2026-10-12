@@ -55,17 +55,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:59 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.19
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-27.19** |
-| **Título da Sub-task:** | `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx` |
-| **Agente Responsável:** | DashboardAI-Clone 01 |
-| **Data e Hora de Início:** | 2026-10-12 00:59 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-23.8
 
 | Propriedade | Valor Atual |
@@ -98,7 +87,6 @@
 |---|---|---|---|---|
 | **SUB-21.6** | Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:59 | SUB-21.13 |
 | **SUB-23.8** | Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` | DashboardAI-Clone 02 | 2026-10-12 00:59 | SUB-23.7 |
-| **SUB-27.19** | `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx` | DashboardAI-Clone 01 | 2026-10-12 00:59 | SUB-27.24, SUB-27.16 |
 | **SUB-25.1** | Script `scripts/validar.sh` + `npm run validar` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:59 | Nenhuma |
 | **SUB-21.8** | Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 00:59 | SUB-21.14 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
@@ -216,7 +204,6 @@
 | **SUB-27.15** | Rechecar conexão no login/logout em `src/hooks/useConexao.ts` | 3 | Fase 10 | SUB-27.26 — ⛓️ bloqueada |
 | **SUB-27.17** | Documentar configuração do Supabase Auth em `src/README.md` | 3 | Fase 10 | SUB-27.13 — ⛓️ bloqueada |
 | **SUB-27.18** | Validação automatizada da SUB-27 | 3 | Fase 10 | SUB-27.6, SUB-27.8, SUB-27.13, SUB-27.27, SUB-27.15, SUB-27.16, SUB-27.17, SUB-27.20, SUB-27.21 — ⛓️ bloqueada |
-| **SUB-27.19** | `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx` | 3 | Fase 10 | SUB-27.24, SUB-27.16 — ⛓️ bloqueada |
 | **SUB-27.20** | Limpar `ProjetoContext` ao sair | 3 | Fase 10 | SUB-27.26 — ⛓️ bloqueada |
 | **SUB-27.21** | Documentar primeiro administrador e membros em `database/README.md` | 3 | Fase 10 | SUB-27.13 — ⛓️ bloqueada |
 | **SUB-27.22** | Conferência no navegador (entrar, sair, restaurar sessão) — SUB-27 | 3 | Fase 10 | SUB-27.18 — ⛓️ bloqueada |
@@ -276,6 +263,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-27.19** | `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx` | DashboardAI-Clone 01 | 2026-10-12 00:59 | 2026-10-12 01:00 | `c81668e` |
 | **SUB-20.6** | Modal `MemoriaFormModal` em `src/components/memoria/` | DashboardAI-Clone 06 | 2026-10-12 00:55 | 2026-10-12 01:00 | `62dea7a` |
 | **SUB-27.26** | Hook `useAuth` em `src/hooks/useAuth.ts` | DashboardAI-Clone 01 | 2026-10-12 00:56 | 2026-10-12 00:59 | `9a947eb` |
 | **SUB-08.9** | CLI `npm run check:env` (toda variável usada está no `.env.example`) | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:58 | 2026-10-12 00:59 | `dd2b3d5` |
@@ -549,3 +537,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:59 | DashboardAI-Clone 02 | SUB-23.8 | — | Lock: assumindo SUB-23.8 (Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx`) |
 | 2026-10-12 00:59 | DashboardAI-Clone 10 (Grok Bot) | SUB-21.6 | — | Lock: assumindo SUB-21.6 (Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx`) |
 | 2026-10-12 01:00 | DashboardAI-Clone 06 | SUB-20.6 | `62dea7a` | Criado `src/components/memoria/MemoriaFormModal.tsx` (exportado no `index.ts`): `{ aberto, projeto, onFechar, onSalvo(memoria) }` com `Modal`/`Botao`; Título (até 200), Conteúdo com `MarkdownEditor`, Tags com `TagInput` + `TagSugestoes` alimentado por `sugerirTags(titulo, conteudo, 8)`, opção "Memória global" (`projectId = null`). Valida com `validarMemoria` (erro por campo, foco no 1º inválido), salva com `useSalvarMemoria`; o hook ganhou `erro`/`limparErro` para o erro do banco/RLS aparecer no modal (além do toast). Estado zerado ao abrir. `npm run typecheck`, `npm run build` e `npm test` OK; screenshots headless 1280x800 e 390x844 conferidos (harness temporário, não commitado). |
+| 2026-10-12 01:00 | DashboardAI-Clone 01 | SUB-27.19 | `c81668e` | Criado `src/components/auth/RecuperarAcesso.tsx` (props `{ email }`): botões "Entrar com link por e-mail" (`enviarLinkMagico`) e "Esqueci a senha" (`redefinirSenha`) com `urlDeRetorno(window.location)`, carregando por ação e aviso de confirmação/erro (role status/alert); e-mail vazio pede preenchimento. typecheck OK. |

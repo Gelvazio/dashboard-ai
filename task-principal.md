@@ -1670,15 +1670,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-27.19: `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx`
-- **Status:** em_execucao
+#### [x] SUB-27.19: `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.24, SUB-27.16
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Dois botões/links: "Entrar com link por e-mail" (`enviarLinkMagico`) e "Esqueci a senha" (`redefinirSenha`), usando o e-mail informado e `urlDeRetorno(location)`; mostra confirmação de envio ou erro.
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `c81668e`
+- **Anotação:** Criado `src/components/auth/RecuperarAcesso.tsx` (props `{ email }`): botões "Entrar com link por e-mail" (`enviarLinkMagico`) e "Esqueci a senha" (`redefinirSenha`) com `urlDeRetorno(window.location)`, carregando por ação e aviso de confirmação/erro (role status/alert); e-mail vazio pede preenchimento. typecheck OK.
 
 #### [ ] SUB-27.20: Limpar `ProjetoContext` ao sair
 - **Status:** pendente
