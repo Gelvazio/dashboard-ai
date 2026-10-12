@@ -1,21 +1,41 @@
 import { EstadoExecucao } from '../estado.js';
-import { finalizar } from '../fila.js';
+import { finalizar, type FinalizarArgs } from '../fila.js';
+
+const LIMITE_RESUMO = 2000;
+
+export interface DepsFinalizar {
+  finalizar: (args: FinalizarArgs) => Promise<void>;
+}
+
+/** Resumo sem valores dos resultados (podem conter dados sensíveis): só os passos concluídos. */
+export function resumoSeguro(resultados: Record<string, unknown>): string {
+  const passos = Object.keys(resultados).filter((chave) => chave !== 'erro');
+  const resumo = passos.length ? `${passos.length} passo(s) concluído(s): ${passos.join(', ')}` : 'Nenhum passo executado';
+  return resumo.slice(0, LIMITE_RESUMO);
+}
+
+function foiRecusada(aprovacao: unknown): boolean {
+  return typeof aprovacao === 'object' && aprovacao !== null && (aprovacao as { aprovado?: unknown }).aprovado === false;
+}
 
 /**
  * Nó que finaliza a execução (SUB-28.11).
- * Chama a RPC finalizar_task e libera a trava.
+ * Chama a RPC `finalizar_task` com `concluida`, `recusada` (aprovação negada)
+ * ou `erro` (`resultados.erro` preenchido), um resumo seguro e o `execucaoId`.
  */
-export async function finalizarNode(state: typeof EstadoExecucao.State) {
-  const { taskId, execucaoId, resultados } = state;
+export async function finalizarNode(state: typeof EstadoExecucao.State, deps: DepsFinalizar = { finalizar }) {
+  const { taskId, execucaoId, resultados, aprovacao, passoAtual } = state;
+  const erro = resultados['erro'];
+  const status: FinalizarArgs['status'] = foiRecusada(aprovacao) ? 'recusada' : erro ? 'erro' : 'concluida';
 
-  // Determinar status baseado nos resultados
-  const todosPassosFeitos = Object.keys(resultados).length > 0;
-  const status = todosPassosFeitos ? 'concluida' : 'erro';
-
-  await finalizar({
+  await deps.finalizar({
     taskId,
     status,
     execucaoId,
+    resultado: resumoSeguro(resultados),
+    erroMensagem: status === 'erro' ? String(erro).slice(0, LIMITE_RESUMO) : status === 'recusada' ? 'Aprovação recusada' : undefined,
+    passoFalho: status === 'erro' && passoAtual ? passoAtual : undefined,
+    chaves: Object.keys(resultados).filter((chave) => chave !== 'erro'),
   });
 
   return { final: true };
