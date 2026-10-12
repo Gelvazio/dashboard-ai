@@ -1807,6 +1807,17 @@
 - **Anotação:** Rodei `database/tests/run_tests.sh` contra PostgreSQL 16.15 + pgvector (Docker `pgvector/pgvector:pg16`, banco descartável `dashai_test`, via `PSQL="docker exec -i -w /repo/database pg-dash psql -U postgres"`): schema 00-06 aplicado 2x sem erro, 72 verificações de RLS/fila/memória, 46 de recados/regras, 12 agentes paralelos sem duplicidade (60 tasks) e `p_exclusivo` entregando 1 task. Exit 0. Resultado anexado ao `docs/VALIDACAO.md`.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:35 (confirmado por Devin (Cognition AI))
 
+#### [x] SUB-25.6: Rodar `npm run test:integration`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:35, conclusão: 2026-10-12 13:35)
+- **Depende de:** SUB-25.2
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Rodar a integração do frontend (`tests/integration/run.sh`: PostgreSQL + pgvector + PostgREST locais) e anexar o resultado ao `docs/VALIDACAO.md`.
+- **Critérios de Aceitação:** Testes de integração verdes; resultado registrado.
+- **Commit:** `7c9891f`
+- **Anotação:** Rodei `npm run test:integration` (`tests/integration/run.sh`) contra PostgreSQL 16.15 + pgvector (Docker `pgvector/pgvector:pg16` na porta 5432, banco descartável `dashai_front_test`) e PostgREST 12.2.3 (binário estático oficial) com segredo JWT aleatório: 8 arquivos e 29 testes aprovados, exit 0. Resultado anexado ao `docs/VALIDACAO.md`, que também corrige a contagem dos arquivos pulados no `npm test` (8 de integração; no checkpointer só o bloco contra Postgres).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:35 (confirmado por Devin (Cognition AI))
+
 ---
 
 ## 🚀 FASE 11: Orquestração de Tasks com LangChain/LangGraph (última fase)
