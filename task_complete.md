@@ -2110,6 +2110,17 @@
 - **Anotação:** Em `tests/unit/worker-grafo.test.ts`, novo bloco com modelo, ferramentas e RPC falsos (`rpc` de `api/_lib/supabase` mockado; `finalizar` real de `worker/fila.ts`; eventos silenciados): caminho feliz executa os 2 passos e chama `finalizar_task` com `p_status = concluida`; erro permanente no 2º de 3 passos não repete, grava `classe_falha = permanente` e chama `finalizar_task` com `p_status = erro`, `passo_falho` e `erro_mensagem`. `npm test` 285 aprovados / 30 pulados; `typecheck` OK. Achado fora do escopo, cadastrado como SUB-28.34: `resumoSeguro` e `chaves` contam `brain_search` (memórias do contexto), `classe_falha` e `tentativas:*` como passos concluídos.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:44 (confirmado por Devin (Cognition AI))
 
+#### [x] SUB-28.34: `resumoSeguro`/`chaves` só com os passos `passo-<i>` em `worker/nos/finalizar.ts`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:46, conclusão: 2026-10-12 13:47)
+- **Depende de:** SUB-28.17
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Achado da SUB-28.17 (cadastrado em 2026-10-12 por Devin (Cognition AI)): `resumoSeguro()` e `chaves` do `finalizarNode` usam todas as chaves de `resultados` menos `erro`, então contam `brain_search` (memórias de `carregarContexto`), `classe_falha` e `tentativas:<passo>` como passos concluídos (ex.: "3 passo(s) concluído(s): brain_search, passo-0, passo-1" com 2 passos). Filtrar só as chaves `passo-<i>` e ajustar o teste do caminho feliz em `tests/unit/worker-grafo.test.ts` para o valor exato.
+- **Critérios de Aceitação:** `npm test` passa; caminho feliz com 2 passos gera "2 passo(s) concluído(s): passo-0, passo-1" e `chaves = ['passo-0', 'passo-1']`.
+- **Commit:** `8bc3b99`
+- **Anotação:** Em `worker/nos/finalizar.ts`, novo `chavesDosPassos(resultados)` (só chaves `passo-<i>`) usado por `resumoSeguro` e por `chaves` do `finalizarNode`: memórias (`brain_search`), `classe_falha` e `tentativas:*` não contam mais como passos. O teste do caminho feliz em `tests/unit/worker-grafo.test.ts` agora exige o valor exato ("2 passo(s) concluído(s): passo-0, passo-1" e `chaves = [passo-0, passo-1]`). `npm test` 287 aprovados / 30 pulados; `typecheck` e `typecheck:worker` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:47 (confirmado por Devin (Cognition AI))
+
 ---
 
 ## 📡 FASE 12: Monitor em Tempo Real dos Agentes
