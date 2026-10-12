@@ -233,8 +233,12 @@ curl -s https://<seu-app>.vercel.app/mcp \
 
 **Protocolo de trabalho:** além da fila no banco, agentes que trabalham **neste repositório**
 seguem o [`AGENTS.md`](AGENTS.md): `git pull --rebase` antes de tudo, no máximo 1 item travado
-por agente, trava registrada no `quadro-task-principal.md` com commit + push imediatos antes de
-codar, nunca mexer na trava de outro agente e registrar o SHA da entrega no histórico.
+por agente, trava registrada no [`task-principal.md`](task-principal.md) com commit + push imediatos
+antes de codar, nunca mexer na trava de outro agente e registrar o SHA da entrega. Ao concluir, o
+bloco da tarefa vai para o [`task_complete.md`](task_complete.md), que guarda o histórico de
+entregas; o `task-principal.md` fica só com travas, resumo e tarefas ativas. O passo a passo está
+na skill [`proxima-task`](.agents/skills/proxima-task/SKILL.md). O
+[`dashboard-task-principal.html`](dashboard-task-principal.html) lê os dois arquivos.
 
 ### Ciclo da fila (exemplos)
 

@@ -1,7 +1,9 @@
 # 🤖 DIRETRIZES DE AGENTES DE IA & PROTOCOLO DE CONCORRÊNCIA
 
 
-> 📌 **Quadro único:** o antigo `quadro-task-principal.md` foi incorporado ao `task-principal.md`. Travas, status, concluídas e histórico ficam só no `task-principal.md`; não recrie o arquivo antigo.
+> 📌 **Quadro único:** o antigo `quadro-task-principal.md` foi incorporado ao `task-principal.md`. Travas, status e tarefas ativas ficam só no `task-principal.md`; não recrie o arquivo antigo.
+
+> 📦 **Concluídas em arquivo separado:** os blocos `[x]` (tarefas e subtarefas `concluido`) ficam em [`task_complete.md`](task_complete.md). Para pegar tarefas, leia só o `task-principal.md`: a lista `Subtarefas:` das tarefas-mãe abertas já traz `(concluido, <sha>)`, e **dependência que não aparece como bloco no `task-principal.md` está `concluido` no `task_complete.md`**. Abra o `task_complete.md` só para consultar uma entrega ou reabrir uma tarefa (o bloco volta para o `task-principal.md` como `pendente`, com o motivo na anotação).
 >
 > 🗂️ **Scripts temporários:** cada agente guarda scripts auxiliares dentro da própria pasta de trabalho, nunca em `/tmp` ou outra pasta compartilhada (outro agente pode sobrescrevê-los).
 >
@@ -75,10 +77,10 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
 
 ### 🔹 PARTE 3 — EXECUÇÃO, FINALIZAÇÃO, COMMIT E PUSH DA ENTREGA
 1. Executar e validar o código da mini-task com qualidade.
-2. Atualizar `task-principal.md`: alterar status para `concluido` e registrar a anotação técnica detalhada.
+2. Atualizar `task-principal.md`: alterar status para `concluido` e registrar a anotação técnica detalhada; em seguida **mover o bloco concluído** (inteiro, com commit, anotação e confirmação) para o fim da fase correspondente em `task_complete.md`. Na lista `Subtarefas:` da tarefa-mãe fica só a referência `(concluido, <sha>)`. Se a tarefa-mãe for fechada, o bloco dela também vai para o `task_complete.md`.
 3. **Executar COMMIT e PUSH da conclusão IMEDIATAMENTE:**
    ```bash
-   git add <arquivos da tarefa> task-principal.md
+   git add <arquivos da tarefa> task-principal.md task_complete.md
    git commit -m "feat(SUB-XX): descrição do que foi implementado"
    git push origin main
    ```

@@ -10,7 +10,7 @@ Fluxo de uma subtarefa por vez no quadro `task-principal.md`. A fonte da verdade
 ## Procedimento
 
 1. **Sincronize primeiro:** rode `git pull --rebase origin main` antes de ler qualquer arquivo local.
-2. **Leia o quadro:** em `task-principal.md`, confira `🔒 TRAVA ATIVA NO MOMENTO`, todos os blocos `### 🔒 TRAVA ADICIONAL — ...` e o `📊 Resumo de Progresso` (a lista "livres agora" é um atalho, mas confirme no bloco da subtarefa).
+2. **Leia o quadro:** em `task-principal.md`, confira `🔒 TRAVA ATIVA NO MOMENTO`, todos os blocos `### 🔒 TRAVA ADICIONAL — ...` e o `📊 Resumo de Progresso`. Não leia o `task_complete.md` para escolher tarefa: ele só guarda os blocos já concluídos (a lista "livres agora" é um atalho, mas confirme no bloco da subtarefa).
 3. **Escolha um item livre:** subtarefa (`#### [ ] SUB-XX.Y`) ou tarefa atômica (`Subtarefas: Nenhuma (atômica)`) com `Status: pendente`, sem trava de ninguém e com todas as dependências de `Depende de:` em `concluido`. Nunca escolha uma tarefa-mãe com filhas nem um item travado por outro agente. Se o item passar de ~3 min de trabalho (mais de 1 função/componente/arquivo de teste), subdivida-o no quadro (`SUB-XX.Y.1`, ...) antes de codificar.
 4. **Grave a trava** em `task-principal.md`:
    - adicione um bloco `### 🔒 TRAVA ADICIONAL — <Seu nome> — SUB-XX.Y` (tabela com Status 🔴 **OCUPADO**, sub-task, título, agente, data/hora de início, bloqueio **ATIVADO**), logo abaixo da trava principal;
@@ -24,8 +24,9 @@ Fluxo de uma subtarefa por vez no quadro `task-principal.md`. A fonte da verdade
 9. **Conclua no quadro:**
    - no bloco: `#### [x]`, `Status: concluido`, `Executor` com o horário de conclusão, `Commit:` com o SHA curto da entrega, `Anotação:` técnica (o que foi feito, arquivos, testes, desvios e achados) e `STATUS-TAREFA-CONFIRMADO-CONCLUIDO: AAAA-MM-DD HH:MM — <Seu nome>: entrega verificada (...)` (seção 5 do `AGENTS.md`);
    - na lista da tarefa-mãe: `(concluido, <sha>)`; se todas as filhas estiverem concluídas, feche também a tarefa-mãe;
+   - **mova o bloco concluído** para o fim da fase correspondente em `task_complete.md` (o bloco inteiro; no quadro fica só a referência `(concluido, <sha>)` na lista da tarefa-mãe). Tarefa-mãe fechada também vai para lá;
    - remova o seu bloco `TRAVA ADICIONAL` e recalcule o resumo (em execução, livres, bloqueadas, concluídas). Itens que dependiam deste podem ter ficado livres.
-10. **Faça commit e push da conclusão:** `git add task-principal.md && git commit -m "docs(board): concluir SUB-XX.Y (<sha>) e liberar trava de <Seu nome>"`, depois `git pull --rebase origin main` e `git push origin main`.
+10. **Faça commit e push da conclusão:** `git add task-principal.md task_complete.md && git commit -m "docs(board): concluir SUB-XX.Y (<sha>) e liberar trava de <Seu nome>"`, depois `git pull --rebase origin main` e `git push origin main`.
 11. **Só então** escolha a próxima subtarefa (volte ao passo 1) ou reporte ao usuário.
 
 ## Especificações
@@ -39,6 +40,7 @@ Fluxo de uma subtarefa por vez no quadro `task-principal.md`. A fonte da verdade
 
 - O monitor (`agent_event` via MCP, seção 4 do `AGENTS.md`) é opcional e não substitui o lock no quadro.
 - Scripts auxiliares ficam na pasta de trabalho do agente, nunca em `/tmp`.
+- Dependência que não aparece como bloco no `task-principal.md` está `concluido` no `task_complete.md`; abra esse arquivo só para consultar a entrega (busque pelo código, ex.: `grep -n "SUB-28.4:" task_complete.md`) ou reabrir a tarefa, trazendo o bloco de volta ao quadro como `pendente`.
 - Se as dependências estiverem `concluido` mas o código delas for placeholder, não marque a sua como concluída em cima disso: registre o achado e reabra/crie a subtarefa correspondente.
 
 ## Proibido

@@ -183,6 +183,8 @@
         <p>
           Fonte ao vivo:
           <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/task-principal.md" target="_blank" rel="noopener">task-principal.md</a>
+          +
+          <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/task_complete.md" target="_blank" rel="noopener">task_complete.md</a>
           no GitHub (<code>main</code>).
         </p>
       </div>
@@ -266,19 +268,26 @@
     </article>
 
     <footer>
-      Fonte: o arquivo <code>task-principal.md</code> da branch <code>main</code>
-      (mesmo conteúdo do
-      <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/task-principal.md" target="_blank" rel="noopener">blob no GitHub</a>).
+      Fonte: os arquivos <code>task-principal.md</code> (quadro ativo) e <code>task_complete.md</code> (concluídas) da branch <code>main</code>
+      (mesmo conteúdo dos blobs no GitHub:
+      <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/task-principal.md" target="_blank" rel="noopener">quadro</a>,
+      <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/task_complete.md" target="_blank" rel="noopener">concluídas</a>).
       O repositório é privado: sem token, a página lê o Markdown local. Com um PAT, lê a <code>main</code> remota.
       Abra via servidor HTTP na pasta do repo, por exemplo <code>npx --yes serve .</code>
     </footer>
   </div>
 
   <script>
-    const RAW_URL = "https://raw.githubusercontent.com/Gelvazio/dashboard-ai/main/task-principal.md";
-    const JSDELIVR_URL = "https://cdn.jsdelivr.net/gh/Gelvazio/dashboard-ai@main/task-principal.md";
-    const API_URL = "https://api.github.com/repos/Gelvazio/dashboard-ai/contents/task-principal.md?ref=main";
-    const LOCAL_URL = "./task-principal.md";
+    const BOARD_FILE = "task-principal.md";
+    const COMPLETE_FILE = "task_complete.md";
+    function sourceUrls(file) {
+      return {
+        raw: `https://raw.githubusercontent.com/Gelvazio/dashboard-ai/main/${file}`,
+        jsdelivr: `https://cdn.jsdelivr.net/gh/Gelvazio/dashboard-ai@main/${file}`,
+        api: `https://api.github.com/repos/Gelvazio/dashboard-ai/contents/${file}?ref=main`,
+        local: `./${file}`
+      };
+    }
     const POLL_MS = 20000;
 
     const PHASE_BY_CODE = {
@@ -374,6 +383,48 @@
       return PHASE_BY_CODE[key] || "Outras";
     }
 
+    function executorParts(executor) {
+      const text = clean(executor);
+      const agent = text.split(/\s*\((?:início|inicio)\b/i)[0].trim();
+      const start = (text.match(/in[ií]cio:\s*(\d{4}-\d{2}-\d{2}[ T]\d{1,2}:\d{2})/i) || [])[1] || "";
+      const end = (text.match(/conclus[ãa]o:\s*(\d{4}-\d{2}-\d{2}[ T]\d{1,2}:\d{2})/i) || [])[1] || "";
+      return { agent: /^nenhum/i.test(agent) ? "" : agent, start, end };
+    }
+
+    // Blocos "### [x] SUB-XX: título" / "#### [ ] SUB-XX.Y: título" com campos "- **Campo:** valor".
+    function parseTaskBlocks(md) {
+      const blocks = [];
+      let cur = null;
+      for (const line of md.split(/\r?\n/)) {
+        const h = line.match(/^#{3,4}\s+\[( |x)\]\s+(SUB-[\d.]+):\s*(.*)$/i);
+        if (h) {
+          if (cur) blocks.push(cur);
+          cur = { code: h[2].toUpperCase(), title: clean(h[3]), fields: {} };
+          continue;
+        }
+        if (/^(#{1,4}\s|---\s*$)/.test(line)) { if (cur) blocks.push(cur); cur = null; continue; }
+        const f = cur && line.match(/^-\s+\*\*(.+?):\*\*\s*(.*)$/);
+        if (f) {
+          const key = f[1].trim().toLowerCase();
+          if (!(key in cur.fields)) cur.fields[key] = f[2].trim();
+        }
+      }
+      if (cur) blocks.push(cur);
+      return blocks.map((b) => {
+        const ex = executorParts(b.fields["executor"]);
+        return {
+          code: b.code,
+          title: b.title,
+          status: clean(b.fields["status"]).toLowerCase(),
+          agent: ex.agent,
+          start: ex.start,
+          end: ex.end,
+          sha: (clean(b.fields["commit"]).match(/[0-9a-f]{7,40}/i) || [""])[0],
+          depends: clean(b.fields["depende de"])
+        };
+      });
+    }
+
     function parseBoard(md) {
       const tables = locateTablesWithHeadings(md);
       const locks = [];
@@ -459,6 +510,16 @@
             note: ["anotação", "anotacao", "o que foi"]
           }));
         }
+      }
+
+      const known = new Set([...running, ...pending, ...done, ...cancelled].map((t) => String(t.code || "").toUpperCase()));
+      for (const b of parseTaskBlocks(md)) {
+        if (known.has(b.code)) continue;
+        known.add(b.code);
+        if (/^conclu/.test(b.status)) done.push(b);
+        else if (/^cancel/.test(b.status)) cancelled.push(b);
+        else if (/^em[_ ]execu/.test(b.status)) running.push(b);
+        else pending.push(b);
       }
 
       return { locks, running, pending, done, cancelled, history, raw: md };
@@ -711,29 +772,42 @@
       return { headers, token: Boolean(token) };
     }
 
-    async function loadMarkdown() {
+    async function loadMarkdown(file) {
+      const urls = sourceUrls(file);
       const errors = [];
       const gh = githubHeaders();
       if (gh.token) {
         try {
-          const text = await fetchText(API_URL, gh.headers);
+          const text = await fetchText(urls.api, gh.headers);
           return { text, source: "GitHub API (main remota)" };
         } catch (e) { errors.push(e.message); }
       }
-      try { return { text: await fetchText(LOCAL_URL), source: "task-principal.md local" }; }
+      try { return { text: await fetchText(urls.local), source: `${file} local` }; }
       catch (e) { errors.push(e.message); }
-      try { return { text: await fetchText(RAW_URL), source: "raw.githubusercontent.com" }; }
+      try { return { text: await fetchText(urls.raw), source: "raw.githubusercontent.com" }; }
       catch (e) { errors.push(e.message); }
-      try { return { text: await fetchText(JSDELIVR_URL), source: "jsDelivr" }; }
+      try { return { text: await fetchText(urls.jsdelivr), source: "jsDelivr" }; }
       catch (e) { errors.push(e.message); }
       try {
-        const text = await fetchText(API_URL, gh.headers);
+        const text = await fetchText(urls.api, gh.headers);
         return { text, source: "GitHub API" };
       } catch (e) { errors.push(e.message); }
       throw new Error(
-        "Não foi possível ler o quadro. O repositório é privado: use o arquivo local (abra esta página por um servidor HTTP na pasta do repo) ou cole um token GitHub com permissão de leitura.\n" +
+        `Não foi possível ler ${file}. O repositório é privado: use o arquivo local (abra esta página por um servidor HTTP na pasta do repo) ou cole um token GitHub com permissão de leitura.\n` +
         errors.join("\n")
       );
+    }
+
+    // O quadro ativo é obrigatório; as concluídas (task_complete.md) são opcionais.
+    async function loadBoardMarkdown() {
+      const board = await loadMarkdown(BOARD_FILE);
+      try {
+        const complete = await loadMarkdown(COMPLETE_FILE);
+        return { text: board.text + "\n\n" + complete.text, source: board.source + " + " + COMPLETE_FILE };
+      } catch (e) {
+        console.warn(COMPLETE_FILE, e);
+        return { text: board.text, source: board.source + ` (sem ${COMPLETE_FILE})` };
+      }
     }
 
     function countBy(items, fn) {
@@ -984,7 +1058,7 @@
       const btn = document.getElementById("refreshBtn");
       btn.disabled = true;
       try {
-        const { text, source } = await loadMarkdown();
+        const { text, source } = await loadBoardMarkdown();
         const hash = String(text.length) + ":" + text.slice(0, 80);
         const board = parseBoard(text);
         latestBoard = board;
