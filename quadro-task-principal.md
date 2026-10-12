@@ -33,6 +33,16 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+n### 🔒 TRAVA ADICIONAL — Claude Code — SUB-35.23
+
+|| Propriedade | Valor Atual |
+||---|---|
+|| **Status da Trava:** | 🔴 **OCUPADO** |
+|| **Sub-task em Execução:** | **SUB-35.23** |
+|| **Título da Sub-task:** | Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx` |
+|| **Agente Responsável:** | Claude Code |
+|| **Data e Hora de Início:** | 2026-10-12 01:23 |
+|| **Bloqueio para Outras IAs:** | **ATIVADO** |
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
