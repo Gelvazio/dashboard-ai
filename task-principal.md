@@ -45,28 +45,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.6
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-28.6** |
-| **Título da Sub-task:** | Nó `carregarContexto` em `worker/nos/carregarContexto.ts` |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 12:42 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202
-- **Em Execução:** 1 (SUB-28.6, Devin (Cognition AI), desde 2026-10-12 12:42)
+- **Em Execução:** 0
 - **Pendentes:** 4 principais (25, 26, 28, 35) + 33 subtarefas
   - livres agora: 10 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.7, SUB-28.8, SUB-28.9, SUB-28.13, SUB-28.14, SUB-35.32, SUB-35.33)
   - bloqueadas por dependência: 23
   - reservadas: 0
-- **Concluídas:** 201 de 239 blocos (33 principais + 168 subtarefas)
+- **Concluídas:** 202 de 239 blocos (33 principais + 169 subtarefas)
 - **Canceladas:** 0
 
 ---
@@ -1977,7 +1966,7 @@
   - `SUB-28.3`: Annotation `EstadoExecucao` em `worker/estado.ts` (`concluido`, `21c908b`)
   - `SUB-28.4`: `reivindicar(agente, projeto)` em `worker/fila.ts` (`concluido`, `06e7e4b`)
   - `SUB-28.5`: Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts` (`concluido`, `999d1e0`)
-  - `SUB-28.6`: Nó `carregarContexto` em `worker/nos/carregarContexto.ts` (`em_execucao`)
+  - `SUB-28.6`: Nó `carregarContexto` em `worker/nos/carregarContexto.ts` (`concluido`, `463b3d9`)
   - `SUB-28.7`: Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts` (`pendente`)
   - `SUB-28.8`: Nó `politica` (aprovação humana) em `worker/nos/politica.ts` (`pendente`)
   - `SUB-28.9`: Nó `executar` em `worker/nos/executar.ts` (`pendente`)
@@ -2065,16 +2054,16 @@
 - **Anotação:** Removido `brain_delete` da `ALLOWLIST` de `worker/ferramentas.ts` (e da lista de ferramentas do prompt em `worker/plano.ts`), deixando só `brain_search`, `brain_store` e `task_list` como na especificação; `obterFerramenta(nome)` consulta `listTools()` e recusa nomes fora da lista. `tests/unit/worker-ferramentas.test.ts`: ferramenta fora da allowlist recusada, `brain_delete` recusada mesmo existindo no registro MCP e conteúdo exato da allowlist. `npm test`, `npm run typecheck` e `npm run typecheck:worker` verdes.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:39 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
-#### [ ] SUB-28.6: Nó `carregarContexto` em `worker/nos/carregarContexto.ts`
-- **Status:** em_execucao
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:42)
+#### [x] SUB-28.6: Nó `carregarContexto` em `worker/nos/carregarContexto.ts`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:42, conclusão: 2026-10-12 12:42)
 - **Depende de:** SUB-28.29, SUB-28.19
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Busca memórias relevantes (`brain_search`) para a instrução e guarda no estado como dado não confiável.
 - **Critérios de Aceitação:** Teste unitário com ferramenta falsa.
-- **Commit:** pendente (código parcial em `b9e63d6`)
-- **Anotação:** Reaberta na revisão de 2026-10-12 (Devin (revisão do quadro)): marcada como concluída em `310fab9`, mas placeholder: não chama `brain_search`, devolve lista vazia; sem teste.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (reaberta: critérios de aceitação não atendidos)
+- **Commit:** `463b3d9`
+- **Anotação:** `carregarContexto(state, deps = { buscar })` em `worker/nos/carregarContexto.ts`: chama `brain_search` (padrão: `getTool('brain_search').handler` do registro MCP) com a instrução e o projeto, e guarda em `resultados.brain_search` as memórias com `naoConfiavel: true` (o prompt da SUB-28.31 as delimita); falha ou resposta de erro segue sem contexto; instrução vazia não chama a ferramenta. Testes com ferramenta falsa em `tests/unit/worker-carregarContexto.test.ts`. `npm test`, `npm run typecheck` e `npm run typecheck:worker` verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:42 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
 #### [ ] SUB-28.7: Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts`
 - **Status:** pendente
