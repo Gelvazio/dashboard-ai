@@ -7,6 +7,17 @@ export interface TaskReivindicada {
   instrucao: string;
 }
 
+export interface FinalizarArgs {
+  taskId: number;
+  status: 'concluida' | 'erro' | 'recusada';
+  resultado?: string;
+  erroMensagem?: string;
+  classeFalha?: string;
+  passoFalho?: string;
+  execucaoId: string;
+  chaves?: string[];
+}
+
 /**
  * Reivindica a próxima task disponível para o agente (SUB-28.4).
  * Chama a RPC `pegar_proxima_task` com `p_agente`, `p_projeto`,
@@ -37,4 +48,23 @@ export async function reivindicar(
     tentativa: task.tentativas,
     instrucao: task.instrucao ?? '',
   };
+}
+
+/**
+ * Finaliza uma task chamando a RPC `finalizar_task` (SUB-28.30).
+ * Libera a trava e registra o resultado.
+ */
+export async function finalizar(args: FinalizarArgs): Promise<void> {
+  await rpc('finalizar_task', {
+    p_task_id: args.taskId,
+    p_status: args.status,
+    p_resultado: args.resultado ?? null,
+    p_erro_mensagem: args.erroMensagem ?? null,
+    p_metadados: {
+      execucao_id: args.execucaoId,
+      chaves: args.chaves ?? [],
+      classe_falha: args.classeFalha ?? null,
+      passo_falho: args.passoFalho ?? null,
+    },
+  });
 }
