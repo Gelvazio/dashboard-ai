@@ -2327,9 +2327,9 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-35.14: `mesclarEvento()` em `src/lib/monitor.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [🔄] SUB-35.14: `mesclarEvento()` em `src/lib/monitor.ts`
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 04 (Grok Bot) (início: 2026-10-12 01:13)
 - **Depende de:** SUB-35.8
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/lib/monitor.ts` com `mesclarEvento(lista, novo, max = 200)`: ignora `id` repetido, mantém ordem por `created_at` desc e corta em `max`. Testes em `tests/unit/monitor.test.ts`.

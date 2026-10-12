@@ -77,14 +77,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:12 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 04 (Grok Bot) — SUB-35.14
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.14** |
+| **Título da Sub-task:** | `mesclarEvento()` em `src/lib/monitor.ts` |
+| **Agente Responsável:** | DashboardAI-Clone 04 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:13 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (2)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-35.14** | `mesclarEvento()` em `src/lib/monitor.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:13 | SUB-35.8 |
 | **SUB-21.12** | Conferir exclusão com editor e viewer | DashboardAI-Clone 02 | 2026-10-12 01:12 | SUB-21.11 |
 | **SUB-35.45** | Seção "Reporte de progresso (opcional)" no `AGENTS.md` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:11 | SUB-35.41 |
 | **SUB-34.5** | Checagem de tamanho `scripts/checar-chunks.mjs` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:11 | SUB-34.6, SUB-34.3, SUB-34.4 |
@@ -186,7 +198,7 @@
 | **SUB-35.11** | `assinarEventos()` (Supabase Realtime) em `src/services/eventService.ts` | 4 | Fase 12 | SUB-35.10 — ⛓️ bloqueada |
 | **SUB-35.12** | Testes de `eventService` em `tests/unit/eventService.test.ts` | 4 | Fase 12 | SUB-35.11 — ⛓️ bloqueada |
 | **SUB-35.13** | Teste de integração de `listarEventos`/`atividadeAtual` | 4 | Fase 12 | SUB-35.10, SUB-35.6 — ⛓️ bloqueada |
-| **SUB-35.14** | `mesclarEvento()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.8 — ⛓️ bloqueada |
+| **SUB-35.14** | `mesclarEvento()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.8 — ⛓️ bloqueada — 🔄 em execução por DashboardAI-Clone 04 (Grok Bot) |
 | **SUB-35.15** | `estadoDoAgente()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.14 — ⛓️ bloqueada |
 | **SUB-35.16** | `contarPorStatus()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.15 — ⛓️ bloqueada |
 | **SUB-35.17** | `contarPorAgente()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.16 — ⛓️ bloqueada |
@@ -630,3 +642,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:13 | DashboardAI-Clone 01 | SUB-21.10 | `(este commit)` | Validação visual da SUB-21 contra banco local (Postgres + PostgREST com JWT de editor via proxy, harness não commitado em /tmp) e `vite`: `#/memoria` com 3 memórias do projeto + 1 global; grade (badges Projeto/Global, tags, filtros Todas/Projeto/Globais, contador 4), botão copiar (clipboard recebeu o Markdown `# título / **Tags:** / **Escopo:**`) e modal de detalhe (escopo, datas, tags, Formatado/Texto, Copiar tudo, Excluir/Fechar; folha inferior no celular) conferidos em 1280x800 e 390x844 via Chrome headless/CDP; nenhum erro/aviso no console. Observação: o resumo do cartão mostra Markdown cru (ex.: `**Supabase**`). |
 | 2026-10-12 01:13 | DashboardAI-Clone 06 | SUB-27.27 | `a7817f8` | O `Header` renderiza o `UserMenu` (SUB-27.14) depois do `ThemeToggle`, separado por uma borda, só quando há usuário logado; lê o `AuthContext` com `useContext` (tolerante fora do `AuthProvider`, como o `ProjetoContext`), então nada quebra até a SUB-27.13 montar o provider no `App`. Para caber em 390 px, o ícone de usuário e o selo Admin do `UserMenu` ficam só a partir de `sm` (no celular sobra só o botão Sair com ícone). `npm run typecheck`, `npm run build` e `npm test` OK; screenshots headless do header em 1280 e 390 px conferidos com sessão simulada (harness temporário, não commitado). |
 | 2026-10-12 01:13 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.9 | `89c6a43` | Criado `src/services/eventService.ts` com `listarEventos(projectId, { desde?, agente?, limite = 200 }, client = getSupabase())` -> `AgentEvent[]`: filtra por `project_id`, `created_at >= desde` (data inválida -> `ServiceError`) e agente exato (trim); ordena por `created_at` desc e `id` desc; limite entre 1 e 1000; erros via `resultado(res, 'Listar eventos')`. Exportado no barrel `src/services/index.ts` (demais exports mantidos). `npm run typecheck` e `npm test` OK. |
+| 2026-10-12 01:13 | DashboardAI-Clone 04 (Grok Bot) | SUB-35.14 | — | Lock: assumindo SUB-35.14 (`mesclarEvento()` em `src/lib/monitor.ts`) |
