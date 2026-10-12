@@ -60,6 +60,17 @@
 | **Data e Hora de Início:** | 2026-10-12 01:40 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-35.30
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.30** |
+| **Título da Sub-task:** | Tela `MonitorView` em `src/views/MonitorView.tsx` |
+| **Agente Responsável:** | DashboardAI-Clone 10 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:41 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
@@ -2229,7 +2240,7 @@
   - `SUB-35.27`: Linha do tempo `LinhaDoTempoAgentes` em `src/components/monitor/LinhaDoTempoAgentes.tsx` (`concluido`)
   - `SUB-35.28`: Feed `FeedEventos` em `src/components/monitor/FeedEventos.tsx` (`pendente`)
   - `SUB-35.29`: Indicador `IndicadorAoVivo` em `src/components/monitor/IndicadorAoVivo.tsx` (`concluido`)
-  - `SUB-35.30`: Tela `MonitorView` em `src/views/MonitorView.tsx` (`pendente`)
+  - `SUB-35.30`: Tela `MonitorView` em `src/views/MonitorView.tsx` (`em_execucao`)
   - `SUB-35.31`: Registrar a tela `monitor` (rota `#/monitor` e menu) (`pendente`)
   - `SUB-35.32`: Validação visual do monitor (SUB-35) (`pendente`)
   - `SUB-35.33`: `emitirEvento()` em `worker/eventos.ts` (`pendente`)
@@ -2543,8 +2554,8 @@
 - **Anotação:** Criado `src/components/monitor/IndicadorAoVivo.tsx` (`statusConexao: StatusConexaoEventos`, `recarregar`): pílula "Ao vivo" com ponto pulsando, "Conectando…" ou "Sem conexão — recarregar" (`role=status`, `aria-live`) e botão "Recarregar" que chama `recarregar`. Exportado no barrel `src/components/monitor/index.ts`. typecheck, `npm test` e `npm run build` OK.
 
 #### [ ] SUB-35.30: Tela `MonitorView` em `src/views/MonitorView.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:41)
 - **Depende de:** SUB-35.20, SUB-35.24, SUB-35.25, SUB-35.26, SUB-35.27, SUB-35.28, SUB-35.29
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Compor a tela: projeto de `useProjetoAtual`, `useEventosAgentes` + `useAtividadeAgentes`, cabeçalho com `IndicadorAoVivo`, `AtividadeAgentesGrid`, os três gráficos e o `FeedEventos`; estados carregando/erro/sem projeto.
