@@ -9,9 +9,9 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 32
-- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-01.3`)
+- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
 - **Pendentes:** 21
-- **Concluídas:** 10
+- **Concluídas:** 11
 - **Canceladas:** 0
 
 ---
@@ -50,14 +50,14 @@
 - **Commit:** `97697e3`
 - **Anotação:** postcss.config.js (@tailwindcss/postcss), tailwind.config.js (content, sombra card e animação fade-in, carregado por @config), src/index.css (@import tailwindcss; @theme com fontes, paleta brand neutra e cores de status da fila pendente/execucao/concluida/recusada/erro/cancelada; variante dark por classe .dark no html; base de body/foco/seleção; componente .card; prefers-reduced-motion). src/main.tsx importa o CSS e App.tsx usa as classes. Decisão: Tailwind v4 (atual) em vez da v3, mantendo os 3 arquivos pedidos. Validado: build OK (CSS gerado com utilitários do @theme e da config JS), typecheck OK.
 
-#### [🔄] SUB-01.3: Instalação e Verificação de Ícones e Dependências Base
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:58)
+#### [x] SUB-01.3: Instalação e Verificação de Ícones e Dependências Base
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:58, conclusão: 2026-10-11 22:59)
 - **Depende de:** SUB-01.2
 - **Subtarefas:** Nenhuma (atômica)
 - **Critérios de Aceitação:** `lucide-react`, `clsx`, `tailwind-merge` prontos para importação.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `25b9664`
+- **Anotação:** Dependências lucide-react, clsx e tailwind-merge; src/lib/utils.ts com cn(...classes) = twMerge(clsx(...)) para classes condicionais sem conflito de Tailwind; App.tsx usa ícones Lucide e cn() (cards Fila, Memória, Agendador). Validado: cn('px-2 py-1', true && 'bg-brand-600', false && 'hidden', 'px-4') = 'py-1 bg-brand-600 px-4'; build e typecheck (frontend + api) OK; npm audit sem vulnerabilidades.
 
 ### [ ] SUB-02: Estrutura Modular de Diretórios do Frontend
 - **Status:** pendente

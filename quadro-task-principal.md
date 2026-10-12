@@ -44,28 +44,16 @@
 | **Data e Hora de Início:** | 2026-10-11 22:41 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot)
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-01.3** |
-| **Título da Sub-task:** | Instalação de Lucide Icons e Utilitários Base |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-11 22:58 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27** | Autenticação e Login com Supabase Auth | Codex (OpenAI) | 2026-10-11 22:27 | SUB-03, SUB-29 |
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` | xAI (Grok) | 2026-10-11 22:41 | SUB-06 |
-| **SUB-01.3** | Instalação de Lucide Icons e Utilitários Base | DashboardAI (Grok Bot) | 2026-10-11 22:58 | SUB-01.2 |
 
 ---
 
@@ -97,7 +85,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (10)
+### ✅ CONCLUÍDAS (11)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -111,6 +99,7 @@
 | **SUB-31** | Recados entre Agentes e Regras por Projeto | DashboardAI (Grok Bot) | 2026-10-11 22:47 | 2026-10-11 22:49 | `0b34257` |
 | **SUB-01.1** | Inicialização do package.json, Vite, React e TypeScript | DashboardAI (Grok Bot) | 2026-10-11 22:56 | 2026-10-11 22:57 | `374dc99` |
 | **SUB-01.2** | Configuração do Tailwind CSS, PostCSS e Estilos Globais | DashboardAI (Grok Bot) | 2026-10-11 22:57 | 2026-10-11 22:58 | `97697e3` |
+| **SUB-01.3** | Instalação de Lucide Icons e Utilitários Base | DashboardAI (Grok Bot) | 2026-10-11 22:58 | 2026-10-11 22:59 | `25b9664` |
 
 ---
 
@@ -138,3 +127,4 @@
 | 2026-10-11 22:56 | DashboardAI (Grok Bot) | Liberação SUB-01.1 | — | Trava de Gemini (Antigravity) em SUB-01.1/SUB-01 liberada por decisão do usuário (parada desde 2026-10-11 22:13, sem pushes); SUB-01.1 assumida por DashboardAI (Grok Bot) |
 | 2026-10-11 22:57 | DashboardAI (Grok Bot) | SUB-01.1 | `374dc99` | package.json, Vite 8 + React 19 + TS 5.9 (tsconfig app/node com referências), index.html, src/main.tsx e App.tsx; typecheck de api/ preservado; build OK |
 | 2026-10-11 22:58 | DashboardAI (Grok Bot) | SUB-01.2 | `97697e3` | Tailwind v4 via @tailwindcss/postcss, tailwind.config.js (@config), src/index.css com @theme, dark por classe e estilos base |
+| 2026-10-11 22:59 | DashboardAI (Grok Bot) | SUB-01.3 | `25b9664` | lucide-react, clsx, tailwind-merge + src/lib/utils.ts (cn); casca usa ícones |
