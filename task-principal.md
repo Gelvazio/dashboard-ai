@@ -49,17 +49,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.28
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-27.28** |
-| **Título da Sub-task:** | Varredura do bundle por `service_role` (SUB-27) |
-| **Agente Responsável:** | DashboardAI-Clone 01 |
-| **Data e Hora de Início:** | 2026-10-12 01:42 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-35.31
 
 | Propriedade | Valor Atual |
@@ -1826,15 +1815,15 @@
 - **Commit:** `a7817f8`
 - **Anotação:** O `Header` renderiza o `UserMenu` (SUB-27.14) depois do `ThemeToggle`, separado por uma borda, só quando há usuário logado; lê o `AuthContext` com `useContext` (tolerante fora do `AuthProvider`, como o `ProjetoContext`), então nada quebra até a SUB-27.13 montar o provider no `App`. Para caber em 390 px, o ícone de usuário e o selo Admin do `UserMenu` ficam só a partir de `sm` (no celular sobra só o botão Sair com ícone). `npm run typecheck`, `npm run build` e `npm test` OK; screenshots headless do header em 1280 e 390 px conferidos com sessão simulada (harness temporário, não commitado).
 
-#### [ ] SUB-27.28: Varredura do bundle por `service_role` (SUB-27)
-- **Status:** em_execucao
+#### [x] SUB-27.28: Varredura do bundle por `service_role` (SUB-27)
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.22
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Após `npm run build`, rodar `rg -n service_role dist/` e conferir que só aparecem as mensagens de recusa do `getSupabase()`; registrar na anotação da SUB-27.
 - **Critérios de Aceitação:** Critérios de aceitação da SUB-27 atendidos; nenhuma chave no bundle.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `(este commit)`
+- **Anotação:** Varredura do bundle (`npm run build` na main `8b080c1`): em `dist/**/*.js` `service_role` aparece só 2 vezes, ambas na recusa do `getSupabase()` (`=== 'service_role'` e a mensagem "VITE_SUPABASE_ANON_KEY contém uma chave service_role"). Os `.map` (sourcemap ligado no `vite.config.ts`) trazem também comentários do código e da documentação do `@supabase/supabase-js`, sem valores. Nenhum JWT (`eyJ...`) nem chave `sk-` real no bundle (único casamento de `sk-` era `task-`, falso positivo).
 
 ---
 
