@@ -1477,7 +1477,7 @@
   - `SUB-27.18`: Validação automatizada da SUB-27 (`pendente`)
   - `SUB-27.19`: `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx` (`pendente`)
   - `SUB-27.20`: Limpar `ProjetoContext` ao sair (`pendente`)
-  - `SUB-27.21`: Documentar primeiro administrador e membros em `database/README.md` (`em_execucao`)
+  - `SUB-27.21`: Documentar primeiro administrador e membros em `database/README.md` (`concluido`, `663e597`)
   - `SUB-27.22`: Conferência no navegador (entrar, sair, restaurar sessão) — SUB-27 (`pendente`)
   - `SUB-27.23`: `obterSessao()` em `src/services/authService.ts` (`pendente`)
   - `SUB-27.24`: `redefinirSenha()` em `src/services/authService.ts` (`pendente`)
@@ -1690,15 +1690,15 @@
 - **Commit:** `74588f7`
 - **Anotação:** Em `src/hooks/ProjetoContext.tsx`, lê a sessão do `AuthContext` (equivalente a `useAuth`, porém tolerante fora do `AuthProvider` até a SUB-27.13 integrar o provider no App): sem sessão limpa `projetos` e `erro` mantendo o slug salvo; ao logar recarrega. typecheck, vitest e build OK.
 
-#### [ ] SUB-27.21: Documentar primeiro administrador e membros em `database/README.md`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 01:16)
+#### [x] SUB-27.21: Documentar primeiro administrador e membros em `database/README.md`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 01:16; conclusão: 2026-10-12 01:17)
 - **Depende de:** SUB-27.13
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Como criar o primeiro admin (`insert into user_roles (user_id, role) values (..., 'admin')` no SQL editor) e adicionar membros em `project_members` (owner/editor/viewer). Sem chaves reais.
 - **Critérios de Aceitação:** Documentação revisada.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `663e597`
+- **Anotação:** Nova seção "Primeiro administrador e membros" no `database/README.md` (substitui o trecho curto de "Como aplicar"): tabela de papéis (`user_roles` admin/member; `project_members` owner > editor > viewer), como achar o `auth.users.id`, `insert ... on conflict` do 1º admin pelo SQL Editor (a RLS só deixa admin gravar em `user_roles`), adicionar/trocar papel e remover membro por slug + e-mail, consulta de quem tem acesso e aviso sobre `service_role` x login anon e `app_metadata.role`. Só e-mails de exemplo, sem chaves. Todos os SQLs conferidos num banco local descartável (schema 00–07 + `auth.users` mínimo).
 
 #### [ ] SUB-27.22: Conferência no navegador (entrar, sair, restaurar sessão) — SUB-27
 - **Status:** pendente
