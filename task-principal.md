@@ -1680,15 +1680,15 @@
 - **Commit:** `c81668e`
 - **Anotação:** Criado `src/components/auth/RecuperarAcesso.tsx` (props `{ email }`): botões "Entrar com link por e-mail" (`enviarLinkMagico`) e "Esqueci a senha" (`redefinirSenha`) com `urlDeRetorno(window.location)`, carregando por ação e aviso de confirmação/erro (role status/alert); e-mail vazio pede preenchimento. typecheck OK.
 
-#### [ ] SUB-27.20: Limpar `ProjetoContext` ao sair
-- **Status:** em_execucao
+#### [x] SUB-27.20: Limpar `ProjetoContext` ao sair
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.26
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Em `src/hooks/ProjetoContext.tsx`, limpar `projetos` e erro quando não houver sessão (usando `useAuth`), sem perder o slug salvo.
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `74588f7`
+- **Anotação:** Em `src/hooks/ProjetoContext.tsx`, lê a sessão do `AuthContext` (equivalente a `useAuth`, porém tolerante fora do `AuthProvider` até a SUB-27.13 integrar o provider no App): sem sessão limpa `projetos` e `erro` mantendo o slug salvo; ao logar recarrega. typecheck, vitest e build OK.
 
 #### [ ] SUB-27.21: Documentar primeiro administrador e membros em `database/README.md`
 - **Status:** pendente
