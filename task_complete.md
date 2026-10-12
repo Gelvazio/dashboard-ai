@@ -2132,6 +2132,17 @@
 - **Anotação:** Em `tests/unit/worker-grafo.test.ts`, novo bloco com `MemorySaver` e `interrupt` real (sem `pedirAprovacao` injetado): passo sensível para em `politica` (`getState` com `next = [politica]` e o pedido de aprovação) sem chamar a ferramenta nem finalizar; `Command({ resume: { aprovado: true } })` executa o passo uma única vez com a chave `exec-5:passo-0` e finaliza `concluida`, e repetir a retomada na mesma thread não reexecuta nem finaliza de novo; com `executarUmaTask` + `reconciliar` real e trava de 91 min (limite 90), a retomada aborta com `trava expirada` sem invocar o grafo. `npm test` 290 aprovados / 30 pulados; `typecheck` OK.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:48 (confirmado por Devin (Cognition AI))
 
+#### [x] SUB-28.16: Endpoint `api/aprovacao.ts`: autenticação e papel (401/403)
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:48, conclusão: 2026-10-12 13:50)
+- **Depende de:** SUB-28.15, SUB-33.2, SUB-27.26
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** `POST /api/aprovacao` exige JWT (`bearerToken` + `verificarSessaoSupabase`) e papel editor no projeto da task (`tem_acesso_projeto`); 401 sem sessão, 403 sem papel, 400 corpo inválido. A retomada fica na SUB-28.23.
+- **Critérios de Aceitação:** `typecheck:api` OK; testes 401/403/400.
+- **Commit:** `2adb51d`
+- **Anotação:** Criei `api/aprovacao.ts` (POST, CORS/OPTIONS/405 como `api/embedding.ts`): JWT via `bearerToken` + `verificarSessaoSupabase` (401 com `WWW-Authenticate`), corpo `{ taskId, aprovado, motivo? }` validado por `lerPedidoAprovacao` (400), `project_id` da task pelo service_role (404) e `tem_acesso_projeto(projeto, editor)` chamado no PostgREST com o JWT do usuário (403); falha da validação de sessão/papel -> 503. Deps injetáveis em `criarHandlerAprovacao`; sem `retomar` o pedido autorizado recebe 501, que a SUB-28.23 substitui pela retomada. `tests/unit/api-aprovacao.test.ts` (8 testes). `npm test` 298 aprovados / 30 pulados; `typecheck`, `typecheck:api`, `check:env` e `build` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:50 (confirmado por Devin (Cognition AI))
+
 ---
 
 ## 📡 FASE 12: Monitor em Tempo Real dos Agentes
