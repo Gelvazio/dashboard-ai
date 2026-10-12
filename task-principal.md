@@ -45,14 +45,25 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
+### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.19
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-28.19** |
+| **Título da Sub-task:** | Adaptar ferramentas para `tool()` do LangChain em `worker/ferramentas.ts` |
+| **Agente Responsável:** | Devin (Cognition AI) |
+| **Data e Hora de Início:** | 2026-10-12 12:39 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202
-- **Em Execução:** 0
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 37 subtarefas
-  - livres agora: 11 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.7, SUB-28.10, SUB-28.11, SUB-28.13, SUB-28.14, SUB-28.19, SUB-35.32, SUB-35.33)
+- **Em Execução:** 1 (SUB-28.19, Devin (Cognition AI), desde 2026-10-12 12:39)
+- **Pendentes:** 4 principais (25, 26, 28, 35) + 36 subtarefas
+  - livres agora: 10 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.7, SUB-28.10, SUB-28.11, SUB-28.13, SUB-28.14, SUB-35.32, SUB-35.33)
   - bloqueadas por dependência: 26
   - reservadas: 0
 - **Concluídas:** 198 de 239 blocos (33 principais + 165 subtarefas)
@@ -1979,7 +1990,7 @@
   - `SUB-28.16`: Endpoint `api/aprovacao.ts`: autenticação e papel (401/403) (`pendente`)
   - `SUB-28.17`: Testes do worker: caminho feliz e erro (`pendente`)
   - `SUB-28.18`: Atualizar `LangChain_LangGraph.md` (status e desvios) (`pendente`)
-  - `SUB-28.19`: Adaptar ferramentas para `tool()` do LangChain em `worker/ferramentas.ts` (`pendente`)
+  - `SUB-28.19`: Adaptar ferramentas para `tool()` do LangChain em `worker/ferramentas.ts` (`em_execucao`)
   - `SUB-28.20`: `PlanoSchema` em `worker/plano.ts` (`concluido`, `048e647`)
   - `SUB-28.21`: `classificarFalha(err)` em `worker/falhas.ts` (`concluido`, `04c0f02`)
   - `SUB-28.22`: `executarUmaTask(deps)` em `worker/executar.ts` (`pendente`)
@@ -2198,8 +2209,8 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.19: Adaptar ferramentas para `tool()` do LangChain em `worker/ferramentas.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:39)
 - **Depende de:** SUB-28.5
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Converter cada ferramenta permitida em `tool()` do LangChain com schema zod derivado do `inputSchema` MCP, validando argumentos antes de chamar o handler.
