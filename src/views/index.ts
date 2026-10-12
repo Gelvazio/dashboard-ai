@@ -14,11 +14,13 @@ export { VIEWS, tituloDaView } from './meta';
 const FilaView = lazy(() => import('./FilaView').then((m) => ({ default: m.FilaView })));
 const MemoriaView = lazy(() => import('./MemoriaView').then((m) => ({ default: m.MemoriaView })));
 const LogsView = lazy(() => import('./LogsView').then((m) => ({ default: m.LogsView })));
+const MonitorView = lazy(() => import('./MonitorView').then((m) => ({ default: m.MonitorView })));
 const ConfiguracoesView = lazy(() => import('./ConfiguracoesView').then((m) => ({ default: m.ConfiguracoesView })));
 
 export const TELAS: Record<ViewId, ComponentType> = {
   fila: FilaView,
   memoria: MemoriaView,
   logs: LogsView,
+  monitor: MonitorView,
   configuracoes: ConfiguracoesView,
 };

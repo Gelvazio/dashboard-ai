@@ -1,4 +1,4 @@
-import { Brain, ListTodo, ScrollText, Settings, X, type LucideIcon } from 'lucide-react';
+import { Activity, Brain, ListTodo, ScrollText, Settings, X, type LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { ViewId } from '@/types';
 import { VIEWS } from '@/views/meta';
@@ -7,6 +7,7 @@ const ICONES: Record<ViewId, LucideIcon> = {
   fila: ListTodo,
   memoria: Brain,
   logs: ScrollText,
+  monitor: Activity,
   configuracoes: Settings,
 };
 

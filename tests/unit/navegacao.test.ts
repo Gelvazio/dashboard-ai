@@ -9,6 +9,8 @@ describe('navegação e tema', () => {
     expect(viewDoHash('')).toBe('fila');
     expect(viewDoHash('#/nao-existe')).toBe('fila');
     expect(hashDaView('logs')).toBe('#/logs');
+    expect(viewDoHash('#/monitor')).toBe('monitor');
+    expect(hashDaView('monitor')).toBe('#/monitor');
   });
 
   it('tema efetivo e ciclo do botão', () => {

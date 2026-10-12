@@ -1,6 +1,6 @@
 import type { ViewId } from '@/types';
 
-export const VIEW_IDS: readonly ViewId[] = ['fila', 'memoria', 'logs', 'configuracoes'];
+export const VIEW_IDS: readonly ViewId[] = ['fila', 'memoria', 'logs', 'monitor', 'configuracoes'];
 export const VIEW_PADRAO: ViewId = 'fila';
 
 /** Lê a tela atual do hash (`#/memoria`). Valores desconhecidos caem na tela padrão. */
