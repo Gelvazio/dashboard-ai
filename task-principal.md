@@ -1100,7 +1100,7 @@
   - `SUB-23.9`: Alerta de trava presa na `src/views/FilaView.tsx` (`concluido`)
   - `SUB-23.10`: `TravaItem` em `src/components/tasks/TravaItem.tsx` (`concluido`)
   - `SUB-23.11`: `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx` (`concluido`, `5bce2d7`)
-  - `SUB-23.12`: Teste de integração de `liberarTrava`: viewer e outro projeto (`pendente`)
+  - `SUB-23.12`: Teste de integração de `liberarTrava`: viewer e outro projeto (`em_execucao`)
   - `SUB-23.13`: `travaExpirada` em `src/lib/saudeFila.ts` (`pendente`)
 - **Descrição:** Painel indicando se há lock ativo (task com `trava_frente` e `trava_em` dentro dos 90 minutos) e botão de liberação manual de trava caso expire.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
@@ -1218,9 +1218,9 @@
 - **Commit:** `5bce2d7`
 - **Anotação:** Criado `src/components/tasks/PendentesResumo.tsx` (`{ pendentes: PendentesClassificadas, className? }`): grade responsiva com 5 contadores (Prontas, Bloqueadas por dependência, Desligadas, Agendadas, Sem tentativas) na ordem de `classificarPendentes`, cada um com ícone lucide colorido (claro/escuro), `Tooltip` explicando o grupo e `aria-label` com rótulo, total e dica (focável por teclado). Exportado em `src/components/tasks/index.ts`. `npm run typecheck`, `npm test` e `npm run build` OK.
 
-#### [ ] SUB-23.12: Teste de integração de `liberarTrava`: viewer e outro projeto
-- **Status:** pendente
-- **Executor:** nenhum
+#### [🔄] SUB-23.12: Teste de integração de `liberarTrava`: viewer e outro projeto
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-23.4
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Em `tests/integration/taskService.integration.test.ts`: viewer é recusado ao liberar trava; task de outro projeto é recusada por `liberarTrava(projectId errado, id)`.
