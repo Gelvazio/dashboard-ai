@@ -1099,7 +1099,7 @@
   - `SUB-23.8`: Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` (`pendente`)
   - `SUB-23.9`: Alerta de trava presa na `src/views/FilaView.tsx` (`pendente`)
   - `SUB-23.10`: `TravaItem` em `src/components/tasks/TravaItem.tsx` (`pendente`)
-  - `SUB-23.11`: `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx` (`em_execucao`)
+  - `SUB-23.11`: `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx` (`concluido`, `5bce2d7`)
   - `SUB-23.12`: Teste de integração de `liberarTrava`: viewer e outro projeto (`pendente`)
   - `SUB-23.13`: `travaExpirada` em `src/lib/saudeFila.ts` (`pendente`)
 - **Descrição:** Painel indicando se há lock ativo (task com `trava_frente` e `trava_em` dentro dos 90 minutos) e botão de liberação manual de trava caso expire.
@@ -1208,15 +1208,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-23.11: `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 00:55)
+#### [x] SUB-23.11: `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 00:55, conclusão: 2026-10-12 00:56)
 - **Depende de:** SUB-23.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Contadores das pendentes por grupo (`classificarPendentes`: prontas, bloqueadas por dependência, desligadas, agendadas, sem tentativas) com ícones e tooltips.
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `5bce2d7`
+- **Anotação:** Criado `src/components/tasks/PendentesResumo.tsx` (`{ pendentes: PendentesClassificadas, className? }`): grade responsiva com 5 contadores (Prontas, Bloqueadas por dependência, Desligadas, Agendadas, Sem tentativas) na ordem de `classificarPendentes`, cada um com ícone lucide colorido (claro/escuro), `Tooltip` explicando o grupo e `aria-label` com rótulo, total e dica (focável por teclado). Exportado em `src/components/tasks/index.ts`. `npm run typecheck`, `npm test` e `npm run build` OK.
 
 #### [ ] SUB-23.12: Teste de integração de `liberarTrava`: viewer e outro projeto
 - **Status:** pendente

@@ -44,17 +44,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:54 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-23.11
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-23.11** |
-| **Título da Sub-task:** | `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx` |
-| **Agente Responsável:** | DashboardAI-Clone 10 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 00:55 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 06 — SUB-20.6
 
 | Propriedade | Valor Atual |
@@ -114,7 +103,7 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (6)
+### 🔄 EM EXECUÇÃO (5)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
@@ -123,13 +112,12 @@
 | **SUB-27.26** | Hook `useAuth` em `src/hooks/useAuth.ts` | DashboardAI-Clone 01 | 2026-10-12 00:56 | SUB-27.9 |
 | **SUB-21.2** | `filtrarMemoriasLocal` em `src/lib/memorias.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 00:55 | SUB-21.13 |
 | **SUB-20.6** | Modal `MemoriaFormModal` em `src/components/memoria/` | DashboardAI-Clone 06 | 2026-10-12 00:55 | SUB-20.1, SUB-20.3, SUB-20.4, SUB-20.5, SUB-20.8, SUB-20.9 |
-| **SUB-23.11** | `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:55 | SUB-23.3 |
 | **SUB-23.6** | Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts` | DashboardAI-Clone 02 | 2026-10-12 00:54 | SUB-23.3, SUB-23.4 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
 
-### ⏳ PENDENTES (178)
+### ⏳ PENDENTES (177)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -155,7 +143,6 @@
 | **SUB-23.8** | Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` | 4 | Fase 8 | SUB-23.7 — ⛓️ bloqueada |
 | **SUB-23.9** | Alerta de trava presa na `src/views/FilaView.tsx` | 4 | Fase 8 | SUB-23.3 — ⛓️ bloqueada |
 | **SUB-23.10** | `TravaItem` em `src/components/tasks/TravaItem.tsx` | 4 | Fase 8 | SUB-23.6 — ⛓️ bloqueada |
-| **SUB-23.11** | `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx` | 4 | Fase 8 | SUB-23.3 — 🔄 em execução por DashboardAI-Clone 10 (Grok Bot) |
 | **SUB-23.12** | Teste de integração de `liberarTrava`: viewer e outro projeto | 4 | Fase 8 | SUB-23.4 — 🟢 livre |
 | **SUB-23.13** | `travaExpirada` em `src/lib/saudeFila.ts` | 4 | Fase 8 | SUB-23.1 — ⛓️ bloqueada |
 | **SUB-19** | Interface de Pesquisa Semântica Vetorial (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-19.1 a SUB-19.10 |
@@ -310,7 +297,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (59)
+### ✅ CONCLUÍDAS (60)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -377,6 +364,7 @@
 | **SUB-19.10** | `classeSimilaridade` em `src/lib/similaridade.ts` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:51 | 2026-10-12 00:52 | `4f6700d` |
 | **SUB-19.4** | Componente `SimilaridadeBadge` em `src/components/memoria/` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:52 | 2026-10-12 00:53 | `ef9ec9b` |
 | **SUB-19.5** | Componente `ResultadoBuscaCard` em `src/components/memoria/` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:54 | 2026-10-12 00:54 | `c92d3f9` |
+| **SUB-23.11** | `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:55 | 2026-10-12 00:56 | `5bce2d7` |
 
 n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | Claude Code | 2026-10-12 00:50 | 2026-10-12 00:51 | `fc4c3ee` |
 || **SUB-20.1** | `validarMemoria(dados)` em `src/lib/memoriaForm.ts` | DashboardAI-Clone 06 | 2026-10-12 00:46 | 2026-10-12 00:47 | `5662f1a` |
@@ -547,3 +535,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:56 | DashboardAI-Clone 01 | SUB-27.26 | — | Lock: assumindo SUB-27.26 (Hook `useAuth` em `src/hooks/useAuth.ts`) |
 | 2026-10-12 00:56 | DashboardAI-Clone 08 (Grok Bot) | SUB-08.10 | — | Lock: assumindo SUB-08.10 (`variaveisDoExemplo(texto)` em `scripts/checar-env.mjs` + testes) |
 | 2026-10-12 00:56 | DashboardAI-Clone 04 (Grok Bot) | SUB-19.2 | — | Lock: assumindo SUB-19.2 (Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts`) |
+| 2026-10-12 00:56 | DashboardAI-Clone 10 (Grok Bot) | SUB-23.11 | `5bce2d7` | Criado `src/components/tasks/PendentesResumo.tsx` (`{ pendentes: PendentesClassificadas, className? }`): grade responsiva com 5 contadores (Prontas, Bloqueadas por dependência, Desligadas, Agendadas, Sem tentativas) na ordem de `classificarPendentes`, cada um com ícone lucide colorido (claro/escuro), `Tooltip` explicando o grupo e `aria-label` com rótulo, total e dica (focável por teclado). Exportado em `src/components/tasks/index.ts`. `npm run typecheck`, `npm test` e `npm run build` OK. |
