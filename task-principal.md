@@ -2187,7 +2187,7 @@
   - `SUB-35.40`: Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts` (`pendente`)
   - `SUB-35.41`: Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts` (`pendente`)
   - `SUB-35.42`: `commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py` (`concluido`)
-  - `SUB-35.43`: CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`) (`em_execucao`)
+  - `SUB-35.43`: CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`) (`concluido`)
   - `SUB-35.44`: Seção "Monitor em tempo real" no `README.md` (`pendente`)
   - `SUB-35.45`: Seção "Reporte de progresso (opcional)" no `AGENTS.md` (`pendente`)
   - `SUB-35.46`: Validação automatizada da SUB-35 (`pendente`)
@@ -2617,15 +2617,15 @@
 - **Commit:** `53a5c93`
 - **Anotação:** Criado `scripts/espelhar_quadro_eventos.py` com a função pura `commits_para_eventos(linhas)` (entrada `git log --format='%H%x09%aI%x09%s'`): `lock: assumindo sub-task SUB-X por <agente>` -> `trava`; `feat(SUB-X): … — <agente>` -> `commit`; `docs(board): concluir SUB-X … de <agente>` -> `fim`; agente ausente vira 'desconhecido'; `chave_idempotencia = 'git:<sha>'`, `metadados.sha`, `created_at` = data do commit; linhas malformadas/outros commits ignorados. Testes em `scripts/test_espelhar_quadro_eventos.py` (4, unittest OK); conferido contra o `git log` real do repo.
 
-#### [🔄] SUB-35.43: CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`)
-- **Status:** em_execucao
+#### [x] SUB-35.43: CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`)
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-35.42
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Ler `git log` (`--desde`, `--projeto`), por padrão só listar; com `--aplicar` enviar ao PostgREST com a service_role do `.env` e `Prefer: resolution=ignore-duplicates` em `on_conflict=project_id,chave_idempotencia` (reexecutar não duplica). Para agentes que só usam o quadro em Markdown.
 - **Critérios de Aceitação:** Dry-run lista os eventos do repositório; teste da função segue verde; nenhuma chave impressa.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `e8917a3`
+- **Anotação:** CLI em `scripts/espelhar_quadro_eventos.py`: lê `git log --reverse` (`--desde`, `--repo`), lista os eventos (dry-run por padrão) e com `--aplicar` envia em lotes a `agent_events` via `ClienteSupabase`/`.env` do `sincronizar_tasks.py` (service_role, `--projeto` ou `DASHBOARD_AI_PROJECT`) com `on_conflict=project_id,chave_idempotencia` e `Prefer: resolution=ignore-duplicates`. Teste unitário de `enviar_eventos` (5 testes OK). Validado ponta a ponta com Postgres + PostgREST locais: 216 eventos enviados 2x -> 216 linhas, sem duplicar.
 
 #### [ ] SUB-35.44: Seção "Monitor em tempo real" no `README.md`
 - **Status:** pendente

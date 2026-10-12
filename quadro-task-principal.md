@@ -44,17 +44,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:08 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-35.43
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.43** |
-| **Título da Sub-task:** | CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`) |
-| **Agente Responsável:** | DashboardAI-Clone 02 |
-| **Data e Hora de Início:** | 2026-10-12 01:08 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — SUB-37
 
 | Propriedade | Valor Atual |
@@ -75,7 +64,6 @@
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-37** | Ranking e prêmios dos agentes no `dashboard-task-principal.html` | DashboardAI (Grok Bot) | 2026-10-12 01:09 | Nenhuma |
-| **SUB-35.43** | CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`) | DashboardAI-Clone 02 | 2026-10-12 01:08 | SUB-35.42 |
 | **SUB-34.3** | Modais da fila sob demanda na `src/views/FilaView.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:08 | SUB-34.1 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
@@ -207,7 +195,6 @@
 | **SUB-35.38** | Ligar o heartbeat no CLI `worker/index.ts` | 4 | Fase 12 | SUB-35.37, SUB-28.15 — ⛓️ bloqueada |
 | **SUB-35.39** | Teste do worker: eventos emitidos na ordem dos nós | 4 | Fase 12 | SUB-35.36, SUB-28.17 — ⛓️ bloqueada |
 | **SUB-35.41** | Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts` | 4 | Fase 12 | SUB-35.40 — ⛓️ bloqueada |
-| **SUB-35.43** | CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`) | 4 | Fase 12 | SUB-35.42 — 🔄 em execução por DashboardAI-Clone 02 |
 | **SUB-35.44** | Seção "Monitor em tempo real" no `README.md` | 4 | Fase 12 | SUB-35.31, SUB-35.40, SUB-35.43 — ⛓️ bloqueada |
 | **SUB-35.45** | Seção "Reporte de progresso (opcional)" no `AGENTS.md` | 4 | Fase 12 | SUB-35.41 — ⛓️ bloqueada |
 | **SUB-35.46** | Validação automatizada da SUB-35 | 4 | Fase 12 | SUB-35.7, SUB-35.12, SUB-35.13, SUB-35.32, SUB-35.34, SUB-35.38, SUB-35.39, SUB-35.41, SUB-35.43, SUB-35.44, SUB-35.45 — ⛓️ bloqueada |
@@ -344,6 +331,7 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | **SUB-35.4** | Publicar `agent_events` no Supabase Realtime | DashboardAI-Clone 02 | 2026-10-12 01:07 | 2026-10-12 01:07 | `95f12ff` |
 | **SUB-35.5** | Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` | DashboardAI-Clone 02 | 2026-10-12 01:08 | 2026-10-12 01:07 | `d9d9a6c` |
 | **SUB-35.42** | `commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py` | DashboardAI-Clone 02 | 2026-10-12 01:08 | 2026-10-12 01:08 | `53a5c93` |
+| **SUB-35.43** | CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`) | DashboardAI-Clone 02 | 2026-10-12 01:09 | 2026-10-12 01:10 | `e8917a3` |
 ---
 
 ### ⛔ CANCELADAS (0)
@@ -599,3 +587,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:09 | DashboardAI-Clone 04 (Grok Bot) | SUB-19.8 | `37df2a9` | Na `src/views/MemoriaView.tsx`, a área reservada do topo virou a seção "Busca semântica" (título com ícone `Sparkles`, `aria-labelledby`) com `BuscaSemanticaPanel` (SUB-19.7) recebendo o projeto de `useProjetoAtual`, acima da grade; clicar num resultado abre o `MemoriaDetailModal` (SUB-21.11) quando a memória está na lista carregada. Conflito de comentário com a SUB-21.11 resolvido. `npm run typecheck`, `npm test` e `npm run build` OK; `#/memoria` conferido no navegador (sem Supabase local mostra o aviso de configuração). |
 | 2026-10-12 01:09 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.6 | `e7a39cd` | Criado `tests/integration/agentEvents.integration.test.ts` (helpers de `tests/helpers/postgrest.ts`; cliente sem tipagem de tabela até a SUB-35.8 incluir `agent_events` no tipo `Database`): viewer lê só eventos do próprio projeto; viewer não inclui (RLS); editor inclui no próprio projeto com `agente` aparado e `criado_por` = ele; update recusado (permission denied, nada alterado); task de outro projeto recusada pelo trigger ("não pertence ao projeto do evento"). `npm run test:integration` (PostgREST + Postgres 17 locais, Node 22) verde: 6 arquivos, 23 testes; `npm test` verde (skipped sem PostgREST); `npm run typecheck` OK. Obs.: no box o Node padrão é 20 e o supabase-js exige Node 22+ para a integração. |
 | 2026-10-12 01:09 | DashboardAI (Grok Bot) | SUB-37 | — | Lock: assumindo SUB-37 (Ranking e prêmios dos agentes no `dashboard-task-principal.html`) — criada a pedido do usuário (prêmios para o agente que mais entrega) |
+| 2026-10-12 01:10 | DashboardAI-Clone 02 | SUB-35.43 | `e8917a3` | CLI em `scripts/espelhar_quadro_eventos.py`: lê `git log --reverse` (`--desde`, `--repo`), lista os eventos (dry-run por padrão) e com `--aplicar` envia em lotes a `agent_events` via `ClienteSupabase`/`.env` do `sincronizar_tasks.py` (service_role, `--projeto` ou `DASHBOARD_AI_PROJECT`) com `on_conflict=project_id,chave_idempotencia` e `Prefer: resolution=ignore-duplicates`. Teste unitário de `enviar_eventos` (5 testes OK). Validado ponta a ponta com Postgres + PostgREST locais: 216 eventos enviados 2x -> 216 linhas, sem duplicar. |
