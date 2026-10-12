@@ -2,11 +2,14 @@
  * POST /api/embedding — gera o embedding de um texto no servidor, para o
  * navegador nunca precisar da chave do provedor (SUB-33).
  *
- * CORS, OPTIONS e 405 (SUB-33.4); autenticação com sessão do Supabase (SUB-33.10).
- * A geração do embedding (SUB-33.11) substitui o 501 provisório abaixo.
+ * CORS, OPTIONS e 405 (SUB-33.4); autenticação com sessão do Supabase (SUB-33.10);
+ * corpo `{ texto }` -> 200 `{ embedding, dimensoes, modelo }`, 400/413/502 (SUB-33.11).
  */
 import { AuthError, bearerToken, verificarSessaoSupabase } from './_lib/auth.js';
+import { lerTextoEmbedding } from './_lib/embedding-input.js';
+import { EMBEDDING_DIMENSIONS, EmbeddingError, generateEmbedding } from './_lib/embeddings.js';
 import type { McpRequest, McpResponse } from './_lib/http.js';
+import { HttpError } from './_lib/http-error.js';
 
 function setCors(res: McpResponse): void {
   res.setHeader('Access-Control-Allow-Origin', process.env.MCP_CORS_ORIGIN ?? '*');
@@ -44,6 +47,20 @@ export default async function handler(req: McpRequest, res: McpResponse) {
     return res.status(401).json({ erro: 'Não autorizado: faça login novamente.' });
   }
 
-  // Provisório até a SUB-33.11.
-  return res.status(501).json({ erro: 'Geração de embedding ainda não disponível.' });
+  // Corpo e geração do embedding (SUB-33.11).
+  try {
+    const texto = lerTextoEmbedding(req.body);
+    const embedding = await generateEmbedding(texto);
+    const modelo = process.env.EMBEDDING_MODEL?.trim() || 'text-embedding-3-small';
+    return res.status(200).json({ embedding, dimensoes: EMBEDDING_DIMENSIONS, modelo });
+  } catch (err) {
+    if (err instanceof HttpError) {
+      return res.status(err.status).json({ erro: err.message });
+    }
+    if (err instanceof EmbeddingError) {
+      // A mensagem do provedor pode ecoar parte da chave: nunca devolvê-la ao cliente.
+      return res.status(502).json({ erro: 'Falha ao gerar o embedding no provedor configurado.' });
+    }
+    throw err;
+  }
 }
