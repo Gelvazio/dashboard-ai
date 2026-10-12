@@ -369,7 +369,7 @@
 - **Commit:** pendente
 - **Anotação:** Trava de DashboardAI-Clone 07 (Grok Bot) (desde 2026-10-12 01:49, commit `8d700c5`) liberada em 2026-10-12 a pedido do usuário, sem entrega registrada; tarefa volta a ficar livre.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:50 (Devin): pendente, sem executor. Não há registro de screenshots no `docs/VALIDACAO.md` nem na anotação; depende de navegador e banco local (não usado nesta verificação).
 
 #### [ ] SUB-35.46: Validação automatizada da SUB-35
 - **Status:** pendente
