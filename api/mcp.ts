@@ -15,6 +15,7 @@
  * Ferramentas registradas:
  *   - fila de tasks (multi-projeto): task_next, task_finish, task_list, task_create (_lib/queue-tools.ts)
  *   - memória por projeto: brain_store, brain_search, brain_delete (_lib/brain-tools.ts)
+ *   - monitor dos agentes: agent_event (_lib/event-tools.ts)
  *
  * Segurança opcional: se a variável MCP_AUTH_TOKEN estiver definida, exige
  * `Authorization: Bearer <MCP_AUTH_TOKEN>`.
@@ -34,6 +35,7 @@ import {
 import { getTool, listTools, textResult } from './_lib/tools.js';
 import './_lib/queue-tools.js'; // registra task_next, task_finish, task_list, task_create
 import './_lib/brain-tools.js'; // registra brain_store, brain_search, brain_delete
+import './_lib/event-tools.js'; // registra agent_event (monitor em tempo real, SUB-35)
 
 export const SERVER_INFO = { name: 'dashboard-ai-brain', version: '0.1.0' } as const;
 export const SUPPORTED_PROTOCOL_VERSIONS = ['2025-06-18', '2025-03-26', '2024-11-05'] as const;
