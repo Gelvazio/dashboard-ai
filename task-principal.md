@@ -33,12 +33,12 @@
 
 | Propriedade | Valor Atual |
 |---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-28.32** |
-| **Título da Sub-task:** | Registro de auditoria da aprovação |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 14:32 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
+| **Status da Trava:** | ✅ **LIVRE** |
+| **Sub-task em Execução:** | **—** |
+| **Título da Sub-task:** | — |
+| **Agente Responsável:** | — |
+| **Data e Hora de Início:** | — |
+| **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
 ---
 
@@ -175,7 +175,7 @@
   - `SUB-28.29`: Schema zod `EstadoSchema` em `worker/estado.ts` (`concluido`, `0e7a40c`)
   - `SUB-28.30`: `finalizar(...)` em `worker/fila.ts` (`concluido`, `9b27e51`)
   - `SUB-28.31`: `montarPromptPlano(estado)` em `worker/plano.ts` (`concluido`, `8a43f2b`)
-  - `SUB-28.32`: Registro de auditoria da aprovação (`em_execucao`)
+  - `SUB-28.32`: Registro de auditoria da aprovação (`concluido`, ff049de)
   - `SUB-28.33`: Corrigir `finalizar()` para a assinatura real de `finalizar_task` (`concluido`, `76f243e`)
   - `SUB-28.34`: `resumoSeguro`/`chaves` só com os passos `passo-<i>` em `worker/nos/finalizar.ts` (`concluido`, `8bc3b99`)
 - **Descrição:** Implementar a orquestração multi-etapas de execução descrita em `LangChain_LangGraph.md`, mantendo Supabase como autoridade sobre a fila, dependências, locks, tentativas e resultado. Integrar o worker LangGraph às RPCs existentes e às ferramentas MCP autorizadas, com checkpoint durável, retomada, tratamento de falhas e aprovação humana para ações sensíveis.
@@ -227,16 +227,15 @@
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
-#### [ ] SUB-28.32: Registro de auditoria da aprovação
-- **Status:** em_execucao
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:32)
+#### [x] SUB-28.32: Registro de auditoria da aprovação
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:32, conclusão: 2026-10-12 14:35)
 - **Depende de:** SUB-28.23
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Após a retomada em `api/aprovacao.ts`, registrar quem aprovou, quando, a task e a ação (sem credenciais) nos metadados da execução/log. Teste com grafo falso.
 - **Critérios de Aceitação:** `typecheck:api` OK; teste confere o registro sem credenciais.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **Commit:** ff049de
+- **Anotação:** Adicionada dependência atualizarMetadadosLog que registra auditoria da aprovação nos metadados da execução (aprovado, usuario_id, em, motivo) sem expor credenciais. Testes atualizados para verificar que metadados são chamados com os dados corretos. typecheck:api OK, testes OK (10 passed).
 
 ---
 

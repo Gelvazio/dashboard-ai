@@ -317,6 +317,17 @@
 - **Anotação:** Implementada retomada do grafo LangGraph com Command({ resume }) no thread_id da execução. Adicionadas: execucaoIdDaTask (lê o execucaoId mais recente dos logs), criarGrafoComCheckpointer (cria grafo com checkpointer Postgres), retomarGrafo (envia Command({ resume }) com decisão do usuário). Testes atualizados para cobrir os novos deps. typecheck:api OK, testes OK (9 passed).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 14:30 — Devin (Cognition AI): commit `fa99fe2` e arquivos conferidos na `main`; typecheck:api OK, testes OK (9 passed).
 
+#### [x] SUB-28.32: Registro de auditoria da aprovação
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:32, conclusão: 2026-10-12 14:35)
+- **Depende de:** SUB-28.23
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Após a retomada em `api/aprovacao.ts`, registrar quem aprovou, quando, a task e a ação (sem credenciais) nos metadados da execução/log. Teste com grafo falso.
+- **Critérios de Aceitação:** `typecheck:api` OK; teste confere o registro sem credenciais.
+- **Commit:** ff049de
+- **Anotação:** Adicionada dependência atualizarMetadadosLog que registra auditoria da aprovação nos metadados da execução (aprovado, usuario_id, em, motivo) sem expor credenciais. Testes atualizados para verificar que metadados são chamados com os dados corretos. typecheck:api OK, testes OK (10 passed).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 14:35 — Devin (Cognition AI): commit `ff049de` e arquivos conferidos na `main`; typecheck:api OK, testes OK (10 passed).
+
 #### [x] SUB-33.12: Testes do handler: 413, 502 e 200
 - **Status:** concluido
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:28 → 2026-10-12 00:29)
