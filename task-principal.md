@@ -2337,15 +2337,15 @@
 - **Commit:** `7e268fb`
 - **Anotação:** Criado `src/lib/monitor.ts` com `mesclarEvento(lista, novo, max = 200)`: `id` repetido devolve a mesma lista; insere na posição certa por `created_at` desc (evento atrasado do Realtime não vai para o topo; empate pelo `id` maior); corta em `max`; não altera a lista recebida. 6 testes em `tests/unit/monitor.test.ts`. `npm test` e `npm run typecheck` verdes.
 
-#### [🔄] SUB-35.15: `estadoDoAgente()` em `src/lib/monitor.ts`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 04 (Grok Bot) (início: 2026-10-12 01:14)
+#### [x] SUB-35.15: `estadoDoAgente()` em `src/lib/monitor.ts`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 04 (Grok Bot) (2026-10-12 01:14 → 2026-10-12 01:15)
 - **Depende de:** SUB-35.14
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `estadoDoAgente(atividade, agora = Date.now(), { ativoAteSeg = 120, ociosoAteSeg = 900 })` -> `'ativo' | 'ocioso' | 'sem_sinal' | 'finalizado'` a partir de `ultimo_em`/`ultimo_heartbeat_em` e do último `tipo`. **Só exibição:** não sugere nem libera travas. Testes no mesmo arquivo.
 - **Critérios de Aceitação:** `npm test` passa (um caso por estado).
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `c47df6b`
+- **Anotação:** Adicionado em `src/lib/monitor.ts` `estadoDoAgente(atividade, agora = Date.now(), { ativoAteSeg = 120, ociosoAteSeg = 900 })` -> `'ativo' | 'ocioso' | 'sem_sinal' | 'finalizado'` (tipo `EstadoAgente` exportado): último `tipo` `fim`/`liberacao` = finalizado; senão usa o sinal mais recente entre `ultimo_em` e `ultimo_heartbeat_em` (até 120 s ativo, até 900 s ocioso, depois ou sem data válida sem_sinal). Só exibição: não sugere nem libera travas. 6 testes novos em `tests/unit/monitor.test.ts` (um por estado + heartbeat + limites). `npm test` e `npm run typecheck` verdes.
 
 #### [ ] SUB-35.16: `contarPorStatus()` em `src/lib/monitor.ts`
 - **Status:** pendente
