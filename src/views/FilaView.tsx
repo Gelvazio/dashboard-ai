@@ -8,7 +8,7 @@ import { EmConstrucao } from '@/components/EmConstrucao';
 import { Botao } from '@/components/ui/Botao';
 import { ConfirmDialog } from '@/components/ui/ConfirmDialog';
 import { useAcoesTask } from '@/hooks/useAcoesTask';
-import { ProgressoFila, TaskFormModal, TaskRowActions, TaskTable } from '@/components/tasks';
+import { ProgressoFila, TaskDetailModal, TaskFormModal, TaskRowActions, TaskTable } from '@/components/tasks';
 import type { Task } from '@/types';
 
 /** Fila de tarefas do projeto selecionado. */
@@ -18,6 +18,7 @@ export function FilaView() {
   const indicadores = useIndicadores(projeto?.id);
   const acoes = useAcoesTask({ projectId: projeto?.id, substituir, remover, recarregar, onMudou: () => void indicadores.recarregar() });
   const [excluindo, setExcluindo] = useState<Task | null>(null);
+  const [detalhe, setDetalhe] = useState<number | null>(null);
   const [form, setForm] = useState<{ aberto: boolean; task: Task | null }>({
     aberto: false,
     task: null,
@@ -61,6 +62,7 @@ export function FilaView() {
         <TaskTable
           tasks={tasks}
           carregando={carregando}
+          onAbrir={(t) => setDetalhe(t.id)}
           onAlternar={(t) => void acoes.alternar(t)}
           ocupados={acoes.ocupados}
           acoes={(t) => <TaskRowActions task={t} acoes={acoes} onEditar={editar} onPedirExcluir={setExcluindo} />}
@@ -71,6 +73,13 @@ export function FilaView() {
           task={form.task}
           onFechar={() => setForm((f) => ({ ...f, aberto: false }))}
           onSalva={atualizarTudo}
+        />
+        <TaskDetailModal
+          task={tasks.find((t) => t.id === detalhe) ?? null}
+          projeto={projeto}
+          referencia={tasks}
+          onFechar={() => setDetalhe(null)}
+          onEditar={editar}
         />
         <ConfirmDialog
           aberto={excluindo !== null}

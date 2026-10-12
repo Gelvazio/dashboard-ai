@@ -200,7 +200,13 @@ export function TaskTable({ tasks, carregando, referencia, onAbrir, acoes, vazio
           <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
             {linhas.map(({ t, deps, bloqueada }) => (
               <tr key={t.id} className={cn('transition-colors', abrivel, !t.executar && 'opacity-70')} onClick={onAbrir ? () => onAbrir(t) : undefined}>
-                <td className={cn(TD, 'whitespace-nowrap font-mono text-xs font-medium text-slate-700 dark:text-slate-300')}>{t.codigo}</td>
+                <td className={cn(TD, 'whitespace-nowrap font-mono text-xs font-medium text-slate-700 dark:text-slate-300')}>
+                  {onAbrir ? (
+                    <button type="button" onClick={(e) => { e.stopPropagation(); onAbrir(t); }} className="rounded hover:text-brand-600 hover:underline" aria-label={`Ver detalhes de ${t.codigo}`}>
+                      {t.codigo}
+                    </button>
+                  ) : t.codigo}
+                </td>
                 <td className={cn(TD, 'max-w-64')}><Titulo task={t} bloqueada={bloqueada} /></td>
                 <td className={cn(TD, 'text-center')}><PrioridadeBadge prioridade={t.prioridade} /></td>
                 <td className={cn(TD, 'text-center tabular-nums text-slate-600 dark:text-slate-400')}>{t.ordem}</td>

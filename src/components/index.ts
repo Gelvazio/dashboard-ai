@@ -16,3 +16,5 @@ export { Botao } from './ui/Botao';
 export * from './kpi';
 export { Switch } from './ui/Switch';
 export { ConfirmDialog } from './ui/ConfirmDialog';
+export { Markdown } from './ui/Markdown';
+export { CopyButton } from './ui/CopyButton';

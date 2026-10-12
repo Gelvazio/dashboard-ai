@@ -151,3 +151,25 @@ export function acoesDisponiveis(t: Pick<Task, 'status' | 'tipo' | 'excluido'>):
     excluir: true,
   };
 }
+
+/** Resumo da task em Markdown (botão "Copiar tudo" da visualização detalhada). */
+export function taskComoMarkdown(t: Task, projeto?: { nome: string; slug: string }): string {
+  const linhas = [
+    `# ${t.codigo} — ${t.titulo}`,
+    '',
+    ...(projeto ? [`- **Projeto:** ${projeto.nome} (${projeto.slug})`] : []),
+    `- **Status:** ${STATUS_INFO[t.status].rotulo}${t.executar ? '' : ' (OFF)'}`,
+    `- **Prioridade:** ${t.prioridade} (${infoPrioridade(t.prioridade).rotulo}) · **Ordem:** ${t.ordem}`,
+    `- **Executor:** ${t.tipo === 'humano' ? 'Humano' : 'IA'} · **Tentativas:** ${t.tentativas}/${t.max_tentativas}`,
+    ...(t.dependencias.length ? [`- **Depende de:** ${t.dependencias.join(', ')}`] : []),
+    ...(t.pr_url ? [`- **PR:** ${t.pr_url}`] : []),
+    ...(t.commit_sha ? [`- **Commit:** ${t.commit_sha}`] : []),
+    ...(t.concluido_em ? [`- **Concluída em:** ${formatarDataHora(t.concluido_em)}`] : []),
+    '',
+    '## Instrução',
+    '',
+    t.instrucao.trim(),
+  ];
+  if (t.resultado?.trim()) linhas.push('', '## Resultado', '', t.resultado.trim());
+  return `${linhas.join('\n')}\n`;
+}
