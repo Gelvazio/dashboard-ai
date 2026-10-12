@@ -98,11 +98,65 @@ for f in database/0*.sql; do psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f "$f"; do
 
 Requisitos: PostgreSQL 15+ (usa `unique nulls not distinct`) com `pgvector` ≥ 0.5 (índice HNSW).
 
-Depois de aplicar, cadastre o primeiro administrador (SQL Editor, como `postgres`):
+Depois de aplicar, cadastre o primeiro administrador (veja a seção abaixo).
+
+## Primeiro administrador e membros
+
+O login da interface (Supabase Auth, SUB-27) só mostra os projetos em que o usuário é membro;
+sem papel nenhum, quem entra vê a lista de projetos vazia. Os papéis ficam em duas tabelas:
+
+| Tabela | Papéis | Efeito |
+|---|---|---|
+| `user_roles` | `admin` \| `member` (padrão) | `admin` vê e gerencia **todos** os projetos, membros e memórias globais |
+| `project_members` | `owner` > `editor` > `viewer` (padrão) | por projeto: `viewer` lê; `editor` cria/edita tasks e memórias; `owner` também edita o projeto e a equipe |
+
+**1. Crie o usuário** em *Authentication → Users → Add user* (ou deixe a pessoa se cadastrar /
+entrar por link mágico) e copie o **User UID** (é o `auth.users.id`). Também dá para buscar pelo
+e-mail no SQL Editor:
 ```sql
-insert into public.user_roles (user_id, role) values ('<auth.users.id>', 'admin')
+select id, email from auth.users where email = 'pessoa@exemplo.com';
+```
+
+**2. Primeiro administrador** — no *SQL Editor* (roda como `postgres`, ignora a RLS; pela API só
+um administrador pode gravar em `user_roles`, então o primeiro tem de ser criado aqui):
+```sql
+insert into public.user_roles (user_id, role, email, nome)
+select id, 'admin', email, 'Administrador' from auth.users where email = 'admin@exemplo.com'
 on conflict (user_id) do update set role = 'admin';
 ```
+O usuário precisa sair e entrar de novo (ou recarregar a página) para a interface buscar o papel.
+
+**3. Membros dos projetos** — pelo SQL Editor, ou pela própria API com um usuário administrador
+ou `owner` do projeto (a RLS `project_members_owner_write` permite):
+```sql
+insert into public.project_members (project_id, user_id, role)
+select p.id, u.id, 'editor'                       -- 'owner' | 'editor' | 'viewer'
+from public.projects p, auth.users u
+where p.slug = 'meu-app' and u.email = 'pessoa@exemplo.com'
+on conflict (project_id, user_id) do update set role = excluded.role;
+```
+
+Trocar o papel é o mesmo `insert ... on conflict do update`; remover o acesso:
+```sql
+delete from public.project_members
+where project_id = (select id from public.projects where slug = 'meu-app')
+  and user_id = (select id from auth.users where email = 'pessoa@exemplo.com');
+```
+
+Conferir quem tem acesso a um projeto:
+```sql
+select u.email, m.role, coalesce(r.role, 'member') as papel_global
+from public.project_members m
+join auth.users u on u.id = m.user_id
+left join public.user_roles r on r.user_id = m.user_id
+where m.project_id = (select id from public.projects where slug = 'meu-app')
+order by m.role, u.email;
+```
+
+> Os e-mails acima são exemplos. Nunca coloque a chave `service_role` no frontend nem em
+> arquivos versionados: agentes e scripts usam essa chave no servidor (ignora a RLS); pessoas
+> usam o login com a chave anon e ficam limitadas pelos papéis acima. Um administrador também
+> pode ser marcado pelo servidor via `app_metadata.role = 'admin'` no JWT (Auth Admin API).
 
 ## Exemplos (supabase-js, no servidor com a chave service_role)
 
