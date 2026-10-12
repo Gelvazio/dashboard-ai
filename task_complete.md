@@ -306,6 +306,17 @@
 - **Anotação:** Criada seção completa no README.md com: configuração do projeto na Vercel (Node 22, Vite), tabela de variáveis de ambiente (frontend e servidor), limits/timeouts, rewrite `/mcp`, deploy automático, validação pós-deploy e instruções do worker LangGraph. typecheck OK, npm test OK (298 passed), check:env OK (variáveis LANGGRAPH_DATABASE_URL e WORKER_MODELO usadas no worker).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 14:20 — Devin (Cognition AI): commit `a5c2a8a` e README.md conferidos na `main`; typecheck OK, npm test OK (298 passed), check:env OK.
 
+#### [x] SUB-28.23: Retomada da aprovação (`Command({ resume })`) em `api/aprovacao.ts`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:26, conclusão: 2026-10-12 14:30)
+- **Depende de:** SUB-28.16
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Após autorizar, retomar o grafo com `Command({ resume: { aprovado, por, em } })` no `thread_id` da execução. O registro de auditoria fica na SUB-28.32.
+- **Critérios de Aceitação:** `typecheck:api` OK; teste de retomada com grafo falso.
+- **Commit:** fa99fe2
+- **Anotação:** Implementada retomada do grafo LangGraph com Command({ resume }) no thread_id da execução. Adicionadas: execucaoIdDaTask (lê o execucaoId mais recente dos logs), criarGrafoComCheckpointer (cria grafo com checkpointer Postgres), retomarGrafo (envia Command({ resume }) com decisão do usuário). Testes atualizados para cobrir os novos deps. typecheck:api OK, testes OK (9 passed).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 14:30 — Devin (Cognition AI): commit `fa99fe2` e arquivos conferidos na `main`; typecheck:api OK, testes OK (9 passed).
+
 #### [x] SUB-33.12: Testes do handler: 413, 502 e 200
 - **Status:** concluido
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:28 → 2026-10-12 00:29)
