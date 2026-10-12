@@ -450,15 +450,15 @@
 - **Commit:** `ad56d9b`
 - **Anotação:** Adicionado `variaveisDoExemplo(texto)` em `scripts/checar-env.mjs`: nomes das linhas `NOME=` (aceita `export NOME=` e CRLF) do `.env.example`, ignorando comentários e linhas vazias; sem repetidos, ordenada. No `.env.example` atual devolve as 14 variáveis. 2 testes novos em `tests/unit/checar-env.test.ts`. `npm run typecheck` e `npm test` verdes.
 
-#### [ ] SUB-08.11: `listarArquivosFonte(dirs)` em `scripts/checar-env.mjs` + teste
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 00:57)
+#### [x] SUB-08.11: `listarArquivosFonte(dirs)` em `scripts/checar-env.mjs` + teste
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 00:57 → 2026-10-12 00:58)
 - **Depende de:** SUB-08.10
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `listarArquivosFonte(dirs: string[]): string[]` (varre `src/`, `api/` e `scripts/` recursivamente, só `.ts/.tsx/.js/.mjs/.py`, ignorando `node_modules`, `dist` e `tests`). Teste com pasta temporária.
 - **Critérios de Aceitação:** `npm test` passa.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `0ac9843`
+- **Anotação:** Adicionado `listarArquivosFonte(dirs)` em `scripts/checar-env.mjs` (só `node:fs`/`node:path`): varre as pastas recursivamente, só `.ts/.tsx/.js/.mjs/.py` (`EXTENSOES_FONTE`), ignorando `node_modules`, `dist` e `tests` (`PASTAS_IGNORADAS`) e pastas inexistentes; devolve caminhos sem repetição e ordenados. Teste com pasta temporária em `tests/unit/checar-env.test.ts`. `npm run typecheck` e `npm test` verdes.
 
 ---
 

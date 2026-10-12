@@ -66,17 +66,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:56 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-08.11
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-08.11** |
-| **Título da Sub-task:** | `listarArquivosFonte(dirs)` em `scripts/checar-env.mjs` + teste |
-| **Agente Responsável:** | DashboardAI-Clone 08 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 00:57 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-21.5
 
 | Propriedade | Valor Atual |
@@ -103,13 +92,12 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (5)
+### 🔄 EM EXECUÇÃO (4)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-23.10** | `TravaItem` em `src/components/tasks/TravaItem.tsx` | DashboardAI-Clone 02 | 2026-10-12 00:57 | SUB-23.6 |
 | **SUB-21.5** | Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:57 | SUB-21.4 |
-| **SUB-08.11** | `listarArquivosFonte(dirs)` em `scripts/checar-env.mjs` + teste | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:57 | SUB-08.10 |
 | **SUB-19.2** | Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 00:56 | SUB-19.1 |
 | **SUB-27.26** | Hook `useAuth` em `src/hooks/useAuth.ts` | DashboardAI-Clone 01 | 2026-10-12 00:56 | SUB-27.9 |
 | **SUB-20.6** | Modal `MemoriaFormModal` em `src/components/memoria/` | DashboardAI-Clone 06 | 2026-10-12 00:55 | SUB-20.1, SUB-20.3, SUB-20.4, SUB-20.5, SUB-20.8, SUB-20.9 |
@@ -293,10 +281,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (64)
+### ✅ CONCLUÍDAS (65)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-08.11** | `listarArquivosFonte(dirs)` em `scripts/checar-env.mjs` + teste | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:57 | 2026-10-12 00:58 | `0ac9843` |
 | **SUB-21.14** | `tagsDisponiveis` em `src/lib/memorias.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 00:57 | 2026-10-12 00:57 | `1734052` |
 | **SUB-08.10** | `variaveisDoExemplo(texto)` em `scripts/checar-env.mjs` + testes | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:56 | 2026-10-12 00:56 | `ad56d9b` |
 | **SUB-21.2** | `filtrarMemoriasLocal` em `src/lib/memorias.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 00:55 | 2026-10-12 00:56 | `0849e15` |
@@ -547,3 +536,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:57 | DashboardAI-Clone 10 (Grok Bot) | SUB-21.5 | — | Lock: assumindo SUB-21.5 (Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx`) |
 | 2026-10-12 00:57 | DashboardAI-Clone 02 | SUB-23.10 | — | Lock: assumindo SUB-23.10 (`TravaItem` em `src/components/tasks/TravaItem.tsx`) |
 | 2026-10-12 00:57 | DashboardAI-Clone 05 (Grok Bot) | SUB-21.14 | `1734052` | Adicionado `tagsDisponiveis(memorias): { tag, total }[]` em `src/lib/memorias.ts` (tipo `TagDisponivel` exportado): conta memórias por tag (trim + minúsculas, vazias ignoradas, cada memória conta uma vez por tag), ordena por total desc e depois por nome (`localeCompare` pt-BR). 2 testes novos em `tests/unit/memorias.test.ts`. `npm run typecheck` e `npm test` verdes. |
+| 2026-10-12 00:58 | DashboardAI-Clone 08 (Grok Bot) | SUB-08.11 | `0ac9843` | Adicionado `listarArquivosFonte(dirs)` em `scripts/checar-env.mjs` (só `node:fs`/`node:path`): varre as pastas recursivamente, só `.ts/.tsx/.js/.mjs/.py` (`EXTENSOES_FONTE`), ignorando `node_modules`, `dist` e `tests` (`PASTAS_IGNORADAS`) e pastas inexistentes; devolve caminhos sem repetição e ordenados. Teste com pasta temporária em `tests/unit/checar-env.test.ts`. `npm run typecheck` e `npm test` verdes. |
