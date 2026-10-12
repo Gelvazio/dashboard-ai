@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { validarMemoria, MAX_TITULO_MEMORIA, MAX_TAGS_MEMORIA, MAX_TAMANHO_TAG } from '@/lib/memoriaForm';
+import { sugerirTags, validarMemoria, MAX_TITULO_MEMORIA, MAX_TAGS_MEMORIA, MAX_TAMANHO_TAG } from '@/lib/memoriaForm';
 
 const valido = { titulo: 'Decisão de arquitetura', conteudo: 'Usar pgvector.', tags: ['banco', 'supabase'] };
 
@@ -34,5 +34,44 @@ describe('validarMemoria', () => {
 
   it('recusa tags vazias', () => {
     expect(validarMemoria({ ...valido, tags: ['ok', '  '] }).tags).toBeTruthy();
+  });
+});
+
+describe('sugerirTags', () => {
+  it('devolve vazio sem palavras relevantes ou com max <= 0', () => {
+    expect(sugerirTags('', '')).toEqual([]);
+    expect(sugerirTags('de para com', 'the and')).toEqual([]);
+    expect(sugerirTags('supabase', 'banco', 0)).toEqual([]);
+  });
+
+  it('ordena por frequência e o título vale 2x', () => {
+    // supabase: 2 (título); banco: 1+1 = 2 (conteúdo); vetorial: 1
+    // empate supabase/banco desempata em ordem alfabética
+    expect(sugerirTags('Supabase', 'banco banco vetorial')).toEqual(['banco', 'supabase', 'vetorial']);
+    expect(sugerirTags('Supabase vetorial', 'banco')).toEqual(['supabase', 'vetorial', 'banco']);
+  });
+
+  it('desempata em ordem alfabética', () => {
+    expect(sugerirTags('', 'zebra manga abacate')).toEqual(['abacate', 'manga', 'zebra']);
+  });
+
+  it('limita a max (padrão 5)', () => {
+    const conteudo = 'alfa bravo charlie delta echoo foxtrot golf';
+    expect(sugerirTags('', conteudo)).toHaveLength(5);
+    expect(sugerirTags('', conteudo, 2)).toEqual(['alfa', 'bravo']);
+  });
+
+  it('ignora Markdown, código e stopwords via palavrasDe', () => {
+    expect(sugerirTags('# Embeddings para busca', '```\ncodigoOculto\n```\n**embeddings** [docs](https://x.y)')).toEqual([
+      'embeddings',
+      'busca',
+      'docs',
+    ]);
+  });
+
+  it('é determinística', () => {
+    const a = sugerirTags('Fila de tasks', 'trava trava fila agente');
+    expect(sugerirTags('Fila de tasks', 'trava trava fila agente')).toEqual(a);
+    expect(a).toEqual(['fila', 'tasks', 'trava', 'agente']);
   });
 });

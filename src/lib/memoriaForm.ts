@@ -2,6 +2,7 @@
  * Validação e utilitários do formulário de nova memória canônica (SUB-20).
  * Funções puras: o modal (SUB-20.6) só cuida da interface.
  */
+import { palavrasDe } from '@/lib/texto';
 
 export const MAX_TITULO_MEMORIA = 200;
 export const MAX_TAGS_MEMORIA = 20;
@@ -41,4 +42,24 @@ export function validarMemoria({ titulo, conteudo, tags }: DadosMemoriaForm): Er
   }
 
   return e;
+}
+
+/**
+ * Sugere tags a partir do título e do conteúdo ("geração de tags dinâmicas").
+ * Conta a frequência das palavras de `palavrasDe` (cada ocorrência no título
+ * vale 2, no conteúdo vale 1), ordena por pontuação decrescente, desempata em
+ * ordem alfabética e devolve as `max` primeiras. Determinística.
+ */
+export function sugerirTags(titulo: string, conteudo: string, max = 5): string[] {
+  if (max <= 0) return [];
+  const pontos = new Map<string, number>();
+  const somar = (palavras: string[], peso: number) => {
+    for (const p of palavras) pontos.set(p, (pontos.get(p) ?? 0) + peso);
+  };
+  somar(palavrasDe(titulo ?? ''), 2);
+  somar(palavrasDe(conteudo ?? ''), 1);
+  return [...pontos.entries()]
+    .sort(([a, pa], [b, pb]) => pb - pa || (a < b ? -1 : a > b ? 1 : 0))
+    .slice(0, max)
+    .map(([p]) => p);
 }
