@@ -69,6 +69,11 @@ Legenda: ⬜ Pendente · 🔄 Em progresso · ✅ Concluído · ⛔ Bloqueado
 | 5.2 | SUB-39.6: teste `sem_config` independente do `.env` local | ✅ Concluído | 2026-10-12 | `3c18f1f`; `npm test` verde com e sem `.env` |
 | 5.3 | Aceite do usuário | ⬜ Pendente | — | — |
 
+## Etapa 6 — Lição do resumo como regra no `AGENTS.md` (pedida em 2026-10-12)
+| Item | Descrição | Status | Concluído em | Verificação |
+|------|-----------|--------|--------------|-------------|
+| 6.1 | Regra 9 da seção 1.1 do `AGENTS.md`: no resumo, editar só o próprio item | ✅ Concluído | 2026-10-12 | `26e949b`; texto genérico, sem citar tarefas |
+
 ## Riscos
 | Risco | Chance | Impacto | Plano B | Situação |
 |-------|--------|---------|---------|----------|
