@@ -33,26 +33,16 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhuma tarefa reservada para Codex |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — SUB-21.1
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-21.1** |
-| **Título da Sub-task:** | `memoriaComoMarkdown` em `src/lib/memorias.ts` |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 00:22 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém mais assume a SUB-21.1 |
-
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (1)
+### 🔄 EM EXECUÇÃO (0)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
-| **SUB-21.1** | `memoriaComoMarkdown` em `src/lib/memorias.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:22 | Nenhuma |
+
+*(Nenhuma tarefa em execução)*
 
 ---
 
@@ -64,7 +54,7 @@
 
 > **SUB-27 liberada a pedido do usuário** (2026-10-11 23:55): mãe e 22 subtarefas estão disponíveis; cada agente deve respeitar as dependências indicadas. Nenhum código da SUB-27 havia sido enviado à main.
 
-**🟢 Livres agora (25):** SUB-33.2, SUB-33.3, SUB-33.5, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.3, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1
+**🟢 Livres agora (26):** SUB-33.2, SUB-33.3, SUB-33.5, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.3, SUB-21.13, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
@@ -127,7 +117,7 @@
 | **SUB-21.10** | Validação visual da SUB-21 (screenshots) | 4 | Fase 7 | SUB-21.11 — ⛓️ bloqueada |
 | **SUB-21.11** | Ligar detalhe e exclusão na `MemoriaView` | 4 | Fase 7 | SUB-21.9, SUB-21.6, SUB-21.7 — ⛓️ bloqueada |
 | **SUB-21.12** | Conferir exclusão com editor e viewer | 4 | Fase 7 | SUB-21.11 — ⛓️ bloqueada |
-| **SUB-21.13** | `escopoMemoria` em `src/lib/memorias.ts` | 4 | Fase 7 | SUB-21.1 — ⛓️ bloqueada |
+| **SUB-21.13** | `escopoMemoria` em `src/lib/memorias.ts` | 4 | Fase 7 | SUB-21.1 — 🟢 livre |
 | **SUB-21.14** | `tagsDisponiveis` em `src/lib/memorias.ts` | 4 | Fase 7 | SUB-21.2 — ⛓️ bloqueada |
 | **SUB-34** | Carregamento Sob Demanda de Telas e Modais (code splitting) (mãe) | 4 | Fase 6 | SUB-13, SUB-14, SUB-16, SUB-17, SUB-18; SUB-34.1 a SUB-34.6 |
 | **SUB-34.1** | Fallback `CarregandoTela` em `src/components/ui/CarregandoTela.tsx` | 4 | Fase 6 | Nenhuma — 🟢 livre |
@@ -230,7 +220,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (29)
+### ✅ CONCLUÍDAS (30)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -263,6 +253,7 @@
 | **SUB-33.13** | Classe `HttpError` em `api/_lib/http-error.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:19 | 2026-10-12 00:20 | `4f98dc3` |
 | **SUB-33.1** | `bearerToken(req)` em `api/_lib/auth.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:20 | 2026-10-12 00:20 | `78a4689` |
 | **SUB-33.4** | Esqueleto do handler `api/embedding.ts` (CORS, OPTIONS, 405) | DashboardAI (Grok Bot) | 2026-10-12 00:21 | 2026-10-12 00:21 | `8660199` |
+| **SUB-21.1** | `memoriaComoMarkdown` em `src/lib/memorias.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:22 | 2026-10-12 00:22 | `7b2ef64` |
 
 ---
 
@@ -328,3 +319,4 @@
 | 2026-10-12 00:21 | DashboardAI (Grok Bot) | SUB-33.4 | — | Lock: assumindo SUB-33.4 (Esqueleto do handler `api/embedding.ts` (CORS, OPTIONS, 405)) |
 | 2026-10-12 00:21 | DashboardAI (Grok Bot) | SUB-33.4 | `8660199` | Criado `api/embedding.ts` (default export `handler(req: McpRequest, res: McpResponse)`): CORS como o `api/mcp.ts` (`MCP_CORS_ORIGIN`, métodos `POST, OPTIONS`, cabeçalhos `Content-Type, Authorization`), `OPTIONS` -> 204, não-POST -> 405 com `Allow: POST, OPTIONS` e `{ erro }`; POST -> 501 provisório (substituído na SUB-33.11). `npm run typecheck` (app + api) e `npm test` verdes. |
 | 2026-10-12 00:22 | DashboardAI (Grok Bot) | SUB-21.1 | — | Lock: assumindo SUB-21.1 (`memoriaComoMarkdown` em `src/lib/memorias.ts`) |
+| 2026-10-12 00:22 | DashboardAI (Grok Bot) | SUB-21.1 | `7b2ef64` | Criado `src/lib/memorias.ts` com `memoriaComoMarkdown(m)`: `# título`, linha `**Tags:**` (omitida se vazia), `**Escopo:** global|projeto` (`project_id` nulo = global) e o conteúdo. Testes em `tests/unit/memorias.test.ts`. `npm run typecheck` (app + api) e `npm test` verdes. |
