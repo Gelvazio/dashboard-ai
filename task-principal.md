@@ -595,7 +595,7 @@
   - `SUB-34.3`: Modais da fila sob demanda na `src/views/FilaView.tsx` (`pendente`)
   - `SUB-34.4`: Separar dependências grandes no `vite.config.ts` (`pendente`)
   - `SUB-34.5`: Checagem de tamanho `scripts/checar-chunks.mjs` (`pendente`)
-  - `SUB-34.6`: `Suspense` com `CarregandoTela` no `src/App.tsx` (`em_execucao`)
+  - `SUB-34.6`: `Suspense` com `CarregandoTela` no `src/App.tsx` (`concluido`, `67d89b6`)
 - **Descrição:** Carregar as telas (Fila, Memória, Logs, Configurações) e os modais pesados com `React.lazy` + `Suspense` (fallback leve), e separar dependências grandes (ex.: supabase-js) em chunks próprios, eliminando o aviso de bundle > 500 kB do Vite.
 - **Escopo por projeto:** não altera dados; apenas o empacotamento do frontend.
 - **Critérios de Aceitação:** `npm run build` sem o aviso de chunk > 500 kB; navegação e modais continuam funcionando; typecheck e testes verdes.
@@ -652,15 +652,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-34.6: `Suspense` com `CarregandoTela` no `src/App.tsx`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:03)
+#### [x] SUB-34.6: `Suspense` com `CarregandoTela` no `src/App.tsx`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:03, conclusão: 2026-10-12 01:03)
 - **Depende de:** SUB-34.1, SUB-34.2
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Envolver `<Tela />` em `<Suspense fallback={<CarregandoTela />}>` no `src/App.tsx`.
 - **Critérios de Aceitação:** `npm run build` OK; navegação entre `#/fila`, `#/memoria`, `#/logs`, `#/configuracoes` funciona.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `67d89b6`
+- **Anotação:** No `src/App.tsx`, `<Tela />` (telas `React.lazy` da SUB-34.2) agora fica dentro de `<Suspense fallback={<CarregandoTela mensagem="Carregando tela..." />}>`, dentro do `AppLayout` (sidebar e header continuam visíveis enquanto o chunk da tela carrega). Sem isso, a primeira renderização de uma tela lazy suspendia sem fronteira. `npm run typecheck`, `npm test` e `npm run build` OK.
 
 ### [ ] SUB-19: Interface de Pesquisa Semântica Vetorial
 - **Status:** pendente (aguardando subtarefas)

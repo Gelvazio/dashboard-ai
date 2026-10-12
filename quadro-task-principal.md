@@ -44,17 +44,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:02 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-34.6
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-34.6** |
-| **Título da Sub-task:** | `Suspense` com `CarregandoTela` no `src/App.tsx` |
-| **Agente Responsável:** | DashboardAI-Clone 10 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:03 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-23.9
 
 | Propriedade | Valor Atual |
@@ -92,20 +81,19 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (4)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-26.7** | Seção Memória via MCP | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:03 | SUB-26.1 |
 | **SUB-21.7** | Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` | DashboardAI-Clone 06 | 2026-10-12 01:03 | SUB-21.3 |
 | **SUB-23.9** | Alerta de trava presa na `src/views/FilaView.tsx` | DashboardAI-Clone 02 | 2026-10-12 01:03 | SUB-23.3 |
-| **SUB-34.6** | `Suspense` com `CarregandoTela` no `src/App.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:03 | SUB-34.1, SUB-34.2 |
 | **SUB-35.2** | Trigger `validar_agent_event` em `database/07_agent_events.sql` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:02 | SUB-35.1 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
 
-### ⏳ PENDENTES (160)
+### ⏳ PENDENTES (159)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -149,7 +137,6 @@
 | **SUB-34.3** | Modais da fila sob demanda na `src/views/FilaView.tsx` | 4 | Fase 6 | SUB-34.1 — ⛓️ bloqueada |
 | **SUB-34.4** | Separar dependências grandes no `vite.config.ts` | 4 | Fase 6 | Nenhuma — 🟢 livre |
 | **SUB-34.5** | Checagem de tamanho `scripts/checar-chunks.mjs` | 4 | Fase 6 | SUB-34.6, SUB-34.3, SUB-34.4 — ⛓️ bloqueada |
-| **SUB-34.6** | `Suspense` com `CarregandoTela` no `src/App.tsx` | 4 | Fase 6 | SUB-34.1, SUB-34.2 — 🔄 em execução por DashboardAI-Clone 10 (Grok Bot) |
 | **SUB-25** | Validação de Build e Execução Local (mãe) | 5 | Fase 10 | SUB-01 a SUB-24; SUB-25.1 a SUB-25.7 |
 | **SUB-25.2** | Rodar `npm ci` + `npm run validar` e registrar em `docs/VALIDACAO.md` | 5 | Fase 10 | SUB-25.1, SUB-08.9, SUB-19, SUB-20, SUB-21, SUB-23, SUB-27 (inclui SUB-27.28), SUB-33, SUB-34 — ⛓️ bloqueada |
 | **SUB-25.3** | Rodar `database/tests/run_tests.sh` | 5 | Fase 10 | SUB-25.2 — ⛓️ bloqueada |
@@ -261,7 +248,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (78)
+### ✅ CONCLUÍDAS (79)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -350,6 +337,7 @@
 | **SUB-21.4** | Componente `MemoriaCard` em `src/components/memoria/MemoriaCard.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:56 | 2026-10-12 00:57 | `c03ffa6` |
 | **SUB-21.5** | Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:57 | 2026-10-12 00:58 | `197eb97` |
 | **SUB-21.6** | Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:59 | 2026-10-12 01:01 | `4cab033` |
+| **SUB-34.6** | `Suspense` com `CarregandoTela` no `src/App.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:03 | 2026-10-12 01:03 | `67d89b6` |
 
 n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | Claude Code | 2026-10-12 00:50 | 2026-10-12 00:51 | `fc4c3ee` |
 || **SUB-20.1** | `validarMemoria(dados)` em `src/lib/memoriaForm.ts` | DashboardAI-Clone 06 | 2026-10-12 00:46 | 2026-10-12 00:47 | `5662f1a` |
@@ -573,3 +561,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:03 | DashboardAI-Clone 02 | SUB-23.9 | — | Lock: assumindo SUB-23.9 (Alerta de trava presa na `src/views/FilaView.tsx`) |
 | 2026-10-12 01:03 | DashboardAI-Clone 06 | SUB-21.7 | — | Lock: assumindo SUB-21.7 (Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts`) |
 | 2026-10-12 01:03 | DashboardAI-Clone 08 (Grok Bot) | SUB-26.7 | — | Lock: assumindo SUB-26.7 (Seção Memória via MCP) |
+| 2026-10-12 01:03 | DashboardAI-Clone 10 (Grok Bot) | SUB-34.6 | `67d89b6` | No `src/App.tsx`, `<Tela />` (telas `React.lazy` da SUB-34.2) agora fica dentro de `<Suspense fallback={<CarregandoTela mensagem="Carregando tela..." />}>`, dentro do `AppLayout` (sidebar e header continuam visíveis enquanto o chunk da tela carrega). Sem isso, a primeira renderização de uma tela lazy suspendia sem fronteira. `npm run typecheck`, `npm test` e `npm run build` OK. |
