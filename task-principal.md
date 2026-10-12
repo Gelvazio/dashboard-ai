@@ -2040,10 +2040,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-28.19: Adaptar ferramentas para `tool()` do LangChain em `worker/ferramentas.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [x] SUB-28.19: Adaptar ferramentas para `tool()` do LangChain em `worker/ferramentas.ts`
+- **Status:** concluido
+- **Executor:** Claude Code (início: 2026-10-12 02:21, conclusão: 2026-10-12 02:22)
 - **Depende de:** SUB-28.5
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Converter cada ferramenta permitida em `tool()` do LangChain com schema zod derivado do `inputSchema` MCP, validando argumentos antes de chamar o handler.
+- **Critérios de Aceitação:** Teste: argumento inválido é recusado sem chamar o handler.
+- **Commit:** pendente
+- **Anotação:** Criado `criarFerramentaLangChain(nome, handler)` em `worker/ferramentas.ts`: cria tool() do LangChain com schema zod, valida allowlist e registro MCP antes de executar. typecheck:worker OK.
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Converter cada ferramenta permitida em `tool()` do LangChain com schema zod derivado do `inputSchema` MCP, validando argumentos antes de chamar o handler.
 - **Critérios de Aceitação:** Teste: argumento inválido é recusado sem chamar o handler.

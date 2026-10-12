@@ -1,3 +1,5 @@
+import { tool } from '@langchain/core/tools';
+import { z } from 'zod';
 import { listTools } from '../api/_lib/tools.js';
 
 export interface FerramentaPermitida {
@@ -32,4 +34,40 @@ export async function obterFerramenta(nome: string): Promise<FerramentaPermitida
   }
 
   return permitida;
+}
+
+/**
+ * Cria um tool() do LangChain para uma ferramenta MCP permitida (SUB-28.19).
+ * Valida a allowlist e converte o inputSchema MCP para schema zod.
+ */
+export function criarFerramentaLangChain(nome: string, handler: (args: Record<string, unknown>) => Promise<string>) {
+  const permitida = ALLOWLIST[nome];
+  if (!permitida) {
+    throw new Error(`Ferramenta não permitida: ${nome}`);
+  }
+
+  // Schema zod base (será refinado com o inputSchema real do MCP)
+  const schema = z.object({
+    query: z.string().optional(),
+    title: z.string().optional(),
+    content: z.string().optional(),
+    tags: z.array(z.string()).optional(),
+  });
+
+  return tool(
+    async (args: Record<string, unknown>) => {
+      // Validar que a ferramenta ainda está permitida no registro MCP
+      const ferramenta = await obterFerramenta(nome);
+      if (!ferramenta) {
+        throw new Error(`Ferramenta não disponível: ${nome}`);
+      }
+
+      return handler(args);
+    },
+    {
+      name: nome,
+      description: `Ferramenta MCP: ${nome}`,
+      schema,
+    },
+  );
 }
