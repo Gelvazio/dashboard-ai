@@ -33,17 +33,6 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhuma tarefa reservada para Codex |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — Revisão da subdivisão
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO (planejamento pedido pelo usuário)** |
-| **Sub-task em Execução:** | **SUB-08, SUB-19, SUB-20, SUB-21, SUB-23, SUB-27, SUB-28, SUB-33, SUB-34** (e as subtarefas delas) |
-| **Título da Sub-task:** | Nova revisão: subdividir subtarefas ainda grandes (sem código) |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 00:16 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** até o commit da revisão |
-
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -57,7 +46,7 @@
 
 ---
 
-### ⏳ PENDENTES (141)
+### ⏳ PENDENTES (164)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -65,11 +54,11 @@
 
 > **SUB-27 liberada a pedido do usuário** (2026-10-11 23:55): mãe e 22 subtarefas estão disponíveis; cada agente deve respeitar as dependências indicadas. Nenhum código da SUB-27 havia sido enviado à main.
 
-**🟢 Livres agora (19):** SUB-33.1, SUB-33.3, SUB-33.4, SUB-08.1, SUB-08.8, SUB-34.1, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-21.1, SUB-21.3, SUB-23.1, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1
+**🟢 Livres agora (22):** SUB-33.1, SUB-33.4, SUB-33.13, SUB-08.1, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.1, SUB-21.3, SUB-23.1, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
-| **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` (mãe) | 3 | Fase 3 | SUB-06; SUB-08.1 a SUB-08.9 |
+| **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` (mãe) | 3 | Fase 3 | SUB-06; SUB-08.1 a SUB-08.11 |
 | **SUB-08.1** | Esqueleto do `.env.example` | 3 | Fase 3 | Nenhuma — 🟢 livre |
 | **SUB-08.2** | Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` | 3 | Fase 3 | SUB-08.1 — ⛓️ bloqueada |
 | **SUB-08.3** | Seção Servidor Supabase: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `SUPABASE_REST_URL` | 3 | Fase 3 | SUB-08.1 — ⛓️ bloqueada |
@@ -77,11 +66,13 @@
 | **SUB-08.5** | Seção MCP: `MCP_AUTH_TOKEN`, `MCP_CORS_ORIGIN`, `MCP_DEFAULT_PROJECT`, `MCP_ALLOWED_PROJECTS` | 3 | Fase 3 | SUB-08.1 — ⛓️ bloqueada |
 | **SUB-08.6** | Seção Scripts: `DASHBOARD_AI_PROJECT` | 3 | Fase 3 | SUB-08.1 — ⛓️ bloqueada |
 | **SUB-08.7** | Conferir `.gitignore` (`!.env.example`) | 3 | Fase 3 | SUB-08.1 — ⛓️ bloqueada |
-| **SUB-08.8** | Funções de extração em `scripts/checar-env.mjs` + testes | 3 | Fase 3 | Nenhuma — 🟢 livre |
-| **SUB-08.9** | CLI `npm run check:env` (toda variável usada está no `.env.example`) | 3 | Fase 3 | SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8 — ⛓️ bloqueada |
-| **SUB-23** | Diagnóstico de Travas e Saúde da Fila (mãe) | 4 | Fase 8 | SUB-09, SUB-11, SUB-12; SUB-23.1 a SUB-23.12 |
-| **SUB-23.1** | `minutosDeTrava` e `travaExpirada` em `src/lib/saudeFila.ts` | 4 | Fase 8 | Nenhuma — 🟢 livre |
-| **SUB-23.2** | `classificarPendentes(tasks)` em `src/lib/saudeFila.ts` | 4 | Fase 8 | SUB-23.1 — ⛓️ bloqueada |
+| **SUB-08.8** | `extrairVariaveis(texto)` em `scripts/checar-env.mjs` + testes | 3 | Fase 3 | Nenhuma — 🟢 livre |
+| **SUB-08.9** | CLI `npm run check:env` (toda variável usada está no `.env.example`) | 3 | Fase 3 | SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.11 — ⛓️ bloqueada |
+| **SUB-08.10** | `variaveisDoExemplo(texto)` em `scripts/checar-env.mjs` + testes | 3 | Fase 3 | SUB-08.8 — ⛓️ bloqueada |
+| **SUB-08.11** | `listarArquivosFonte(dirs)` em `scripts/checar-env.mjs` + teste | 3 | Fase 3 | SUB-08.10 — ⛓️ bloqueada |
+| **SUB-23** | Diagnóstico de Travas e Saúde da Fila (mãe) | 4 | Fase 8 | SUB-09, SUB-11, SUB-12; SUB-23.1 a SUB-23.13 |
+| **SUB-23.1** | `minutosDeTrava` em `src/lib/saudeFila.ts` | 4 | Fase 8 | Nenhuma — 🟢 livre |
+| **SUB-23.2** | `classificarPendentes(tasks)` em `src/lib/saudeFila.ts` | 4 | Fase 8 | SUB-23.13 — ⛓️ bloqueada |
 | **SUB-23.3** | `diagnosticarFila(tasks)` em `src/lib/saudeFila.ts` | 4 | Fase 8 | SUB-23.2 — ⛓️ bloqueada |
 | **SUB-23.4** | `liberarTrava()` em `src/services/taskService.ts` | 4 | Fase 8 | Nenhuma — 🟢 livre |
 | **SUB-23.5** | Teste de integração de `liberarTrava`: expirada e forçada | 4 | Fase 8 | SUB-23.4 — ⛓️ bloqueada |
@@ -92,47 +83,54 @@
 | **SUB-23.10** | `TravaItem` em `src/components/tasks/TravaItem.tsx` | 4 | Fase 8 | SUB-23.6 — ⛓️ bloqueada |
 | **SUB-23.11** | `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx` | 4 | Fase 8 | SUB-23.3 — ⛓️ bloqueada |
 | **SUB-23.12** | Teste de integração de `liberarTrava`: viewer e outro projeto | 4 | Fase 8 | SUB-23.4 — ⛓️ bloqueada |
-| **SUB-19** | Interface de Pesquisa Semântica Vetorial (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-19.1 a SUB-19.9 |
+| **SUB-23.13** | `travaExpirada` em `src/lib/saudeFila.ts` | 4 | Fase 8 | SUB-23.1 — ⛓️ bloqueada |
+| **SUB-19** | Interface de Pesquisa Semântica Vetorial (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-19.1 a SUB-19.10 |
 | **SUB-19.1** | `debounce(fn, ms)` em `src/lib/debounce.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-19.2** | Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts` | 4 | Fase 7 | SUB-19.1 — ⛓️ bloqueada |
-| **SUB-19.3** | `formatarSimilaridade` e `classeSimilaridade` em `src/lib/similaridade.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
-| **SUB-19.4** | Componente `SimilaridadeBadge` em `src/components/memoria/` | 4 | Fase 7 | SUB-19.3 — ⛓️ bloqueada |
+| **SUB-19.3** | `formatarSimilaridade` em `src/lib/similaridade.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
+| **SUB-19.4** | Componente `SimilaridadeBadge` em `src/components/memoria/` | 4 | Fase 7 | SUB-19.10 — ⛓️ bloqueada |
 | **SUB-19.5** | Componente `ResultadoBuscaCard` em `src/components/memoria/` | 4 | Fase 7 | SUB-19.4 — ⛓️ bloqueada |
 | **SUB-19.6** | Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts` | 4 | Fase 7 | SUB-19.2, SUB-33.7 — ⛓️ bloqueada |
 | **SUB-19.7** | Painel `BuscaSemanticaPanel` (campo, grade e estados) | 4 | Fase 7 | SUB-19.5, SUB-19.6, SUB-19.9 — ⛓️ bloqueada |
 | **SUB-19.8** | Integrar a busca na `src/views/MemoriaView.tsx` | 4 | Fase 7 | SUB-19.7, SUB-21.9 — ⛓️ bloqueada |
 | **SUB-19.9** | `BuscaControles` (limiar, globais, modo) em `src/components/memoria/BuscaControles.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
-| **SUB-20** | Formulário de Nova Memória Canônica (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-20.1 a SUB-20.8 |
+| **SUB-19.10** | `classeSimilaridade` em `src/lib/similaridade.ts` | 4 | Fase 7 | SUB-19.3 — ⛓️ bloqueada |
+| **SUB-20** | Formulário de Nova Memória Canônica (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-20.1 a SUB-20.10 |
 | **SUB-20.1** | `validarMemoria(dados)` em `src/lib/memoriaForm.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-20.2** | `parseTags(texto)` em `src/lib/memoriaForm.ts` | 4 | Fase 7 | SUB-20.1 — ⛓️ bloqueada |
-| **SUB-20.3** | `sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts` | 4 | Fase 7 | SUB-20.1 — ⛓️ bloqueada |
+| **SUB-20.3** | `sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts` | 4 | Fase 7 | SUB-20.1, SUB-20.10 — ⛓️ bloqueada |
 | **SUB-20.4** | Componente `TagInput` em `src/components/ui/TagInput.tsx` | 4 | Fase 7 | SUB-20.2 — ⛓️ bloqueada |
 | **SUB-20.5** | Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts` | 4 | Fase 7 | SUB-33.7 — ⛓️ bloqueada |
-| **SUB-20.6** | Modal `MemoriaFormModal` em `src/components/memoria/` | 4 | Fase 7 | SUB-20.1, SUB-20.3, SUB-20.4, SUB-20.5, SUB-20.8 — ⛓️ bloqueada |
+| **SUB-20.6** | Modal `MemoriaFormModal` em `src/components/memoria/` | 4 | Fase 7 | SUB-20.1, SUB-20.3, SUB-20.4, SUB-20.5, SUB-20.8, SUB-20.9 — ⛓️ bloqueada |
 | **SUB-20.7** | Botão "Nova memória" na `src/views/MemoriaView.tsx` | 4 | Fase 7 | SUB-20.6, SUB-19.8, SUB-21.9 — ⛓️ bloqueada |
 | **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
-| **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias (mãe) | 4 | Fase 7 | SUB-10, SUB-12; SUB-21.1 a SUB-21.12 |
-| **SUB-21.1** | `memoriaComoMarkdown` e `escopoMemoria` em `src/lib/memorias.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
-| **SUB-21.2** | `filtrarMemoriasLocal` e `tagsDisponiveis` em `src/lib/memorias.ts` | 4 | Fase 7 | SUB-21.1 — ⛓️ bloqueada |
+| **SUB-20.9** | Componente `TagSugestoes` em `src/components/ui/TagSugestoes.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
+| **SUB-20.10** | `palavrasDe(texto)` em `src/lib/texto.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
+| **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias (mãe) | 4 | Fase 7 | SUB-10, SUB-12; SUB-21.1 a SUB-21.14 |
+| **SUB-21.1** | `memoriaComoMarkdown` em `src/lib/memorias.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
+| **SUB-21.2** | `filtrarMemoriasLocal` em `src/lib/memorias.ts` | 4 | Fase 7 | SUB-21.13 — ⛓️ bloqueada |
 | **SUB-21.3** | Hook `useMemorias` em `src/hooks/useMemorias.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
-| **SUB-21.4** | Componente `MemoriaCard` em `src/components/memoria/MemoriaCard.tsx` | 4 | Fase 7 | SUB-21.1 — ⛓️ bloqueada |
+| **SUB-21.4** | Componente `MemoriaCard` em `src/components/memoria/MemoriaCard.tsx` | 4 | Fase 7 | SUB-21.13 — ⛓️ bloqueada |
 | **SUB-21.5** | Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx` | 4 | Fase 7 | SUB-21.4 — ⛓️ bloqueada |
-| **SUB-21.6** | Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` | 4 | Fase 7 | SUB-21.1 — ⛓️ bloqueada |
+| **SUB-21.6** | Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` | 4 | Fase 7 | SUB-21.13 — ⛓️ bloqueada |
 | **SUB-21.7** | Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` | 4 | Fase 7 | SUB-21.3 — ⛓️ bloqueada |
-| **SUB-21.8** | Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` | 4 | Fase 7 | SUB-21.2 — ⛓️ bloqueada |
+| **SUB-21.8** | Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` | 4 | Fase 7 | SUB-21.14 — ⛓️ bloqueada |
 | **SUB-21.9** | Montar a `MemoriaView` (toolbar + grade) | 4 | Fase 7 | SUB-21.3, SUB-21.5, SUB-21.8 — ⛓️ bloqueada |
 | **SUB-21.10** | Validação visual da SUB-21 (screenshots) | 4 | Fase 7 | SUB-21.11 — ⛓️ bloqueada |
 | **SUB-21.11** | Ligar detalhe e exclusão na `MemoriaView` | 4 | Fase 7 | SUB-21.9, SUB-21.6, SUB-21.7 — ⛓️ bloqueada |
 | **SUB-21.12** | Conferir exclusão com editor e viewer | 4 | Fase 7 | SUB-21.11 — ⛓️ bloqueada |
-| **SUB-34** | Carregamento Sob Demanda de Telas e Modais (code splitting) (mãe) | 4 | Fase 6 | SUB-13, SUB-14, SUB-16, SUB-17, SUB-18; SUB-34.1 a SUB-34.5 |
+| **SUB-21.13** | `escopoMemoria` em `src/lib/memorias.ts` | 4 | Fase 7 | SUB-21.1 — ⛓️ bloqueada |
+| **SUB-21.14** | `tagsDisponiveis` em `src/lib/memorias.ts` | 4 | Fase 7 | SUB-21.2 — ⛓️ bloqueada |
+| **SUB-34** | Carregamento Sob Demanda de Telas e Modais (code splitting) (mãe) | 4 | Fase 6 | SUB-13, SUB-14, SUB-16, SUB-17, SUB-18; SUB-34.1 a SUB-34.6 |
 | **SUB-34.1** | Fallback `CarregandoTela` em `src/components/ui/CarregandoTela.tsx` | 4 | Fase 6 | Nenhuma — 🟢 livre |
-| **SUB-34.2** | Telas com `React.lazy` em `src/views/index.ts` e `Suspense` no `App.tsx` | 4 | Fase 6 | SUB-34.1 — ⛓️ bloqueada |
+| **SUB-34.2** | Telas com `React.lazy` em `src/views/index.ts` | 4 | Fase 6 | Nenhuma — 🟢 livre |
 | **SUB-34.3** | Modais da fila sob demanda na `src/views/FilaView.tsx` | 4 | Fase 6 | SUB-34.1 — ⛓️ bloqueada |
 | **SUB-34.4** | Separar dependências grandes no `vite.config.ts` | 4 | Fase 6 | Nenhuma — 🟢 livre |
-| **SUB-34.5** | Checagem de tamanho `scripts/checar-chunks.mjs` | 4 | Fase 6 | SUB-34.2, SUB-34.3, SUB-34.4 — ⛓️ bloqueada |
+| **SUB-34.5** | Checagem de tamanho `scripts/checar-chunks.mjs` | 4 | Fase 6 | SUB-34.6, SUB-34.3, SUB-34.4 — ⛓️ bloqueada |
+| **SUB-34.6** | `Suspense` com `CarregandoTela` no `src/App.tsx` | 4 | Fase 6 | SUB-34.1, SUB-34.2 — ⛓️ bloqueada |
 | **SUB-25** | Validação de Build e Execução Local (mãe) | 5 | Fase 10 | SUB-01 a SUB-24; SUB-25.1 a SUB-25.7 |
 | **SUB-25.1** | Script `scripts/validar.sh` + `npm run validar` | 5 | Fase 10 | Nenhuma — 🟢 livre |
-| **SUB-25.2** | Rodar `npm ci` + `npm run validar` e registrar em `docs/VALIDACAO.md` | 5 | Fase 10 | SUB-25.1, SUB-08.9, SUB-19, SUB-20, SUB-21, SUB-23, SUB-27 (inclui SUB-27.22), SUB-33, SUB-34 — ⛓️ bloqueada |
+| **SUB-25.2** | Rodar `npm ci` + `npm run validar` e registrar em `docs/VALIDACAO.md` | 5 | Fase 10 | SUB-25.1, SUB-08.9, SUB-19, SUB-20, SUB-21, SUB-23, SUB-27 (inclui SUB-27.28), SUB-33, SUB-34 — ⛓️ bloqueada |
 | **SUB-25.3** | Rodar `database/tests/run_tests.sh` | 5 | Fase 10 | SUB-25.2 — ⛓️ bloqueada |
 | **SUB-25.4** | Teste rápido local: telas Fila e Logs | 5 | Fase 10 | SUB-25.2 — ⛓️ bloqueada |
 | **SUB-25.6** | Rodar `npm run test:integration` | 5 | Fase 10 | SUB-25.2 — ⛓️ bloqueada |
@@ -148,36 +146,43 @@
 | **SUB-26.8** | Seção Segurança | 5 | Fase 10 | SUB-26.1, SUB-27.13, SUB-27.17, SUB-27.21 — ⛓️ bloqueada |
 | **SUB-26.9** | Revisão final do README | 5 | Fase 10 | SUB-26.2, SUB-26.3, SUB-26.4, SUB-26.5, SUB-26.6, SUB-26.7, SUB-26.8, SUB-26.10, SUB-25 — ⛓️ bloqueada |
 | **SUB-26.10** | Seção Agentes de IA: exemplos do ciclo da fila | 5 | Fase 10 | SUB-26.1 — ⛓️ bloqueada |
-| **SUB-28** | Integração LangChain/LangGraph para Execução de Tasks (mãe) | 5 | Fase 11 (última) | SUB-01 a SUB-27, SUB-29, SUB-30; SUB-28.1 a SUB-28.25 |
-| **SUB-28.1** | Contrato worker ↔ RPC ↔ MCP em `docs/langgraph-contrato.md` | 5 | Fase 11 (última) | SUB-01 a SUB-27, SUB-29 a SUB-34 — ⛓️ bloqueada |
-| **SUB-28.2** | Dependências e `worker/tsconfig.json` | 5 | Fase 11 (última) | SUB-28.1 — ⛓️ bloqueada |
-| **SUB-28.3** | Estado tipado do grafo em `worker/estado.ts` | 5 | Fase 11 (última) | SUB-28.2 — ⛓️ bloqueada |
-| **SUB-28.4** | Adaptador de RPCs em `worker/fila.ts` | 5 | Fase 11 (última) | SUB-28.2 — ⛓️ bloqueada |
-| **SUB-28.5** | Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts` | 5 | Fase 11 (última) | SUB-28.3 — ⛓️ bloqueada |
-| **SUB-28.6** | Nó `carregarContexto` em `worker/nos/carregarContexto.ts` | 5 | Fase 11 (última) | SUB-28.3, SUB-28.19 — ⛓️ bloqueada |
-| **SUB-28.7** | Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts` | 5 | Fase 11 (última) | SUB-28.20 — ⛓️ bloqueada |
+| **SUB-28** | Integração LangChain/LangGraph para Execução de Tasks (mãe) | 5 | Fase 11 (última) | SUB-01 a SUB-27, SUB-29, SUB-30; SUB-28.1 a SUB-28.32 |
+| **SUB-28.1** | Contrato: identificadores e estado mínimo em `docs/langgraph-contrato.md` | 5 | Fase 11 (última) | SUB-01 a SUB-27, SUB-29 a SUB-34 — ⛓️ bloqueada |
+| **SUB-28.2** | Dependências do worker no `package.json` | 5 | Fase 11 (última) | SUB-28.27 — ⛓️ bloqueada |
+| **SUB-28.3** | Annotation `EstadoExecucao` em `worker/estado.ts` | 5 | Fase 11 (última) | SUB-28.28 — ⛓️ bloqueada |
+| **SUB-28.4** | `reivindicar(agente, projeto)` em `worker/fila.ts` | 5 | Fase 11 (última) | SUB-28.28 — ⛓️ bloqueada |
+| **SUB-28.5** | Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts` | 5 | Fase 11 (última) | SUB-28.29 — ⛓️ bloqueada |
+| **SUB-28.6** | Nó `carregarContexto` em `worker/nos/carregarContexto.ts` | 5 | Fase 11 (última) | SUB-28.29, SUB-28.19 — ⛓️ bloqueada |
+| **SUB-28.7** | Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts` | 5 | Fase 11 (última) | SUB-28.31 — ⛓️ bloqueada |
 | **SUB-28.8** | Nó `politica` (aprovação humana) em `worker/nos/politica.ts` | 5 | Fase 11 (última) | SUB-28.19 — ⛓️ bloqueada |
 | **SUB-28.9** | Nó `executar` em `worker/nos/executar.ts` | 5 | Fase 11 (última) | SUB-28.19 — ⛓️ bloqueada |
 | **SUB-28.10** | Nó `revisar` (roteamento) em `worker/nos/revisar.ts` | 5 | Fase 11 (última) | SUB-28.21 — ⛓️ bloqueada |
-| **SUB-28.11** | Nó `finalizar` em `worker/nos/finalizar.ts` | 5 | Fase 11 (última) | SUB-28.4 — ⛓️ bloqueada |
+| **SUB-28.11** | Nó `finalizar` em `worker/nos/finalizar.ts` | 5 | Fase 11 (última) | SUB-28.30 — ⛓️ bloqueada |
 | **SUB-28.12** | Montagem do `StateGraph` em `worker/grafo.ts` | 5 | Fase 11 (última) | SUB-28.6, SUB-28.7, SUB-28.8, SUB-28.9, SUB-28.10, SUB-28.11 — ⛓️ bloqueada |
-| **SUB-28.13** | Checkpointer durável em `worker/checkpointer.ts` | 5 | Fase 11 (última) | SUB-28.2 — ⛓️ bloqueada |
-| **SUB-28.14** | Reconciliação na retomada em `worker/reconciliar.ts` | 5 | Fase 11 (última) | SUB-28.4 — ⛓️ bloqueada |
+| **SUB-28.13** | Checkpointer durável em `worker/checkpointer.ts` | 5 | Fase 11 (última) | SUB-28.28 — ⛓️ bloqueada |
+| **SUB-28.14** | Reconciliação na retomada em `worker/reconciliar.ts` | 5 | Fase 11 (última) | SUB-28.30 — ⛓️ bloqueada |
 | **SUB-28.15** | CLI do worker em `worker/index.ts` | 5 | Fase 11 (última) | SUB-28.22 — ⛓️ bloqueada |
-| **SUB-28.16** | Endpoint `api/aprovacao.ts`: autenticação e papel (401/403) | 5 | Fase 11 (última) | SUB-28.15, SUB-33.2, SUB-27.9 — ⛓️ bloqueada |
+| **SUB-28.16** | Endpoint `api/aprovacao.ts`: autenticação e papel (401/403) | 5 | Fase 11 (última) | SUB-28.15, SUB-33.2, SUB-27.26 — ⛓️ bloqueada |
 | **SUB-28.17** | Testes do worker: caminho feliz e erro | 5 | Fase 11 (última) | SUB-28.15 — ⛓️ bloqueada |
-| **SUB-28.18** | Atualizar `LangChain_LangGraph.md` (status e desvios) | 5 | Fase 11 (última) | SUB-28.15, SUB-28.23 — ⛓️ bloqueada |
+| **SUB-28.18** | Atualizar `LangChain_LangGraph.md` (status e desvios) | 5 | Fase 11 (última) | SUB-28.15, SUB-28.32 — ⛓️ bloqueada |
 | **SUB-28.19** | Adaptar ferramentas para `tool()` do LangChain em `worker/ferramentas.ts` | 5 | Fase 11 (última) | SUB-28.5 — ⛓️ bloqueada |
-| **SUB-28.20** | `PlanoSchema` e `montarPromptPlano` em `worker/plano.ts` | 5 | Fase 11 (última) | SUB-28.3 — ⛓️ bloqueada |
-| **SUB-28.21** | `classificarFalha(err)` em `worker/falhas.ts` | 5 | Fase 11 (última) | SUB-28.3 — ⛓️ bloqueada |
+| **SUB-28.20** | `PlanoSchema` em `worker/plano.ts` | 5 | Fase 11 (última) | SUB-28.29 — ⛓️ bloqueada |
+| **SUB-28.21** | `classificarFalha(err)` em `worker/falhas.ts` | 5 | Fase 11 (última) | SUB-28.29 — ⛓️ bloqueada |
 | **SUB-28.22** | `executarUmaTask(deps)` em `worker/executar.ts` | 5 | Fase 11 (última) | SUB-28.12, SUB-28.13, SUB-28.14 — ⛓️ bloqueada |
-| **SUB-28.23** | Retomada da aprovação em `api/aprovacao.ts` | 5 | Fase 11 (última) | SUB-28.16 — ⛓️ bloqueada |
+| **SUB-28.23** | Retomada da aprovação (`Command({ resume })`) em `api/aprovacao.ts` | 5 | Fase 11 (última) | SUB-28.16 — ⛓️ bloqueada |
 | **SUB-28.24** | Testes do worker: interrupção e retomada sem duplicar efeitos | 5 | Fase 11 (última) | SUB-28.15 — ⛓️ bloqueada |
-| **SUB-28.25** | Variáveis do worker no `api/README.md` | 5 | Fase 11 (última) | SUB-28.15, SUB-28.23 — ⛓️ bloqueada |
-| **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) (mãe) | 3 | Fase 2B | SUB-07, SUB-03; SUB-33.1 a SUB-33.12 |
+| **SUB-28.25** | Variáveis do worker no `api/README.md` | 5 | Fase 11 (última) | SUB-28.15, SUB-28.32 — ⛓️ bloqueada |
+| **SUB-28.26** | Contrato: ferramentas permitidas e idempotência em `docs/langgraph-contrato.md` | 5 | Fase 11 (última) | SUB-28.1 — ⛓️ bloqueada |
+| **SUB-28.27** | Contrato: mapeamento de erros para `finalizar_task` em `docs/langgraph-contrato.md` | 5 | Fase 11 (última) | SUB-28.26 — ⛓️ bloqueada |
+| **SUB-28.28** | `worker/tsconfig.json` e `typecheck:worker` | 5 | Fase 11 (última) | SUB-28.2 — ⛓️ bloqueada |
+| **SUB-28.29** | Schema zod `EstadoSchema` em `worker/estado.ts` | 5 | Fase 11 (última) | SUB-28.3 — ⛓️ bloqueada |
+| **SUB-28.30** | `finalizar(...)` em `worker/fila.ts` | 5 | Fase 11 (última) | SUB-28.4 — ⛓️ bloqueada |
+| **SUB-28.31** | `montarPromptPlano(estado)` em `worker/plano.ts` | 5 | Fase 11 (última) | SUB-28.20 — ⛓️ bloqueada |
+| **SUB-28.32** | Registro de auditoria da aprovação | 5 | Fase 11 (última) | SUB-28.23 — ⛓️ bloqueada |
+| **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) (mãe) | 3 | Fase 2B | SUB-07, SUB-03; SUB-33.1 a SUB-33.13 |
 | **SUB-33.1** | `bearerToken(req)` em `api/_lib/auth.ts` | 3 | Fase 2B | Nenhuma — 🟢 livre |
 | **SUB-33.2** | `verificarSessaoSupabase(token)` em `api/_lib/auth.ts` | 3 | Fase 2B | SUB-33.1 — ⛓️ bloqueada |
-| **SUB-33.3** | `lerTextoEmbedding(body)` em `api/_lib/embedding-input.ts` | 3 | Fase 2B | Nenhuma — 🟢 livre |
+| **SUB-33.3** | `lerTextoEmbedding(body)` em `api/_lib/embedding-input.ts` | 3 | Fase 2B | SUB-33.13 — ⛓️ bloqueada |
 | **SUB-33.4** | Esqueleto do handler `api/embedding.ts` (CORS, OPTIONS, 405) | 3 | Fase 2B | Nenhuma — 🟢 livre |
 | **SUB-33.5** | Registrar `api/embedding.ts` no `vercel.json` | 3 | Fase 2B | SUB-33.4 — ⛓️ bloqueada |
 | **SUB-33.6** | Testes do handler: OPTIONS, 405 e 401 | 3 | Fase 2B | SUB-33.10 — ⛓️ bloqueada |
@@ -187,29 +192,36 @@
 | **SUB-33.10** | Autenticação no handler `api/embedding.ts` (401) | 3 | Fase 2B | SUB-33.4, SUB-33.2 — ⛓️ bloqueada |
 | **SUB-33.11** | Corpo, geração do embedding e erros no handler (400/413/502/200) | 3 | Fase 2B | SUB-33.10, SUB-33.3 — ⛓️ bloqueada |
 | **SUB-33.12** | Testes do handler: 413, 502 e 200 | 3 | Fase 2B | SUB-33.11 — ⛓️ bloqueada |
-| **SUB-27** | Autenticação e Login com Supabase Auth (mãe; pendente, liberada) | 3 | Fase 10 | SUB-03, SUB-29; SUB-27.1 a SUB-27.22 — 🟢 livre |
+| **SUB-33.13** | Classe `HttpError` em `api/_lib/http-error.ts` | 3 | Fase 2B | Nenhuma — 🟢 livre |
+| **SUB-27** | Autenticação e Login com Supabase Auth (mãe; pendente, liberada) | 3 | Fase 10 | SUB-03, SUB-29; SUB-27.1 a SUB-27.28 — 🟢 livre |
 | **SUB-27.1** | `mensagemErroAuth(erro)` em `src/lib/auth.ts` | 3 | Fase 10 | Nenhuma — 🟢 livre |
 | **SUB-27.2** | `validarLogin({ email, senha })` em `src/lib/auth.ts` | 3 | Fase 10 | SUB-27.1 — ⛓️ bloqueada |
 | **SUB-27.3** | `entrarComSenha(email, senha)` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.1 — ⛓️ bloqueada |
-| **SUB-27.4** | `sair()` e `obterSessao()` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.3 — ⛓️ bloqueada |
-| **SUB-27.5** | `enviarLinkMagico()` e `redefinirSenha()` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.3 — ⛓️ bloqueada |
-| **SUB-27.6** | Testes unitários de `authService` em `tests/unit/authService.test.ts` | 3 | Fase 10 | SUB-27.4, SUB-27.5 — ⛓️ bloqueada |
-| **SUB-27.7** | `obterPapelGlobal()` e `papelNoProjeto()` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.3 — ⛓️ bloqueada |
-| **SUB-27.8** | Teste de integração dos papéis em `tests/integration/authService.integration.test.ts` | 3 | Fase 10 | SUB-27.7 — ⛓️ bloqueada |
-| **SUB-27.9** | `AuthProvider` e `useAuth` em `src/hooks/AuthContext.tsx` / `src/hooks/useAuth.ts` | 3 | Fase 10 | SUB-27.4, SUB-27.7 — ⛓️ bloqueada |
+| **SUB-27.4** | `sair()` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.3 — ⛓️ bloqueada |
+| **SUB-27.5** | `enviarLinkMagico()` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.3 — ⛓️ bloqueada |
+| **SUB-27.6** | Testes unitários de `authService` em `tests/unit/authService.test.ts` | 3 | Fase 10 | SUB-27.23, SUB-27.24 — ⛓️ bloqueada |
+| **SUB-27.7** | `obterPapelGlobal()` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.3 — ⛓️ bloqueada |
+| **SUB-27.8** | Teste de integração dos papéis em `tests/integration/authService.integration.test.ts` | 3 | Fase 10 | SUB-27.25 — ⛓️ bloqueada |
+| **SUB-27.9** | `AuthProvider` em `src/hooks/AuthContext.tsx` | 3 | Fase 10 | SUB-27.23, SUB-27.25 — ⛓️ bloqueada |
 | **SUB-27.10** | Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx` | 3 | Fase 10 | SUB-27.2, SUB-27.3 — ⛓️ bloqueada |
 | **SUB-27.11** | Tela `LoginView` em `src/views/LoginView.tsx` | 3 | Fase 10 | SUB-27.10, SUB-27.19 — ⛓️ bloqueada |
-| **SUB-27.12** | Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` | 3 | Fase 10 | SUB-27.9, SUB-27.11 — ⛓️ bloqueada |
+| **SUB-27.12** | Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` | 3 | Fase 10 | SUB-27.26, SUB-27.11 — ⛓️ bloqueada |
 | **SUB-27.13** | Integrar autenticação no `src/App.tsx` | 3 | Fase 10 | SUB-27.12 — ⛓️ bloqueada |
-| **SUB-27.14** | Menu do usuário `UserMenu` no header | 3 | Fase 10 | SUB-27.9 — ⛓️ bloqueada |
-| **SUB-27.15** | Rechecar conexão no login/logout em `src/hooks/useConexao.ts` | 3 | Fase 10 | SUB-27.9 — ⛓️ bloqueada |
-| **SUB-27.16** | `urlDeRetorno()` para link mágico e redefinição de senha | 3 | Fase 10 | SUB-27.5 — ⛓️ bloqueada |
+| **SUB-27.14** | Componente `UserMenu` em `src/components/layout/UserMenu.tsx` | 3 | Fase 10 | SUB-27.26 — ⛓️ bloqueada |
+| **SUB-27.15** | Rechecar conexão no login/logout em `src/hooks/useConexao.ts` | 3 | Fase 10 | SUB-27.26 — ⛓️ bloqueada |
+| **SUB-27.16** | `urlDeRetorno()` para link mágico e redefinição de senha | 3 | Fase 10 | SUB-27.1 — ⛓️ bloqueada |
 | **SUB-27.17** | Documentar configuração do Supabase Auth em `src/README.md` | 3 | Fase 10 | SUB-27.13 — ⛓️ bloqueada |
-| **SUB-27.18** | Validação automatizada da SUB-27 | 3 | Fase 10 | SUB-27.6, SUB-27.8, SUB-27.13, SUB-27.14, SUB-27.15, SUB-27.16, SUB-27.17, SUB-27.20, SUB-27.21 — ⛓️ bloqueada |
-| **SUB-27.19** | `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx` | 3 | Fase 10 | SUB-27.5, SUB-27.16 — ⛓️ bloqueada |
-| **SUB-27.20** | Limpar `ProjetoContext` ao sair | 3 | Fase 10 | SUB-27.9 — ⛓️ bloqueada |
+| **SUB-27.18** | Validação automatizada da SUB-27 | 3 | Fase 10 | SUB-27.6, SUB-27.8, SUB-27.13, SUB-27.27, SUB-27.15, SUB-27.16, SUB-27.17, SUB-27.20, SUB-27.21 — ⛓️ bloqueada |
+| **SUB-27.19** | `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx` | 3 | Fase 10 | SUB-27.24, SUB-27.16 — ⛓️ bloqueada |
+| **SUB-27.20** | Limpar `ProjetoContext` ao sair | 3 | Fase 10 | SUB-27.26 — ⛓️ bloqueada |
 | **SUB-27.21** | Documentar primeiro administrador e membros em `database/README.md` | 3 | Fase 10 | SUB-27.13 — ⛓️ bloqueada |
-| **SUB-27.22** | Conferência no navegador e varredura do bundle (SUB-27) | 3 | Fase 10 | SUB-27.18 — ⛓️ bloqueada |
+| **SUB-27.22** | Conferência no navegador (entrar, sair, restaurar sessão) — SUB-27 | 3 | Fase 10 | SUB-27.18 — ⛓️ bloqueada |
+| **SUB-27.23** | `obterSessao()` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.4 — ⛓️ bloqueada |
+| **SUB-27.24** | `redefinirSenha()` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.5 — ⛓️ bloqueada |
+| **SUB-27.25** | `papelNoProjeto()` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.7 — ⛓️ bloqueada |
+| **SUB-27.26** | Hook `useAuth` em `src/hooks/useAuth.ts` | 3 | Fase 10 | SUB-27.9 — ⛓️ bloqueada |
+| **SUB-27.27** | Incluir `UserMenu` no `src/components/layout/Header.tsx` | 3 | Fase 10 | SUB-27.14 — ⛓️ bloqueada |
+| **SUB-27.28** | Varredura do bundle por `service_role` (SUB-27) | 3 | Fase 10 | SUB-27.22 — ⛓️ bloqueada |
 
 ---
 
@@ -297,3 +309,4 @@
 | 2026-10-12 00:07 | DashboardAI (Grok Bot) | Lock planejamento SUB-08 | — | SUB-08 travada por DashboardAI (Grok Bot) para subdividir em subtarefas de ~3 min, a pedido do usuário |
 | 2026-10-12 00:08 | DashboardAI (Grok Bot) | Subdivisão SUB-08 | (este commit) | SUB-08 subdividida em 9 subtarefas (08.1 esqueleto do `.env.example`; 08.2 frontend; 08.3 servidor Supabase; 08.4 embeddings; 08.5 MCP; 08.6 scripts; 08.7 `.gitignore`; 08.8 extração em `scripts/checar-env.mjs` + testes; 08.9 `npm run check:env`). SUB-25.2, 26.3 e 26.5 passam a depender de SUB-08.9. Trava de planejamento liberada. Corrigido no quadro o texto trocado no commit 687f149 ("SUB-26.1" virou "SUB-26.1, SUB-27.1" e "SUB-26.10" virou "SUB-26.1, SUB-27.10"). Total 130; livres 19; reservadas 0; bloqueadas 111 |
 | 2026-10-12 00:16 | DashboardAI (Grok Bot) | Lock revisão | — | Trava de planejamento (exceção da seção 1.1 do AGENTS.md: subdivisão pedida pelo usuário) em SUB-08, 19, 20, 21, 23, 27, 28, 33 e 34 para subdividir subtarefas ainda grandes |
+| 2026-10-12 00:17 | DashboardAI (Grok Bot) | Nova revisão da subdivisão | (este commit) | Revisão rigorosa (~3 min = 1 função/componente/arquivo de teste/seção): 22 subtarefas divididas gerando 23 novas — 08.8->08.10, 08.9->08.11, 19.3->19.10, 20.3->20.10, 20.4->20.9, 21.1->21.13, 21.2->21.14, 23.1->23.13, 27.4->27.23, 27.5->27.24, 27.7->27.25, 27.9->27.26, 27.14->27.27, 27.22->27.28, 33.3->33.13, 34.2->34.6, 28.1->28.26/28.27, 28.2->28.28, 28.3->28.29, 28.4->28.30, 28.20->28.31, 28.23->28.32; 27.16 reduzida (só `urlDeRetorno`, depende de 27.1). Dependentes religados para a última parte (ex.: 27.12/14/15/20 e 28.16 -> 27.26; 27.18 -> 27.27; 25.2 cita 27.28; 28.5/6/20/21 -> 28.29; 34.5 -> 34.6). Travas de planejamento liberadas. Total 153; livres 22; reservadas 0; bloqueadas 131 |
