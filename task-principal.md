@@ -2637,15 +2637,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-35.45: Seção "Reporte de progresso (opcional)" no `AGENTS.md`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 01:11)
+#### [x] SUB-35.45: Seção "Reporte de progresso (opcional)" no `AGENTS.md`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 01:11 → 2026-10-12 01:13)
 - **Depende de:** SUB-35.41
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Orientar os agentes a emitir `agent_event` (`inicio`/`progresso`/`fim`/`erro` e `heartbeat`) ao trabalhar numa subtarefa, sem substituir o protocolo de lock do quadro.
 - **Critérios de Aceitação:** Seção revisada; protocolo de lock inalterado.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `dcdbc96`
+- **Anotação:** Nova seção "📡 4. REPORTE DE PROGRESSO (OPCIONAL)" no `AGENTS.md` (antes do plano de implementação): orienta emitir `agent_event` com `agente` igual ao do quadro e `task_codigo` — `inicio` após o push do lock, `progresso` (com `etapa`), `heartbeat` a cada ~5 min em trabalho longo, `erro` e `fim` após o push da entrega; exemplo JSON-RPC; regras de `chave_idempotencia`, mensagens sem segredos, falha no evento não bloqueia, e o espelho `scripts/espelhar_quadro_eventos.py` para quem só usa o quadro. Aviso explícito de que o reporte não substitui nem altera o lock das seções 1/1.1 (diff só com inclusões; protocolo inalterado). Só documentação.
 
 #### [ ] SUB-35.46: Validação automatizada da SUB-35
 - **Status:** pendente

@@ -44,17 +44,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:09 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-35.45
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.45** |
-| **Título da Sub-task:** | Seção "Reporte de progresso (opcional)" no `AGENTS.md` |
-| **Agente Responsável:** | DashboardAI-Clone 08 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:11 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-21.12
 
 | Propriedade | Valor Atual |
@@ -92,14 +81,13 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27.12** | Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:13 | SUB-27.26, SUB-27.11 |
 | **SUB-35.14** | `mesclarEvento()` em `src/lib/monitor.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:13 | SUB-35.8 |
 | **SUB-21.12** | Conferir exclusão com editor e viewer | DashboardAI-Clone 02 | 2026-10-12 01:12 | SUB-21.11 |
-| **SUB-35.45** | Seção "Reporte de progresso (opcional)" no `AGENTS.md` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:11 | SUB-35.41 |
 | **SUB-37** | Ranking e prêmios dos agentes no `dashboard-task-principal.html` | DashboardAI (Grok Bot) | 2026-10-12 01:09 | Nenhuma |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
@@ -226,10 +214,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (101)
+### ✅ CONCLUÍDAS (102)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-35.45** | Seção "Reporte de progresso (opcional)" no `AGENTS.md` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:11 | 2026-10-12 01:13 | `dcdbc96` |
 | **SUB-34.5** | Checagem de tamanho `scripts/checar-chunks.mjs` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:11 | 2026-10-12 01:13 | `ac0f232` |
 | **SUB-35.9** | `listarEventos()` em `src/services/eventService.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:12 | 2026-10-12 01:13 | `89c6a43` |
 | **SUB-27.27** | Incluir `UserMenu` no `src/components/layout/Header.tsx` | DashboardAI-Clone 06 | 2026-10-12 01:10 | 2026-10-12 01:13 | `a7817f8` |
@@ -645,3 +634,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:13 | DashboardAI-Clone 04 (Grok Bot) | SUB-35.14 | — | Lock: assumindo SUB-35.14 (`mesclarEvento()` em `src/lib/monitor.ts`) |
 | 2026-10-12 01:13 | DashboardAI-Clone 09 (Grok Bot) | SUB-34.5 | `ac0f232` | Criado `scripts/checar-chunks.mjs` (Node puro): lê `dist/assets/*.js`, lista tamanhos e sai 1 se algum passar de 500 kB (`CHUNK_LIMITE_KB` opcional) ou se `dist/assets` não existir; `"check:chunks"` no `package.json`. `npm run build && npm run check:chunks` OK (14 chunks, todos até 500 kB, sem aviso); typecheck e `npm test` OK. |
 | 2026-10-12 01:13 | DashboardAI-Clone 10 (Grok Bot) | SUB-27.12 | — | Lock: assumindo SUB-27.12 (Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx`) |
+| 2026-10-12 01:13 | DashboardAI-Clone 08 (Grok Bot) | SUB-35.45 | `dcdbc96` | Nova seção "📡 4. REPORTE DE PROGRESSO (OPCIONAL)" no `AGENTS.md` (antes do plano de implementação): orienta emitir `agent_event` com `agente` igual ao do quadro e `task_codigo` — `inicio` após o push do lock, `progresso` (com `etapa`), `heartbeat` a cada ~5 min em trabalho longo, `erro` e `fim` após o push da entrega; exemplo JSON-RPC; regras de `chave_idempotencia`, mensagens sem segredos, falha no evento não bloqueia, e o espelho `scripts/espelhar_quadro_eventos.py` para quem só usa o quadro. Aviso explícito de que o reporte não substitui nem altera o lock das seções 1/1.1 (diff só com inclusões; protocolo inalterado). Só documentação. |
