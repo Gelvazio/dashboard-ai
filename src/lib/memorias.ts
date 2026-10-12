@@ -12,6 +12,11 @@ export function memoriaComoMarkdown(m: Pick<Memoria, 'title' | 'content' | 'tags
   const linhas = [`# ${m.title.trim()}`, ''];
   const tags = (m.tags ?? []).map((t) => t.trim()).filter(Boolean);
   if (tags.length) linhas.push(`**Tags:** ${tags.map((t) => `\`${t}\``).join(', ')}`);
-  linhas.push(`**Escopo:** ${m.project_id === null ? 'global' : 'projeto'}`, '', m.content.trim());
+  linhas.push(`**Escopo:** ${escopoMemoria(m)}`, '', m.content.trim());
   return linhas.join('\n') + '\n';
+}
+
+/** Escopo da memória: `project_id` nulo = global (compartilhada entre projetos). */
+export function escopoMemoria(m: Pick<Memoria, 'project_id'>): 'global' | 'projeto' {
+  return m.project_id === null || m.project_id === undefined ? 'global' : 'projeto';
 }
