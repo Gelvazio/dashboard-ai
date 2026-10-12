@@ -2151,7 +2151,7 @@
   - `SUB-35.4`: Publicar `agent_events` no Supabase Realtime (`concluido`)
   - `SUB-35.5`: Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` (`concluido`)
   - `SUB-35.6`: Teste de integração de `agent_events` (RLS e trigger) (`concluido`)
-  - `SUB-35.7`: Seção "Eventos dos agentes (07)" no `database/README.md` (`pendente`)
+  - `SUB-35.7`: Seção "Eventos dos agentes (07)" no `database/README.md` (`em_execucao`)
   - `SUB-35.8`: Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` (`pendente`)
   - `SUB-35.9`: `listarEventos()` em `src/services/eventService.ts` (`pendente`)
   - `SUB-35.10`: `atividadeAtual()` em `src/services/eventService.ts` (`pendente`)
@@ -2257,9 +2257,9 @@
 - **Commit:** `e7a39cd`
 - **Anotação:** Criado `tests/integration/agentEvents.integration.test.ts` (helpers de `tests/helpers/postgrest.ts`; cliente sem tipagem de tabela até a SUB-35.8 incluir `agent_events` no tipo `Database`): viewer lê só eventos do próprio projeto; viewer não inclui (RLS); editor inclui no próprio projeto com `agente` aparado e `criado_por` = ele; update recusado (permission denied, nada alterado); task de outro projeto recusada pelo trigger ("não pertence ao projeto do evento"). `npm run test:integration` (PostgREST + Postgres 17 locais, Node 22) verde: 6 arquivos, 23 testes; `npm test` verde (skipped sem PostgREST); `npm run typecheck` OK. Obs.: no box o Node padrão é 20 e o supabase-js exige Node 22+ para a integração.
 
-#### [ ] SUB-35.7: Seção "Eventos dos agentes (07)" no `database/README.md`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [🔄] SUB-35.7: Seção "Eventos dos agentes (07)" no `database/README.md`
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-35.4, SUB-35.5
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Documentar colunas, tipos de evento, RLS, publicação Realtime, `atividade_atual_agentes` e a `chave_idempotencia`; incluir `07_agent_events.sql` na ordem de aplicação.
