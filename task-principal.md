@@ -1402,15 +1402,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-26.6: Seção Agentes de IA: configurar clientes MCP
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 01:06)
+#### [x] SUB-26.6: Seção Agentes de IA: configurar clientes MCP
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 01:06 → 2026-10-12 01:07)
 - **Depende de:** SUB-26.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Como configurar o MCP em clientes (Claude Code, Codex etc.) com `Authorization: Bearer <MCP_AUTH_TOKEN>`, URL `/mcp`, argumento `project` e protocolo do quadro (`AGENTS.md`).
 - **Critérios de Aceitação:** Configuração conferida com `api/mcp.ts`.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `d7f05f6`
+- **Anotação:** Subseção "Configurar o cliente MCP" em Agentes de IA do `README.md`: transporte Streamable HTTP (POST, protocolos 2025-06-18/2025-03-26/2024-11-05), URL `/mcp` (rewrite do `vercel.json`), `Authorization: Bearer <MCP_AUTH_TOKEN>` (sem token no servidor as ferramentas ficam desativadas; token errado -> 401), argumento `project`/`MCP_DEFAULT_PROJECT` e `MCP_ALLOWED_PROJECTS` para endpoint por projeto; exemplos para Claude Code (`claude mcp add --transport http ... --header`), Codex (`config.toml` com `url` + `bearer_token_env_var` e `codex mcp add --url --bearer-token-env-var`, conferido na documentação atual do Codex), JSON genérico (Cursor/Gemini CLI etc.), `curl` de `tools/list` e resumo do protocolo do `AGENTS.md`. Conferido com `api/mcp.ts` e `api/_lib/args.ts`. Só documentação.
 
 #### [x] SUB-26.7: Seção Memória via MCP
 - **Status:** concluido

@@ -66,17 +66,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:06 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-26.6
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-26.6** |
-| **Título da Sub-task:** | Seção Agentes de IA: configurar clientes MCP |
-| **Agente Responsável:** | DashboardAI-Clone 08 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:06 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 04 (Grok Bot) — SUB-19.8
 
 | Propriedade | Valor Atual |
@@ -103,13 +92,12 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (5)
+### 🔄 EM EXECUÇÃO (4)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-35.6** | Teste de integração de `agent_events` (RLS e trigger) | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:07 | SUB-35.2, SUB-35.3 |
 | **SUB-19.8** | Integrar a busca na `src/views/MemoriaView.tsx` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:07 | SUB-19.7, SUB-21.9 |
-| **SUB-26.6** | Seção Agentes de IA: configurar clientes MCP | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:06 | SUB-26.1 |
 | **SUB-21.11** | Ligar detalhe e exclusão na `MemoriaView` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:06 | SUB-21.9, SUB-21.6, SUB-21.7 |
 | **SUB-27.14** | Componente `UserMenu` em `src/components/layout/UserMenu.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:06 | SUB-27.26 |
 | **SUB-35.21** | Instalar `chart.js` e `react-chartjs-2` | DashboardAI-Clone 06 | 2026-10-12 01:06 | Nenhuma |
@@ -258,10 +246,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (86)
+### ✅ CONCLUÍDAS (87)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-26.6** | Seção Agentes de IA: configurar clientes MCP | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:06 | 2026-10-12 01:07 | `d7f05f6` |
 | **SUB-19.7** | Painel `BuscaSemanticaPanel` (campo, grade e estados) | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:04 | 2026-10-12 01:07 | `3187754` |
 | **SUB-26.10** | Seção Agentes de IA: exemplos do ciclo da fila | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:05 | 2026-10-12 01:06 | `23153af` |
 | **SUB-27.20** | Limpar `ProjetoContext` ao sair | DashboardAI-Clone 01 | 2026-10-12 01:05 | 2026-10-12 01:06 | `74588f7` |
@@ -616,3 +605,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:07 | DashboardAI-Clone 04 (Grok Bot) | SUB-19.8 | — | Lock: assumindo SUB-19.8 (Integrar a busca na `src/views/MemoriaView.tsx`) |
 | 2026-10-12 01:07 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.6 | — | Lock: assumindo SUB-35.6 (Teste de integração de `agent_events` (RLS e trigger)) |
 | 2026-10-12 01:07 | DashboardAI-Clone 02 | SUB-35.5 | `d9d9a6c` | Adicionada `atividade_atual_agentes(p_project_id bigint)` em `database/07_agent_events.sql`: SQL `stable`, `security invoker` (respeita a RLS), `distinct on (agente)` ordenado por `created_at desc` -> agente, task_codigo, etapa, tipo, status, mensagem, execucao_id, ultimo_em e ultimo_heartbeat_em (máximo dos `tipo = 'heartbeat'`). `drop function if exists` + create (reaplicável); execute só para `authenticated`/`service_role`. Validado em Postgres local: 00–07 aplicados 2x; com eventos de 2 agentes devolve 1 linha por agente com o último evento e heartbeat correto. |
+| 2026-10-12 01:07 | DashboardAI-Clone 08 (Grok Bot) | SUB-26.6 | `d7f05f6` | Subseção "Configurar o cliente MCP" em Agentes de IA do `README.md`: transporte Streamable HTTP (POST, protocolos 2025-06-18/2025-03-26/2024-11-05), URL `/mcp` (rewrite do `vercel.json`), `Authorization: Bearer <MCP_AUTH_TOKEN>` (sem token no servidor as ferramentas ficam desativadas; token errado -> 401), argumento `project`/`MCP_DEFAULT_PROJECT` e `MCP_ALLOWED_PROJECTS` para endpoint por projeto; exemplos para Claude Code (`claude mcp add --transport http ... --header`), Codex (`config.toml` com `url` + `bearer_token_env_var` e `codex mcp add --url --bearer-token-env-var`, conferido na documentação atual do Codex), JSON genérico (Cursor/Gemini CLI etc.), `curl` de `tools/list` e resumo do protocolo do `AGENTS.md`. Conferido com `api/mcp.ts` e `api/_lib/args.ts`. Só documentação. |
