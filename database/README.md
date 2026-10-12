@@ -20,6 +20,7 @@ atualizam instalações da versão anterior (sem `project_id`).
 | `05_rls_policies.sql` | RLS e permissões das tabelas e funções de 00–04 |
 | `06_messages_rules.sql` | `agent_messages` (recados entre agentes, por projeto/task) e `project_rules` (regras do repositório por seção, com `md5`), `ler_recados()`, `conferir_regras()` e a RLS dessas tabelas |
 | `07_agent_events.sql` | `agent_events` (eventos dos agentes para o monitor em tempo real), trigger `validar_agent_event`, RLS, publicação no Supabase Realtime e `atividade_atual_agentes()` |
+| `08_admin_inicial.sql` | Administrador inicial: `email_administrador_inicial()`, `garantir_admin_inicial()` e a trigger `garantir_admin_inicial_trg` em `auth.users` (ver [Administrador inicial (08)](#administrador-inicial-08)) |
 
 ## Modelo de acesso
 
@@ -72,6 +73,29 @@ não mexem na trava nem nas tentativas (exceto zerar ao reabrir) e só concluem 
   `ultimo_heartbeat_em`. `security invoker` (respeita a RLS), executável por `authenticated` e
   `service_role`. Só exibe atividade; não altera travas.
 
+## Administrador inicial (08)
+
+Quem se cadastra pela tela de login (**Criar usuário**) com o e-mail `gelvazio@gmail.com` vira
+administrador global (`user_roles.role = 'admin'`). Regras:
+
+- O papel é decidido **só pelo banco**: a trigger `garantir_admin_inicial_trg` (`after insert or
+  update of email_confirmed_at on auth.users`) chama `garantir_admin_inicial()`
+  (`security definer`). O frontend nunca envia papel no cadastro.
+- Só **depois do e-mail confirmado** (`auth.users.email_confirmed_at` preenchido), para que ninguém
+  se registre com esse e-mail sem ter acesso à caixa de entrada.
+- Só se o usuário **ainda não tiver** linha em `user_roles` (`on conflict do nothing`): um papel que
+  já existe não muda. Os demais cadastros entram sem papel global (acesso só por `project_members`).
+- O e-mail fica num lugar só: `email_administrador_inicial()`. Para trocar, edite a função e reaplique
+  o script.
+- O script também faz o *backfill*: se o usuário já existir e já estiver confirmado, cria o papel na hora.
+- Sem o schema `auth` (PostgreSQL puro), as funções são criadas e a trigger e o backfill são ignorados.
+
+Conferir no SQL Editor:
+```sql
+select tgname from pg_trigger where tgname = 'garantir_admin_inicial_trg';
+select user_id, role from public.user_roles where email = public.email_administrador_inicial();
+```
+
 ## Fila
 
 - `pegar_proxima_task(p_agente, p_projeto => null, p_lock_minutos => 90, p_exclusivo => false)`:
@@ -89,7 +113,7 @@ não mexem na trava nem nas tentativas (exceto zerar ao reabrir) e só concluem 
 
 ## Como aplicar
 
-**Supabase:** abra *SQL Editor* e execute os arquivos na ordem acima (00 → 07).
+**Supabase:** abra *SQL Editor* e execute os arquivos na ordem acima (00 → 08).
 
 **psql:**
 ```bash

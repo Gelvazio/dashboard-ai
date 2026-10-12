@@ -35,7 +35,8 @@ O DashboardAI é composto por três camadas principais que trabalham juntas para
 - Localizado em `src/`
 - Acessa o Supabase apenas com a chave **anon** + sessão do usuário (RLS aplicada)
 - Principais áreas: Fila de Tarefas, Cérebro de Memória, Logs, Monitor em tempo real e Configurações
-- Autenticação via Supabase Auth (login com magic link / e-mail)
+- Autenticação via Supabase Auth (login com e-mail e senha ou link mágico) e cadastro pelo link
+  **Criar usuário** da tela de login (ver [Cadastro de usuários](#4-cadastro-de-usuários-criar-usuário))
 
 ### Backend serverless (Vercel)
 - `api/mcp.ts`: servidor **MCP** (Model Context Protocol) via Streamable HTTP / JSON-RPC 2.0
@@ -102,7 +103,7 @@ funções, papéis e RLS está no [`database/README.md`](database/README.md).
 
 ### 1. Aplicar os scripts
 
-Aplique **em ordem numérica** (`00` → `06`):
+Aplique **em ordem numérica** (`00` → `08`):
 
 | Arquivo | Conteúdo |
 |---|---|
@@ -113,6 +114,8 @@ Aplique **em ordem numérica** (`00` → `06`):
 | `04_rpc_functions.sql` | `pegar_proxima_task`, `finalizar_task`, `liberar_trava_task`, `match_memories` etc. |
 | `05_rls_policies.sql` | RLS e permissões das tabelas e funções de 00–04 |
 | `06_messages_rules.sql` | Recados entre agentes e regras por projeto |
+| `07_agent_events.sql` | Eventos dos agentes para o monitor em tempo real |
+| `08_admin_inicial.sql` | Administrador inicial (`gelvazio@gmail.com`), criado pelo banco após a confirmação do e-mail |
 
 - **SQL Editor do Supabase:** abra cada arquivo, cole e execute, na ordem da tabela.
 - **psql** (use a *connection string* do painel do Supabase, em *Project Settings > Database*):
@@ -165,6 +168,23 @@ PSQL="psql -h localhost -U postgres" database/tests/run_tests.sh
 ```
 
 > ⚠️ Nunca rode os testes contra o Supabase: o script **apaga e recria** o banco de teste.
+
+### 4. Cadastro de usuários ("Criar usuário")
+
+A tela de login tem o link **Não tem conta? Criar usuário**, que abre o formulário de cadastro
+(nome, e-mail, senha e confirmação) e usa o `signUp` do Supabase Auth. O usuário criado não ganha
+papel nenhum pelo frontend: o acesso vem dos `project_members` (ou do administrador inicial, abaixo).
+
+**Administrador inicial:** quem se cadastra com `gelvazio@gmail.com`, se esse e-mail ainda não
+existir, vira administrador global depois de confirmar o e-mail (script `08_admin_inicial.sql`;
+regras em [`database/README.md`](database/README.md#administrador-inicial-08)).
+
+Configuração necessária no painel do Supabase:
+
+- **Authentication → Providers → Email:** cadastro de novos usuários **habilitado** e
+  **"Confirm email" ligado**. Sem a confirmação, o administrador inicial **não** é criado.
+- **Authentication → URL Configuration:** em *Site URL* e *Redirect URLs*, a URL do dashboard
+  (local e de produção), para o link de confirmação voltar para a tela certa.
 
 ## Deploy na Vercel
 
