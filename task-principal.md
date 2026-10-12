@@ -10,12 +10,12 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
 - **Subtarefas atômicas (~3 min):** 153 (SUB-08.x, SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x; atualizado em 2026-10-12 00:17)
-- **Em Execução:** 1 (SUB-08.2)
-- **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 135 subtarefas
+- **Em Execução:** 0
+- **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 134 subtarefas
   - livres agora: 28 (SUB-33.5, SUB-33.9, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.5, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.2, SUB-23.5, SUB-23.12, SUB-25.1, SUB-26.1, SUB-27.1)
   - bloqueadas por dependência: 106
   - reservadas: 0
-- **Concluídas:** 40
+- **Concluídas:** 41
 - **Canceladas:** 0
 
 ---
@@ -335,7 +335,7 @@
 - **Depende de:** SUB-06; subtarefas SUB-08.1 a SUB-08.11
 - **Subtarefas:** (subdividida em 9 em 2026-10-12 00:08 por DashboardAI (Grok Bot) a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`; nova revisão para 11 em 2026-10-12 00:17)
   - `SUB-08.1`: Esqueleto do `.env.example` (`concluido`)
-  - `SUB-08.2`: Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` (`em_execucao`)
+  - `SUB-08.2`: Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` (`concluido`)
   - `SUB-08.3`: Seção Servidor Supabase: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `SUPABASE_REST_URL` (`concluido`)
   - `SUB-08.4`: Seção Embeddings: `OPENAI_API_KEY`, `EMBEDDING_API_URL`, `EMBEDDING_MODEL` (`pendente`)
   - `SUB-08.5`: Seção MCP: `MCP_AUTH_TOKEN`, `MCP_CORS_ORIGIN`, `MCP_DEFAULT_PROJECT`, `MCP_ALLOWED_PROJECTS` (`pendente`)
@@ -360,15 +360,15 @@
 - **Commit:** `5db1d43`
 - **Anotação:** Criado `.env.example` na raiz: cabeçalho (copiar para `.env`/`.env.local`, nunca commitar valores reais, `VITE_*` vão para o navegador e segredos só no servidor) e seções vazias Frontend, Servidor Supabase, Embeddings, MCP e Scripts. `git check-ignore .env.example` não o ignora (`.env` e `.env.local` seguem ignorados); nenhum valor real.
 
-#### [ ] SUB-08.2: Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY`
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (desde 2026-10-12 00:33)
+#### [x] SUB-08.2: Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY`
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:33 → 2026-10-12 00:33)
 - **Depende de:** SUB-08.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Preencher a seção Frontend do `.env.example` com `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` (valores de exemplo vazios), avisando que só a chave **anon** é permitida (o `getSupabase()` recusa `service_role`).
 - **Critérios de Aceitação:** Seção preenchida; nenhum valor real.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `1134084`
+- **Anotação:** Preenchida a seção Frontend do `.env.example` com `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` (valores vazios), avisando que são públicas (embutidas no bundle) e que só a chave anon é permitida (`getSupabase()` recusa service_role). São as únicas `VITE_*` usadas em `src/`.
 
 #### [x] SUB-08.3: Seção Servidor Supabase: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `SUPABASE_REST_URL`
 - **Status:** concluido

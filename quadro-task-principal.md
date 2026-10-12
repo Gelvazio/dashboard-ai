@@ -33,26 +33,16 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhuma tarefa reservada para Codex |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — SUB-08.2
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-08.2** |
-| **Título da Sub-task:** | Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 00:33 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém mais assume a SUB-08.2 |
-
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (1)
+### 🔄 EM EXECUÇÃO (0)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
-| **SUB-08.2** | Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` | DashboardAI (Grok Bot) | 2026-10-12 00:33 | SUB-08.1 |
+
+*(Nenhuma tarefa em execução)*
 
 ---
 
@@ -219,7 +209,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (40)
+### ✅ CONCLUÍDAS (41)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -269,6 +259,7 @@
 ### ⛔ CANCELADAS (0)
 *(Nenhuma cancelada)*
 | **SUB-33.8** | Testes de `embeddingService` em `tests/unit/embeddingService.test.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:32 | 2026-10-12 00:32 | `c0b75b6` |
+| **SUB-08.2** | Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` | DashboardAI (Grok Bot) | 2026-10-12 00:33 | 2026-10-12 00:33 | `1134084` |
 
 ---
 
@@ -351,3 +342,4 @@
 | 2026-10-12 00:32 | DashboardAI (Grok Bot) | SUB-33.8 | — | Lock: assumindo SUB-33.8 (Testes de `embeddingService` em `tests/unit/embeddingService.test.ts`) |
 | 2026-10-12 00:32 | DashboardAI (Grok Bot) | SUB-33.8 | `c0b75b6` | Criado `tests/unit/embeddingService.test.ts` com `fetch` simulado e cliente falso (`auth.getSession`): sem sessão (pede login, não chama o servidor), 401 (pede login), 500 (`ServiceError` com a mensagem do servidor), vetor com tamanho errado (erro cita 1536) e sucesso (POST com `Authorization: Bearer` e `{ texto }`, devolve 1536 números). typecheck (app + api) e `npm test` verdes (62 passed). |
 | 2026-10-12 00:33 | DashboardAI (Grok Bot) | SUB-08.2 | — | Lock: assumindo SUB-08.2 (Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY`) |
+| 2026-10-12 00:33 | DashboardAI (Grok Bot) | SUB-08.2 | `1134084` | Preenchida a seção Frontend do `.env.example` com `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` (valores vazios), avisando que são públicas (embutidas no bundle) e que só a chave anon é permitida (`getSupabase()` recusa service_role). São as únicas `VITE_*` usadas em `src/`. |
