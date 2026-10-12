@@ -19,6 +19,33 @@ export async function entrarComSenha(
   return data.session;
 }
 
+/** Dados enviados ao Supabase para criar um usuário (sem nenhum campo de papel/permissão). */
+export interface NovoUsuario {
+  nome: string;
+  email: string;
+  senha: string;
+  redirectTo: string;
+}
+
+/**
+ * Cria o usuário no Supabase Auth (`signUp`). O papel global é decidido só pelo banco
+ * (`database/08_admin_inicial.sql`): nada de papel sai do frontend.
+ * Devolve `precisaConfirmar: true` quando o Supabase enviou o e-mail de confirmação (sem sessão).
+ * Lança `ServiceError(..., 'AUTH')` com mensagem em português.
+ */
+export async function cadastrarUsuario(
+  { nome, email, senha, redirectTo }: NovoUsuario,
+  client: DashboardClient = getSupabase(),
+): Promise<{ precisaConfirmar: boolean }> {
+  const { data, error } = await client.auth.signUp({
+    email: email.trim(),
+    password: senha,
+    options: { data: { nome: nome.trim() }, emailRedirectTo: redirectTo },
+  });
+  if (error) throw new ServiceError(mensagemErroAuth(error), 'AUTH');
+  return { precisaConfirmar: !data.session };
+}
+
 /** Chave do projeto selecionado no `localStorage` (ver `ProjetoContext`). */
 export const CHAVE_PROJETO_LOCAL = 'dashboard-ai:projeto';
 
