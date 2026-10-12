@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard AI — Quadro de Tasks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #080c14;
+      --bg-2: #0d1422;
+      --panel: #121a2b;
+      --panel-2: #172033;
+      --line: #243049;
+      --text: #e8eef8;
+      --muted: #8b9bb4;
+      --run: #f5a524;
+      --done: #3dd68c;
+      --wait: #6ea8ff;
+      --pend: #9aa8bf;
+      --lock: #ff6b6b;
+      --cancel: #c77dff;
+      --warn: #ffd166;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--bg); color: var(--text); font-family: "DM Sans", system-ui, sans-serif; }
+    body { min-height: 100vh; }
+    .wrap { max-width: 1440px; margin: 0 auto; padding: 24px 20px 48px; }
+    header {
+      display: flex; flex-wrap: wrap; gap: 16px; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 22px;
+    }
+    .brand h1 { margin: 0; font-size: 1.45rem; letter-spacing: -0.03em; }
+    .brand p { margin: 6px 0 0; color: var(--muted); font-size: 0.9rem; }
+    .brand a { color: var(--wait); text-decoration: none; }
+    .brand a:hover { text-decoration: underline; }
+    .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .pill {
+      font-family: "JetBrains Mono", monospace; font-size: 0.75rem;
+      background: var(--panel); border: 1px solid var(--line); border-radius: 999px;
+      padding: 8px 12px; color: var(--muted);
+    }
+    .pill.ok { color: var(--done); border-color: #245c44; }
+    .pill.err { color: var(--lock); border-color: #5c2430; }
+    button.action {
+      background: #1e3a8a; color: white; border: 0; border-radius: 10px;
+      padding: 9px 14px; font-weight: 600; cursor: pointer; font-family: inherit;
+    }
+    button.action:hover { background: #2563eb; }
+    button.action:disabled { opacity: 0.6; cursor: wait; }
+    .kpis { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 8px; perspective: 900px; }
+    .kpis.is-filtered { grid-template-columns: minmax(220px, 320px); }
+    .kpis.is-filtered .kpi:not(.active) { display: none; }
+    .card {
+      background: linear-gradient(180deg, var(--panel) 0%, var(--bg-2) 100%);
+      border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px;
+    }
+    .kpi, .lock-card, .task {
+      cursor: pointer;
+      transform: translate3d(0, 0, 0) scale(1);
+      transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.22s ease, opacity 0.22s ease;
+    }
+    .kpi:hover, .lock-card:hover, .task:hover {
+      transform: translate3d(0, -8px, 18px) scale(1.035);
+      border-color: #4a628a;
+      z-index: 2;
+    }
+    .kpi:active, .lock-card:active, .task:active {
+      transform: translate3d(0, -3px, 8px) scale(1.015);
+    }
+    .kpi.active, .lock-card.active, .task.active {
+      transform: translate3d(0, -6px, 12px) scale(1.02);
+      border-color: var(--wait);
+    }
+    .kpi { user-select: none; }
+    .filter-hint { color: var(--muted); font-size: 0.8rem; margin: 0 0 14px; min-height: 1.2em; }
+    .kpi .label { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .kpi .value { font-size: 1.85rem; font-weight: 700; margin-top: 4px; font-variant-numeric: tabular-nums; }
+    .kpi .hint { color: var(--muted); font-size: 0.78rem; margin-top: 4px; }
+    .kpi.run .value { color: var(--run); }
+    .kpi.done .value { color: var(--done); }
+    .kpi.wait .value { color: var(--wait); }
+    .kpi.lock .value { color: var(--lock); }
+    .progress-wrap { margin: 16px 0 20px; }
+    .progress-meta { display: flex; justify-content: space-between; color: var(--muted); font-size: 0.85rem; margin-bottom: 8px; }
+    .bar { height: 10px; background: var(--panel-2); border-radius: 99px; overflow: hidden; border: 1px solid var(--line); }
+    .bar > span { display: block; height: 100%; background: linear-gradient(90deg, #245c44, var(--done)); width: 0; transition: width 0.5s ease; }
+    .grid-2 { display: grid; grid-template-columns: 1.1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+    .panel-title { font-size: 0.95rem; margin: 0 0 12px; }
+    canvas { max-height: 280px; }
+    .locks { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin-bottom: 16px; }
+    .lock-card { border-left: 3px solid var(--lock); }
+    .lock-card .code { font-family: "JetBrains Mono", monospace; color: var(--run); font-weight: 600; }
+    .lock-card h3 { margin: 6px 0 8px; font-size: 0.98rem; }
+    .meta { color: var(--muted); font-size: 0.82rem; line-height: 1.45; }
+    .kanban { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 16px; }
+    .col { background: var(--bg-2); border: 1px solid var(--line); border-radius: 14px; padding: 12px; min-height: 180px; }
+    .col h2 { margin: 0 0 10px; font-size: 0.85rem; display: flex; justify-content: space-between; }
+    .col .count { font-family: "JetBrains Mono", monospace; color: var(--muted); }
+    .task {
+      background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+      padding: 10px; margin-bottom: 8px;
+    }
+    .task .code { font-family: "JetBrains Mono", monospace; font-size: 0.75rem; color: var(--wait); }
+    .task .title { font-size: 0.86rem; margin: 4px 0 6px; }
+    .badge {
+      display: inline-block; font-size: 0.7rem; padding: 2px 7px; border-radius: 999px;
+      border: 1px solid var(--line); color: var(--muted); margin-right: 4px; margin-bottom: 3px;
+    }
+    .filters { display: flex; gap: 10px; margin: 8px 0 14px; }
+    input[type="search"] {
+      flex: 1; background: var(--panel); border: 1px solid var(--line); color: var(--text);
+      border-radius: 10px; padding: 10px 12px; font-family: inherit;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+    .sha { font-family: "JetBrains Mono", monospace; color: var(--done); }
+    .note { color: var(--muted); }
+    .empty { color: var(--muted); font-size: 0.85rem; padding: 8px; }
+    .error-banner {
+      display: none; background: #3a1520; border: 1px solid #6b2233; color: #ffc9c9;
+      padding: 10px 12px; border-radius: 10px; margin-bottom: 14px; font-size: 0.88rem;
+    }
+    footer { margin-top: 18px; color: var(--muted); font-size: 0.78rem; }
+    @media (max-width: 1100px) {
+      .kpis, .kanban, .grid-2, .grid-3 { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 700px) {
+      .kpis, .kanban, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <h1>Quadro de execução — Dashboard AI</h1>
+        <p>
+          Fonte ao vivo:
+          <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/quadro-task-principal.md" target="_blank" rel="noopener">quadro-task-principal.md</a>
+          no GitHub (<code>main</code>).
+        </p>
+      </div>
+      <div class="toolbar">
+        <span id="statusPill" class="pill">aguardando leitura…</span>
+        <span id="clockPill" class="pill">atualização automática a cada 20s</span>
+        <input id="ghToken" type="password" placeholder="Token GitHub (repo privado)" title="Personal access token com leitura do repositório. Fica só no seu navegador." style="background:#121a2b;border:1px solid #243049;color:#e8eef8;border-radius:10px;padding:9px 12px;font-family:inherit;width:220px;" />
+        <button class="action" id="refreshBtn" type="button">Atualizar agora</button>
+      </div>
+    </header>
+
+    <div id="errorBanner" class="error-banner"></div>
+
+    <section class="kpis" id="kpis">
+      <article class="card kpi" data-filter="all" title="Mostrar todas as tarefas"><div class="label">Total</div><div class="value" id="kpiTotal">—</div><div class="hint">linhas do kanban</div></article>
+      <article class="card kpi wait" data-filter="pending" title="Filtrar pendentes"><div class="label">Pendentes</div><div class="value" id="kpiPend">—</div><div class="hint">aguardando dependência ou agente</div></article>
+      <article class="card kpi run" data-filter="running" title="Filtrar em execução"><div class="label">Em execução</div><div class="value" id="kpiRun">—</div><div class="hint">com trava ativa</div></article>
+      <article class="card kpi done" data-filter="done" title="Filtrar concluídas"><div class="label">Concluídas</div><div class="value" id="kpiDone">—</div><div class="hint">entregues no quadro</div></article>
+      <article class="card kpi lock" data-filter="lock" title="Filtrar travas"><div class="label">Travas</div><div class="value" id="kpiLock">—</div><div class="hint">locks ocupados</div></article>
+      <article class="card kpi" data-filter="progress" title="Filtrar pelo progresso (concluídas)"><div class="label">Progresso</div><div class="value" id="kpiPct">—</div><div class="hint">concluídas / total</div></article>
+    </section>
+    <p class="filter-hint" id="filterHint">Passe o mouse para destacar o card. Clique para filtrar só aquele recorte; clique de novo para voltar.</p>
+
+    <div class="progress-wrap">
+      <div class="progress-meta"><span>Conclusão do quadro</span><span id="progressLabel">0%</span></div>
+      <div class="bar"><span id="progressFill"></span></div>
+    </div>
+
+    <h2 class="panel-title">Travas ativas</h2>
+    <div id="locks" class="locks"></div>
+
+    <section class="grid-3">
+      <article class="card"><h2 class="panel-title">Distribuição por status</h2><canvas id="chartStatus"></canvas></article>
+      <article class="card"><h2 class="panel-title">Tarefas por fase</h2><canvas id="chartPhase"></canvas></article>
+      <article class="card"><h2 class="panel-title">Carga por agente</h2><canvas id="chartAgent"></canvas></article>
+    </section>
+
+    <div class="filters">
+      <input id="q" type="search" placeholder="Filtrar por código, título, agente ou dependência…" />
+    </div>
+
+    <section class="kanban" id="kanban"></section>
+
+    <article class="card">
+      <h2 class="panel-title">Histórico de commits e entregas</h2>
+      <div style="overflow:auto;">
+        <table>
+          <thead>
+            <tr><th>Data/hora</th><th>Agente</th><th>Sub-task</th><th>SHA</th><th>Anotação</th></tr>
+          </thead>
+          <tbody id="historyBody"></tbody>
+        </table>
+      </div>
+    </article>
+
+    <footer>
+      Fonte: o arquivo <code>quadro-task-principal.md</code> da branch <code>main</code>
+      (mesmo conteúdo do
+      <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/quadro-task-principal.md" target="_blank" rel="noopener">blob no GitHub</a>).
+      O repositório é privado: sem token, a página lê o Markdown local. Com um PAT, lê a <code>main</code> remota.
+      Abra via servidor HTTP na pasta do repo, por exemplo <code>npx --yes serve .</code>
+    </footer>
+  </div>
+
+  <script>
+    const RAW_URL = "https://raw.githubusercontent.com/Gelvazio/dashboard-ai/main/quadro-task-principal.md";
+    const JSDELIVR_URL = "https://cdn.jsdelivr.net/gh/Gelvazio/dashboard-ai@main/quadro-task-principal.md";
+    const API_URL = "https://api.github.com/repos/Gelvazio/dashboard-ai/contents/quadro-task-principal.md?ref=main";
+    const LOCAL_URL = "./quadro-task-principal.md";
+    const POLL_MS = 20000;
+
+    const PHASE_BY_CODE = {
+      "01": "Fase 1", "02": "Fase 1", "03": "Fase 1",
+      "04": "Fase 2", "05": "Fase 2",
+      "29": "Fase 2B", "30": "Fase 2B", "31": "Fase 2B",
+      "06": "Fase 3", "07": "Fase 3", "08": "Fase 3",
+      "09": "Fase 4", "10": "Fase 4", "11": "Fase 4",
+      "12": "Fase 5", "13": "Fase 5",
+      "14": "Fase 6", "15": "Fase 6", "16": "Fase 6", "17": "Fase 6", "18": "Fase 6",
+      "19": "Fase 7", "20": "Fase 7", "21": "Fase 7",
+      "22": "Fase 8", "23": "Fase 8",
+      "24": "Fase 9",
+      "25": "Fase 10", "26": "Fase 10", "27": "Fase 10",
+      "28": "Fase 11"
+    };
+
+    let charts = {};
+    let latestBoard = null;
+    let lastHash = "";
+    let statusFilter = null;
+    let itemFilter = null;
+
+    function clean(cell) {
+      return String(cell || "")
+        .replace(/\*\*/g, "")
+        .replace(/`/g, "")
+        .replace(/\\\|/g, "|")
+        .trim();
+    }
+
+    function splitRow(line) {
+      const trimmed = line.trim();
+      if (!trimmed.startsWith("|")) return null;
+      const parts = trimmed.split("|").slice(1, -1).map(clean);
+      if (parts.every((p) => /^[-:]+$/.test(p))) return null;
+      return parts;
+    }
+
+    function locateTablesWithHeadings(md) {
+      const lines = md.split(/\r?\n/);
+      const out = [];
+      let lastHeading = "";
+      for (let i = 0; i < lines.length; i++) {
+        const h = lines[i].match(/^#{2,3}\s+(.+)$/);
+        if (h) lastHeading = h[1].trim();
+        const header = splitRow(lines[i]);
+        const next = i + 1 < lines.length ? lines[i + 1].trim() : "";
+        if (header && /^\|?\s*:?-{2,}/.test(next)) {
+          const rows = [];
+          let j = i + 2;
+          while (j < lines.length) {
+            const row = splitRow(lines[j]);
+            if (!row) break;
+            rows.push(row);
+            j += 1;
+          }
+          out.push({ heading: lastHeading, header, rows });
+          i = j - 1;
+        }
+      }
+      return out;
+    }
+
+    function col(header, names) {
+      const lower = header.map((h) => h.toLowerCase());
+      for (const name of names) {
+        const idx = lower.findIndex((h) => h.includes(name));
+        if (idx >= 0) return idx;
+      }
+      return -1;
+    }
+
+    function mapRows(table, mapping) {
+      return table.rows.map((row) => {
+        const obj = {};
+        for (const [key, names] of Object.entries(mapping)) {
+          const idx = col(table.header, names);
+          obj[key] = idx >= 0 ? row[idx] || "" : "";
+        }
+        return obj;
+      }).filter((r) => Object.values(r).some(Boolean));
+    }
+
+    function codeKey(code) {
+      const m = String(code).match(/SUB-(\d+)/i);
+      return m ? m[1].padStart(2, "0") : "";
+    }
+
+    function phaseOf(task) {
+      if (task.phase && /fase/i.test(task.phase)) return task.phase.replace(/\s+/g, " ").trim();
+      const key = codeKey(task.code);
+      return PHASE_BY_CODE[key] || "Outras";
+    }
+
+    function parseBoard(md) {
+      const tables = locateTablesWithHeadings(md);
+      const locks = [];
+      const running = [];
+      const pending = [];
+      const done = [];
+      const cancelled = [];
+      const history = [];
+
+      for (const t of tables) {
+        const h = t.heading.toLowerCase();
+        const headers = t.header.map((x) => x.toLowerCase()).join(" | ");
+
+        if (h.includes("trava") || headers.includes("status da trava") || headers.includes("sub-task em execução")) {
+          const rows = mapRows(t, {
+            prop: ["propriedade"],
+            val: ["valor"]
+          });
+          if (rows.length && rows[0].prop) {
+            const rec = {};
+            for (const r of rows) rec[r.prop.toLowerCase().replace(/:$/, "").trim()] = r.val;
+            locks.push({
+              status: rec["status da trava"] || "",
+              code: rec["sub-task em execução"] || "",
+              title: rec["título da sub-task"] || rec["titulo da sub-task"] || "",
+              agent: rec["agente responsável"] || rec["agente responsavel"] || "",
+              started: rec["data e hora de início"] || rec["data e hora de inicio"] || "",
+              blocked: rec["bloqueio para outras ias"] || ""
+            });
+          }
+          continue;
+        }
+
+        if (h.includes("em execução") || h.includes("em execucao")) {
+          running.push(...mapRows(t, {
+            code: ["código", "codigo"],
+            title: ["título", "titulo", "mini-task"],
+            agent: ["agente"],
+            start: ["início", "inicio"],
+            depends: ["depende"]
+          }));
+          continue;
+        }
+
+        if (h.includes("pendente")) {
+          pending.push(...mapRows(t, {
+            code: ["código", "codigo"],
+            title: ["título", "titulo", "mini-task"],
+            priority: ["prioridade"],
+            phase: ["fase"],
+            depends: ["depende"]
+          }));
+          continue;
+        }
+
+        if (h.includes("conclu")) {
+          done.push(...mapRows(t, {
+            code: ["código", "codigo"],
+            title: ["título", "titulo", "mini-task"],
+            agent: ["agente"],
+            start: ["início", "inicio"],
+            end: ["conclus"],
+            sha: ["commit", "sha"]
+          }));
+          continue;
+        }
+
+        if (h.includes("cancel")) {
+          cancelled.push(...mapRows(t, {
+            code: ["código", "codigo"],
+            title: ["título", "titulo"],
+            agent: ["agente"]
+          }));
+          continue;
+        }
+
+        if (h.includes("histórico") || h.includes("historico") || h.includes("entregas")) {
+          history.push(...mapRows(t, {
+            datetime: ["data"],
+            agent: ["agente"],
+            subtask: ["sub-task", "subtask"],
+            sha: ["sha", "commit"],
+            note: ["anotação", "anotacao", "o que foi"]
+          }));
+        }
+      }
+
+      return { locks, running, pending, done, cancelled, history, raw: md };
+    }
+
+    async function fetchText(url, extraHeaders) {
+      const bust = (url.includes("?") ? "&" : "?") + "t=" + Date.now();
+      const res = await fetch(url + bust, {
+        cache: "no-store",
+        headers: extraHeaders || {}
+      });
+      if (!res.ok) throw new Error(url + " → HTTP " + res.status);
+      return res.text();
+    }
+
+    function githubHeaders() {
+      const token = (document.getElementById("ghToken").value || localStorage.getItem("dashboard_ai_gh_token") || "").trim();
+      const headers = { Accept: "application/vnd.github.raw+json" };
+      if (token) headers.Authorization = "Bearer " + token;
+      return { headers, token: Boolean(token) };
+    }
+
+    async function loadMarkdown() {
+      const errors = [];
+      const gh = githubHeaders();
+      if (gh.token) {
+        try {
+          const text = await fetchText(API_URL, gh.headers);
+          return { text, source: "GitHub API (main remota)" };
+        } catch (e) { errors.push(e.message); }
+      }
+      try { return { text: await fetchText(LOCAL_URL), source: "quadro-task-principal.md local" }; }
+      catch (e) { errors.push(e.message); }
+      try { return { text: await fetchText(RAW_URL), source: "raw.githubusercontent.com" }; }
+      catch (e) { errors.push(e.message); }
+      try { return { text: await fetchText(JSDELIVR_URL), source: "jsDelivr" }; }
+      catch (e) { errors.push(e.message); }
+      try {
+        const text = await fetchText(API_URL, gh.headers);
+        return { text, source: "GitHub API" };
+      } catch (e) { errors.push(e.message); }
+      throw new Error(
+        "Não foi possível ler o quadro. O repositório é privado: use o arquivo local (abra esta página por um servidor HTTP na pasta do repo) ou cole um token GitHub com permissão de leitura.\n" +
+        errors.join("\n")
+      );
+    }
+
+    function countBy(items, fn) {
+      const map = {};
+      for (const item of items) {
+        const key = fn(item) || "—";
+        map[key] = (map[key] || 0) + 1;
+      }
+      return map;
+    }
+
+    function upsertChart(id, config) {
+      if (charts[id]) charts[id].destroy();
+      const el = document.getElementById(id);
+      charts[id] = new Chart(el, config);
+    }
+
+    function chartDefaults() {
+      Chart.defaults.color = "#8b9bb4";
+      Chart.defaults.borderColor = "#243049";
+      Chart.defaults.font.family = "DM Sans";
+    }
+
+    function renderCharts(board) {
+      chartDefaults();
+      const status = {
+        Pendentes: board.pending.length,
+        "Em execução": board.running.length,
+        Concluídas: board.done.length,
+        Canceladas: board.cancelled.length
+      };
+      upsertChart("chartStatus", {
+        type: "doughnut",
+        data: {
+          labels: Object.keys(status),
+          datasets: [{
+            data: Object.values(status),
+            backgroundColor: ["#6ea8ff", "#f5a524", "#3dd68c", "#c77dff"],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          plugins: { legend: { position: "bottom" } },
+          cutout: "58%"
+        }
+      });
+
+      const all = [
+        ...board.pending.map((t) => ({ ...t, status: "Pendente" })),
+        ...board.running.map((t) => ({ ...t, status: "Em execução" })),
+        ...board.done.map((t) => ({ ...t, status: "Concluída" })),
+        ...board.cancelled.map((t) => ({ ...t, status: "Cancelada" }))
+      ];
+      const phases = countBy(all, phaseOf);
+      const phaseLabels = Object.keys(phases).sort();
+      upsertChart("chartPhase", {
+        type: "bar",
+        data: {
+          labels: phaseLabels,
+          datasets: [{
+            label: "Tarefas",
+            data: phaseLabels.map((k) => phases[k]),
+            backgroundColor: "#6ea8ff"
+          }]
+        },
+        options: {
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true, ticks: { precision: 0 } } }
+        }
+      });
+
+      const agents = countBy(
+        [...board.running, ...board.done].filter((t) => t.agent),
+        (t) => t.agent
+      );
+      const agentLabels = Object.keys(agents);
+      upsertChart("chartAgent", {
+        type: "bar",
+        data: {
+          labels: agentLabels.length ? agentLabels : ["Sem agente"],
+          datasets: [{
+            label: "Tarefas (execução + concluídas)",
+            data: agentLabels.length ? agentLabels.map((k) => agents[k]) : [0],
+            backgroundColor: "#f5a524"
+          }]
+        },
+        options: {
+          indexAxis: "y",
+          plugins: { legend: { display: false } },
+          scales: { x: { beginAtZero: true, ticks: { precision: 0 } } }
+        }
+      });
+    }
+
+    function taskCard(t, extra) {
+      const bits = [
+        extra,
+        t.agent ? `<span class="badge">${esc(t.agent)}</span>` : "",
+        t.priority ? `<span class="badge">${esc(t.priority)}</span>` : "",
+        t.phase ? `<span class="badge">${esc(t.phase)}</span>` : "",
+        t.depends ? `<span class="badge">dep: ${esc(t.depends)}</span>` : "",
+        t.sha ? `<span class="badge sha">${esc(t.sha)}</span>` : ""
+      ].filter(Boolean).join("");
+      return `<article class="task" data-code="${esc((t.code || "").toLowerCase())}" data-q="${esc((t.code + " " + t.title + " " + (t.agent || "") + " " + (t.depends || "")).toLowerCase())}">
+        <div class="code">${esc(t.code)}</div>
+        <div class="title">${esc(t.title)}</div>
+        <div>${bits}</div>
+      </article>`;
+    }
+
+    function esc(s) {
+      return String(s || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function renderLocks(locks) {
+      const box = document.getElementById("locks");
+      const occupied = locks.filter((l) => /ocupado|ativado/i.test(l.status + " " + l.blocked) || l.code);
+      if (!occupied.length) {
+        box.innerHTML = `<article class="card"><div class="empty">Nenhuma trava ocupada no markdown.</div></article>`;
+        return occupied.length;
+      }
+      box.innerHTML = occupied.map((l) => `
+        <article class="card lock-card" data-code="${esc((l.code || "").toLowerCase())}">
+          <div class="code">${esc(l.code)}</div>
+          <h3>${esc(l.title || "Trava ativa")}</h3>
+          <div class="meta">
+            ${esc(l.agent)}<br />
+            início: ${esc(l.started)}<br />
+            ${esc(l.status)}
+          </div>
+        </article>
+      `).join("");
+      return occupied.length;
+    }
+
+    function renderKanban(board) {
+      const cols = [
+        { key: "running", title: "Em execução", items: board.running, extra: (t) => t.start ? `<span class="badge">${esc(t.start)}</span>` : "" },
+        { key: "pending", title: "Pendentes", items: board.pending, extra: () => "" },
+        { key: "done", title: "Concluídas", items: board.done, extra: (t) => t.end ? `<span class="badge">${esc(t.end)}</span>` : "" },
+        { key: "cancelled", title: "Canceladas", items: board.cancelled, extra: () => "" }
+      ];
+      document.getElementById("kanban").innerHTML = cols.map((c) => `
+        <div class="col" data-col="${c.key}">
+          <h2>${c.title} <span class="count">${c.items.length}</span></h2>
+          ${c.items.length ? c.items.map((t) => taskCard(t, c.extra(t))).join("") : `<div class="empty">Nenhuma</div>`}
+        </div>
+      `).join("");
+    }
+
+    function renderHistory(history) {
+      const body = document.getElementById("historyBody");
+      if (!history.length) {
+        body.innerHTML = `<tr><td colspan="5" class="empty">Sem histórico no markdown.</td></tr>`;
+        return;
+      }
+      body.innerHTML = history.map((h) => `
+        <tr data-code="${esc((h.subtask || "").toLowerCase())}" data-q="${esc((h.datetime + " " + h.agent + " " + h.subtask + " " + h.note).toLowerCase())}">
+          <td>${esc(h.datetime)}</td>
+          <td>${esc(h.agent)}</td>
+          <td>${esc(h.subtask)}</td>
+          <td class="sha">${esc(h.sha)}</td>
+          <td class="note">${esc(h.note)}</td>
+        </tr>
+      `).join("");
+    }
+
+    function applyFilter(q) {
+      applyViewFilter();
+    }
+
+    function colForFilter(filter) {
+      if (filter === "pending") return "pending";
+      if (filter === "running" || filter === "lock") return "running";
+      if (filter === "done" || filter === "progress") return "done";
+      return null;
+    }
+
+    function applyViewFilter() {
+      const query = (document.getElementById("q").value || "").trim().toLowerCase();
+      const kpis = document.getElementById("kpis");
+      const isolating = Boolean(statusFilter && statusFilter !== "all");
+      kpis.classList.toggle("is-filtered", isolating);
+      document.querySelectorAll(".kpi").forEach((el) => {
+        el.classList.toggle("active", isolating && el.dataset.filter === statusFilter);
+      });
+
+      const colKey = colForFilter(statusFilter);
+      const showLocks = !statusFilter || statusFilter === "all" || statusFilter === "lock" || statusFilter === "running";
+      document.getElementById("locks").style.display = showLocks ? "" : "none";
+      document.querySelector(".grid-3").style.display = isolating || itemFilter ? "none" : "";
+
+      document.querySelectorAll(".task, .lock-card, #historyBody tr").forEach((el) => {
+        const qOk = !query || (el.dataset.q || "").includes(query);
+        const code = (el.dataset.code || "").toLowerCase();
+        const itemOk = !itemFilter || code.includes(itemFilter);
+        el.classList.toggle("active", Boolean(itemFilter && itemOk));
+        el.style.display = qOk && itemOk ? "" : "none";
+      });
+
+      document.querySelectorAll(".col").forEach((col) => {
+        const matchCol = !colKey || col.dataset.col === colKey;
+        const hasVisibleTask = [...col.querySelectorAll(".task")].some((t) => t.style.display !== "none");
+        col.style.display = matchCol && (!itemFilter || hasVisibleTask) ? "" : "none";
+      });
+
+      const hint = document.getElementById("filterHint");
+      if (itemFilter) {
+        hint.textContent = "Filtro: só o card " + itemFilter.toUpperCase() + ". Clique nele de novo para limpar.";
+      } else if (isolating) {
+        const labels = { pending: "Pendentes", running: "Em execução", done: "Concluídas", lock: "Travas", progress: "Progresso (concluídas)" };
+        hint.textContent = "Filtro: " + (labels[statusFilter] || statusFilter) + ". Clique no card de novo para mostrar todos.";
+      } else {
+        hint.textContent = "Passe o mouse para destacar o card. Clique para filtrar só aquele recorte; clique de novo para voltar.";
+      }
+    }
+
+    function render(board, meta) {
+      const total = board.running.length + board.pending.length + board.done.length + board.cancelled.length;
+      const pct = total ? Math.round((board.done.length / total) * 100) : 0;
+      document.getElementById("kpiTotal").textContent = total;
+      document.getElementById("kpiPend").textContent = board.pending.length;
+      document.getElementById("kpiRun").textContent = board.running.length;
+      document.getElementById("kpiDone").textContent = board.done.length;
+      const lockCount = renderLocks(board.locks);
+      document.getElementById("kpiLock").textContent = lockCount;
+      document.getElementById("kpiPct").textContent = pct + "%";
+      document.getElementById("progressFill").style.width = pct + "%";
+      document.getElementById("progressLabel").textContent = `${board.done.length} de ${total} · ${pct}%`;
+      renderCharts(board);
+      renderKanban(board);
+      renderHistory(board.history);
+      applyViewFilter();
+      const now = new Date();
+      const stamp = now.toLocaleString("pt-BR");
+      document.getElementById("statusPill").textContent = `ok · ${meta.source} · ${stamp}`;
+      document.getElementById("statusPill").className = "pill ok";
+      document.getElementById("errorBanner").style.display = "none";
+    }
+
+    async function refresh() {
+      const btn = document.getElementById("refreshBtn");
+      btn.disabled = true;
+      try {
+        const { text, source } = await loadMarkdown();
+        const hash = String(text.length) + ":" + text.slice(0, 80);
+        const board = parseBoard(text);
+        latestBoard = board;
+        lastHash = hash;
+        render(board, { source });
+      } catch (err) {
+        document.getElementById("statusPill").textContent = "falha na leitura";
+        document.getElementById("statusPill").className = "pill err";
+        const banner = document.getElementById("errorBanner");
+        banner.style.display = "block";
+        banner.textContent = err.message;
+      } finally {
+        btn.disabled = false;
+        const next = new Date(Date.now() + POLL_MS);
+        document.getElementById("clockPill").textContent = "próxima leitura " + next.toLocaleTimeString("pt-BR");
+      }
+    }
+
+    const tokenInput = document.getElementById("ghToken");
+    tokenInput.value = localStorage.getItem("dashboard_ai_gh_token") || "";
+    tokenInput.addEventListener("change", () => {
+      const v = tokenInput.value.trim();
+      if (v) localStorage.setItem("dashboard_ai_gh_token", v);
+      else localStorage.removeItem("dashboard_ai_gh_token");
+      refresh();
+    });
+    document.getElementById("refreshBtn").addEventListener("click", refresh);
+    document.getElementById("q").addEventListener("input", applyViewFilter);
+    document.getElementById("kpis").addEventListener("click", (e) => {
+      const kpi = e.target.closest(".kpi");
+      if (!kpi) return;
+      const next = kpi.dataset.filter;
+      itemFilter = null;
+      statusFilter = (statusFilter === next || next === "all") ? null : next;
+      applyViewFilter();
+    });
+    document.getElementById("locks").addEventListener("click", (e) => {
+      const card = e.target.closest(".lock-card");
+      if (!card || !card.dataset.code) return;
+      const code = card.dataset.code;
+      itemFilter = itemFilter === code ? null : code;
+      statusFilter = itemFilter ? "lock" : null;
+      applyViewFilter();
+    });
+    document.getElementById("kanban").addEventListener("click", (e) => {
+      const card = e.target.closest(".task");
+      if (!card || !card.dataset.code) return;
+      const code = card.dataset.code;
+      itemFilter = itemFilter === code ? null : code;
+      applyViewFilter();
+    });
+    refresh();
+    setInterval(refresh, POLL_MS);
+  </script>
+</body>
+</html>
