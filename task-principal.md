@@ -43,10 +43,10 @@
 ---
 
 ## 📊 Resumo de Progresso
-- **Total de Tasks Principais:** 37
+- **Total de Tasks Principais:** 38
 - **Subtarefas atômicas (~3 min):** 204
 - **Em Execução:** 0
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 7 subtarefas
+- **Pendentes:** 5 principais (25, 26, 28, 35, KIRO-DEV-CLONE) + 7 subtarefas
   - livres agora: 0
   - bloqueadas por dependência: 7
   - reservadas: 0
@@ -315,6 +315,21 @@
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Rodar `npm run typecheck`, `npm test`, `npm run build`, `npm run test:integration` e os testes Python; registrar o resultado na anotação da SUB-35.
 - **Critérios de Aceitação:** Tudo verde.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+
+---
+
+## 📋 FASE 11: Clone do Kiro.dev
+
+### [ ] KIRO-DEV-CLONE: Clone do Kiro.dev
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Detalhes na pasta `kiro-dev-clone/`. O usuário preencherá os detalhes nesta pasta.
+- **Critérios de Aceitação:** A ser definido pelo usuário na pasta `kiro-dev-clone/`.
 - **Commit:** pendente
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
