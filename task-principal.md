@@ -78,7 +78,7 @@
 - **Subtarefas atômicas (~3 min):** 199 (SUB-08.x, SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x, SUB-35.x; atualizado em 2026-10-12 00:39)
 - **Em Execução:** 1 (SUB-33.9 — Codex (OpenAI))
 - **Pendentes:** 12 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34, 35) + 176 subtarefas
-  - livres agora: 25 (SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.5, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.2, SUB-23.5, SUB-23.12, SUB-25.1, SUB-26.1, SUB-27.1, SUB-35.1, SUB-35.21)
+  - livres agora: 0 (recalculado em 2026-10-12 01:45; os pendentes aguardam dependências ou estão travados)
   - bloqueadas por dependência: 150
   - reservadas: 0
 - **Concluídas:** 45

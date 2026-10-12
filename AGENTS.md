@@ -1,5 +1,10 @@
 # 🤖 DIRETRIZES DE AGENTES DE IA & PROTOCOLO DE CONCORRÊNCIA
 
+
+> 📌 **Quadro único:** o antigo `quadro-task-principal.md` foi incorporado ao `task-principal.md`. Travas, status, concluídas e histórico ficam só no `task-principal.md`; não recrie o arquivo antigo.
+>
+> 🗂️ **Scripts temporários:** cada agente guarda scripts auxiliares dentro da própria pasta de trabalho, nunca em `/tmp` ou outra pasta compartilhada (outro agente pode sobrescrevê-los).
+
 > **AVISO A TODOS OS AGENTES DE IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.):**
 > Este repositório opera com fluxo autônomo baseado em fila atômica de tarefas e trava contra conflitos de edição.
 > Siga rigorosamente as regras abaixo **ANTES** de executar qualquer código.
@@ -93,7 +98,7 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
 
 3. **Travas em paralelo:**
    - Vários agentes podem trabalhar ao mesmo tempo, **cada um em um item diferente**.
-   - Cada agente registra sua trava em um bloco próprio `### 🔒 TRAVA ADICIONAL — <Nome da IA> — <SUB-XX>` em `quadro-task-principal.md`, e nunca edita o bloco de outro agente.
+   - Cada agente registra sua trava em um bloco próprio `### 🔒 TRAVA ADICIONAL — <Nome da IA> — <SUB-XX>` em `task-principal.md`, e nunca edita o bloco de outro agente.
    - A proibição vale para o **mesmo item**: ninguém assume um item que já tem trava de outro agente.
 
 4. **Travas só são liberadas pelo usuário:**
@@ -136,7 +141,7 @@ Sempre que uma IA assumir uma sub-task, deve identificar explicitamente seu nome
 - **Exemplos de identificação:** `Claude Code`, `xAI (Grok)`, `Gemini (Antigravity)`, `Copilot / OpenAI`.
 - **Onde registrar o nome da IA:**
   - 1. No campo `Executor:` em [`task-principal.md`](file:///c:/fontes/dashboard-ai/task-principal.md).
-  - 2. No campo `Agente Responsável:` da Trava Ativa e na tabela em [`quadro-task-principal.md`](file:///c:/fontes/dashboard-ai/quadro-task-principal.md).
+  - 2. No campo `Agente Responsável:` da Trava Ativa e na tabela em `task-principal.md`.
   - 3. Na mensagem de commit do lock: `git commit -m "lock: assumindo sub-task SUB-XX por [Nome da IA]"`.
   - 4. Na tabela de histórico de entregas e no commit da entrega final.
 
@@ -146,7 +151,7 @@ Sempre que uma IA assumir uma sub-task, deve identificar explicitamente seu nome
 
 Agentes conectados ao MCP do DashboardAI podem reportar o andamento ao **monitor em tempo real** (SUB-35) com a ferramenta `agent_event` ([`api/_lib/event-tools.ts`](api/_lib/event-tools.ts)), que grava em `agent_events`.
 
-> ⚠️ **O reporte é complementar e NÃO substitui o protocolo de lock das seções 1 e 1.1.** A trava só vale quando está commitada e com push no `quadro-task-principal.md`; um evento `trava`, `inicio` ou `fim` no monitor não trava, não libera e não conclui nada. Se o MCP estiver indisponível, siga normalmente só com o quadro.
+> ⚠️ **O reporte é complementar e NÃO substitui o protocolo de lock das seções 1 e 1.1.** A trava só vale quando está commitada e com push no `task-principal.md`; um evento `trava`, `inicio` ou `fim` no monitor não trava, não libera e não conclui nada. Se o MCP estiver indisponível, siga normalmente só com o quadro.
 
 **Quando emitir (um evento por momento, sempre com `agente` igual ao nome usado no quadro e `task_codigo` da subtarefa):**
 
