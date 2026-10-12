@@ -9,8 +9,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 33
-- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
-- **Pendentes:** 12
+- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-18`)
+- **Pendentes:** 11
 - **Concluídas:** 21
 - **Canceladas:** 0
 
@@ -301,9 +301,9 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-### [ ] SUB-18: Controles de Ação Rápida na Linha da Tabela
-- **Status:** pendente
-- **Executor:** nenhum
+### [🔄] SUB-18: Controles de Ação Rápida na Linha da Tabela
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:19)
 - **Depende de:** SUB-09, SUB-14
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Ações rápidas: Switch ON/OFF com persistência imediata, botão "Reabrir" (para recusadas/erros), botão "Cancelar" e botão "Excluir" com confirmação.

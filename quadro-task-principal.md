@@ -44,26 +44,37 @@
 | **Data e Hora de Início:** | 2026-10-11 22:41 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot)
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-18** |
+| **Título da Sub-task:** | Controles de Ação Rápida na Linha da Tabela |
+| **Agente Responsável:** | DashboardAI (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-11 23:19 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (2)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27** | Autenticação e Login com Supabase Auth | Codex (OpenAI) | 2026-10-11 22:27 | SUB-03, SUB-29 |
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` | xAI (Grok) | 2026-10-11 22:41 | SUB-06 |
+| **SUB-18** | Controles de Ação Rápida na Linha da Tabela | DashboardAI (Grok Bot) | 2026-10-11 23:19 | SUB-09, SUB-14 |
 
 ---
 
-### ⏳ PENDENTES (12)
+### ⏳ PENDENTES (11)
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
 | **SUB-15** | Barra de Ferramentas e Filtros em Tempo Real | 3 | Fase 6 | SUB-14 |
 | **SUB-17** | Modal de Visualização Detalhada da Task | 3 | Fase 6 | SUB-14 |
-| **SUB-18** | Controles de Ação Rápida na Linha da Tabela | 3 | Fase 6 | SUB-09, SUB-14 |
 | **SUB-19** | Interface de Pesquisa Semântica Vetorial | 4 | Fase 7 | SUB-10, SUB-12, SUB-33 |
 | **SUB-20** | Formulário de Nova Memória Canônica | 4 | Fase 7 | SUB-10, SUB-12, SUB-33 |
 | **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) | 4 | Fase 2B | SUB-07, SUB-03 |
