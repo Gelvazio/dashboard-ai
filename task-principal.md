@@ -9,8 +9,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 32
-- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
-- **Pendentes:** 17
+- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-09`)
+- **Pendentes:** 16
 - **Concluídas:** 15
 - **Canceladas:** 0
 
@@ -185,9 +185,9 @@
 
 ## ⚡ FASE 4: Serviços do Frontend (Data Layer)
 
-### [ ] SUB-09: Serviço de Tarefas (`src/services/taskService.ts`)
-- **Status:** pendente
-- **Executor:** nenhum
+### [🔄] SUB-09: Serviço de Tarefas (`src/services/taskService.ts`)
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:06)
 - **Depende de:** SUB-03
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Implementar operações de `listarTasks`, `criarTask`, `atualizarTask`, `alternarExecucao` (ON/OFF), `cancelarTask`, `reabrirTask` e `excluirTaskLogico`.
