@@ -684,7 +684,7 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-19.1: `debounce(fn, ms)` em `src/lib/debounce.ts`
-- **Status:** em_execucao
+- **Status:** concluido
 - **Executor:** nenhum
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
