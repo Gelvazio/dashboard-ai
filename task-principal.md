@@ -1531,8 +1531,8 @@
 - **Anotação:** Adicionado `sair(client = getSupabase())` em `src/services/authService.ts`: `auth.signOut()`, remove `localStorage['dashboard-ai:projeto']` (constante `CHAVE_PROJETO_LOCAL`, tolerante sem localStorage); erro -> `ServiceError(..., 'AUTH')`. typecheck e vitest verdes.
 
 #### [ ] SUB-27.5: `enviarLinkMagico()` em `src/services/authService.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `enviarLinkMagico(email, redirectTo, client)` (`auth.signInWithOtp` com `emailRedirectTo` e `shouldCreateUser: false`), com mensagens via `mensagemErroAuth`.

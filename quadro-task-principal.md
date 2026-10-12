@@ -33,6 +33,17 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.5
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-27.5** |
+| **Título da Sub-task:** | `enviarLinkMagico()` em `src/services/authService.ts` |
+| **Agente Responsável:** | DashboardAI-Clone 01 |
+| **Data e Hora de Início:** | 2026-10-12 00:51 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -41,6 +52,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-27.5** | `enviarLinkMagico()` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:51 | SUB-27.3 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
@@ -425,3 +437,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:50 | DashboardAI-Clone 01 | SUB-27.4 | — | Lock: assumindo SUB-27.4 (`sair()` em `src/services/authService.ts`) |
 | 2026-10-12 00:51 | DashboardAI-Clone 06 | SUB-20.2 | `78a1e70` | Adicionado `parseTags(texto)` em `src/lib/memoriaForm.ts`: separa por vírgula, qualquer espaço em branco ou `#`, `trim` + minúsculas, remove vazios e duplicados mantendo a ordem da 1ª ocorrência (mesma regra do `normalizarTags` do `memoryService`); hífens, acentos e pontos dentro da tag são preservados. 4 testes novos em `tests/unit/memoriaForm.test.ts`. `npm run typecheck` e `npm test` verdes. |
 | 2026-10-12 00:51 | DashboardAI-Clone 01 | SUB-27.4 | `7bc78da` | Adicionado `sair(client = getSupabase())` em `src/services/authService.ts`: `auth.signOut()`, remove `localStorage['dashboard-ai:projeto']` (constante `CHAVE_PROJETO_LOCAL`, tolerante sem localStorage); erro -> `ServiceError(..., 'AUTH')`. typecheck e vitest verdes. |
+| 2026-10-12 00:51 | DashboardAI-Clone 01 | SUB-27.5 | — | Lock: assumindo SUB-27.5 (`enviarLinkMagico()` em `src/services/authService.ts`) |
