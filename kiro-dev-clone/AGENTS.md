@@ -6,6 +6,8 @@
 
 Esta é uma v2 do projeto Dashboard AI atual, operando como um clone independente mas compartilhando a mesma base de código. Inspirado no Kiro.dev, que é um ambiente de desenvolvimento AI-powered que ajuda a construir software de protótipo a produção.
 
+**Pasta:** este projeto vive em **`kiro-dev-clone/`** (minúsculas, convenção do repositório — renomeada em 2026-10-12). O **código da tarefa-mãe** no quadro continua `KIRO-DEV-CLONE` (é identificador, não caminho).
+
 ---
 
 ## 🔁 REGRA OBRIGATÓRIA — ESTE ARQUIVO SEGUE O `AGENTS.md` DA RAIZ
@@ -480,7 +482,7 @@ Kiro oferece **5 superfícies** (surfaces) que compartilham a mesma configuraç�
 - **Subtarefas:** Nenhuma (atômica)
 - **Tempo estimado:** 2 min
 - **Descrição:** Criar arquivo de status da implementação
-- **Localização:** `KIRO-DEV-CLONE/STATUS.md`
+- **Localização:** `kiro-dev-clone/STATUS.md`
 - **Requisitos:** Modelo de status com tarefas
 - **Verificação:** Arquivo criado
 
@@ -491,7 +493,7 @@ Kiro oferece **5 superfícies** (surfaces) que compartilham a mesma configuraç�
 - **Subtarefas:** Nenhuma (atômica)
 - **Tempo estimado:** 1 min
 - **Descrição:** Criar pasta para documentação específica
-- **Localização:** `KIRO-DEV-CLONE/docs/`
+- **Localização:** `kiro-dev-clone/docs/`
 - **Requisitos:** Pasta criada
 - **Verificação:** Pasta existe
 

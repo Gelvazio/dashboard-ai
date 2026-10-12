@@ -397,12 +397,12 @@
   - `KIRO-DEV-CLONE.26`: Leitura do `.kiroignore` (`pendente`, 🔒 reservada)
   - `KIRO-DEV-CLONE.27`: Sistema de workflows (`pendente`, 🔒 reservada)
   - `KIRO-DEV-CLONE.28`: UI para workflows (`pendente`, 🔒 reservada)
-  - `KIRO-DEV-CLONE.29`: `KIRO-DEV-CLONE/STATUS.md` (`pendente`, 🔒 reservada)
-  - `KIRO-DEV-CLONE.30`: Pasta `KIRO-DEV-CLONE/docs/` (`pendente`, 🔒 reservada)
-- **Descrição:** Detalhes na pasta [`KIRO-DEV-CLONE/`](KIRO-DEV-CLONE/AGENTS.md): as 30 subtarefas abaixo espelham, uma a uma, as tarefas descritas nesse arquivo.
-- **Critérios de Aceitação:** A ser definido pelo usuário na pasta `KIRO-DEV-CLONE/`.
+  - `KIRO-DEV-CLONE.29`: `kiro-dev-clone/STATUS.md` (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.30`: Pasta `kiro-dev-clone/docs/` (`pendente`, 🔒 reservada)
+- **Descrição:** Detalhes na pasta [`kiro-dev-clone/`](kiro-dev-clone/AGENTS.md): as 30 subtarefas abaixo espelham, uma a uma, as tarefas descritas nesse arquivo.
+- **Critérios de Aceitação:** A ser definido pelo usuário na pasta `kiro-dev-clone/`.
 - **Commit:** pendente
-- **Anotação:** ⛔ **TRAVADO PARA TODAS AS IAS** (2026-10-12 15:10): tarefa reservada para implementação manual pelo usuário; nenhuma IA pode assumir as filhas sem autorização explícita — ver a **🔒 TRAVA ESPECIAL** no início do quadro. **Subdivisão (2026-10-12 16:11, DeepSeek Harness (deepseek-flash), a pedido do usuário):** a mãe, antes atômica, passou a declarar as 30 filhas `KIRO-DEV-CLONE.1` a `.30`, espelhando [`KIRO-DEV-CLONE/AGENTS.md`](KIRO-DEV-CLONE/AGENTS.md), com `Prioridade: BAIXA` (herdada da mãe — regra 1.2.4) e as dependências de lá. A **🔒 trava especial permanece ativa**: as filhas ficam **reservadas** e só o usuário libera. Corrigido também o caminho da pasta, que estava em minúsculas (`kiro-dev-clone/`) enquanto a pasta real é `KIRO-DEV-CLONE/`.
+- **Anotação:** ⛔ **TRAVADO PARA TODAS AS IAS** (2026-10-12 15:10): tarefa reservada para implementação manual pelo usuário; nenhuma IA pode assumir as filhas sem autorização explícita — ver a **🔒 TRAVA ESPECIAL** no início do quadro. **Subdivisão (2026-10-12 16:11, DeepSeek Harness (deepseek-flash), a pedido do usuário):** a mãe, antes atômica, passou a declarar as 30 filhas `KIRO-DEV-CLONE.1` a `.30`, espelhando [`kiro-dev-clone/AGENTS.md`](kiro-dev-clone/AGENTS.md), com `Prioridade: BAIXA` (herdada da mãe — regra 1.2.4) e as dependências de lá. A **🔒 trava especial permanece ativa**: as filhas ficam **reservadas** e só o usuário libera. **Pasta renomeada (2026-10-12 16:18, DeepSeek Harness (deepseek-flash), a pedido do usuário):** `KIRO-DEV-CLONE/` → `kiro-dev-clone/`, alinhando à convenção de minúsculas do repositório. O **código da tarefa-mãe** no quadro continua `KIRO-DEV-CLONE` (é identificador, não caminho).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
@@ -412,7 +412,7 @@
 - **Executor:** nenhum
 - **Depende de:** KIRO-DEV-CLONE.2
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Adicionar item no menu principal com o nome exato "KIRO DEV CLONE", apontando para a rota `/kiro-dev-clone` e mantendo a consistência visual (Tarefa 1.1 de [`KIRO-DEV-CLONE/AGENTS.md`](KIRO-DEV-CLONE/AGENTS.md)).
+- **Descrição:** Adicionar item no menu principal com o nome exato "KIRO DEV CLONE", apontando para a rota `/kiro-dev-clone` e mantendo a consistência visual (Tarefa 1.1 de [`kiro-dev-clone/AGENTS.md`](kiro-dev-clone/AGENTS.md)).
 - **Critérios de Aceitação:** Item visível no menu com o nome exato; clique leva à rota; `npm run typecheck` e `npm test` verdes.
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
@@ -770,26 +770,26 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
-#### [ ] KIRO-DEV-CLONE.29: `KIRO-DEV-CLONE/STATUS.md`
+#### [ ] KIRO-DEV-CLONE.29: `kiro-dev-clone/STATUS.md`
 - **Status:** pendente
 - **Prioridade:** BAIXA
 - **Executor:** nenhum
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Criar `KIRO-DEV-CLONE/STATUS.md` com o modelo de status da implementação (Tarefa 14.1).
+- **Descrição:** Criar `kiro-dev-clone/STATUS.md` com o modelo de status da implementação (Tarefa 14.1).
 - **Critérios de Aceitação:** Arquivo criado com o modelo de status.
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
-#### [ ] KIRO-DEV-CLONE.30: Pasta `KIRO-DEV-CLONE/docs/`
+#### [ ] KIRO-DEV-CLONE.30: Pasta `kiro-dev-clone/docs/`
 - **Status:** pendente
 - **Prioridade:** BAIXA
 - **Executor:** nenhum
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Criar a pasta de documentação específica `KIRO-DEV-CLONE/docs/` (Tarefa 14.2).
+- **Descrição:** Criar a pasta de documentação específica `kiro-dev-clone/docs/` (Tarefa 14.2).
 - **Critérios de Aceitação:** Pasta existe no repositório.
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
