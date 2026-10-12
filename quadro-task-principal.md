@@ -66,14 +66,26 @@
 | **Data e Hora de Início:** | 2026-10-12 00:52 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-19.4
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-19.4** |
+| **Título da Sub-task:** | Componente `SimilaridadeBadge` em `src/components/memoria/` |
+| **Agente Responsável:** | DashboardAI-Clone 10 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 00:52 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (2)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-19.4** | Componente `SimilaridadeBadge` em `src/components/memoria/` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:52 | SUB-19.10 |
 | **SUB-27.23** | `obterSessao()` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:52 | SUB-27.4 |
 | **SUB-23.2** | `classificarPendentes(tasks)` em `src/lib/saudeFila.ts` | DashboardAI-Clone 02 | 2026-10-12 00:52 | SUB-23.13 |
 | **SUB-20.4** | Componente `TagInput` em `src/components/ui/TagInput.tsx` | DashboardAI-Clone 06 | 2026-10-12 00:52 | SUB-20.2 |
@@ -119,7 +131,7 @@
 | **SUB-19.1** | `debounce(fn, ms)` em `src/lib/debounce.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-19.2** | Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts` | 4 | Fase 7 | SUB-19.1 — ⛓️ bloqueada |
 | **SUB-19.3** | `formatarSimilaridade` em `src/lib/similaridade.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
-| **SUB-19.4** | Componente `SimilaridadeBadge` em `src/components/memoria/` | 4 | Fase 7 | SUB-19.10 — ⛓️ bloqueada |
+| **SUB-19.4** | Componente `SimilaridadeBadge` em `src/components/memoria/` | 4 | Fase 7 | SUB-19.10 — 🔄 em execução por DashboardAI-Clone 10 (Grok Bot) |
 | **SUB-19.5** | Componente `ResultadoBuscaCard` em `src/components/memoria/` | 4 | Fase 7 | SUB-19.4 — ⛓️ bloqueada |
 | **SUB-19.6** | Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts` | 4 | Fase 7 | SUB-19.2, SUB-33.7 — ⛓️ bloqueada |
 | **SUB-19.7** | Painel `BuscaSemanticaPanel` (campo, grade e estados) | 4 | Fase 7 | SUB-19.5, SUB-19.6, SUB-19.9 — ⛓️ bloqueada |
@@ -471,3 +483,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:52 | DashboardAI-Clone 01 | SUB-27.7 | `5ebbd19` | Adicionado `obterPapelGlobal(userId, client = getSupabase())` em `src/services/authService.ts`: lê `role` da própria linha em `user_roles` (`maybeSingle`, policy `user_roles_select`); sem linha -> `null`; erro -> `ServiceError`. typecheck e vitest verdes. |
 | 2026-10-12 00:52 | DashboardAI-Clone 02 | SUB-23.2 | — | Lock: assumindo SUB-23.2 (`classificarPendentes(tasks)` em `src/lib/saudeFila.ts`) |
 | 2026-10-12 00:52 | DashboardAI-Clone 01 | SUB-27.23 | — | Lock: assumindo SUB-27.23 (`obterSessao()` em `src/services/authService.ts`) |
+| 2026-10-12 00:52 | DashboardAI-Clone 10 (Grok Bot) | SUB-19.4 | — | Lock: assumindo SUB-19.4 (Componente `SimilaridadeBadge` em `src/components/memoria/`) |

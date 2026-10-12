@@ -670,7 +670,7 @@
   - `SUB-19.1`: `debounce(fn, ms)` em `src/lib/debounce.ts` (`pendente`)
   - `SUB-19.2`: Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts` (`pendente`)
   - `SUB-19.3`: `formatarSimilaridade` em `src/lib/similaridade.ts` (`pendente`)
-  - `SUB-19.4`: Componente `SimilaridadeBadge` em `src/components/memoria/` (`pendente`)
+  - `SUB-19.4`: Componente `SimilaridadeBadge` em `src/components/memoria/` (`em_execucao`)
   - `SUB-19.5`: Componente `ResultadoBuscaCard` em `src/components/memoria/` (`pendente`)
   - `SUB-19.6`: Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts` (`pendente`)
   - `SUB-19.7`: Painel `BuscaSemanticaPanel` (campo, grade e estados) (`pendente`)
@@ -714,8 +714,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-19.4: Componente `SimilaridadeBadge` em `src/components/memoria/`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 00:52)
 - **Depende de:** SUB-19.10
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/components/memoria/SimilaridadeBadge.tsx` (`{ similaridade: number }` -> pílula com `formatarSimilaridade` + `classeSimilaridade`, `title` acessível "Similaridade de 89%"). Criar/atualizar `src/components/memoria/index.ts` sem remover exports de outros agentes (SUB-21 pode usar a mesma pasta).
