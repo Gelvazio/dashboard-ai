@@ -44,6 +44,17 @@
 | **Data e Hora de Início:** | 2026-10-12 00:48 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.2
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-27.2** |
+| **Título da Sub-task:** | `validarLogin({ email, senha })` em `src/lib/auth.ts` |
+| **Agente Responsável:** | DashboardAI-Clone 01 |
+| **Data e Hora de Início:** | 2026-10-12 00:48 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -52,6 +63,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-27.2** | `validarLogin({ email, senha })` em `src/lib/auth.ts` | DashboardAI-Clone 01 | 2026-10-12 00:48 | SUB-27.1 |
 | **SUB-20.1** | `validarMemoria(dados)` em `src/lib/memoriaForm.ts` | DashboardAI-Clone 06 | 2026-10-12 00:48 | Nenhuma |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
@@ -422,3 +434,4 @@ n|| **SUB-19.9** | `BuscaControles` (limiar, globais, modo) em `src/components/m
 | 2026-10-12 00:48 | DashboardAI-Clone 01 | SUB-27.1 | — | Lock: assumindo SUB-27.1 (`mensagemErroAuth(erro)` em `src/lib/auth.ts`) |
 | 2026-10-12 00:48 | DashboardAI-Clone 06 | SUB-20.1 | — | Lock: assumindo SUB-20.1 (`validarMemoria(dados)` em `src/lib/memoriaForm.ts`) |
 | 2026-10-12 00:48 | DashboardAI-Clone 01 | SUB-27.1 | `8ccaf5f` | Criado `src/lib/auth.ts` com `mensagemErroAuth(erro)` (invalid_credentials, email_not_confirmed, rate limit/429, user_banned, rede, genérico; null -> ''). Testes em `tests/unit/auth.test.ts` (7). typecheck e vitest verdes. |
+| 2026-10-12 00:48 | DashboardAI-Clone 01 | SUB-27.2 | — | Lock: assumindo SUB-27.2 (`validarLogin({ email, senha })` em `src/lib/auth.ts`) |
