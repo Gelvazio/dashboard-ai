@@ -99,14 +99,26 @@
 | **Data e Hora de Início:** | 2026-10-12 00:56 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 04 (Grok Bot) — SUB-19.2
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-19.2** |
+| **Título da Sub-task:** | Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts` |
+| **Agente Responsável:** | DashboardAI-Clone 04 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 00:56 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (5)
+### 🔄 EM EXECUÇÃO (6)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-19.2** | Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 00:56 | SUB-19.1 |
 | **SUB-08.10** | `variaveisDoExemplo(texto)` em `scripts/checar-env.mjs` + testes | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:56 | SUB-08.8 |
 | **SUB-27.26** | Hook `useAuth` em `src/hooks/useAuth.ts` | DashboardAI-Clone 01 | 2026-10-12 00:56 | SUB-27.9 |
 | **SUB-21.2** | `filtrarMemoriasLocal` em `src/lib/memorias.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 00:55 | SUB-21.13 |
@@ -148,7 +160,7 @@
 | **SUB-23.13** | `travaExpirada` em `src/lib/saudeFila.ts` | 4 | Fase 8 | SUB-23.1 — ⛓️ bloqueada |
 | **SUB-19** | Interface de Pesquisa Semântica Vetorial (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-19.1 a SUB-19.10 |
 | **SUB-19.1** | `debounce(fn, ms)` em `src/lib/debounce.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
-| **SUB-19.2** | Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts` | 4 | Fase 7 | SUB-19.1 — ⛓️ bloqueada |
+| **SUB-19.2** | Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts` | 4 | Fase 7 | SUB-19.1 — ⛓️ bloqueada — 🔄 em execução por DashboardAI-Clone 04 (Grok Bot) |
 | **SUB-19.3** | `formatarSimilaridade` em `src/lib/similaridade.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-19.6** | Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts` | 4 | Fase 7 | SUB-19.2, SUB-33.7 — ⛓️ bloqueada |
 | **SUB-19.7** | Painel `BuscaSemanticaPanel` (campo, grade e estados) | 4 | Fase 7 | SUB-19.5, SUB-19.6, SUB-19.9 — ⛓️ bloqueada |
@@ -534,3 +546,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:56 | DashboardAI-Clone 04 (Grok Bot) | SUB-08.7 | `4be4a20` | Removida a segunda linha `.env` no fim do `.gitignore` (redundante e posterior ao `!.env.example`) e comentado que `!.env.example` deve ficar depois de todas as regras de `.env`. `git check-ignore -v --no-index`: `.env.example` não ignorado (`!.env.example`), `.env` e `.env.local` ignorados (`.env` / `.env.*`). |
 | 2026-10-12 00:56 | DashboardAI-Clone 01 | SUB-27.26 | — | Lock: assumindo SUB-27.26 (Hook `useAuth` em `src/hooks/useAuth.ts`) |
 | 2026-10-12 00:56 | DashboardAI-Clone 08 (Grok Bot) | SUB-08.10 | — | Lock: assumindo SUB-08.10 (`variaveisDoExemplo(texto)` em `scripts/checar-env.mjs` + testes) |
+| 2026-10-12 00:56 | DashboardAI-Clone 04 (Grok Bot) | SUB-19.2 | — | Lock: assumindo SUB-19.2 (Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts`) |

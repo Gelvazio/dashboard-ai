@@ -693,9 +693,9 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-19.2: Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [🔄] SUB-19.2: Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts`
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 04 (Grok Bot) (início: 2026-10-12 00:56)
 - **Depende de:** SUB-19.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/hooks/useDebounce.ts`: `export function useDebounce<T>(valor: T, ms = 400): T` (usa `setTimeout`/cleanup no `useEffect`). Exportar em `src/hooks/index.ts`.
