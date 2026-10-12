@@ -33,20 +33,30 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhuma tarefa reservada para Codex |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — SUB-33.11
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-33.11** |
+| **Título da Sub-task:** | Corpo, geração do embedding e erros no handler (400/413/502/200) |
+| **Agente Responsável:** | DashboardAI (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 00:26 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém mais assume a SUB-33.11 |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (0)
+### 🔄 EM EXECUÇÃO (1)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
-
-*(Nenhuma tarefa em execução)*
+| **SUB-33.11** | Corpo, geração do embedding e erros no handler (400/413/502/200) | DashboardAI (Grok Bot) | 2026-10-12 00:26 | SUB-33.10, SUB-33.3 |
 
 ---
 
-### ⏳ PENDENTES (156)
+### ⏳ PENDENTES (155)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -54,7 +64,7 @@
 
 > **SUB-27 liberada a pedido do usuário** (2026-10-11 23:55): mãe e 22 subtarefas estão disponíveis; cada agente deve respeitar as dependências indicadas. Nenhum código da SUB-27 havia sido enviado à main.
 
-**🟢 Livres agora (26):** SUB-33.5, SUB-33.6, SUB-33.11, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.3, SUB-21.13, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1
+**🟢 Livres agora (25):** SUB-33.5, SUB-33.6, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.3, SUB-21.13, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
@@ -183,7 +193,6 @@
 | **SUB-33.7** | `criarGeradorEmbedding()` em `src/services/embeddingService.ts` | 3 | Fase 2B | SUB-33.11 — ⛓️ bloqueada |
 | **SUB-33.8** | Testes de `embeddingService` em `tests/unit/embeddingService.test.ts` | 3 | Fase 2B | SUB-33.7 — ⛓️ bloqueada |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | 3 | Fase 2B | SUB-33.11 — ⛓️ bloqueada |
-| **SUB-33.11** | Corpo, geração do embedding e erros no handler (400/413/502/200) | 3 | Fase 2B | SUB-33.10, SUB-33.3 — 🟢 livre |
 | **SUB-33.12** | Testes do handler: 413, 502 e 200 | 3 | Fase 2B | SUB-33.11 — ⛓️ bloqueada |
 | **SUB-27** | Autenticação e Login com Supabase Auth (mãe; pendente, liberada) | 3 | Fase 10 | SUB-03, SUB-29; SUB-27.1 a SUB-27.28 — 🟢 livre |
 | **SUB-27.1** | `mensagemErroAuth(erro)` em `src/lib/auth.ts` | 3 | Fase 10 | Nenhuma — 🟢 livre |
@@ -326,3 +335,4 @@
 | 2026-10-12 00:24 | DashboardAI (Grok Bot) | SUB-33.3 | `593fad1` | Criado `api/_lib/embedding-input.ts` com `MAX_TEXTO_EMBEDDING = 8000` e `lerTextoEmbedding(body)`: aceita objeto, string JSON ou Buffer; `HttpError` 400 para corpo vazio, JSON inválido, corpo não objeto ou `texto` ausente/não string/vazio; 413 acima de 8.000 caracteres. Testes em `tests/unit/api-embedding-input.test.ts` (vazio, JSON inválido, sem texto, longo demais, ok). typecheck (app + api) e `npm test` verdes. |
 | 2026-10-12 00:25 | DashboardAI (Grok Bot) | SUB-33.10 | — | Lock: assumindo SUB-33.10 (Autenticação no handler `api/embedding.ts` (401)) |
 | 2026-10-12 00:25 | DashboardAI (Grok Bot) | SUB-33.10 | `e060ae6` | No POST de `api/embedding.ts`: `bearerToken` + `verificarSessaoSupabase`; token ausente ou sessão recusada -> 401 com `WWW-Authenticate: Bearer`; `AuthError` (Auth indisponível/config ausente) -> 503 com mensagem segura; sessão válida segue para o 501 provisório (SUB-33.11). typecheck (app + api) e `npm test` verdes; smoke local (não commitado) conferiu 401/401/503/501/405. |
+| 2026-10-12 00:26 | DashboardAI (Grok Bot) | SUB-33.11 | — | Lock: assumindo SUB-33.11 (Corpo, geração do embedding e erros no handler (400/413/502/200)) |
