@@ -99,6 +99,17 @@
 | **Data e Hora de Início:** | 2026-10-12 01:10 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-21.10
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-21.10** |
+| **Título da Sub-task:** | Validação visual da SUB-21 (screenshots) |
+| **Agente Responsável:** | DashboardAI-Clone 01 |
+| **Data e Hora de Início:** | 2026-10-12 01:10 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -107,6 +118,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-21.10** | Validação visual da SUB-21 (screenshots) | DashboardAI-Clone 01 | 2026-10-12 01:10 | SUB-21.11 |
 | **SUB-27.27** | Incluir `UserMenu` no `src/components/layout/Header.tsx` | DashboardAI-Clone 06 | 2026-10-12 01:10 | SUB-27.14 |
 | **SUB-35.8** | Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:10 | SUB-35.5 |
 | **SUB-35.7** | Seção "Eventos dos agentes (07)" no `database/README.md` | DashboardAI-Clone 02 | 2026-10-12 01:10 | SUB-35.4, SUB-35.5 |
@@ -640,3 +652,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:10 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.8 | — | Lock: assumindo SUB-35.8 (Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts`) |
 | 2026-10-12 01:10 | DashboardAI-Clone 10 (Grok Bot) | SUB-34.3 | `964764e` | Na `src/views/FilaView.tsx`, `TaskFormModal` e `TaskDetailModal` passam a ser `React.lazy` com import direto do arquivo e só são montados quando abertos (`form.aberto` / task de detalhe encontrada), dentro de `<Suspense fallback={null}>`. Para o split ser efetivo, os dois saíram do barrel `src/components/tasks/index.ts` (o Rolldown acusava `INEFFECTIVE_DYNAMIC_IMPORT`; nenhum outro arquivo os importava pelo barrel). Resultado do build: chunks próprios `TaskFormModal` (8,6 kB) e `TaskDetailModal` (6,7 kB); `FilaView` caiu de 40,4 kB para 26,3 kB. `npm run typecheck`, `npm test` e `npm run build` OK. |
 | 2026-10-12 01:10 | DashboardAI-Clone 06 | SUB-27.27 | — | Lock: assumindo SUB-27.27 (Incluir `UserMenu` no `src/components/layout/Header.tsx`) |
+| 2026-10-12 01:10 | DashboardAI-Clone 01 | SUB-21.10 | — | Lock: assumindo SUB-21.10 (Validação visual da SUB-21 (screenshots)) |
