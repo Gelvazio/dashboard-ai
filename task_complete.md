@@ -3266,3 +3266,20 @@
 - **Anotação:** Criada em 2026-10-12 por Claude Code (Opus 5.5) durante a SUB-39.3 (achado fora do escopo). Confirmado: com `VITE_SUPABASE_URL= VITE_SUPABASE_ANON_KEY= npx vitest run` passam 300/300; sem isso, 1 falha (a mesma falha antes da SUB-39.3).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:05 — Claude Code (Opus 5.5): entrega verificada (`npm test` verde com e sem `.env` local; `typecheck` verde)
 - **VERIFICADOR-CLAUDE:** PENDENTE
+
+---
+
+## 🔐 FASE 14: Login — Cadastro de Usuário e Administrador Inicial
+
+#### [x] SUB-40.1: SQL do administrador inicial (`database/08_admin_inicial.sql`)
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 18:13)
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `database/08_admin_inicial.sql` (idempotente, no padrão dos arquivos `00`–`07`): (1) função `public.email_administrador_inicial()` que devolve `'gelvazio@gmail.com'` (único lugar com o e-mail); (2) função `public.garantir_admin_inicial()` `security definer`, `set search_path = public`, que, quando `lower(new.email) = email_administrador_inicial()` **e** `new.email_confirmed_at is not null` **e** não houver linha em `user_roles` para `new.id`, faz `insert into public.user_roles (user_id, role, email, nome) values (new.id, 'admin', new.email, new.raw_user_meta_data ->> 'nome') on conflict (user_id) do nothing`; (3) trigger `after insert or update of email_confirmed_at on auth.users`, criada só se `to_regclass('auth.users')` existir (PostgreSQL puro sem `auth` continua aplicando o script sem erro); (4) bloco de *backfill* que aplica a mesma regra se o usuário já existir e já estiver confirmado. `revoke execute ... from public, anon, authenticated` nas duas funções.
+- **Critérios de Aceitação:** Script idempotente (rodar 2x não falha nem duplica); nenhum outro e-mail vira admin; papel existente em `user_roles` não é alterado.
+- **Commit:** `21a5863`
+- **Anotação:** Executada em 2026-10-12 por Claude Code (Opus 5.5) por orientação explícita do usuário no chat ("PEGUE A TAREFA DE LOGIN E EXECUTE A SUB-40"), na frente de outros itens `MEDIA` anteriores no quadro. Plano em [`docs/login-cadastro-admin-inicial.md`](docs/login-cadastro-admin-inicial.md). `database/08_admin_inicial.sql`: `email_administrador_inicial()` (único lugar com o e-mail), `garantir_admin_inicial()` `security definer` com `search_path = public` (admin só se e-mail igual **e** `email_confirmed_at` preenchido; `on conflict (user_id) do nothing` preserva papel existente), trigger `garantir_admin_inicial_trg` `after insert or update of email_confirmed_at on auth.users` criada só se `to_regclass('auth.users')` existir, e backfill com a mesma regra. `revoke execute` de `public`, `anon` e `authenticated` (os dois últimos só se o papel existir, para rodar em PostgreSQL puro). Verificação: leitura do SQL (sem Postgres local nesta máquina); o `database/tests/run_tests.sh` aplica `0*.sql` sobre o stub sem schema `auth`, caso coberto pelo `raise notice`. Aplicação no Supabase fica na SUB-40.7.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:15 — Claude Code (Opus 5.5): entrega verificada
+- **VERIFICADOR-CLAUDE:** PENDENTE

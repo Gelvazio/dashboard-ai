@@ -55,19 +55,6 @@
 
 ---
 
-### 🔒 TRAVA ADICIONAL — Claude Code (Opus 5.5) — SUB-40.1
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-40.1** |
-| **Título da Sub-task:** | SQL do administrador inicial (`database/08_admin_inicial.sql`) |
-| **Agente Responsável:** | Claude Code (Opus 5.5) |
-| **Data e Hora de Início:** | 2026-10-12 18:13 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-40.1 |
-
----
-
 ### 🔒 TRAVA ESPECIAL: KIRO-DEV-CLONE
 
 > **ATENÇÃO:** A tarefa `KIRO-DEV-CLONE` está **TRAVADA PARA TODAS AS IAS**.
@@ -88,13 +75,13 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 43
 - **Subtarefas atômicas (~3 min):** 251
-- **Em Execução:** 2 (SUB-38, SUB-40.1)
-- **Pendentes:** 10 principais (SUB-38, 25, 26, 28, 35, 39, 40, 41, 42, KIRO-DEV-CLONE) + 47 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 6 — SUB-25.4, SUB-25.7, SUB-35.32, SUB-40.2 e SUB-41.1 (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
-  - bloqueadas por dependência: 11 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41), SUB-42 (depende da SUB-41) e SUB-40.3 a SUB-40.7 (cadeia da SUB-40)
-  - em execução: 2 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-40.1 (Claude Code (Opus 5.5))
+- **Em Execução:** 1 (SUB-38)
+- **Pendentes:** 10 principais (SUB-38, 25, 26, 28, 35, 39, 40, 41, 42, KIRO-DEV-CLONE) + 46 subtarefas
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 7 — SUB-25.4, SUB-25.7, SUB-35.32, SUB-40.2, SUB-40.7 (só com autorização do usuário) e SUB-41.1 (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - bloqueadas por dependência: 10 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41), SUB-42 (depende da SUB-41) e SUB-40.3 a SUB-40.6 (cadeia da SUB-40)
+  - em execução: 1 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 233 de 294 blocos (33 principais + 200 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 234 de 294 blocos (33 principais + 201 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -443,7 +430,7 @@
 - **Executor:** nenhum
 - **Depende de:** subtarefas SUB-40.1 a SUB-40.7
 - **Subtarefas:** (criada e subdividida em 7 em 2026-10-12 por Claude Code (Opus 5.5) a pedido do usuário; a mãe só é concluída quando todas as filhas estiverem `concluido`)
-  - `SUB-40.1`: SQL do administrador inicial (`database/08_admin_inicial.sql`) (`em_execucao`, Claude Code (Opus 5.5))
+  - `SUB-40.1`: SQL do administrador inicial (`database/08_admin_inicial.sql`) (`concluido`, `21a5863`)
   - `SUB-40.2`: Validação e mensagens do cadastro em `src/lib/auth.ts` (`pendente`)
   - `SUB-40.3`: Serviço `cadastrarUsuario` em `src/services/authService.ts` (`pendente`)
   - `SUB-40.4`: Componente `src/components/auth/CadastroForm.tsx` (`pendente`)
@@ -457,18 +444,6 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
-#### [ ] SUB-40.1: SQL do administrador inicial (`database/08_admin_inicial.sql`)
-- **Status:** em_execucao
-- **Prioridade:** MEDIA
-- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 18:13)
-- **Depende de:** Nenhuma
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Criar `database/08_admin_inicial.sql` (idempotente, no padrão dos arquivos `00`–`07`): (1) função `public.email_administrador_inicial()` que devolve `'gelvazio@gmail.com'` (único lugar com o e-mail); (2) função `public.garantir_admin_inicial()` `security definer`, `set search_path = public`, que, quando `lower(new.email) = email_administrador_inicial()` **e** `new.email_confirmed_at is not null` **e** não houver linha em `user_roles` para `new.id`, faz `insert into public.user_roles (user_id, role, email, nome) values (new.id, 'admin', new.email, new.raw_user_meta_data ->> 'nome') on conflict (user_id) do nothing`; (3) trigger `after insert or update of email_confirmed_at on auth.users`, criada só se `to_regclass('auth.users')` existir (PostgreSQL puro sem `auth` continua aplicando o script sem erro); (4) bloco de *backfill* que aplica a mesma regra se o usuário já existir e já estiver confirmado. `revoke execute ... from public, anon, authenticated` nas duas funções.
-- **Critérios de Aceitação:** Script idempotente (rodar 2x não falha nem duplica); nenhum outro e-mail vira admin; papel existente em `user_roles` não é alterado.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
 
 #### [ ] SUB-40.2: Validação e mensagens do cadastro em `src/lib/auth.ts`
 - **Status:** pendente
