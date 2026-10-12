@@ -43,3 +43,35 @@ export async function atividadeAtual(
   const lista = resultado(res, 'Atividade dos agentes') ?? [];
   return [...lista].sort((a, b) => Date.parse(b.ultimo_em) - Date.parse(a.ultimo_em));
 }
+
+/** Status do canal Realtime repassado por `assinarEventos`. */
+export type StatusCanalEventos = 'SUBSCRIBED' | 'CHANNEL_ERROR' | 'TIMED_OUT' | 'CLOSED';
+
+export interface OuvintesEventos {
+  /** Chamado a cada evento novo (INSERT) do projeto. */
+  onEvento: (evento: AgentEvent) => void;
+  /** Chamado a cada mudança de status do canal. */
+  onStatus?: (status: StatusCanalEventos, erro?: Error) => void;
+}
+
+/**
+ * Assina os INSERTs de `agent_events` do projeto via Supabase Realtime
+ * (canal `agent_events:<projectId>`, sem polling). Devolve a função que remove o canal.
+ */
+export function assinarEventos(
+  projectId: number,
+  { onEvento, onStatus }: OuvintesEventos,
+  client: DashboardClient = getSupabase(),
+): () => void {
+  const canal = client
+    .channel(`agent_events:${projectId}`)
+    .on(
+      'postgres_changes',
+      { event: 'INSERT', schema: 'public', table: 'agent_events', filter: `project_id=eq.${projectId}` },
+      (payload) => onEvento(payload.new as AgentEvent),
+    )
+    .subscribe((status, erro) => onStatus?.(status as StatusCanalEventos, erro));
+  return () => {
+    void client.removeChannel(canal);
+  };
+}
