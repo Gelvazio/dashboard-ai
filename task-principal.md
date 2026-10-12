@@ -9,8 +9,9 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
-- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-21`)
-- **Pendentes:** 8
+- **Em Execução:** 4 (`SUB-27`, `SUB-08`, `SUB-21`, `SUB-33`)
+- **Em Planejamento (trava de subdivisão):** 7 (`SUB-23`, `SUB-19`, `SUB-20`, `SUB-34`, `SUB-25`, `SUB-26`, `SUB-28`)
+- **Pendentes:** 0
 - **Concluídas:** 25
 - **Canceladas:** 0
 
@@ -317,8 +318,8 @@
 ## 🧠 FASE 7: Interface do Usuário - Painel de Memória Persistente (Jev-Mem)
 
 ### [ ] SUB-34: Carregamento Sob Demanda de Telas e Modais (code splitting)
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:36)
 - **Depende de:** SUB-13, SUB-14, SUB-16, SUB-17, SUB-18
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Carregar as telas (Fila, Memória, Logs, Configurações) e os modais pesados com `React.lazy` + `Suspense` (fallback leve), e separar dependências grandes (ex.: supabase-js) em chunks próprios, eliminando o aviso de bundle > 500 kB do Vite.
@@ -328,8 +329,8 @@
 - **Anotação:** pendente
 
 ### [ ] SUB-19: Interface de Pesquisa Semântica Vetorial
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:36)
 - **Depende de:** SUB-10, SUB-12, SUB-33
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar componente de busca semântica onde o usuário insere uma consulta e o sistema busca memórias similares via RPC `match_memories`, exibindo a porcentagem de similaridade.
@@ -339,8 +340,8 @@
 - **Anotação:** pendente
 
 ### [ ] SUB-20: Formulário de Nova Memória Canônica
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:36)
 - **Depende de:** SUB-10, SUB-12, SUB-33
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Componente para adicionar nova memória: Título único, Conteúdo estruturado em Markdown e Tags de categorização.
@@ -376,8 +377,8 @@
 - **Anotação:** Arquivos: src/lib/logs.ts (+testes), src/hooks/useLogs.ts, src/views/LogsView.tsx.
 
 ### [ ] SUB-23: Diagnóstico de Travas e Saúde da Fila
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:36)
 - **Depende de:** SUB-09, SUB-11, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Painel indicando se há lock ativo (task com `trava_frente` e `trava_em` dentro dos 90 minutos) e botão de liberação manual de trava caso expire.
@@ -405,8 +406,8 @@
 ## 🚀 FASE 10: Build, Validação e Documentação
 
 ### [ ] SUB-25: Validação de Build e Execução Local
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:36)
 - **Depende de:** SUB-01 a SUB-24
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Rodar compilação de produção (`npm run build`), validar ausência de erros de tipagem TypeScript e verificar integridade de pacotes.
@@ -415,8 +416,8 @@
 - **Anotação:** pendente
 
 ### [ ] SUB-26: Documentação Completa e Manual Operacional no `README.md`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:36)
 - **Depende de:** SUB-25
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Documentar no `README.md` a arquitetura da solução, guia de execução local, deploy na Vercel e instruções para agentes de IA operarem a fila e a memória.
@@ -439,8 +440,8 @@
 ## 🚀 FASE 11: Orquestração de Tasks com LangChain/LangGraph (última fase)
 
 ### [ ] SUB-28: Integração LangChain/LangGraph para Execução de Tasks
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:36)
 - **Depende de:** SUB-01 a SUB-27, SUB-29, SUB-30 (todas as tasks anteriores concluídas)
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Implementar a orquestração multi-etapas de execução descrita em `LangChain_LangGraph.md`, mantendo Supabase como autoridade sobre a fila, dependências, locks, tentativas e resultado. Integrar o worker LangGraph às RPCs existentes e às ferramentas MCP autorizadas, com checkpoint durável, retomada, tratamento de falhas e aprovação humana para ações sensíveis.

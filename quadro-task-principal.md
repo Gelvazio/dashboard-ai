@@ -66,11 +66,22 @@
 | **Data e Hora de Início:** | 2026-10-11 23:34 |
 | **Bloqueio para Outras IAs:** | **ATIVADO**; SUB-33 depende de SUB-07 e SUB-03, concluídas |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — Planejamento
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO (planejamento)** |
+| **Sub-tasks travadas:** | **SUB-23, SUB-19, SUB-20, SUB-34, SUB-25, SUB-26, SUB-28** |
+| **Motivo:** | Subdivisão em subtarefas atômicas de ~3 min (sem implementação de código) |
+| **Agente Responsável:** | DashboardAI (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-11 23:36 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** até o commit da nova lista de subtarefas |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (4)
+### 🔄 EM EXECUÇÃO / PLANEJAMENTO (11)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
@@ -78,20 +89,19 @@
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` | xAI (Grok) | 2026-10-11 22:41 | SUB-06 |
 | **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias | Codex (OpenAI) | 2026-10-11 23:28 | SUB-10, SUB-12 |
 | **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) | DashboardAI (Grok Bot) | 2026-10-11 23:34 | SUB-07, SUB-03 |
+| **SUB-23** | Diagnóstico de Travas e Saúde da Fila | DashboardAI (Grok Bot) — planejamento | 2026-10-11 23:36 | SUB-09, SUB-11, SUB-12 |
+| **SUB-19** | Interface de Pesquisa Semântica Vetorial | DashboardAI (Grok Bot) — planejamento | 2026-10-11 23:36 | SUB-10, SUB-12, SUB-33 |
+| **SUB-20** | Formulário de Nova Memória Canônica | DashboardAI (Grok Bot) — planejamento | 2026-10-11 23:36 | SUB-10, SUB-12, SUB-33 |
+| **SUB-34** | Carregamento Sob Demanda de Telas e Modais (code splitting) | DashboardAI (Grok Bot) — planejamento | 2026-10-11 23:36 | SUB-13, SUB-14, SUB-16, SUB-17, SUB-18 |
+| **SUB-25** | Validação de Build e Execução Local | DashboardAI (Grok Bot) — planejamento | 2026-10-11 23:36 | SUB-01 a SUB-24 |
+| **SUB-26** | Documentação Completa e Manual Operacional no `README.md` | DashboardAI (Grok Bot) — planejamento | 2026-10-11 23:36 | SUB-25 |
+| **SUB-28** | Integração LangChain/LangGraph para Execução de Tasks | DashboardAI (Grok Bot) — planejamento | 2026-10-11 23:36 | SUB-01 a SUB-27, SUB-29, SUB-30 |
 
 ---
 
-### ⏳ PENDENTES (7)
+### ⏳ PENDENTES (0)
 
-| Código | Título da Mini-task | Prioridade | Fase | Depende de |
-|---|---|---|---|---|
-| **SUB-23** | Diagnóstico de Travas e Saúde da Fila | 4 | Fase 8 | SUB-09, SUB-11, SUB-12 |
-| **SUB-19** | Interface de Pesquisa Semântica Vetorial | 4 | Fase 7 | SUB-10, SUB-12, SUB-33 |
-| **SUB-20** | Formulário de Nova Memória Canônica | 4 | Fase 7 | SUB-10, SUB-12, SUB-33 |
-| **SUB-34** | Carregamento Sob Demanda de Telas e Modais (code splitting) | 4 | Fase 6 | SUB-13, SUB-14, SUB-16, SUB-17, SUB-18 |
-| **SUB-25** | Validação de Build e Execução Local | 5 | Fase 10 | SUB-01 a SUB-24 |
-| **SUB-26** | Documentação Completa e Manual Operacional no `README.md` | 5 | Fase 10 | SUB-25 |
-| **SUB-28** | Integração LangChain/LangGraph para Execução de Tasks | 5 | Fase 11 (última) | SUB-01 a SUB-27, SUB-29, SUB-30 |
+*(Todas as livres travadas para subdivisão por DashboardAI (Grok Bot))*
 
 ---
 
@@ -167,3 +177,4 @@
 | 2026-10-11 23:23 | DashboardAI (Grok Bot) | SUB-17 | `231b665` | Clique na linha (ou no código, acessível por teclado) abre a visualização completa: instrução formatada (abas Formatado/Texto), relatório da IA destacado por status, link do PR, SHA do commit, tentativas, dependências, datas, origem e arquivo; aviso de trava quando em execução. Botões de copiar (instrução, relatório, PR, SHA) e Copiar tudo em Markdown. Renderizador Markdown próprio sem HTML cru (sem XSS; só links http/https/mailto), testado. Validado: typecheck, build, vitest (unit+integração) e screenshots 1280x800/390x844. |
 | 2026-10-11 23:26 | DashboardAI (Grok Bot) | SUB-15 | `1f94252` | Busca instantânea no cliente (código, título e instrução; sem acento/maiúsculas), filtro por status com contagem, contador filtradas/total, botão Recarregar (tabela + indicadores, com hora da última atualização) e mensagem de vazio por filtro. Dependências seguem resolvidas pela lista completa. Validado: typecheck, build, vitest (unit+integração) e screenshot. |
 | 2026-10-11 23:27 | DashboardAI (Grok Bot) | SUB-22 | `a88f12d` | Tela Logs com linha do tempo agrupada por dia (mais recente primeiro): hora, badge de status (concluida/recusada/erro/sem_tarefa), rotina, task, agente, tempo de execução, link de PR e SHA; detalhes/erro expansíveis. Filtro por status com contadores, busca em detalhes/erro/task, recarregar e Carregar mais (paginação do logService). Validado: typecheck, build, vitest (unit+integração) e screenshot. |
+| 2026-10-11 23:36 | DashboardAI (Grok Bot) | Lock planejamento | — | Trava de planejamento em SUB-23, SUB-19, SUB-20, SUB-34, SUB-25, SUB-26 e SUB-28 para subdividir em subtarefas de ~3 min (pedido do usuário); SUB-33 segue travada por DashboardAI (Grok Bot) |
