@@ -633,7 +633,7 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-34.4: Separar dependências grandes no `vite.config.ts`
-- **Status:** pendente
+- **Status:** concluido
 - **Executor:** nenhum
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
