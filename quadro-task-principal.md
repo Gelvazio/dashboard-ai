@@ -33,20 +33,30 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhuma tarefa reservada para Codex |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — SUB-08.3
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-08.3** |
+| **Título da Sub-task:** | Seção Servidor Supabase: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `SUPABASE_REST_URL` |
+| **Agente Responsável:** | DashboardAI (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 00:30 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém mais assume a SUB-08.3 |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (0)
+### 🔄 EM EXECUÇÃO (1)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
-
-*(Nenhuma tarefa em execução)*
+| **SUB-08.3** | Seção Servidor Supabase: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `SUPABASE_REST_URL` | DashboardAI (Grok Bot) | 2026-10-12 00:30 | SUB-08.1 |
 
 ---
 
-### ⏳ PENDENTES (151)
+### ⏳ PENDENTES (150)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -54,13 +64,12 @@
 
 > **SUB-27 liberada a pedido do usuário** (2026-10-11 23:55): mãe e 22 subtarefas estão disponíveis; cada agente deve respeitar as dependências indicadas. Nenhum código da SUB-27 havia sido enviado à main.
 
-**🟢 Livres agora (29):** SUB-33.5, SUB-33.8, SUB-33.9, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.5, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1
+**🟢 Livres agora (28):** SUB-33.5, SUB-33.8, SUB-33.9, SUB-08.2, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.5, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` (mãe) | 3 | Fase 3 | SUB-06; SUB-08.1 a SUB-08.11 |
 | **SUB-08.2** | Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` | 3 | Fase 3 | SUB-08.1 — 🟢 livre |
-| **SUB-08.3** | Seção Servidor Supabase: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `SUPABASE_REST_URL` | 3 | Fase 3 | SUB-08.1 — 🟢 livre |
 | **SUB-08.4** | Seção Embeddings: `OPENAI_API_KEY`, `EMBEDDING_API_URL`, `EMBEDDING_MODEL` | 3 | Fase 3 | SUB-08.1 — 🟢 livre |
 | **SUB-08.5** | Seção MCP: `MCP_AUTH_TOKEN`, `MCP_CORS_ORIGIN`, `MCP_DEFAULT_PROJECT`, `MCP_ALLOWED_PROJECTS` | 3 | Fase 3 | SUB-08.1 — 🟢 livre |
 | **SUB-08.6** | Seção Scripts: `DASHBOARD_AI_PROJECT` | 3 | Fase 3 | SUB-08.1 — 🟢 livre |
@@ -336,3 +345,4 @@
 | 2026-10-12 00:29 | DashboardAI (Grok Bot) | SUB-33.12 | `bf48093` | Em `tests/unit/api-embedding.test.ts`, bloco "POST autenticado" com Auth e API de embeddings simulados: 413 com 8.001 caracteres, 400 sem `texto`, 502 quando a API de embeddings recusa (corpo sem `sk-` e sem a chave anon) e 200 com vetor de 1536 (`dimensoes`, `modelo`, 2 chamadas a `fetch`). typecheck (app + api) e `npm test` verdes (57 passed). |
 | 2026-10-12 00:29 | DashboardAI (Grok Bot) | SUB-33.7 | — | Lock: assumindo SUB-33.7 (`criarGeradorEmbedding()` em `src/services/embeddingService.ts`) |
 | 2026-10-12 00:30 | DashboardAI (Grok Bot) | SUB-33.7 | `64aa288` | Criado `src/services/embeddingService.ts` com `criarGeradorEmbedding({ url?, client? }): GeradorEmbedding`: pega o `access_token` de `client.auth.getSession()` (sem sessão -> `ServiceError('Faça login para usar a busca semântica.')`), faz `POST /api/embedding` com `{ texto }` e `Authorization: Bearer`; 401 -> mesma mensagem de login, falha de rede/HTTP -> `ServiceError` (usa `erro` do servidor), valida 1536 números finitos. Exportado em `src/services/index.ts`. Nenhuma chave de embeddings no frontend. typecheck, `npm test` e `npm run build` OK. |
+| 2026-10-12 00:30 | DashboardAI (Grok Bot) | SUB-08.3 | — | Lock: assumindo SUB-08.3 (Seção Servidor Supabase: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `SUPABASE_REST_URL`) |
