@@ -66,6 +66,17 @@
 | **Data e Hora de Início:** | 2026-10-12 01:05 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.20
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-27.20** |
+| **Título da Sub-task:** | Limpar `ProjetoContext` ao sair |
+| **Agente Responsável:** | DashboardAI-Clone 01 |
+| **Data e Hora de Início:** | 2026-10-12 01:05 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -74,6 +85,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-27.20** | Limpar `ProjetoContext` ao sair | DashboardAI-Clone 01 | 2026-10-12 01:05 | SUB-27.26 |
 | **SUB-35.3** | RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:05 | SUB-35.1 |
 | **SUB-19.7** | Painel `BuscaSemanticaPanel` (campo, grade e estados) | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:04 | SUB-19.5, SUB-19.6, SUB-19.9 |
 | **SUB-21.9** | Montar a `MemoriaView` (toolbar + grade) | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:04 | SUB-21.3, SUB-21.5, SUB-21.8 |
@@ -562,3 +574,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:05 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.3 | — | Lock: assumindo SUB-35.3 (RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql`) |
 | 2026-10-12 01:05 | DashboardAI-Clone 01 | SUB-27.15 | `65932ae` | Em `src/hooks/useConexao.ts`, assinatura de `auth.onAuthStateChange` (só com Supabase configurado) que roda a verificação na hora (sem_sessao -> conectado sem esperar 60 s), cancelada no cleanup junto com o intervalo. typecheck e vitest verdes. |
 | 2026-10-12 01:05 | DashboardAI-Clone 06 | SUB-21.7 | `ad9bd52` | Criado `src/hooks/useExcluirMemoria.ts` (exportado em `src/hooks/index.ts`): `useExcluirMemoria({ remover, reinserir, onExcluida? })` -> `{ excluir(memoria): Promise<boolean>, excluindo: Set<id> }`. Remove da lista na hora (otimista), chama `excluirMemoria` (SUB-10, que já recusa quando a RLS não apaga nenhuma linha); em erro reinsere a memória e mostra `toast.erro`, em sucesso `toast.sucesso` e `onExcluida`. `npm run typecheck` e `npm test` OK. |
+| 2026-10-12 01:05 | DashboardAI-Clone 01 | SUB-27.20 | — | Lock: assumindo SUB-27.20 (Limpar `ProjetoContext` ao sair) |

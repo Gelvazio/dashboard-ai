@@ -1681,8 +1681,8 @@
 - **Anotação:** Criado `src/components/auth/RecuperarAcesso.tsx` (props `{ email }`): botões "Entrar com link por e-mail" (`enviarLinkMagico`) e "Esqueci a senha" (`redefinirSenha`) com `urlDeRetorno(window.location)`, carregando por ação e aviso de confirmação/erro (role status/alert); e-mail vazio pede preenchimento. typecheck OK.
 
 #### [ ] SUB-27.20: Limpar `ProjetoContext` ao sair
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.26
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Em `src/hooks/ProjetoContext.tsx`, limpar `projetos` e erro quando não houver sessão (usando `useAuth`), sem perder o slug salvo.
