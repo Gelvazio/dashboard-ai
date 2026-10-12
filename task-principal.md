@@ -149,8 +149,8 @@
 - **Anotação:** api/_lib/supabase.ts reescrito: db() com createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY) sem sessão, fetch com timeout de 20 s e redirecionamento opcional via SUPABASE_REST_URL (testes), unwrap() que converte PostgrestError em SupabaseError, rpc(). queue-tools, brain-tools e args usam o query builder (from/select/eq/in/order/limit, insert().select().single(), upsert onConflict project_id,title, delete().is/eq().select()). Contrato das ferramentas inalterado. Achado: supabase-js 2.117 exige WebSocket nativo e quebra no Node 20 (EOL desde 2026-04), então engines.node passou a >=22.12, .nvmrc 22 e @types/node ^22. Validado com Node 22.23: build e typecheck OK; e2e contra PostgREST local: 27 cenários da fila e 36 da memória, todos OK; AGENTS.md e api/README.md atualizados.
 
 ### [ ] SUB-33: Endpoint de Embeddings para o Frontend (`api/embedding.ts`)
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:34)
 - **Depende de:** SUB-07, SUB-03
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar a função serverless `POST /api/embedding` que valida o JWT da sessão Supabase do usuário (`Authorization: Bearer <access_token>`, conferido no Supabase Auth com a URL e a chave do servidor) e devolve o embedding do texto enviado, usando `OPENAI_API_KEY`, `EMBEDDING_MODEL` e `EMBEDDING_API_URL` somente no servidor (reaproveitar `api/_lib/embeddings.ts`). No frontend, expor um `GeradorEmbedding` que chama esse endpoint para `buscarMemorias`/`salvarMemoria` (SUB-10).

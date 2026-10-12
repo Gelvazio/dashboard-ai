@@ -55,28 +55,39 @@
 | **Data e Hora de Início:** | 2026-10-11 23:28 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot)
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-33** |
+| **Título da Sub-task:** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) |
+| **Agente Responsável:** | DashboardAI (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-11 23:34 |
+| **Bloqueio para Outras IAs:** | **ATIVADO**; SUB-33 depende de SUB-07 e SUB-03, concluídas |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (4)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27** | Autenticação e Login com Supabase Auth | Codex (OpenAI) | 2026-10-11 22:27 | SUB-03, SUB-29 |
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` | xAI (Grok) | 2026-10-11 22:41 | SUB-06 |
 | **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias | Codex (OpenAI) | 2026-10-11 23:28 | SUB-10, SUB-12 |
+| **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) | DashboardAI (Grok Bot) | 2026-10-11 23:34 | SUB-07, SUB-03 |
 
 ---
 
-### ⏳ PENDENTES (8)
+### ⏳ PENDENTES (7)
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
 | **SUB-23** | Diagnóstico de Travas e Saúde da Fila | 4 | Fase 8 | SUB-09, SUB-11, SUB-12 |
 | **SUB-19** | Interface de Pesquisa Semântica Vetorial | 4 | Fase 7 | SUB-10, SUB-12, SUB-33 |
 | **SUB-20** | Formulário de Nova Memória Canônica | 4 | Fase 7 | SUB-10, SUB-12, SUB-33 |
-| **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) | 4 | Fase 2B | SUB-07, SUB-03 |
 | **SUB-34** | Carregamento Sob Demanda de Telas e Modais (code splitting) | 4 | Fase 6 | SUB-13, SUB-14, SUB-16, SUB-17, SUB-18 |
 | **SUB-25** | Validação de Build e Execução Local | 5 | Fase 10 | SUB-01 a SUB-24 |
 | **SUB-26** | Documentação Completa e Manual Operacional no `README.md` | 5 | Fase 10 | SUB-25 |
