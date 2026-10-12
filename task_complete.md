@@ -3296,3 +3296,16 @@
 - **Anotação:** Executada em 2026-10-12 por Claude Code (Opus 5.5) por orientação do usuário no chat ("continue a SUB-40 a partir da SUB-40.2"). `src/lib/auth.ts`: `validarCadastro({ nome, email, senha, confirmacao })` no estilo de `validarLogin` (nome obrigatório com mínimo de 2 caracteres, e-mail pelo `EMAIL_RE`, senha com mínimo de 6, confirmação igual à senha: "As senhas não conferem."), interface `DadosCadastro` e constantes `TAMANHO_MINIMO_NOME`/`TAMANHO_MINIMO_SENHA`. `MENSAGENS` ganhou `user_already_exists`/`email_exists`, `weak_password` e `signup_disabled`; `mensagemErroAuth` também reconhece as mensagens "already registered" e "signups not allowed" quando o código não vem. Verificação: `npm run typecheck` verde; `npm test` com 300 testes passando e 30 pulados. Sem testes novos (regra do usuário). Plano em [`docs/login-cadastro-admin-inicial.md`](docs/login-cadastro-admin-inicial.md).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:24 — Claude Code (Opus 5.5): entrega verificada
 - **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [x] SUB-40.3: Serviço `cadastrarUsuario` em `src/services/authService.ts`
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 18:24)
+- **Depende de:** SUB-40.2
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `cadastrarUsuario({ nome, email, senha, redirectTo }, client = getSupabase())`, que chama `client.auth.signUp({ email: email.trim(), password: senha, options: { data: { nome: nome.trim() }, emailRedirectTo: redirectTo } })` e lança `ServiceError(mensagemErroAuth(error), 'AUTH')` em erro. Devolve `{ precisaConfirmar: boolean }` (`true` quando `data.session` vier nulo, ou seja, o Supabase enviou o e-mail de confirmação). **Não** enviar papel nem nenhum campo de permissão no `options.data` (o papel é decidido só pelo banco, SUB-40.1). A senha nunca é guardada nem registrada em log.
+- **Critérios de Aceitação:** `npm run typecheck` e `npm test` verdes; nenhum dado de papel saindo do frontend.
+- **Commit:** `a48672a`
+- **Anotação:** Executada em 2026-10-12 por Claude Code (Opus 5.5) por orientação do usuário no chat ("continue a SUB-40 a partir da SUB-40.2"). `src/services/authService.ts`: `cadastrarUsuario({ nome, email, senha, redirectTo }, client = getSupabase())` chama `client.auth.signUp` com `email.trim()`, `options.data = { nome: nome.trim() }` e `emailRedirectTo`; lança `ServiceError(mensagemErroAuth(error), AUTH)` em erro e devolve `{ precisaConfirmar: !data.session }`. Interface `NovoUsuario` sem nenhum campo de papel ou permissão (o papel é decidido só pelo banco, SUB-40.1); a senha só é repassada ao Supabase. Já exportado por `src/services/index.ts` (`export * from ./authService`). Verificação: `npm run typecheck` verde; `npm test` com 300 testes passando e 30 pulados.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:25 — Claude Code (Opus 5.5): entrega verificada
+- **VERIFICADOR-CLAUDE:** PENDENTE

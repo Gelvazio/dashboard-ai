@@ -55,19 +55,6 @@
 
 ---
 
-### 🔒 TRAVA ADICIONAL — Claude Code (Opus 5.5) — SUB-40.3
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-40.3** |
-| **Título da Sub-task:** | Serviço `cadastrarUsuario` em `src/services/authService.ts` |
-| **Agente Responsável:** | Claude Code (Opus 5.5) |
-| **Data e Hora de Início:** | 2026-10-12 18:24 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-40.3 |
-
----
-
 ### 🔒 TRAVA ESPECIAL: KIRO-DEV-CLONE
 
 > **ATENÇÃO:** A tarefa `KIRO-DEV-CLONE` está **TRAVADA PARA TODAS AS IAS**.
@@ -88,13 +75,13 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 44
 - **Subtarefas atômicas (~3 min):** 251
-- **Em Execução:** 2 (SUB-38, SUB-40.3)
-- **Pendentes:** 11 principais (SUB-38, 25, 26, 28, 35, 39, 40, 41, 42, 43, KIRO-DEV-CLONE) + 45 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 7 — SUB-25.4, SUB-25.7, SUB-35.32, SUB-40.7 (só com autorização do usuário), SUB-41.1 e SUB-43 (atômica) (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
-  - bloqueadas por dependência: 9 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41), SUB-42 (depende da SUB-41) e SUB-40.4 a SUB-40.6 (cadeia da SUB-40)
-  - em execução: 2 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-40.3 (Claude Code (Opus 5.5))
+- **Em Execução:** 1 (SUB-38)
+- **Pendentes:** 11 principais (SUB-38, 25, 26, 28, 35, 39, 40, 41, 42, 43, KIRO-DEV-CLONE) + 44 subtarefas
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 8 — SUB-25.4, SUB-25.7, SUB-35.32, SUB-40.7 (só com autorização do usuário), SUB-41.1, SUB-43 (atômica) e SUB-40.4 (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - bloqueadas por dependência: 8 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41), SUB-42 (depende da SUB-41) e SUB-40.5 e SUB-40.6 (cadeia da SUB-40)
+  - em execução: 1 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 235 de 295 blocos (33 principais + 202 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 236 de 295 blocos (33 principais + 203 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -445,7 +432,7 @@
 - **Subtarefas:** (criada e subdividida em 7 em 2026-10-12 por Claude Code (Opus 5.5) a pedido do usuário; a mãe só é concluída quando todas as filhas estiverem `concluido`)
   - `SUB-40.1`: SQL do administrador inicial (`database/08_admin_inicial.sql`) (`concluido`, `e64524e`)
   - `SUB-40.2`: Validação e mensagens do cadastro em `src/lib/auth.ts` (`concluido`, `b2a9289`)
-  - `SUB-40.3`: Serviço `cadastrarUsuario` em `src/services/authService.ts` (`em_execucao`, Claude Code (Opus 5.5))
+  - `SUB-40.3`: Serviço `cadastrarUsuario` em `src/services/authService.ts` (`concluido`, `a48672a`)
   - `SUB-40.4`: Componente `src/components/auth/CadastroForm.tsx` (`pendente`)
   - `SUB-40.5`: Alternar "Entrar" / "Criar usuário" na `LoginView` (`pendente`)
   - `SUB-40.6`: Documentar o cadastro e o administrador inicial (`README.md` e `database/README.md`) (`pendente`)
@@ -459,18 +446,6 @@
 
 
 
-#### [ ] SUB-40.3: Serviço `cadastrarUsuario` em `src/services/authService.ts`
-- **Status:** em_execucao
-- **Prioridade:** MEDIA
-- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 18:24)
-- **Depende de:** SUB-40.2
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Criar `cadastrarUsuario({ nome, email, senha, redirectTo }, client = getSupabase())`, que chama `client.auth.signUp({ email: email.trim(), password: senha, options: { data: { nome: nome.trim() }, emailRedirectTo: redirectTo } })` e lança `ServiceError(mensagemErroAuth(error), 'AUTH')` em erro. Devolve `{ precisaConfirmar: boolean }` (`true` quando `data.session` vier nulo, ou seja, o Supabase enviou o e-mail de confirmação). **Não** enviar papel nem nenhum campo de permissão no `options.data` (o papel é decidido só pelo banco, SUB-40.1). A senha nunca é guardada nem registrada em log.
-- **Critérios de Aceitação:** `npm run typecheck` e `npm test` verdes; nenhum dado de papel saindo do frontend.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
 
 #### [ ] SUB-40.4: Componente `src/components/auth/CadastroForm.tsx`
 - **Status:** pendente

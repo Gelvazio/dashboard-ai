@@ -34,7 +34,7 @@ e-mail cadastrado for `gelvazio@gmail.com` e ainda não existir, ele vira admini
 |---|---|---|---|---|
 | 1 | SUB-40.1 SQL do administrador inicial | `database/08_admin_inicial.sql` | leitura do SQL (idempotência, `security definer`, `revoke`) | ✅ Concluído (`e64524e`) |
 | 2 | SUB-40.2 Validação e mensagens | `src/lib/auth.ts` | `npm run typecheck`, `npm test` | ✅ Concluído (`b2a9289`) |
-| 3 | SUB-40.3 Serviço `cadastrarUsuario` | `src/services/authService.ts` | `npm run typecheck`, `npm test` | ⬜ Pendente |
+| 3 | SUB-40.3 Serviço `cadastrarUsuario` | `src/services/authService.ts` | `npm run typecheck`, `npm test` | ✅ Concluído (`a48672a`) |
 | 4 | SUB-40.4 Formulário de cadastro | `src/components/auth/CadastroForm.tsx`, `index.ts` | `npm run typecheck`, `lint`, `build` | ⬜ Pendente |
 | 5 | SUB-40.5 Alternar Entrar/Criar usuário | `src/views/LoginView.tsx` | `npm run validar` | ⬜ Pendente |
 | 6 | SUB-40.6 Documentação | `README.md`, `database/README.md` | `npm run validar` | ⬜ Pendente |
