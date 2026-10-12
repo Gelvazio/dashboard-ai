@@ -108,7 +108,7 @@ describe('api/aprovacao — autenticação e papel (SUB-28.16)', () => {
 
   it('regista auditoria da aprovação nos metadados (SUB-28.32)', async () => {
     const atualizarMetadados = vi.fn(async () => {});
-    const { chamar, deps } = montar({ atualizarMetadadosLog: atualizarMetadados });
+    const { chamar } = montar({ atualizarMetadadosLog: atualizarMetadados });
     const res = await chamar({ headers: autenticado, body: JSON.stringify({ ...corpo, motivo: 'aprovado' }) });
     expect(res.codigo).toBe(200);
     expect(atualizarMetadados).toHaveBeenCalledWith('task-5-t1', {
