@@ -31,12 +31,12 @@
 
 | Propriedade | Valor Atual |
 |---|---|
-| **Status da Trava:** | ✅ **LIVRE** |
-| **Sub-task em Execução:** | **—** |
-| **Título da Sub-task:** | — |
-| **Agente Responsável:** | — |
-| **Data e Hora de Início:** | — |
-| **Bloqueio para Outras IAs:** | Nenhum lock ativo |
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.10** |
+| **Título da Sub-task:** | `atividadeAtual()` em `src/services/eventService.ts` |
+| **Agente Responsável:** | Claude Code |
+| **Data e Hora de Início:** | 2026-10-12 01:30 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
 
 ### 🔒 TRAVA ADICIONAL — Codex (OpenAI)
 
