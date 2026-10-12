@@ -73,6 +73,8 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
 
 Execute o script SQL abaixo no painel do seu Supabase para criar a estrutura de tabelas e habilitar a busca vetorial por proximidade.
 
+> ℹ️ A versão consolidada e idempotente destes scripts fica na pasta [`database/`](database/README.md) (aplicar `01` → `04` em ordem). O trecho abaixo é a referência original do plano.
+
 ```sql
 -- 1. Habilitar a extensão de busca vetorial
 create extension if not exists vector;
@@ -114,7 +116,7 @@ as $$
     1 - (ai_memories.embedding <=> query_embedding) as similarity
   from ai_memories
   where 1 - (ai_memories.embedding <=> query_embedding) > match_threshold
-  order in by ai_memories.embedding <=> query_embedding
+  order by ai_memories.embedding <=> query_embedding
   limit match_count;
 $$;
 ```

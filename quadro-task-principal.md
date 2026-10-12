@@ -26,23 +26,20 @@
 
 | Propriedade | Valor Atual |
 |---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-04** |
-| **Título da Sub-task:** | Consolidação dos Schemas SQL na Pasta `database/` |
+| **Status da Trava:** | 🟢 **LIVRE** |
+| **Sub-task em Execução:** | nenhuma |
 | **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-11 22:18 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** (Nenhum outro agente pode assumir esta tarefa) |
+| **Bloqueio para Outras IAs:** | DESATIVADO |
 
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (2)
+### 🔄 EM EXECUÇÃO (1)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-01.1** | Inicialização do package.json, Vite, React e TypeScript | Antigravity AI | 2026-10-11 22:13 | Nenhuma |
-| **SUB-04** | Consolidação dos Schemas SQL na Pasta `database/` | DashboardAI (Grok Bot) | 2026-10-11 22:18 | Nenhuma |
 
 ---
 
@@ -79,8 +76,10 @@
 
 ---
 
-### ✅ CONCLUÍDAS (0)
-*(Aguardando conclusões)*
+### ✅ CONCLUÍDAS (1)
+| Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
+|---|---|---|---|---|---|
+| **SUB-04** | Consolidação dos Schemas SQL na Pasta `database/` | DashboardAI (Grok Bot) | 2026-10-11 22:18 | 2026-10-11 22:20 | `PENDING_SHA` |
 
 ---
 
@@ -97,3 +96,4 @@
 | 2026-10-11 22:10 | Antigravity AI | Protocolo Push | `1aed730` | Obrigatoriedade de git push origin main em AGENTS.md |
 | 2026-10-11 22:12 | Antigravity AI | Protocolo 2 Partes | `58c8af1` | Formalização de leitura (Pt 1) e lock com commit+push (Pt 2) |
 | 2026-10-11 22:13 | Antigravity AI | Lock SUB-01 | `fb34a6b` | Ativação de lock para início da primeira sub-task |
+| 2026-10-11 22:20 | DashboardAI (Grok Bot) | SUB-04 | `PENDING_SHA` | Criados database/01_tasks_schema.sql, 02_logs_schema.sql, 03_memories_schema.sql e database/README.md (idempotentes, validados 2x em Postgres 17 + pgvector). Corrigido `order in by` -> `order by` em AGENTS.md |
