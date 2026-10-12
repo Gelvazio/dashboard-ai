@@ -72,29 +72,16 @@
 
 ---
 
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-26.9
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-26.9** |
-| **Título da Sub-task:** Revisão final do README |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 22:05 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-26.9 |
-
----
-
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 46
 - **Subtarefas atômicas (~3 min):** 270
-- **Em Execução:** 1 (SUB-26.9)
-- **Pendentes:** 8 principais (SUB-38, 26, 28, 35, 41, 42, 45, KIRO-DEV-CLONE) + 53 subtarefas
+- **Em Execução:** 1 (SUB-38)
+- **Pendentes:** 7 principais (SUB-38, 28, 35, 41, 42, 45, KIRO-DEV-CLONE) + 52 subtarefas
   - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 1 — SUB-35.46 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
   - bloqueadas por dependência: 21 — SUB-45.2 a SUB-45.19 (cadeia da SUB-45; tarefas de banco só Claude Code local; frontend depende de banco) e SUB-41.2, SUB-41.3, SUB-42 (cadeia da SUB-41)
-  - em execução: 1 — SUB-26.9 (Devin (Cognition AI))
+  - em execução: 1 — SUB-38 (DeepSeek Harness (deepseek-flash))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 251 de 316 blocos (38 principais + 213 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 252 de 316 blocos (38 principais + 214 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -131,7 +118,7 @@
   - `SUB-26.6`: Seção Agentes de IA: configurar clientes MCP (`concluido`, `d7f05f6`)
   - `SUB-26.7`: Seção Memória via MCP (`concluido`, `7fa647b`)
   - `SUB-26.8`: Seção Segurança (`concluido`, `f48b2de`)
-  - `SUB-26.9`: Revisão final do README (`pendente`)
+  - `SUB-26.9`: Revisão final do README (`concluido`, 483a29e)
   - `SUB-26.10`: Seção Agentes de IA: exemplos do ciclo da fila (`concluido`, `23153af`)
 - **Descrição:** Documentar no `README.md` a arquitetura da solução, guia de execução local, deploy na Vercel e instruções para agentes de IA operarem a fila e a memória.
 - **Critérios de Aceitação:** Documentação clara, completa e em conformidade com as regras do projeto.
@@ -139,18 +126,18 @@
 - **Anotação:** pendente
 - **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:25 (Claude Code): tarefa-mãe pendente: o `README.md` já tem Arquitetura, Banco de dados, Deploy na Vercel, Agentes de IA, Memória via MCP, Segurança e Monitor; faltam as filhas 26.3 (Execução local, linha 90 ainda diz "Seção provisória") e 26.9 (Validação, linha 535 "Seção provisória").
 
-#### [ ] SUB-26.9: Revisão final do README
-- **Status:** em_execucao
+#### [x] SUB-26.9: Revisão final do README
+- **Status:** concluido
 - **Prioridade:** MEDIA
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 22:05)
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 22:05, conclusão: 2026-10-12 22:15)
 - **Depende de:** SUB-26.2, SUB-26.3, SUB-26.4, SUB-26.5, SUB-26.6, SUB-26.7, SUB-26.8, SUB-26.10, SUB-25
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Remover placeholders, conferir links e comandos, incluir a seção Validação com o resultado da SUB-25.
 - **Critérios de Aceitação:** Nenhum placeholder; links válidos.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:25 (Claude Code): pendente (depende de 26.3 e SUB-25). `README.md` ainda tem 2 placeholders "Seção provisória" (linhas 90 e 535).
+- **Commit:** 483a29e
+- **Anotação:** Removidos os 2 placeholders "Seção provisória" do README.md (Monitor em tempo real e Validação). Seção "Monitor em tempo real" deixada sem placeholder (o monitor está implementado na SUB-35). Seção "Validação" expandida com descrição completa do `npm run validar` e referências aos documentos `docs/VALIDACAO.md` e `docs/validacao-telas-producao.md`. Validação: `npm run typecheck` verde, `npm run build` verde (16 chunks gerados, todos ≤ 500 kB).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 22:15 — Devin (Cognition AI): README revisado (placeholders removidos, seção Validação documentada, typecheck e build verdes)
+- **VERIFICADOR-CLAUDE:** PENDENTE
 
 ---
 

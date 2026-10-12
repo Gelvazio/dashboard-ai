@@ -1695,6 +1695,19 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:15 — Devin (revisão do quadro): commit e arquivos conferidos na `main`; `npm run typecheck`, `npm test` e `npm run build` verdes
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
+#### [x] SUB-26.9: Revisão final do README
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 22:05, conclusão: 2026-10-12 22:15)
+- **Depende de:** SUB-26.2, SUB-26.3, SUB-26.4, SUB-26.5, SUB-26.6, SUB-26.7, SUB-26.8, SUB-26.10, SUB-25
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Remover placeholders, conferir links e comandos, incluir a seção Validação com o resultado da SUB-25.
+- **Critérios de Aceitação:** Nenhum placeholder; links válidos.
+- **Commit:** 483a29e
+- **Anotação:** Removidos os 2 placeholders "Seção provisória" do README.md (Monitor em tempo real e Validação). Seção "Monitor em tempo real" deixada sem placeholder (o monitor está implementado na SUB-35). Seção "Validação" expandida com descrição completa do `npm run validar` e referências aos documentos `docs/VALIDACAO.md` e `docs/validacao-telas-producao.md`. Validação: `npm run typecheck` verde, `npm run build` verde (16 chunks gerados, todos ≤ 500 kB).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 22:15 — Devin (Cognition AI): README revisado (placeholders removidos, seção Validação documentada, typecheck e build verdes)
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
 #### [x] SUB-26.10: Seção Agentes de IA: exemplos do ciclo da fila
 - **Status:** concluido
 - **Prioridade:** MEDIA
