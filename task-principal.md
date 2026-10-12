@@ -31,12 +31,12 @@
 
 | Propriedade | Valor Atual |
 |---|---|
-| **Status da Trava:** | ✅ **LIVRE** |
-| **Sub-task em Execução:** | **—** |
-| **Título da Sub-task:** | — |
-| **Agente Responsável:** | — |
-| **Data e Hora de Início:** | — |
-| **Bloqueio para Outras IAs:** | Nenhum lock ativo |
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-28.3** |
+| **Título da Sub-task:** | Annotation `EstadoExecucao` em `worker/estado.ts` |
+| **Agente Responsável:** | Claude Code |
+| **Data e Hora de Início:** | 2026-10-12 01:56 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
 
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 07 (Grok Bot) — SUB-35.32
 
