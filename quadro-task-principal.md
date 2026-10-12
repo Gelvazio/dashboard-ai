@@ -33,17 +33,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 06 — SUB-20.2
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-20.2** |
-| **Título da Sub-task:** | `parseTags(texto)` em `src/lib/memoriaForm.ts` |
-| **Agente Responsável:** | DashboardAI-Clone 06 |
-| **Data e Hora de Início:** | 2026-10-12 00:50 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.4
 
 | Propriedade | Valor Atual |
@@ -59,17 +48,16 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (2)
+### 🔄 EM EXECUÇÃO (1)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27.4** | `sair()` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:50 | SUB-27.3 |
-| **SUB-20.2** | `parseTags(texto)` em `src/lib/memoriaForm.ts` | DashboardAI-Clone 06 | 2026-10-12 00:50 | SUB-20.1 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
 
-### ⏳ PENDENTES (188)
+### ⏳ PENDENTES (187)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -115,7 +103,6 @@
 | **SUB-19.9** | `BuscaControles` (limiar, globais, modo) em `src/components/memoria/BuscaControles.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-19.10** | `classeSimilaridade` em `src/lib/similaridade.ts` | 4 | Fase 7 | SUB-19.3 — ⛓️ bloqueada |
 | **SUB-20** | Formulário de Nova Memória Canônica (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-20.1 a SUB-20.10 |
-| **SUB-20.2** | `parseTags(texto)` em `src/lib/memoriaForm.ts` | 4 | Fase 7 | SUB-20.1 — 🔄 em execução por DashboardAI-Clone 06 |
 | **SUB-20.4** | Componente `TagInput` em `src/components/ui/TagInput.tsx` | 4 | Fase 7 | SUB-20.2 — ⛓️ bloqueada |
 | **SUB-20.5** | Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts` | 4 | Fase 7 | SUB-33.7 — 🟢 livre |
 | **SUB-20.6** | Modal `MemoriaFormModal` em `src/components/memoria/` | 4 | Fase 7 | SUB-20.1, SUB-20.3, SUB-20.4, SUB-20.5, SUB-20.8, SUB-20.9 — ⛓️ bloqueada |
@@ -270,10 +257,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (51)
+### ✅ CONCLUÍDAS (52)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-20.2** | `parseTags(texto)` em `src/lib/memoriaForm.ts` | DashboardAI-Clone 06 | 2026-10-12 00:50 | 2026-10-12 00:51 | `78a1e70` |
 | **SUB-27.3** | `entrarComSenha(email, senha)` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:50 | 2026-10-12 00:50 | `c80c6c6` |
 | **SUB-20.3** | `sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts` | DashboardAI-Clone 06 | 2026-10-12 00:49 | 2026-10-12 00:50 | `e5e67e5` |
 | **SUB-27.16** | `urlDeRetorno()` para link mágico e redefinição de senha | DashboardAI-Clone 01 | 2026-10-12 00:49 | 2026-10-12 00:49 | `1e3240c` |
@@ -447,3 +435,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:50 | DashboardAI-Clone 01 | SUB-27.3 | `c80c6c6` | Criado `src/services/authService.ts` com `entrarComSenha(email, senha, client = getSupabase())` via `signInWithPassword` (e-mail com trim); erro -> `ServiceError(mensagemErroAuth(error), 'AUTH')`; senha não guardada/logada. Exportado no barrel `src/services/index.ts`. typecheck e vitest verdes. |
 | 2026-10-12 00:50 | DashboardAI-Clone 06 | SUB-20.2 | — | Lock: assumindo SUB-20.2 (`parseTags(texto)` em `src/lib/memoriaForm.ts`) |
 | 2026-10-12 00:50 | DashboardAI-Clone 01 | SUB-27.4 | — | Lock: assumindo SUB-27.4 (`sair()` em `src/services/authService.ts`) |
+| 2026-10-12 00:51 | DashboardAI-Clone 06 | SUB-20.2 | `78a1e70` | Adicionado `parseTags(texto)` em `src/lib/memoriaForm.ts`: separa por vírgula, qualquer espaço em branco ou `#`, `trim` + minúsculas, remove vazios e duplicados mantendo a ordem da 1ª ocorrência (mesma regra do `normalizarTags` do `memoryService`); hífens, acentos e pontos dentro da tag são preservados. 4 testes novos em `tests/unit/memoriaForm.test.ts`. `npm run typecheck` e `npm test` verdes. |
