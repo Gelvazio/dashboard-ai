@@ -3448,3 +3448,20 @@
 - **Anotação:** Executada direto a pedido do usuário no chat, com autorização explícita para a mudança no banco, enquanto a trava da SUB-25.4 (aguardando o login do usuário no painel do navegador) seguia com o mesmo agente — exceção à regra 1 da seção 1.1 por ordem do usuário. Banco (MCP do Supabase, migrações `remover_trigger_admin_inicial` e `remover_funcoes_admin_inicial`): conferido que a trigger e as duas funções não existem mais e que `gelvazio@gmail.com` continua `admin`. Antes de remover, a trigger foi comprovada em produção: o cadastro com `gelvazio@gmail.com` gerou o papel `admin` logo após a confirmação do e-mail. Repositório: `database/08_admin_inicial.sql` apagado; `database/README.md` volta a "00 → 07" e perde a seção do administrador inicial; `README.md` (tabela de scripts e seção "4. Cadastro de usuários") passa a apontar para a criação do primeiro administrador no SQL Editor; comentário de `cadastrarUsuario` ajustado. `npm run validar` verde. Registros históricos (SUB-40.1, SUB-40.7, plano e STATUS) mantidos, com nota de reversão.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:48 — Claude Code (Opus 5.5): banco e repositório conferidos
 - **VERIFICADOR-CLAUDE:** PENDENTE
+
+---
+
+## 🗂️ FASE 16: Cadastro de Projetos
+
+#### [x] SUB-45.1: Colunas `responsavel_id` e `data_prevista_fim` em `database/08_projects_campos.sql`
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** Claude Code (Opus 5.5, sessão em nuvem) (início: 2026-10-12 21:52, conclusão: 2026-10-12 21:53)
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `database/08_projects_campos.sql` (idempotente, no padrão dos scripts `00`–`07`: `alter table public.projects add column if not exists ...`). Colunas: `responsavel_id uuid references auth.users (id) on delete set null` (dono do projeto) e `data_prevista_fim date` (prazo). `comment on column` em cada uma. Cabeçalho do arquivo explicando que o script complementa o `00_projects_roles.sql` e depende dele.
+- **Critérios de Aceitação:** Arquivo criado; SQL relido (sintaxe, idempotência com `if not exists`); nada aplicado no banco nesta subtarefa.
+- **Commit:** a4c068f
+- **Anotação:** Criado `database/08_projects_campos.sql` no padrão dos scripts `00`–`07` (cabeçalho com as partes SUB-45.1 a 45.4, idempotente, depende de 00 a 07). Colunas `responsavel_id uuid` e `data_prevista_fim date` com `add column if not exists` e `comment on column`. **Desvio justificado:** a chave estrangeira `projects_responsavel_id_fkey` (`references auth.users (id) on delete set null`) só é criada quando `auth.users` existe (`to_regclass`) e ainda não há a constraint, porque o banco de teste (`database/tests/supabase_stub.sql`) não tem o schema `auth` e nenhum script atual referencia `auth.users` (ex.: `user_roles.user_id` é uuid sem FK); uma FK direta quebraria o `run_tests.sh`. No Supabase a FK é criada e o `on delete set null` vale. Nada aplicado em banco (critério da subtarefa). Plano em `docs/cadastro-de-projetos.md` (criado no lock, `7105129`).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 21:53 — Claude Code (Opus 5.5, sessão em nuvem): entrega verificada (arquivo existe; SQL relido: `add column if not exists`, FK condicional e idempotente, comentários; nada aplicado no banco)
+- **VERIFICADOR-CLAUDE:** PENDENTE

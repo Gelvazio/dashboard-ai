@@ -35,7 +35,7 @@ Completar a tabela `public.projects` com os campos que o usuário escolheu e cri
 
 | # | Subtarefa | Arquivos | Verificação | Status |
 |---|---|---|---|---|
-| 1 | SUB-45.1 — `responsavel_id` e `data_prevista_fim` | `database/08_projects_campos.sql` | SQL relido; idempotente | 🔄 Em progresso |
+| 1 | SUB-45.1 — `responsavel_id` e `data_prevista_fim` | `database/08_projects_campos.sql` | SQL relido; idempotente | ✅ Concluído (`a4c068f`) |
 | 2 | SUB-45.2 — `cor` e `icone` | `database/08_projects_campos.sql` | checks idempotentes | ⬜ Pendente |
 | 3 | SUB-45.3 — `url_producao` e `url_documentacao` | `database/08_projects_campos.sql` | checks idempotentes | ⬜ Pendente |
 | 4 | SUB-45.4 — `prioridade` e `tags` | `database/08_projects_campos.sql` | check e índice GIN | ⬜ Pendente |

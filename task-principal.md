@@ -81,19 +81,6 @@
 
 ---
 
-### 🔒 TRAVA ADICIONAL — Claude Code (Opus 5.5, sessão em nuvem) — SUB-45.1
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-45.1** |
-| **Título da Sub-task:** | Colunas `responsavel_id` e `data_prevista_fim` em `database/08_projects_campos.sql` |
-| **Agente Responsável:** | Claude Code (Opus 5.5, sessão em nuvem) |
-| **Data e Hora de Início:** | 2026-10-12 21:52 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-45.1 |
-
----
-
 ### 🔒 TRAVA ESPECIAL: KIRO-DEV-CLONE
 
 > **ATENÇÃO:** A tarefa `KIRO-DEV-CLONE` está **TRAVADA PARA TODAS AS IAS**.
@@ -114,13 +101,13 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 46
 - **Subtarefas atômicas (~3 min):** 269
-- **Em Execução:** 4 (SUB-38, SUB-41.1, SUB-25.4, SUB-45.1)
-- **Pendentes:** 9 principais (SUB-38, 25, 26, 28, 35, 41, 42, 45, KIRO-DEV-CLONE) + 57 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 2 — SUB-25.7 e SUB-35.32 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
-  - bloqueadas por dependência: 23 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41) e SUB-42 (depende da SUB-41); SUB-45.2 a SUB-45.18 (cadeia da SUB-45)
-  - em execução: 4 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI)); SUB-25.4 (Claude Code (Opus 5.5)); SUB-45.1 (Claude Code (Opus 5.5, sessão em nuvem))
+- **Em Execução:** 3 (SUB-38, SUB-41.1, SUB-25.4)
+- **Pendentes:** 9 principais (SUB-38, 25, 26, 28, 35, 41, 42, 45, KIRO-DEV-CLONE) + 56 subtarefas
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 3 — SUB-25.7, SUB-35.32 e SUB-45.2 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - bloqueadas por dependência: 22 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41) e SUB-42 (depende da SUB-41); SUB-45.3 a SUB-45.18 (cadeia da SUB-45)
+  - em execução: 3 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI)); SUB-25.4 (Claude Code (Opus 5.5))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 245 de 315 blocos (37 principais + 208 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 246 de 315 blocos (37 principais + 209 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -463,7 +450,7 @@
 - **Executor:** nenhum
 - **Depende de:** subtarefas SUB-45.1 a SUB-45.18
 - **Subtarefas:** (criada e subdividida em 18 em 2026-10-12 por Claude Code (Opus 5.5, sessão em nuvem) a pedido do usuário, cada uma com até ~3 min; a mãe só é concluída quando todas as filhas estiverem `concluido`)
-  - `SUB-45.1`: Colunas `responsavel_id` e `data_prevista_fim` em `database/08_projects_campos.sql` (`em_execucao`)
+  - `SUB-45.1`: Colunas `responsavel_id` e `data_prevista_fim` em `database/08_projects_campos.sql` (`concluido`, `a4c068f`)
   - `SUB-45.2`: Colunas `cor` e `icone` em `database/08_projects_campos.sql` (`pendente`)
   - `SUB-45.3`: Colunas `url_producao` e `url_documentacao` em `database/08_projects_campos.sql` (`pendente`)
   - `SUB-45.4`: Colunas `prioridade` e `tags` em `database/08_projects_campos.sql` (`pendente`)
@@ -486,19 +473,6 @@
 - **Critérios de Aceitação:** Todas as filhas `concluido`; `database/08_projects_campos.sql` idempotente e aplicado (com autorização); tela `#/projetos` funcionando (admin cria; owner edita; ativar/inativar); `npm run validar` verde.
 - **Commit:** pendente
 - **Anotação:** Tarefa grande (banco + várias partes): pela seção 6 do `AGENTS.md`, quem pegar a primeira subtarefa cria o plano em `docs/cadastro-de-projetos.md`. As filhas SUB-45.5, SUB-45.6 e SUB-45.18 exigem banco e, pela regra 11 da seção 1.1, só o Claude Code executa. O número do script (`08_`) é o próximo livre em `database/` depois da remoção do `08_admin_inicial.sql` na SUB-44 (`4f4c443`); se outro script ocupar o `08_` antes, usar o próximo número livre e corrigir as filhas. Sem testes unitários novos no frontend, seguindo a mesma orientação registrada na SUB-40 (só para correção de bug); o teste SQL da SUB-45.5 cobre os checks do banco.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-#### [ ] SUB-45.1: Colunas `responsavel_id` e `data_prevista_fim` em `database/08_projects_campos.sql`
-- **Status:** em_execucao
-- **Prioridade:** MEDIA
-- **Executor:** Claude Code (Opus 5.5, sessão em nuvem) (início: 2026-10-12 21:52)
-- **Depende de:** Nenhuma
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Criar `database/08_projects_campos.sql` (idempotente, no padrão dos scripts `00`–`07`: `alter table public.projects add column if not exists ...`). Colunas: `responsavel_id uuid references auth.users (id) on delete set null` (dono do projeto) e `data_prevista_fim date` (prazo). `comment on column` em cada uma. Cabeçalho do arquivo explicando que o script complementa o `00_projects_roles.sql` e depende dele.
-- **Critérios de Aceitação:** Arquivo criado; SQL relido (sintaxe, idempotência com `if not exists`); nada aplicado no banco nesta subtarefa.
-- **Commit:** pendente
-- **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
