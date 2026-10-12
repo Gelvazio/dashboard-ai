@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { mesclarEvento } from '@/lib/monitor';
+import { estadoDoAgente, mesclarEvento } from '@/lib/monitor';
 import type { AgentEvent } from '@/types/database';
 
 function ev(id: number, minuto: number): AgentEvent {
@@ -50,5 +50,42 @@ describe('mesclarEvento', () => {
 
   it('funciona com lista vazia', () => {
     expect(ids(mesclarEvento([], ev(1, 1)))).toEqual([1]);
+  });
+});
+
+describe('estadoDoAgente', () => {
+  const agora = Date.UTC(2026, 9, 12, 4, 0, 0);
+  const haSeg = (s: number) => new Date(agora - s * 1000).toISOString();
+  const at = (tipo: AgentEvent['tipo'], ultimo: string, heartbeat: string | null = null) => ({
+    tipo,
+    ultimo_em: ultimo,
+    ultimo_heartbeat_em: heartbeat,
+  });
+
+  it('ativo: sinal recente (até 120 s)', () => {
+    expect(estadoDoAgente(at('progresso', haSeg(30)), agora)).toBe('ativo');
+    expect(estadoDoAgente(at('progresso', haSeg(120)), agora)).toBe('ativo');
+  });
+
+  it('ocioso: entre 120 s e 900 s', () => {
+    expect(estadoDoAgente(at('inicio', haSeg(300)), agora)).toBe('ocioso');
+  });
+
+  it('sem_sinal: acima de 900 s ou sem data válida', () => {
+    expect(estadoDoAgente(at('trava', haSeg(901)), agora)).toBe('sem_sinal');
+    expect(estadoDoAgente(at('trava', 'invalida'), agora)).toBe('sem_sinal');
+  });
+
+  it('finalizado: último tipo fim ou liberacao, mesmo antigo', () => {
+    expect(estadoDoAgente(at('fim', haSeg(5000)), agora)).toBe('finalizado');
+    expect(estadoDoAgente(at('liberacao', haSeg(10)), agora)).toBe('finalizado');
+  });
+
+  it('usa o heartbeat quando é mais recente que o último evento', () => {
+    expect(estadoDoAgente(at('progresso', haSeg(2000), haSeg(60)), agora)).toBe('ativo');
+  });
+
+  it('respeita limites personalizados', () => {
+    expect(estadoDoAgente(at('progresso', haSeg(60)), agora, { ativoAteSeg: 30, ociosoAteSeg: 45 })).toBe('sem_sinal');
   });
 });
