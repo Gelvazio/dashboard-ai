@@ -1630,15 +1630,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-27.15: Rechecar conexão no login/logout em `src/hooks/useConexao.ts`
-- **Status:** em_execucao
+#### [x] SUB-27.15: Rechecar conexão no login/logout em `src/hooks/useConexao.ts`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.26
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Em `useConexao`, verificar a conexão de novo quando `auth.onAuthStateChange` disparar (estado `sem_sessao` -> `conectado` sem esperar 60 s), cancelando a assinatura no cleanup.
 - **Critérios de Aceitação:** `npm run typecheck` OK; status do header atualiza logo após entrar/sair.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `65932ae`
+- **Anotação:** Em `src/hooks/useConexao.ts`, assinatura de `auth.onAuthStateChange` (só com Supabase configurado) que roda a verificação na hora (sem_sessao -> conectado sem esperar 60 s), cancelada no cleanup junto com o intervalo. typecheck e vitest verdes.
 
 #### [x] SUB-27.16: `urlDeRetorno()` para link mágico e redefinição de senha
 - **Status:** concluido

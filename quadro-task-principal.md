@@ -55,17 +55,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:04 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.15
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-27.15** |
-| **Título da Sub-task:** | Rechecar conexão no login/logout em `src/hooks/useConexao.ts` |
-| **Agente Responsável:** | DashboardAI-Clone 01 |
-| **Data e Hora de Início:** | 2026-10-12 01:04 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 04 (Grok Bot) — SUB-19.7
 
 | Propriedade | Valor Atual |
@@ -98,7 +87,6 @@
 |---|---|---|---|---|
 | **SUB-35.3** | RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:05 | SUB-35.1 |
 | **SUB-19.7** | Painel `BuscaSemanticaPanel` (campo, grade e estados) | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:04 | SUB-19.5, SUB-19.6, SUB-19.9 |
-| **SUB-27.15** | Rechecar conexão no login/logout em `src/hooks/useConexao.ts` | DashboardAI-Clone 01 | 2026-10-12 01:04 | SUB-27.26 |
 | **SUB-21.9** | Montar a `MemoriaView` (toolbar + grade) | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:04 | SUB-21.3, SUB-21.5, SUB-21.8 |
 | **SUB-21.7** | Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` | DashboardAI-Clone 06 | 2026-10-12 01:03 | SUB-21.3 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
@@ -202,7 +190,6 @@
 | **SUB-27.12** | Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` | 3 | Fase 10 | SUB-27.26, SUB-27.11 — ⛓️ bloqueada |
 | **SUB-27.13** | Integrar autenticação no `src/App.tsx` | 3 | Fase 10 | SUB-27.12 — ⛓️ bloqueada |
 | **SUB-27.14** | Componente `UserMenu` em `src/components/layout/UserMenu.tsx` | 3 | Fase 10 | SUB-27.26 — ⛓️ bloqueada |
-| **SUB-27.15** | Rechecar conexão no login/logout em `src/hooks/useConexao.ts` | 3 | Fase 10 | SUB-27.26 — ⛓️ bloqueada |
 | **SUB-27.17** | Documentar configuração do Supabase Auth em `src/README.md` | 3 | Fase 10 | SUB-27.13 — ⛓️ bloqueada |
 | **SUB-27.18** | Validação automatizada da SUB-27 | 3 | Fase 10 | SUB-27.6, SUB-27.8, SUB-27.13, SUB-27.27, SUB-27.15, SUB-27.16, SUB-27.17, SUB-27.20, SUB-27.21 — ⛓️ bloqueada |
 | **SUB-27.20** | Limpar `ProjetoContext` ao sair | 3 | Fase 10 | SUB-27.26 — ⛓️ bloqueada |
@@ -261,6 +248,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-27.15** | Rechecar conexão no login/logout em `src/hooks/useConexao.ts` | DashboardAI-Clone 01 | 2026-10-12 01:04 | 2026-10-12 01:05 | `65932ae` |
 | **SUB-26.7** | Seção Memória via MCP | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:03 | 2026-10-12 01:04 | `7fa647b` |
 | **SUB-35.2** | Trigger `validar_agent_event` em `database/07_agent_events.sql` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:02 | 2026-10-12 01:03 | `54cdea9` |
 | **SUB-36** | Gráfico em rede (cérebro) dos agentes no `dashboard-task-principal.html` | DashboardAI (Grok Bot) | 2026-10-12 01:01 | 2026-10-12 01:02 | `cdbf35b` |
@@ -584,3 +572,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:04 | DashboardAI-Clone 02 | SUB-23.5 | `af0214b` | Em `tests/integration/taskService.integration.test.ts`, bloco 'liberarTrava: expirada e forçada' (projeto LIB, editor): trava de 100 min (via `servico()`) é liberada sem forçar (status `pendente`, resultado com 'liberada manualmente'); trava de 5 min é recusada sem `forcar` (continua `em_execucao`) e liberada com `forcar`. Sem PostgREST no ambiente do clone o bloco fica skipped; `npm test` verde (162 passed, 16 skipped). |
 | 2026-10-12 01:04 | DashboardAI-Clone 08 (Grok Bot) | SUB-26.7 | `7fa647b` | Seção Memória via MCP do `README.md`: visão geral (`ai_memories`, embedding 1536, `match_memories`, exige `MCP_AUTH_TOKEN`), escopo projeto (`project` → `MCP_DEFAULT_PROJECT` → `default`, título único por projeto/upsert) x global (`global: true`, não combina com `project`, recusada com `MCP_ALLOWED_PROJECTS`, busca inclui globais por padrão), tabela de argumentos e limites de `brain_store`/`brain_search`/`brain_delete`, explicação do limiar (padrão 0.5) e das tags (todas precisam casar), exemplos JSON-RPC `tools/call` (store por projeto, search com tags/limit/threshold, store global, delete) e `curl`, e boas práticas. Tudo conferido com `api/_lib/brain-tools.ts`, `api/_lib/args.ts`, `api/mcp.ts` e `database/04_rpc_functions.sql`; JSONs validados. Só documentação. |
 | 2026-10-12 01:05 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.3 | — | Lock: assumindo SUB-35.3 (RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql`) |
+| 2026-10-12 01:05 | DashboardAI-Clone 01 | SUB-27.15 | `65932ae` | Em `src/hooks/useConexao.ts`, assinatura de `auth.onAuthStateChange` (só com Supabase configurado) que roda a verificação na hora (sem_sessao -> conectado sem esperar 60 s), cancelada no cleanup junto com o intervalo. typecheck e vitest verdes. |
