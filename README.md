@@ -168,11 +168,111 @@ PSQL="psql -h localhost -U postgres" database/tests/run_tests.sh
 
 ## Deploy na Vercel
 
-> Seção provisória (detalhada na SUB-26.5).
+### 1. Configurar o projeto na Vercel
 
-O repositório já traz o `vercel.json` com as funções `api/`. Configure as variáveis de
-ambiente do servidor no painel da Vercel (nunca com prefixo `VITE_` para segredos) e faça o
-deploy pela integração com o GitHub.
+1. Importe o repositório do GitHub na Vercel
+2. Configure o **Node.js Version** como `22.x` (ou `22.12+` conforme `.nvmrc`)
+3. Configure o **Framework Preset** como `Vite` (o `vercel.json` já define as funções)
+
+### 2. Variáveis de ambiente
+
+Configure as seguintes variáveis no painel da Vercel (*Settings > Environment Variables*):
+
+| Variável | Valor | Observação |
+|----------|-------|------------|
+| `SUPABASE_URL` | URL do projeto Supabase | Ex: `https://xxxxx.supabase.co` |
+| `SUPABASE_SERVICE_ROLE_KEY` | Chave service_role do Supabase | **Só servidor**, nunca no Git |
+| `OPENAI_API_KEY` | Chave da OpenAI (embeddings) | **Só servidor**, nunca no Git |
+| `MCP_AUTH_TOKEN` | Token de autenticação do MCP | Gere com `openssl rand -hex 32` |
+| `MCP_DEFAULT_PROJECT` | Slug do projeto padrão | Ex: `default` |
+| `MCP_ALLOWED_PROJECTS` | (opcional) Slugs permitidos | Ex: `meu-app,outro-app` |
+| `LANGGRAPH_DATABASE_URL` | Connection string Postgres | Para checkpointer do worker (opcional) |
+| `WORKER_MODELO` | Modelo do worker LangGraph | Ex: `gpt-4o-mini` (opcional) |
+
+**Variáveis do frontend** (bundle, começam com `VITE_`):
+
+| Variável | Valor | Observação |
+|----------|-------|------------|
+| `VITE_SUPABASE_URL` | URL do projeto Supabase | A mesma do servidor |
+| `VITE_SUPABASE_ANON_KEY` | Chave anon do Supabase | Pública por definição |
+
+⚠️ **Nunca** use prefixo `VITE_` para segredos do servidor (eles vazariam no bundle).
+
+### 3. Limits e timeouts
+
+Configure no `vercel.json` (já definido):
+
+```json
+{
+  "functions": {
+    "api/**/*.ts": {
+      "maxDuration": 60
+    }
+  }
+}
+```
+
+Para long-running functions (worker, embeddings):
+- Aumente `maxDuration` se necessário (padrão 60s)
+- Vercel Hobby: máximo 60s
+- Vercel Pro: até 900s
+
+### 4. Rewrite e roteamento
+
+O `vercel.json` já configura o rewrite `/mcp` → `/api/mcp`:
+
+```json
+{
+  "rewrites": [
+    { "source": "/mcp", "destination": "/api/mcp" }
+  ]
+}
+```
+
+Apos o deploy, o endpoint MCP estará em:
+- `https://<seu-app>.vercel.app/mcp` (rewrite)
+- `https://<seu-app>.vercel.app/api/mcp` (direto)
+
+### 5. Deploy
+
+- Habilite a integração com GitHub
+- Configure o **Build Command**: `npm run build`
+- Configure o **Output Directory**: `dist`
+- O deploy é automático ao fazer push para `main`
+
+### 6. Validar após o deploy
+
+```bash
+# Conferir MCP
+curl -s https://<seu-app>.vercel.app/mcp \
+  -H "Authorization: Bearer $MCP_AUTH_TOKEN" \
+  -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+
+# Conferir embeddings (com JWT de sessão)
+curl -s https://<seu-app>.vercel.app/api/embedding \
+  -H "Authorization: Bearer <JWT_SESSION_TOKEN>" \
+  -H 'Content-Type: application/json' \
+  -d '{"text":"teste"}'
+```
+
+### 7. Worker LangGraph (opcional)
+
+Para executar o worker (SUB-28):
+
+```bash
+# Local (com .env.local)
+npm run worker -- --projeto default --agente "Worker Teste"
+
+# Em produção (Vercel ou outro servidor)
+# Configure as variáveis do worker e rode o comando
+node --max-old-space-size=2G worker/index.ts -- --projeto default --agente "Worker Prod"
+```
+
+**Variáveis do worker:**
+- `OPENAI_API_KEY`: obrigatório para o modelo
+- `LANGGRAPH_DATABASE_URL`: obrigatório para checkpointer durável
+- `WORKER_MODELO`: opcional (padrão `gpt-4o-mini`)
 
 ## Agentes de IA (fila via MCP)
 
