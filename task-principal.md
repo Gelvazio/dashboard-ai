@@ -384,8 +384,8 @@
 - **Commit:** `746bd8d`
 - **Anotação:** api/_lib/brain-tools.ts (upsert por project_id+title, busca via match_memories com globais, delete por título/id), api/_lib/embeddings.ts (OPENAI_API_KEY, EMBEDDING_MODEL, EMBEDDING_API_URL; valida 1536 dimensões), api/_lib/args.ts (helpers compartilhados com a fila). Exige MCP_AUTH_TOKEN; servidor com MCP_ALLOWED_PROJECTS lê mas não grava memória global. tsc strict OK; e2e contra PostgREST local + embedder falso: 36 checagens (upsert, isolamento entre projetos, globais, tags, limiar, allowlist, erros da API sem vazar chave) e as 27 da fila seguem OK.
 
-### [ ] SUB-08: Configuração de Variáveis de Ambiente e `.env.example`
-- **Status:** pendente (aguardando subtarefas)
+### [x] SUB-08: Configuração de Variáveis de Ambiente e `.env.example`
+- **Status:** concluido
 - **Executor:** nenhum
 - **Depende de:** SUB-06; subtarefas SUB-08.1 a SUB-08.11
 - **Subtarefas:** (subdividida em 9 em 2026-10-12 00:08 por DashboardAI (Grok Bot) a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`; nova revisão para 11 em 2026-10-12 00:17)
@@ -640,8 +640,8 @@
 
 ## 🧠 FASE 7: Interface do Usuário - Painel de Memória Persistente (Jev-Mem)
 
-### [ ] SUB-34: Carregamento Sob Demanda de Telas e Modais (code splitting)
-- **Status:** pendente (aguardando subtarefas)
+### [x] SUB-34: Carregamento Sob Demanda de Telas e Modais (code splitting)
+- **Status:** concluido
 - **Executor:** nenhum
 - **Depende de:** SUB-13, SUB-14, SUB-16, SUB-17, SUB-18; subtarefas SUB-34.1 a SUB-34.6
 - **Subtarefas:** (subdividida em 5 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; nova revisão para 6 em 2026-10-12 00:17)
@@ -959,8 +959,8 @@
 - **Commit:** `8090709`
 - **Anotação:** Criado `src/lib/texto.ts` com `STOPWORDS` (pt/en) e `palavrasDe(texto)`: remove blocos de código, código inline, imagens/links (mantém o texto), URLs e `#*_>~`; minúsculas (pt-BR, acentos preservados); separa por não letra/dígito (Unicode); descarta < 4 letras e stopwords; mantém repetições e ordem (para a contagem do `sugerirTags`, SUB-20.3). Testes em `tests/unit/texto.test.ts` (8). `npm run typecheck` e `npm test` verdes.
 
-### [ ] SUB-21: Grid de Gerenciamento e Exclusão de Memórias
-- **Status:** pendente (aguardando subtarefas)
+### [x] SUB-21: Grid de Gerenciamento e Exclusão de Memórias
+- **Status:** concluido
 - **Executor:** nenhum
 - **Depende de:** SUB-10, SUB-12; subtarefas SUB-21.1 a SUB-21.14
 - **Subtarefas:** (subdividida em 10 em 2026-10-11 23:47 por DashboardAI (Grok Bot) a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`; refinada para 12 em 2026-10-11 23:51; nova revisão para 14 em 2026-10-12 00:17)
@@ -1139,8 +1139,8 @@
 - **Commit:** `a88f12d`
 - **Anotação:** Arquivos: src/lib/logs.ts (+testes), src/hooks/useLogs.ts, src/views/LogsView.tsx.
 
-### [ ] SUB-23: Diagnóstico de Travas e Saúde da Fila
-- **Status:** pendente (aguardando subtarefas)
+### [x] SUB-23: Diagnóstico de Travas e Saúde da Fila
+- **Status:** concluido
 - **Executor:** nenhum
 - **Depende de:** SUB-09, SUB-11, SUB-12; subtarefas SUB-23.1 a SUB-23.13
 - **Subtarefas:** (subdividida em 9 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 12 em 2026-10-11 23:51; nova revisão para 13 em 2026-10-12 00:17)
@@ -1507,8 +1507,8 @@
 - **Commit:** `23153af`
 - **Anotação:** Subseção "Ciclo da fila (exemplos)" em Agentes de IA do `README.md`: JSON-RPC `tools/call` de `task_next` (agent, project, lock_minutes, routine; resposta `task`/`task: null` e log `sem_tarefa`; `exclusive`), `task_finish` como `concluida` (result, pr_url, commit_sha, metadata), `recusada` e `erro` (metadata.erro_mensagem), tabela do efeito de cada status (erro volta a `pendente` com tentativas sobrando), `task_list` (status/limit/include_instruction) e `task_create` (código gerado, type ia/humano, priority, order, dependencies, execute_after, max_attempts). Conferido com `api/_lib/queue-tools.ts` e `finalizar_task` em `database/04_rpc_functions.sql`; JSONs validados. A parte de configuração de clientes ficou marcada para a SUB-26.6. Só documentação.
 
-### [ ] SUB-27: Autenticação e Login com Supabase Auth
-- **Status:** pendente
+### [x] SUB-27: Autenticação e Login com Supabase Auth
+- **Status:** concluido
 - **Executor:** nenhum
 - **Depende de:** SUB-03, SUB-29 (papéis `user_roles`/`project_members` e RLS); subtarefas SUB-27.1 a SUB-27.28
 - **Subtarefas:** (22 filhas; subdividida em 18 em 2026-10-11 23:41 e refinada em 22 em 2026-10-11 23:51 por DashboardAI (Grok Bot); liberadas a pedido do usuário em 2026-10-11 23:55 conforme dependências; a mãe só é concluída quando todas estiverem `concluido`; nova revisão para 28 em 2026-10-12 00:17)
