@@ -9,9 +9,9 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 33
-- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-14`)
+- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
 - **Pendentes:** 14
-- **Concluídas:** 18
+- **Concluídas:** 19
 - **Canceladas:** 0
 
 ---
@@ -257,16 +257,16 @@
 
 ## 📋 FASE 6: Interface do Usuário - Painel da Fila de Tasks (`tasks`)
 
-### [🔄] SUB-14: Tabela Avançada da Fila de Tasks
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:11)
+### [x] SUB-14: Tabela Avançada da Fila de Tasks
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:11, conclusão: 2026-10-11 23:13)
 - **Depende de:** SUB-09, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Renderizar tabela com colunas: Código, Título, Prioridade (Badges coloridos 1-5), Ordem, Dependências, ON/OFF, Status, Tentativas, Resultado e Ações.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Tabela legível, com suporte a tooltips e indicadores de progresso.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `830979e`
+- **Anotação:** Arquivos: src/lib/tasks.ts, src/hooks/useTasks.ts, src/components/ui/Tooltip.tsx, src/components/tasks/*, src/views/FilaView.tsx, tests/unit/tasks.test.ts.
 
 ### [ ] SUB-15: Barra de Ferramentas e Filtros em Tempo Real
 - **Status:** pendente
