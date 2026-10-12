@@ -33,17 +33,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.5
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-27.5** |
-| **Título da Sub-task:** | `enviarLinkMagico()` em `src/services/authService.ts` |
-| **Agente Responsável:** | DashboardAI-Clone 01 |
-| **Data e Hora de Início:** | 2026-10-12 00:51 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-19.10
 
 | Propriedade | Valor Atual |
@@ -64,7 +53,6 @@
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-19.10** | `classeSimilaridade` em `src/lib/similaridade.ts` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:51 | SUB-19.3 |
-| **SUB-27.5** | `enviarLinkMagico()` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:51 | SUB-27.3 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
@@ -195,7 +183,6 @@
 | **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) (mãe) | 3 | Fase 2B | SUB-07, SUB-03; SUB-33.1 a SUB-33.13 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | 3 | Fase 2B | SUB-33.11 — 🔄 em execução por Codex (OpenAI) |
 | **SUB-27** | Autenticação e Login com Supabase Auth (mãe; pendente, liberada) | 3 | Fase 10 | SUB-03, SUB-29; SUB-27.1 a SUB-27.28 — 🟢 livre |
-| **SUB-27.5** | `enviarLinkMagico()` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.3 — ⛓️ bloqueada |
 | **SUB-27.6** | Testes unitários de `authService` em `tests/unit/authService.test.ts` | 3 | Fase 10 | SUB-27.23, SUB-27.24 — ⛓️ bloqueada |
 | **SUB-27.7** | `obterPapelGlobal()` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.3 — ⛓️ bloqueada |
 | **SUB-27.8** | Teste de integração dos papéis em `tests/integration/authService.integration.test.ts` | 3 | Fase 10 | SUB-27.25 — ⛓️ bloqueada |
@@ -272,6 +259,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-27.5** | `enviarLinkMagico()` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:51 | 2026-10-12 00:51 | `500e307` |
 | **SUB-27.4** | `sair()` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:50 | 2026-10-12 00:51 | `7bc78da` |
 | **SUB-20.2** | `parseTags(texto)` em `src/lib/memoriaForm.ts` | DashboardAI-Clone 06 | 2026-10-12 00:50 | 2026-10-12 00:51 | `78a1e70` |
 | **SUB-27.3** | `entrarComSenha(email, senha)` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:50 | 2026-10-12 00:50 | `c80c6c6` |
@@ -451,3 +439,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:51 | DashboardAI-Clone 01 | SUB-27.4 | `7bc78da` | Adicionado `sair(client = getSupabase())` em `src/services/authService.ts`: `auth.signOut()`, remove `localStorage['dashboard-ai:projeto']` (constante `CHAVE_PROJETO_LOCAL`, tolerante sem localStorage); erro -> `ServiceError(..., 'AUTH')`. typecheck e vitest verdes. |
 | 2026-10-12 00:51 | DashboardAI-Clone 01 | SUB-27.5 | — | Lock: assumindo SUB-27.5 (`enviarLinkMagico()` em `src/services/authService.ts`) |
 | 2026-10-12 00:51 | DashboardAI-Clone 10 (Grok Bot) | SUB-19.10 | — | Lock: assumindo SUB-19.10 (`classeSimilaridade` em `src/lib/similaridade.ts`) |
+| 2026-10-12 00:51 | DashboardAI-Clone 01 | SUB-27.5 | `500e307` | Adicionado `enviarLinkMagico(email, redirectTo, client = getSupabase())` em `src/services/authService.ts`: `auth.signInWithOtp` com `emailRedirectTo` e `shouldCreateUser: false` (e-mail com trim); erro -> `ServiceError(mensagemErroAuth(error), 'AUTH')`. typecheck e vitest verdes. |
