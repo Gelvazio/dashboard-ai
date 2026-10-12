@@ -2667,12 +2667,12 @@
 - **Commit:** `cdbf35b`
 - **Anotação:** Concluída em 2026-10-12 01:02; validado com servidor estático + Chrome headless (9 agentes, sem erros de console, gráficos antigos intactos).
 
-### [ ] SUB-37: Ranking e prêmios dos agentes no `dashboard-task-principal.html`
-- **Status:** em_execucao
+### [x] SUB-37: Ranking e prêmios dos agentes no `dashboard-task-principal.html`
+- **Status:** concluido
 - **Executor:** DashboardAI (Grok Bot)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** (criada em 2026-10-12 01:09 a pedido do usuário) Cartão "Ranking e prêmios": conta entregas concluídas por agente (histórico + CONCLUÍDAS, nomes normalizados), pódio 🥇🥈🥉 com coroa para o 1º, tabela com todos e medalhas (🔥 mais rápido da última hora, ⚡ última entrega, 🎯 marcos 10/25/50/100); destaque animado quando o líder muda; atualiza no polling.
+- **Descrição:** (criada em 2026-10-12 01:09 a pedido do usuário) Cartão "Ranking e prêmios": conta entregas concluídas por agente (histórico + CONCLUÍDAS, nomes normalizados), pódio 🥇🥈🥉 com coroa para o 1º, tabela com todos e medalhas (🔥 mais rápido da última hora, ⚡ última entrega, 🎯 marcos 10/25/50/100); destaque animado quando o líder muda; atualiza no polling. Pedido adicional do usuário: o cartão "Cérebro dos agentes (ao vivo)" passa a ser o primeiro item da tela (logo abaixo do cabeçalho, antes de KPIs e gráficos) com altura boa em desktop, e o ranking de prêmios vem logo depois dele.
 - **Critérios de Aceitação:** Cartão renderiza com o quadro atual sem erros de console; contagens batem com contagem manual; gráficos e grafo existentes intactos.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `d12bd32`
+- **Anotação:** Concluída em 2026-10-12 01:14; validado com servidor local + Chrome headless: cérebro no topo (648px de altura, canvas sem o limite de 280px), ranking logo abaixo, gráficos intactos, sem erros de console, troca de líder simulada dispara o destaque; contagens conferidas com script independente.

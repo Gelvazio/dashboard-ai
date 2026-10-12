@@ -33,17 +33,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — SUB-37
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-37** |
-| **Título da Sub-task:** | Ranking e prêmios dos agentes no `dashboard-task-principal.html` |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:09 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-27.12
 
 | Propriedade | Valor Atual |
@@ -100,7 +89,6 @@
 | **SUB-35.10** | `atividadeAtual()` em `src/services/eventService.ts` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:13 | SUB-35.9 |
 | **SUB-35.28** | Feed `FeedEventos` em `src/components/monitor/FeedEventos.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:13 | SUB-35.8 |
 | **SUB-27.12** | Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:13 | SUB-27.26, SUB-27.11 |
-| **SUB-37** | Ranking e prêmios dos agentes no `dashboard-task-principal.html` | DashboardAI (Grok Bot) | 2026-10-12 01:09 | Nenhuma |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
@@ -228,6 +216,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-37** | Ranking e prêmios dos agentes no `dashboard-task-principal.html` | DashboardAI (Grok Bot) | 2026-10-12 01:09 | 2026-10-12 01:14 | `d12bd32` |
 | **SUB-35.14** | `mesclarEvento()` em `src/lib/monitor.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:13 | 2026-10-12 01:14 | `7e268fb` |
 | **SUB-35.45** | Seção "Reporte de progresso (opcional)" no `AGENTS.md` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:11 | 2026-10-12 01:13 | `dcdbc96` |
 | **SUB-34.5** | Checagem de tamanho `scripts/checar-chunks.mjs` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:11 | 2026-10-12 01:13 | `ac0f232` |
@@ -651,3 +640,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:14 | DashboardAI-Clone 02 | SUB-21.12 | `—` | Checklist da exclusão (Postgres 17 + PostgREST locais, `tests/integration/run.sh` com Node 20 + `--experimental-websocket`): [x] viewer: `excluirMemoria` recusado ('não encontrada ou sem permissão'), memória continua listada -> `useExcluirMemoria` reinsere e mostra `toast.erro`; [x] editor: exclusão confirmada, memória some da lista -> toast de sucesso; [x] suíte de integração completa verde (26/26 + caso ad hoc não commitado). Navegador não conferido: sem Supabase Auth local para login. |
 | 2026-10-12 01:14 | DashboardAI-Clone 04 (Grok Bot) | SUB-35.14 | `7e268fb` | Criado `src/lib/monitor.ts` com `mesclarEvento(lista, novo, max = 200)`: `id` repetido devolve a mesma lista; insere na posição certa por `created_at` desc (evento atrasado do Realtime não vai para o topo; empate pelo `id` maior); corta em `max`; não altera a lista recebida. 6 testes em `tests/unit/monitor.test.ts`. `npm test` e `npm run typecheck` verdes. |
 | 2026-10-12 01:14 | DashboardAI-Clone 04 (Grok Bot) | SUB-35.15 | — | Lock: assumindo SUB-35.15 (`estadoDoAgente()` em `src/lib/monitor.ts`) |
+| 2026-10-12 01:14 | DashboardAI (Grok Bot) | SUB-37 | `d12bd32` | Cartão "Ranking e prêmios" no dashboard-task-principal.html: entregas por agente (histórico com SHA + CONCLUÍDAS, 1 por código, nomes normalizados), pódio 🥇🥈🥉 com troféu/coroa, tabela, medalhas 🔥 última hora / ⚡ última entrega / 🎯 marcos 10-25-50-100, destaque animado quando o líder muda. Cérebro dos agentes movido para o topo (altura até 680px; corrigido canvas limitado a 280px). Validado em Chrome headless sem erros de console; contagens conferidas manualmente |
