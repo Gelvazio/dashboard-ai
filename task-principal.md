@@ -922,7 +922,7 @@
   - `SUB-21.11`: Ligar detalhe e exclusão na `MemoriaView` (`pendente`)
   - `SUB-21.12`: Conferir exclusão com editor e viewer (`pendente`)
   - `SUB-21.13`: `escopoMemoria` em `src/lib/memorias.ts` (`concluido`)
-  - `SUB-21.14`: `tagsDisponiveis` em `src/lib/memorias.ts` (`pendente`)
+  - `SUB-21.14`: `tagsDisponiveis` em `src/lib/memorias.ts` (`em_execucao`)
 - **Descrição:** Exibição em cartões de todas as memórias cadastradas, com botão para copiar conteúdo Markdown, visualizar detalhes e excluir memória.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Grid responsivo com paginação/scroll e feedback de exclusão.
@@ -1060,8 +1060,8 @@
 - **Anotação:** Adicionado `escopoMemoria(m): 'global' | 'projeto'` em `src/lib/memorias.ts` (`project_id` nulo/indefinido = global; 0 conta como projeto) e reutilizado em `memoriaComoMarkdown`. Testes em `tests/unit/memorias.test.ts`. typecheck (app + api) e `npm test` verdes.
 
 #### [ ] SUB-21.14: `tagsDisponiveis` em `src/lib/memorias.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 00:57)
 - **Depende de:** SUB-21.2
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `tagsDisponiveis(memorias): { tag, total }[]` (contagem por tag, ordenada por total desc e depois por nome). Testes no mesmo arquivo de teste.
