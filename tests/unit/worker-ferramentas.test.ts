@@ -7,7 +7,7 @@ vi.mock('../../api/_lib/tools');
 describe('obterFerramenta', () => {
   it('deve retornar ferramenta permitida se existir no registro MCP', async () => {
     vi.mocked(listTools).mockResolvedValue([
-      { name: 'brain_search', description: 'Busca memórias' },
+      { name: 'brain_search', description: 'Busca memórias', inputSchema: { type: 'object', properties: {} } },
     ]);
     const resultado = await obterFerramenta('brain_search');
     expect(resultado).toEqual(ALLOWLIST['brain_search']);
@@ -15,7 +15,7 @@ describe('obterFerramenta', () => {
 
   it('deve retornar null se ferramenta não estiver na allowlist', async () => {
     vi.mocked(listTools).mockResolvedValue([
-      { name: 'ferramenta_perigosa', description: 'Não permitida' },
+      { name: 'ferramenta_perigosa', description: 'Não permitida', inputSchema: { type: 'object', properties: {} } },
     ]);
     const resultado = await obterFerramenta('ferramenta_perigosa');
     expect(resultado).toBeNull();
@@ -23,7 +23,7 @@ describe('obterFerramenta', () => {
 
   it('deve retornar null se ferramenta da allowlist não existir no registro MCP', async () => {
     vi.mocked(listTools).mockResolvedValue([
-      { name: 'outra_ferramenta', description: 'Não é brain_search' },
+      { name: 'outra_ferramenta', description: 'Não é brain_search', inputSchema: { type: 'object', properties: {} } },
     ]);
     const resultado = await obterFerramenta('brain_search');
     expect(resultado).toBeNull();
