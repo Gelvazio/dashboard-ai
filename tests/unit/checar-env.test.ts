@@ -1,6 +1,9 @@
-import { describe, expect, it } from 'vitest';
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { dirname, join } from 'node:path';
+import { afterEach, describe, expect, it } from 'vitest';
 // @ts-expect-error script .mjs sem declaração de tipos
-import { extrairVariaveis, variaveisDoExemplo } from '../../scripts/checar-env.mjs';
+import { extrairVariaveis, listarArquivosFonte, variaveisDoExemplo } from '../../scripts/checar-env.mjs';
 
 describe('extrairVariaveis', () => {
   it('reconhece process.env.X', () => {
@@ -55,5 +58,28 @@ describe('variaveisDoExemplo', () => {
   it('remove repetidos, aceita CRLF e texto vazio', () => {
     expect(variaveisDoExemplo('B=\r\nA=\r\nB=x\r\n')).toEqual(['A', 'B']);
     expect(variaveisDoExemplo('')).toEqual([]);
+  });
+});
+
+describe('listarArquivosFonte', () => {
+  let raiz = '';
+  afterEach(() => {
+    if (raiz) rmSync(raiz, { recursive: true, force: true });
+  });
+
+  it('varre recursivamente só as extensões de código, ignorando node_modules, dist e tests', () => {
+    raiz = mkdtempSync(join(tmpdir(), 'checar-env-'));
+    const criar = (rel: string) => {
+      const caminho = join(raiz, rel);
+      mkdirSync(dirname(caminho), { recursive: true });
+      writeFileSync(caminho, '');
+    };
+    ['src/a.ts', 'src/ui/b.tsx', 'src/c.js', 'api/d.mjs', 'scripts/e.py', 'src/f.css', 'src/g.md',
+      'src/node_modules/x.ts', 'api/dist/y.js', 'src/tests/z.ts'].forEach(criar);
+
+    const dirs = ['src', 'api', 'scripts', 'inexistente'].map((d) => join(raiz, d));
+    expect(listarArquivosFonte(dirs)).toEqual(
+      ['api/d.mjs', 'scripts/e.py', 'src/a.ts', 'src/c.js', 'src/ui/b.tsx'].map((r) => join(raiz, r)),
+    );
   });
 });

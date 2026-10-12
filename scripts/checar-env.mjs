@@ -2,6 +2,9 @@
 // está documentada no `.env.example` (Node, sem dependências).
 // SUB-08.8: extração das variáveis citadas no código-fonte.
 
+import { existsSync, readdirSync } from 'node:fs';
+import { extname, join } from 'node:path';
+
 /** Nome de variável de ambiente: maiúsculas, dígitos e `_`, começando por letra ou `_`. */
 const NOME = '[A-Z_][A-Z0-9_]*';
 
@@ -46,4 +49,35 @@ export function variaveisDoExemplo(texto) {
     if (m) nomes.add(m[1]);
   }
   return [...nomes].sort();
+}
+
+/** Extensões de código-fonte varridas pelo `check:env`. */
+export const EXTENSOES_FONTE = ['.ts', '.tsx', '.js', '.mjs', '.py'];
+
+/** Pastas nunca varridas (dependências, build e testes). */
+export const PASTAS_IGNORADAS = ['node_modules', 'dist', 'tests'];
+
+/**
+ * Lista recursivamente os arquivos de código-fonte (`.ts`, `.tsx`, `.js`, `.mjs`, `.py`)
+ * das pastas informadas, ignorando `node_modules`, `dist` e `tests`. Pastas
+ * inexistentes são ignoradas.
+ * @param {string[]} dirs pastas a varrer (ex.: `['src', 'api', 'scripts']`)
+ * @returns {string[]} caminhos (`join(dir, ...)`) sem repetição, em ordem alfabética
+ */
+export function listarArquivosFonte(dirs) {
+  const arquivos = new Set();
+  const visitar = (dir) => {
+    for (const entrada of readdirSync(dir, { withFileTypes: true })) {
+      const caminho = join(dir, entrada.name);
+      if (entrada.isDirectory()) {
+        if (!PASTAS_IGNORADAS.includes(entrada.name)) visitar(caminho);
+      } else if (entrada.isFile() && EXTENSOES_FONTE.includes(extname(entrada.name))) {
+        arquivos.add(caminho);
+      }
+    }
+  };
+  for (const dir of dirs) {
+    if (existsSync(dir)) visitar(dir);
+  }
+  return [...arquivos].sort();
 }
