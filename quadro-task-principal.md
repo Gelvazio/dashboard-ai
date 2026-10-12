@@ -55,17 +55,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:05 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-23.12
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-23.12** |
-| **Título da Sub-task:** | Teste de integração de `liberarTrava`: viewer e outro projeto |
-| **Agente Responsável:** | DashboardAI-Clone 02 |
-| **Data e Hora de Início:** | 2026-10-12 01:05 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-26.10
 
 | Propriedade | Valor Atual |
@@ -86,7 +75,6 @@
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-26.10** | Seção Agentes de IA: exemplos do ciclo da fila | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:05 | SUB-26.1 |
-| **SUB-23.12** | Teste de integração de `liberarTrava`: viewer e outro projeto | DashboardAI-Clone 02 | 2026-10-12 01:05 | SUB-23.4 |
 | **SUB-27.20** | Limpar `ProjetoContext` ao sair | DashboardAI-Clone 01 | 2026-10-12 01:05 | SUB-27.26 |
 | **SUB-19.7** | Painel `BuscaSemanticaPanel` (campo, grade e estados) | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:04 | SUB-19.5, SUB-19.6, SUB-19.9 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
@@ -111,7 +99,6 @@
 | **SUB-23** | Diagnóstico de Travas e Saúde da Fila (mãe) | 4 | Fase 8 | SUB-09, SUB-11, SUB-12; SUB-23.1 a SUB-23.13 |
 | **SUB-23.1** | `minutosDeTrava` em `src/lib/saudeFila.ts` | 4 | Fase 8 | Nenhuma — 🟢 livre |
 | **SUB-23.4** | `liberarTrava()` em `src/services/taskService.ts` | 4 | Fase 8 | Nenhuma — 🟢 livre |
-| **SUB-23.12** | Teste de integração de `liberarTrava`: viewer e outro projeto | 4 | Fase 8 | SUB-23.4 — 🔄 em execução por DashboardAI-Clone 02 |
 | **SUB-23.13** | `travaExpirada` em `src/lib/saudeFila.ts` | 4 | Fase 8 | SUB-23.1 — ⛓️ bloqueada |
 | **SUB-19** | Interface de Pesquisa Semântica Vetorial (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-19.1 a SUB-19.10 |
 | **SUB-19.1** | `debounce(fn, ms)` em `src/lib/debounce.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
@@ -355,6 +342,7 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | **SUB-23.8** | Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` | DashboardAI-Clone 02 | 2026-10-12 00:59 | 2026-10-12 01:02 | `6c409d3` |
 | **SUB-23.9** | Alerta de trava presa na `src/views/FilaView.tsx` | DashboardAI-Clone 02 | 2026-10-12 01:03 | 2026-10-12 01:03 | `15257fd` |
 | **SUB-23.5** | Teste de integração de `liberarTrava`: expirada e forçada | DashboardAI-Clone 02 | 2026-10-12 01:04 | 2026-10-12 01:04 | `af0214b` |
+| **SUB-23.12** | Teste de integração de `liberarTrava`: viewer e outro projeto | DashboardAI-Clone 02 | 2026-10-12 01:05 | 2026-10-12 01:05 | `a276f7f` |
 ---
 
 ### ⛔ CANCELADAS (0)
@@ -579,3 +567,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:05 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.3 | `2d714d4` | Em `database/07_agent_events.sql`: RLS habilitada em `agent_events`; `revoke all` de anon/authenticated, `grant select, insert` para `authenticated` e `all` para `service_role`; policies `agent_events_select` (`tem_acesso_projeto(project_id, 'viewer')`) e `agent_events_insert` (`tem_acesso_projeto(project_id, 'editor')`); sem policies/grants de update/delete (eventos só-inclusão). Validado em Postgres 17 local (00–07 + 07 reaplicado; `\\dp agent_events` mostra as policies e `relrowsecurity = t`); smoke com `test_multi_projeto.sql`: viewer só lê o próprio projeto e não inclui; editor inclui no próprio projeto (`criado_por` = ele), é recusado em outro projeto e não tem update/delete; anon sem acesso. |
 | 2026-10-12 01:05 | DashboardAI-Clone 08 (Grok Bot) | SUB-26.10 | — | Lock: assumindo SUB-26.10 (Seção Agentes de IA: exemplos do ciclo da fila) |
 | 2026-10-12 01:05 | DashboardAI-Clone 10 (Grok Bot) | SUB-21.9 | `4b8d62b` | Substituído o `EmConstrucao` da `src/views/MemoriaView.tsx`: projeto de `useProjetoAtual` (sem projeto mantém o aviso "selecione um projeto"), dados de `useMemorias(projeto.id)`, cartão com cabeçalho "Memórias" + contador, `MemoriaToolbar` (filtro controlado, `tagsDisponiveis`, contador filtradas/total, recarregar com hora da última carga), aviso de erro (`role="alert"`) e `MemoriaGrid` com `filtrarMemoriasLocal`, estado vazio por filtro e "Carregar mais". Filtros zerados ao trocar de projeto. Pontos reservados por comentário: busca semântica no topo (SUB-19.8), botão "Nova memória" no cabeçalho (SUB-20.7); detalhe/exclusão ficam para a SUB-21.11. `npm run typecheck`, `npm test` e `npm run build` OK (conferência visual em `#/memoria` com Supabase real não feita neste ambiente). |
+| 2026-10-12 01:05 | DashboardAI-Clone 02 | SUB-23.12 | `a276f7f` | Em `tests/integration/taskService.integration.test.ts`, bloco 'liberarTrava: viewer e outro projeto' (projetos LBV/LBO): viewer recebe 'Sem permissão' ao liberar (mesmo forçando) e a task segue `em_execucao`; `liberarTrava(projectId errado, id)` rejeita com `ServiceError` (`obterTask` não acha a task no projeto) sem alterar a trava. Skipped sem PostgREST no clone; `npm test` verde. |
