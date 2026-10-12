@@ -1740,15 +1740,15 @@
 - **Commit:** `6223e85`
 - **Anotação:** Adicionado `papelNoProjeto(projectId, userId, client = getSupabase())` em `src/services/authService.ts`: admin global (`obterPapelGlobal`) -> `'admin'`; senão `project_members.role` (`maybeSingle`); não membro -> `null`; erro -> `ServiceError`. typecheck verde.
 
-#### [ ] SUB-27.26: Hook `useAuth` em `src/hooks/useAuth.ts`
-- **Status:** em_execucao
+#### [x] SUB-27.26: Hook `useAuth` em `src/hooks/useAuth.ts`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.9
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/hooks/useAuth.ts` com `useAuth()` que lê o `AuthContext` e lança erro fora do `AuthProvider`. Exportar `AuthProvider` e `useAuth` em `src/hooks/index.ts` sem remover exports existentes.
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `9a947eb`
+- **Anotação:** Criado `src/hooks/useAuth.ts` (`useAuth()` lê o `AuthContext` e lança erro fora do `AuthProvider`); `AuthProvider`, `AuthContext` e `useAuth` exportados em `src/hooks/index.ts` mantendo os exports existentes. typecheck OK.
 
 #### [ ] SUB-27.27: Incluir `UserMenu` no `src/components/layout/Header.tsx`
 - **Status:** pendente
