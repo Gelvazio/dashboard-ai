@@ -44,10 +44,76 @@ variável usada no código está documentada no `.env.example`.
 
 ## Banco de dados
 
-> Seção provisória (detalhada na SUB-26.4).
+O banco é um projeto **Supabase** (PostgreSQL 15+ com a extensão `pgvector` ≥ 0.5). Os scripts
+ficam em [`database/`](database/README.md) e são **idempotentes**: podem ser reaplicados sem erro
+e sem perda de dados (também atualizam instalações antigas). A descrição completa de tabelas,
+funções, papéis e RLS está no [`database/README.md`](database/README.md).
 
-Os scripts SQL ficam em [`database/`](database/README.md) e são idempotentes: aplique-os em
-ordem numérica no SQL Editor do Supabase (ou com `psql -f`).
+### 1. Aplicar os scripts
+
+Aplique **em ordem numérica** (`00` → `06`):
+
+| Arquivo | Conteúdo |
+|---|---|
+| `00_projects_roles.sql` | Projetos (`projects`), papéis globais (`user_roles`) e por projeto (`project_members`) |
+| `01_tasks_schema.sql` | Fila `tasks` (código por projeto, dependências, triggers de guarda) |
+| `02_logs_schema.sql` | Histórico de execuções dos agentes |
+| `03_memories_schema.sql` | `pgvector` + memórias (`ai_memories`) por projeto ou globais |
+| `04_rpc_functions.sql` | `pegar_proxima_task`, `finalizar_task`, `liberar_trava_task`, `match_memories` etc. |
+| `05_rls_policies.sql` | RLS e permissões das tabelas e funções de 00–04 |
+| `06_messages_rules.sql` | Recados entre agentes e regras por projeto |
+
+- **SQL Editor do Supabase:** abra cada arquivo, cole e execute, na ordem da tabela.
+- **psql** (use a *connection string* do painel do Supabase, em *Project Settings > Database*):
+
+```bash
+export DATABASE_URL='postgresql://postgres:<senha>@<host>:5432/postgres'
+for f in database/0*.sql; do psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f "$f"; done
+```
+
+### 2. Criar o projeto e os membros
+
+O script `00` já cria o projeto `default`. Para outro projeto e a sua equipe (SQL Editor, como
+`postgres`; os `user_id` vêm de *Authentication > Users*):
+
+```sql
+-- Primeiro administrador global (vê e gerencia todos os projetos)
+insert into public.user_roles (user_id, role) values ('<auth.users.id>', 'admin')
+on conflict (user_id) do update set role = 'admin';
+
+-- Novo projeto: slug em minúsculas; prefixo do código das tasks (MEUAPP-0001)
+insert into public.projects (slug, nome, prefixo_codigo)
+values ('meu-app', 'Meu App', 'MEUAPP')
+on conflict (slug) do nothing;
+
+-- Membros do projeto: owner > editor > viewer
+insert into public.project_members (project_id, user_id, role)
+select id, '<auth.users.id>', 'editor' from public.projects where slug = 'meu-app'
+on conflict (project_id, user_id) do update set role = excluded.role;
+```
+
+| Papel | O que pode |
+|---|---|
+| `viewer` | Lê a fila, os logs e as memórias do projeto |
+| `editor` | Também cria e edita tasks e memórias do projeto |
+| `owner` | Também edita o projeto, a equipe e as regras |
+| `admin` (global, `user_roles`) | Tudo, em todos os projetos |
+
+Agentes, MCP e scripts usam a chave `service_role` no servidor (ignora a RLS); o navegador usa
+só a chave anon com o login do usuário.
+
+### 3. Testar localmente
+
+`database/tests/run_tests.sh` cria o banco `dashai_test` num PostgreSQL **local** com pgvector,
+simula os papéis do Supabase, aplica `00`–`06` duas vezes (idempotência) e roda as verificações
+de RLS, fila, memória, recados/regras e captura paralela de tasks:
+
+```bash
+database/tests/run_tests.sh                                   # usa `sudo -u postgres psql`
+PSQL="psql -h localhost -U postgres" database/tests/run_tests.sh
+```
+
+> ⚠️ Nunca rode os testes contra o Supabase: o script **apaga e recria** o banco de teste.
 
 ## Deploy na Vercel
 
