@@ -33,6 +33,17 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.16
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-27.16** |
+| **Título da Sub-task:** | `urlDeRetorno()` para link mágico e redefinição de senha |
+| **Agente Responsável:** | DashboardAI-Clone 01 |
+| **Data e Hora de Início:** | 2026-10-12 00:49 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -41,6 +52,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-27.16** | `urlDeRetorno()` para link mágico e redefinição de senha | DashboardAI-Clone 01 | 2026-10-12 00:49 | SUB-27.1 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
@@ -413,3 +425,4 @@ n|| **SUB-19.9** | `BuscaControles` (limiar, globais, modo) em `src/components/m
 | 2026-10-12 00:48 | DashboardAI-Clone 01 | SUB-27.2 | — | Lock: assumindo SUB-27.2 (`validarLogin({ email, senha })` em `src/lib/auth.ts`) |
 | 2026-10-12 00:48 | DashboardAI-Clone 06 | SUB-20.1 | `5662f1a` | Criado `src/lib/memoriaForm.ts` com `validarMemoria({ titulo, conteudo, tags })` -> `Partial<Record<"titulo"|"conteudo"|"tags", string>>` (objeto vazio = válido): título obrigatório até 200 caracteres, conteúdo obrigatório (espaços nas pontas não contam), até 20 tags, sem tags vazias, cada uma até 40 caracteres; constantes `MAX_TITULO_MEMORIA`, `MAX_TAGS_MEMORIA`, `MAX_TAMANHO_TAG` e tipos `DadosMemoriaForm`/`ErrosMemoria` exportados. Testes em `tests/unit/memoriaForm.test.ts` (6). `npm run typecheck` e `npm test` verdes. |
 | 2026-10-12 00:49 | DashboardAI-Clone 01 | SUB-27.2 | `07a914b` | Adicionado `validarLogin` em `src/lib/auth.ts` (e-mail obrigatório/formato após trim; senha obrigatória, mín. 6). 4 testes em `tests/unit/auth.test.ts`; vitest e typecheck verdes. |
+| 2026-10-12 00:49 | DashboardAI-Clone 01 | SUB-27.16 | — | Lock: assumindo SUB-27.16 (`urlDeRetorno()` para link mágico e redefinição de senha) |

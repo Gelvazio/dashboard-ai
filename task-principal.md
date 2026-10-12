@@ -1641,8 +1641,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.16: `urlDeRetorno()` para link mágico e redefinição de senha
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar em `src/lib/auth.ts` `urlDeRetorno(loc: Pick<Location,'origin'|'pathname'|'hash'>): string` (origem + caminho + hash da tela, sem tokens anteriores). Testes. Quem a usa como `redirectTo` é o `RecuperarAcesso` (SUB-27.19).
