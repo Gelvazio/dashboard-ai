@@ -1,10 +1,14 @@
-import { describe, expect, it } from 'vitest';
-import { ServiceError, papelDaChave, resultado, verificarConexao } from '@/services/supabase';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { ServiceError, papelDaChave, resultado } from '@/services/supabase';
 
 const chave = (role: string) =>
   `x.${Buffer.from(JSON.stringify({ role })).toString('base64url')}.y`;
 
 describe('services/supabase', () => {
+  afterEach(() => {
+    vi.unstubAllEnvs();
+  });
+
   it('resultado devolve data quando não há erro', () => {
     expect(resultado({ data: [1, 2], error: null })).toEqual([1, 2]);
   });
@@ -28,6 +32,11 @@ describe('services/supabase', () => {
   });
 
   it('sem variáveis de ambiente a conexão fica "sem_config"', async () => {
-    expect(await verificarConexao()).toEqual({ estado: 'sem_config' });
+    // Zera as variáveis aqui para o teste não depender do `.env` da máquina (SUB-39.6).
+    vi.stubEnv('VITE_SUPABASE_URL', '');
+    vi.stubEnv('VITE_SUPABASE_ANON_KEY', '');
+    vi.resetModules();
+    const servico = await import('@/services/supabase');
+    expect(await servico.verificarConexao()).toEqual({ estado: 'sem_config' });
   });
 });
