@@ -49,17 +49,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 07 (Grok Bot) — SUB-35.24
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.24** |
-| **Título da Sub-task:** | Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx` |
-| **Agente Responsável:** | DashboardAI-Clone 07 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:37 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-35.25
 
 | Propriedade | Valor Atual |
@@ -2537,15 +2526,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [🔄] SUB-35.24: Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 07 (Grok Bot) (início: 2026-10-12 01:37)
+#### [x] SUB-35.24: Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 07 (Grok Bot) (início: 2026-10-12 01:37, conclusão: 2026-10-12 01:39)
 - **Depende de:** SUB-35.23
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Grade responsiva de `AgenteCard` (ordem: ativos primeiro) com estado vazio "Nenhum agente reportou atividade". Exportar no barrel sem remover exports.
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `4bc0b25`
+- **Anotação:** Criado `src/components/monitor/AtividadeAgentesGrid.tsx`: grade responsiva (1/2/3 colunas) de `AgenteCard`, ordenada por estado (ativo, ocioso, sem sinal, finalizado) e depois pelo sinal mais recente; estado vazio "Nenhum agente reportou atividade". Exportado no barrel sem remover exports. `npm run typecheck`, `npm test` e `npm run build` OK.
 
 #### [🔄] SUB-35.25: Gráfico `GraficoPorStatus` em `src/components/monitor/GraficoPorStatus.tsx`
 - **Status:** em_execucao
