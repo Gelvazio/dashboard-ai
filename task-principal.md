@@ -2152,7 +2152,7 @@
   - `SUB-35.5`: Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` (`concluido`)
   - `SUB-35.6`: Teste de integração de `agent_events` (RLS e trigger) (`concluido`)
   - `SUB-35.7`: Seção "Eventos dos agentes (07)" no `database/README.md` (`concluido`)
-  - `SUB-35.8`: Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` (`em_execucao`)
+  - `SUB-35.8`: Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` (`concluido`)
   - `SUB-35.9`: `listarEventos()` em `src/services/eventService.ts` (`pendente`)
   - `SUB-35.10`: `atividadeAtual()` em `src/services/eventService.ts` (`pendente`)
   - `SUB-35.11`: `assinarEventos()` (Supabase Realtime) em `src/services/eventService.ts` (`pendente`)
@@ -2267,15 +2267,15 @@
 - **Commit:** `b518611`
 - **Anotação:** No `database/README.md`: `07_agent_events.sql` na tabela de ordem de aplicação (e 'Como aplicar' 00 → 07) e nova seção 'Eventos dos agentes (07)' com colunas, tipos de evento, `chave_idempotencia` (única por projeto; exemplo `git:<sha>` do espelho do quadro), trigger `validar_agent_event`, RLS (viewer lê, editor inclui, sem UPDATE/DELETE), publicação Realtime condicional e `atividade_atual_agentes`. Conferido contra o SQL.
 
-#### [ ] SUB-35.8: Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 01:10)
+#### [x] SUB-35.8: Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 01:10; conclusão: 2026-10-12 01:11)
 - **Depende de:** SUB-35.5
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `AgentEvent`, `AgentEventInsert`, `TipoEventoAgente` e `AtividadeAgente`, e registrar a tabela `agent_events` e a função `atividade_atual_agentes` no tipo `Database`.
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `5a09109`
+- **Anotação:** Em `src/types/database.ts`: `TIPOS_EVENTO_AGENTE` (const) + `TipoEventoAgente`, `AgentEvent` (colunas de `agent_events`, SUB-35.1), `AtividadeAgente` (retorno de `atividade_atual_agentes`, SUB-35.5, incl. `ultimo_heartbeat_em`) e `AgentEventInsert` (opcionais: id, task, execução, etapa, status, mensagem, metadados, chave, autor, data); `Database` registra `agent_events` (`Update: never`, só-inclusão) e a função `atividade_atual_agentes({ p_project_id })`. Reexportados por `src/types/index.ts`. Comentário do teste de integração da SUB-35.6 atualizado (segue sem tipagem para tentar o update proibido). `npm run typecheck` e `npm test` verdes.
 
 #### [ ] SUB-35.9: `listarEventos()` em `src/services/eventService.ts`
 - **Status:** pendente
