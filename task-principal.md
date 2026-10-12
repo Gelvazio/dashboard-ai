@@ -1541,8 +1541,8 @@
 - **Anotação:** Adicionado `enviarLinkMagico(email, redirectTo, client = getSupabase())` em `src/services/authService.ts`: `auth.signInWithOtp` com `emailRedirectTo` e `shouldCreateUser: false` (e-mail com trim); erro -> `ServiceError(mensagemErroAuth(error), 'AUTH')`. typecheck e vitest verdes.
 
 #### [ ] SUB-27.6: Testes unitários de `authService` em `tests/unit/authService.test.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.23, SUB-27.24
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Testar com cliente falso (`auth.signInWithPassword/signOut/getSession/signInWithOtp/resetPasswordForEmail` simulados): sucesso, credenciais inválidas traduzidas, `sair` limpa o projeto salvo (stub de `localStorage`), `shouldCreateUser: false` no link mágico.

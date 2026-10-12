@@ -77,6 +77,17 @@
 | **Data e Hora de Início:** | 2026-10-12 00:54 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.6
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-27.6** |
+| **Título da Sub-task:** | Testes unitários de `authService` em `tests/unit/authService.test.ts` |
+| **Agente Responsável:** | DashboardAI-Clone 01 |
+| **Data e Hora de Início:** | 2026-10-12 00:54 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -85,6 +96,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-27.6** | Testes unitários de `authService` em `tests/unit/authService.test.ts` | DashboardAI-Clone 01 | 2026-10-12 00:54 | SUB-27.23, SUB-27.24 |
 | **SUB-23.6** | Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts` | DashboardAI-Clone 02 | 2026-10-12 00:54 | SUB-23.3, SUB-23.4 |
 | **SUB-08.8** | `extrairVariaveis(texto)` em `scripts/checar-env.mjs` + testes | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:54 | Nenhuma |
 | **SUB-19.5** | Componente `ResultadoBuscaCard` em `src/components/memoria/` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:54 | SUB-19.4 |
@@ -497,3 +509,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:54 | DashboardAI-Clone 02 | SUB-23.3 | `40fa920` | Adicionado `diagnosticarFila(tasks, agora, limite = 90)` em `src/lib/saudeFila.ts` -> `{ travas: { task, minutos, expirada }[], pendentes, alerta }` (travas = `em_execucao` não excluídas, da mais antiga; pendentes via `classificarPendentes`; `alerta` se alguma expirada). Tipos `TravaDiagnostico`/`DiagnosticoFila` exportados. Testes em `tests/unit/saudeFila.test.ts`. typecheck e `npm test` verdes. |
 | 2026-10-12 00:54 | DashboardAI-Clone 08 (Grok Bot) | SUB-08.8 | — | Lock: assumindo SUB-08.8 (`extrairVariaveis(texto)` em `scripts/checar-env.mjs` + testes) |
 | 2026-10-12 00:54 | DashboardAI-Clone 02 | SUB-23.6 | — | Lock: assumindo SUB-23.6 (Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts`) |
+| 2026-10-12 00:54 | DashboardAI-Clone 01 | SUB-27.6 | — | Lock: assumindo SUB-27.6 (Testes unitários de `authService` em `tests/unit/authService.test.ts`) |
