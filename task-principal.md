@@ -10,9 +10,9 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
 - **Subtarefas atômicas (~3 min):** 153 (SUB-08.x, SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x; atualizado em 2026-10-12 00:17)
-- **Em Execução:** 0
+- **Em Execução:** 1 (SUB-08.5)
 - **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 133 subtarefas
-  - livres agora: 27 (SUB-33.5, SUB-33.9, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.5, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.2, SUB-23.5, SUB-23.12, SUB-25.1, SUB-26.1, SUB-27.1)
+  - livres agora: 26 (SUB-33.5, SUB-33.9, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.5, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.2, SUB-23.5, SUB-23.12, SUB-25.1, SUB-26.1, SUB-27.1)
   - bloqueadas por dependência: 106
   - reservadas: 0
 - **Concluídas:** 42
@@ -338,7 +338,7 @@
   - `SUB-08.2`: Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` (`concluido`)
   - `SUB-08.3`: Seção Servidor Supabase: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `SUPABASE_REST_URL` (`concluido`)
   - `SUB-08.4`: Seção Embeddings: `OPENAI_API_KEY`, `EMBEDDING_API_URL`, `EMBEDDING_MODEL` (`concluido`)
-  - `SUB-08.5`: Seção MCP: `MCP_AUTH_TOKEN`, `MCP_CORS_ORIGIN`, `MCP_DEFAULT_PROJECT`, `MCP_ALLOWED_PROJECTS` (`pendente`)
+  - `SUB-08.5`: Seção MCP: `MCP_AUTH_TOKEN`, `MCP_CORS_ORIGIN`, `MCP_DEFAULT_PROJECT`, `MCP_ALLOWED_PROJECTS` (`em_execucao`)
   - `SUB-08.6`: Seção Scripts: `DASHBOARD_AI_PROJECT` (`pendente`)
   - `SUB-08.7`: Conferir `.gitignore` (`!.env.example`) (`pendente`)
   - `SUB-08.8`: `extrairVariaveis(texto)` em `scripts/checar-env.mjs` + testes (`pendente`)
@@ -391,8 +391,8 @@
 - **Anotação:** Preenchida a seção Embeddings do `.env.example` com `OPENAI_API_KEY` (só servidor), `EMBEDDING_API_URL` (padrão `https://api.openai.com/v1/embeddings`, aceita API compatível) e `EMBEDDING_MODEL` (padrão `text-embedding-3-small`; vetor de 1536 dimensões), iguais aos padrões de `api/_lib/embeddings.ts`. Valores vazios.
 
 #### [ ] SUB-08.5: Seção MCP: `MCP_AUTH_TOKEN`, `MCP_CORS_ORIGIN`, `MCP_DEFAULT_PROJECT`, `MCP_ALLOWED_PROJECTS`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (desde 2026-10-12 00:34)
 - **Depende de:** SUB-08.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Preencher a seção com `MCP_AUTH_TOKEN` (obrigatório para as ferramentas de dados; gerar com `openssl rand -hex 32`), `MCP_CORS_ORIGIN` (padrão `*`; restringir em produção), `MCP_DEFAULT_PROJECT` (slug padrão) e `MCP_ALLOWED_PROJECTS` (lista de slugs separada por vírgula), conforme `api/mcp.ts` e `api/_lib/args.ts`.
