@@ -3,6 +3,7 @@
 | Arquivo | Papel |
 |---|---|
 | `mcp.ts` | Função serverless `POST /api/mcp` (também em `/mcp` via `vercel.json`): valida o método HTTP, CORS, token opcional, faz o parse JSON-RPC 2.0 (inclui lotes) e roteia `initialize`, `ping`, `notifications/*`, `tools/list` e `tools/call` |
+| `embedding.ts` | Função serverless `POST /api/embedding`: valida a sessão Supabase e gera embeddings no servidor, sem expor a chave do provedor ao navegador (SUB-33) |
 | `_lib/jsonrpc.ts` | Tipos, validação e helpers de envelope JSON-RPC (`ok`, `fail`, `RpcError`, códigos -32700…-32603) |
 | `_lib/tools.ts` | Registro de ferramentas (`registerTool`, `listTools`, `getTool`, `textResult`) |
 | `_lib/brain-tools.ts` | Memória persistente por projeto: `brain_store`, `brain_search`, `brain_delete` (SUB-07) |
@@ -22,6 +23,64 @@ curl -s -X POST https://<seu-projeto>.vercel.app/api/mcp \
   -H 'Content-Type: application/json' \
   -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18"}}'
 ```
+
+## Endpoint de embeddings para o frontend
+
+`POST /api/embedding` valida o JWT da sessão do Supabase Auth enviado pelo navegador e gera o vetor no servidor. A chave do provedor (`OPENAI_API_KEY`) nunca deve ser enviada pelo cliente. O corpo aceita `{ "texto": "..." }` com texto não vazio de até 8.000 caracteres.
+
+### Requisição e resposta
+
+Envie `Content-Type: application/json` e `Authorization: Bearer <access_token>` com o access token da sessão Supabase:
+
+```json
+{
+  "texto": "Texto para gerar o embedding"
+}
+```
+
+Em caso de sucesso, a resposta `200` contém o vetor de 1536 dimensões e o modelo usado:
+
+```json
+{
+  "embedding": [0.0123, -0.0456],
+  "dimensoes": 1536,
+  "modelo": "text-embedding-3-small"
+}
+```
+
+O vetor acima é abreviado. A resposta real contém 1536 números. Erros são JSON no formato `{ "erro": "..." }`.
+
+| Status | Quando ocorre |
+|---|---|
+| `204` | Preflight CORS com `OPTIONS` |
+| `400` | Corpo ausente ou JSON inválido, ou `texto` ausente, vazio ou de tipo incorreto |
+| `401` | Token ausente, inválido ou sessão expirada; a resposta inclui `WWW-Authenticate: Bearer` |
+| `405` | Método diferente de `POST` e `OPTIONS`; o cabeçalho `Allow` informa os métodos aceitos |
+| `413` | `texto` com mais de 8.000 caracteres |
+| `502` | O provedor de embeddings falhou ou devolveu um vetor inválido; detalhes internos não são expostos |
+| `503` | Serviço de autenticação do Supabase indisponível |
+
+### Exemplo com curl
+
+```bash
+curl -sS -X POST "https://<seu-projeto>.vercel.app/api/embedding" \
+  -H 'Content-Type: application/json' \
+  -H "Authorization: Bearer $SUPABASE_ACCESS_TOKEN" \
+  -d '{"texto":"Texto para gerar o embedding"}'
+```
+
+`SUPABASE_ACCESS_TOKEN` deve conter o access token da sessão do usuário, não uma chave de API do Supabase.
+
+### Variáveis do servidor
+
+| Variável | Uso |
+|---|---|
+| `SUPABASE_URL` | URL do projeto usada para validar a sessão em `/auth/v1/user` |
+| `SUPABASE_ANON_KEY` | Chave preferida para validar a sessão Supabase; está listada no `.env.example` |
+| `SUPABASE_SERVICE_ROLE_KEY` | Fallback para a validação se `SUPABASE_ANON_KEY` não estiver definida; mantenha somente nas variáveis secretas do servidor |
+| `OPENAI_API_KEY` | Chave do provedor de embeddings; obrigatória e somente no servidor |
+| `EMBEDDING_MODEL` | Opcional; modelo usado (padrão `text-embedding-3-small`), que deve retornar 1536 dimensões |
+| `EMBEDDING_API_URL` | Opcional; endpoint compatível com OpenAI (padrão `https://api.openai.com/v1/embeddings`) |
 
 ## Ferramentas da fila (multi-projeto)
 
@@ -64,8 +123,10 @@ enquanto `MCP_AUTH_TOKEN` não estiver definido** e podem ser restritas a alguns
 |---|---|
 | `MCP_AUTH_TOKEN` | Exige `Authorization: Bearer <token>`. Opcional para `initialize`/`tools/list`, **obrigatória** para as ferramentas da fila e da memória |
 | `MCP_CORS_ORIGIN` | Opcional. Origem liberada no CORS (padrão `*`) |
-| `SUPABASE_URL` (ou `VITE_SUPABASE_URL`) | URL do projeto Supabase (a API REST é `<url>/rest/v1`) |
+| `SUPABASE_URL` | URL do projeto usada pelo servidor; obrigatória para validar a sessão em `POST /api/embedding` |
+| `VITE_SUPABASE_URL` | URL pública usada pelo frontend; é fallback legado do cliente de dados em `api/_lib/supabase.ts`, mas não substitui `SUPABASE_URL` na validação da sessão |
 | `SUPABASE_SERVICE_ROLE_KEY` | Chave `service_role` — só nas variáveis da Vercel, nunca no frontend nem no repositório |
+| `SUPABASE_ANON_KEY` | Chave anon usada para validar a sessão do usuário em `POST /api/embedding` (fallback: `SUPABASE_SERVICE_ROLE_KEY`) |
 | `SUPABASE_REST_URL` | Opcional. Redireciona a API REST para um PostgREST (ex.: testes locais) |
 | `MCP_DEFAULT_PROJECT` | Opcional. Slug usado quando a chamada não informa `project` (padrão `default`) |
 | `MCP_ALLOWED_PROJECTS` | Opcional. Lista de slugs separados por vírgula que este servidor pode acessar |
