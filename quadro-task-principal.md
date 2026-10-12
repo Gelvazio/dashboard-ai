@@ -33,28 +33,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-19.10
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-19.10** |
-| **Título da Sub-task:** | `classeSimilaridade` em `src/lib/similaridade.ts` |
-| **Agente Responsável:** | DashboardAI-Clone 10 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 00:51 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.7
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-27.7** |
-| **Título da Sub-task:** | `obterPapelGlobal()` em `src/services/authService.ts` |
-| **Agente Responsável:** | DashboardAI-Clone 01 |
-| **Data e Hora de Início:** | 2026-10-12 00:51 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 06 — SUB-20.4
 
 | Propriedade | Valor Atual |
@@ -70,18 +48,16 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-20.4** | Componente `TagInput` em `src/components/ui/TagInput.tsx` | DashboardAI-Clone 06 | 2026-10-12 00:52 | SUB-20.2 |
-| **SUB-27.7** | `obterPapelGlobal()` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:51 | SUB-27.3 |
-| **SUB-19.10** | `classeSimilaridade` em `src/lib/similaridade.ts` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:51 | SUB-19.3 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
 
-### ⏳ PENDENTES (187)
+### ⏳ PENDENTES (186)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -125,7 +101,6 @@
 | **SUB-19.7** | Painel `BuscaSemanticaPanel` (campo, grade e estados) | 4 | Fase 7 | SUB-19.5, SUB-19.6, SUB-19.9 — ⛓️ bloqueada |
 | **SUB-19.8** | Integrar a busca na `src/views/MemoriaView.tsx` | 4 | Fase 7 | SUB-19.7, SUB-21.9 — ⛓️ bloqueada |
 | **SUB-19.9** | `BuscaControles` (limiar, globais, modo) em `src/components/memoria/BuscaControles.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
-| **SUB-19.10** | `classeSimilaridade` em `src/lib/similaridade.ts` | 4 | Fase 7 | SUB-19.3 — 🔄 em execução por DashboardAI-Clone 10 (Grok Bot) |
 | **SUB-20** | Formulário de Nova Memória Canônica (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-20.1 a SUB-20.10 |
 | **SUB-20.4** | Componente `TagInput` em `src/components/ui/TagInput.tsx` | 4 | Fase 7 | SUB-20.2 — 🔄 em execução por DashboardAI-Clone 06 |
 | **SUB-20.5** | Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts` | 4 | Fase 7 | SUB-33.7 — 🟢 livre |
@@ -208,7 +183,6 @@
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | 3 | Fase 2B | SUB-33.11 — 🔄 em execução por Codex (OpenAI) |
 | **SUB-27** | Autenticação e Login com Supabase Auth (mãe; pendente, liberada) | 3 | Fase 10 | SUB-03, SUB-29; SUB-27.1 a SUB-27.28 — 🟢 livre |
 | **SUB-27.6** | Testes unitários de `authService` em `tests/unit/authService.test.ts` | 3 | Fase 10 | SUB-27.23, SUB-27.24 — ⛓️ bloqueada |
-| **SUB-27.7** | `obterPapelGlobal()` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.3 — ⛓️ bloqueada |
 | **SUB-27.8** | Teste de integração dos papéis em `tests/integration/authService.integration.test.ts` | 3 | Fase 10 | SUB-27.25 — ⛓️ bloqueada |
 | **SUB-27.9** | `AuthProvider` em `src/hooks/AuthContext.tsx` | 3 | Fase 10 | SUB-27.23, SUB-27.25 — ⛓️ bloqueada |
 | **SUB-27.10** | Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx` | 3 | Fase 10 | SUB-27.2, SUB-27.3 — ⛓️ bloqueada |
@@ -279,10 +253,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (52)
+### ✅ CONCLUÍDAS (53)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-27.7** | `obterPapelGlobal()` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:51 | 2026-10-12 00:52 | `5ebbd19` |
 | **SUB-27.5** | `enviarLinkMagico()` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:51 | 2026-10-12 00:51 | `500e307` |
 | **SUB-27.4** | `sair()` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:50 | 2026-10-12 00:51 | `7bc78da` |
 | **SUB-20.2** | `parseTags(texto)` em `src/lib/memoriaForm.ts` | DashboardAI-Clone 06 | 2026-10-12 00:50 | 2026-10-12 00:51 | `78a1e70` |
@@ -333,6 +308,7 @@
 | **SUB-33.7** | `criarGeradorEmbedding()` em `src/services/embeddingService.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:29 | 2026-10-12 00:30 | `64aa288` |
 | **SUB-08.3** | Seção Servidor Supabase: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `SUPABASE_REST_URL` | DashboardAI (Grok Bot) | 2026-10-12 00:30 | 2026-10-12 00:30 | `35aff13` |
 | **SUB-33.5** | Registrar `api/embedding.ts` no `vercel.json` | Codex (OpenAI) | 2026-10-12 00:35 | 2026-10-12 00:41 | `1d68ea6` |
+| **SUB-19.10** | `classeSimilaridade` em `src/lib/similaridade.ts` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:51 | 2026-10-12 00:52 | `4f6700d` |
 
 n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | Claude Code | 2026-10-12 00:50 | 2026-10-12 00:51 | `fc4c3ee` |
 || **SUB-20.1** | `validarMemoria(dados)` em `src/lib/memoriaForm.ts` | DashboardAI-Clone 06 | 2026-10-12 00:46 | 2026-10-12 00:47 | `5662f1a` |
@@ -467,3 +443,5 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:51 | DashboardAI-Clone 01 | SUB-27.5 | `500e307` | Adicionado `enviarLinkMagico(email, redirectTo, client = getSupabase())` em `src/services/authService.ts`: `auth.signInWithOtp` com `emailRedirectTo` e `shouldCreateUser: false` (e-mail com trim); erro -> `ServiceError(mensagemErroAuth(error), 'AUTH')`. typecheck e vitest verdes. |
 | 2026-10-12 00:51 | DashboardAI-Clone 01 | SUB-27.7 | — | Lock: assumindo SUB-27.7 (`obterPapelGlobal()` em `src/services/authService.ts`) |
 | 2026-10-12 00:52 | DashboardAI-Clone 06 | SUB-20.4 | — | Lock: assumindo SUB-20.4 (Componente `TagInput` em `src/components/ui/TagInput.tsx`) |
+| 2026-10-12 00:52 | DashboardAI-Clone 10 (Grok Bot) | SUB-19.10 | `4f6700d` | Adicionado `classeSimilaridade(s)` em `src/lib/similaridade.ts` com classes Tailwind de badge (fundo, texto e ring, com variantes `dark:`): `>= 0.85` verde (emerald), `>= 0.7` âmbar, abaixo disso ou valor não finito cinza (slate); limiares exportados como `LIMIAR_SIMILARIDADE_ALTA`/`LIMIAR_SIMILARIDADE_MEDIA`. 4 testes novos em `tests/unit/similaridade.test.ts` (limites 0.85 e 0.7). `npm run typecheck` e `npm test` verdes. |
+| 2026-10-12 00:52 | DashboardAI-Clone 01 | SUB-27.7 | `5ebbd19` | Adicionado `obterPapelGlobal(userId, client = getSupabase())` em `src/services/authService.ts`: lê `role` da própria linha em `user_roles` (`maybeSingle`, policy `user_roles_select`); sem linha -> `null`; erro -> `ServiceError`. typecheck e vitest verdes. |

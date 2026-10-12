@@ -676,7 +676,7 @@
   - `SUB-19.7`: Painel `BuscaSemanticaPanel` (campo, grade e estados) (`pendente`)
   - `SUB-19.8`: Integrar a busca na `src/views/MemoriaView.tsx` (`pendente`)
   - `SUB-19.9`: `BuscaControles` (limiar, globais, modo) em `src/components/memoria/BuscaControles.tsx` (`pendente`)
-  - `SUB-19.10`: `classeSimilaridade` em `src/lib/similaridade.ts` (`em_execucao`)
+  - `SUB-19.10`: `classeSimilaridade` em `src/lib/similaridade.ts` (`concluido`, `4f6700d`)
 - **Descrição:** Criar componente de busca semântica onde o usuário insere uma consulta e o sistema busca memórias similares via RPC `match_memories`, exibindo a porcentagem de similaridade.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Campo de busca com debounce, exibição de cards de resultado com badge de similaridade (ex: 89%).
@@ -773,15 +773,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-19.10: `classeSimilaridade` em `src/lib/similaridade.ts`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 00:51)
+#### [x] SUB-19.10: `classeSimilaridade` em `src/lib/similaridade.ts`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 00:51, conclusão: 2026-10-12 00:52)
 - **Depende de:** SUB-19.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `classeSimilaridade(s: number): string` com classes Tailwind (>= 0.85 verde, >= 0.7 âmbar, senão cinza, com variantes `dark:`). Testes no mesmo arquivo de teste (limites 0.85 e 0.7).
 - **Critérios de Aceitação:** `npm test` passa; `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `4f6700d`
+- **Anotação:** Adicionado `classeSimilaridade(s)` em `src/lib/similaridade.ts` com classes Tailwind de badge (fundo, texto e ring, com variantes `dark:`): `>= 0.85` verde (emerald), `>= 0.7` âmbar, abaixo disso ou valor não finito cinza (slate); limiares exportados como `LIMIAR_SIMILARIDADE_ALTA`/`LIMIAR_SIMILARIDADE_MEDIA`. 4 testes novos em `tests/unit/similaridade.test.ts` (limites 0.85 e 0.7). `npm run typecheck` e `npm test` verdes.
 
 ### [ ] SUB-20: Formulário de Nova Memória Canônica
 - **Status:** pendente (aguardando subtarefas)
@@ -1550,15 +1550,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-27.7: `obterPapelGlobal()` em `src/services/authService.ts`
-- **Status:** em_execucao
+#### [x] SUB-27.7: `obterPapelGlobal()` em `src/services/authService.ts`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `obterPapelGlobal(userId, client): Promise<UserRole | null>` (lê a própria linha em `user_roles`, permitido pela policy `user_roles_select`; sem linha -> `null`).
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `5ebbd19`
+- **Anotação:** Adicionado `obterPapelGlobal(userId, client = getSupabase())` em `src/services/authService.ts`: lê `role` da própria linha em `user_roles` (`maybeSingle`, policy `user_roles_select`); sem linha -> `null`; erro -> `ServiceError`. typecheck e vitest verdes.
 
 #### [ ] SUB-27.8: Teste de integração dos papéis em `tests/integration/authService.integration.test.ts`
 - **Status:** pendente

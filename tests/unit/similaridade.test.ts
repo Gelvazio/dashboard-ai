@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { formatarSimilaridade } from '@/lib/similaridade';
+import { classeSimilaridade, formatarSimilaridade } from '@/lib/similaridade';
 
 describe('formatarSimilaridade', () => {
   it('formata 0.894 como 89%', () => {
@@ -44,5 +44,27 @@ describe('formatarSimilaridade', () => {
 
   it('arredonda 0.951 para 95%', () => {
     expect(formatarSimilaridade(0.951)).toBe('95%');
+  });
+});
+
+describe('classeSimilaridade', () => {
+  it('usa verde a partir de 0.85 (limite incluso)', () => {
+    expect(classeSimilaridade(0.85)).toContain('emerald');
+    expect(classeSimilaridade(0.99)).toContain('emerald');
+  });
+
+  it('usa âmbar entre 0.7 (incluso) e 0.85', () => {
+    expect(classeSimilaridade(0.8499)).toContain('amber');
+    expect(classeSimilaridade(0.7)).toContain('amber');
+  });
+
+  it('usa cinza abaixo de 0.7 e para valores inválidos', () => {
+    expect(classeSimilaridade(0.6999)).toContain('slate');
+    expect(classeSimilaridade(0)).toContain('slate');
+    expect(classeSimilaridade(Number.NaN)).toContain('slate');
+  });
+
+  it('inclui variantes dark:', () => {
+    for (const s of [0.9, 0.75, 0.1]) expect(classeSimilaridade(s)).toMatch(/dark:/);
   });
 });
