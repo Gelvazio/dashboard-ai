@@ -23,6 +23,7 @@ function montar(over: Partial<DepsAprovacao> = {}) {
     criarGrafoComCheckpointer: vi.fn(async () => ({
       invoke: vi.fn(async () => ({ situacao: 'retomada' })),
     })),
+    atualizarMetadadosLog: vi.fn(async () => {}),
     ...over,
   };
   const handler = criarHandlerAprovacao(deps);
@@ -95,6 +96,29 @@ describe('api/aprovacao — autenticação e papel (SUB-28.16)', () => {
     expect(res.codigo).toBe(200);
     expect(deps.execucaoIdDaTask).toHaveBeenCalledWith(5);
     expect(deps.criarGrafoComCheckpointer).toHaveBeenCalled();
+    expect(deps.atualizarMetadadosLog).toHaveBeenCalledWith('task-5-t1', {
+      aprovacao_audit: {
+        aprovado: true,
+        usuario_id: 'u-1',
+        em: expect.any(String),
+        motivo: 'ok',
+      },
+    });
+  });
+
+  it('regista auditoria da aprovação nos metadados (SUB-28.32)', async () => {
+    const atualizarMetadados = vi.fn(async () => {});
+    const { chamar, deps } = montar({ atualizarMetadadosLog: atualizarMetadados });
+    const res = await chamar({ headers: autenticado, body: JSON.stringify({ ...corpo, motivo: 'aprovado' }) });
+    expect(res.codigo).toBe(200);
+    expect(atualizarMetadados).toHaveBeenCalledWith('task-5-t1', {
+      aprovacao_audit: {
+        aprovado: true,
+        usuario_id: 'u-1',
+        em: expect.any(String),
+        motivo: 'aprovado',
+      },
+    });
   });
 });
 

@@ -32,6 +32,8 @@ export interface DepsAprovacao {
   execucaoIdDaTask: (taskId: number) => Promise<string | null>;
   /** Cria o grafo compilado com checkpointer. */
   criarGrafoComCheckpointer: () => Promise<GrafoExecucao>;
+  /** Atualiza metadados do log da execução (SUB-28.32). */
+  atualizarMetadadosLog: (execucaoId: string, novosMetadados: Record<string, unknown>) => Promise<void>;
 }
 
 const MOTIVO_MAX = 1000;
@@ -90,6 +92,14 @@ async function criarGrafoComCheckpointerPadrao(): Promise<GrafoExecucao> {
   return criarGrafo({ modelo, checkpointer: checkpointer as unknown as any }) as unknown as GrafoExecucao;
 }
 
+async function atualizarMetadadosLogPadrao(execucaoId: string, novosMetadados: Record<string, unknown>): Promise<void> {
+  const logAtual = unwrap<{ metadados: Record<string, unknown> }[]>(
+    await db().from('agendamento_tarefa_logs').select('metadados').eq('execucao_id', execucaoId).limit(1),
+  );
+  const metadadosAtuais = (logAtual[0]?.metadados as Record<string, unknown>) ?? {};
+  await db().from('agendamento_tarefa_logs').update({ metadados: { ...metadadosAtuais, ...novosMetadados } }).eq('execucao_id', execucaoId);
+}
+
 async function ehEditorNoSupabase(token: string, projectId: number): Promise<boolean> {
   const url = process.env.SUPABASE_URL?.replace(/\/+$/, '');
   const apikey = process.env.SUPABASE_ANON_KEY;
@@ -115,14 +125,32 @@ const DEPS_PADRAO: DepsAprovacao = {
   ehEditor: ehEditorNoSupabase,
   execucaoIdDaTask: execucaoIdDaTaskNoSupabase,
   criarGrafoComCheckpointer: criarGrafoComCheckpointerPadrao,
+  atualizarMetadadosLog: atualizarMetadadosLogPadrao,
 };
 
 /**
  * Retoma o grafo LangGraph com o comando de aprovação (SUB-28.23).
  * Usa o `thread_id` da execução (`execucaoId`) e envia `Command({ resume })`
  * com a decisão do usuário.
+ * SUB-28.32: registra auditoria da aprovação nos metadados da execução.
  */
-async function retomarGrafo(pedido: PedidoAprovacao, grafo: GrafoExecucao, execucaoId: string): Promise<unknown> {
+async function retomarGrafo(
+  pedido: PedidoAprovacao,
+  grafo: GrafoExecucao,
+  execucaoId: string,
+  sessao: { userId: string },
+  atualizarMetadados: (execucaoId: string, novosMetadados: Record<string, unknown>) => Promise<void>,
+): Promise<unknown> {
+  // Registrar auditoria da aprovação (SUB-28.32)
+  await atualizarMetadados(execucaoId, {
+    aprovacao_audit: {
+      aprovado: pedido.aprovado,
+      usuario_id: sessao.userId,
+      em: new Date().toISOString(),
+      motivo: pedido.motivo,
+    },
+  });
+
   return grafo.invoke(
     {
       aprovacao: {
@@ -170,7 +198,7 @@ export function criarHandlerAprovacao(deps: DepsAprovacao = DEPS_PADRAO) {
       if (!execucaoId) return res.status(404).json({ erro: 'Execução não encontrada para esta task.' });
 
       const grafo = await deps.criarGrafoComCheckpointer();
-      const resultado = await retomarGrafo(pedido, grafo, execucaoId);
+      const resultado = await retomarGrafo(pedido, grafo, execucaoId, sessao, deps.atualizarMetadadosLog);
       return res.status(200).json({ taskId: pedido.taskId, aprovado: pedido.aprovado, resultado });
     } catch (err) {
       if (err instanceof HttpError) return res.status(err.status).json({ erro: err.message });
