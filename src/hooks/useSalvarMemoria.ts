@@ -10,6 +10,9 @@ export interface SalvarMemoria {
    */
   salvar: (projectId: number | null, dados: DadosMemoria) => Promise<Memoria | null>;
   salvando: boolean;
+  /** Mensagem do último erro ao salvar (ex.: RLS), ou `null`. Limpa a cada nova tentativa. */
+  erro: string | null;
+  limparErro: () => void;
 }
 
 /** Marca a falha do gerador para distinguir de erros do banco. */
@@ -26,6 +29,7 @@ class FalhaEmbedding extends Error {}
 export function useSalvarMemoria(): SalvarMemoria {
   const toast = useToast();
   const [salvando, setSalvando] = useState(false);
+  const [erro, setErro] = useState<string | null>(null);
   const emAndamento = useRef(false);
   const gerador = useMemo(() => criarGeradorEmbedding(), []);
 
@@ -34,6 +38,7 @@ export function useSalvarMemoria(): SalvarMemoria {
       if (emAndamento.current) return null;
       emAndamento.current = true;
       setSalvando(true);
+      setErro(null);
       try {
         let motivoSemVetor: string | null = null;
         const comVetor: GeradorEmbedding = async (texto) => {
@@ -61,7 +66,9 @@ export function useSalvarMemoria(): SalvarMemoria {
         }
         return memoria;
       } catch (e) {
-        toast.erro((e as Error).message);
+        const msg = (e as Error).message;
+        setErro(msg);
+        toast.erro(msg);
         return null;
       } finally {
         emAndamento.current = false;
@@ -71,5 +78,7 @@ export function useSalvarMemoria(): SalvarMemoria {
     [gerador, toast],
   );
 
-  return { salvar, salvando };
+  const limparErro = useCallback(() => setErro(null), []);
+
+  return { salvar, salvando, erro, limparErro };
 }
