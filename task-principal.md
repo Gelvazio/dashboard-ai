@@ -913,7 +913,7 @@
   - `SUB-21.2`: `filtrarMemoriasLocal` em `src/lib/memorias.ts` (`concluido`)
   - `SUB-21.3`: Hook `useMemorias` em `src/hooks/useMemorias.ts` (`pendente`)
   - `SUB-21.4`: Componente `MemoriaCard` em `src/components/memoria/MemoriaCard.tsx` (`concluido`, `c03ffa6`)
-  - `SUB-21.5`: Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx` (`em_execucao`)
+  - `SUB-21.5`: Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx` (`concluido`, `197eb97`)
   - `SUB-21.6`: Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` (`pendente`)
   - `SUB-21.7`: Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` (`pendente`)
   - `SUB-21.8`: Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` (`pendente`)
@@ -969,15 +969,15 @@
 - **Commit:** `c03ffa6`
 - **Anotação:** Criado `src/components/memoria/MemoriaCard.tsx` (`{ memoria, onVer?, onExcluir?, className? }`): título truncado, selo Global/Projeto via `escopoMemoria` (ícones Globe/FolderKanban, com `title` explicativo), chips de tags, resumo via `resumo(content, 220)`, atualização relativa (`tempoRelativo`, `title` com `formatarDataHora`) e ações Copiar (`CopyButton` com `memoriaComoMarkdown`), Ver e Excluir (só renderizadas quando há callback; `aria-label` com o título). Exportado em `src/components/memoria/index.ts` mantendo os exports da SUB-19. `npm run typecheck`, `npm test` e `npm run build` OK.
 
-#### [ ] SUB-21.5: Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 00:57)
+#### [x] SUB-21.5: Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 00:57, conclusão: 2026-10-12 00:58)
 - **Depende de:** SUB-21.4
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Grade responsiva (1/2/3 colunas) de `MemoriaCard`, esqueletos de carregamento, estado vazio (com texto diferente para filtro ativo) e botão "Carregar mais" quando `temMais`.
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `197eb97`
+- **Anotação:** Criado `src/components/memoria/MemoriaGrid.tsx` (`{ memorias, carregando?, filtroAtivo?, temMais?, carregandoMais?, onCarregarMais?, onVer?, onExcluir?, className? }`): grade 1/2/3 colunas (`sm`/`xl`) de `MemoriaCard`; 6 esqueletos `animate-pulse` (`role="status"`) na primeira carga; estado vazio com textos distintos para "sem memórias" e "nenhuma corresponde aos filtros"; botão "Carregar mais" (`Botao` com `carregando`) quando `temMais`. Exportado em `src/components/memoria/index.ts`. `npm run typecheck`, `npm test` e `npm run build` OK.
 
 #### [ ] SUB-21.6: Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx`
 - **Status:** pendente
