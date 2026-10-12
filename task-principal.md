@@ -318,9 +318,9 @@
 - **Commit:** `746bd8d`
 - **Anotação:** api/_lib/brain-tools.ts (upsert por project_id+title, busca via match_memories com globais, delete por título/id), api/_lib/embeddings.ts (OPENAI_API_KEY, EMBEDDING_MODEL, EMBEDDING_API_URL; valida 1536 dimensões), api/_lib/args.ts (helpers compartilhados com a fila). Exige MCP_AUTH_TOKEN; servidor com MCP_ALLOWED_PROJECTS lê mas não grava memória global. tsc strict OK; e2e contra PostgREST local + embedder falso: 36 checagens (upsert, isolamento entre projetos, globais, tags, limiar, allowlist, erros da API sem vazar chave) e as 27 da fila seguem OK.
 
-### [🔄] SUB-08: Configuração de Variáveis de Ambiente e `.env.example`
-- **Status:** em_execucao
-- **Executor:** xAI (Grok) (início: 2026-10-11 22:41)
+### [ ] SUB-08: Configuração de Variáveis de Ambiente e `.env.example`
+- **Status:** em_planejamento (travada para subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-12 00:07; trava de xAI (Grok) de 2026-10-11 22:41 liberada pelo usuário, sem commits)
 - **Depende de:** SUB-06
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Documentar e padronizar as variáveis `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` (frontend) e `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `OPENAI_API_KEY`, `EMBEDDING_MODEL`, `MCP_AUTH_TOKEN`, `MCP_CORS_ORIGIN`, `MCP_DEFAULT_PROJECT`, `DASHBOARD_AI_PROJECT` (servidor/scripts) em `.env.example`.

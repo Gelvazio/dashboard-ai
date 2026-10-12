@@ -33,16 +33,16 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhuma tarefa reservada para Codex |
 
-### 🔒 TRAVA ADICIONAL — xAI (Grok)
+### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — Planejamento SUB-08
 
 | Propriedade | Valor Atual |
 |---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Status da Trava:** | 🔴 **OCUPADO (planejamento)** |
 | **Sub-task em Execução:** | **SUB-08** |
-| **Título da Sub-task:** | Configuração de Variáveis de Ambiente e `.env.example` |
-| **Agente Responsável:** | xAI (Grok) |
-| **Data e Hora de Início:** | 2026-10-11 22:41 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
+| **Título da Sub-task:** | Configuração de Variáveis de Ambiente e `.env.example` (subdivisão, sem código) |
+| **Agente Responsável:** | DashboardAI (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 00:07 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** até o commit da subdivisão (trava anterior de xAI (Grok), 22:41, liberada pelo usuário) |
 
 ---
 
@@ -52,7 +52,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
-| **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` | xAI (Grok) | 2026-10-11 22:41 | SUB-06 |
+| **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` (planejamento) | DashboardAI (Grok Bot) | 2026-10-12 00:07 | SUB-06 |
 
 ---
 
@@ -280,3 +280,5 @@
 | 2026-10-11 23:50 | DashboardAI (Grok Bot) | Lock refino | — | Trava de planejamento em SUB-19, 20, 21, 23, 25, 26 e 28 (e subtarefas) para refinar as subtarefas grandes, a pedido do usuário; SUB-27 (Codex) e SUB-08 (xAI) não travadas por mim |
 | 2026-10-11 23:51 | DashboardAI (Grok Bot) | Refino de subdivisão | (este commit) | A pedido do usuário, 21 subtarefas grandes refinadas (19.7, 20.6, 21.9, 21.10, 23.5, 23.7, 25.2, 25.3, 25.4, 26.6, 27.10, 27.15, 27.17, 27.18, 28.5, 28.7, 28.10, 28.15, 28.16, 28.17, 28.18) gerando 21 novas: 19.9, 20.8, 21.11, 21.12, 23.10–23.12, 25.6, 25.7, 26.10, 27.19–27.22 (reservadas para Codex), 28.19–28.25; dependências religadas (26.8 -> 27.17/27.21, 26.9 -> +26.10, 25.2 cita 27.22, 28.6/28.8/28.9 -> 28.19). Falhas da SUB-25.2 viram SUB-25.8+. Travas de refino liberadas; SUB-27 (Codex) e SUB-08 (xAI) intactas. Total 121; livres 16; reservadas 22; bloqueadas 83 |
 | 2026-10-11 23:55 | Codex (OpenAI) | Liberação SUB-27 | — | Por solicitação do usuário, trava liberada, mãe retornada a pendente e as 22 subtarefas disponibilizadas conforme suas dependências; sem implementação. |
+| 2026-10-12 00:07 | DashboardAI (Grok Bot) | Liberação SUB-08 (xAI) | — | Trava de xAI (Grok) na SUB-08 (desde 2026-10-11 22:41, sem nenhum commit e sem `.env.example`) liberada por decisão do usuário |
+| 2026-10-12 00:07 | DashboardAI (Grok Bot) | Lock planejamento SUB-08 | — | SUB-08 travada por DashboardAI (Grok Bot) para subdividir em subtarefas de ~3 min, a pedido do usuário |
