@@ -121,6 +121,17 @@
 | **Data e Hora de Início:** | 2026-10-12 01:12 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-21.12
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-21.12** |
+| **Título da Sub-task:** | Conferir exclusão com editor e viewer |
+| **Agente Responsável:** | DashboardAI-Clone 02 |
+| **Data e Hora de Início:** | 2026-10-12 01:12 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -129,6 +140,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-21.12** | Conferir exclusão com editor e viewer | DashboardAI-Clone 02 | 2026-10-12 01:12 | SUB-21.11 |
 | **SUB-35.9** | `listarEventos()` em `src/services/eventService.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:12 | SUB-35.8 |
 | **SUB-35.45** | Seção "Reporte de progresso (opcional)" no `AGENTS.md` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:11 | SUB-35.41 |
 | **SUB-27.11** | Tela `LoginView` em `src/views/LoginView.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:11 | SUB-27.10, SUB-27.19 |
@@ -170,7 +182,7 @@
 | **SUB-20.9** | Componente `TagSugestoes` em `src/components/ui/TagSugestoes.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias (mãe) | 4 | Fase 7 | SUB-10, SUB-12; SUB-21.1 a SUB-21.14 |
 | **SUB-21.10** | Validação visual da SUB-21 (screenshots) | 4 | Fase 7 | SUB-21.11 — ⛓️ bloqueada |
-| **SUB-21.12** | Conferir exclusão com editor e viewer | 4 | Fase 7 | SUB-21.11 — ⛓️ bloqueada |
+| **SUB-21.12** | Conferir exclusão com editor e viewer | 4 | Fase 7 | SUB-21.11 — 🔄 em execução por DashboardAI-Clone 02 |
 | **SUB-34** | Carregamento Sob Demanda de Telas e Modais (code splitting) (mãe) | 4 | Fase 6 | SUB-13, SUB-14, SUB-16, SUB-17, SUB-18; SUB-34.1 a SUB-34.6 |
 | **SUB-34.1** | Fallback `CarregandoTela` em `src/components/ui/CarregandoTela.tsx` | 4 | Fase 6 | Nenhuma — 🟢 livre |
 | **SUB-34.2** | Telas com `React.lazy` em `src/views/index.ts` | 4 | Fase 6 | Nenhuma — 🟢 livre |
@@ -671,3 +683,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:11 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.8 | `5a09109` | Em `src/types/database.ts`: `TIPOS_EVENTO_AGENTE` (const) + `TipoEventoAgente`, `AgentEvent` (colunas de `agent_events`, SUB-35.1), `AtividadeAgente` (retorno de `atividade_atual_agentes`, SUB-35.5, incl. `ultimo_heartbeat_em`) e `AgentEventInsert` (opcionais: id, task, execução, etapa, status, mensagem, metadados, chave, autor, data); `Database` registra `agent_events` (`Update: never`, só-inclusão) e a função `atividade_atual_agentes({ p_project_id })`. Reexportados por `src/types/index.ts`. Comentário do teste de integração da SUB-35.6 atualizado (segue sem tipagem para tentar o update proibido). `npm run typecheck` e `npm test` verdes. |
 | 2026-10-12 01:11 | DashboardAI-Clone 08 (Grok Bot) | SUB-35.45 | — | Lock: assumindo SUB-35.45 (Seção "Reporte de progresso (opcional)" no `AGENTS.md`) |
 | 2026-10-12 01:12 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.9 | — | Lock: assumindo SUB-35.9 (`listarEventos()` em `src/services/eventService.ts`) |
+| 2026-10-12 01:12 | DashboardAI-Clone 02 | SUB-21.12 | — | Lock: assumindo SUB-21.12 (Conferir exclusão com editor e viewer) |

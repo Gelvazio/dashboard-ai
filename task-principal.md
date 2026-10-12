@@ -920,7 +920,7 @@
   - `SUB-21.9`: Montar a `MemoriaView` (toolbar + grade) (`concluido`, `4b8d62b`)
   - `SUB-21.10`: Validação visual da SUB-21 (screenshots) (`pendente`)
   - `SUB-21.11`: Ligar detalhe e exclusão na `MemoriaView` (`concluido`, `e4bacb0`)
-  - `SUB-21.12`: Conferir exclusão com editor e viewer (`pendente`)
+  - `SUB-21.12`: Conferir exclusão com editor e viewer (`em_execucao`)
   - `SUB-21.13`: `escopoMemoria` em `src/lib/memorias.ts` (`concluido`)
   - `SUB-21.14`: `tagsDisponiveis` em `src/lib/memorias.ts` (`concluido`)
 - **Descrição:** Exibição em cartões de todas as memórias cadastradas, com botão para copiar conteúdo Markdown, visualizar detalhes e excluir memória.
@@ -1039,9 +1039,9 @@
 - **Commit:** `e4bacb0`
 - **Anotação:** Na `src/views/MemoriaView.tsx`: `onVer` do `MemoriaGrid` abre o `MemoriaDetailModal`; `onExcluir` (cartão ou modal) fecha o detalhe e abre `ConfirmDialog` (perigo, avisa quando a memória é global e que a exclusão é definitiva e some do `brain_search`); ao confirmar chama `useExcluirMemoria({ remover, reinserir })` do `useMemorias` (remoção otimista, reinsere e mostra toast se o banco/RLS recusar). `npm run typecheck`, `npm test` e `npm run build` OK.
 
-#### [ ] SUB-21.12: Conferir exclusão com editor e viewer
-- **Status:** pendente
-- **Executor:** nenhum
+#### [🔄] SUB-21.12: Conferir exclusão com editor e viewer
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-21.11
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Contra o banco local: editor exclui (some da grade, toast de sucesso); viewer tenta excluir e a memória é reinserida com toast de erro. Registrar na anotação da SUB-21.
