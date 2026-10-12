@@ -24,7 +24,7 @@
 - **Critérios de Aceitação:** Aplicação compilando com Vite, React, TS e Tailwind.
 - **Commit:** `374dc99`, `97697e3`, `25b9664` (SUB-01.1, SUB-01.2, SUB-01.3)
 - **Anotação:** Todas as subtarefas concluídas: Vite 8 + React 19 + TypeScript 5.9, Tailwind CSS v4 (PostCSS, tema, modo escuro) e lucide-react/clsx/tailwind-merge com cn(). `npm run build` e `npm run typecheck` (frontend + api/) OK.
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ✅ OK — 2026-10-12 18:26 (DeepSeek Harness (deepseek-flash)): os 3 commits citados existem (`374dc99`, `97697e3`, `25b9664`); `npm run build` (`tsc -b && vite build`) exit 0 no estado atual do repositório (built in 1,15 s, `dist/` com 35 arquivos) e `npm run typecheck:api` exit 0 — critério "aplicação compilando com Vite, React, TS e Tailwind" atendido (as 3 filhas estão conferidas nos blocos abaixo).
 
 #### [x] SUB-01.1: Inicialização do package.json, Vite, React e TypeScript
 - **Status:** concluido
@@ -37,7 +37,7 @@
 - **Commit:** `374dc99`
 - **Anotação:** package.json (type module, Node >= 20.19; scripts dev, build = tsc -b && vite build, preview, typecheck, typecheck:api), package-lock.json, vite.config.ts (plugin-react, dist com sourcemap), tsconfig.json com referências para tsconfig.app.json (só src/, moduleResolution bundler, strict) e tsconfig.node.json (vite.config.ts); api/ segue com api/tsconfig.json próprio (NodeNext) e não é incluída pelo tsconfig do frontend. devDependencies typescript ~5.9 (TS 7 nativo ainda novo para o ecossistema) e @types/node ^20 conforme a nota. index.html (pt-BR), public/favicon.svg, src/main.tsx e src/App.tsx (casca genérica). Validado: npm install sem vulnerabilidades, npm run build OK, npm run typecheck (frontend + api) OK, vite preview servindo o index.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:15 — Devin (revisão do quadro): commit e arquivos conferidos na `main`; `npm run typecheck`, `npm test` e `npm run build` verdes
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ✅ OK — 2026-10-12 18:26 (DeepSeek Harness (deepseek-flash)): commit `374dc99` existe (`feat(SUB-01.1): package.json, Vite 8, React 19 e TypeScript 5.9`); os 4 arquivos do critério existem na `main` (`package.json`, `vite.config.ts`, `tsconfig.json`, `index.html`) e os scripts `dev`, `build`, `preview` e `typecheck` continuam no `package.json`. Observação sem efeito no critério: a anotação registra "Node >= 20.19" e o `engines` atual pede `>=22.12`.
 
 #### [x] SUB-01.2: Configuração do Tailwind CSS, PostCSS e Estilos Globais
 - **Status:** concluido
@@ -49,7 +49,7 @@
 - **Commit:** `97697e3`
 - **Anotação:** postcss.config.js (@tailwindcss/postcss), tailwind.config.js (content, sombra card e animação fade-in, carregado por @config), src/index.css (@import tailwindcss; @theme com fontes, paleta brand neutra e cores de status da fila pendente/execucao/concluida/recusada/erro/cancelada; variante dark por classe .dark no html; base de body/foco/seleção; componente .card; prefers-reduced-motion). src/main.tsx importa o CSS e App.tsx usa as classes. Decisão: Tailwind v4 (atual) em vez da v3, mantendo os 3 arquivos pedidos. Validado: build OK (CSS gerado com utilitários do @theme e da config JS), typecheck OK.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:15 — Devin (revisão do quadro): commit e arquivos conferidos na `main`; `npm run typecheck`, `npm test` e `npm run build` verdes
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⚠️ RESSALVA — 2026-10-12 18:26 (DeepSeek Harness (deepseek-flash)): commit `97697e3` existe e `tailwind.config.js` e `postcss.config.js` estão na `main` (o build gera o CSS, logo o Tailwind está ativo). Porém o critério cita `src/index.css`, que **não existe mais**: o CSS global foi movido para `src/styles/index.css` pela SUB-02 (registrado na anotação daquele bloco). A entrega está em ordem; o caminho citado no critério é que ficou desatualizado.
 
 #### [x] SUB-01.3: Instalação e Verificação de Ícones e Dependências Base
 - **Status:** concluido
@@ -61,7 +61,7 @@
 - **Commit:** `25b9664`
 - **Anotação:** Dependências lucide-react, clsx e tailwind-merge; src/lib/utils.ts com cn(...classes) = twMerge(clsx(...)) para classes condicionais sem conflito de Tailwind; App.tsx usa ícones Lucide e cn() (cards Fila, Memória, Agendador). Validado: cn('px-2 py-1', true && 'bg-brand-600', false && 'hidden', 'px-4') = 'py-1 bg-brand-600 px-4'; build e typecheck (frontend + api) OK; npm audit sem vulnerabilidades.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:15 — Devin (revisão do quadro): commit e arquivos conferidos na `main`; `npm run typecheck`, `npm test` e `npm run build` verdes
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ✅ OK — 2026-10-12 18:26 (DeepSeek Harness (deepseek-flash)): commit `25b9664` existe (`feat(SUB-01.3): lucide-react, clsx e tailwind-merge com utilitário cn()`); as três dependências estão em `dependencies` (`lucide-react ^1.55.0`, `clsx ^2.1.1`, `tailwind-merge ^3.7.0`) e `src/lib/utils.ts` existe na `main` — critério "prontos para importação" atendido.
 
 ### [x] SUB-02: Estrutura Modular de Diretórios do Frontend
 - **Status:** concluido
