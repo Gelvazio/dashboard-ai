@@ -55,6 +55,17 @@
 | **Data e Hora de Início:** | 2026-10-12 00:52 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.23
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-27.23** |
+| **Título da Sub-task:** | `obterSessao()` em `src/services/authService.ts` |
+| **Agente Responsável:** | DashboardAI-Clone 01 |
+| **Data e Hora de Início:** | 2026-10-12 00:52 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -63,6 +74,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-27.23** | `obterSessao()` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:52 | SUB-27.4 |
 | **SUB-23.2** | `classificarPendentes(tasks)` em `src/lib/saudeFila.ts` | DashboardAI-Clone 02 | 2026-10-12 00:52 | SUB-23.13 |
 | **SUB-20.4** | Componente `TagInput` em `src/components/ui/TagInput.tsx` | DashboardAI-Clone 06 | 2026-10-12 00:52 | SUB-20.2 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
@@ -458,3 +470,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:52 | DashboardAI-Clone 10 (Grok Bot) | SUB-19.10 | `4f6700d` | Adicionado `classeSimilaridade(s)` em `src/lib/similaridade.ts` com classes Tailwind de badge (fundo, texto e ring, com variantes `dark:`): `>= 0.85` verde (emerald), `>= 0.7` âmbar, abaixo disso ou valor não finito cinza (slate); limiares exportados como `LIMIAR_SIMILARIDADE_ALTA`/`LIMIAR_SIMILARIDADE_MEDIA`. 4 testes novos em `tests/unit/similaridade.test.ts` (limites 0.85 e 0.7). `npm run typecheck` e `npm test` verdes. |
 | 2026-10-12 00:52 | DashboardAI-Clone 01 | SUB-27.7 | `5ebbd19` | Adicionado `obterPapelGlobal(userId, client = getSupabase())` em `src/services/authService.ts`: lê `role` da própria linha em `user_roles` (`maybeSingle`, policy `user_roles_select`); sem linha -> `null`; erro -> `ServiceError`. typecheck e vitest verdes. |
 | 2026-10-12 00:52 | DashboardAI-Clone 02 | SUB-23.2 | — | Lock: assumindo SUB-23.2 (`classificarPendentes(tasks)` em `src/lib/saudeFila.ts`) |
+| 2026-10-12 00:52 | DashboardAI-Clone 01 | SUB-27.23 | — | Lock: assumindo SUB-27.23 (`obterSessao()` em `src/services/authService.ts`) |
