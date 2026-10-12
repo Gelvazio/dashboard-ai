@@ -3267,6 +3267,38 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:05 — Claude Code (Opus 5.5): entrega verificada (`npm test` verde com e sem `.env` local; `typecheck` verde)
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
+### [x] SUB-39: Ajustes técnicos e alinhamento entre documentação e código
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** subtarefas SUB-39.1 a SUB-39.6
+- **Subtarefas:** (criadas em 2026-10-12 por Claude Code a partir do `TASKS-SUGERIDAS.md`, investigação só-leitura feita em outro clone; números trocados de SUB-36.x para SUB-39.x porque a SUB-36 já existe)
+  - `SUB-39.1`: Alinhar `maxDuration` do `README.md` ao `vercel.json` (`concluido`, `5fcf360`)
+  - `SUB-39.2`: Alinhar a allowlist do contrato (`docs/langgraph-contrato.md`) ao `worker/ferramentas.ts` (`concluido`, `e7a08be`)
+  - `SUB-39.3`: Remover `as any` de `worker/fila.ts` e `worker/falhas.ts` (`concluido`, `5df4f1d`)
+  - `SUB-39.4`: Fábrica `criarGrafoComCheckpointer` em `worker/grafoFabrica.ts` usada pelo `worker/index.ts` (`concluido`, `e789db4`)
+  - `SUB-39.5`: Usar a fábrica da SUB-39.4 em `api/aprovacao.ts` (`concluido`, `2ce9adf`)
+  - `SUB-39.6`: Isolar `tests/unit/supabase.test.ts` das variáveis do `.env` local (`concluido`, `3c18f1f`)
+- **Descrição:** Corrigir divergências entre documentação e código e reduzir castings inseguros e duplicação no worker LangGraph e na API de aprovação.
+- **Critérios de Aceitação:** Todas as filhas `concluido`; `npm run validar` e `npm run typecheck:worker` verdes.
+- **Commit:** 5fcf360 (última filha, SUB-39.1)
+- **Anotação:** Duas sugestões do `TASKS-SUGERIDAS.md` **não viraram tarefa** porque já estavam resolvidas na `main`: (1) "Corrigir referências de caminho no AGENTS.md" — os links `file:///c:/fontes/dashboard-ai/...` já foram trocados por links relativos em `4a615a1` (a correção sugerida, apontar para `dashboard-ai-kiro-dev`, também estaria errada: não é a pasta deste clone); (2) "Mitigar vulnerabilidade alta de langsmith" — feita na SUB-28.2 (`3642a8d`, `overrides` com `langsmith ^0.6.0`); `npm audit` em 2026-10-12 mostra 0 altas (restam 7 moderadas). Ajustes feitos nas sugeridas, conferidos no código: na SUB-39.2, o contrato **já tem** `brain_search` (a divergência real são `agent_event`, `task_create` e `brain_delete`); na SUB-39.3, o cast fica em `worker/fila.ts:35` (não 24) e a RPC devolve `id` numérico, `codigo`, `tentativas` e `instrucao` (a interface sugerida, com `id: string`, `titulo` e `tentativa`, estava errada); a antiga SUB-36.5 foi dividida em 2 (39.4 e 39.5) para caber em ~3 min e passa a incluir o `as unknown as any` de `api/aprovacao.ts:92`. **Fechamento (2026-10-12 21:44, Claude Code (Opus 5.5, sessão em nuvem)):** as 6 filhas estão `concluido` (39.1 `5fcf360`, 39.2 `e7a08be`, 39.3 `5df4f1d`, 39.4 `e789db4`, 39.5 `2ce9adf`, 39.6 `3c18f1f`); `npm run validar` e `npm run typecheck:worker` verdes na `main` com a SUB-39.1.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 21:44 — Claude Code (Opus 5.5, sessão em nuvem): 6 de 6 filhas `concluido`; `npm run validar` e `npm run typecheck:worker` verdes
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [x] SUB-39.1: Alinhar `maxDuration` do `README.md` ao `vercel.json`
+- **Status:** concluido
+- **Prioridade:** BAIXA
+- **Executor:** Claude Code (Opus 5.5, sessão em nuvem) (início: 2026-10-12 21:41, conclusão: 2026-10-12 21:44)
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** A seção "Deploy na Vercel → 3. Limits e timeouts" do `README.md` (linhas ~201-218) mostra um `vercel.json` de exemplo com `"maxDuration": 60` e diz "padrão 60s". O `vercel.json` real usa `30` para `api/mcp.ts` e `15` para `api/embedding.ts`. Atualizar o exemplo e o texto para os valores reais, mantendo a nota de limites por plano da Vercel (conferir os limites atuais na documentação da Vercel antes de manter os números de Hobby/Pro).
+- **Critérios de Aceitação:** Exemplo e texto do `README.md` iguais ao `vercel.json`; `npm run validar` verde.
+- **Commit:** 5fcf360
+- **Anotação:** Executada por Claude Code (Opus 5.5, sessão em nuvem) com orientação explícita do usuário ("pode pegar a SUB-39.1"), exigida pela prioridade `BAIXA` (regra 2 da seção 1.2). Na seção "Deploy na Vercel → 3. Limits e timeouts" do `README.md`, o exemplo genérico (`api/**/*.ts` com `maxDuration: 60`) virou o `vercel.json` real (`api/mcp.ts` 30s, `api/embedding.ts` 15s), com uma linha para cada função e a nota de que funções sem entrada usam o padrão do plano. Os limites por plano foram conferidos na documentação da Vercel em 2026-10-12 (o acesso direto ao vercel.com é bloqueado pela rede desta sessão; conferido pela busca restrita a vercel.com, páginas *Configuring Maximum Duration* e *Limits*): com Fluid compute, ativo por padrão em projetos novos desde 2025-04-23, Hobby tem padrão e máximo de 300s e Pro/Enterprise padrão de 300s e máximo de 800s. Os números antigos ("padrão 60s", "Hobby: máximo 60s", "Pro: até 900s") estavam desatualizados e foram trocados. Sem banco de dados. `npm run validar` verde (typecheck, testes, build, chunks, env, python e audit).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 21:44 — Claude Code (Opus 5.5, sessão em nuvem): entrega verificada (exemplo e texto do `README.md` iguais ao `vercel.json`; `npm run validar` verde)
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
 ---
 
 ## 🔐 FASE 14: Login — Cadastro de Usuário e Administrador Inicial
