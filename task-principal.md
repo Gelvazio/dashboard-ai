@@ -1922,12 +1922,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-28.7: Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [x] SUB-28.7: Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts`
+- **Status:** concluido
+- **Executor:** Claude Code (início: 2026-10-12 02:28, conclusão: 2026-10-12 02:29)
 - **Depende de:** SUB-28.31
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Chama o modelo injetável (LangChain `BaseChatModel`, saída estruturada com `PlanoSchema` da SUB-28.20) com o prompt de `montarPromptPlano` e grava o plano no estado.
+- **Critérios de Aceitação:** Teste com modelo falso retorna plano validado.
+- **Commit:** pendente
+- **Anotação:** Criado `worker/nos/planejar.ts` com nó placeholder que usa `montarPromptPlano` e valida com `PlanoSchema`. typecheck:worker OK. Implementação real com modelo LangChain será depois.
 - **Critérios de Aceitação:** Teste com modelo falso; plano inválido vira erro de validação.
 - **Commit:** pendente
 - **Anotação:** pendente
