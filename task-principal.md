@@ -1352,15 +1352,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-26.1: Esqueleto do `README.md`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 01:00)
+#### [x] SUB-26.1: Esqueleto do `README.md`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 01:00 → 2026-10-12 01:01)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Reescrever o `README.md` com título, descrição do produto genérico multi-projeto, badges simples e sumário com âncoras para as seções: Arquitetura, Execução local, Banco de dados, Deploy na Vercel, Agentes de IA (fila via MCP), Memória via MCP, Segurança, Validação. Cada seção com um parágrafo provisório.
 - **Critérios de Aceitação:** Markdown renderiza no GitHub; âncoras do sumário funcionam.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `67e13c2`
+- **Anotação:** Reescrito o `README.md`: título, descrição do gerenciador genérico multi-projeto (fila via MCP, travas, dependências, memória pgvector, painel React), badges (Node 22+, React 19, TS, Supabase, Vercel, licença) e sumário com âncoras para Arquitetura, Execução local, Banco de dados, Deploy na Vercel, Agentes de IA (fila via MCP), Memória via MCP, Segurança e Validação, cada uma com parágrafo provisório apontando a SUB-26.x que a detalha. Âncoras conferidas no formato do GitHub (todas casam com os títulos). Só documentação.
 
 #### [ ] SUB-26.2: Seção Arquitetura
 - **Status:** pendente
