@@ -791,7 +791,7 @@
   - `SUB-20.1`: `validarMemoria(dados)` em `src/lib/memoriaForm.ts` (`concluido`, `5662f1a`)
   - `SUB-20.2`: `parseTags(texto)` em `src/lib/memoriaForm.ts` (`concluido`, `78a1e70`)
   - `SUB-20.3`: `sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts` (`concluido`, `e5e67e5`)
-  - `SUB-20.4`: Componente `TagInput` em `src/components/ui/TagInput.tsx` (`em_execucao`)
+  - `SUB-20.4`: Componente `TagInput` em `src/components/ui/TagInput.tsx` (`concluido`, `3d44cd1`)
   - `SUB-20.5`: Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts` (`pendente`)
   - `SUB-20.6`: Modal `MemoriaFormModal` em `src/components/memoria/` (`pendente`)
   - `SUB-20.7`: Botão "Nova memória" na `src/views/MemoriaView.tsx` (`pendente`)
@@ -834,15 +834,15 @@
 - **Commit:** `e5e67e5`
 - **Anotação:** Adicionado `sugerirTags(titulo, conteudo, max = 5)` em `src/lib/memoriaForm.ts`: usa `palavrasDe` (SUB-20.10) no título (peso 2) e no conteúdo (peso 1), soma a frequência, ordena por pontuação decrescente com desempate alfabético e devolve as `max` primeiras (`max <= 0` -> vazio). Determinística. 6 testes novos em `tests/unit/memoriaForm.test.ts`. `npm run typecheck` e `npm test` verdes.
 
-#### [ ] SUB-20.4: Componente `TagInput` em `src/components/ui/TagInput.tsx`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 00:52)
+#### [x] SUB-20.4: Componente `TagInput` em `src/components/ui/TagInput.tsx`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 00:52; conclusão: 2026-10-12 00:53)
 - **Depende de:** SUB-20.2
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/components/ui/TagInput.tsx` com props `{ valor: string[]; onChange; erro?: string }`: chips removíveis, adiciona com Enter/vírgula usando `parseTags`, Backspace no campo vazio remove o último. As sugestões ficam no `TagSugestoes` (SUB-20.9).
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `3d44cd1`
+- **Anotação:** Criado `src/components/ui/TagInput.tsx` (`{ valor, onChange, erro?, rotulo?, placeholder?, desabilitado? }`): chips `#tag` com botão de remover (aria-label), Enter/vírgula adicionam o texto via `parseTags` (ignora tags já presentes), Backspace com campo vazio remove a última, colar texto com separadores adiciona várias, perder o foco confirma o texto pendente; erro com `aria-invalid`/`aria-describedby` e borda vermelha; modo escuro. Sugestões ficam no `TagSugestoes` (SUB-20.9). `npm run typecheck`, `npm run build` e `npm test` OK.
 
 #### [ ] SUB-20.5: Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts`
 - **Status:** pendente
