@@ -2,3 +2,4 @@
 export { LoginForm, type LoginFormProps } from './LoginForm';
 export { RecuperarAcesso, type RecuperarAcessoProps } from './RecuperarAcesso';
 export { RotaProtegida, type RotaProtegidaProps } from './RotaProtegida';
+export { CadastroForm, type CadastroFormProps } from './CadastroForm';
