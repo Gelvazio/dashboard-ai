@@ -7,9 +7,9 @@
 ---
 
 ## 📊 Resumo de Progresso
-- **Total de Tasks Principais:** 26
+- **Total de Tasks Principais:** 27
 - **Em Execução:** 1 (`SUB-01.1`)
-- **Pendentes:** 23
+- **Pendentes:** 24
 - **Concluídas:** 4
 - **Canceladas:** 0
 
@@ -19,7 +19,7 @@
 
 ### [ ] SUB-01: Setup do Projeto Frontend
 - **Status:** em_execucao
-- **Executor:** Antigravity AI (início: 2026-10-11 22:13)
+- **Executor:** Gemini (Antigravity) (início: 2026-10-11 22:13)
 - **Depende de:** Nenhuma
 - **Subtarefas:**
   - `SUB-01.1`: Inicialização do package.json, Vite, React e TypeScript (`em_execucao`)
@@ -32,7 +32,7 @@
 
 #### [ ] SUB-01.1: Inicialização do package.json, Vite, React e TypeScript
 - **Status:** em_execucao
-- **Executor:** Antigravity AI
+- **Executor:** Gemini (Antigravity)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Critérios de Aceitação:** `package.json`, `vite.config.ts`, `tsconfig.json` e `index.html` criados.
@@ -340,5 +340,15 @@
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Documentar no `README.md` a arquitetura da solução, guia de execução local, deploy na Vercel e instruções para agentes de IA operarem a fila e a memória.
 - **Critérios de Aceitação:** Documentação clara, completa e em conformidade com as regras do projeto.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+### [ ] SUB-27: Autenticação e Login com Supabase Auth
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-03
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Implementar tela e fluxo de login do Dashboard usando Supabase Auth, mantendo a sessão do usuário, protegendo as áreas autenticadas e oferecendo logout.
+- **Critérios de Aceitação:** Login e logout funcionam via Supabase Auth; sessão é restaurada e páginas privadas redirecionam usuários não autenticados; chamadas ao banco usam o JWT do usuário e respeitam RLS; somente a chave pública anon pode estar no frontend, sem senha persistida nem chave service_role exposta.
 - **Commit:** pendente
 - **Anotação:** pendente
