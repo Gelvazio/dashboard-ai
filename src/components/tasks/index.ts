@@ -7,3 +7,4 @@ export { TaskFormModal } from './TaskFormModal';
 export { TaskRowActions } from './TaskRowActions';
 export { TaskDetailModal } from './TaskDetailModal';
 export { TaskToolbar } from './TaskToolbar';
+export { PendentesResumo, type PendentesResumoProps } from './PendentesResumo';
