@@ -2147,7 +2147,7 @@
 - **Subtarefas:** (criada e subdividida em 46 em 2026-10-12 00:39 por DashboardAI (Grok Bot) a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`)
   - `SUB-35.1`: Tabela `agent_events` em `database/07_agent_events.sql` (`concluido`)
   - `SUB-35.2`: Trigger `validar_agent_event` em `database/07_agent_events.sql` (`concluido`)
-  - `SUB-35.3`: RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql` (`em_execucao`)
+  - `SUB-35.3`: RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql` (`concluido`)
   - `SUB-35.4`: Publicar `agent_events` no Supabase Realtime (`pendente`)
   - `SUB-35.5`: Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` (`pendente`)
   - `SUB-35.6`: Teste de integração de `agent_events` (RLS e trigger) (`pendente`)
@@ -2217,15 +2217,15 @@
 - **Commit:** `54cdea9`
 - **Anotação:** Adicionados `public.validar_agent_event()` (plpgsql, `security invoker`, `search_path = public`) e o trigger `validar_agent_event_trg` (`before insert or update`) em `database/07_agent_events.sql`, no padrão de `agent_messages_preparar` (06): task informada precisa ser do mesmo projeto (erro "a task N não pertence ao projeto do evento"), `task_codigo` preenchido a partir da task; no insert, `task_codigo` sem `task_id` resolve a task do projeto (código sem task é aceito, ex. subtarefa só no quadro); `agente` com trim; interface (anon/authenticated) não escolhe `criado_por`; em update recusa mudar `project_id`, `agente` e `created_at` e preserva `criado_por`. Validado em Postgres 17 local: 00–07 aplicados em banco limpo e 07 reaplicado; task de outro projeto e as 3 alterações proibidas falham com mensagem clara; resolução por código e update de `mensagem` OK.
 
-#### [ ] SUB-35.3: RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 01:05)
+#### [x] SUB-35.3: RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 01:05; conclusão: 2026-10-12 01:05)
 - **Depende de:** SUB-35.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Habilitar RLS e criar as policies: `select` para quem tem `tem_acesso_projeto(project_id, 'viewer')`; `insert` para `tem_acesso_projeto(project_id, 'editor')`; sem policies de `update`/`delete` (só o service_role/administração apaga). `grant select, insert` para `authenticated`.
 - **Critérios de Aceitação:** Aplicação limpa; `\dp agent_events` mostra RLS ativa.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `2d714d4`
+- **Anotação:** Em `database/07_agent_events.sql`: RLS habilitada em `agent_events`; `revoke all` de anon/authenticated, `grant select, insert` para `authenticated` e `all` para `service_role`; policies `agent_events_select` (`tem_acesso_projeto(project_id, 'viewer')`) e `agent_events_insert` (`tem_acesso_projeto(project_id, 'editor')`); sem policies/grants de update/delete (eventos só-inclusão). Validado em Postgres 17 local (00–07 + 07 reaplicado; `\\dp agent_events` mostra as policies e `relrowsecurity = t`); smoke com `test_multi_projeto.sql`: viewer só lê o próprio projeto e não inclui; editor inclui no próprio projeto (`criado_por` = ele), é recusado em outro projeto e não tem update/delete; anon sem acesso.
 
 #### [ ] SUB-35.4: Publicar `agent_events` no Supabase Realtime
 - **Status:** pendente

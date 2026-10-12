@@ -55,17 +55,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:04 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 05 (Grok Bot) — SUB-35.3
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.3** |
-| **Título da Sub-task:** | RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql` |
-| **Agente Responsável:** | DashboardAI-Clone 05 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:05 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.20
 
 | Propriedade | Valor Atual |
@@ -92,13 +81,12 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-23.12** | Teste de integração de `liberarTrava`: viewer e outro projeto | DashboardAI-Clone 02 | 2026-10-12 01:05 | SUB-23.4 |
 | **SUB-27.20** | Limpar `ProjetoContext` ao sair | DashboardAI-Clone 01 | 2026-10-12 01:05 | SUB-27.26 |
-| **SUB-35.3** | RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:05 | SUB-35.1 |
 | **SUB-19.7** | Painel `BuscaSemanticaPanel` (campo, grade e estados) | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:04 | SUB-19.5, SUB-19.6, SUB-19.9 |
 | **SUB-21.9** | Montar a `MemoriaView` (toolbar + grade) | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:04 | SUB-21.3, SUB-21.5, SUB-21.8 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
@@ -255,10 +243,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (82)
+### ✅ CONCLUÍDAS (83)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-35.3** | RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:05 | 2026-10-12 01:05 | `2d714d4` |
 | **SUB-21.7** | Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` | DashboardAI-Clone 06 | 2026-10-12 01:03 | 2026-10-12 01:05 | `ad9bd52` |
 | **SUB-27.15** | Rechecar conexão no login/logout em `src/hooks/useConexao.ts` | DashboardAI-Clone 01 | 2026-10-12 01:04 | 2026-10-12 01:05 | `65932ae` |
 | **SUB-26.7** | Seção Memória via MCP | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:03 | 2026-10-12 01:04 | `7fa647b` |
@@ -588,3 +577,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:05 | DashboardAI-Clone 06 | SUB-21.7 | `ad9bd52` | Criado `src/hooks/useExcluirMemoria.ts` (exportado em `src/hooks/index.ts`): `useExcluirMemoria({ remover, reinserir, onExcluida? })` -> `{ excluir(memoria): Promise<boolean>, excluindo: Set<id> }`. Remove da lista na hora (otimista), chama `excluirMemoria` (SUB-10, que já recusa quando a RLS não apaga nenhuma linha); em erro reinsere a memória e mostra `toast.erro`, em sucesso `toast.sucesso` e `onExcluida`. `npm run typecheck` e `npm test` OK. |
 | 2026-10-12 01:05 | DashboardAI-Clone 01 | SUB-27.20 | — | Lock: assumindo SUB-27.20 (Limpar `ProjetoContext` ao sair) |
 | 2026-10-12 01:05 | DashboardAI-Clone 02 | SUB-23.12 | — | Lock: assumindo SUB-23.12 (Teste de integração de `liberarTrava`: viewer e outro projeto) |
+| 2026-10-12 01:05 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.3 | `2d714d4` | Em `database/07_agent_events.sql`: RLS habilitada em `agent_events`; `revoke all` de anon/authenticated, `grant select, insert` para `authenticated` e `all` para `service_role`; policies `agent_events_select` (`tem_acesso_projeto(project_id, 'viewer')`) e `agent_events_insert` (`tem_acesso_projeto(project_id, 'editor')`); sem policies/grants de update/delete (eventos só-inclusão). Validado em Postgres 17 local (00–07 + 07 reaplicado; `\\dp agent_events` mostra as policies e `relrowsecurity = t`); smoke com `test_multi_projeto.sql`: viewer só lê o próprio projeto e não inclui; editor inclui no próprio projeto (`criado_por` = ele), é recusado em outro projeto e não tem update/delete; anon sem acesso. |
