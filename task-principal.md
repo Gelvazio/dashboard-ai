@@ -49,17 +49,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.22
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-27.22** |
-| **Título da Sub-task:** | Conferência no navegador (entrar, sair, restaurar sessão) — SUB-27 |
-| **Agente Responsável:** | DashboardAI-Clone 01 |
-| **Data e Hora de Início:** | 2026-10-12 01:40 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-35.30
 
 | Propriedade | Valor Atual |
@@ -1766,15 +1755,15 @@
 - **Commit:** `663e597`
 - **Anotação:** Nova seção "Primeiro administrador e membros" no `database/README.md` (substitui o trecho curto de "Como aplicar"): tabela de papéis (`user_roles` admin/member; `project_members` owner > editor > viewer), como achar o `auth.users.id`, `insert ... on conflict` do 1º admin pelo SQL Editor (a RLS só deixa admin gravar em `user_roles`), adicionar/trocar papel e remover membro por slug + e-mail, consulta de quem tem acesso e aviso sobre `service_role` x login anon e `app_metadata.role`. Só e-mails de exemplo, sem chaves. Todos os SQLs conferidos num banco local descartável (schema 00–07 + `auth.users` mínimo).
 
-#### [ ] SUB-27.22: Conferência no navegador (entrar, sair, restaurar sessão) — SUB-27
-- **Status:** em_execucao
+#### [x] SUB-27.22: Conferência no navegador (entrar, sair, restaurar sessão) — SUB-27
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.18
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Conferir no navegador entrar, sair e restaurar sessão (recarregar a página); registrar na anotação da SUB-27.
 - **Critérios de Aceitação:** Fluxos conferidos; nenhum erro no console.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `(este commit)`
+- **Anotação:** Conferência no navegador (Chrome headless via CDP, 1280x800) contra Postgres + PostgREST locais e um Auth simulado no proxy (harness não commitado): sem sessão abre o login; senha errada mostra "E-mail ou senha inválidos." (role=alert); entrar leva à Fila com "Projeto Demo", e-mail e Sair no header e sessão em `sb-localhost-auth-token`; recarregar a página restaura a sessão; Sair chama `/auth/v1/logout`, volta ao login e limpa a sessão (continua deslogado após recarregar). Nenhum erro/aviso no console.
 
 #### [x] SUB-27.23: `obterSessao()` em `src/services/authService.ts`
 - **Status:** concluido
