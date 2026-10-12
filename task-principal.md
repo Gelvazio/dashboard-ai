@@ -47,8 +47,8 @@
 - **Subtarefas atômicas (~3 min):** 203
 - **Em Execução:** 0
 - **Pendentes:** 4 principais (25, 26, 28, 35) + 21 subtarefas
-  - livres agora: 8 (SUB-26.5, SUB-28.2, SUB-28.16, SUB-28.17, SUB-28.24, SUB-35.32, SUB-25.4, SUB-25.7)
-  - bloqueadas por dependência: 13
+  - livres agora: 11 (SUB-26.5, SUB-28.2, SUB-28.16, SUB-28.17, SUB-28.24, SUB-35.32, SUB-25.4, SUB-25.7, SUB-35.34, SUB-35.35, SUB-35.37)
+  - bloqueadas por dependência: 10
   - reservadas: 0
 - **Concluídas:** 215 de 240 blocos (33 principais + 182 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
