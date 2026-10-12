@@ -33,26 +33,16 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhuma tarefa reservada para Codex |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — SUB-33.2
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-33.2** |
-| **Título da Sub-task:** | `verificarSessaoSupabase(token)` em `api/_lib/auth.ts` |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 00:23 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém mais assume a SUB-33.2 |
-
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (1)
+### 🔄 EM EXECUÇÃO (0)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
-| **SUB-33.2** | `verificarSessaoSupabase(token)` em `api/_lib/auth.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:23 | SUB-33.1 |
+
+*(Nenhuma tarefa em execução)*
 
 ---
 
@@ -64,7 +54,7 @@
 
 > **SUB-27 liberada a pedido do usuário** (2026-10-11 23:55): mãe e 22 subtarefas estão disponíveis; cada agente deve respeitar as dependências indicadas. Nenhum código da SUB-27 havia sido enviado à main.
 
-**🟢 Livres agora (25):** SUB-33.3, SUB-33.5, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.3, SUB-21.13, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1
+**🟢 Livres agora (26):** SUB-33.3, SUB-33.5, SUB-33.10, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.3, SUB-21.13, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
@@ -194,7 +184,7 @@
 | **SUB-33.7** | `criarGeradorEmbedding()` em `src/services/embeddingService.ts` | 3 | Fase 2B | SUB-33.11 — ⛓️ bloqueada |
 | **SUB-33.8** | Testes de `embeddingService` em `tests/unit/embeddingService.test.ts` | 3 | Fase 2B | SUB-33.7 — ⛓️ bloqueada |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | 3 | Fase 2B | SUB-33.11 — ⛓️ bloqueada |
-| **SUB-33.10** | Autenticação no handler `api/embedding.ts` (401) | 3 | Fase 2B | SUB-33.4, SUB-33.2 — ⛓️ bloqueada |
+| **SUB-33.10** | Autenticação no handler `api/embedding.ts` (401) | 3 | Fase 2B | SUB-33.4, SUB-33.2 — 🟢 livre |
 | **SUB-33.11** | Corpo, geração do embedding e erros no handler (400/413/502/200) | 3 | Fase 2B | SUB-33.10, SUB-33.3 — ⛓️ bloqueada |
 | **SUB-33.12** | Testes do handler: 413, 502 e 200 | 3 | Fase 2B | SUB-33.11 — ⛓️ bloqueada |
 | **SUB-27** | Autenticação e Login com Supabase Auth (mãe; pendente, liberada) | 3 | Fase 10 | SUB-03, SUB-29; SUB-27.1 a SUB-27.28 — 🟢 livre |
@@ -229,7 +219,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (30)
+### ✅ CONCLUÍDAS (31)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -263,6 +253,7 @@
 | **SUB-33.1** | `bearerToken(req)` em `api/_lib/auth.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:20 | 2026-10-12 00:20 | `78a4689` |
 | **SUB-33.4** | Esqueleto do handler `api/embedding.ts` (CORS, OPTIONS, 405) | DashboardAI (Grok Bot) | 2026-10-12 00:21 | 2026-10-12 00:21 | `8660199` |
 | **SUB-21.1** | `memoriaComoMarkdown` em `src/lib/memorias.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:22 | 2026-10-12 00:22 | `7b2ef64` |
+| **SUB-33.2** | `verificarSessaoSupabase(token)` em `api/_lib/auth.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:23 | 2026-10-12 00:23 | `b7d1188` |
 
 ---
 
@@ -330,3 +321,4 @@
 | 2026-10-12 00:22 | DashboardAI (Grok Bot) | SUB-21.1 | — | Lock: assumindo SUB-21.1 (`memoriaComoMarkdown` em `src/lib/memorias.ts`) |
 | 2026-10-12 00:22 | DashboardAI (Grok Bot) | SUB-21.1 | `7b2ef64` | Criado `src/lib/memorias.ts` com `memoriaComoMarkdown(m)`: `# título`, linha `**Tags:**` (omitida se vazia), `**Escopo:** global|projeto` (`project_id` nulo = global) e o conteúdo. Testes em `tests/unit/memorias.test.ts`. `npm run typecheck` (app + api) e `npm test` verdes. |
 | 2026-10-12 00:23 | DashboardAI (Grok Bot) | SUB-33.2 | — | Lock: assumindo SUB-33.2 (`verificarSessaoSupabase(token)` em `api/_lib/auth.ts`) |
+| 2026-10-12 00:23 | DashboardAI (Grok Bot) | SUB-33.2 | `b7d1188` | Adicionados `AuthError` e `verificarSessaoSupabase(token, env)` em `api/_lib/auth.ts`: `GET ${SUPABASE_URL}/auth/v1/user` com `Authorization: Bearer` e `apikey` (`SUPABASE_ANON_KEY` ou `SUPABASE_SERVICE_ROLE_KEY`), timeout 10 s; 200 com `id` -> `{ userId }`, 401/403 -> `null`, demais casos (config ausente, rede, timeout, HTTP != 2xx, corpo sem id) -> `AuthError` sem chave/token na mensagem. Testes 200/401/403/500/timeout/sem config em `tests/unit/api-auth.test.ts`. typecheck (app + api) e `npm test` verdes. |
