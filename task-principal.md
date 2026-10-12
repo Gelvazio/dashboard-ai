@@ -1560,15 +1560,15 @@
 - **Commit:** `5ebbd19`
 - **Anotação:** Adicionado `obterPapelGlobal(userId, client = getSupabase())` em `src/services/authService.ts`: lê `role` da própria linha em `user_roles` (`maybeSingle`, policy `user_roles_select`); sem linha -> `null`; erro -> `ServiceError`. typecheck e vitest verdes.
 
-#### [ ] SUB-27.8: Teste de integração dos papéis em `tests/integration/authService.integration.test.ts`
-- **Status:** em_execucao
+#### [x] SUB-27.8: Teste de integração dos papéis em `tests/integration/authService.integration.test.ts`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.25
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Com `tests/helpers/postgrest.ts` (JWT `authenticated` com `sub`): usuário vê o próprio papel e não o de outro; admin retorna `admin` em qualquer projeto; editor/viewer retornam o papel do projeto; não membro retorna `null`.
 - **Critérios de Aceitação:** `npm run test:integration` passa (skipped sem PostgREST; `npm test` segue verde).
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `ca52028`
+- **Anotação:** Criado `tests/integration/authService.integration.test.ts` (PostgREST local, JWT `authenticated`): usuário vê o próprio papel global e não o de outro; admin global -> `admin` em qualquer projeto; editor/viewer -> papel do projeto; não membro -> `null`. `npm run test:integration` 21/21 (Node 20 da box precisou de `NODE_OPTIONS=--experimental-websocket`; o projeto exige Node 22+); `npm test` verde (skipped sem PostgREST).
 
 #### [x] SUB-27.9: `AuthProvider` em `src/hooks/AuthContext.tsx`
 - **Status:** concluido
