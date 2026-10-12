@@ -10,12 +10,12 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
 - **Subtarefas atômicas (~3 min):** 153 (SUB-08.x, SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x; atualizado em 2026-10-12 00:17)
-- **Em Execução:** 2 (SUB-33.4, SUB-23.1)
-- **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 150 subtarefas
-  - livres agora: 25 (SUB-33.2, SUB-33.3, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.1, SUB-21.3, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
-  - bloqueadas por dependência: 123
+- **Em Execução:** 1 (SUB-23.1)
+- **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 149 subtarefas
+  - livres agora: 26 (SUB-33.2, SUB-33.3, SUB-33.5, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.1, SUB-21.3, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
+  - bloqueadas por dependência: 122
   - reservadas: 0
-- **Concluídas:** 28
+- **Concluídas:** 29
 - **Canceladas:** 0
 
 ---
@@ -160,7 +160,7 @@
   - `SUB-33.1`: `bearerToken(req)` em `api/_lib/auth.ts` (`concluido`)
   - `SUB-33.2`: `verificarSessaoSupabase(token)` em `api/_lib/auth.ts` (`pendente`)
   - `SUB-33.3`: `lerTextoEmbedding(body)` em `api/_lib/embedding-input.ts` (`pendente`)
-  - `SUB-33.4`: Esqueleto do handler `api/embedding.ts` (CORS, OPTIONS, 405) (`em_execucao`)
+  - `SUB-33.4`: Esqueleto do handler `api/embedding.ts` (CORS, OPTIONS, 405) (`concluido`)
   - `SUB-33.5`: Registrar `api/embedding.ts` no `vercel.json` (`pendente`)
   - `SUB-33.6`: Testes do handler: OPTIONS, 405 e 401 (`pendente`)
   - `SUB-33.7`: `criarGeradorEmbedding()` em `src/services/embeddingService.ts` (`pendente`)
@@ -205,15 +205,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-33.4: Esqueleto do handler `api/embedding.ts` (CORS, OPTIONS, 405)
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (desde 2026-10-12 00:21)
+#### [x] SUB-33.4: Esqueleto do handler `api/embedding.ts` (CORS, OPTIONS, 405)
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:21 → 2026-10-12 00:21)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `api/embedding.ts` com default export `handler(req: McpRequest, res: McpResponse)` (tipos de `api/_lib/http.ts`): cabeçalhos CORS iguais ao `api/mcp.ts` (`MCP_CORS_ORIGIN`, métodos `POST, OPTIONS`, `Authorization`), `OPTIONS` -> 204, não-POST -> 405 com `Allow: POST, OPTIONS` e JSON `{ erro }`; POST responde 501 provisório (substituído na SUB-33.11).
 - **Critérios de Aceitação:** `npm run typecheck:api` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `8660199`
+- **Anotação:** Criado `api/embedding.ts` (default export `handler(req: McpRequest, res: McpResponse)`): CORS como o `api/mcp.ts` (`MCP_CORS_ORIGIN`, métodos `POST, OPTIONS`, cabeçalhos `Content-Type, Authorization`), `OPTIONS` -> 204, não-POST -> 405 com `Allow: POST, OPTIONS` e `{ erro }`; POST -> 501 provisório (substituído na SUB-33.11). `npm run typecheck` (app + api) e `npm test` verdes.
 
 #### [ ] SUB-33.5: Registrar `api/embedding.ts` no `vercel.json`
 - **Status:** pendente
