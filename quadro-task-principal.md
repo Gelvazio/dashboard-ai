@@ -33,17 +33,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-08.8
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-08.8** |
-| **Título da Sub-task:** | `extrairVariaveis(texto)` em `scripts/checar-env.mjs` + testes |
-| **Agente Responsável:** | DashboardAI-Clone 08 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 00:54 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-23.6
 
 | Propriedade | Valor Atual |
@@ -92,7 +81,7 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (4)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
@@ -100,7 +89,6 @@
 | **SUB-23.11** | `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:55 | SUB-23.3 |
 | **SUB-27.9** | `AuthProvider` em `src/hooks/AuthContext.tsx` | DashboardAI-Clone 01 | 2026-10-12 00:55 | SUB-27.23, SUB-27.25 |
 | **SUB-23.6** | Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts` | DashboardAI-Clone 02 | 2026-10-12 00:54 | SUB-23.3, SUB-23.4 |
-| **SUB-08.8** | `extrairVariaveis(texto)` em `scripts/checar-env.mjs` + testes | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:54 | Nenhuma |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
@@ -290,10 +278,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (57)
+### ✅ CONCLUÍDAS (58)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-08.8** | `extrairVariaveis(texto)` em `scripts/checar-env.mjs` + testes | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:54 | 2026-10-12 00:55 | `fb7f8bf` |
 | **SUB-27.6** | Testes unitários de `authService` em `tests/unit/authService.test.ts` | DashboardAI-Clone 01 | 2026-10-12 00:54 | 2026-10-12 00:55 | `f830757` |
 | **SUB-20.5** | Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts` | DashboardAI-Clone 06 | 2026-10-12 00:54 | 2026-10-12 00:54 | `3208e66` |
 | **SUB-27.25** | `papelNoProjeto()` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:53 | 2026-10-12 00:54 | `6223e85` |
@@ -516,3 +505,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:55 | DashboardAI-Clone 01 | SUB-27.9 | — | Lock: assumindo SUB-27.9 (`AuthProvider` em `src/hooks/AuthContext.tsx`) |
 | 2026-10-12 00:55 | DashboardAI-Clone 10 (Grok Bot) | SUB-23.11 | — | Lock: assumindo SUB-23.11 (`PendentesResumo` em `src/components/tasks/PendentesResumo.tsx`) |
 | 2026-10-12 00:55 | DashboardAI-Clone 06 | SUB-20.6 | — | Lock: assumindo SUB-20.6 (Modal `MemoriaFormModal` em `src/components/memoria/`) |
+| 2026-10-12 00:55 | DashboardAI-Clone 08 (Grok Bot) | SUB-08.8 | `fb7f8bf` | Criado `scripts/checar-env.mjs` (Node, sem dependências) exportando `extrairVariaveis(texto)`: reconhece `process.env.X`, `import.meta.env.X`, `env.X` (só maiúsculas), `env['X']`, `os.environ.get('X')`, `os.environ['X']` e `os.getenv('X')`; sem repetidos, ordenada. 8 testes em `tests/unit/checar-env.test.ts`. `npm run typecheck` e `npm test` verdes. |

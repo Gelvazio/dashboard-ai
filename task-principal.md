@@ -420,15 +420,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-08.8: `extrairVariaveis(texto)` em `scripts/checar-env.mjs` + testes
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 00:54)
+#### [x] SUB-08.8: `extrairVariaveis(texto)` em `scripts/checar-env.mjs` + testes
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 00:54 → 2026-10-12 00:55)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `scripts/checar-env.mjs` (Node, sem dependências) exportando só `extrairVariaveis(texto): string[]` (reconhece `process.env.X`, `import.meta.env.X`, `env.X` em maiúsculas e `os.environ.get("X")`/`os.environ["X"]`; sem repetidos, ordenada). Testes em `tests/unit/checar-env.test.ts`.
 - **Critérios de Aceitação:** `npm test` passa (um caso por padrão reconhecido); `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `fb7f8bf`
+- **Anotação:** Criado `scripts/checar-env.mjs` (Node, sem dependências) exportando `extrairVariaveis(texto)`: reconhece `process.env.X`, `import.meta.env.X`, `env.X` (só maiúsculas), `env['X']`, `os.environ.get('X')`, `os.environ['X']` e `os.getenv('X')`; sem repetidos, ordenada. 8 testes em `tests/unit/checar-env.test.ts`. `npm run typecheck` e `npm test` verdes.
 
 #### [ ] SUB-08.9: CLI `npm run check:env` (toda variável usada está no `.env.example`)
 - **Status:** pendente
