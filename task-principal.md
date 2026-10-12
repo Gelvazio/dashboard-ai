@@ -440,15 +440,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-08.10: `variaveisDoExemplo(texto)` em `scripts/checar-env.mjs` + testes
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 00:56)
+#### [x] SUB-08.10: `variaveisDoExemplo(texto)` em `scripts/checar-env.mjs` + testes
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 00:56 → 2026-10-12 00:56)
 - **Depende de:** SUB-08.8
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar a `scripts/checar-env.mjs` `variaveisDoExemplo(texto): string[]` (nomes das linhas `NOME=` do `.env.example`, ignorando comentários e linhas vazias). Testes em `tests/unit/checar-env.test.ts`.
 - **Critérios de Aceitação:** `npm test` passa; `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `ad56d9b`
+- **Anotação:** Adicionado `variaveisDoExemplo(texto)` em `scripts/checar-env.mjs`: nomes das linhas `NOME=` (aceita `export NOME=` e CRLF) do `.env.example`, ignorando comentários e linhas vazias; sem repetidos, ordenada. No `.env.example` atual devolve as 14 variáveis. 2 testes novos em `tests/unit/checar-env.test.ts`. `npm run typecheck` e `npm test` verdes.
 
 #### [ ] SUB-08.11: `listarArquivosFonte(dirs)` em `scripts/checar-env.mjs` + teste
 - **Status:** pendente
