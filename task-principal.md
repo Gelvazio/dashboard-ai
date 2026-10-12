@@ -168,7 +168,7 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:25 (Claude Code): pendente (depende de 26.3 e SUB-25). `README.md` ainda tem 2 placeholders "Seção provisória" (linhas 90 e 535).
 
 ---
 
