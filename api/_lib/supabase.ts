@@ -41,7 +41,7 @@ export function supabaseConfig(env: NodeJS.ProcessEnv = process.env): SupabaseCo
 type Query = Record<string, string | undefined>;
 
 export async function rest<T = unknown>(
-  method: 'GET' | 'POST' | 'PATCH',
+  method: 'GET' | 'POST' | 'PATCH' | 'DELETE',
   path: string,
   options: { query?: Query; body?: unknown; prefer?: string; config?: SupabaseConfig } = {},
 ): Promise<T> {

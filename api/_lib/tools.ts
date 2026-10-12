@@ -4,8 +4,9 @@
  * O roteador em `api/mcp.ts` usa este registro para responder `tools/list` e
  * despachar `tools/call` pelo nome em `params.name` (padrão MCP).
  *
- * As primitivas `brain_store`, `brain_search` e `brain_delete` (Supabase +
- * embeddings) são registradas na SUB-07 via `registerTool(...)`.
+ * Cada módulo registra as suas via `registerTool(...)` ao ser importado em mcp.ts:
+ *   - `queue-tools.ts`: task_next, task_finish, task_list, task_create (fila)
+ *   - `brain-tools.ts`: brain_store, brain_search, brain_delete (memória + embeddings)
  */
 
 /** Bloco de conteúdo de resultado de ferramenta (MCP). */
