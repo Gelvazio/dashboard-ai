@@ -103,3 +103,19 @@ apontando para o Supabase de produção (`fcmntkzpjoetdabllabn`, scripts `00` a 
 Ressalva: a sessão não pôde ser aberta no painel do navegador do app (o login do usuário foi feito
 em outro navegador), então as telas logadas não foram conferidas pela IA. Banco ainda sem tasks e
 logs: a conferência das telas foi do estado vazio.
+
+## Telas Memória e Configurações contra o Supabase de produção (SUB-25.7)
+
+Em 2026-10-12, por Claude Code (Opus 5.5), com o mesmo `vite preview` (`http://localhost:4173`) da SUB-25.4,
+apontando para o Supabase de produção (`fcmntkzpjoetdabllabn`).
+
+| Conferência | Como | Resultado |
+|---|---|---|
+| Telas **Memória** e **Configurações** logado | navegador do usuário (relato no chat: "eu já validei isso") | OK segundo o usuário; tamanhos e console não informados |
+| `ai_memories` (do projeto e globais) como o admin | MCP do Supabase, `set local role authenticated` + `request.jwt.claims`, transação desfeita | OK: 0 e 0 (banco novo) |
+| `projects` e `project_members` como o admin | idem | OK: 1 projeto (`default`), 0 membros |
+| Mesmas tabelas como usuário logado sem projeto | idem, `sub` aleatório | OK: 0 memórias, 0 projetos, 0 membros |
+| `ai_memories` e `match_memories` para `anon` | `has_table_privilege` / `has_function_privilege` | OK: sem leitura e sem execução; `authenticated` executa `match_memories` |
+
+Ressalva: como na SUB-25.4, as telas logadas foram conferidas só pelo usuário (a sessão não abriu no
+painel do navegador do app), no estado vazio do banco.
