@@ -33,26 +33,16 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhuma tarefa reservada para Codex |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — SUB-33.1
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-33.1** |
-| **Título da Sub-task:** | `bearerToken(req)` em `api/_lib/auth.ts` |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 00:20 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém mais assume a SUB-33.1 |
-
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (1)
+### 🔄 EM EXECUÇÃO (0)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
-| **SUB-33.1** | `bearerToken(req)` em `api/_lib/auth.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:20 | Nenhuma |
+
+*(Nenhuma tarefa em execução)*
 
 ---
 
@@ -64,7 +54,7 @@
 
 > **SUB-27 liberada a pedido do usuário** (2026-10-11 23:55): mãe e 22 subtarefas estão disponíveis; cada agente deve respeitar as dependências indicadas. Nenhum código da SUB-27 havia sido enviado à main.
 
-**🟢 Livres agora (26):** SUB-33.3, SUB-33.4, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.1, SUB-21.3, SUB-23.1, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1
+**🟢 Livres agora (26):** SUB-33.2, SUB-33.3, SUB-33.4, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.1, SUB-21.3, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
@@ -189,7 +179,7 @@
 | **SUB-28.31** | `montarPromptPlano(estado)` em `worker/plano.ts` | 5 | Fase 11 (última) | SUB-28.20 — ⛓️ bloqueada |
 | **SUB-28.32** | Registro de auditoria da aprovação | 5 | Fase 11 (última) | SUB-28.23 — ⛓️ bloqueada |
 | **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) (mãe) | 3 | Fase 2B | SUB-07, SUB-03; SUB-33.1 a SUB-33.13 |
-| **SUB-33.2** | `verificarSessaoSupabase(token)` em `api/_lib/auth.ts` | 3 | Fase 2B | SUB-33.1 — ⛓️ bloqueada |
+| **SUB-33.2** | `verificarSessaoSupabase(token)` em `api/_lib/auth.ts` | 3 | Fase 2B | SUB-33.1 — 🟢 livre |
 | **SUB-33.3** | `lerTextoEmbedding(body)` em `api/_lib/embedding-input.ts` | 3 | Fase 2B | SUB-33.13 — 🟢 livre |
 | **SUB-33.4** | Esqueleto do handler `api/embedding.ts` (CORS, OPTIONS, 405) | 3 | Fase 2B | Nenhuma — 🟢 livre |
 | **SUB-33.5** | Registrar `api/embedding.ts` no `vercel.json` | 3 | Fase 2B | SUB-33.4 — ⛓️ bloqueada |
@@ -232,7 +222,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (27)
+### ✅ CONCLUÍDAS (28)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -263,6 +253,7 @@
 | **SUB-22** | Visualizador de Logs de Execução da IA | DashboardAI (Grok Bot) | 2026-10-11 23:26 | 2026-10-11 23:27 | `a88f12d` |
 | **SUB-08.1** | Esqueleto do `.env.example` | DashboardAI (Grok Bot) | 2026-10-12 00:19 | 2026-10-12 00:19 | `5db1d43` |
 | **SUB-33.13** | Classe `HttpError` em `api/_lib/http-error.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:19 | 2026-10-12 00:20 | `4f98dc3` |
+| **SUB-33.1** | `bearerToken(req)` em `api/_lib/auth.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:20 | 2026-10-12 00:20 | `78a4689` |
 
 ---
 
@@ -324,3 +315,4 @@
 | 2026-10-12 00:19 | DashboardAI (Grok Bot) | SUB-33.13 | — | Lock: assumindo SUB-33.13 (Classe `HttpError` em `api/_lib/http-error.ts`) |
 | 2026-10-12 00:20 | DashboardAI (Grok Bot) | SUB-33.13 | `4f98dc3` | Criado `api/_lib/http-error.ts` com `HttpError extends Error` (construtor `(status, mensagem)`, `status` somente leitura, `name = 'HttpError'`), para a `lerTextoEmbedding` (SUB-33.3) e o handler `/api/embedding`. Teste `tests/unit/api-http-error.test.ts`; `npm run typecheck` (app + api) e `npm test` verdes. |
 | 2026-10-12 00:20 | DashboardAI (Grok Bot) | SUB-33.1 | — | Lock: assumindo SUB-33.1 (`bearerToken(req)` em `api/_lib/auth.ts`) |
+| 2026-10-12 00:20 | DashboardAI (Grok Bot) | SUB-33.1 | `78a4689` | Criado `api/_lib/auth.ts` com `bearerToken(headers)`: lê `authorization` (string ou array, usa o primeiro), aceita só o esquema `Bearer` sem diferenciar maiúsculas e devolve o token sem espaços; `null` se ausente/malformado. Testes em `tests/unit/api-auth.test.ts` (ausente, `Basic`, `Bearer` vazio, array, ok). `npm run typecheck` (app + api) e `npm test` verdes. |
