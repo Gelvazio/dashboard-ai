@@ -5,8 +5,8 @@ MCP, conforme a seção 9.1 do [`LangChain_LangGraph.md`](../LangChain_LangGraph
 continua sendo a fonte de verdade da fila, das travas e do status; o grafo só coordena uma task
 **já reivindicada** por `pegar_proxima_task`.
 
-> Seções seguintes (ferramentas permitidas e idempotência; mapeamento de erros para
-> `finalizar_task`) ficam nas SUB-28.26 e SUB-28.27.
+> A seção 2 (ferramentas permitidas e idempotência) veio na SUB-28.26; o mapeamento de
+> erros para `finalizar_task` fica na SUB-28.27.
 
 ## 1. Identificadores e estado mínimo
 
@@ -70,3 +70,62 @@ cópias integrais de memórias ou saídas grandes de ferramentas.
    é descartado (outro agente/tentativa assumiu ou a trava expirou) e nenhum efeito é repetido.
 3. O status oficial só muda por `finalizar_task(taskId, status, ...)`, que também libera a
    trava; o checkpoint concluído **não** significa task concluída.
+
+## 2. Ferramentas permitidas e idempotência
+
+### 2.1 Allowlist
+
+O grafo só enxerga as ferramentas abaixo (seção 6 do `LangChain_LangGraph.md`). Qualquer outro
+nome vindo do plano do modelo é rejeitado pelo nó `politica` antes de executar; texto da task,
+memórias ou saídas de ferramentas **não** ampliam a lista. Todas rodam com o `projetoId` do
+estado (1.2) e passam pela autenticação do MCP (`MCP_AUTH_TOKEN` obrigatório).
+
+| Ferramenta MCP | Efeito | Sensível (pausa para aprovação humana) | Idempotência |
+|---|---|---|---|
+| `brain_search` | leitura | não | não se aplica (sem efeito) |
+| `task_list` | leitura | não | não se aplica (sem efeito) |
+| `brain_store` | escrita | não | natural: upsert por `(project_id, title)`; repetir grava o mesmo conteúdo |
+| `agent_event` | escrita (só-inclusão) | não | `chave_idempotencia` única por projeto em `agent_events` |
+| `task_create` | escrita | **sim** (cria trabalho para outros agentes) | chave do passo gravada no checkpoint; só executa após aprovação |
+| `brain_delete` | escrita destrutiva | **sim** (apaga dados) | natural: apagar o que já não existe não muda nada |
+
+**Fora da allowlist do grafo:** `task_next` e `task_finish`. A reivindicação e o desfecho da task
+são feitos pelo **worker** direto nas RPCs (`pegar_proxima_task` / `finalizar_task`), nunca
+pelo modelo. Também ficam fora: push/deploy, envio a terceiros e execução arbitrária de código
+(não fazem parte da primeira versão; se entrarem, entram como sensíveis).
+
+Regras da allowlist:
+
+1. Ferramenta **sensível** sempre interrompe o grafo (`interrupt`) com a ação, os argumentos
+   (sem segredos) e o motivo; só segue com decisão humana registrada em `aprovacao` (1.2).
+2. Argumentos são validados pelo schema da ferramenta **e** no servidor; `projetoId` vem do
+   estado, nunca dos argumentos sugeridos pelo modelo.
+3. Uma recusa na aprovação não é falha transitória: o passo vira `falhou` e o desfecho segue
+   o mapeamento da SUB-28.27.
+
+### 2.2 Chaves de idempotência
+
+Formato (derivado de 1.1):
+
+```text
+chave = "<execucaoId>:<passoId>"                  ex.: task-42-t2:passo-3
+```
+
+- `passoId` é o `id` estável do passo no `plano` validado (não muda em retomadas).
+- Para efeitos que **devem valer entre tentativas** (ex.: não criar a mesma task de novo na
+  tentativa 3), usa-se a chave da task sem a tentativa: `task-<taskId>:<passoId>`.
+
+Onde a chave é gravada:
+
+| Local | O que guarda | Para quê |
+|---|---|---|
+| Checkpoint (`plano[i].status` + `resultados[passoId]`) | passo `feito` com resumo do resultado e a chave usada | retomada da **mesma** tentativa não repete o passo |
+| `agent_events.chave_idempotencia` | evento do passo (ex.: `progresso`/`commit`) com a chave | auditoria e deduplicação no banco (constraint única por projeto); nova tentativa consulta antes de repetir efeito externo |
+| `p_metadados` de `finalizar_task` | `execucao_id` e lista de chaves dos passos confirmados | rastreabilidade no relatório final da task |
+
+Ordem obrigatória num passo de escrita: **persistir no checkpoint que o passo vai rodar →
+chamar a ferramenta → persistir o resultado (`feito`) e emitir o evento com a chave → só então
+avançar** (seção 7 do `LangChain_LangGraph.md`). Se o processo cair entre a chamada e a
+persistência, a retomada consulta `agent_events` pela chave antes de repetir; ferramentas com
+idempotência natural (`brain_store`, `brain_delete`) podem simplesmente ser repetidas.
+
