@@ -429,7 +429,7 @@
 - **Decisões do usuário (2026-10-12):** (1) o status **continua** sendo a coluna `ativo boolean` (as RPCs da fila já usam), exibido na tela como **1-ATIVO / 0-INATIVO**; (2) campos novos: `responsavel_id`, `data_prevista_fim`, `cor`, `icone`, `url_producao`, `url_documentacao`, `prioridade` e `tags`; (3) escopo: banco **e** tela de cadastro.
 - **Critérios de Aceitação:** Todas as filhas `concluido`; `database/08_projects_campos.sql` idempotente e aplicado (com autorização); tela `#/projetos` funcionando (admin cria; owner edita; ativar/inativar); `npm run validar` verde.
 - **Commit:** pendente
-- **Anotação:** Tarefa grande (banco + várias partes): pela seção 6 do `AGENTS.md`, quem pegar a primeira subtarefa cria o plano em `docs/cadastro-de-projetos.md`. As filhas SUB-45.5, SUB-45.6 e SUB-45.18 exigem banco e, pela regra 11 da seção 1.1, só o Claude Code executa. O número do script (`08_`) é o próximo livre em `database/` depois da remoção do `08_admin_inicial.sql` na SUB-44 (`4f4c443`); se outro script ocupar o `08_` antes, usar o próximo número livre e corrigir as filhas. Sem testes unitários novos no frontend, seguindo a mesma orientação registrada na SUB-40 (só para correção de bug); o teste SQL da SUB-45.5 cobre os checks do banco.
+- **Anotação:** Tarefa grande (banco + várias partes): pela seção 6 do `AGENTS.md`, quem pegar a primeira subtarefa cria o plano em `docs/cadastro-de-projetos.md`. As filhas SUB-45.2 a SUB-45.6 (SQL, teste e aplicação no banco) e a SUB-45.18 (tela contra banco real) são tarefas de banco: pela regra 11 da seção 1.1, só o Claude Code local executa (não em sessão na nuvem). As demais (frontend e documentação) podem ser pegas por qualquer IA. O número do script (`08_`) é o próximo livre em `database/` depois da remoção do `08_admin_inicial.sql` na SUB-44 (`4f4c443`); se outro script ocupar o `08_` antes, usar o próximo número livre e corrigir as filhas. Sem testes unitários novos no frontend, seguindo a mesma orientação registrada na SUB-40 (só para correção de bug); o teste SQL da SUB-45.5 cobre os checks do banco.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
@@ -439,7 +439,7 @@
 - **Executor:** nenhum
 - **Depende de:** SUB-45.1
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** No mesmo arquivo: `cor text` com `check (cor is null or cor ~ '^#[0-9a-fA-F]{6}$')` e `icone text` (nome de ícone do lucide-react, ex.: `folder-kanban`) com `check (icone is null or icone ~ '^[a-z0-9-]{1,64}$')`. Constraints criadas de forma idempotente (bloco `do $$ ... if not exists (select 1 from pg_constraint ...)`). Comentários nas colunas.
+- **Descrição:** No mesmo arquivo: `cor text` com `check (cor is null or cor ~ '^#[0-9a-fA-F]{6}$')` e `icone text` (nome de ícone do lucide-react, ex.: `folder-kanban`) com `check (icone is null or icone ~ '^[a-z0-9-]{1,64}$')`. Constraints criadas de forma idempotente (bloco `do $$ ... if not exists (select 1 from pg_constraint ...)`). Comentários nas colunas. ⚠️ Tarefa de banco: pela regra 11 da seção 1.1 do `AGENTS.md`, só o Claude Code local executa (não em sessão na nuvem).
 - **Critérios de Aceitação:** Colunas e checks no arquivo, idempotentes.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -452,7 +452,7 @@
 - **Executor:** nenhum
 - **Depende de:** SUB-45.2
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** No mesmo arquivo: `url_producao text` e `url_documentacao text`, cada uma com `check (<col> is null or <col> ~ '^https?://')`, idempotentes. Comentários nas colunas.
+- **Descrição:** No mesmo arquivo: `url_producao text` e `url_documentacao text`, cada uma com `check (<col> is null or <col> ~ '^https?://')`, idempotentes. Comentários nas colunas. ⚠️ Tarefa de banco: pela regra 11 da seção 1.1 do `AGENTS.md`, só o Claude Code local executa (não em sessão na nuvem).
 - **Critérios de Aceitação:** Colunas e checks no arquivo, idempotentes.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -465,7 +465,7 @@
 - **Executor:** nenhum
 - **Depende de:** SUB-45.3
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** No mesmo arquivo: `prioridade text not null default 'MEDIA'` com `check (prioridade in ('MAXIMA','ALTA','MEDIA','BAIXA'))` (mesmos valores da seção 1.2 do `AGENTS.md`) e `tags text[] not null default '{}'`. Índice GIN em `tags` (`create index if not exists`). Comentários. **Status continua sendo a coluna `ativo boolean`** (decisão do usuário): na tela aparece como 1-ATIVO / 0-INATIVO.
+- **Descrição:** No mesmo arquivo: `prioridade text not null default 'MEDIA'` com `check (prioridade in ('MAXIMA','ALTA','MEDIA','BAIXA'))` (mesmos valores da seção 1.2 do `AGENTS.md`) e `tags text[] not null default '{}'`. Índice GIN em `tags` (`create index if not exists`). Comentários. **Status continua sendo a coluna `ativo boolean`** (decisão do usuário): na tela aparece como 1-ATIVO / 0-INATIVO. ⚠️ Tarefa de banco: pela regra 11 da seção 1.1 do `AGENTS.md`, só o Claude Code local executa (não em sessão na nuvem).
 - **Critérios de Aceitação:** Colunas, check e índice no arquivo, idempotentes.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -478,7 +478,7 @@
 - **Executor:** nenhum
 - **Depende de:** SUB-45.4
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Teste no padrão de `database/tests/test_multi_projeto.sql` (`raise notice 'ok: ...'` e `TODOS_OS_TESTES_PASSARAM`): defaults de `prioridade` e `tags`; checks recusam cor `azul`, ícone `Folder Kanban`, URL `ftp://x` e prioridade `URGENTE`; aceitam valores válidos; `responsavel_id` vira `null` quando o usuário é apagado. Incluir o arquivo no `database/tests/run_tests.sh` e corrigir a mensagem "schema 00-06" para o intervalo real. ⚠️ Exige banco: pela regra 11 da seção 1.1 do `AGENTS.md`, só o Claude Code executa.
+- **Descrição:** Teste no padrão de `database/tests/test_multi_projeto.sql` (`raise notice 'ok: ...'` e `TODOS_OS_TESTES_PASSARAM`): defaults de `prioridade` e `tags`; checks recusam cor `azul`, ícone `Folder Kanban`, URL `ftp://x` e prioridade `URGENTE`; aceitam valores válidos; `responsavel_id` vira `null` quando o usuário é apagado. Incluir o arquivo no `database/tests/run_tests.sh` e corrigir a mensagem "schema 00-06" para o intervalo real. ⚠️ Exige banco: pela regra 11 da seção 1.1 do `AGENTS.md`, só o Claude Code local executa (não em sessão na nuvem).
 - **Critérios de Aceitação:** `database/tests/run_tests.sh` verde contra um Postgres com pgvector descartável (nunca o Supabase de produção).
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -491,7 +491,7 @@
 - **Executor:** nenhum
 - **Depende de:** SUB-45.5
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** **Pedir autorização explícita do usuário no chat antes de qualquer comando no banco remoto** e confirmar com ele qual é o projeto Supabase do Dashboard AI. Com a autorização, aplicar o script e conferir com consultas só de leitura que as 8 colunas e os checks existem (`information_schema.columns`, `pg_constraint`). ⚠️ Exige banco: pela regra 11 da seção 1.1 do `AGENTS.md`, só o Claude Code executa.
+- **Descrição:** **Pedir autorização explícita do usuário no chat antes de qualquer comando no banco remoto** e confirmar com ele qual é o projeto Supabase do Dashboard AI. Com a autorização, aplicar o script e conferir com consultas só de leitura que as 8 colunas e os checks existem (`information_schema.columns`, `pg_constraint`). ⚠️ Exige banco: pela regra 11 da seção 1.1 do `AGENTS.md`, só o Claude Code local executa (não em sessão na nuvem).
 - **Critérios de Aceitação:** Script aplicado sem erro; conferências registradas na anotação (sem chaves, tokens ou dados de usuários).
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -647,7 +647,7 @@
 - **Executor:** nenhum
 - **Depende de:** SUB-45.6, SUB-45.16
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Com `npm run preview` contra o Supabase do Dashboard AI (já com o `08` aplicado), entrar como admin, criar, editar, inativar e reativar um projeto de teste, em 1280x800 e 390x844; conferir que o projeto aparece no seletor e que uma task nova fica ligada a ele. Registrar no `docs/VALIDACAO.md` (sem screenshots grandes). Apagar o projeto de teste só com autorização do usuário. ⚠️ Exige banco: pela regra 11 da seção 1.1 do `AGENTS.md`, só o Claude Code executa.
+- **Descrição:** Com `npm run preview` contra o Supabase do Dashboard AI (já com o `08` aplicado), entrar como admin, criar, editar, inativar e reativar um projeto de teste, em 1280x800 e 390x844; conferir que o projeto aparece no seletor e que uma task nova fica ligada a ele. Registrar no `docs/VALIDACAO.md` (sem screenshots grandes). Apagar o projeto de teste só com autorização do usuário. ⚠️ Exige banco: pela regra 11 da seção 1.1 do `AGENTS.md`, só o Claude Code local executa (não em sessão na nuvem).
 - **Critérios de Aceitação:** Sem erros no console; checklist registrado.
 - **Commit:** pendente
 - **Anotação:** pendente
