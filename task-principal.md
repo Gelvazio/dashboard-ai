@@ -133,7 +133,7 @@
 - **Critérios de Aceitação:** Sem erros no console; checklist registrado.
 - **Commit:** pendente
 - **Anotação:** pendente
-- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:25 (Claude Code): pendente, sem executor. Não há registro das telas Fila e Logs no `docs/VALIDACAO.md`; depende de navegador (não usado nesta verificação).
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:48 (Devin): pendente, sem executor. Não há registro das telas Fila e Logs no `docs/VALIDACAO.md`; depende de navegador (não usado nesta verificação).
 
 #### [ ] SUB-25.7: Teste rápido local: telas Memória e Configurações
 - **Status:** pendente
