@@ -64,44 +64,105 @@
 | **Título da Sub-task:** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) |
 | **Agente Responsável:** | DashboardAI (Grok Bot) |
 | **Data e Hora de Início:** | 2026-10-11 23:34 |
-| **Bloqueio para Outras IAs:** | **ATIVADO**; SUB-33 depende de SUB-07 e SUB-03, concluídas |
-
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — Planejamento
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO (planejamento)** |
-| **Sub-tasks travadas:** | **SUB-23, SUB-19, SUB-20, SUB-34, SUB-25, SUB-26, SUB-28** |
-| **Motivo:** | Subdivisão em subtarefas atômicas de ~3 min (sem implementação de código) |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-11 23:36 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** até o commit da nova lista de subtarefas |
-
----
+| **Bloqueio para Outras IAs:** | **ATIVADO**; SUB-33 depende de SUB-07 e SUB-03, concluídas. As subtarefas **SUB-33.1 a SUB-33.9** ficam reservadas sob esta trava (não assumir) |
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO / PLANEJAMENTO (11)
+### 🔄 EM EXECUÇÃO (4)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27** | Autenticação e Login com Supabase Auth | Codex (OpenAI) | 2026-10-11 22:27 | SUB-03, SUB-29 |
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` | xAI (Grok) | 2026-10-11 22:41 | SUB-06 |
 | **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias | Codex (OpenAI) | 2026-10-11 23:28 | SUB-10, SUB-12 |
-| **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) | DashboardAI (Grok Bot) | 2026-10-11 23:34 | SUB-07, SUB-03 |
-| **SUB-23** | Diagnóstico de Travas e Saúde da Fila | DashboardAI (Grok Bot) — planejamento | 2026-10-11 23:36 | SUB-09, SUB-11, SUB-12 |
-| **SUB-19** | Interface de Pesquisa Semântica Vetorial | DashboardAI (Grok Bot) — planejamento | 2026-10-11 23:36 | SUB-10, SUB-12, SUB-33 |
-| **SUB-20** | Formulário de Nova Memória Canônica | DashboardAI (Grok Bot) — planejamento | 2026-10-11 23:36 | SUB-10, SUB-12, SUB-33 |
-| **SUB-34** | Carregamento Sob Demanda de Telas e Modais (code splitting) | DashboardAI (Grok Bot) — planejamento | 2026-10-11 23:36 | SUB-13, SUB-14, SUB-16, SUB-17, SUB-18 |
-| **SUB-25** | Validação de Build e Execução Local | DashboardAI (Grok Bot) — planejamento | 2026-10-11 23:36 | SUB-01 a SUB-24 |
-| **SUB-26** | Documentação Completa e Manual Operacional no `README.md` | DashboardAI (Grok Bot) — planejamento | 2026-10-11 23:36 | SUB-25 |
-| **SUB-28** | Integração LangChain/LangGraph para Execução de Tasks | DashboardAI (Grok Bot) — planejamento | 2026-10-11 23:36 | SUB-01 a SUB-27, SUB-29, SUB-30 |
+| **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) — subtarefas SUB-33.1 a SUB-33.9 reservadas | DashboardAI (Grok Bot) | 2026-10-11 23:34 | SUB-07, SUB-03 |
 
 ---
 
-### ⏳ PENDENTES (0)
+### ⏳ PENDENTES (76)
 
-*(Todas as livres travadas para subdivisão por DashboardAI (Grok Bot))*
+> Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
+
+**🟢 Livres agora (9):** SUB-19.1, SUB-19.3, SUB-20.1, SUB-23.1, SUB-23.4, SUB-34.1, SUB-34.4, SUB-25.1, SUB-26.1
+
+| Código | Título da Mini-task | Prioridade | Fase | Depende de |
+|---|---|---|---|---|
+| **SUB-23** | Diagnóstico de Travas e Saúde da Fila (mãe) | 4 | Fase 8 | SUB-09, SUB-11, SUB-12; SUB-23.1 a SUB-23.9 |
+| **SUB-23.1** | `minutosDeTrava` e `travaExpirada` em `src/lib/saudeFila.ts` | 4 | Fase 8 | Nenhuma — 🟢 livre |
+| **SUB-23.2** | `classificarPendentes(tasks)` em `src/lib/saudeFila.ts` | 4 | Fase 8 | SUB-23.1 — ⛓️ bloqueada |
+| **SUB-23.3** | `diagnosticarFila(tasks)` em `src/lib/saudeFila.ts` | 4 | Fase 8 | SUB-23.2 — ⛓️ bloqueada |
+| **SUB-23.4** | `liberarTrava()` em `src/services/taskService.ts` | 4 | Fase 8 | Nenhuma — 🟢 livre |
+| **SUB-23.5** | Teste de integração de `liberarTrava` | 4 | Fase 8 | SUB-23.4 — ⛓️ bloqueada |
+| **SUB-23.6** | Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts` | 4 | Fase 8 | SUB-23.3, SUB-23.4 — ⛓️ bloqueada |
+| **SUB-23.7** | Componente `SaudeFilaPanel` em `src/components/tasks/SaudeFilaPanel.tsx` | 4 | Fase 8 | SUB-23.6 — ⛓️ bloqueada |
+| **SUB-23.8** | Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` | 4 | Fase 8 | SUB-23.7 — ⛓️ bloqueada |
+| **SUB-23.9** | Alerta de trava presa na `src/views/FilaView.tsx` | 4 | Fase 8 | SUB-23.3 — ⛓️ bloqueada |
+| **SUB-19** | Interface de Pesquisa Semântica Vetorial (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-19.1 a SUB-19.8 |
+| **SUB-19.1** | `debounce(fn, ms)` em `src/lib/debounce.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
+| **SUB-19.2** | Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts` | 4 | Fase 7 | SUB-19.1 — ⛓️ bloqueada |
+| **SUB-19.3** | `formatarSimilaridade` e `classeSimilaridade` em `src/lib/similaridade.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
+| **SUB-19.4** | Componente `SimilaridadeBadge` em `src/components/memoria/` | 4 | Fase 7 | SUB-19.3 — ⛓️ bloqueada |
+| **SUB-19.5** | Componente `ResultadoBuscaCard` em `src/components/memoria/` | 4 | Fase 7 | SUB-19.4 — ⛓️ bloqueada |
+| **SUB-19.6** | Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts` | 4 | Fase 7 | SUB-19.2, SUB-33.7 — ⛓️ bloqueada |
+| **SUB-19.7** | Painel `BuscaSemanticaPanel` em `src/components/memoria/` | 4 | Fase 7 | SUB-19.5, SUB-19.6 — ⛓️ bloqueada |
+| **SUB-19.8** | Integrar a busca na `src/views/MemoriaView.tsx` | 4 | Fase 7 | SUB-19.7, SUB-21 — ⛓️ bloqueada |
+| **SUB-20** | Formulário de Nova Memória Canônica (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-20.1 a SUB-20.7 |
+| **SUB-20.1** | `validarMemoria(dados)` em `src/lib/memoriaForm.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
+| **SUB-20.2** | `parseTags(texto)` em `src/lib/memoriaForm.ts` | 4 | Fase 7 | SUB-20.1 — ⛓️ bloqueada |
+| **SUB-20.3** | `sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts` | 4 | Fase 7 | SUB-20.1 — ⛓️ bloqueada |
+| **SUB-20.4** | Componente `TagInput` em `src/components/ui/TagInput.tsx` | 4 | Fase 7 | SUB-20.2 — ⛓️ bloqueada |
+| **SUB-20.5** | Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts` | 4 | Fase 7 | SUB-33.7 — ⛓️ bloqueada |
+| **SUB-20.6** | Modal `MemoriaFormModal` em `src/components/memoria/` | 4 | Fase 7 | SUB-20.1, SUB-20.3, SUB-20.4, SUB-20.5 — ⛓️ bloqueada |
+| **SUB-20.7** | Botão "Nova memória" na `src/views/MemoriaView.tsx` | 4 | Fase 7 | SUB-20.6, SUB-19.8 — ⛓️ bloqueada |
+| **SUB-34** | Carregamento Sob Demanda de Telas e Modais (code splitting) (mãe) | 4 | Fase 6 | SUB-13, SUB-14, SUB-16, SUB-17, SUB-18; SUB-34.1 a SUB-34.5 |
+| **SUB-34.1** | Fallback `CarregandoTela` em `src/components/ui/CarregandoTela.tsx` | 4 | Fase 6 | Nenhuma — 🟢 livre |
+| **SUB-34.2** | Telas com `React.lazy` em `src/views/index.ts` e `Suspense` no `App.tsx` | 4 | Fase 6 | SUB-34.1 — ⛓️ bloqueada |
+| **SUB-34.3** | Modais da fila sob demanda na `src/views/FilaView.tsx` | 4 | Fase 6 | SUB-34.1 — ⛓️ bloqueada |
+| **SUB-34.4** | Separar dependências grandes no `vite.config.ts` | 4 | Fase 6 | Nenhuma — 🟢 livre |
+| **SUB-34.5** | Checagem de tamanho `scripts/checar-chunks.mjs` | 4 | Fase 6 | SUB-34.2, SUB-34.3, SUB-34.4 — ⛓️ bloqueada |
+| **SUB-25** | Validação de Build e Execução Local (mãe) | 5 | Fase 10 | SUB-01 a SUB-24; SUB-25.1 a SUB-25.4 |
+| **SUB-25.1** | Script `scripts/validar.sh` + `npm run validar` | 5 | Fase 10 | Nenhuma — 🟢 livre |
+| **SUB-25.2** | Rodar a validação completa e corrigir erros de tipo | 5 | Fase 10 | SUB-25.1, SUB-08, SUB-19, SUB-20, SUB-21, SUB-23, SUB-27, SUB-33, SUB-34 — ⛓️ bloqueada |
+| **SUB-25.3** | Rodar integração do banco e do frontend | 5 | Fase 10 | SUB-25.2 — ⛓️ bloqueada |
+| **SUB-25.4** | Smoke test local com `vite preview` | 5 | Fase 10 | SUB-25.2 — ⛓️ bloqueada |
+| **SUB-26** | Documentação Completa e Manual Operacional no `README.md` (mãe) | 5 | Fase 10 | SUB-25; SUB-26.1 a SUB-26.9 |
+| **SUB-26.1** | Esqueleto do `README.md` | 5 | Fase 10 | Nenhuma — 🟢 livre |
+| **SUB-26.2** | Seção Arquitetura | 5 | Fase 10 | SUB-26.1, SUB-33 — ⛓️ bloqueada |
+| **SUB-26.3** | Seção Execução local | 5 | Fase 10 | SUB-26.1, SUB-08, SUB-25 — ⛓️ bloqueada |
+| **SUB-26.4** | Seção Banco de dados | 5 | Fase 10 | SUB-26.1 — ⛓️ bloqueada |
+| **SUB-26.5** | Seção Deploy na Vercel | 5 | Fase 10 | SUB-26.1, SUB-08, SUB-33 — ⛓️ bloqueada |
+| **SUB-26.6** | Seção Agentes de IA: fila via MCP | 5 | Fase 10 | SUB-26.1 — ⛓️ bloqueada |
+| **SUB-26.7** | Seção Memória via MCP | 5 | Fase 10 | SUB-26.1 — ⛓️ bloqueada |
+| **SUB-26.8** | Seção Segurança | 5 | Fase 10 | SUB-26.1, SUB-27 — ⛓️ bloqueada |
+| **SUB-26.9** | Revisão final do README | 5 | Fase 10 | SUB-26.2, SUB-26.3, SUB-26.4, SUB-26.5, SUB-26.6, SUB-26.7, SUB-26.8, SUB-25 — ⛓️ bloqueada |
+| **SUB-28** | Integração LangChain/LangGraph para Execução de Tasks (mãe) | 5 | Fase 11 (última) | SUB-01 a SUB-27, SUB-29, SUB-30; SUB-28.1 a SUB-28.18 |
+| **SUB-28.1** | Contrato worker ↔ RPC ↔ MCP em `docs/langgraph-contrato.md` | 5 | Fase 11 (última) | SUB-01 a SUB-27, SUB-29 a SUB-34 — ⛓️ bloqueada |
+| **SUB-28.2** | Dependências e `worker/tsconfig.json` | 5 | Fase 11 (última) | SUB-28.1 — ⛓️ bloqueada |
+| **SUB-28.3** | Estado tipado do grafo em `worker/estado.ts` | 5 | Fase 11 (última) | SUB-28.2 — ⛓️ bloqueada |
+| **SUB-28.4** | Adaptador de RPCs em `worker/fila.ts` | 5 | Fase 11 (última) | SUB-28.2 — ⛓️ bloqueada |
+| **SUB-28.5** | Allowlist de ferramentas em `worker/ferramentas.ts` | 5 | Fase 11 (última) | SUB-28.3 — ⛓️ bloqueada |
+| **SUB-28.6** | Nó `carregarContexto` em `worker/nos/carregarContexto.ts` | 5 | Fase 11 (última) | SUB-28.3, SUB-28.5 — ⛓️ bloqueada |
+| **SUB-28.7** | Nó `planejar` em `worker/nos/planejar.ts` | 5 | Fase 11 (última) | SUB-28.3 — ⛓️ bloqueada |
+| **SUB-28.8** | Nó `politica` (aprovação humana) em `worker/nos/politica.ts` | 5 | Fase 11 (última) | SUB-28.5 — ⛓️ bloqueada |
+| **SUB-28.9** | Nó `executar` em `worker/nos/executar.ts` | 5 | Fase 11 (última) | SUB-28.5 — ⛓️ bloqueada |
+| **SUB-28.10** | Nó `revisar` em `worker/nos/revisar.ts` | 5 | Fase 11 (última) | SUB-28.3 — ⛓️ bloqueada |
+| **SUB-28.11** | Nó `finalizar` em `worker/nos/finalizar.ts` | 5 | Fase 11 (última) | SUB-28.4 — ⛓️ bloqueada |
+| **SUB-28.12** | Montagem do `StateGraph` em `worker/grafo.ts` | 5 | Fase 11 (última) | SUB-28.6, SUB-28.7, SUB-28.8, SUB-28.9, SUB-28.10, SUB-28.11 — ⛓️ bloqueada |
+| **SUB-28.13** | Checkpointer durável em `worker/checkpointer.ts` | 5 | Fase 11 (última) | SUB-28.2 — ⛓️ bloqueada |
+| **SUB-28.14** | Reconciliação na retomada em `worker/reconciliar.ts` | 5 | Fase 11 (última) | SUB-28.4 — ⛓️ bloqueada |
+| **SUB-28.15** | CLI do worker em `worker/index.ts` | 5 | Fase 11 (última) | SUB-28.12, SUB-28.13, SUB-28.14 — ⛓️ bloqueada |
+| **SUB-28.16** | Endpoint de aprovação `api/aprovacao.ts` | 5 | Fase 11 (última) | SUB-28.15, SUB-33.2 — ⛓️ bloqueada |
+| **SUB-28.17** | Testes ponta a ponta do worker em `tests/unit/worker-grafo.test.ts` | 5 | Fase 11 (última) | SUB-28.15 — ⛓️ bloqueada |
+| **SUB-28.18** | Documentação de operação e segurança | 5 | Fase 11 (última) | SUB-28.15, SUB-28.16 — ⛓️ bloqueada |
+| **SUB-33.1** | `bearerToken(req)` em `api/_lib/auth.ts` | 3 | Fase 2B | Nenhuma — 🔒 reservada (trava SUB-33, DashboardAI (Grok Bot)) |
+| **SUB-33.2** | `verificarSessaoSupabase(token)` em `api/_lib/auth.ts` | 3 | Fase 2B | SUB-33.1 — 🔒 reservada (trava SUB-33, DashboardAI (Grok Bot)) |
+| **SUB-33.3** | `lerTextoEmbedding(body)` em `api/_lib/embedding-input.ts` | 3 | Fase 2B | Nenhuma — 🔒 reservada (trava SUB-33, DashboardAI (Grok Bot)) |
+| **SUB-33.4** | Handler `api/embedding.ts` (POST /api/embedding) | 3 | Fase 2B | SUB-33.2, SUB-33.3 — 🔒 reservada (trava SUB-33, DashboardAI (Grok Bot)) |
+| **SUB-33.5** | Registrar `api/embedding.ts` no `vercel.json` | 3 | Fase 2B | SUB-33.4 — 🔒 reservada (trava SUB-33, DashboardAI (Grok Bot)) |
+| **SUB-33.6** | Testes do handler em `tests/unit/api-embedding.test.ts` | 3 | Fase 2B | SUB-33.4 — 🔒 reservada (trava SUB-33, DashboardAI (Grok Bot)) |
+| **SUB-33.7** | `criarGeradorEmbedding()` em `src/services/embeddingService.ts` | 3 | Fase 2B | SUB-33.4 — 🔒 reservada (trava SUB-33, DashboardAI (Grok Bot)) |
+| **SUB-33.8** | Testes de `embeddingService` em `tests/unit/embeddingService.test.ts` | 3 | Fase 2B | SUB-33.7 — 🔒 reservada (trava SUB-33, DashboardAI (Grok Bot)) |
+| **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | 3 | Fase 2B | SUB-33.4 — 🔒 reservada (trava SUB-33, DashboardAI (Grok Bot)) |
 
 ---
 
@@ -178,3 +239,4 @@
 | 2026-10-11 23:26 | DashboardAI (Grok Bot) | SUB-15 | `1f94252` | Busca instantânea no cliente (código, título e instrução; sem acento/maiúsculas), filtro por status com contagem, contador filtradas/total, botão Recarregar (tabela + indicadores, com hora da última atualização) e mensagem de vazio por filtro. Dependências seguem resolvidas pela lista completa. Validado: typecheck, build, vitest (unit+integração) e screenshot. |
 | 2026-10-11 23:27 | DashboardAI (Grok Bot) | SUB-22 | `a88f12d` | Tela Logs com linha do tempo agrupada por dia (mais recente primeiro): hora, badge de status (concluida/recusada/erro/sem_tarefa), rotina, task, agente, tempo de execução, link de PR e SHA; detalhes/erro expansíveis. Filtro por status com contadores, busca em detalhes/erro/task, recarregar e Carregar mais (paginação do logService). Validado: typecheck, build, vitest (unit+integração) e screenshot. |
 | 2026-10-11 23:36 | DashboardAI (Grok Bot) | Lock planejamento | — | Trava de planejamento em SUB-23, SUB-19, SUB-20, SUB-34, SUB-25, SUB-26 e SUB-28 para subdividir em subtarefas de ~3 min (pedido do usuário); SUB-33 segue travada por DashboardAI (Grok Bot) |
+| 2026-10-11 23:38 | DashboardAI (Grok Bot) | Subdivisão | (este commit) | Tarefas livres subdivididas em 69 subtarefas atômicas (~3 min): SUB-19.1–19.8, SUB-20.1–20.7, SUB-23.1–23.9, SUB-25.1–25.4, SUB-26.1–26.9, SUB-28.1–28.18, SUB-33.1–33.9 (reservadas sob a trava da SUB-33), SUB-34.1–34.5. Trava de planejamento liberada; 9 livres, 51 bloqueadas por dependência. Sem código implementado. SUB-08, SUB-21 e SUB-27 (outros agentes) não foram tocadas |
