@@ -77,6 +77,17 @@
 | **Data e Hora de Início:** | 2026-10-12 00:55 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.26
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-27.26** |
+| **Título da Sub-task:** | Hook `useAuth` em `src/hooks/useAuth.ts` |
+| **Agente Responsável:** | DashboardAI-Clone 01 |
+| **Data e Hora de Início:** | 2026-10-12 00:56 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -85,6 +96,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-27.26** | Hook `useAuth` em `src/hooks/useAuth.ts` | DashboardAI-Clone 01 | 2026-10-12 00:56 | SUB-27.9 |
 | **SUB-21.2** | `filtrarMemoriasLocal` em `src/lib/memorias.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 00:55 | SUB-21.13 |
 | **SUB-20.6** | Modal `MemoriaFormModal` em `src/components/memoria/` | DashboardAI-Clone 06 | 2026-10-12 00:55 | SUB-20.1, SUB-20.3, SUB-20.4, SUB-20.5, SUB-20.8, SUB-20.9 |
 | **SUB-23.11** | `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:55 | SUB-23.3 |
@@ -509,3 +521,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:55 | DashboardAI-Clone 05 (Grok Bot) | SUB-21.2 | — | Lock: assumindo SUB-21.2 (`filtrarMemoriasLocal` em `src/lib/memorias.ts`) |
 | 2026-10-12 00:55 | DashboardAI-Clone 01 | SUB-27.9 | `333f8b9` | Criado `src/hooks/AuthContext.tsx` com `AuthContext`/`AuthProvider` (`sessao, usuario, papelGlobal, carregando, sair`): `obterSessao()` ao montar, `onAuthStateChange` com unsubscribe no cleanup, `papelGlobal` recarregado quando o usuário muda; sem Supabase configurado: `carregando=false`, `sessao=null`. typecheck e vitest verdes. |
 | 2026-10-12 00:56 | DashboardAI-Clone 04 (Grok Bot) | SUB-08.7 | `4be4a20` | Removida a segunda linha `.env` no fim do `.gitignore` (redundante e posterior ao `!.env.example`) e comentado que `!.env.example` deve ficar depois de todas as regras de `.env`. `git check-ignore -v --no-index`: `.env.example` não ignorado (`!.env.example`), `.env` e `.env.local` ignorados (`.env` / `.env.*`). |
+| 2026-10-12 00:56 | DashboardAI-Clone 01 | SUB-27.26 | — | Lock: assumindo SUB-27.26 (Hook `useAuth` em `src/hooks/useAuth.ts`) |

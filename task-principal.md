@@ -1741,8 +1741,8 @@
 - **Anotação:** Adicionado `papelNoProjeto(projectId, userId, client = getSupabase())` em `src/services/authService.ts`: admin global (`obterPapelGlobal`) -> `'admin'`; senão `project_members.role` (`maybeSingle`); não membro -> `null`; erro -> `ServiceError`. typecheck verde.
 
 #### [ ] SUB-27.26: Hook `useAuth` em `src/hooks/useAuth.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.9
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/hooks/useAuth.ts` com `useAuth()` que lê o `AuthContext` e lança erro fora do `AuthProvider`. Exportar `AuthProvider` e `useAuth` em `src/hooks/index.ts` sem remover exports existentes.
