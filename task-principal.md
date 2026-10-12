@@ -45,28 +45,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.14
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-28.14** |
-| **Título da Sub-task:** | Reconciliação na retomada em `worker/reconciliar.ts` |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 12:46 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202
-- **Em Execução:** 1 (SUB-28.14, Devin (Cognition AI), desde 2026-10-12 12:46)
+- **Em Execução:** 0
 - **Pendentes:** 4 principais (25, 26, 28, 35) + 29 subtarefas
   - livres agora: 7 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.12, SUB-28.13, SUB-35.32, SUB-35.33)
   - bloqueadas por dependência: 22
   - reservadas: 0
-- **Concluídas:** 205 de 239 blocos (33 principais + 172 subtarefas)
+- **Concluídas:** 206 de 239 blocos (33 principais + 173 subtarefas)
 - **Canceladas:** 0
 
 ---
@@ -1985,7 +1974,7 @@
   - `SUB-28.11`: Nó `finalizar` em `worker/nos/finalizar.ts` (`concluido`, `9575b13`)
   - `SUB-28.12`: Montagem do `StateGraph` em `worker/grafo.ts` (`pendente`)
   - `SUB-28.13`: Checkpointer durável em `worker/checkpointer.ts` (`pendente`)
-  - `SUB-28.14`: Reconciliação na retomada em `worker/reconciliar.ts` (`em_execucao`)
+  - `SUB-28.14`: Reconciliação na retomada em `worker/reconciliar.ts` (`concluido`, `206ba39`)
   - `SUB-28.15`: CLI do worker em `worker/index.ts` (`pendente`)
   - `SUB-28.16`: Endpoint `api/aprovacao.ts`: autenticação e papel (401/403) (`pendente`)
   - `SUB-28.17`: Testes do worker: caminho feliz e erro (`pendente`)
@@ -2153,16 +2142,16 @@
 - **Anotação:** Reaberta na revisão de 2026-10-12 (Devin (revisão do quadro)): marcada como concluída em `310fab9`, mas placeholder: `criarCheckpointer()` devolve `null`.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (reaberta: critérios de aceitação não atendidos)
 
-#### [ ] SUB-28.14: Reconciliação na retomada em `worker/reconciliar.ts`
-- **Status:** em_execucao
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:46)
+#### [x] SUB-28.14: Reconciliação na retomada em `worker/reconciliar.ts`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:46, conclusão: 2026-10-12 12:47)
 - **Depende de:** SUB-28.30
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Antes de iniciar/retomar, conferir no Supabase se a task continua `em_execucao` com `trava_frente` = agente e trava válida; caso contrário abortar sem efeitos.
 - **Critérios de Aceitação:** Teste com estados divergentes.
-- **Commit:** pendente (código parcial em `310fab9`)
-- **Anotação:** Reaberta na revisão de 2026-10-12 (Devin (revisão do quadro)): marcada como concluída em `310fab9`, mas placeholder: `reconciliar()` sempre devolve `{ valido: true }`.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (reaberta: critérios de aceitação não atendidos)
+- **Commit:** `206ba39`
+- **Anotação:** `reconciliar(esperado, deps)` em `worker/reconciliar.ts`: relê a task no Supabase (`status, trava_frente, trava_em, tentativas`) e só devolve `{ valido: true }` se continua `em_execucao`, com `trava_frente` = agente, trava dentro de 90 min (`trava_em`) e a mesma tentativa; caso contrário devolve `{ valido: false, motivo }` para o worker abortar sem efeitos. Testes com estados divergentes em `tests/unit/worker-reconciliar.test.ts` (task removida, concluída, outro agente, trava expirada ou sem data, nova tentativa). `npm test`, `npm run typecheck`, `npm run typecheck:worker` e `npm run build` verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:47 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
 #### [ ] SUB-28.15: CLI do worker em `worker/index.ts`
 - **Status:** pendente
