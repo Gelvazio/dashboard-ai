@@ -9,12 +9,12 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
-- **Subtarefas atômicas (~3 min):** 121 (SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x; atualizado em 2026-10-11 23:51)
-- **Em Execução:** 1 (`SUB-08`)
-- **Pendentes:** 10 principais aguardando subtarefas (SUB-19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 121 subtarefas
-  - livres agora: 17 (SUB-33.1, SUB-33.3, SUB-33.4, SUB-34.1, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-21.1, SUB-21.3, SUB-23.1, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
-  - reservadas sob a trava da SUB-27: 0
-  - bloqueadas por dependência: 104
+- **Subtarefas atômicas (~3 min):** 130 (SUB-08.x, SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x; atualizado em 2026-10-12 00:08)
+- **Em Execução:** 0
+- **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 130 subtarefas
+  - livres agora: 19 (SUB-33.1, SUB-33.3, SUB-33.4, SUB-08.1, SUB-08.8, SUB-34.1, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-21.1, SUB-21.3, SUB-23.1, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
+  - bloqueadas por dependência: 111
+  - reservadas: 0
 - **Concluídas:** 25
 - **Canceladas:** 0
 
@@ -259,7 +259,7 @@
 - **Executor:** nenhum
 - **Depende de:** SUB-33.11
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Seção no `api/README.md`: contrato (request/response, códigos 401/405/413/502), variáveis (`SUPABASE_URL`, `SUPABASE_ANON_KEY` ou service role, `OPENAI_API_KEY`, `EMBEDDING_MODEL`, `EMBEDDING_API_URL`) e exemplo `curl`. Anotar no detalhe da SUB-08 as variáveis novas (sem editar a SUB-08, que está com outro agente).
+- **Descrição:** Seção no `api/README.md`: contrato (request/response, códigos 401/405/413/502), variáveis (`SUPABASE_URL`, `SUPABASE_ANON_KEY` ou service role, `OPENAI_API_KEY`, `EMBEDDING_MODEL`, `EMBEDDING_API_URL`) e exemplo `curl`. Conferir que o `.env.example` lista `SUPABASE_ANON_KEY` (SUB-08.3).
 - **Critérios de Aceitação:** README revisado; nenhuma chave real.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -319,12 +319,111 @@
 - **Anotação:** api/_lib/brain-tools.ts (upsert por project_id+title, busca via match_memories com globais, delete por título/id), api/_lib/embeddings.ts (OPENAI_API_KEY, EMBEDDING_MODEL, EMBEDDING_API_URL; valida 1536 dimensões), api/_lib/args.ts (helpers compartilhados com a fila). Exige MCP_AUTH_TOKEN; servidor com MCP_ALLOWED_PROJECTS lê mas não grava memória global. tsc strict OK; e2e contra PostgREST local + embedder falso: 36 checagens (upsert, isolamento entre projetos, globais, tags, limiar, allowlist, erros da API sem vazar chave) e as 27 da fila seguem OK.
 
 ### [ ] SUB-08: Configuração de Variáveis de Ambiente e `.env.example`
-- **Status:** em_planejamento (travada para subdivisão)
-- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-12 00:07; trava de xAI (Grok) de 2026-10-11 22:41 liberada pelo usuário, sem commits)
-- **Depende de:** SUB-06
-- **Subtarefas:** Nenhuma (atômica)
+- **Status:** pendente (aguardando subtarefas)
+- **Executor:** nenhum
+- **Depende de:** SUB-06; subtarefas SUB-08.1 a SUB-08.9
+- **Subtarefas:** (subdividida em 9 em 2026-10-12 00:08 por DashboardAI (Grok Bot) a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`)
+  - `SUB-08.1`: Esqueleto do `.env.example` (`pendente`)
+  - `SUB-08.2`: Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` (`pendente`)
+  - `SUB-08.3`: Seção Servidor Supabase: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `SUPABASE_REST_URL` (`pendente`)
+  - `SUB-08.4`: Seção Embeddings: `OPENAI_API_KEY`, `EMBEDDING_API_URL`, `EMBEDDING_MODEL` (`pendente`)
+  - `SUB-08.5`: Seção MCP: `MCP_AUTH_TOKEN`, `MCP_CORS_ORIGIN`, `MCP_DEFAULT_PROJECT`, `MCP_ALLOWED_PROJECTS` (`pendente`)
+  - `SUB-08.6`: Seção Scripts: `DASHBOARD_AI_PROJECT` (`pendente`)
+  - `SUB-08.7`: Conferir `.gitignore` (`!.env.example`) (`pendente`)
+  - `SUB-08.8`: Funções de extração em `scripts/checar-env.mjs` + testes (`pendente`)
+  - `SUB-08.9`: CLI `npm run check:env` (toda variável usada está no `.env.example`) (`pendente`)
 - **Descrição:** Documentar e padronizar as variáveis `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` (frontend) e `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `OPENAI_API_KEY`, `EMBEDDING_MODEL`, `MCP_AUTH_TOKEN`, `MCP_CORS_ORIGIN`, `MCP_DEFAULT_PROJECT`, `DASHBOARD_AI_PROJECT` (servidor/scripts) em `.env.example`.
 - **Critérios de Aceitação:** Arquivo `.env.example` completo com instruções de preenchimento.
+- **Commit:** pendente
+- **Anotação:** Trava de xAI (Grok) (desde 2026-10-11 22:41, sem commits e sem `.env.example`) liberada pelo usuário em 2026-10-12 00:08; subdividida por DashboardAI (Grok Bot).
+
+#### [ ] SUB-08.1: Esqueleto do `.env.example`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `.env.example` na raiz só com o cabeçalho (copiar para `.env`/`.env.local`, nunca commitar valores reais, quais variáveis vão para o navegador `VITE_*` e quais ficam só no servidor) e os títulos vazios das seções: Frontend, Servidor Supabase, Embeddings, MCP, Scripts.
+- **Critérios de Aceitação:** Arquivo criado; `git check-ignore .env.example` não o ignora; nenhum valor real.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-08.2: Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-08.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Preencher a seção Frontend do `.env.example` com `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` (valores de exemplo vazios), avisando que só a chave **anon** é permitida (o `getSupabase()` recusa `service_role`).
+- **Critérios de Aceitação:** Seção preenchida; nenhum valor real.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-08.3: Seção Servidor Supabase: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `SUPABASE_REST_URL`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-08.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Preencher a seção com `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` (só servidor/scripts, nunca `VITE_`), `SUPABASE_ANON_KEY` (validação de sessão do `/api/embedding`, SUB-33.2) e `SUPABASE_REST_URL` (opcional, só testes locais com PostgREST).
+- **Critérios de Aceitação:** Seção preenchida; nenhum valor real.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-08.4: Seção Embeddings: `OPENAI_API_KEY`, `EMBEDDING_API_URL`, `EMBEDDING_MODEL`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-08.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Preencher a seção com `OPENAI_API_KEY` (só servidor), `EMBEDDING_API_URL` (padrão `https://api.openai.com/v1/embeddings`, aceita API compatível) e `EMBEDDING_MODEL` (padrão `text-embedding-3-small`; o vetor precisa ter 1536 dimensões), conforme `api/_lib/embeddings.ts`.
+- **Critérios de Aceitação:** Seção preenchida; padrões iguais ao código.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-08.5: Seção MCP: `MCP_AUTH_TOKEN`, `MCP_CORS_ORIGIN`, `MCP_DEFAULT_PROJECT`, `MCP_ALLOWED_PROJECTS`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-08.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Preencher a seção com `MCP_AUTH_TOKEN` (obrigatório para as ferramentas de dados; gerar com `openssl rand -hex 32`), `MCP_CORS_ORIGIN` (padrão `*`; restringir em produção), `MCP_DEFAULT_PROJECT` (slug padrão) e `MCP_ALLOWED_PROJECTS` (lista de slugs separada por vírgula), conforme `api/mcp.ts` e `api/_lib/args.ts`.
+- **Critérios de Aceitação:** Seção preenchida; comportamento descrito igual ao código.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-08.6: Seção Scripts: `DASHBOARD_AI_PROJECT`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-08.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Preencher a seção Scripts com `DASHBOARD_AI_PROJECT` (projeto padrão do `scripts/sincronizar_tasks.py`, equivalente a `--projeto`), lembrando que o script lê o `.env` da raiz e usa as variáveis do servidor Supabase.
+- **Critérios de Aceitação:** Seção preenchida.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-08.7: Conferir `.gitignore` (`!.env.example`)
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-08.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Garantir no `.gitignore` que `.env` e `.env.*` continuam ignorados e que `!.env.example` vem depois de **todas** as regras de `.env` (hoje há uma segunda linha `.env` no fim do arquivo). Conferir com `git check-ignore -v .env.example .env .env.local`.
+- **Critérios de Aceitação:** `.env.example` não ignorado; `.env` e `.env.local` ignorados.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-08.8: Funções de extração em `scripts/checar-env.mjs` + testes
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `scripts/checar-env.mjs` (Node, sem dependências) exportando `extrairVariaveis(texto): string[]` (reconhece `process.env.X`, `import.meta.env.X`, `env.X` em maiúsculas e `os.environ.get("X")`/`os.environ["X"]`) e `variaveisDoExemplo(texto): string[]` (linhas `NOME=` do `.env.example`, ignorando comentários). Testes em `tests/unit/checar-env.test.ts`.
+- **Critérios de Aceitação:** `npm test` passa; `npm run typecheck` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-08.9: CLI `npm run check:env` (toda variável usada está no `.env.example`)
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Adicionar ao `scripts/checar-env.mjs` a execução direta: varrer `src/`, `api/` e `scripts/` (ignorando `node_modules`, `dist` e testes), comparar com o `.env.example` e sair com código 1 listando as que faltam (e avisando as listadas que não são usadas). Adicionar `"check:env"` no `package.json`.
+- **Critérios de Aceitação:** `npm run check:env` passa no repositório; remover uma variável do `.env.example` faz falhar.
 - **Commit:** pendente
 - **Anotação:** pendente
 
@@ -1076,7 +1175,7 @@
 #### [ ] SUB-25.2: Rodar `npm ci` + `npm run validar` e registrar em `docs/VALIDACAO.md`
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-25.1, SUB-08, SUB-19, SUB-20, SUB-21, SUB-23, SUB-27 (inclui SUB-27.22), SUB-33, SUB-34
+- **Depende de:** SUB-25.1, SUB-08.9, SUB-19, SUB-20, SUB-21, SUB-23, SUB-27 (inclui SUB-27.22), SUB-33, SUB-34
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Com todas as tasks anteriores concluídas, rodar `npm ci && npm run validar` e registrar o resultado em `docs/VALIDACAO.md` (versões de Node/npm, tamanhos dos chunks, nº de testes). **Sem corrigir nada aqui:** cada falha encontrada vira uma subtarefa nova (SUB-25.8, 25.9…), atômica, criada no quadro com lock + commit + push.
 - **Critérios de Aceitação:** `docs/VALIDACAO.md` criado; falhas (se houver) cadastradas como SUB-25.8+.
@@ -1166,7 +1265,7 @@
 #### [ ] SUB-26.3: Seção Execução local
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-26.1, SUB-08, SUB-25
+- **Depende de:** SUB-26.1, SUB-08.9, SUB-25
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Node 22 (`.nvmrc`), `npm ci`, copiar `.env.example`, `npm run dev`, `npm test`, `npm run test:integration`, `npm run validar`.
 - **Critérios de Aceitação:** Comandos conferidos contra o `package.json`.
@@ -1186,10 +1285,10 @@
 #### [ ] SUB-26.5: Seção Deploy na Vercel
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-26.1, SUB-08, SUB-33
+- **Depende de:** SUB-26.1, SUB-08.9, SUB-33
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Node 22 no projeto Vercel, variáveis de frontend (`VITE_*`) e de servidor (Supabase, OpenAI/embeddings, `MCP_*`), rewrite `/mcp`, limites de `maxDuration`.
-- **Critérios de Aceitação:** Lista de variáveis igual ao `.env.example`.
+- **Critérios de Aceitação:** Lista de variáveis igual ao `.env.example` (`npm run check:env` verde).
 - **Commit:** pendente
 - **Anotação:** pendente
 
