@@ -85,3 +85,21 @@ PSQL="docker exec -i -w /repo pg-dash psql -U postgres" POSTGREST_BIN=/caminho/p
 - **Arquivos:** 8 aprovados (8): `agentEvents`, `authService`, `eventService`, `logService`, `memoryService`, `projectService`, `supabase`, `taskService` (`*.integration.test.ts`)
 - **Testes:** 29 aprovados (29), 0 falhas
 - Saída: exit 0. Nenhuma falha, então nenhuma SUB-25.8+ foi criada.
+
+## Telas Fila e Logs contra o Supabase de produção (SUB-25.4)
+
+Em 2026-10-12, por Claude Code (Opus 5.5), com `npm run build` + `vite preview` (`http://localhost:4173`)
+apontando para o Supabase de produção (`fcmntkzpjoetdabllabn`, scripts `00` a `07` aplicados).
+
+| Conferência | Como | Resultado |
+|---|---|---|
+| Tela de login em 1280x800 e 390x844 | painel do navegador do app | OK: formulário, "Entrar com link", "Esqueci a senha" e "Criar usuário"; sem rolagem horizontal; sem aviso de Supabase não configurado |
+| Console da tela de login | painel do navegador do app | OK: nenhuma mensagem |
+| Telas **Fila** e **Logs** logado | navegador do usuário (relato no chat: "eu já validei isso") | OK segundo o usuário; tamanhos e console não informados |
+| RLS das consultas das telas (`projects`, `tasks`, `agendamento_tarefa_logs`) como o admin `gelvazio@gmail.com` | MCP do Supabase, `set local role authenticated` + `request.jwt.claims`, transação desfeita | OK: administrador; vê o projeto `default`; 0 tasks e 0 logs (banco novo) |
+| Mesmas consultas como usuário logado sem projeto | idem, `sub` aleatório | OK: 0 projetos, 0 tasks, 0 logs |
+| Mesmas tabelas como `anon` | `has_table_privilege` | OK: sem permissão de leitura |
+
+Ressalva: a sessão não pôde ser aberta no painel do navegador do app (o login do usuário foi feito
+em outro navegador), então as telas logadas não foram conferidas pela IA. Banco ainda sem tasks e
+logs: a conferência das telas foi do estado vazio.
