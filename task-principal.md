@@ -42,15 +42,6 @@
 
 ### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-26.5
 
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-26.5** |
-| **Título da Sub-task:** | Seção Deploy na Vercel |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 14:10 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
@@ -113,7 +104,7 @@
   - `SUB-26.2`: Seção Arquitetura (`concluido`, `b3f4c36`)
   - `SUB-26.3`: Seção Execução local (`pendente`)
   - `SUB-26.4`: Seção Banco de dados (`concluido`, `62ea6c0`)
-  - `SUB-26.5`: Seção Deploy na Vercel (`pendente`)
+  - `SUB-26.5`: Seção Deploy na Vercel (`concluido`, pendente)
   - `SUB-26.6`: Seção Agentes de IA: configurar clientes MCP (`concluido`, `d7f05f6`)
   - `SUB-26.7`: Seção Memória via MCP (`concluido`, `7fa647b`)
   - `SUB-26.8`: Seção Segurança (`concluido`, `f48b2de`)
@@ -135,16 +126,15 @@
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
-#### [ ] SUB-26.5: Seção Deploy na Vercel
-- **Status:** em_execucao
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:10)
+#### [x] SUB-26.5: Seção Deploy na Vercel
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:10, conclusão: 2026-10-12 14:20)
 - **Depende de:** SUB-26.1, SUB-08.9, SUB-33
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Node 22 no projeto Vercel, variáveis de frontend (`VITE_*`) e de servidor (Supabase, OpenAI/embeddings, `MCP_*`), rewrite `/mcp`, limites de `maxDuration`.
 - **Critérios de Aceitação:** Lista de variáveis igual ao `.env.example` (`npm run check:env` verde).
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **Commit:** a5c2a8a
+- **Anotação:** Criada seção completa no README.md com: configuração do projeto na Vercel (Node 22, Vite), tabela de variáveis de ambiente (frontend e servidor), limits/timeouts, rewrite `/mcp`, deploy automático, validação pós-deploy e instruções do worker LangGraph. typecheck OK, npm test OK (298 passed), check:env OK (variáveis LANGGRAPH_DATABASE_URL e WORKER_MODELO usadas no worker).
 
 #### [ ] SUB-26.9: Revisão final do README
 - **Status:** pendente

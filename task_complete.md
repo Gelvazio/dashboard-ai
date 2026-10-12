@@ -295,6 +295,17 @@
 - **Anotação:** No `api/embedding.ts`, após a autenticação: `lerTextoEmbedding(req.body)` (`HttpError` -> status dela, 400/413), `generateEmbedding` -> 200 `{ embedding, dimensoes: 1536, modelo }`; `EmbeddingError` -> 502 com mensagem genérica (a mensagem do provedor pode ecoar parte da chave, então não é devolvida). 501 provisório removido. typecheck (app + api) e `npm test` verdes; smoke local (não commitado) conferiu 200/400/413/502 sem `sk-` no corpo.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:15 — Devin (revisão do quadro): commit e arquivos conferidos na `main`; `npm run typecheck`, `npm test` e `npm run build` verdes
 
+#### [x] SUB-26.5: Seção Deploy na Vercel
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:10, conclusão: 2026-10-12 14:20)
+- **Depende de:** SUB-26.1, SUB-08.9, SUB-33
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Node 22 no projeto Vercel, variáveis de frontend (`VITE_*`) e de servidor (Supabase, OpenAI/embeddings, `MCP_*`), rewrite `/mcp`, limites de `maxDuration`.
+- **Critérios de Aceitação:** Lista de variáveis igual ao `.env.example` (`npm run check:env` verde).
+- **Commit:** a5c2a8a
+- **Anotação:** Criada seção completa no README.md com: configuração do projeto na Vercel (Node 22, Vite), tabela de variáveis de ambiente (frontend e servidor), limits/timeouts, rewrite `/mcp`, deploy automático, validação pós-deploy e instruções do worker LangGraph. typecheck OK, npm test OK (298 passed), check:env OK (variáveis LANGGRAPH_DATABASE_URL e WORKER_MODELO usadas no worker).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 14:20 — Devin (Cognition AI): commit `a5c2a8a` e README.md conferidos na `main`; typecheck OK, npm test OK (298 passed), check:env OK.
+
 #### [x] SUB-33.12: Testes do handler: 413, 502 e 200
 - **Status:** concluido
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:28 → 2026-10-12 00:29)
