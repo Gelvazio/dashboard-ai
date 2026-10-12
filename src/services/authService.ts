@@ -5,6 +5,7 @@
 import type { Session } from '@supabase/supabase-js';
 import { mensagemErroAuth } from '@/lib/auth';
 import { getSupabase, ServiceError, type DashboardClient } from './supabase';
+import type { UserRole } from '@/types/database';
 
 /** Entra com e-mail e senha. Lança `ServiceError(..., 'AUTH')` com mensagem em português. */
 export async function entrarComSenha(
@@ -43,4 +44,14 @@ export async function enviarLinkMagico(
     options: { emailRedirectTo: redirectTo, shouldCreateUser: false },
   });
   if (error) throw new ServiceError(mensagemErroAuth(error), 'AUTH');
+}
+
+/** Papel global do usuário (`user_roles`); sem linha -> `null`. */
+export async function obterPapelGlobal(
+  userId: string,
+  client: DashboardClient = getSupabase(),
+): Promise<UserRole | null> {
+  const { data, error } = await client.from('user_roles').select('role').eq('user_id', userId).maybeSingle();
+  if (error) throw new ServiceError(`Não foi possível ler o papel do usuário: ${error.message}`, error.code);
+  return (data?.role as UserRole | undefined) ?? null;
 }
