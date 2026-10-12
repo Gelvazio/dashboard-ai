@@ -613,7 +613,7 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-34.2: Telas com `React.lazy` em `src/views/index.ts`
-- **Status:** pendente
+- **Status:** concluido
 - **Executor:** nenhum
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
