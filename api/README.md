@@ -135,6 +135,54 @@ enquanto `MCP_AUTH_TOKEN` não estiver definido** e podem ser restritas a alguns
 | `EMBEDDING_MODEL` | Opcional. Modelo de embedding (padrão `text-embedding-3-small`; precisa gerar 1536 dimensões) |
 | `EMBEDDING_API_URL` | Opcional. Endpoint compatível com OpenAI (padrão `https://api.openai.com/v1/embeddings`) |
 
+## Worker LangGraph (SUB-28)
+
+O worker LangGraph (`worker/index.ts`) executa tasks de IA automaticamente com planejamento, aprovação humana, retomada e finalização durável. É executado via `npm run worker -- --projeto <slug> --agente <nome>`.
+
+### Variáveis do worker
+
+|| Variável | Uso | Obrigatório? |
+|---|---|---|
+| `OPENAI_API_KEY` | Chave da API OpenAI para o modelo do planner (padrão `gpt-4o-mini`) | Sim |
+| `WORKER_MODELO` | Modelo usado pelo planner (padrão `gpt-4o-mini`) | Não |
+| `LANGGRAPH_DATABASE_URL` | Connection string PostgreSQL para o checkpointer durável (schema `langgraph`) | Sim |
+| `SUPABASE_URL` | URL do projeto Supabase usado pelo worker para reivindicar e finalizar tasks | Sim |
+| `SUPABASE_SERVICE_ROLE_KEY` | Chave service_role para RPCs da fila (não usar anon no worker) | Sim |
+| `MCP_DEFAULT_PROJECT` | Slug do projeto padrão (padrão `default`) | Não |
+
+### Operação
+
+```bash
+# Local (com .env.local configurado)
+npm run worker -- --projeto default --agente "Worker Teste"
+
+# Uma única task
+npm run worker -- --projeto default --agente "Worker Teste" --uma-vez
+
+# Em produção (servidor com variáveis configuradas)
+node --max-old-space-size=2G worker/index.ts -- --projeto default --agente "Worker Prod"
+```
+
+### Endpoint de aprovação humana
+
+`POST /api/aprovacao` permite que um usuário (editor do projeto) aproveve ou recuse ações sensíveis do worker. Requer JWT da sessão Supabase e autenticação HTTP:
+
+```json
+{
+  "taskId": 42,
+  "aprovado": true,
+  "motivo": "Ação autorizada"
+}
+```
+
+A aprovação retoma o grafo no `thread_id` da execução e registra auditoria nos metadados do log (quem aprovou, quando, sem credenciais).
+
+### Monitoramento
+
+O worker emite heartbeats para a tabela `agent_events` via RPC `emitir_event`, permitindo que o dashboard mostre agentes ativos em tempo real. A duração do heartbeat é configurável via `HEARTBEAT_INTERVAL_MS` (padrão 30s).
+
+---
+
 ## Ativação no Claude Code
 
 ```bash
