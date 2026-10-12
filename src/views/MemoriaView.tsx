@@ -3,21 +3,39 @@ import { AlertCircle, Brain } from 'lucide-react';
 import { EmConstrucao } from '@/components/EmConstrucao';
 import { MemoriaGrid } from '@/components/memoria/MemoriaGrid';
 import { MemoriaToolbar } from '@/components/memoria/MemoriaToolbar';
+import { MemoriaDetailModal } from '@/components/memoria/MemoriaDetailModal';
+import { ConfirmDialog } from '@/components/ui/ConfirmDialog';
+import { useExcluirMemoria } from '@/hooks/useExcluirMemoria';
 import { useMemorias } from '@/hooks/useMemorias';
 import { useProjetoAtual } from '@/hooks/useProjetoAtual';
-import { filtrarMemoriasLocal, tagsDisponiveis, type FiltroMemoriasLocal } from '@/lib/memorias';
+import { escopoMemoria, filtrarMemoriasLocal, tagsDisponiveis, type FiltroMemoriasLocal } from '@/lib/memorias';
+import type { Memoria } from '@/services/memoryService';
 
 /**
  * Cérebro de memória do projeto (SUB-21.9): toolbar com filtros locais e grade
  * de memórias (projeto + globais).
  *
  * Pontos de extensão: a busca semântica entra na área do topo (SUB-19.8), o
- * botão "Nova memória" no cabeçalho da grade (SUB-20.7) e o detalhe/exclusão
- * nos callbacks da grade (SUB-21.11).
+ * botão "Nova memória" no cabeçalho da grade (SUB-20.7). Detalhe e exclusão
+ * (com confirmação e remoção otimista) ligados na SUB-21.11.
  */
 export function MemoriaView() {
   const { projeto } = useProjetoAtual();
-  const { memorias, carregando, erro, temMais, carregarMais, recarregar } = useMemorias(projeto?.id);
+  const { memorias, carregando, erro, temMais, carregarMais, recarregar, remover, reinserir } = useMemorias(projeto?.id);
+  const { excluir } = useExcluirMemoria({ remover, reinserir });
+  const [detalhe, setDetalhe] = useState<Memoria | null>(null);
+  const [aExcluir, setAExcluir] = useState<Memoria | null>(null);
+
+  // Exclusão a partir do cartão ou do modal: fecha o detalhe e pede confirmação.
+  const pedirExclusao = (m: Memoria) => {
+    setDetalhe(null);
+    setAExcluir(m);
+  };
+  const confirmarExclusao = () => {
+    const m = aExcluir;
+    setAExcluir(null);
+    if (m) void excluir(m); // remoção otimista; reinsere e avisa em toast se o banco recusar
+  };
   const [filtro, setFiltro] = useState<FiltroMemoriasLocal>({});
   const [atualizadoEm, setAtualizadoEm] = useState<Date | null>(null);
 
@@ -73,9 +91,30 @@ export function MemoriaView() {
             temMais={temMais}
             carregandoMais={carregando && memorias.length > 0}
             onCarregarMais={() => void carregarMais()}
+            onVer={setDetalhe}
+            onExcluir={pedirExclusao}
           />
         </div>
       </section>
+
+      <MemoriaDetailModal memoria={detalhe} onFechar={() => setDetalhe(null)} onExcluir={pedirExclusao} />
+      <ConfirmDialog
+        aberto={aExcluir !== null}
+        titulo="Excluir memória?"
+        mensagem={
+          aExcluir && (
+            <>
+              A memória <strong>{aExcluir.title}</strong>
+              {escopoMemoria(aExcluir) === 'global' ? ' é global (compartilhada entre todos os projetos) e' : ''} será
+              excluída definitivamente. Os agentes deixam de encontrá-la no <code>brain_search</code>.
+            </>
+          )
+        }
+        rotuloConfirmar="Excluir"
+        perigo
+        onConfirmar={confirmarExclusao}
+        onCancelar={() => setAExcluir(null)}
+      />
     </div>
   );
 }
