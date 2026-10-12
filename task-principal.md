@@ -9,8 +9,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 32
-- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
-- **Pendentes:** 19
+- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-03`)
+- **Pendentes:** 18
 - **Concluídas:** 13
 - **Canceladas:** 0
 
@@ -69,9 +69,9 @@
 - **Commit:** `4b999f7`
 - **Anotação:** Pastas src/components, src/services, src/hooks, src/types, src/views e src/styles, cada uma com index.ts (barrel) documentando a responsabilidade e as regras (serviços sempre filtrados por project_id, só chave anon + RLS no navegador; componentes sem acesso a dados). types/index.ts com ViewId e ProjectSlug; views/index.ts com VIEWS (Fila de Tarefas, Cérebro de Memória, Logs do Agendador, Configurações) para a navegação da SUB-12. CSS global movido para src/styles/index.css. Alias @/ -> src/ no vite.config.ts e em tsconfig.app.json (paths). src/README.md com a estrutura e convenções do produto genérico multi-projeto. Validado: build e typecheck (frontend + api) OK.
 
-### [ ] SUB-03: Configuração do Cliente Supabase e Tipagem TypeScript
-- **Status:** pendente
-- **Executor:** nenhum
+### [🔄] SUB-03: Configuração do Cliente Supabase e Tipagem TypeScript
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:02)
 - **Depende de:** SUB-02
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar cliente Supabase reutilizável em `src/services/supabase.ts` e interfaces em `src/types/database.ts` para `Task`, `AiMemory`, `AgendamentoLog`, `Project`, `ProjectMember` (multi-projeto, ver SUB-29).
