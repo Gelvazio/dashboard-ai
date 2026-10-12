@@ -49,6 +49,17 @@
 | **Data e Hora de Início:** | 2026-10-12 01:46 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-33.9
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-33.9** |
+| **Título da Sub-task:** | Documentar `/api/embedding` no `api/README.md` |
+| **Agente Responsável:** | DashboardAI-Clone 08 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:46 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
@@ -209,7 +220,7 @@
   - `SUB-33.6`: Testes do handler: OPTIONS, 405 e 401 (`concluido`)
   - `SUB-33.7`: `criarGeradorEmbedding()` em `src/services/embeddingService.ts` (`concluido`)
   - `SUB-33.8`: Testes de `embeddingService` em `tests/unit/embeddingService.test.ts` (`concluido`)
-  - `SUB-33.9`: Documentar `/api/embedding` no `api/README.md` (`pendente`)
+  - `SUB-33.9`: Documentar `/api/embedding` no `api/README.md` (`em_execucao`)
   - `SUB-33.10`: Autenticação no handler `api/embedding.ts` (401) (`concluido`)
   - `SUB-33.11`: Corpo, geração do embedding e erros no handler (400/413/502/200) (`concluido`)
   - `SUB-33.12`: Testes do handler: 413, 502 e 200 (`concluido`)
@@ -300,8 +311,8 @@
 - **Anotação:** Criado `tests/unit/embeddingService.test.ts` com `fetch` simulado e cliente falso (`auth.getSession`): sem sessão (pede login, não chama o servidor), 401 (pede login), 500 (`ServiceError` com a mensagem do servidor), vetor com tamanho errado (erro cita 1536) e sucesso (POST com `Authorization: Bearer` e `{ texto }`, devolve 1536 números). typecheck (app + api) e `npm test` verdes (62 passed).
 
 #### [ ] SUB-33.9: Documentar `/api/embedding` no `api/README.md`
-- **Status:** pendente
-- **Executor:** —
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 01:46)
 - **Depende de:** SUB-33.11
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Seção no `api/README.md`: contrato (request/response, códigos 401/405/413/502), variáveis (`SUPABASE_URL`, `SUPABASE_ANON_KEY` ou service role, `OPENAI_API_KEY`, `EMBEDDING_MODEL`, `EMBEDDING_API_URL`) e exemplo `curl`. Conferir que o `.env.example` lista `SUPABASE_ANON_KEY` (SUB-08.3).
