@@ -110,14 +110,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:11 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 05 (Grok Bot) — SUB-35.9
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.9** |
+| **Título da Sub-task:** | `listarEventos()` em `src/services/eventService.ts` |
+| **Agente Responsável:** | DashboardAI-Clone 05 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:12 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (5)
+### 🔄 EM EXECUÇÃO (6)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-35.9** | `listarEventos()` em `src/services/eventService.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:12 | SUB-35.8 |
 | **SUB-35.45** | Seção "Reporte de progresso (opcional)" no `AGENTS.md` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:11 | SUB-35.41 |
 | **SUB-27.11** | Tela `LoginView` em `src/views/LoginView.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:11 | SUB-27.10, SUB-27.19 |
 | **SUB-34.5** | Checagem de tamanho `scripts/checar-chunks.mjs` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:11 | SUB-34.6, SUB-34.3, SUB-34.4 |
@@ -129,7 +141,7 @@
 
 ---
 
-### ⏳ PENDENTES (143)
+### ⏳ PENDENTES (142)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -222,7 +234,6 @@
 | **SUB-27.27** | Incluir `UserMenu` no `src/components/layout/Header.tsx` | 3 | Fase 10 | SUB-27.14 — 🔄 em execução por DashboardAI-Clone 06 |
 | **SUB-27.28** | Varredura do bundle por `service_role` (SUB-27) | 3 | Fase 10 | SUB-27.22 — ⛓️ bloqueada |
 | **SUB-35** | Monitor em Tempo Real dos Agentes (mãe) | 4 | Fase 12 | SUB-12, SUB-29, SUB-30; SUB-35.1 a SUB-35.46 |
-| **SUB-35.9** | `listarEventos()` em `src/services/eventService.ts` | 4 | Fase 12 | SUB-35.8 — ⛓️ bloqueada |
 | **SUB-35.10** | `atividadeAtual()` em `src/services/eventService.ts` | 4 | Fase 12 | SUB-35.9 — ⛓️ bloqueada |
 | **SUB-35.11** | `assinarEventos()` (Supabase Realtime) em `src/services/eventService.ts` | 4 | Fase 12 | SUB-35.10 — ⛓️ bloqueada |
 | **SUB-35.12** | Testes de `eventService` em `tests/unit/eventService.test.ts` | 4 | Fase 12 | SUB-35.11 — ⛓️ bloqueada |
@@ -659,3 +670,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:11 | DashboardAI-Clone 10 (Grok Bot) | SUB-27.11 | — | Lock: assumindo SUB-27.11 (Tela `LoginView` em `src/views/LoginView.tsx`) |
 | 2026-10-12 01:11 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.8 | `5a09109` | Em `src/types/database.ts`: `TIPOS_EVENTO_AGENTE` (const) + `TipoEventoAgente`, `AgentEvent` (colunas de `agent_events`, SUB-35.1), `AtividadeAgente` (retorno de `atividade_atual_agentes`, SUB-35.5, incl. `ultimo_heartbeat_em`) e `AgentEventInsert` (opcionais: id, task, execução, etapa, status, mensagem, metadados, chave, autor, data); `Database` registra `agent_events` (`Update: never`, só-inclusão) e a função `atividade_atual_agentes({ p_project_id })`. Reexportados por `src/types/index.ts`. Comentário do teste de integração da SUB-35.6 atualizado (segue sem tipagem para tentar o update proibido). `npm run typecheck` e `npm test` verdes. |
 | 2026-10-12 01:11 | DashboardAI-Clone 08 (Grok Bot) | SUB-35.45 | — | Lock: assumindo SUB-35.45 (Seção "Reporte de progresso (opcional)" no `AGENTS.md`) |
+| 2026-10-12 01:12 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.9 | — | Lock: assumindo SUB-35.9 (`listarEventos()` em `src/services/eventService.ts`) |
