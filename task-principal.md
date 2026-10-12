@@ -10,9 +10,9 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
 - **Subtarefas atômicas (~3 min):** 153 (SUB-08.x, SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x; atualizado em 2026-10-12 00:17)
-- **Em Execução:** 2 (SUB-23.1, SUB-23.4)
+- **Em Execução:** 3 (SUB-33.8, SUB-23.1, SUB-23.4)
 - **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 139 subtarefas
-  - livres agora: 27 (SUB-33.5, SUB-33.8, SUB-33.9, SUB-08.2, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.5, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-25.1, SUB-26.1, SUB-27.1)
+  - livres agora: 26 (SUB-33.5, SUB-33.9, SUB-08.2, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.5, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-25.1, SUB-26.1, SUB-27.1)
   - bloqueadas por dependência: 110
   - reservadas: 0
 - **Concluídas:** 39
@@ -164,7 +164,7 @@
   - `SUB-33.5`: Registrar `api/embedding.ts` no `vercel.json` (`pendente`)
   - `SUB-33.6`: Testes do handler: OPTIONS, 405 e 401 (`concluido`)
   - `SUB-33.7`: `criarGeradorEmbedding()` em `src/services/embeddingService.ts` (`concluido`)
-  - `SUB-33.8`: Testes de `embeddingService` em `tests/unit/embeddingService.test.ts` (`pendente`)
+  - `SUB-33.8`: Testes de `embeddingService` em `tests/unit/embeddingService.test.ts` (`em_execucao`)
   - `SUB-33.9`: Documentar `/api/embedding` no `api/README.md` (`pendente`)
   - `SUB-33.10`: Autenticação no handler `api/embedding.ts` (401) (`concluido`)
   - `SUB-33.11`: Corpo, geração do embedding e erros no handler (400/413/502/200) (`concluido`)
@@ -246,8 +246,8 @@
 - **Anotação:** Criado `src/services/embeddingService.ts` com `criarGeradorEmbedding({ url?, client? }): GeradorEmbedding`: pega o `access_token` de `client.auth.getSession()` (sem sessão -> `ServiceError('Faça login para usar a busca semântica.')`), faz `POST /api/embedding` com `{ texto }` e `Authorization: Bearer`; 401 -> mesma mensagem de login, falha de rede/HTTP -> `ServiceError` (usa `erro` do servidor), valida 1536 números finitos. Exportado em `src/services/index.ts`. Nenhuma chave de embeddings no frontend. typecheck, `npm test` e `npm run build` OK.
 
 #### [ ] SUB-33.8: Testes de `embeddingService` em `tests/unit/embeddingService.test.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (desde 2026-10-12 00:32)
 - **Depende de:** SUB-33.7
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Testes com `fetch` simulado e cliente falso (`auth.getSession`): sem sessão, 401, 500, vetor com tamanho errado, sucesso (envia `Authorization: Bearer`).
