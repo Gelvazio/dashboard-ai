@@ -9,6 +9,8 @@ export interface BuscaSemanticaPanelProps {
   projeto: { id: number; slug: string } | null;
   /** Abre a memória clicada (ex.: modal de detalhe). */
   onAbrir?: (id: string) => void;
+  /** Mude o número para refazer a busca atual (ex.: após salvar uma memória). */
+  versao?: number;
 }
 
 /**
@@ -16,11 +18,11 @@ export interface BuscaSemanticaPanelProps {
  * `BuscaControles` (SUB-19.9), grade de `ResultadoBuscaCard` (SUB-19.5) e os
  * estados carregando/vazio/erro, com os dados de `useBuscaSemantica` (SUB-19.6).
  */
-export function BuscaSemanticaPanel({ projeto, onAbrir }: BuscaSemanticaPanelProps) {
+export function BuscaSemanticaPanel({ projeto, onAbrir, versao }: BuscaSemanticaPanelProps) {
   const [consulta, setConsulta] = useState('');
   const [limiar, setLimiar] = useState(0.7);
   const [incluirGlobais, setIncluirGlobais] = useState(true);
-  const { resultado, carregando, erro } = useBuscaSemantica(projeto, consulta, { limiar, incluirGlobais });
+  const { resultado, carregando, erro } = useBuscaSemantica(projeto, consulta, { limiar, incluirGlobais, versao });
   const temConsulta = consulta.trim().length > 0;
 
   return (

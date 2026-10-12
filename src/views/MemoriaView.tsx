@@ -1,10 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
-import { AlertCircle, Brain, Sparkles } from 'lucide-react';
+import { AlertCircle, Brain, Plus, Sparkles } from 'lucide-react';
 import { EmConstrucao } from '@/components/EmConstrucao';
 import { BuscaSemanticaPanel } from '@/components/memoria/BuscaSemanticaPanel';
 import { MemoriaGrid } from '@/components/memoria/MemoriaGrid';
 import { MemoriaToolbar } from '@/components/memoria/MemoriaToolbar';
 import { MemoriaDetailModal } from '@/components/memoria/MemoriaDetailModal';
+import { MemoriaFormModal } from '@/components/memoria/MemoriaFormModal';
+import { Botao } from '@/components/ui/Botao';
 import { ConfirmDialog } from '@/components/ui/ConfirmDialog';
 import { useExcluirMemoria } from '@/hooks/useExcluirMemoria';
 import { useMemorias } from '@/hooks/useMemorias';
@@ -16,9 +18,10 @@ import type { Memoria } from '@/services/memoryService';
  * Cérebro de memória do projeto (SUB-21.9): toolbar com filtros locais e grade
  * de memórias (projeto + globais).
  *
- * Busca semântica no topo (SUB-19.8). Ponto de extensão: o botão "Nova memória"
- * no cabeçalho da grade (SUB-20.7). Detalhe e exclusão (com confirmação e
- * remoção otimista) ligados na SUB-21.11.
+ * Busca semântica no topo (SUB-19.8). Botão "Nova memória" no cabeçalho da
+ * grade abre o `MemoriaFormModal` e recarrega grade e busca ao salvar
+ * (SUB-20.7). Detalhe e exclusão (com confirmação e remoção otimista) ligados
+ * na SUB-21.11.
  */
 export function MemoriaView() {
   const { projeto } = useProjetoAtual();
@@ -26,6 +29,15 @@ export function MemoriaView() {
   const { excluir } = useExcluirMemoria({ remover, reinserir });
   const [detalhe, setDetalhe] = useState<Memoria | null>(null);
   const [aExcluir, setAExcluir] = useState<Memoria | null>(null);
+  const [novaAberta, setNovaAberta] = useState(false);
+  const [versaoBusca, setVersaoBusca] = useState(0);
+
+  // Após salvar (SUB-20.7): recarrega a grade e refaz a busca semântica atual.
+  const aoSalvar = () => {
+    setNovaAberta(false);
+    void recarregar();
+    setVersaoBusca((v) => v + 1);
+  };
 
   // Exclusão a partir do cartão ou do modal: fecha o detalhe e pede confirmação.
   const pedirExclusao = (m: Memoria) => {
@@ -62,6 +74,7 @@ export function MemoriaView() {
         </h2>
         <BuscaSemanticaPanel
           projeto={projeto}
+          versao={versaoBusca}
           onAbrir={(id) => {
             const m = memorias.find((x) => x.id === id);
             if (m) setDetalhe(m);
@@ -78,7 +91,10 @@ export function MemoriaView() {
               {memorias.length}
             </span>
           </h2>
-          {/* Espaço para o botão "Nova memória" (SUB-20.7). */}
+          <Botao variante="primario" onClick={() => setNovaAberta(true)}>
+            <Plus className="size-4" aria-hidden />
+            Nova memória
+          </Botao>
         </header>
         <MemoriaToolbar
           filtro={filtro}
@@ -110,6 +126,7 @@ export function MemoriaView() {
         </div>
       </section>
 
+      <MemoriaFormModal aberto={novaAberta} projeto={projeto} onFechar={() => setNovaAberta(false)} onSalvo={aoSalvar} />
       <MemoriaDetailModal memoria={detalhe} onFechar={() => setDetalhe(null)} onExcluir={pedirExclusao} />
       <ConfirmDialog
         aberto={aExcluir !== null}

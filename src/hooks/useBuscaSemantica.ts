@@ -8,6 +8,8 @@ export interface OpcoesBuscaSemantica {
   limiar?: number;
   /** Inclui memórias globais (`project_id` nulo); padrão do serviço: sim. */
   incluirGlobais?: boolean;
+  /** Mude o número para refazer a busca atual (ex.: após salvar uma memória). */
+  versao?: number;
 }
 
 export interface EstadoBuscaSemantica {
@@ -29,7 +31,7 @@ export interface EstadoBuscaSemantica {
 export function useBuscaSemantica(
   projeto: { id: number; slug: string } | null,
   consulta: string,
-  { limiar, incluirGlobais }: OpcoesBuscaSemantica = {},
+  { limiar, incluirGlobais, versao = 0 }: OpcoesBuscaSemantica = {},
 ): EstadoBuscaSemantica {
   const termo = useDebounce(consulta.trim(), 400);
   const gerador = useMemo(() => criarGeradorEmbedding(), []);
@@ -55,7 +57,7 @@ export function useBuscaSemantica(
           setEstado((s) => ({ ...s, carregando: false, erro: e instanceof Error ? e.message : String(e) }));
         }
       });
-  }, [termo, projetoId, projetoSlug, limiar, incluirGlobais, gerador]);
+  }, [termo, projetoId, projetoSlug, limiar, incluirGlobais, gerador, versao]);
 
   // Ao desmontar, invalida a requisição em voo para não atualizar estado depois.
   useEffect(() => () => void ++requisicao.current, []);
