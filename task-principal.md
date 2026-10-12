@@ -55,19 +55,6 @@
 
 ---
 
-### 🔒 TRAVA ADICIONAL — Claude Code (Opus 5.5) — SUB-39.6
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-39.6** |
-| **Título da Sub-task:** | Isolar `tests/unit/supabase.test.ts` das variáveis do `.env` local |
-| **Agente Responsável:** | Claude Code (Opus 5.5) |
-| **Data e Hora de Início:** | 2026-10-12 18:04 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-39.6 |
-
----
-
 ### 🔒 TRAVA ESPECIAL: KIRO-DEV-CLONE
 
 > **ATENÇÃO:** A tarefa `KIRO-DEV-CLONE` está **TRAVADA PARA TODAS AS IAS**.
@@ -88,11 +75,11 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 41
 - **Subtarefas atômicas (~3 min):** 248
-- **Em Execução:** 2 (SUB-38, SUB-39.6)
+- **Em Execução:** 1 (SUB-38)
 - **Pendentes:** 8 principais (SUB-38, 25, 26, 28, 35, 39, 40, KIRO-DEV-CLONE) + 45 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 6 — SUB-25.4, SUB-25.7, SUB-35.32, SUB-40.1 e SUB-40.2 (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 4 — SUB-25.4, SUB-25.7 e SUB-35.32 (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
   - bloqueadas por dependência: 8 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32) e SUB-40.3 a SUB-40.7 (cadeia da SUB-40)
-  - em execução: 2 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-39.6 (Claude Code (Opus 5.5))
+  - em execução: 1 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
 - **Concluídas:** 232 de 289 blocos (33 principais + 199 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
@@ -412,7 +399,7 @@
   - `SUB-39.3`: Remover `as any` de `worker/fila.ts` e `worker/falhas.ts` (`concluido`, `5df4f1d`)
   - `SUB-39.4`: Fábrica `criarGrafoComCheckpointer` em `worker/grafoFabrica.ts` usada pelo `worker/index.ts` (`concluido`, `e789db4`)
   - `SUB-39.5`: Usar a fábrica da SUB-39.4 em `api/aprovacao.ts` (`concluido`, `2ce9adf`)
-  - `SUB-39.6`: Isolar `tests/unit/supabase.test.ts` das variáveis do `.env` local (`em_execucao`)
+  - `SUB-39.6`: Isolar `tests/unit/supabase.test.ts` das variáveis do `.env` local (`concluido`, `3c18f1f`)
 - **Descrição:** Corrigir divergências entre documentação e código e reduzir castings inseguros e duplicação no worker LangGraph e na API de aprovação.
 - **Critérios de Aceitação:** Todas as filhas `concluido`; `npm run validar` e `npm run typecheck:worker` verdes.
 - **Commit:** pendente
@@ -430,19 +417,6 @@
 - **Critérios de Aceitação:** Exemplo e texto do `README.md` iguais ao `vercel.json`; `npm run validar` verde.
 - **Commit:** pendente
 - **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-#### [ ] SUB-39.6: Isolar `tests/unit/supabase.test.ts` das variáveis do `.env` local
-- **Status:** em_execucao
-- **Prioridade:** MEDIA
-- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 18:04)
-- **Depende de:** Nenhuma
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Com um `.env` local preenchido (não versionado), o teste `services/supabase > sem variáveis de ambiente a conexão fica "sem_config"` falha (`{ estado: 'erro' }` em vez de `{ estado: 'sem_config' }`), porque o Vitest carrega o `.env` e `VITE_SUPABASE_URL`/`VITE_SUPABASE_ANON_KEY` deixam de estar vazias. Fazer o teste zerar essas variáveis por conta própria (ex.: `vi.stubEnv('VITE_SUPABASE_URL', '')` e `vi.stubEnv('VITE_SUPABASE_ANON_KEY', '')`, com `vi.unstubAllEnvs()` no `afterEach`), sem depender do ambiente da máquina. Não ler nem alterar o `.env`.
-- **Critérios de Aceitação:** `npm test` verde com e sem `.env` local preenchido.
-- **Commit:** pendente
-- **Anotação:** Criada em 2026-10-12 por Claude Code (Opus 5.5) durante a SUB-39.3 (achado fora do escopo). Confirmado: com `VITE_SUPABASE_URL= VITE_SUPABASE_ANON_KEY= npx vitest run` passam 300/300; sem isso, 1 falha (a mesma falha antes da SUB-39.3).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 

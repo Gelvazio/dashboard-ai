@@ -3253,3 +3253,16 @@
 - **Anotação:** `api/aprovacao.ts`: removida `criarGrafoComCheckpointerPadrao` (cópia da montagem do grafo com o cast `as unknown as any` na linha ~92) e os imports `ChatOpenAI`, `criarCheckpointer` e `criarGrafo`; o `DEPS_PADRAO` usa `() => criarGrafoComCheckpointer()` de `worker/grafoFabrica.ts` (SUB-39.4). A injeção por `DepsAprovacao` não mudou, então `tests/unit/api-aprovacao.test.ts` segue com o grafo falso. Agora a montagem do grafo real existe num único lugar. Validação: `npm run typecheck`, `npm run typecheck:worker` e `npm test` (300 passam/30 pulados) verdes. `npm run test:integration` **não executado**: sem Docker/Postgres local nesta máquina (o critério pede só "quando houver banco local").
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:04 — Claude Code (Opus 5.5): entrega verificada (sem `as unknown as any` em `api/aprovacao.ts`; `typecheck`, `typecheck:worker` e `npm test` verdes; integração não executada por falta de banco local)
 - **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [x] SUB-39.6: Isolar `tests/unit/supabase.test.ts` das variáveis do `.env` local
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 18:04, conclusão: 2026-10-12 18:05)
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Com um `.env` local preenchido (não versionado), o teste `services/supabase > sem variáveis de ambiente a conexão fica "sem_config"` falha (`{ estado: 'erro' }` em vez de `{ estado: 'sem_config' }`), porque o Vitest carrega o `.env` e `VITE_SUPABASE_URL`/`VITE_SUPABASE_ANON_KEY` deixam de estar vazias. Fazer o teste zerar essas variáveis por conta própria (ex.: `vi.stubEnv('VITE_SUPABASE_URL', '')` e `vi.stubEnv('VITE_SUPABASE_ANON_KEY', '')`, com `vi.unstubAllEnvs()` no `afterEach`), sem depender do ambiente da máquina. Não ler nem alterar o `.env`.
+- **Critérios de Aceitação:** `npm test` verde com e sem `.env` local preenchido.
+- **Commit:** `3c18f1f`
+- **Anotação:** Criada em 2026-10-12 por Claude Code (Opus 5.5) durante a SUB-39.3 (achado fora do escopo). Confirmado: com `VITE_SUPABASE_URL= VITE_SUPABASE_ANON_KEY= npx vitest run` passam 300/300; sem isso, 1 falha (a mesma falha antes da SUB-39.3).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:05 — Claude Code (Opus 5.5): entrega verificada (`npm test` verde com e sem `.env` local; `typecheck` verde)
+- **VERIFICADOR-CLAUDE:** PENDENTE
