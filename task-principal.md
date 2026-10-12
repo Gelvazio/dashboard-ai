@@ -55,6 +55,19 @@
 
 ---
 
+### 🔒 TRAVA ADICIONAL — Claude Code (Opus 5.5) — SUB-39.3
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-39.3** |
+| **Título da Sub-task:** | Remover `as any` de `worker/fila.ts` e `worker/falhas.ts` |
+| **Agente Responsável:** | Claude Code (Opus 5.5) |
+| **Data e Hora de Início:** | 2026-10-12 17:58 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-39.3 |
+
+---
+
 ### 🔒 TRAVA ESPECIAL: KIRO-DEV-CLONE
 
 > **ATENÇÃO:** A tarefa `KIRO-DEV-CLONE` está **TRAVADA PARA TODAS AS IAS**.
@@ -75,11 +88,11 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 40
 - **Subtarefas atômicas (~3 min):** 240
-- **Em Execução:** 1 (SUB-38)
+- **Em Execução:** 2 (SUB-38, SUB-39.3)
 - **Pendentes:** 7 principais (SUB-38, 25, 26, 28, 35, 39, KIRO-DEV-CLONE) + 40 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 6 — SUB-25.4, SUB-25.7, SUB-35.32, SUB-39.3 e SUB-39.4 (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 5 — SUB-25.4, SUB-25.7, SUB-35.32 e SUB-39.4 (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
   - bloqueadas por dependência: 4 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32) e SUB-39.5 (depende da SUB-39.4)
-  - em execução: 2 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25
+  - em execução: 2 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-39.3 (Claude Code (Opus 5.5))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
 - **Concluídas:** 229 de 280 blocos (33 principais + 196 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
@@ -396,7 +409,7 @@
 - **Subtarefas:** (criadas em 2026-10-12 por Claude Code a partir do `TASKS-SUGERIDAS.md`, investigação só-leitura feita em outro clone; números trocados de SUB-36.x para SUB-39.x porque a SUB-36 já existe)
   - `SUB-39.1`: Alinhar `maxDuration` do `README.md` ao `vercel.json` (`pendente`)
   - `SUB-39.2`: Alinhar a allowlist do contrato (`docs/langgraph-contrato.md`) ao `worker/ferramentas.ts` (`concluido`, `e7a08be`)
-  - `SUB-39.3`: Remover `as any` de `worker/fila.ts` e `worker/falhas.ts` (`pendente`)
+  - `SUB-39.3`: Remover `as any` de `worker/fila.ts` e `worker/falhas.ts` (`em_execucao`)
   - `SUB-39.4`: Fábrica `criarGrafoComCheckpointer` em `worker/grafoFabrica.ts` usada pelo `worker/index.ts` (`pendente`)
   - `SUB-39.5`: Usar a fábrica da SUB-39.4 em `api/aprovacao.ts` (`pendente`)
 - **Descrição:** Corrigir divergências entre documentação e código e reduzir castings inseguros e duplicação no worker LangGraph e na API de aprovação.
@@ -420,9 +433,9 @@
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
 #### [ ] SUB-39.3: Remover `as any` de `worker/fila.ts` e `worker/falhas.ts`
-- **Status:** pendente
+- **Status:** em_execucao
 - **Prioridade:** MEDIA
-- **Executor:** nenhum
+- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 17:58)
 - **Depende de:** SUB-28.4, SUB-28.21
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** (1) `worker/fila.ts:35` — trocar `rpc<any>('pegar_proxima_task', ...)` por um tipo com os campos que `reivindicar()` usa: `id: number`, `codigo: string`, `tentativas: number`, `instrucao: string | null` (de preferência reaproveitando o tipo `Task` de `src/types/database.ts` com `Pick`, se o `worker/tsconfig.json` permitir; senão, interface local). (2) `worker/falhas.ts:16` — trocar `err as any` por um tipo seguro, ex.: `err as Error & { status?: number; statusCode?: number; code?: string }`.
