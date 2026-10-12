@@ -1,15 +1,16 @@
 # 📋 TASK-PRINCIPAL: Projeto Dashboard AI
 
 > **Objetivo:** Construção da solução unificada do **Dashboard AI**, integrando o controle e fila de tarefas da IA (`tasks`), a base de memória persistente vetorial (`ai_memories` / Jev-Mem) e o monitoramento em tempo real do agendador autônomo.
-> **Fonte Base:** `C:\fontes\dashboard-ai\aulassenai-base` e especificação de memória Jev-Mem.
+> **Fonte Base:** inspirado no motor de fila do `aulassenai-base` e na especificação de memória Jev-Mem.
+> **Direção (2026-10-11):** o Dashboard AI é um **gerenciador genérico de tasks de IA, usável por qualquer projeto** (multi-projeto), não acoplado ao AulasSenai.
 > **Regra Geral:** Toda tarefa pode ser subdividida em mini-tarefas menores. Cada tarefa/subtarefa declara obrigatoriamente suas **Dependências** e suas **Subtarefas**. Nenhuma IA pode assumir uma tarefa cujas dependências não estejam `concluido`.
 
 ---
 
 ## 📊 Resumo de Progresso
-- **Total de Tasks Principais:** 28
+- **Total de Tasks Principais:** 31
 - **Em Execução:** 2 (`SUB-01.1`, `SUB-27`)
-- **Pendentes:** 24
+- **Pendentes:** 27
 - **Concluídas:** 4
 - **Canceladas:** 0
 
@@ -72,8 +73,8 @@
 - **Executor:** nenhum
 - **Depende de:** SUB-02
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Criar cliente Supabase reutilizável em `src/services/supabase.ts` e interfaces em `src/types/database.ts` para `Task`, `AiMemory`, `AgendamentoLog`.
-- **Critérios de Aceitação:** Tipos e cliente exportados com suporte a variáveis de ambiente e fallback para as chaves do projeto.
+- **Descrição:** Criar cliente Supabase reutilizável em `src/services/supabase.ts` e interfaces em `src/types/database.ts` para `Task`, `AiMemory`, `AgendamentoLog`, `Project`, `ProjectMember` (multi-projeto, ver SUB-29).
+- **Critérios de Aceitação:** Tipos e cliente exportados com suporte a variáveis de ambiente (sem chaves fixas no código; somente a chave anon no frontend).
 - **Commit:** pendente
 - **Anotação:** pendente
 
@@ -103,6 +104,40 @@
 
 ---
 
+## 🌐 FASE 2B: Gerenciador Genérico Multi-projeto (fila, papéis, RLS e MCP)
+
+### [ ] SUB-29: Multi-projeto, Papéis e RLS no Banco
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-04, SUB-05
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Tornar o banco genérico para qualquer projeto: tabela `projects` (com seed `default` e backfill), `project_id` em `tasks`, `ai_memories` e `agendamento_tarefa_logs` (código da task único por projeto; memória com `project_id` nulo = global), papéis `user_roles`/`project_members` com `eh_administrador()` e `tem_acesso_projeto()`, removendo `professores_administradores`/`eh_professor_administrador`. `pegar_proxima_task(p_agente, p_projeto, p_lock_minutos, p_exclusivo false)` paralela via `SKIP LOCKED`; RPCs da fila `security definer`, `search_path` fixo, `revoke` de public/anon/authenticated e `grant` a `service_role`; trigger de guarda da interface (só o backend põe/tira de `em_execucao`); trigger de validação de dependências; RLS em todas as tabelas; colunas úteis do motor original (`origem`, `tipo` ia/humano, `arquivo_md`, `md5_md`, `sincronizado_em`, `log_id`, `criado_por`/`atualizado_por`); logs genéricos expandidos; `match_memories` com `p_project_id`. Inclui `--projeto` no `scripts/sincronizar_tasks.py`.
+- **Critérios de Aceitação:** SQL idempotente aplicado 2x em Postgres + pgvector; testes de RLS com `anon`/`authenticated`/`service_role`; captura paralela entre projetos sem duplicidade; testes Python passando.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+### [ ] SUB-30: Ferramentas da Fila no MCP
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-06, SUB-29
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Publicar no `api/mcp.ts` as ferramentas `task_next`, `task_finish`, `task_list` e `task_create`, com argumento opcional `project` (padrão `MCP_DEFAULT_PROJECT`), chamando as RPCs da SUB-29 com a chave `service_role` no servidor, para que agentes de qualquer projeto operem a fila pelo MCP.
+- **Critérios de Aceitação:** `tools/list` lista as 4 ferramentas com `inputSchema`; chamadas validadas e testadas; `tsc` sem erros.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+### [ ] SUB-31: Recados entre Agentes e Regras por Projeto
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-29
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Tabelas genéricas `agent_messages` (recados entre agentes/frentes, por projeto e task) e `project_rules` (cópia por seção das regras do repositório de cada projeto, conferida por md5), com RLS por projeto.
+- **Critérios de Aceitação:** SQL idempotente aplicado 2x e testado com RLS.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+---
+
 ## 🧠 FASE 3: Módulo Backend / API Serverless de Memória (Jev-Mem MCP)
 
 ### [x] SUB-06: Estrutura do Endpoint Serverless Vercel MCP
@@ -118,9 +153,9 @@
 ### [ ] SUB-07: Implementação das Primitivas de Memória e Embeddings
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-06
+- **Depende de:** SUB-06, SUB-29
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Implementar no `api/mcp.ts` as ferramentas `brain_store`, `brain_search`, `brain_delete` e `tools/list` com geração de vetores de embedding.
+- **Descrição:** Implementar no `api/mcp.ts` as ferramentas `brain_store`, `brain_search`, `brain_delete` e `tools/list` com geração de vetores de embedding, escopo por projeto (argumento `project`; memória global com `project_id` nulo).
 - **Critérios de Aceitação:** Endpoints respondendo a chamadas MCP com armazenamento e busca por similaridade.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -130,7 +165,7 @@
 - **Executor:** nenhum
 - **Depende de:** SUB-06
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Documentar e padronizar as variáveis `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `OPENAI_API_KEY` em `.env.example`.
+- **Descrição:** Documentar e padronizar as variáveis `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` (frontend) e `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `OPENAI_API_KEY`, `EMBEDDING_MODEL`, `MCP_AUTH_TOKEN`, `MCP_CORS_ORIGIN`, `MCP_DEFAULT_PROJECT`, `DASHBOARD_AI_PROJECT` (servidor/scripts) em `.env.example`.
 - **Critérios de Aceitação:** Arquivo `.env.example` completo com instruções de preenchimento.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -145,6 +180,7 @@
 - **Depende de:** SUB-03
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Implementar operações de `listarTasks`, `criarTask`, `atualizarTask`, `alternarExecucao` (ON/OFF), `cancelarTask`, `reabrirTask` e `excluirTaskLogico`.
+- **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Funções assíncronas com tratamento de erro e ordenação por prioridade, ordem e criação.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -155,6 +191,7 @@
 - **Depende de:** SUB-03
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Implementar `buscarMemoriasSimilares`, `listarMemorias`, `salvarMemoria` e `excluirMemoria`.
+- **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Integração com RPC `match_memories` e tabela `ai_memories`.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -165,6 +202,7 @@
 - **Depende de:** SUB-03
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Implementar consulta e filtros de histórico da tabela `agendamento_tarefa_logs`.
+- **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Listagem de histórico ordenado por `data_hora desc` com contadores de status.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -178,7 +216,7 @@
 - **Executor:** nenhum
 - **Depende de:** SUB-01, SUB-02
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Construir o shell do Dashboard com barra lateral de navegação (Fila de Tarefas, Cérebro de Memória, Logs do Agendador, Configurações), Header com status da conexão Supabase e toggle de tema.
+- **Descrição:** Construir o shell do Dashboard com barra lateral de navegação (Fila de Tarefas, Cérebro de Memória, Logs do Agendador, Configurações), Header com seletor de projeto, status da conexão Supabase e toggle de tema.
 - **Critérios de Aceitação:** Navegação fluida entre abas/visões sem recarregar página, responsivo para desktop e mobile.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -189,6 +227,7 @@
 - **Depende de:** SUB-09, SUB-10, SUB-11, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Construir cards de estatísticas no topo da tela: Total de Tasks, Tasks Pendentes, Em Execução, Concluídas, Total de Memórias e Última Execução da IA.
+- **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Cards com ícones, números calculados dinamicamente e animação visual.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -203,6 +242,7 @@
 - **Depende de:** SUB-09, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Renderizar tabela com colunas: Código, Título, Prioridade (Badges coloridos 1-5), Ordem, Dependências, ON/OFF, Status, Tentativas, Resultado e Ações.
+- **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Tabela legível, com suporte a tooltips e indicadores de progresso.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -213,6 +253,7 @@
 - **Depende de:** SUB-14
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar barra de filtros com busca textual (por código, título e instrução), filtro dropdown por status e botão de recarregamento manual.
+- **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Filtros aplicados instantaneamente na tabela sem latência perceptível.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -223,6 +264,7 @@
 - **Depende de:** SUB-09, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar modal com campos: Título, Instrução (editor Markdown/textarea responsivo), Prioridade (1 a 5), Ordem, Executar Após (datetime), e Máximo de Tentativas.
+- **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Validação de campos obrigatórios, salvamento no Supabase e feedback visual de sucesso/erro.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -233,6 +275,7 @@
 - **Depende de:** SUB-14
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Modal de visualização completa contendo instrução formatada, relatório de resultado gravado pela IA, link do PR no GitHub e SHA do commit.
+- **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Renderização rica dos metadados e botão para copiar dados com um clique.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -243,6 +286,7 @@
 - **Depende de:** SUB-09, SUB-14
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Ações rápidas: Switch ON/OFF com persistência imediata, botão "Reabrir" (para recusadas/erros), botão "Cancelar" e botão "Excluir" com confirmação.
+- **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Ações executadas com atualização otimista ou recarregamento automático da tabela.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -257,6 +301,7 @@
 - **Depende de:** SUB-10, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar componente de busca semântica onde o usuário insere uma consulta e o sistema busca memórias similares via RPC `match_memories`, exibindo a porcentagem de similaridade.
+- **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Campo de busca com debounce, exibição de cards de resultado com badge de similaridade (ex: 89%).
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -267,6 +312,7 @@
 - **Depende de:** SUB-10, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Componente para adicionar nova memória: Título único, Conteúdo estruturado em Markdown e Tags de categorização.
+- **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Criação persistida no banco Supabase com geração de tags dinâmicas.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -277,6 +323,7 @@
 - **Depende de:** SUB-10, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Exibição em cartões de todas as memórias cadastradas, com botão para copiar conteúdo Markdown, visualizar detalhes e excluir memória.
+- **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Grid responsivo com paginação/scroll e feedback de exclusão.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -291,6 +338,7 @@
 - **Depende de:** SUB-11, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Aba com linha do tempo de execuções lidas de `agendamento_tarefa_logs`, mostrando data/hora, status (`concluida`, `recusada`, `erro`, `sem_tarefa`), nome da rotina e detalhes.
+- **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Lista visual cronológica com badges de status e tempo de execução.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -301,6 +349,7 @@
 - **Depende de:** SUB-09, SUB-11, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Painel indicando se há lock ativo (task com `trava_frente` e `trava_em` dentro dos 90 minutos) e botão de liberação manual de trava caso expire.
+- **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Alerta visual se uma task estiver presa além do tempo limite.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -346,7 +395,7 @@
 ### [🔄] SUB-27: Autenticação e Login com Supabase Auth
 - **Status:** em_execucao
 - **Executor:** Codex (OpenAI) (início: 2026-10-11 22:27)
-- **Depende de:** SUB-03
+- **Depende de:** SUB-03, SUB-29 (papéis `user_roles`/`project_members` e RLS)
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Implementar tela e fluxo de login do Dashboard usando Supabase Auth, mantendo a sessão do usuário, protegendo as áreas autenticadas e oferecendo logout.
 - **Critérios de Aceitação:** Login e logout funcionam via Supabase Auth; sessão é restaurada e páginas privadas redirecionam usuários não autenticados; chamadas ao banco usam o JWT do usuário e respeitam RLS; somente a chave pública anon pode estar no frontend, sem senha persistida nem chave service_role exposta.
@@ -360,7 +409,7 @@
 ### [ ] SUB-28: Integração LangChain/LangGraph para Execução de Tasks
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-01 a SUB-27 (todas as tasks anteriores concluídas)
+- **Depende de:** SUB-01 a SUB-27, SUB-29, SUB-30 (todas as tasks anteriores concluídas)
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Implementar a orquestração multi-etapas de execução descrita em `LangChain_LangGraph.md`, mantendo Supabase como autoridade sobre a fila, dependências, locks, tentativas e resultado. Integrar o worker LangGraph às RPCs existentes e às ferramentas MCP autorizadas, com checkpoint durável, retomada, tratamento de falhas e aprovação humana para ações sensíveis.
 - **Critérios de Aceitação:** A task só inicia após todas as dependências SUB-01 a SUB-27 concluídas; execução reivindicada por `pegar_proxima_task`; estado do grafo é retomável e não duplica efeitos; escrita ocorre por ferramentas autenticadas e autorizadas; ações sensíveis pausam para aprovação; conclusão/erro e liberação do lock passam por `finalizar_task`; documentação de operação e segurança atualizada conforme `LangChain_LangGraph.md`.
