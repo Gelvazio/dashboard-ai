@@ -55,17 +55,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:03 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-23.5
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-23.5** |
-| **Título da Sub-task:** | Teste de integração de `liberarTrava`: expirada e forçada |
-| **Agente Responsável:** | DashboardAI-Clone 02 |
-| **Data e Hora de Início:** | 2026-10-12 01:03 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-21.9
 
 | Propriedade | Valor Atual |
@@ -110,7 +99,6 @@
 | **SUB-19.7** | Painel `BuscaSemanticaPanel` (campo, grade e estados) | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:04 | SUB-19.5, SUB-19.6, SUB-19.9 |
 | **SUB-27.15** | Rechecar conexão no login/logout em `src/hooks/useConexao.ts` | DashboardAI-Clone 01 | 2026-10-12 01:04 | SUB-27.26 |
 | **SUB-21.9** | Montar a `MemoriaView` (toolbar + grade) | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:04 | SUB-21.3, SUB-21.5, SUB-21.8 |
-| **SUB-23.5** | Teste de integração de `liberarTrava`: expirada e forçada | DashboardAI-Clone 02 | 2026-10-12 01:03 | SUB-23.4 |
 | **SUB-26.7** | Seção Memória via MCP | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:03 | SUB-26.1 |
 | **SUB-21.7** | Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` | DashboardAI-Clone 06 | 2026-10-12 01:03 | SUB-21.3 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
@@ -135,7 +123,6 @@
 | **SUB-23** | Diagnóstico de Travas e Saúde da Fila (mãe) | 4 | Fase 8 | SUB-09, SUB-11, SUB-12; SUB-23.1 a SUB-23.13 |
 | **SUB-23.1** | `minutosDeTrava` em `src/lib/saudeFila.ts` | 4 | Fase 8 | Nenhuma — 🟢 livre |
 | **SUB-23.4** | `liberarTrava()` em `src/services/taskService.ts` | 4 | Fase 8 | Nenhuma — 🟢 livre |
-| **SUB-23.5** | Teste de integração de `liberarTrava`: expirada e forçada | 4 | Fase 8 | SUB-23.4 — 🔄 em execução por DashboardAI-Clone 02 |
 | **SUB-23.12** | Teste de integração de `liberarTrava`: viewer e outro projeto | 4 | Fase 8 | SUB-23.4 — 🟢 livre |
 | **SUB-23.13** | `travaExpirada` em `src/lib/saudeFila.ts` | 4 | Fase 8 | SUB-23.1 — ⛓️ bloqueada |
 | **SUB-19** | Interface de Pesquisa Semântica Vetorial (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-19.1 a SUB-19.10 |
@@ -379,6 +366,7 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | **SUB-23.7** | Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx` | DashboardAI-Clone 02 | 2026-10-12 00:58 | 2026-10-12 00:59 | `e587121` |
 | **SUB-23.8** | Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` | DashboardAI-Clone 02 | 2026-10-12 00:59 | 2026-10-12 01:02 | `6c409d3` |
 | **SUB-23.9** | Alerta de trava presa na `src/views/FilaView.tsx` | DashboardAI-Clone 02 | 2026-10-12 01:03 | 2026-10-12 01:03 | `15257fd` |
+| **SUB-23.5** | Teste de integração de `liberarTrava`: expirada e forçada | DashboardAI-Clone 02 | 2026-10-12 01:04 | 2026-10-12 01:04 | `af0214b` |
 ---
 
 ### ⛔ CANCELADAS (0)
@@ -593,3 +581,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:04 | DashboardAI-Clone 10 (Grok Bot) | SUB-21.9 | — | Lock: assumindo SUB-21.9 (Montar a `MemoriaView` (toolbar + grade)) |
 | 2026-10-12 01:04 | DashboardAI-Clone 01 | SUB-27.15 | — | Lock: assumindo SUB-27.15 (Rechecar conexão no login/logout em `src/hooks/useConexao.ts`) |
 | 2026-10-12 01:04 | DashboardAI-Clone 04 (Grok Bot) | SUB-19.7 | — | Lock: assumindo SUB-19.7 (Painel `BuscaSemanticaPanel` (campo, grade e estados)) |
+| 2026-10-12 01:04 | DashboardAI-Clone 02 | SUB-23.5 | `af0214b` | Em `tests/integration/taskService.integration.test.ts`, bloco 'liberarTrava: expirada e forçada' (projeto LIB, editor): trava de 100 min (via `servico()`) é liberada sem forçar (status `pendente`, resultado com 'liberada manualmente'); trava de 5 min é recusada sem `forcar` (continua `em_execucao`) e liberada com `forcar`. Sem PostgREST no ambiente do clone o bloco fica skipped; `npm test` verde (162 passed, 16 skipped). |

@@ -1093,7 +1093,7 @@
   - `SUB-23.2`: `classificarPendentes(tasks)` em `src/lib/saudeFila.ts` (`concluido`)
   - `SUB-23.3`: `diagnosticarFila(tasks)` em `src/lib/saudeFila.ts` (`concluido`)
   - `SUB-23.4`: `liberarTrava()` em `src/services/taskService.ts` (`pendente`)
-  - `SUB-23.5`: Teste de integração de `liberarTrava`: expirada e forçada (`em_execucao`)
+  - `SUB-23.5`: Teste de integração de `liberarTrava`: expirada e forçada (`concluido`)
   - `SUB-23.6`: Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts` (`concluido`)
   - `SUB-23.7`: Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx` (`concluido`)
   - `SUB-23.8`: Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` (`concluido`)
@@ -1148,15 +1148,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [🔄] SUB-23.5: Teste de integração de `liberarTrava`: expirada e forçada
-- **Status:** em_execucao
+#### [x] SUB-23.5: Teste de integração de `liberarTrava`: expirada e forçada
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-23.4
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Em `tests/integration/taskService.integration.test.ts`: task travada há 100 min (via `service_role`) é liberada por editor; trava recente é recusada sem `forcar` e liberada com `forcar`.
 - **Critérios de Aceitação:** `npm run test:integration` passa (ou o teste fica skipped sem PostgREST, e `npm test` segue verde).
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `af0214b`
+- **Anotação:** Em `tests/integration/taskService.integration.test.ts`, bloco 'liberarTrava: expirada e forçada' (projeto LIB, editor): trava de 100 min (via `servico()`) é liberada sem forçar (status `pendente`, resultado com 'liberada manualmente'); trava de 5 min é recusada sem `forcar` (continua `em_execucao`) e liberada com `forcar`. Sem PostgREST no ambiente do clone o bloco fica skipped; `npm test` verde (162 passed, 16 skipped).
 
 #### [x] SUB-23.6: Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts`
 - **Status:** concluido
