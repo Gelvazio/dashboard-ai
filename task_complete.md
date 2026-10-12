@@ -356,58 +356,6 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 14:20 — Devin (Cognition AI): commit `a5c2a8a` e README.md conferidos na `main`; typecheck OK, npm test OK (298 passed), check:env OK.
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
-#### [x] SUB-28.23: Retomada da aprovação (`Command({ resume })`) em `api/aprovacao.ts`
-- **Status:** concluido
-- **Prioridade:** MEDIA
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:26, conclusão: 2026-10-12 14:30)
-- **Depende de:** SUB-28.16
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Após autorizar, retomar o grafo com `Command({ resume: { aprovado, por, em } })` no `thread_id` da execução. O registro de auditoria fica na SUB-28.32.
-- **Critérios de Aceitação:** `typecheck:api` OK; teste de retomada com grafo falso.
-- **Commit:** fa99fe2
-- **Anotação:** Implementada retomada do grafo LangGraph com Command({ resume }) no thread_id da execução. Adicionadas: execucaoIdDaTask (lê o execucaoId mais recente dos logs), criarGrafoComCheckpointer (cria grafo com checkpointer Postgres), retomarGrafo (envia Command({ resume }) com decisão do usuário). Testes atualizados para cobrir os novos deps. typecheck:api OK, testes OK (9 passed).
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 14:30 — Devin (Cognition AI): commit `fa99fe2` e arquivos conferidos na `main`; typecheck:api OK, testes OK (9 passed).
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-#### [x] SUB-28.32: Registro de auditoria da aprovação
-- **Status:** concluido
-- **Prioridade:** MEDIA
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:32, conclusão: 2026-10-12 14:35)
-- **Depende de:** SUB-28.23
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Após a retomada em `api/aprovacao.ts`, registrar quem aprovou, quando, a task e a ação (sem credenciais) nos metadados da execução/log. Teste com grafo falso.
-- **Critérios de Aceitação:** `typecheck:api` OK; teste confere o registro sem credenciais.
-- **Commit:** ff049de
-- **Anotação:** Adicionada dependência atualizarMetadadosLog que registra auditoria da aprovação nos metadados da execução (aprovado, usuario_id, em, motivo) sem expor credenciais. Testes atualizados para verificar que metadados são chamados com os dados corretos. typecheck:api OK, testes OK (10 passed).
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 14:35 — Devin (Cognition AI): commit `ff049de` e arquivos conferidos na `main`; typecheck:api OK, testes OK (10 passed).
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-#### [x] SUB-28.18: Atualizar `LangChain_LangGraph.md` (status e desvios)
-- **Status:** concluido
-- **Prioridade:** MEDIA
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:36, conclusão: 2026-10-12 14:38)
-- **Depende de:** SUB-28.15, SUB-28.32
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Atualizar `LangChain_LangGraph.md`: status implementado, nós, retomada, aprovação e desvios justificados.
-- **Critérios de Aceitação:** Documentação coerente com o código.
-- **Commit:** 18c8d9d
-- **Anotação:** Atualizado status para "Implementado na SUB-28" com lista de itens implementados (grafo, checkpointer, retomada, aprovação, auditoria, idempotência, classificação de falhas, integração com RPCs, segurança, allowlist, CLI, heartbeat). Adicionada seção 11 com desvios justificados (modelo simplificado, eventos via RPC, endpoint separado, checkpointer em schema separado, limites de espera) e cobertura de testes.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 14:38 — Devin (Cognition AI): commit `18c8d9d` e LangChain_LangGraph.md conferidos na `main`; documentação coerente com o código.
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-#### [x] SUB-28.25: Variáveis do worker no `api/README.md`
-- **Status:** concluido
-- **Prioridade:** MEDIA
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:40, conclusão: 2026-10-12 14:42)
-- **Depende de:** SUB-28.15, SUB-28.32
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Documentar `LANGGRAPH_DATABASE_URL`, variáveis do modelo, endpoint de aprovação e operação do worker no `api/README.md`.
-- **Critérios de Aceitação:** Documentação coerente com o código.
-- **Commit:** 3345ccd
-- **Anotação:** Adicionada seção "Worker LangGraph (SUB-28)" no api/README.md com: tabela de variáveis do worker (OPENAI_API_KEY, WORKER_MODELO, LANGGRAPH_DATABASE_URL, SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, MCP_DEFAULT_PROJECT), exemplos de execução (local, uma task, produção), endpoint de aprovação humana (POST /api/aprovacao com JWT) e monitoramento (heartbeats via emitir_event). typecheck:api OK.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 14:42 — Devin (Cognition AI): commit `3345ccd` e api/README.md conferidos na `main`; typecheck:api OK, documentação coerente com o código.
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
 #### [x] SUB-33.12: Testes do handler: 413, 502 e 200
 - **Status:** concluido
 - **Prioridade:** MEDIA
@@ -2591,6 +2539,58 @@
 - **Anotação:** **Causa:** `@langchain/core@0.3.80` declara `langsmith: ^0.3.67`, resolvido em `langsmith@0.3.87`, que está na faixa vulnerável das 4 advisories abertas (GHSA-v34v-rq6j-cj6p `>=0.3.41 <0.4.6`, GHSA-fw9q-39r9-c252 `<=0.5.17`, GHSA-rr7j-v2q5-chgv `<=0.5.18`, GHSA-3644-q5cj-c5c7 `<0.6.0`) — nenhuma versão 0.3.x/0.4.x/0.5.x corrige todas, e não havia versão 0.3.x corrigida. **Correção:** bloco `overrides` em `package.json` fixando `"langsmith": "^0.6.0"`, resolvido em `langsmith@0.6.3`; lockfile regerado (o langsmith 0.6.x removeu 10 dependências transitivas do 0.3.x: 169 → 159 pacotes no `npm ci`). **Evidência:** `npm audit` antes `total=8/high=1` → depois `total=7/high=0` (as 7 moderadas remanescentes vêm de `uuid` e do próprio `@langchain/*`; não são altas, portanto fora do critério); `npm ci` a partir do lockfile OK; `npm test` 43 arquivos / 300 passaram / 30 pulados, idêntico ao baseline medido antes da alteração. **Protocolo:** trava publicada em `7eb6ba9` — o push inicial (`266b9ed`) foi recusado por corrida com outro agente e refeito após `git pull --rebase origin main`, sem sobrescrever a trava de ninguém. **Ressalva:** a versão forçada fica fora do `^0.3.67` declarado pelo `@langchain/core`; o `langsmith` é usado apenas para tracing (não há import direto no repositório) e a suíte cobre o worker — a correção definitiva seria subir `@langchain/*` para a linha 1.x, o que é uma migração do worker e não cabe nesta subtarefa atômica. **Achado fora do escopo:** `npm run typecheck` falha por erro pré-existente `tests/unit/api-aprovacao.test.ts(111,21): error TS6133: 'deps' is declared but its value is never read`; já falhava antes desta alteração e não foi introduzido por ela — recomenda-se abrir subtarefa própria para corrigi-lo (o `build` começa com o mesmo `tsc -b`, logo para no mesmo erro).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 15:12 (confirmado por DeepSeek Harness (deepseek-flash))
 - **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [x] SUB-28.18: Atualizar `LangChain_LangGraph.md` (status e desvios)
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:36, conclusão: 2026-10-12 14:38)
+- **Depende de:** SUB-28.15, SUB-28.32
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Atualizar `LangChain_LangGraph.md`: status implementado, nós, retomada, aprovação e desvios justificados.
+- **Critérios de Aceitação:** Documentação coerente com o código.
+- **Commit:** 18c8d9d
+- **Anotação:** Atualizado status para "Implementado na SUB-28" com lista de itens implementados (grafo, checkpointer, retomada, aprovação, auditoria, idempotência, classificação de falhas, integração com RPCs, segurança, allowlist, CLI, heartbeat). Adicionada seção 11 com desvios justificados (modelo simplificado, eventos via RPC, endpoint separado, checkpointer em schema separado, limites de espera) e cobertura de testes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 14:38 — Devin (Cognition AI): commit `18c8d9d` e LangChain_LangGraph.md conferidos na `main`; documentação coerente com o código.
+- **VERIFICADOR-CLAUDE:** ✅ OK — 2026-10-12 16:27 (DeepSeek Harness (deepseek-flash)): commit `18c8d9d` existe (`docs(SUB-28.18): Atualizar LangChain_LangGraph.md com status e desvios`); `LangChain_LangGraph.md` existe e traz, na linha 5, "**Status:** ✅ **Implementado na SUB-28** (2026-10-12)" e, na linha 9, a seção "## 11. Status de implementação e desvios (SUB-28)", com "### 11.2 Desvios justificados" na linha 26 — atende ao critério "documentação coerente com o código".
+
+#### [x] SUB-28.23: Retomada da aprovação (`Command({ resume })`) em `api/aprovacao.ts`
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:26, conclusão: 2026-10-12 14:30)
+- **Depende de:** SUB-28.16
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Após autorizar, retomar o grafo com `Command({ resume: { aprovado, por, em } })` no `thread_id` da execução. O registro de auditoria fica na SUB-28.32.
+- **Critérios de Aceitação:** `typecheck:api` OK; teste de retomada com grafo falso.
+- **Commit:** fa99fe2
+- **Anotação:** Implementada retomada do grafo LangGraph com Command({ resume }) no thread_id da execução. Adicionadas: execucaoIdDaTask (lê o execucaoId mais recente dos logs), criarGrafoComCheckpointer (cria grafo com checkpointer Postgres), retomarGrafo (envia Command({ resume }) com decisão do usuário). Testes atualizados para cobrir os novos deps. typecheck:api OK, testes OK (9 passed).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 14:30 — Devin (Cognition AI): commit `fa99fe2` e arquivos conferidos na `main`; typecheck:api OK, testes OK (9 passed).
+- **VERIFICADOR-CLAUDE:** ✅ OK — 2026-10-12 16:27 (DeepSeek Harness (deepseek-flash)): commit `fa99fe2` existe (`feat(SUB-28.23): Retomada da aprovação em api/aprovacao.ts`); `api/aprovacao.ts` contém `execucaoIdDaTask`, `criarGrafoComCheckpointer` e `retomarGrafo` (linhas 32-34 e 126-133), com o `Command({ resume })` documentado no `thread_id` da execução; `npm run typecheck:api` exit 0 e `tests/unit/api-aprovacao.test.ts` tem o teste "editor autorizado: com grafo e execucaoId devolve 200" (grafo falso) — atende aos dois critérios.
+
+#### [x] SUB-28.25: Variáveis do worker no `api/README.md`
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:40, conclusão: 2026-10-12 14:42)
+- **Depende de:** SUB-28.15, SUB-28.32
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Documentar `LANGGRAPH_DATABASE_URL`, variáveis do modelo, endpoint de aprovação e operação do worker no `api/README.md`.
+- **Critérios de Aceitação:** Documentação coerente com o código.
+- **Commit:** 3345ccd
+- **Anotação:** Adicionada seção "Worker LangGraph (SUB-28)" no api/README.md com: tabela de variáveis do worker (OPENAI_API_KEY, WORKER_MODELO, LANGGRAPH_DATABASE_URL, SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, MCP_DEFAULT_PROJECT), exemplos de execução (local, uma task, produção), endpoint de aprovação humana (POST /api/aprovacao com JWT) e monitoramento (heartbeats via emitir_event). typecheck:api OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 14:42 — Devin (Cognition AI): commit `3345ccd` e api/README.md conferidos na `main`; typecheck:api OK, documentação coerente com o código.
+- **VERIFICADOR-CLAUDE:** ✅ OK — 2026-10-12 16:27 (DeepSeek Harness (deepseek-flash)): commit `3345ccd` existe (`docs(SUB-28.25): Variáveis do worker no api/README.md`); `api/README.md` documenta `WORKER_MODELO` (linha 147) e `LANGGRAPH_DATABASE_URL` (linha 148) na tabela de variáveis do worker e o endpoint `POST /api/aprovacao` (linha 168) — atende ao critério "documentação coerente com o código".
+
+#### [x] SUB-28.32: Registro de auditoria da aprovação
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:32, conclusão: 2026-10-12 14:35)
+- **Depende de:** SUB-28.23
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Após a retomada em `api/aprovacao.ts`, registrar quem aprovou, quando, a task e a ação (sem credenciais) nos metadados da execução/log. Teste com grafo falso.
+- **Critérios de Aceitação:** `typecheck:api` OK; teste confere o registro sem credenciais.
+- **Commit:** ff049de
+- **Anotação:** Adicionada dependência atualizarMetadadosLog que registra auditoria da aprovação nos metadados da execução (aprovado, usuario_id, em, motivo) sem expor credenciais. Testes atualizados para verificar que metadados são chamados com os dados corretos. typecheck:api OK, testes OK (10 passed).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 14:35 — Devin (Cognition AI): commit `ff049de` e arquivos conferidos na `main`; typecheck:api OK, testes OK (10 passed).
+- **VERIFICADOR-CLAUDE:** ✅ OK — 2026-10-12 16:27 (DeepSeek Harness (deepseek-flash)): commit `ff049de` existe (`feat(SUB-28.32): Registro de auditoria da aprovação`); `api/aprovacao.ts` define `atualizarMetadadosLog` (linhas 36, 95 e 128) e grava `aprovacao_audit` com aprovado/usuario_id/em/motivo (linha 146), sem credenciais; `npm run typecheck:api` exit 0 e o teste "regista auditoria da aprovação nos metadados (SUB-28.32)" confere o conteúdo — atende aos dois critérios.
 
 ---
 
