@@ -9,8 +9,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 32
-- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
-- **Pendentes:** 23
+- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-01.2`)
+- **Pendentes:** 22
 - **Concluídas:** 9
 - **Canceladas:** 0
 
@@ -23,7 +23,7 @@
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:56; assumida após liberação, pelo usuário, da trava de Gemini (Antigravity) de 2026-10-11 22:13)
 - **Depende de:** Nenhuma
 - **Subtarefas:**
-  - `SUB-01.1`: Inicialização do package.json, Vite, React e TypeScript (`em_execucao`)
+  - `SUB-01.1`: Inicialização do package.json, Vite, React e TypeScript (`concluido`, `374dc99`)
   - `SUB-01.2`: Configuração do Tailwind CSS, PostCSS e estilos globais (`pendente`)
   - `SUB-01.3`: Instalação e verificação de dependências base (Lucide Icons, clsx) (`pendente`)
 - **Descrição:** Inicializar a estrutura base do frontend moderno em `c:\fontes\dashboard-ai`.
@@ -41,9 +41,9 @@
 - **Commit:** `374dc99`
 - **Anotação:** package.json (type module, Node >= 20.19; scripts dev, build = tsc -b && vite build, preview, typecheck, typecheck:api), package-lock.json, vite.config.ts (plugin-react, dist com sourcemap), tsconfig.json com referências para tsconfig.app.json (só src/, moduleResolution bundler, strict) e tsconfig.node.json (vite.config.ts); api/ segue com api/tsconfig.json próprio (NodeNext) e não é incluída pelo tsconfig do frontend. devDependencies typescript ~5.9 (TS 7 nativo ainda novo para o ecossistema) e @types/node ^20 conforme a nota. index.html (pt-BR), public/favicon.svg, src/main.tsx e src/App.tsx (casca genérica). Validado: npm install sem vulnerabilidades, npm run build OK, npm run typecheck (frontend + api) OK, vite preview servindo o index.
 
-#### [ ] SUB-01.2: Configuração do Tailwind CSS, PostCSS e Estilos Globais
-- **Status:** pendente
-- **Executor:** nenhum
+#### [🔄] SUB-01.2: Configuração do Tailwind CSS, PostCSS e Estilos Globais
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:57)
 - **Depende de:** SUB-01.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Critérios de Aceitação:** `tailwind.config.js`, `postcss.config.js` e `src/index.css` configurados.

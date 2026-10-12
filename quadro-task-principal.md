@@ -44,24 +44,35 @@
 | **Data e Hora de Início:** | 2026-10-11 22:41 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot)
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-01.2** |
+| **Título da Sub-task:** | Configuração do Tailwind CSS, PostCSS e Estilos Globais |
+| **Agente Responsável:** | DashboardAI (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-11 22:57 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (2)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27** | Autenticação e Login com Supabase Auth | Codex (OpenAI) | 2026-10-11 22:27 | SUB-03, SUB-29 |
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` | xAI (Grok) | 2026-10-11 22:41 | SUB-06 |
+| **SUB-01.2** | Configuração do Tailwind CSS, PostCSS e Estilos Globais | DashboardAI (Grok Bot) | 2026-10-11 22:57 | SUB-01.1 |
 
 ---
 
-### ⏳ PENDENTES (23)
+### ⏳ PENDENTES (22)
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
-| **SUB-01.2** | Configuração do Tailwind CSS, PostCSS e Estilos Globais | 1 (Alta) | Fase 1 | SUB-01.1 |
 | **SUB-01.3** | Instalação de Lucide Icons e Utilitários Base | 1 (Alta) | Fase 1 | SUB-01.2 |
 | **SUB-02** | Estrutura Modular de Diretórios do Frontend | 1 (Alta) | Fase 1 | SUB-01 |
 | **SUB-03** | Configuração do Cliente Supabase e Tipagem TypeScript | 1 (Alta) | Fase 1 | SUB-02 |
