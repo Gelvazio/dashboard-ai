@@ -77,14 +77,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:13 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-27.12
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-27.12** |
+| **Título da Sub-task:** | Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` |
+| **Agente Responsável:** | DashboardAI-Clone 10 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:13 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (2)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-27.12** | Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:13 | SUB-27.26, SUB-27.11 |
 | **SUB-35.14** | `mesclarEvento()` em `src/lib/monitor.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:13 | SUB-35.8 |
 | **SUB-21.12** | Conferir exclusão com editor e viewer | DashboardAI-Clone 02 | 2026-10-12 01:12 | SUB-21.11 |
 | **SUB-35.45** | Seção "Reporte de progresso (opcional)" no `AGENTS.md` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:11 | SUB-35.41 |
@@ -173,7 +185,7 @@
 | **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) (mãe) | 3 | Fase 2B | SUB-07, SUB-03; SUB-33.1 a SUB-33.13 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | 3 | Fase 2B | SUB-33.11 — 🔄 em execução por Codex (OpenAI) |
 | **SUB-27** | Autenticação e Login com Supabase Auth (mãe; pendente, liberada) | 3 | Fase 10 | SUB-03, SUB-29; SUB-27.1 a SUB-27.28 — 🟢 livre |
-| **SUB-27.12** | Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` | 3 | Fase 10 | SUB-27.26, SUB-27.11 — ⛓️ bloqueada |
+| **SUB-27.12** | Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` | 3 | Fase 10 | SUB-27.26, SUB-27.11 — 🔄 em execução por DashboardAI-Clone 10 (Grok Bot) |
 | **SUB-27.13** | Integrar autenticação no `src/App.tsx` | 3 | Fase 10 | SUB-27.12 — ⛓️ bloqueada |
 | **SUB-27.17** | Documentar configuração do Supabase Auth em `src/README.md` | 3 | Fase 10 | SUB-27.13 — ⛓️ bloqueada |
 | **SUB-27.18** | Validação automatizada da SUB-27 | 3 | Fase 10 | SUB-27.6, SUB-27.8, SUB-27.13, SUB-27.27, SUB-27.15, SUB-27.16, SUB-27.17, SUB-27.20, SUB-27.21 — ⛓️ bloqueada |
@@ -632,3 +644,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:13 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.9 | `89c6a43` | Criado `src/services/eventService.ts` com `listarEventos(projectId, { desde?, agente?, limite = 200 }, client = getSupabase())` -> `AgentEvent[]`: filtra por `project_id`, `created_at >= desde` (data inválida -> `ServiceError`) e agente exato (trim); ordena por `created_at` desc e `id` desc; limite entre 1 e 1000; erros via `resultado(res, 'Listar eventos')`. Exportado no barrel `src/services/index.ts` (demais exports mantidos). `npm run typecheck` e `npm test` OK. |
 | 2026-10-12 01:13 | DashboardAI-Clone 04 (Grok Bot) | SUB-35.14 | — | Lock: assumindo SUB-35.14 (`mesclarEvento()` em `src/lib/monitor.ts`) |
 | 2026-10-12 01:13 | DashboardAI-Clone 09 (Grok Bot) | SUB-34.5 | `ac0f232` | Criado `scripts/checar-chunks.mjs` (Node puro): lê `dist/assets/*.js`, lista tamanhos e sai 1 se algum passar de 500 kB (`CHUNK_LIMITE_KB` opcional) ou se `dist/assets` não existir; `"check:chunks"` no `package.json`. `npm run build && npm run check:chunks` OK (14 chunks, todos até 500 kB, sem aviso); typecheck e `npm test` OK. |
+| 2026-10-12 01:13 | DashboardAI-Clone 10 (Grok Bot) | SUB-27.12 | — | Lock: assumindo SUB-27.12 (Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx`) |

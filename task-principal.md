@@ -1468,7 +1468,7 @@
   - `SUB-27.9`: `AuthProvider` em `src/hooks/AuthContext.tsx` (`pendente`)
   - `SUB-27.10`: Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx` (`pendente`)
   - `SUB-27.11`: Tela `LoginView` em `src/views/LoginView.tsx` (`concluido`, `213f237`)
-  - `SUB-27.12`: Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` (`pendente`)
+  - `SUB-27.12`: Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` (`em_execucao`)
   - `SUB-27.13`: Integrar autenticação no `src/App.tsx` (`pendente`)
   - `SUB-27.14`: Componente `UserMenu` em `src/components/layout/UserMenu.tsx` (`pendente`)
   - `SUB-27.15`: Rechecar conexão no login/logout em `src/hooks/useConexao.ts` (`pendente`)
@@ -1601,8 +1601,8 @@
 - **Anotação:** Criado `src/views/LoginView.tsx` (`{ onEntrou? }`): página cheia centralizada fora do `AppLayout` (`min-h-dvh`, fundo slate claro/escuro), marca "Dashboard AI" com descrição curta, `ThemeToggle` no canto, aviso `role="alert"` quando `supabaseConfigurado` é falso (cita `VITE_SUPABASE_URL`/`VITE_SUPABASE_ANON_KEY` e o `.env.example`), cartão com `LoginForm` (repassa `onEntrou` e o e-mail digitado) e `RecuperarAcesso` com esse e-mail. Ainda não está ligada ao `App` (SUB-27.12/27.13). `npm run typecheck`, `npm test` e `npm run build` OK; screenshots 1280x800 e 390x844 conferidos em Chrome headless via página de pré-visualização temporária (não commitada).
 
 #### [ ] SUB-27.12: Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:13)
 - **Depende de:** SUB-27.26, SUB-27.11
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Componente `{ children }`: enquanto `carregando` mostra fallback leve; sem sessão renderiza `LoginView` (preservando o hash atual, ex. `#/logs`, para voltar após o login); com sessão renderiza `children`.
