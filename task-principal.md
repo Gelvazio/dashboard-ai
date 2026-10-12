@@ -1948,12 +1948,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-28.9: Nó `executar` em `worker/nos/executar.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [x] SUB-28.9: Nó `executar` em `worker/nos/executar.ts`
+- **Status:** concluido
+- **Executor:** Claude Code (início: 2026-10-12 02:32, conclusão: 2026-10-12 02:33)
 - **Depende de:** SUB-28.19
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Executa o passo atual com chave de idempotência `${execucaoId}:${passo}`; se o resultado já existe no estado, não repete.
+- **Critérios de Aceitação:** Teste: retomada não duplica a chamada.
+- **Commit:** pendente
+- **Anotação:** Criado `worker/nos/executar.ts` com nó que executa passo com chave de idempotência e usa criarFerramentaLangChain. typecheck:worker OK. Implementação real com MCP será depois.
 - **Critérios de Aceitação:** Teste: retomada não duplica a chamada.
 - **Commit:** pendente
 - **Anotação:** pendente
