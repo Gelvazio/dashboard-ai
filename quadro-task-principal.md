@@ -33,26 +33,16 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhuma tarefa reservada para Codex |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — SUB-33.6
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-33.6** |
-| **Título da Sub-task:** | Testes do handler: OPTIONS, 405 e 401 |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 00:27 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém mais assume a SUB-33.6 |
-
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (1)
+### 🔄 EM EXECUÇÃO (0)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
-| **SUB-33.6** | Testes do handler: OPTIONS, 405 e 401 | DashboardAI (Grok Bot) | 2026-10-12 00:27 | SUB-33.10 |
+
+*(Nenhuma tarefa em execução)*
 
 ---
 
@@ -224,7 +214,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (35)
+### ✅ CONCLUÍDAS (36)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -263,6 +253,7 @@
 | **SUB-33.10** | Autenticação no handler `api/embedding.ts` (401) | DashboardAI (Grok Bot) | 2026-10-12 00:25 | 2026-10-12 00:25 | `e060ae6` |
 | **SUB-33.11** | Corpo, geração do embedding e erros no handler (400/413/502/200) | DashboardAI (Grok Bot) | 2026-10-12 00:26 | 2026-10-12 00:26 | `0dca17d` |
 | **SUB-21.13** | `escopoMemoria` em `src/lib/memorias.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:26 | 2026-10-12 00:27 | `de3cc15` |
+| **SUB-33.6** | Testes do handler: OPTIONS, 405 e 401 | DashboardAI (Grok Bot) | 2026-10-12 00:27 | 2026-10-12 00:28 | `4ba6702` |
 
 ---
 
@@ -340,3 +331,4 @@
 | 2026-10-12 00:26 | DashboardAI (Grok Bot) | SUB-21.13 | — | Lock: assumindo SUB-21.13 (`escopoMemoria` em `src/lib/memorias.ts`) |
 | 2026-10-12 00:27 | DashboardAI (Grok Bot) | SUB-21.13 | `de3cc15` | Adicionado `escopoMemoria(m): 'global' | 'projeto'` em `src/lib/memorias.ts` (`project_id` nulo/indefinido = global; 0 conta como projeto) e reutilizado em `memoriaComoMarkdown`. Testes em `tests/unit/memorias.test.ts`. typecheck (app + api) e `npm test` verdes. |
 | 2026-10-12 00:27 | DashboardAI (Grok Bot) | SUB-33.6 | — | Lock: assumindo SUB-33.6 (Testes do handler: OPTIONS, 405 e 401) |
+| 2026-10-12 00:28 | DashboardAI (Grok Bot) | SUB-33.6 | `4ba6702` | Criado `tests/unit/api-embedding.test.ts` com `req`/`res` falsos, `fetch` simulado e env de teste restaurado após cada caso: OPTIONS -> 204 com CORS; GET -> 405 com `Allow: POST, OPTIONS`; POST sem token -> 401 com `WWW-Authenticate` sem chamar o Auth; JWT recusado pelo Auth -> 401. typecheck (app + api) e `npm test` verdes (53 passed). |
