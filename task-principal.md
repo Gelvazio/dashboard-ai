@@ -91,7 +91,7 @@
 - **Critérios de Aceitação:** Build gerado com sucesso na pasta `dist/` sem alertas impeditivos.
 - **Commit:** pendente
 - **Anotação:** pendente
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:25 (Claude Code): tarefa-mãe pendente: filhas 25.1, 25.2, 25.3 e 25.6 concluídas; 25.4, 25.7 (validação no navegador) e 25.8 (em execução) abertas. Critério ainda não atendido: `npm run build` falha no `tsc -b` (TS6133 em `tests/unit/api-aprovacao.test.ts:111`, corrigido pela SUB-25.8); `npx vite build` sozinho gera `dist/` e `check:chunks` passa (16 chunks ≤ 500 kB).
 
 #### [ ] SUB-25.4: Teste rápido local: telas Fila e Logs
 - **Status:** pendente
