@@ -4,6 +4,8 @@
 > 📌 **Quadro único:** o antigo `quadro-task-principal.md` foi incorporado ao `task-principal.md`. Travas, status, concluídas e histórico ficam só no `task-principal.md`; não recrie o arquivo antigo.
 >
 > 🗂️ **Scripts temporários:** cada agente guarda scripts auxiliares dentro da própria pasta de trabalho, nunca em `/tmp` ou outra pasta compartilhada (outro agente pode sobrescrevê-los).
+>
+> 🧭 **Skill do fluxo:** para pegar, executar, concluir ou liberar tarefas listadas no `task-principal.md`, use a skill [`proxima-task`](.agents/skills/proxima-task/SKILL.md) (no Devin: `@skills:proxima-task`). Ela resume o protocolo deste arquivo passo a passo; em caso de divergência, vale este `AGENTS.md`.
 
 > **AVISO A TODOS OS AGENTES DE IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.):**
 > Este repositório opera com fluxo autônomo baseado em fila atômica de tarefas e trava contra conflitos de edição.
