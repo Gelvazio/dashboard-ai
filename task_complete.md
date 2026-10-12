@@ -328,6 +328,17 @@
 - **Anotação:** Adicionada dependência atualizarMetadadosLog que registra auditoria da aprovação nos metadados da execução (aprovado, usuario_id, em, motivo) sem expor credenciais. Testes atualizados para verificar que metadados são chamados com os dados corretos. typecheck:api OK, testes OK (10 passed).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 14:35 — Devin (Cognition AI): commit `ff049de` e arquivos conferidos na `main`; typecheck:api OK, testes OK (10 passed).
 
+#### [x] SUB-28.18: Atualizar `LangChain_LangGraph.md` (status e desvios)
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:36, conclusão: 2026-10-12 14:38)
+- **Depende de:** SUB-28.15, SUB-28.32
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Atualizar `LangChain_LangGraph.md`: status implementado, nós, retomada, aprovação e desvios justificados.
+- **Critérios de Aceitação:** Documentação coerente com o código.
+- **Commit:** 18c8d9d
+- **Anotação:** Atualizado status para "Implementado na SUB-28" com lista de itens implementados (grafo, checkpointer, retomada, aprovação, auditoria, idempotência, classificação de falhas, integração com RPCs, segurança, allowlist, CLI, heartbeat). Adicionada seção 11 com desvios justificados (modelo simplificado, eventos via RPC, endpoint separado, checkpointer em schema separado, limites de espera) e cobertura de testes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 14:38 — Devin (Cognition AI): commit `18c8d9d` e LangChain_LangGraph.md conferidos na `main`; documentação coerente com o código.
+
 #### [x] SUB-33.12: Testes do handler: 413, 502 e 200
 - **Status:** concluido
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:28 → 2026-10-12 00:29)

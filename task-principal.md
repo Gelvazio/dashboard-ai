@@ -161,7 +161,7 @@
   - `SUB-28.15`: CLI do worker em `worker/index.ts` (`concluido`, `ba04cc1`)
   - `SUB-28.16`: Endpoint `api/aprovacao.ts`: autenticação e papel (401/403) (`concluido`, `2adb51d`)
   - `SUB-28.17`: Testes do worker: caminho feliz e erro (`concluido`, `46718f9`)
-  - `SUB-28.18`: Atualizar `LangChain_LangGraph.md` (status e desvios) (`pendente`)
+  - `SUB-28.18`: Atualizar `LangChain_LangGraph.md` (status e desvios) (`concluido`, 18c8d9d)
   - `SUB-28.19`: Adaptar ferramentas para `tool()` do LangChain em `worker/ferramentas.ts` (`concluido`, `a9bb258`)
   - `SUB-28.20`: `PlanoSchema` em `worker/plano.ts` (`concluido`, `048e647`)
   - `SUB-28.21`: `classificarFalha(err)` em `worker/falhas.ts` (`concluido`, `04c0f02`)
@@ -195,16 +195,15 @@
 - **Anotação:** Reaberta na revisão de 2026-10-12 (Devin (revisão do quadro)): marcada como concluída em `310fab9`, mas dependências instaladas, mas `npm audit` aponta 1 vulnerabilidade alta (`langsmith`, SSRF, transitiva de `@langchain/core`; a correção exige versão major), contrariando o critério.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (reaberta: critérios de aceitação não atendidos)
 
-#### [ ] SUB-28.18: Atualizar `LangChain_LangGraph.md` (status e desvios)
-- **Status:** pendente
-- **Executor:** nenhum
+#### [x] SUB-28.18: Atualizar `LangChain_LangGraph.md` (status e desvios)
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:36, conclusão: 2026-10-12 14:38)
 - **Depende de:** SUB-28.15, SUB-28.32
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Atualizar `LangChain_LangGraph.md`: status implementado, nós, retomada, aprovação e desvios justificados.
 - **Critérios de Aceitação:** Documentação coerente com o código.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **Commit:** 18c8d9d
+- **Anotação:** Atualizado status para "Implementado na SUB-28" com lista de itens implementados (grafo, checkpointer, retomada, aprovação, auditoria, idempotência, classificação de falhas, integração com RPCs, segurança, allowlist, CLI, heartbeat). Adicionada seção 11 com desvios justificados (modelo simplificado, eventos via RPC, endpoint separado, checkpointer em schema separado, limites de espera) e cobertura de testes.
 
 #### [x] SUB-28.23: Retomada da aprovação (`Command({ resume })`) em `api/aprovacao.ts`
 - **Status:** concluido
