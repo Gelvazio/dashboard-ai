@@ -44,28 +44,16 @@
 | **Data e Hora de Início:** | 2026-10-11 22:41 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot)
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-12** |
-| **Título da Sub-task:** | Layout Principal Responsivo (Sidebar + Header + Navegação) |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-11 23:04 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27** | Autenticação e Login com Supabase Auth | Codex (OpenAI) | 2026-10-11 22:27 | SUB-03, SUB-29 |
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` | xAI (Grok) | 2026-10-11 22:41 | SUB-06 |
-| **SUB-12** | Layout Principal Responsivo (Sidebar + Header + Navegação) | DashboardAI (Grok Bot) | 2026-10-11 23:04 | SUB-01, SUB-02 |
 
 ---
 
@@ -93,7 +81,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (14)
+### ✅ CONCLUÍDAS (15)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -111,6 +99,7 @@
 | **SUB-32** | Trocar cliente fetch por `@supabase/supabase-js` em `api/_lib` | DashboardAI (Grok Bot) | 2026-10-11 22:59 | 2026-10-11 23:00 | `f7c52c6` |
 | **SUB-02** | Estrutura Modular de Diretórios do Frontend | DashboardAI (Grok Bot) | 2026-10-11 23:01 | 2026-10-11 23:01 | `4b999f7` |
 | **SUB-03** | Configuração do Cliente Supabase e Tipagem TypeScript | DashboardAI (Grok Bot) | 2026-10-11 23:02 | 2026-10-11 23:04 | `14992e4` |
+| **SUB-12** | Layout Principal Responsivo (Sidebar + Header + Navegação) | DashboardAI (Grok Bot) | 2026-10-11 23:04 | 2026-10-11 23:06 | `69fa615` |
 
 ---
 
@@ -143,3 +132,4 @@
 | 2026-10-11 23:00 | DashboardAI (Grok Bot) | SUB-32 | `f7c52c6` | api/_lib com @supabase/supabase-js (createClient service_role, sem sessão); Node 22+; 27+36 cenários MCP OK |
 | 2026-10-11 23:01 | DashboardAI (Grok Bot) | SUB-02 | `4b999f7` | src/components, services, hooks, types, views, styles com index.ts e regras; alias @/; CSS movido para src/styles |
 | 2026-10-11 23:04 | DashboardAI (Grok Bot) | SUB-03 | `14992e4` | src/services/supabase.ts (anon + RLS, ServiceError, verificarConexao) e src/types/database.ts (Database multi-projeto); Vitest + integração PostgREST |
+| 2026-10-11 23:06 | DashboardAI (Grok Bot) | SUB-12 | `69fa615` | Layout responsivo: sidebar/gaveta, header com seletor de projeto (contexto global), status da conexão, tema claro/escuro/sistema; navegação por hash |

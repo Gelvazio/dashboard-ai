@@ -9,9 +9,9 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 32
-- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-12`)
+- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
 - **Pendentes:** 17
-- **Concluídas:** 14
+- **Concluídas:** 15
 - **Canceladas:** 0
 
 ---
@@ -222,15 +222,15 @@
 
 ## 🎨 FASE 5: Interface do Usuário - Componentes Base e Layout
 
-### [🔄] SUB-12: Layout Principal Responsivo (Sidebar + Header + Navegação)
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:04)
+### [x] SUB-12: Layout Principal Responsivo (Sidebar + Header + Navegação)
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:04, conclusão: 2026-10-11 23:06)
 - **Depende de:** SUB-01, SUB-02
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Construir o shell do Dashboard com barra lateral de navegação (Fila de Tarefas, Cérebro de Memória, Logs do Agendador, Configurações), Header com seletor de projeto, status da conexão Supabase e toggle de tema.
 - **Critérios de Aceitação:** Navegação fluida entre abas/visões sem recarregar página, responsivo para desktop e mobile.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `69fa615`
+- **Anotação:** src/components/layout (AppLayout, Sidebar fixa no desktop e gaveta no mobile, Header, ProjectSelector, ConnectionStatus, ThemeToggle) e EmConstrucao; ProjetoProvider/useProjetoAtual (projetos visíveis pela RLS, seleção salva por slug no navegador), useNavegacao (tela no hash #/fila, #/memoria, #/logs, #/configuracoes, sem recarregar), useTema (claro/escuro/sistema salvo, classe dark no html), useConexao (verificarConexao a cada 60 s); services/projectService.listarProjetos (ativos, não excluídos); views com TELAS e placeholders que mostram o projeto selecionado. Sem Supabase configurado a app abre e explica o que falta. Validado: 6 unitários (hash/tema) + 4 de integração (listarProjetos respeita membros e projetos inativos), build e typecheck OK, screenshots headless 1280x800 e 390x844 conferidos.
 
 ### [ ] SUB-13: Painel de Indicadores Gerais (KPI Cards)
 - **Status:** pendente
