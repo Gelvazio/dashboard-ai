@@ -40,14 +40,25 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
+### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-25.6
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-25.6** |
+| **Título da Sub-task:** | Rodar `npm run test:integration` |
+| **Agente Responsável:** | Devin (Cognition AI) |
+| **Data e Hora de Início:** | 2026-10-12 13:35 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 203
-- **Em Execução:** 0
+- **Em Execução:** 1 (SUB-25.6, Devin (Cognition AI), desde 2026-10-12 13:35)
 - **Pendentes:** 4 principais (25, 26, 28, 35) + 23 subtarefas
-  - livres agora: 10 (SUB-26.5, SUB-28.2, SUB-28.16, SUB-28.17, SUB-28.24, SUB-35.32, SUB-35.33, SUB-25.4, SUB-25.6, SUB-25.7)
+  - livres agora: 9 (SUB-26.5, SUB-28.2, SUB-28.16, SUB-28.17, SUB-28.24, SUB-35.32, SUB-35.33, SUB-25.4, SUB-25.7)
   - bloqueadas por dependência: 13
   - reservadas: 0
 - **Concluídas:** 213 de 240 blocos (33 principais + 180 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
@@ -66,7 +77,7 @@
   - `SUB-25.2`: Rodar `npm ci` + `npm run validar` e registrar em `docs/VALIDACAO.md` (`concluido`, `5b06c99`)
   - `SUB-25.3`: Rodar `database/tests/run_tests.sh` (`concluido`, `cbf3c88`)
   - `SUB-25.4`: Teste rápido local: telas Fila e Logs (`pendente`)
-  - `SUB-25.6`: Rodar `npm run test:integration` (`pendente`)
+  - `SUB-25.6`: Rodar `npm run test:integration` (`em_execucao`)
   - `SUB-25.7`: Teste rápido local: telas Memória e Configurações (`pendente`)
 - **Descrição:** Rodar compilação de produção (`npm run build`), validar ausência de erros de tipagem TypeScript e verificar integridade de pacotes.
 - **Critérios de Aceitação:** Build gerado com sucesso na pasta `dist/` sem alertas impeditivos.
@@ -84,8 +95,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-25.6: Rodar `npm run test:integration`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:35)
 - **Depende de:** SUB-25.2
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Rodar a integração do frontend (`tests/integration/run.sh`: PostgreSQL + pgvector + PostgREST locais) e anexar o resultado ao `docs/VALIDACAO.md`.
