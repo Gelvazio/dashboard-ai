@@ -66,14 +66,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:03 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-21.9
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-21.9** |
+| **Título da Sub-task:** | Montar a `MemoriaView` (toolbar + grade) |
+| **Agente Responsável:** | DashboardAI-Clone 10 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:04 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (2)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-21.9** | Montar a `MemoriaView` (toolbar + grade) | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:04 | SUB-21.3, SUB-21.5, SUB-21.8 |
 | **SUB-23.5** | Teste de integração de `liberarTrava`: expirada e forçada | DashboardAI-Clone 02 | 2026-10-12 01:03 | SUB-23.4 |
 | **SUB-26.7** | Seção Memória via MCP | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:03 | SUB-26.1 |
 | **SUB-21.7** | Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` | DashboardAI-Clone 06 | 2026-10-12 01:03 | SUB-21.3 |
@@ -114,7 +126,7 @@
 | **SUB-20.9** | Componente `TagSugestoes` em `src/components/ui/TagSugestoes.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias (mãe) | 4 | Fase 7 | SUB-10, SUB-12; SUB-21.1 a SUB-21.14 |
 | **SUB-21.7** | Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` | 4 | Fase 7 | SUB-21.3 — 🔄 em execução por DashboardAI-Clone 06 |
-| **SUB-21.9** | Montar a `MemoriaView` (toolbar + grade) | 4 | Fase 7 | SUB-21.3, SUB-21.5, SUB-21.8 — ⛓️ bloqueada |
+| **SUB-21.9** | Montar a `MemoriaView` (toolbar + grade) | 4 | Fase 7 | SUB-21.3, SUB-21.5, SUB-21.8 — 🔄 em execução por DashboardAI-Clone 10 (Grok Bot) |
 | **SUB-21.10** | Validação visual da SUB-21 (screenshots) | 4 | Fase 7 | SUB-21.11 — ⛓️ bloqueada |
 | **SUB-21.11** | Ligar detalhe e exclusão na `MemoriaView` | 4 | Fase 7 | SUB-21.9, SUB-21.6, SUB-21.7 — ⛓️ bloqueada |
 | **SUB-21.12** | Conferir exclusão com editor e viewer | 4 | Fase 7 | SUB-21.11 — ⛓️ bloqueada |
@@ -554,3 +566,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:03 | DashboardAI-Clone 02 | SUB-23.9 | `15257fd` | Na `src/views/FilaView.tsx`: `diagnosticarFila(tasks)` (memo) conta travas expiradas e, se houver, mostra faixa `role=alert` abaixo dos KPIs: 'N task(s) presa(s) há mais de 90 min' com link 'Ver saúde da fila' para `#/logs`. typecheck e build OK. |
 | 2026-10-12 01:03 | DashboardAI-Clone 02 | SUB-23.5 | — | Lock: assumindo SUB-23.5 (Teste de integração de `liberarTrava`: expirada e forçada) |
 | 2026-10-12 01:03 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.2 | `54cdea9` | Adicionados `public.validar_agent_event()` (plpgsql, `security invoker`, `search_path = public`) e o trigger `validar_agent_event_trg` (`before insert or update`) em `database/07_agent_events.sql`, no padrão de `agent_messages_preparar` (06): task informada precisa ser do mesmo projeto (erro "a task N não pertence ao projeto do evento"), `task_codigo` preenchido a partir da task; no insert, `task_codigo` sem `task_id` resolve a task do projeto (código sem task é aceito, ex. subtarefa só no quadro); `agente` com trim; interface (anon/authenticated) não escolhe `criado_por`; em update recusa mudar `project_id`, `agente` e `created_at` e preserva `criado_por`. Validado em Postgres 17 local: 00–07 aplicados em banco limpo e 07 reaplicado; task de outro projeto e as 3 alterações proibidas falham com mensagem clara; resolução por código e update de `mensagem` OK. |
+| 2026-10-12 01:04 | DashboardAI-Clone 10 (Grok Bot) | SUB-21.9 | — | Lock: assumindo SUB-21.9 (Montar a `MemoriaView` (toolbar + grade)) |
