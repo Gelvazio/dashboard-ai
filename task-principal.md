@@ -1880,15 +1880,15 @@
 - **Commit:** pendente
 - **Anotação:** Adicionadas dependências: @langchain/core@^0.3.40, @langchain/langgraph@^0.2.37, @langchain/langgraph-checkpoint-postgres@^0.1.3, zod@^3.24.2. npm install OK (50 pacotes adicionados). npm test OK (179 passed). Há 7 vulnerabilidades (6 moderate, 1 high) não críticas para esta fase.
 
-#### [ ] SUB-28.3: Annotation `EstadoExecucao` em `worker/estado.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [x] SUB-28.3: Annotation `EstadoExecucao` em `worker/estado.ts`
+- **Status:** concluido
+- **Executor:** Claude Code (início: 2026-10-12 02:02, conclusão: 2026-10-12 02:03)
 - **Depende de:** SUB-28.28
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Definir `EstadoExecucao` (Annotation do LangGraph): `taskId`, `taskCodigo`, `projeto`, `agente`, `tentativa`, `execucaoId`, `instrucao`, `plano`, `passoAtual`, `resultados` (por chave de idempotência), `aprovacao`, `final`. Sem segredos. O schema zod fica na SUB-28.29.
 - **Critérios de Aceitação:** `typecheck:worker` OK.
 - **Commit:** pendente
-- **Anotação:** pendente
+- **Anotação:** Criado `worker/estado.ts` com `EstadoExecucao` (Annotation.Root): campos com reducers adequados (overwrites simples, merge para resultados, defaults). Sem segredos. typecheck:worker OK.
 
 #### [ ] SUB-28.4: `reivindicar(agente, projeto)` em `worker/fila.ts`
 - **Status:** pendente
