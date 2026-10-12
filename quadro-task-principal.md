@@ -55,17 +55,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:56 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 04 (Grok Bot) — SUB-19.2
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-19.2** |
-| **Título da Sub-task:** | Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts` |
-| **Agente Responsável:** | DashboardAI-Clone 04 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 00:56 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-08.9
 
 | Propriedade | Valor Atual |
@@ -92,20 +81,19 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (4)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-23.7** | Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx` | DashboardAI-Clone 02 | 2026-10-12 00:58 | SUB-23.10, SUB-23.11 |
 | **SUB-08.9** | CLI `npm run check:env` (toda variável usada está no `.env.example`) | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:58 | SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.11 |
-| **SUB-19.2** | Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 00:56 | SUB-19.1 |
 | **SUB-27.26** | Hook `useAuth` em `src/hooks/useAuth.ts` | DashboardAI-Clone 01 | 2026-10-12 00:56 | SUB-27.9 |
 | **SUB-20.6** | Modal `MemoriaFormModal` em `src/components/memoria/` | DashboardAI-Clone 06 | 2026-10-12 00:55 | SUB-20.1, SUB-20.3, SUB-20.4, SUB-20.5, SUB-20.8, SUB-20.9 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
 
-### ⏳ PENDENTES (172)
+### ⏳ PENDENTES (171)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -131,7 +119,6 @@
 | **SUB-23.13** | `travaExpirada` em `src/lib/saudeFila.ts` | 4 | Fase 8 | SUB-23.1 — ⛓️ bloqueada |
 | **SUB-19** | Interface de Pesquisa Semântica Vetorial (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-19.1 a SUB-19.10 |
 | **SUB-19.1** | `debounce(fn, ms)` em `src/lib/debounce.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
-| **SUB-19.2** | Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts` | 4 | Fase 7 | SUB-19.1 — ⛓️ bloqueada — 🔄 em execução por DashboardAI-Clone 04 (Grok Bot) |
 | **SUB-19.3** | `formatarSimilaridade` em `src/lib/similaridade.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-19.6** | Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts` | 4 | Fase 7 | SUB-19.2, SUB-33.7 — ⛓️ bloqueada |
 | **SUB-19.7** | Painel `BuscaSemanticaPanel` (campo, grade e estados) | 4 | Fase 7 | SUB-19.5, SUB-19.6, SUB-19.9 — ⛓️ bloqueada |
@@ -278,10 +265,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (66)
+### ✅ CONCLUÍDAS (67)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-19.2** | Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 00:56 | 2026-10-12 00:58 | `ac94aa6` |
 | **SUB-08.11** | `listarArquivosFonte(dirs)` em `scripts/checar-env.mjs` + teste | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:57 | 2026-10-12 00:58 | `0ac9843` |
 | **SUB-21.14** | `tagsDisponiveis` em `src/lib/memorias.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 00:57 | 2026-10-12 00:57 | `1734052` |
 | **SUB-08.10** | `variaveisDoExemplo(texto)` em `scripts/checar-env.mjs` + testes | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:56 | 2026-10-12 00:56 | `ad56d9b` |
@@ -540,3 +528,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:58 | DashboardAI-Clone 02 | SUB-23.10 | `e617cbf` | Criado `src/components/tasks/TravaItem.tsx` (`{ trava: TravaDiagnostico, liberando?, onLiberar(task, forcar) }`): código, título, agente (`trava_frente`), minutos (min/h), destaque vermelho e '(expirada)' quando expirada; botão 'Liberar trava' abre `ConfirmDialog` — se a trava não expirou, confirma como 'Forçar liberação' com aviso extra de trabalho duplicado e chama `onLiberar(task, true)`. Exportado em `src/components/tasks/index.ts`. typecheck e build OK. |
 | 2026-10-12 00:58 | DashboardAI-Clone 10 (Grok Bot) | SUB-21.5 | `197eb97` | Criado `src/components/memoria/MemoriaGrid.tsx` (`{ memorias, carregando?, filtroAtivo?, temMais?, carregandoMais?, onCarregarMais?, onVer?, onExcluir?, className? }`): grade 1/2/3 colunas (`sm`/`xl`) de `MemoriaCard`; 6 esqueletos `animate-pulse` (`role="status"`) na primeira carga; estado vazio com textos distintos para "sem memórias" e "nenhuma corresponde aos filtros"; botão "Carregar mais" (`Botao` com `carregando`) quando `temMais`. Exportado em `src/components/memoria/index.ts`. `npm run typecheck`, `npm test` e `npm run build` OK. |
 | 2026-10-12 00:58 | DashboardAI-Clone 02 | SUB-23.7 | — | Lock: assumindo SUB-23.7 (Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx`) |
+| 2026-10-12 00:58 | DashboardAI-Clone 04 (Grok Bot) | SUB-19.2 | `ac94aa6` | Criado `src/hooks/useDebounce.ts` com `useDebounce<T>(valor, ms = 400): T` (`useState` + `setTimeout` no `useEffect`, `clearTimeout` no cleanup ao mudar valor/ms ou desmontar) e exportado em `src/hooks/index.ts`. `npm run typecheck`, `npm test` e `npm run build` OK. |

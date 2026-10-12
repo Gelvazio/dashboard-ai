@@ -693,15 +693,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [🔄] SUB-19.2: Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 04 (Grok Bot) (início: 2026-10-12 00:56)
+#### [x] SUB-19.2: Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 04 (Grok Bot) (2026-10-12 00:56 → 2026-10-12 00:58)
 - **Depende de:** SUB-19.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/hooks/useDebounce.ts`: `export function useDebounce<T>(valor: T, ms = 400): T` (usa `setTimeout`/cleanup no `useEffect`). Exportar em `src/hooks/index.ts`.
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `ac94aa6`
+- **Anotação:** Criado `src/hooks/useDebounce.ts` com `useDebounce<T>(valor, ms = 400): T` (`useState` + `setTimeout` no `useEffect`, `clearTimeout` no cleanup ao mudar valor/ms ou desmontar) e exportado em `src/hooks/index.ts`. `npm run typecheck`, `npm test` e `npm run build` OK.
 
 #### [ ] SUB-19.3: `formatarSimilaridade` em `src/lib/similaridade.ts`
 - **Status:** concluido
