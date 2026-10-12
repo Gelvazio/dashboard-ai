@@ -2578,4 +2578,15 @@
 - **Anotação:** Em `worker/grafo.ts`, os seis nós (`carregarContexto`, `planejar`, `politica`, `executar`, `revisar`, `finalizar`) passaram a ser registrados como `comEventos('<nome>', no, deps.eventos)`, sem mudar arestas nem roteamento. `DepsGrafo` ganhou `eventos?: EventosDeps` (omitido usa `db()`) para injetar o destino dos eventos. `npm run typecheck:worker` OK; os 17 arquivos de teste do worker seguem verdes (100 aprovados, 1 pulado); `npm test` 279 aprovados / 30 pulados; `typecheck` OK.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:41 (confirmado por Devin (Cognition AI))
 
+#### [x] SUB-35.37: `iniciarHeartbeat()` em `worker/heartbeat.ts`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:41, conclusão: 2026-10-12 13:42)
+- **Depende de:** SUB-35.33
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `iniciarHeartbeat({ agente, projeto, intervaloMs = 30000, emitir = emitirEvento }): () => void` que emite `tipo = 'heartbeat'` (com `taskId`/`etapa` atuais via callback opcional) e devolve a função de parada. Teste com timers falsos (`vi.useFakeTimers`) em `tests/unit/worker-heartbeat.test.ts`.
+- **Critérios de Aceitação:** `npm test` passa.
+- **Commit:** `64c0b11`
+- **Anotação:** Criei `worker/heartbeat.ts` com `iniciarHeartbeat({ agente, projeto, intervaloMs = 30000, emitir = emitirEvento, atual? })`: emite `tipo = heartbeat` ao iniciar e a cada intervalo, com `taskId`/`taskCodigo`/`execucaoId`/`etapa` do callback `atual` (status `ocupado` com task, `livre` sem), engole falhas do emissor e do callback, usa `unref()` no timer e devolve a função de parada (idempotente). 4 testes com `vi.useFakeTimers` em `tests/unit/worker-heartbeat.test.ts`; `npm test` 283 aprovados / 30 pulados; `typecheck` e `typecheck:worker` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:42 (confirmado por Devin (Cognition AI))
+
 ---
