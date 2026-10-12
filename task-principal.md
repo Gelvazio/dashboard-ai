@@ -675,8 +675,8 @@
 - **Anotação:** pendente
 
 ### [ ] SUB-21: Grid de Gerenciamento e Exclusão de Memórias
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:45)
 - **Depende de:** SUB-10, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Exibição em cartões de todas as memórias cadastradas, com botão para copiar conteúdo Markdown, visualizar detalhes e excluir memória.
