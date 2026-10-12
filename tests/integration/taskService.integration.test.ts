@@ -79,3 +79,38 @@ describe.skipIf(!integracaoDisponivel)('taskService (RLS + guarda da fila)', () 
     expect(Object.values(c).reduce((a, b) => a + b, 0)).toBeGreaterThanOrEqual(6);
   });
 });
+
+describe.skipIf(!integracaoDisponivel)('taskService.liberarTrava: expirada e forçada (SUB-23.5)', () => {
+  const editor = novoUsuario();
+  let p: Project;
+
+  beforeAll(async () => {
+    p = await criarProjeto([{ id: editor, role: 'editor' }], 'LIB');
+  });
+
+  const travar = async (id: number, minutosAtras: number) => {
+    const { error } = await servico()
+      .from('tasks')
+      .update({ status: 'em_execucao', trava_frente: 'Agente X', trava_em: new Date(Date.now() - minutosAtras * 60_000).toISOString() })
+      .eq('id', id);
+    expect(error).toBeNull();
+  };
+
+  it('libera por editor uma trava expirada (100 min)', async () => {
+    const sb = usuario(editor);
+    const t = await tasks.criarTask(p.id, { titulo: 'Presa', instrucao: 'x' }, sb);
+    await travar(t.id, 100);
+    const liberada = await tasks.liberarTrava(p.id, t.id, false, sb);
+    expect(liberada.status).toBe('pendente');
+    expect(liberada.resultado).toMatch(/liberada manualmente/);
+  });
+
+  it('recusa trava recente sem forcar e libera com forcar', async () => {
+    const sb = usuario(editor);
+    const t = await tasks.criarTask(p.id, { titulo: 'Recente', instrucao: 'x' }, sb);
+    await travar(t.id, 5);
+    await expect(tasks.liberarTrava(p.id, t.id, false, sb)).rejects.toThrow(/ainda está válida|forcar/);
+    expect((await tasks.obterTask(p.id, t.id, sb)).status).toBe('em_execucao');
+    expect((await tasks.liberarTrava(p.id, t.id, true, sb)).status).toBe('pendente');
+  });
+});
