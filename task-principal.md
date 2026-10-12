@@ -40,14 +40,25 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
+### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-35.33
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.33** |
+| **Título da Sub-task:** | `emitirEvento()` em `worker/eventos.ts` |
+| **Agente Responsável:** | Devin (Cognition AI) |
+| **Data e Hora de Início:** | 2026-10-12 13:36 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 203
-- **Em Execução:** 0
+- **Em Execução:** 1 (SUB-35.33, Devin (Cognition AI), desde 2026-10-12 13:36)
 - **Pendentes:** 4 principais (25, 26, 28, 35) + 22 subtarefas
-  - livres agora: 9 (SUB-26.5, SUB-28.2, SUB-28.16, SUB-28.17, SUB-28.24, SUB-35.32, SUB-35.33, SUB-25.4, SUB-25.7)
+  - livres agora: 8 (SUB-26.5, SUB-28.2, SUB-28.16, SUB-28.17, SUB-28.24, SUB-35.32, SUB-25.4, SUB-25.7)
   - bloqueadas por dependência: 13
   - reservadas: 0
 - **Concluídas:** 214 de 240 blocos (33 principais + 181 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
@@ -323,7 +334,7 @@
   - `SUB-35.30`: Tela `MonitorView` em `src/views/MonitorView.tsx` (`concluido`, `2d1cd0a`)
   - `SUB-35.31`: Registrar a tela `monitor` (rota `#/monitor` e menu) (`concluido`, `8dff43b`)
   - `SUB-35.32`: Validação visual do monitor (SUB-35) (`pendente`)
-  - `SUB-35.33`: `emitirEvento()` em `worker/eventos.ts` (`pendente`)
+  - `SUB-35.33`: `emitirEvento()` em `worker/eventos.ts` (`em_execucao`)
   - `SUB-35.34`: Testes de `emitirEvento` em `tests/unit/worker-eventos.test.ts` (`pendente`)
   - `SUB-35.35`: `comEventos(nome, no)` em `worker/eventos.ts` (`pendente`)
   - `SUB-35.36`: Envolver os nós em `worker/grafo.ts` com `comEventos` (`pendente`)
@@ -356,8 +367,8 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-35.33: `emitirEvento()` em `worker/eventos.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:36)
 - **Depende de:** SUB-35.1, SUB-28.28
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `worker/eventos.ts` com `emitirEvento(evento, deps = { db })`: insere em `agent_events` (service_role, reutilizando `db()` de `api/_lib/supabase.ts`), corta `mensagem` em 2000 caracteres, só aceita `metadados` objeto e **nunca lança** (falha vira aviso no log sem segredos), para não derrubar a execução.
