@@ -153,8 +153,8 @@
 - **Anotação:** api/_lib/supabase.ts reescrito: db() com createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY) sem sessão, fetch com timeout de 20 s e redirecionamento opcional via SUPABASE_REST_URL (testes), unwrap() que converte PostgrestError em SupabaseError, rpc(). queue-tools, brain-tools e args usam o query builder (from/select/eq/in/order/limit, insert().select().single(), upsert onConflict project_id,title, delete().is/eq().select()). Contrato das ferramentas inalterado. Achado: supabase-js 2.117 exige WebSocket nativo e quebra no Node 20 (EOL desde 2026-04), então engines.node passou a >=22.12, .nvmrc 22 e @types/node ^22. Validado com Node 22.23: build e typecheck OK; e2e contra PostgREST local: 27 cenários da fila e 36 da memória, todos OK; AGENTS.md e api/README.md atualizados.
 
 ### [ ] SUB-33: Endpoint de Embeddings para o Frontend (`api/embedding.ts`)
-- **Status:** pendente (aguardando subtarefas)
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para nova revisão da subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-12 00:16)
 - **Depende de:** SUB-07, SUB-03; subtarefas SUB-33.1 a SUB-33.12
 - **Subtarefas:** (subdividida em 2026-10-11 23:38 e refinada para 12 em 2026-10-11 23:47 por DashboardAI (Grok Bot); trava liberada a pedido do usuário, filhas livres conforme dependências; a mãe só é concluída quando todas estiverem `concluido`)
   - `SUB-33.1`: `bearerToken(req)` em `api/_lib/auth.ts` (`pendente`)
@@ -319,8 +319,8 @@
 - **Anotação:** api/_lib/brain-tools.ts (upsert por project_id+title, busca via match_memories com globais, delete por título/id), api/_lib/embeddings.ts (OPENAI_API_KEY, EMBEDDING_MODEL, EMBEDDING_API_URL; valida 1536 dimensões), api/_lib/args.ts (helpers compartilhados com a fila). Exige MCP_AUTH_TOKEN; servidor com MCP_ALLOWED_PROJECTS lê mas não grava memória global. tsc strict OK; e2e contra PostgREST local + embedder falso: 36 checagens (upsert, isolamento entre projetos, globais, tags, limiar, allowlist, erros da API sem vazar chave) e as 27 da fila seguem OK.
 
 ### [ ] SUB-08: Configuração de Variáveis de Ambiente e `.env.example`
-- **Status:** pendente (aguardando subtarefas)
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para nova revisão da subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-12 00:16)
 - **Depende de:** SUB-06; subtarefas SUB-08.1 a SUB-08.9
 - **Subtarefas:** (subdividida em 9 em 2026-10-12 00:08 por DashboardAI (Grok Bot) a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`)
   - `SUB-08.1`: Esqueleto do `.env.example` (`pendente`)
@@ -553,8 +553,8 @@
 ## 🧠 FASE 7: Interface do Usuário - Painel de Memória Persistente (Jev-Mem)
 
 ### [ ] SUB-34: Carregamento Sob Demanda de Telas e Modais (code splitting)
-- **Status:** pendente (aguardando subtarefas)
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para nova revisão da subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-12 00:16)
 - **Depende de:** SUB-13, SUB-14, SUB-16, SUB-17, SUB-18; subtarefas SUB-34.1 a SUB-34.5
 - **Subtarefas:** (subdividida em 5 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`)
   - `SUB-34.1`: Fallback `CarregandoTela` em `src/components/ui/CarregandoTela.tsx` (`pendente`)
@@ -619,8 +619,8 @@
 - **Anotação:** pendente
 
 ### [ ] SUB-19: Interface de Pesquisa Semântica Vetorial
-- **Status:** pendente (aguardando subtarefas)
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para nova revisão da subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-12 00:16)
 - **Depende de:** SUB-10, SUB-12, SUB-33; subtarefas SUB-19.1 a SUB-19.9
 - **Subtarefas:** (subdividida em 8 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 9 em 2026-10-11 23:51)
   - `SUB-19.1`: `debounce(fn, ms)` em `src/lib/debounce.ts` (`pendente`)
@@ -729,8 +729,8 @@
 - **Anotação:** pendente
 
 ### [ ] SUB-20: Formulário de Nova Memória Canônica
-- **Status:** pendente (aguardando subtarefas)
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para nova revisão da subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-12 00:16)
 - **Depende de:** SUB-10, SUB-12, SUB-33; subtarefas SUB-20.1 a SUB-20.8
 - **Subtarefas:** (subdividida em 7 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 8 em 2026-10-11 23:51)
   - `SUB-20.1`: `validarMemoria(dados)` em `src/lib/memoriaForm.ts` (`pendente`)
@@ -828,8 +828,8 @@
 - **Anotação:** pendente
 
 ### [ ] SUB-21: Grid de Gerenciamento e Exclusão de Memórias
-- **Status:** pendente (aguardando subtarefas)
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para nova revisão da subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-12 00:16)
 - **Depende de:** SUB-10, SUB-12; subtarefas SUB-21.1 a SUB-21.12
 - **Subtarefas:** (subdividida em 10 em 2026-10-11 23:47 por DashboardAI (Grok Bot) a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`; refinada para 12 em 2026-10-11 23:51)
   - `SUB-21.1`: `memoriaComoMarkdown` e `escopoMemoria` em `src/lib/memorias.ts` (`pendente`)
@@ -986,8 +986,8 @@
 - **Anotação:** Arquivos: src/lib/logs.ts (+testes), src/hooks/useLogs.ts, src/views/LogsView.tsx.
 
 ### [ ] SUB-23: Diagnóstico de Travas e Saúde da Fila
-- **Status:** pendente (aguardando subtarefas)
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para nova revisão da subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-12 00:16)
 - **Depende de:** SUB-09, SUB-11, SUB-12; subtarefas SUB-23.1 a SUB-23.12
 - **Subtarefas:** (subdividida em 9 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 12 em 2026-10-11 23:51)
   - `SUB-23.1`: `minutosDeTrava` e `travaExpirada` em `src/lib/saudeFila.ts` (`pendente`)
@@ -1343,8 +1343,8 @@
 - **Anotação:** pendente
 
 ### [ ] SUB-27: Autenticação e Login com Supabase Auth
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para nova revisão da subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-12 00:16)
 - **Depende de:** SUB-03, SUB-29 (papéis `user_roles`/`project_members` e RLS); subtarefas SUB-27.1 a SUB-27.22
 - **Subtarefas:** (22 filhas; subdividida em 18 em 2026-10-11 23:41 e refinada em 22 em 2026-10-11 23:51 por DashboardAI (Grok Bot); liberadas a pedido do usuário em 2026-10-11 23:55 conforme dependências; a mãe só é concluída quando todas estiverem `concluido`)
   - `SUB-27.1`: `mensagemErroAuth(erro)` em `src/lib/auth.ts` (`pendente`)
@@ -1599,8 +1599,8 @@
 ## 🚀 FASE 11: Orquestração de Tasks com LangChain/LangGraph (última fase)
 
 ### [ ] SUB-28: Integração LangChain/LangGraph para Execução de Tasks
-- **Status:** pendente (aguardando subtarefas)
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para nova revisão da subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-12 00:16)
 - **Depende de:** SUB-01 a SUB-27, SUB-29, SUB-30 (todas as tasks anteriores concluídas); subtarefas SUB-28.1 a SUB-28.25
 - **Subtarefas:** (subdividida em 18 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 25 em 2026-10-11 23:51)
   - `SUB-28.1`: Contrato worker ↔ RPC ↔ MCP em `docs/langgraph-contrato.md` (`pendente`)

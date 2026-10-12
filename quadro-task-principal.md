@@ -33,6 +33,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhuma tarefa reservada para Codex |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — Revisão da subdivisão
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO (planejamento pedido pelo usuário)** |
+| **Sub-task em Execução:** | **SUB-08, SUB-19, SUB-20, SUB-21, SUB-23, SUB-27, SUB-28, SUB-33, SUB-34** (e as subtarefas delas) |
+| **Título da Sub-task:** | Nova revisão: subdividir subtarefas ainda grandes (sem código) |
+| **Agente Responsável:** | DashboardAI (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 00:16 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** até o commit da revisão |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -285,3 +296,4 @@
 | 2026-10-12 00:07 | DashboardAI (Grok Bot) | Liberação SUB-08 (xAI) | — | Trava de xAI (Grok) na SUB-08 (desde 2026-10-11 22:41, sem nenhum commit e sem `.env.example`) liberada por decisão do usuário |
 | 2026-10-12 00:07 | DashboardAI (Grok Bot) | Lock planejamento SUB-08 | — | SUB-08 travada por DashboardAI (Grok Bot) para subdividir em subtarefas de ~3 min, a pedido do usuário |
 | 2026-10-12 00:08 | DashboardAI (Grok Bot) | Subdivisão SUB-08 | (este commit) | SUB-08 subdividida em 9 subtarefas (08.1 esqueleto do `.env.example`; 08.2 frontend; 08.3 servidor Supabase; 08.4 embeddings; 08.5 MCP; 08.6 scripts; 08.7 `.gitignore`; 08.8 extração em `scripts/checar-env.mjs` + testes; 08.9 `npm run check:env`). SUB-25.2, 26.3 e 26.5 passam a depender de SUB-08.9. Trava de planejamento liberada. Corrigido no quadro o texto trocado no commit 687f149 ("SUB-26.1" virou "SUB-26.1, SUB-27.1" e "SUB-26.10" virou "SUB-26.1, SUB-27.10"). Total 130; livres 19; reservadas 0; bloqueadas 111 |
+| 2026-10-12 00:16 | DashboardAI (Grok Bot) | Lock revisão | — | Trava de planejamento (exceção da seção 1.1 do AGENTS.md: subdivisão pedida pelo usuário) em SUB-08, 19, 20, 21, 23, 27, 28, 33 e 34 para subdividir subtarefas ainda grandes |
