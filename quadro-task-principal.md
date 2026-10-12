@@ -77,17 +77,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:11 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-27.11
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-27.11** |
-| **Título da Sub-task:** | Tela `LoginView` em `src/views/LoginView.tsx` |
-| **Agente Responsável:** | DashboardAI-Clone 10 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:11 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-35.45
 
 | Propriedade | Valor Atual |
@@ -125,14 +114,13 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (5)
+### 🔄 EM EXECUÇÃO (4)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-21.12** | Conferir exclusão com editor e viewer | DashboardAI-Clone 02 | 2026-10-12 01:12 | SUB-21.11 |
 | **SUB-35.9** | `listarEventos()` em `src/services/eventService.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:12 | SUB-35.8 |
 | **SUB-35.45** | Seção "Reporte de progresso (opcional)" no `AGENTS.md` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:11 | SUB-35.41 |
-| **SUB-27.11** | Tela `LoginView` em `src/views/LoginView.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:11 | SUB-27.10, SUB-27.19 |
 | **SUB-34.5** | Checagem de tamanho `scripts/checar-chunks.mjs` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:11 | SUB-34.6, SUB-34.3, SUB-34.4 |
 | **SUB-21.10** | Validação visual da SUB-21 (screenshots) | DashboardAI-Clone 01 | 2026-10-12 01:10 | SUB-21.11 |
 | **SUB-27.27** | Incluir `UserMenu` no `src/components/layout/Header.tsx` | DashboardAI-Clone 06 | 2026-10-12 01:10 | SUB-27.14 |
@@ -141,7 +129,7 @@
 
 ---
 
-### ⏳ PENDENTES (141)
+### ⏳ PENDENTES (140)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -223,7 +211,6 @@
 | **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) (mãe) | 3 | Fase 2B | SUB-07, SUB-03; SUB-33.1 a SUB-33.13 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | 3 | Fase 2B | SUB-33.11 — 🔄 em execução por Codex (OpenAI) |
 | **SUB-27** | Autenticação e Login com Supabase Auth (mãe; pendente, liberada) | 3 | Fase 10 | SUB-03, SUB-29; SUB-27.1 a SUB-27.28 — 🟢 livre |
-| **SUB-27.11** | Tela `LoginView` em `src/views/LoginView.tsx` | 3 | Fase 10 | SUB-27.10, SUB-27.19 — 🔄 em execução por DashboardAI-Clone 10 (Grok Bot) |
 | **SUB-27.12** | Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` | 3 | Fase 10 | SUB-27.26, SUB-27.11 — ⛓️ bloqueada |
 | **SUB-27.13** | Integrar autenticação no `src/App.tsx` | 3 | Fase 10 | SUB-27.12 — ⛓️ bloqueada |
 | **SUB-27.17** | Documentar configuração do Supabase Auth em `src/README.md` | 3 | Fase 10 | SUB-27.13 — ⛓️ bloqueada |
@@ -266,7 +253,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (97)
+### ✅ CONCLUÍDAS (98)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -378,6 +365,7 @@
 | **SUB-21.9** | Montar a `MemoriaView` (toolbar + grade) | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:04 | 2026-10-12 01:05 | `4b8d62b` |
 | **SUB-21.11** | Ligar detalhe e exclusão na `MemoriaView` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:06 | 2026-10-12 01:08 | `e4bacb0` |
 | **SUB-34.3** | Modais da fila sob demanda na `src/views/FilaView.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:08 | 2026-10-12 01:10 | `964764e` |
+| **SUB-27.11** | Tela `LoginView` em `src/views/LoginView.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:11 | 2026-10-12 01:12 | `213f237` |
 
 n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | Claude Code | 2026-10-12 00:50 | 2026-10-12 00:51 | `fc4c3ee` |
 || **SUB-20.1** | `validarMemoria(dados)` em `src/lib/memoriaForm.ts` | DashboardAI-Clone 06 | 2026-10-12 00:46 | 2026-10-12 00:47 | `5662f1a` |
@@ -673,3 +661,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:12 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.9 | — | Lock: assumindo SUB-35.9 (`listarEventos()` em `src/services/eventService.ts`) |
 | 2026-10-12 01:12 | DashboardAI-Clone 02 | SUB-21.12 | — | Lock: assumindo SUB-21.12 (Conferir exclusão com editor e viewer) |
 | 2026-10-12 01:12 | DashboardAI-Clone 04 (Grok Bot) | SUB-20.7 | `adef71a` | Botão "Nova memória" (`Botao` primário com ícone `Plus`) no cabeçalho da grade da `src/views/MemoriaView.tsx` abre o `MemoriaFormModal` (SUB-20.6) com o projeto atual; ao salvar fecha o modal, chama `recarregar()` do `useMemorias` e refaz a busca semântica via nova opção `versao` (`useBuscaSemantica` inclui `versao` nas dependências; `BuscaSemanticaPanel` repassa a prop `versao`), sem perder o texto digitado. `npm run typecheck`, `npm test` e `npm run build` OK. Teste manual contra banco local NÃO executado (sem Supabase/PostgREST configurado no ambiente deste agente). |
+| 2026-10-12 01:12 | DashboardAI-Clone 10 (Grok Bot) | SUB-27.11 | `213f237` | Criado `src/views/LoginView.tsx` (`{ onEntrou? }`): página cheia centralizada fora do `AppLayout` (`min-h-dvh`, fundo slate claro/escuro), marca "Dashboard AI" com descrição curta, `ThemeToggle` no canto, aviso `role="alert"` quando `supabaseConfigurado` é falso (cita `VITE_SUPABASE_URL`/`VITE_SUPABASE_ANON_KEY` e o `.env.example`), cartão com `LoginForm` (repassa `onEntrou` e o e-mail digitado) e `RecuperarAcesso` com esse e-mail. Ainda não está ligada ao `App` (SUB-27.12/27.13). `npm run typecheck`, `npm test` e `npm run build` OK; screenshots 1280x800 e 390x844 conferidos em Chrome headless via página de pré-visualização temporária (não commitada). |
