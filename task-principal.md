@@ -704,7 +704,7 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-19.3: `formatarSimilaridade` em `src/lib/similaridade.ts`
-- **Status:** pendente
+- **Status:** em_execucao
 - **Executor:** nenhum
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)

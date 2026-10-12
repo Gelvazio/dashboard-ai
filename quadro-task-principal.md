@@ -22,6 +22,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo no quadro principal |
 
+### 🔒 TRAVA ADICIONAL — Claude Code — SUB-19.3
+
+|| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-19.3** |
+| **Título da Sub-task:** | `formatarSimilaridade` em `src/lib/similaridade.ts` |
+| **Agente Responsável:** | Claude Code |
+| **Data e Hora de Início:** | 2026-10-12 00:45 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ### 🔒 TRAVA ADICIONAL — Codex (OpenAI)
 
 | Propriedade | Valor Atual |
