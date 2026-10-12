@@ -791,7 +791,7 @@
   - `SUB-20.1`: `validarMemoria(dados)` em `src/lib/memoriaForm.ts` (`concluido`, `5662f1a`)
   - `SUB-20.2`: `parseTags(texto)` em `src/lib/memoriaForm.ts` (`concluido`, `78a1e70`)
   - `SUB-20.3`: `sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts` (`concluido`, `e5e67e5`)
-  - `SUB-20.4`: Componente `TagInput` em `src/components/ui/TagInput.tsx` (`pendente`)
+  - `SUB-20.4`: Componente `TagInput` em `src/components/ui/TagInput.tsx` (`em_execucao`)
   - `SUB-20.5`: Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts` (`pendente`)
   - `SUB-20.6`: Modal `MemoriaFormModal` em `src/components/memoria/` (`pendente`)
   - `SUB-20.7`: Botão "Nova memória" na `src/views/MemoriaView.tsx` (`pendente`)
@@ -835,8 +835,8 @@
 - **Anotação:** Adicionado `sugerirTags(titulo, conteudo, max = 5)` em `src/lib/memoriaForm.ts`: usa `palavrasDe` (SUB-20.10) no título (peso 2) e no conteúdo (peso 1), soma a frequência, ordena por pontuação decrescente com desempate alfabético e devolve as `max` primeiras (`max <= 0` -> vazio). Determinística. 6 testes novos em `tests/unit/memoriaForm.test.ts`. `npm run typecheck` e `npm test` verdes.
 
 #### [ ] SUB-20.4: Componente `TagInput` em `src/components/ui/TagInput.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 00:52)
 - **Depende de:** SUB-20.2
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/components/ui/TagInput.tsx` com props `{ valor: string[]; onChange; erro?: string }`: chips removíveis, adiciona com Enter/vírgula usando `parseTags`, Backspace no campo vazio remove o último. As sugestões ficam no `TagSugestoes` (SUB-20.9).
