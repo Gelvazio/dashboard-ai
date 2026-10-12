@@ -3,7 +3,7 @@
 - **Criado em:** 2026-10-12 15:20
 - **Pedido por:** Gelvazio (usuário), no chat
 - **Executor:** Claude Code (Opus 5.5)
-- **Status:** 🔄 Em progresso
+- **Status:** ⏸️ Adiada a pedido do usuário (2026-10-12 15:50) — virou a tarefa `SUB-38` (prioridade `MAXIMA`) no `task-principal.md`
 
 ## Objetivo
 
@@ -61,5 +61,5 @@ deixado no `docs/VALIDACAO.md` e na anotação.
 |---|---|---|
 | 1 | Inserir `VERIFICADOR-CLAUDE: PENDENTE` nos 246 blocos; commit e push | ✅ Concluído |
 | 2 | Rodar a validação geral (tabela acima) | ✅ Concluído |
-| 3 | Verificar os itens um por um, na ordem dos quadros; commit e push a cada item | 🔄 Em progresso |
+| 3 | Verificar os itens um por um, na ordem dos quadros; commit e push a cada item | ⬜ Pendente (6 de 246 feitos; próximo: SUB-28) |
 | 4 | Relatório final: lista de ressalvas e falhas | ⬜ Pendente |

@@ -1,6 +1,5 @@
 # 🤖 DIRETRIZES DE AGENTES DE IA & PROTOCOLO DE CONCORRÊNCIA
 
-
 > 📌 **Quadro único:** o antigo `quadro-task-principal.md` foi incorporado ao `task-principal.md`. Travas, status e tarefas ativas ficam só no `task-principal.md`; não recrie o arquivo antigo.
 
 > 📦 **Concluídas em arquivo separado:** os blocos `[x]` (tarefas e subtarefas `concluido`) ficam em [`task_complete.md`](task_complete.md). Para pegar tarefas, leia só o `task-principal.md`: a lista `Subtarefas:` das tarefas-mãe abertas já traz `(concluido, <sha>)`, e **dependência que não aparece como bloco no `task-principal.md` está `concluido` no `task_complete.md`**. Abra o `task_complete.md` só para consultar uma entrega ou reabrir uma tarefa (o bloco volta para o `task-principal.md` como `pendente`, com o motivo na anotação).
@@ -24,6 +23,7 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
 ☐ [ ] Li o arquivo ATUALIZADO (task-principal.md)?
 ☐ [ ] Verifiquei que a trava está LIVRE ou que minha task não conflita?
 ☐ [ ] Confirmei que todas as dependências estão `concluido`?
+☐ [ ] Escolhi o item livre de **maior prioridade** (`MAXIMA` → `ALTA` → `MEDIA` → `BAIXA`, seção 1.2)?
 ☐ [ ] Não tenho nenhum outro item travado (máximo 1 subtarefa ou 1 tarefa atômica por agente)?
 ☐ [ ] O item é uma subtarefa ou tarefa atômica (não uma tarefa-mãe com subtarefas)?
 ☐ [ ] Vou fazer commit + push do lock IMEDIATAMENTE antes de codificar?
@@ -39,16 +39,17 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
 ✅ **PASSO 1 (CRÍTICO — PRIMEIRO):** Executar `git pull --rebase origin main` para garantir o estado mais recente do repositório.
    - ⛔ **NÃO** ler nenhum arquivo local antes deste comando
    - ⛔ **NÃO** assumir nenhuma tarefa sem garantir que está no estado mais recente
-   - Se houver conflito de merge, resolver antes de prosseguir
+   - Se houver conflito no rebase, resolver antes de prosseguir
 
 ✅ **PASSO 2 (SÓ DEPOIS DO GIT PULL):** Ler obrigatoriamente o arquivo ATUALIZADO:
-   - 📄 [`task-principal.md`](file:///c:/fontes/dashboard-ai/task-principal.md)
+   - 📄 [`task-principal.md`](task-principal.md)
 
 ✅ **PASSO 3:** Conferir a seção **"🔒 TRAVA ATIVA NO MOMENTO"** em `task-principal.md`:
-   - ⛔ **PROIBIÇÃO TOTAL DE CONFLITO:** Se já existir uma task com trava ativa ou status `EM EXECUÇÃO` associada a outro agente, **NENHUMA OUTRA IA PODE ASSUMIR AQUELA MESMA TAREFA**.
+   - ⛔ **PROIBIÇÃO TOTAL DE CONFLITO:** Se já existir uma task com trava ativa (tabela principal ou bloco `### 🔒 TRAVA ADICIONAL`) ou status `em_execucao` associada a outro agente, **NENHUMA OUTRA IA PODE ASSUMIR AQUELA MESMA TAREFA**.
 
-✅ **PASSO 4:** Localizar a próxima sub-task com status `pendente`:
+✅ **PASSO 4:** Localizar a próxima sub-task com status `pendente`, **pela prioridade** (seção 1.2):
    - Verificar se todas as dependências da sub-task estão com status `concluido`
+   - Entre os itens livres, pegar o de **maior prioridade** (`MAXIMA` → `ALTA` → `MEDIA` → `BAIXA`); na mesma prioridade, o primeiro na ordem do quadro
    - ⛔ **NÃO** assumir uma tarefa cujas dependências não estejam 100% concluídas
 
 ---
@@ -98,35 +99,60 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
 2. **Push da trava recusado (corrida entre agentes):**
    - Se o `git push` do lock for recusado, executar `git pull --rebase origin main` e **reler o quadro**.
    - Se outro agente travou o mesmo item, **desfazer o seu lock local** e escolher outro item livre. Nunca sobrescrever a trava de outro agente.
-
-3. **Tarefas travadas para todas as IAs:**
-   - ⛔ **KIRO-DEV-CLONE**: Esta tarefa está **TRAVADA PARA TODAS AS IAS** — nenhuma IA pode assumir suas subtarefas sem autorização explícita do usuário.
-   - Para liberar a trava, o usuário deve editar o `task-principal.md` e remover a trava manualmente.
-   - Esta trava tem precedência sobre o protocolo normal de captura de tarefas.
    - ⛔ Nunca usar `git push --force`.
 
-3. **Travas em paralelo:**
+3. **Tarefas travadas para todas as IAs:**
+   - ⛔ **KIRO-DEV-CLONE**: esta tarefa está **TRAVADA PARA TODAS AS IAS** — nenhuma IA pode assumi-la (nem subtarefas que venham a ser criadas nela) sem autorização explícita do usuário.
+   - Para liberar a trava, o usuário deve editar o `task-principal.md` e remover a trava manualmente.
+   - Esta trava tem precedência sobre o protocolo normal de captura de tarefas e sobre a prioridade (seção 1.2).
+
+4. **Travas em paralelo:**
    - Vários agentes podem trabalhar ao mesmo tempo, **cada um em um item diferente**.
    - Cada agente registra sua trava em um bloco próprio `### 🔒 TRAVA ADICIONAL — <Nome da IA> — <SUB-XX>` em `task-principal.md`, e nunca edita o bloco de outro agente.
    - A proibição vale para o **mesmo item**: ninguém assume um item que já tem trava de outro agente.
 
-4. **Travas só são liberadas pelo usuário:**
+5. **Travas só são liberadas pelo usuário:**
    - Não existe tarefa "abandonada": uma tarefa travada é uma tarefa que ainda não terminou.
    - ⛔ Nenhum agente pode liberar, assumir ou alterar a trava de outro agente por conta própria, independentemente do tempo sem commits.
    - Se uma trava estiver causando problemas, quem decide e libera manualmente é o **usuário**.
 
-5. **Estados das subtarefas no quadro:**
+6. **Estados das subtarefas no quadro:**
    - 🟢 **livre:** `pendente`, sem trava e com todas as dependências `concluido`; qualquer agente pode pegar.
    - ⛓️ **bloqueada:** `pendente`, mas com alguma dependência ainda não concluída; ninguém pode pegar.
    - 🔒 **reservada:** pertence a uma tarefa-mãe travada por um agente; só esse agente pode pegar.
    - 🔄 **em execução:** travada por um agente.
 
-6. **Tamanho máximo (~3 minutos):**
+7. **Tamanho máximo (~3 minutos):**
    - Cada subtarefa deve caber em cerca de **3 minutos** de trabalho de uma IA: 1 função, 1 método, 1 componente, 1 classe, 1 arquivo de teste ou 1 seção de documentação.
    - Se o agente perceber que o item é maior, deve **subdividi-lo** (seção 2) antes de codificar, em vez de entregar parcialmente.
 
-7. **Commits limpos:**
+8. **Commits limpos:**
    - Usar sempre `git pull --rebase origin main` (nunca merge) e adicionar **só os arquivos da tarefa** + quadro (nunca `git add .`).
+
+---
+
+## 🎯 1.2 PRIORIDADE DAS TAREFAS (OBRIGATÓRIA)
+
+Todo bloco de tarefa ou subtarefa, no `task-principal.md` e no `task_complete.md`, tem o campo logo abaixo de `Status:`:
+
+```markdown
+- **Prioridade:** ALTA
+```
+
+| Valor | Uso |
+|---|---|
+| `MAXIMA` | Acima de todas. Reservada para o que o usuário define como mais urgente (ex.: `SUB-38`, verificação geral) |
+| `ALTA` | Bloqueia outras tarefas ou quebra a validação (build, typecheck, testes) |
+| `MEDIA` | Trabalho normal do quadro; valor padrão quando nada for dito |
+| `BAIXA` | Pode esperar; só é pega com orientação do usuário (ver regra 2) |
+
+**Regras:**
+
+1. **Ordem de captura:** entre os itens 🟢 livres, o agente pega sempre o de **maior prioridade** (`MAXIMA` → `ALTA` → `MEDIA` → `BAIXA`). Na mesma prioridade, vale a ordem do quadro. ⛔ Não pegar um item de prioridade menor enquanto houver item livre de prioridade maior.
+2. **Exceção — orientação do usuário:** o agente só pega item de prioridade menor (ex.: `BAIXA`) quando **já recebeu orientação explícita do usuário** para isso (ou para uma tarefa específica). Registrar essa orientação na anotação do bloco.
+3. **Prioridade não fura dependência nem trava:** item com dependência não `concluido`, travado por outro agente ou com 🔴 trava especial continua indisponível, qualquer que seja a prioridade.
+4. **Quem define:** a prioridade é definida pelo usuário. Ao criar ou subdividir uma tarefa, o agente usa a da tarefa-mãe (ou `MEDIA`, se não houver) e não muda a prioridade de itens existentes sem pedido do usuário.
+5. **Tarefas concluídas** mantêm o campo só como histórico; ele não tem efeito na fila.
 
 ---
 
@@ -137,9 +163,10 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
    - Isso permite que qualquer IA assuma uma fração clara e objetiva do trabalho sem perder contexto.
 
 2. **Declaração Obrigatória de Dependências e Subtarefas:**
-   - Toda tarefa em [`task-principal.md`](file:///c:/fontes/dashboard-ai/task-principal.md) deve conter obrigatoriamente:
+   - Toda tarefa em [`task-principal.md`](task-principal.md) deve conter obrigatoriamente:
      - **`Depende de:`** Código das tasks que precisam estar `concluido` antes de iniciar (ex: `SUB-01` ou `Nenhuma`).
-     - **`Subtarefas:`** Lista de subtarefas filhas em que ela se divide (ou `Nenhuma / Atômica`).
+     - **`Subtarefas:`** Lista de subtarefas filhas em que ela se divide (ou `Nenhuma (atômica)`).
+     - **`Prioridade:`** `MAXIMA`, `ALTA`, `MEDIA` ou `BAIXA` (seção 1.2).
    - ⛔ **REGRA DE BLOQUEIO POR DEPENDÊNCIA:** Nenhuma IA pode assumir uma tarefa cujas dependências ainda não estejam 100% `concluido`.
 
 ---
@@ -149,10 +176,10 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
 Sempre que uma IA assumir uma sub-task, deve identificar explicitamente seu nome/modelo em todos os registros:
 - **Exemplos de identificação:** `Claude Code`, `xAI (Grok)`, `Gemini (Antigravity)`, `Copilot / OpenAI`.
 - **Onde registrar o nome da IA:**
-  - 1. No campo `Executor:` em [`task-principal.md`](file:///c:/fontes/dashboard-ai/task-principal.md).
+  - 1. No campo `Executor:` em [`task-principal.md`](task-principal.md).
   - 2. No campo `Agente Responsável:` da Trava Ativa e na tabela em `task-principal.md`.
   - 3. Na mensagem de commit do lock: `git commit -m "lock: assumindo sub-task SUB-XX por [Nome da IA]"`.
-  - 4. Na tabela de histórico de entregas e no commit da entrega final.
+  - 4. Na anotação do bloco e no commit da entrega final.
 
 ---
 
@@ -190,13 +217,40 @@ Agentes conectados ao MCP do DashboardAI podem reportar o andamento ao **monitor
 
 ---
 
+## ✅ 5. REGRA DE CONFIRMAÇÃO DE STATUS DAS TAREFAS
+
+Após qualquer verificação de conclusão de subtarefa (pelo usuário ou por um agente), **obrigatoriamente** adicione a seguinte linha no bloco da subtarefa (no `task-principal.md` ou, se já concluída, no `task_complete.md`):
+
+```markdown
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** <valor>
+```
+
+### Valores permitidos
+
+| Situação | Valor da linha | Exemplo |
+|----------|----------------|---------|
+| Tarefa **confirmada** como realmente concluída (código/documentação verificados) | Data e hora da confirmação + agente | `2026-10-12 08:43 (reconfirmado por Grok)` |
+| Tarefa **não confirmada** ou ainda em verificação | `PENDENTE` | `PENDENTE` |
+
+### Regras
+
+1. A linha deve ficar no final do bloco da subtarefa (depois de **Anotação**; o marcador `VERIFICADOR-CLAUDE` da `SUB-38`, quando existir, vem logo abaixo dela).
+2. Só marque com data/hora se a entrega foi **explicitamente verificada** (arquivo existe, conteúdo atende aos critérios, commit correspondente).
+3. Subtarefas ainda `[ ]` ou com implementação placeholder/incompleta devem permanecer `PENDENTE`.
+4. Ao reconfirmar uma tarefa já marcada, atualize a linha com a nova data e indique “reconfirmado”.
+5. Esta confirmação é **complementar** ao status normal (`concluido` / `pendente`) e ao protocolo de lock. Não substitui o commit da entrega nem a atualização do status principal.
+
+> ⚠️ Esta regra foi adicionada em 2026-10-12 após a restauração do quadro e a verificação das entregas recentes.
+
+---
+
 # 🧠 Plano de Implementação: Cérebro de Memória Persistente (Estilo Jev-Mem)
 **Foco:** Ultra-rápido, baseado em primitivas estruturadas, custo zero de infraestrutura e consumo mínimo de tokens.
 **Stack:** Claude Code / Antigravity + Vercel Serverless (Node/TS) + Supabase (Postgres + pgvector).
 
 ---
 
-## 2. Arquitetura do Banco de Dados (Supabase)
+## 1. Arquitetura do Banco de Dados (Supabase)
 
 Execute o script SQL abaixo no painel do seu Supabase para criar a estrutura de tabelas e habilitar a busca vetorial por proximidade.
 
@@ -250,7 +304,7 @@ $$;
 
 ---
 
-## 3. Estrutura do Servidor MCP (Vercel Serverless)
+## 2. Estrutura do Servidor MCP (Vercel Serverless)
 
 O Claude Code precisa de respostas em formato JSON-RPC padrão do protocolo MCP. Crie o endpoint na Vercel utilizando a estrutura abaixo para processar os três verbos cognitivos principais.
 
@@ -268,7 +322,7 @@ O Claude Code precisa de respostas em formato JSON-RPC padrão do protocolo MCP.
 ### Arquivo: `api/mcp.ts`
 ```typescript
 import { VercelRequest, VercelResponse } from '@vercel/node';
-import { createClient } from '@supabase/supabase-client';
+import { createClient } from '@supabase/supabase-js';
 
 const supabase = createClient(
   process.env.SUPABASE_URL!,
@@ -349,7 +403,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 // Helper para gerar embeddings usando a API de sua escolha
 async function generateEmbedding(text: string): Promise<number[]> {
   // Exemplo com OpenAI text-embedding-3-small (Custo insignificante: \$0.00002 por 1k tokens)
-  const response = await fetch('https://openai.com', {
+  const response = await fetch('https://api.openai.com/v1/embeddings', {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
@@ -364,37 +418,10 @@ async function generateEmbedding(text: string): Promise<number[]> {
 
 ---
 
-## 4. Ativação no Terminal (Claude Code)
+## 3. Ativação no Terminal (Claude Code)
 
 Após realizar o deploy do código acima na Vercel e configurar as variáveis de ambiente (`SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` e `OPENAI_API_KEY`), ative a sua memória compartilhada direto no Claude Code rodando o comando:
 
 ```bash
-claude mcp add meu-brain-barato https://vercel.app
+claude mcp add --transport http dashboard-ai-brain https://<seu-projeto>.vercel.app/api/mcp
 ```
-
----
-
-## 5. REGRA DE CONFIRMAÇÃO DE STATUS DAS TAREFAS
-
-Após qualquer verificação de conclusão de subtarefa (pelo usuário ou por um agente), **obrigatoriamente** adicione a seguinte linha no bloco da subtarefa em `task-principal.md`:
-
-```markdown
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** <valor>
-```
-
-### Valores permitidos
-
-| Situação | Valor da linha | Exemplo |
-|----------|----------------|---------|
-| Tarefa **confirmada** como realmente concluída (código/documentação verificados) | Data e hora da confirmação + agente | `2026-10-12 08:43 (reconfirmado por Grok)` |
-| Tarefa **não confirmada** ou ainda em verificação | `PENDENTE` | `PENDENTE` |
-
-### Regras
-
-1. A linha deve ficar no final do bloco da subtarefa (depois de **Anotação**).
-2. Só marque com data/hora se a entrega foi **explicitamente verificada** (arquivo existe, conteúdo atende aos critérios, commit correspondente).
-3. Subtarefas ainda `[ ]` ou com implementação placeholder/incompleta devem permanecer `PENDENTE`.
-4. Ao reconfirmar uma tarefa já marcada, atualize a linha com a nova data e indique “reconfirmado”.
-5. Esta confirmação é **complementar** ao status normal (`concluido` / `pendente`) e ao protocolo de lock. Não substitui o commit da entrega nem a atualização do status principal.
-
-> ⚠️ Esta regra foi adicionada em 2026-10-12 após a restauração do quadro e a verificação das entregas recentes.

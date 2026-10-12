@@ -13,6 +13,7 @@
 
 ### [x] SUB-01: Setup do Projeto Frontend
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:56; assumida após liberação, pelo usuário, da trava de Gemini (Antigravity) de 2026-10-11 22:13; conclusão: 2026-10-11 22:59)
 - **Depende de:** Nenhuma
 - **Subtarefas:**
@@ -27,6 +28,7 @@
 
 #### [x] SUB-01.1: Inicialização do package.json, Vite, React e TypeScript
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:56, conclusão: 2026-10-11 22:57)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -39,6 +41,7 @@
 
 #### [x] SUB-01.2: Configuração do Tailwind CSS, PostCSS e Estilos Globais
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:57, conclusão: 2026-10-11 22:58)
 - **Depende de:** SUB-01.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -50,6 +53,7 @@
 
 #### [x] SUB-01.3: Instalação e Verificação de Ícones e Dependências Base
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:58, conclusão: 2026-10-11 22:59)
 - **Depende de:** SUB-01.2
 - **Subtarefas:** Nenhuma (atômica)
@@ -61,6 +65,7 @@
 
 ### [x] SUB-02: Estrutura Modular de Diretórios do Frontend
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:01, conclusão: 2026-10-11 23:01)
 - **Depende de:** SUB-01
 - **Subtarefas:** Nenhuma (atômica)
@@ -73,6 +78,7 @@
 
 ### [x] SUB-03: Configuração do Cliente Supabase e Tipagem TypeScript
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:02, conclusão: 2026-10-11 23:04)
 - **Depende de:** SUB-02
 - **Subtarefas:** Nenhuma (atômica)
@@ -89,6 +95,7 @@
 
 ### [x] SUB-04: Consolidação dos Schemas SQL na Pasta `database/`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:18, conclusão: 2026-10-11 22:20)
 - **Depende de:** Nenhuma (independente de código frontend)
 - **Subtarefas:** Nenhuma (atômica)
@@ -101,6 +108,7 @@
 
 ### [x] SUB-05: Consolidação das Funções RPC e Triggers no Banco
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:20, conclusão: 2026-10-11 22:21)
 - **Depende de:** SUB-04
 - **Subtarefas:** Nenhuma (atômica)
@@ -117,6 +125,7 @@
 
 ### [x] SUB-29: Multi-projeto, Papéis e RLS no Banco
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:37, conclusão: 2026-10-11 22:43)
 - **Depende de:** SUB-04, SUB-05
 - **Subtarefas:** Nenhuma (atômica)
@@ -129,6 +138,7 @@
 
 ### [x] SUB-30: Ferramentas da Fila no MCP
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:43, conclusão: 2026-10-11 22:45)
 - **Depende de:** SUB-06, SUB-29
 - **Subtarefas:** Nenhuma (atômica)
@@ -141,6 +151,7 @@
 
 ### [x] SUB-31: Recados entre Agentes e Regras por Projeto
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:47, conclusão: 2026-10-11 22:49)
 - **Depende de:** SUB-29
 - **Subtarefas:** Nenhuma (atômica)
@@ -153,6 +164,7 @@
 
 ### [x] SUB-32: Trocar cliente fetch por `@supabase/supabase-js` em `api/_lib`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:59, conclusão: 2026-10-11 23:00)
 - **Depende de:** SUB-01.1, SUB-30, SUB-07
 - **Subtarefas:** Nenhuma (atômica)
@@ -165,6 +177,7 @@
 
 ### [x] SUB-33: Endpoint de Embeddings para o Frontend (`api/embedding.ts`)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** várias (ver subtarefas)
 - **Depende de:** SUB-07, SUB-03; subtarefas SUB-33.1 a SUB-33.13
 - **Subtarefas:** (subdividida em 2026-10-11 23:38 e refinada para 12 em 2026-10-11 23:47 por DashboardAI (Grok Bot); trava liberada a pedido do usuário, filhas livres conforme dependências; a mãe só é concluída quando todas estiverem `concluido`; nova revisão para 13 em 2026-10-12 00:17)
@@ -189,6 +202,7 @@
 
 #### [x] SUB-33.1: `bearerToken(req)` em `api/_lib/auth.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:20 → 2026-10-12 00:20)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -201,6 +215,7 @@
 
 #### [x] SUB-33.2: `verificarSessaoSupabase(token)` em `api/_lib/auth.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:23 → 2026-10-12 00:23)
 - **Depende de:** SUB-33.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -213,6 +228,7 @@
 
 #### [x] SUB-33.3: `lerTextoEmbedding(body)` em `api/_lib/embedding-input.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:24 → 2026-10-12 00:24)
 - **Depende de:** SUB-33.13
 - **Subtarefas:** Nenhuma (atômica)
@@ -225,6 +241,7 @@
 
 #### [x] SUB-33.4: Esqueleto do handler `api/embedding.ts` (CORS, OPTIONS, 405)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:21 → 2026-10-12 00:21)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -237,6 +254,7 @@
 
 #### [x] SUB-33.5: Registrar `api/embedding.ts` no `vercel.json`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Codex (OpenAI) (início: 2026-10-12 00:35, conclusão: 2026-10-12 00:41)
 - **Depende de:** SUB-33.4
 - **Subtarefas:** Nenhuma (atômica)
@@ -249,6 +267,7 @@
 
 #### [x] SUB-33.6: Testes do handler: OPTIONS, 405 e 401
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:27 → 2026-10-12 00:28)
 - **Depende de:** SUB-33.10
 - **Subtarefas:** Nenhuma (atômica)
@@ -261,6 +280,7 @@
 
 #### [x] SUB-33.7: `criarGeradorEmbedding()` em `src/services/embeddingService.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:29 → 2026-10-12 00:30)
 - **Depende de:** SUB-33.11
 - **Subtarefas:** Nenhuma (atômica)
@@ -273,6 +293,7 @@
 
 #### [x] SUB-33.8: Testes de `embeddingService` em `tests/unit/embeddingService.test.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:32 → 2026-10-12 00:32)
 - **Depende de:** SUB-33.7
 - **Subtarefas:** Nenhuma (atômica)
@@ -285,6 +306,7 @@
 
 #### [x] SUB-33.9: Documentar `/api/embedding` no `api/README.md`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 01:46 → 2026-10-12 01:47)
 - **Depende de:** SUB-33.11
 - **Subtarefas:** Nenhuma (atômica)
@@ -297,6 +319,7 @@
 
 #### [x] SUB-33.10: Autenticação no handler `api/embedding.ts` (401)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:25 → 2026-10-12 00:25)
 - **Depende de:** SUB-33.4, SUB-33.2
 - **Subtarefas:** Nenhuma (atômica)
@@ -309,6 +332,7 @@
 
 #### [x] SUB-33.11: Corpo, geração do embedding e erros no handler (400/413/502/200)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:26 → 2026-10-12 00:26)
 - **Depende de:** SUB-33.10, SUB-33.3
 - **Subtarefas:** Nenhuma (atômica)
@@ -321,6 +345,7 @@
 
 #### [x] SUB-26.5: Seção Deploy na Vercel
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:10, conclusão: 2026-10-12 14:20)
 - **Depende de:** SUB-26.1, SUB-08.9, SUB-33
 - **Subtarefas:** Nenhuma (atômica)
@@ -333,6 +358,7 @@
 
 #### [x] SUB-28.23: Retomada da aprovação (`Command({ resume })`) em `api/aprovacao.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:26, conclusão: 2026-10-12 14:30)
 - **Depende de:** SUB-28.16
 - **Subtarefas:** Nenhuma (atômica)
@@ -345,6 +371,7 @@
 
 #### [x] SUB-28.32: Registro de auditoria da aprovação
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:32, conclusão: 2026-10-12 14:35)
 - **Depende de:** SUB-28.23
 - **Subtarefas:** Nenhuma (atômica)
@@ -357,6 +384,7 @@
 
 #### [x] SUB-28.18: Atualizar `LangChain_LangGraph.md` (status e desvios)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:36, conclusão: 2026-10-12 14:38)
 - **Depende de:** SUB-28.15, SUB-28.32
 - **Subtarefas:** Nenhuma (atômica)
@@ -369,6 +397,7 @@
 
 #### [x] SUB-28.25: Variáveis do worker no `api/README.md`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:40, conclusão: 2026-10-12 14:42)
 - **Depende de:** SUB-28.15, SUB-28.32
 - **Subtarefas:** Nenhuma (atômica)
@@ -381,6 +410,7 @@
 
 #### [x] SUB-33.12: Testes do handler: 413, 502 e 200
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:28 → 2026-10-12 00:29)
 - **Depende de:** SUB-33.11
 - **Subtarefas:** Nenhuma (atômica)
@@ -393,6 +423,7 @@
 
 #### [x] SUB-33.13: Classe `HttpError` em `api/_lib/http-error.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:19 → 2026-10-12 00:20)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -409,6 +440,7 @@
 
 ### [x] SUB-06: Estrutura do Endpoint Serverless Vercel MCP
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:23, conclusão: 2026-10-11 22:24)
 - **Depende de:** SUB-04, SUB-05
 - **Subtarefas:** Nenhuma (atômica)
@@ -421,6 +453,7 @@
 
 ### [x] SUB-07: Implementação das Primitivas de Memória e Embeddings
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:45, conclusão: 2026-10-11 22:47)
 - **Depende de:** SUB-06, SUB-29
 - **Subtarefas:** Nenhuma (atômica)
@@ -433,6 +466,7 @@
 
 ### [x] SUB-08: Configuração de Variáveis de Ambiente e `.env.example`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** nenhum
 - **Depende de:** SUB-06; subtarefas SUB-08.1 a SUB-08.11
 - **Subtarefas:** (subdividida em 9 em 2026-10-12 00:08 por DashboardAI (Grok Bot) a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`; nova revisão para 11 em 2026-10-12 00:17)
@@ -455,6 +489,7 @@
 
 #### [x] SUB-08.1: Esqueleto do `.env.example`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:19 → 2026-10-12 00:19)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -467,6 +502,7 @@
 
 #### [x] SUB-08.2: Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:33 → 2026-10-12 00:33)
 - **Depende de:** SUB-08.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -479,6 +515,7 @@
 
 #### [x] SUB-08.3: Seção Servidor Supabase: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `SUPABASE_REST_URL`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:30 → 2026-10-12 00:30)
 - **Depende de:** SUB-08.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -491,6 +528,7 @@
 
 #### [x] SUB-08.4: Seção Embeddings: `OPENAI_API_KEY`, `EMBEDDING_API_URL`, `EMBEDDING_MODEL`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:34 → 2026-10-12 00:34)
 - **Depende de:** SUB-08.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -503,6 +541,7 @@
 
 #### [x] SUB-08.5: Seção MCP: `MCP_AUTH_TOKEN`, `MCP_CORS_ORIGIN`, `MCP_DEFAULT_PROJECT`, `MCP_ALLOWED_PROJECTS`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:34 → 2026-10-12 00:35)
 - **Depende de:** SUB-08.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -515,6 +554,7 @@
 
 #### [x] SUB-08.6: Seção Scripts: `DASHBOARD_AI_PROJECT`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:35 → 2026-10-12 00:35)
 - **Depende de:** SUB-08.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -527,6 +567,7 @@
 
 #### [x] SUB-08.7: Conferir `.gitignore` (`!.env.example`)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 04 (Grok Bot) (2026-10-12 00:55 → 2026-10-12 00:56)
 - **Depende de:** SUB-08.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -539,6 +580,7 @@
 
 #### [x] SUB-08.8: `extrairVariaveis(texto)` em `scripts/checar-env.mjs` + testes
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 00:54 → 2026-10-12 00:55)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -551,6 +593,7 @@
 
 #### [x] SUB-08.9: CLI `npm run check:env` (toda variável usada está no `.env.example`)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 00:58 → 2026-10-12 00:59)
 - **Depende de:** SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.11
 - **Subtarefas:** Nenhuma (atômica)
@@ -563,6 +606,7 @@
 
 #### [x] SUB-08.10: `variaveisDoExemplo(texto)` em `scripts/checar-env.mjs` + testes
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 00:56 → 2026-10-12 00:56)
 - **Depende de:** SUB-08.8
 - **Subtarefas:** Nenhuma (atômica)
@@ -575,6 +619,7 @@
 
 #### [x] SUB-08.11: `listarArquivosFonte(dirs)` em `scripts/checar-env.mjs` + teste
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 00:57 → 2026-10-12 00:58)
 - **Depende de:** SUB-08.10
 - **Subtarefas:** Nenhuma (atômica)
@@ -591,6 +636,7 @@
 
 ### [x] SUB-09: Serviço de Tarefas (`src/services/taskService.ts`)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:06, conclusão: 2026-10-11 23:07)
 - **Depende de:** SUB-03
 - **Subtarefas:** Nenhuma (atômica)
@@ -604,6 +650,7 @@
 
 ### [x] SUB-10: Serviço de Memória Semântica (`src/services/memoryService.ts`)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:07, conclusão: 2026-10-11 23:08)
 - **Depende de:** SUB-03
 - **Subtarefas:** Nenhuma (atômica)
@@ -617,6 +664,7 @@
 
 ### [x] SUB-11: Serviço de Logs do Agendador (`src/services/logService.ts`)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:08, conclusão: 2026-10-11 23:09)
 - **Depende de:** SUB-03
 - **Subtarefas:** Nenhuma (atômica)
@@ -634,6 +682,7 @@
 
 ### [x] SUB-12: Layout Principal Responsivo (Sidebar + Header + Navegação)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:04, conclusão: 2026-10-11 23:06)
 - **Depende de:** SUB-01, SUB-02
 - **Subtarefas:** Nenhuma (atômica)
@@ -646,6 +695,7 @@
 
 ### [x] SUB-13: Painel de Indicadores Gerais (KPI Cards)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:17, conclusão: 2026-10-11 23:19)
 - **Depende de:** SUB-09, SUB-10, SUB-11, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
@@ -663,6 +713,7 @@
 
 ### [x] SUB-14: Tabela Avançada da Fila de Tasks
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:11, conclusão: 2026-10-11 23:13)
 - **Depende de:** SUB-09, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
@@ -676,6 +727,7 @@
 
 ### [x] SUB-15: Barra de Ferramentas e Filtros em Tempo Real
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:24, conclusão: 2026-10-11 23:26)
 - **Depende de:** SUB-14
 - **Subtarefas:** Nenhuma (atômica)
@@ -689,6 +741,7 @@
 
 ### [x] SUB-16: Modal de Cadastro e Edição de Task
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:13, conclusão: 2026-10-11 23:16)
 - **Depende de:** SUB-09, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
@@ -702,6 +755,7 @@
 
 ### [x] SUB-17: Modal de Visualização Detalhada da Task
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:21, conclusão: 2026-10-11 23:23)
 - **Depende de:** SUB-14
 - **Subtarefas:** Nenhuma (atômica)
@@ -715,6 +769,7 @@
 
 ### [x] SUB-18: Controles de Ação Rápida na Linha da Tabela
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:19, conclusão: 2026-10-11 23:21)
 - **Depende de:** SUB-09, SUB-14
 - **Subtarefas:** Nenhuma (atômica)
@@ -732,6 +787,7 @@
 
 ### [x] SUB-34: Carregamento Sob Demanda de Telas e Modais (code splitting)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** nenhum
 - **Depende de:** SUB-13, SUB-14, SUB-16, SUB-17, SUB-18; subtarefas SUB-34.1 a SUB-34.6
 - **Subtarefas:** (subdividida em 5 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; nova revisão para 6 em 2026-10-12 00:17)
@@ -750,6 +806,7 @@
 
 #### [x] SUB-34.1: Fallback `CarregandoTela` em `src/components/ui/CarregandoTela.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Claude Code (conclusão: 2026-10-12 00:40; registrado na revisão de 2026-10-12)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -762,6 +819,7 @@
 
 #### [x] SUB-34.2: Telas com `React.lazy` em `src/views/index.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** não registrado (sem commit de trava) (conclusão: 2026-10-12 00:41; registrado na revisão de 2026-10-12)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -774,6 +832,7 @@
 
 #### [x] SUB-34.3: Modais da fila sob demanda na `src/views/FilaView.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:08, conclusão: 2026-10-12 01:10)
 - **Depende de:** SUB-34.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -786,6 +845,7 @@
 
 #### [x] SUB-34.4: Separar dependências grandes no `vite.config.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** não registrado (sem commit de trava) (conclusão: 2026-10-12 00:43; registrado na revisão de 2026-10-12)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -798,6 +858,7 @@
 
 #### [x] SUB-34.5: Checagem de tamanho `scripts/checar-chunks.mjs`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 09 (Grok Bot)
 - **Depende de:** SUB-34.6, SUB-34.3, SUB-34.4
 - **Subtarefas:** Nenhuma (atômica)
@@ -810,6 +871,7 @@
 
 #### [x] SUB-34.6: `Suspense` com `CarregandoTela` no `src/App.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:03, conclusão: 2026-10-12 01:03)
 - **Depende de:** SUB-34.1, SUB-34.2
 - **Subtarefas:** Nenhuma (atômica)
@@ -822,6 +884,7 @@
 
 ### [x] SUB-19: Interface de Pesquisa Semântica Vetorial
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** várias (ver subtarefas)
 - **Depende de:** SUB-10, SUB-12, SUB-33; subtarefas SUB-19.1 a SUB-19.10
 - **Subtarefas:** (subdividida em 8 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 9 em 2026-10-11 23:51; nova revisão para 10 em 2026-10-12 00:17)
@@ -844,6 +907,7 @@
 
 #### [x] SUB-19.1: `debounce(fn, ms)` em `src/lib/debounce.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Claude Code (conclusão: 2026-10-12 00:44; registrado na revisão de 2026-10-12)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -856,6 +920,7 @@
 
 #### [x] SUB-19.2: Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 04 (Grok Bot) (2026-10-12 00:56 → 2026-10-12 00:58)
 - **Depende de:** SUB-19.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -868,6 +933,7 @@
 
 #### [x] SUB-19.3: `formatarSimilaridade` em `src/lib/similaridade.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Claude Code (conclusão: 2026-10-12 00:46; registrado na revisão de 2026-10-12)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -880,6 +946,7 @@
 
 #### [x] SUB-19.4: Componente `SimilaridadeBadge` em `src/components/memoria/`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 00:52, conclusão: 2026-10-12 00:53)
 - **Depende de:** SUB-19.10
 - **Subtarefas:** Nenhuma (atômica)
@@ -892,6 +959,7 @@
 
 #### [x] SUB-19.5: Componente `ResultadoBuscaCard` em `src/components/memoria/`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 00:54, conclusão: 2026-10-12 00:54)
 - **Depende de:** SUB-19.4
 - **Subtarefas:** Nenhuma (atômica)
@@ -904,6 +972,7 @@
 
 #### [x] SUB-19.6: Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 04 (Grok Bot) (2026-10-12 01:01 → 2026-10-12 01:02)
 - **Depende de:** SUB-19.2, SUB-33.7
 - **Subtarefas:** Nenhuma (atômica)
@@ -916,6 +985,7 @@
 
 #### [x] SUB-19.7: Painel `BuscaSemanticaPanel` (campo, grade e estados)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 04 (Grok Bot) (2026-10-12 01:04 → 2026-10-12 01:07)
 - **Depende de:** SUB-19.5, SUB-19.6, SUB-19.9
 - **Subtarefas:** Nenhuma (atômica)
@@ -928,6 +998,7 @@
 
 #### [x] SUB-19.8: Integrar a busca na `src/views/MemoriaView.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 04 (Grok Bot) (2026-10-12 01:07 → 2026-10-12 01:09)
 - **Depende de:** SUB-19.7, SUB-21.9
 - **Subtarefas:** Nenhuma (atômica)
@@ -940,6 +1011,7 @@
 
 #### [x] SUB-19.9: `BuscaControles` (limiar, globais, modo) em `src/components/memoria/BuscaControles.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Claude Code (conclusão: 2026-10-12 00:47; registrado na revisão de 2026-10-12)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -952,6 +1024,7 @@
 
 #### [x] SUB-19.10: `classeSimilaridade` em `src/lib/similaridade.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 00:51, conclusão: 2026-10-12 00:52)
 - **Depende de:** SUB-19.3
 - **Subtarefas:** Nenhuma (atômica)
@@ -964,6 +1037,7 @@
 
 ### [x] SUB-20: Formulário de Nova Memória Canônica
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** várias (ver subtarefas)
 - **Depende de:** SUB-10, SUB-12, SUB-33; subtarefas SUB-20.1 a SUB-20.10
 - **Subtarefas:** (subdividida em 7 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 8 em 2026-10-11 23:51; nova revisão para 10 em 2026-10-12 00:17)
@@ -986,6 +1060,7 @@
 
 #### [x] SUB-20.1: `validarMemoria(dados)` em `src/lib/memoriaForm.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 00:48; conclusão: 2026-10-12 00:48)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -998,6 +1073,7 @@
 
 #### [x] SUB-20.2: `parseTags(texto)` em `src/lib/memoriaForm.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 00:50; conclusão: 2026-10-12 00:51)
 - **Depende de:** SUB-20.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -1010,6 +1086,7 @@
 
 #### [x] SUB-20.3: `sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 00:49; conclusão: 2026-10-12 00:50)
 - **Depende de:** SUB-20.1, SUB-20.10
 - **Subtarefas:** Nenhuma (atômica)
@@ -1022,6 +1099,7 @@
 
 #### [x] SUB-20.4: Componente `TagInput` em `src/components/ui/TagInput.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 00:52; conclusão: 2026-10-12 00:53)
 - **Depende de:** SUB-20.2
 - **Subtarefas:** Nenhuma (atômica)
@@ -1034,6 +1112,7 @@
 
 #### [x] SUB-20.5: Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 00:54; conclusão: 2026-10-12 00:54)
 - **Depende de:** SUB-33.7
 - **Subtarefas:** Nenhuma (atômica)
@@ -1046,6 +1125,7 @@
 
 #### [x] SUB-20.6: Modal `MemoriaFormModal` em `src/components/memoria/`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 00:55; conclusão: 2026-10-12 01:00)
 - **Depende de:** SUB-20.1, SUB-20.3, SUB-20.4, SUB-20.5, SUB-20.8, SUB-20.9
 - **Subtarefas:** Nenhuma (atômica)
@@ -1058,6 +1138,7 @@
 
 #### [x] SUB-20.7: Botão "Nova memória" na `src/views/MemoriaView.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 04 (Grok Bot) (2026-10-12 01:10 → 2026-10-12 01:12)
 - **Depende de:** SUB-20.6, SUB-19.8, SUB-21.9
 - **Subtarefas:** Nenhuma (atômica)
@@ -1070,6 +1151,7 @@
 
 #### [x] SUB-20.8: `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Claude Code (conclusão: 2026-10-12 00:50; registrado na revisão de 2026-10-12)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -1082,6 +1164,7 @@
 
 #### [x] SUB-20.9: Componente `TagSugestoes` em `src/components/ui/TagSugestoes.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Claude Code (conclusão: 2026-10-12 00:52; registrado na revisão de 2026-10-12)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -1094,6 +1177,7 @@
 
 #### [x] SUB-20.10: `palavrasDe(texto)` em `src/lib/texto.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 00:46; conclusão: 2026-10-12 00:47)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -1106,6 +1190,7 @@
 
 ### [x] SUB-21: Grid de Gerenciamento e Exclusão de Memórias
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** nenhum
 - **Depende de:** SUB-10, SUB-12; subtarefas SUB-21.1 a SUB-21.14
 - **Subtarefas:** (subdividida em 10 em 2026-10-11 23:47 por DashboardAI (Grok Bot) a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`; refinada para 12 em 2026-10-11 23:51; nova revisão para 14 em 2026-10-12 00:17)
@@ -1132,6 +1217,7 @@
 
 #### [x] SUB-21.1: `memoriaComoMarkdown` em `src/lib/memorias.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:22 → 2026-10-12 00:22)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -1144,6 +1230,7 @@
 
 #### [x] SUB-21.2: `filtrarMemoriasLocal` em `src/lib/memorias.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 00:55; conclusão: 2026-10-12 00:56)
 - **Depende de:** SUB-21.13
 - **Subtarefas:** Nenhuma (atômica)
@@ -1156,6 +1243,7 @@
 
 #### [x] SUB-21.3: Hook `useMemorias` em `src/hooks/useMemorias.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 01:00; conclusão: 2026-10-12 01:01)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -1168,6 +1256,7 @@
 
 #### [x] SUB-21.4: Componente `MemoriaCard` em `src/components/memoria/MemoriaCard.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 00:56, conclusão: 2026-10-12 00:57)
 - **Depende de:** SUB-21.13
 - **Subtarefas:** Nenhuma (atômica)
@@ -1180,6 +1269,7 @@
 
 #### [x] SUB-21.5: Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 00:57, conclusão: 2026-10-12 00:58)
 - **Depende de:** SUB-21.4
 - **Subtarefas:** Nenhuma (atômica)
@@ -1192,6 +1282,7 @@
 
 #### [x] SUB-21.6: Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 00:59, conclusão: 2026-10-12 01:01)
 - **Depende de:** SUB-21.13
 - **Subtarefas:** Nenhuma (atômica)
@@ -1204,6 +1295,7 @@
 
 #### [x] SUB-21.7: Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 01:03; conclusão: 2026-10-12 01:05)
 - **Depende de:** SUB-21.3
 - **Subtarefas:** Nenhuma (atômica)
@@ -1216,6 +1308,7 @@
 
 #### [x] SUB-21.8: Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 00:59; conclusão: 2026-10-12 01:00)
 - **Depende de:** SUB-21.14
 - **Subtarefas:** Nenhuma (atômica)
@@ -1228,6 +1321,7 @@
 
 #### [x] SUB-21.9: Montar a `MemoriaView` (toolbar + grade)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:04, conclusão: 2026-10-12 01:05)
 - **Depende de:** SUB-21.3, SUB-21.5, SUB-21.8
 - **Subtarefas:** Nenhuma (atômica)
@@ -1240,6 +1334,7 @@
 
 #### [x] SUB-21.10: Validação visual da SUB-21 (screenshots)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-21.11
 - **Subtarefas:** Nenhuma (atômica)
@@ -1252,6 +1347,7 @@
 
 #### [x] SUB-21.11: Ligar detalhe e exclusão na `MemoriaView`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:06, conclusão: 2026-10-12 01:08)
 - **Depende de:** SUB-21.9, SUB-21.6, SUB-21.7
 - **Subtarefas:** Nenhuma (atômica)
@@ -1264,6 +1360,7 @@
 
 #### [x] SUB-21.12: Conferir exclusão com editor e viewer
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-21.11
 - **Subtarefas:** Nenhuma (atômica)
@@ -1276,6 +1373,7 @@
 
 #### [x] SUB-21.13: `escopoMemoria` em `src/lib/memorias.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:26 → 2026-10-12 00:27)
 - **Depende de:** SUB-21.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -1288,6 +1386,7 @@
 
 #### [x] SUB-21.14: `tagsDisponiveis` em `src/lib/memorias.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 00:57; conclusão: 2026-10-12 00:57)
 - **Depende de:** SUB-21.2
 - **Subtarefas:** Nenhuma (atômica)
@@ -1304,6 +1403,7 @@
 
 ### [x] SUB-22: Visualizador de Logs de Execução da IA
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:26, conclusão: 2026-10-11 23:27)
 - **Depende de:** SUB-11, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
@@ -1317,6 +1417,7 @@
 
 ### [x] SUB-23: Diagnóstico de Travas e Saúde da Fila
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** nenhum
 - **Depende de:** SUB-09, SUB-11, SUB-12; subtarefas SUB-23.1 a SUB-23.13
 - **Subtarefas:** (subdividida em 9 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 12 em 2026-10-11 23:51; nova revisão para 13 em 2026-10-12 00:17)
@@ -1342,6 +1443,7 @@
 
 #### [x] SUB-23.1: `minutosDeTrava` em `src/lib/saudeFila.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Claude Code (conclusão: 2026-10-12 00:33; registrado na revisão de 2026-10-12)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -1354,6 +1456,7 @@
 
 #### [x] SUB-23.2: `classificarPendentes(tasks)` em `src/lib/saudeFila.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-23.13
 - **Subtarefas:** Nenhuma (atômica)
@@ -1366,6 +1469,7 @@
 
 #### [x] SUB-23.3: `diagnosticarFila(tasks)` em `src/lib/saudeFila.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-23.2
 - **Subtarefas:** Nenhuma (atômica)
@@ -1378,6 +1482,7 @@
 
 #### [x] SUB-23.4: `liberarTrava()` em `src/services/taskService.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Claude Code (conclusão: 2026-10-12 00:32; registrado na revisão de 2026-10-12)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -1390,6 +1495,7 @@
 
 #### [x] SUB-23.5: Teste de integração de `liberarTrava`: expirada e forçada
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-23.4
 - **Subtarefas:** Nenhuma (atômica)
@@ -1402,6 +1508,7 @@
 
 #### [x] SUB-23.6: Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-23.3, SUB-23.4
 - **Subtarefas:** Nenhuma (atômica)
@@ -1414,6 +1521,7 @@
 
 #### [x] SUB-23.7: Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-23.10, SUB-23.11
 - **Subtarefas:** Nenhuma (atômica)
@@ -1426,6 +1534,7 @@
 
 #### [x] SUB-23.8: Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-23.7
 - **Subtarefas:** Nenhuma (atômica)
@@ -1438,6 +1547,7 @@
 
 #### [x] SUB-23.9: Alerta de trava presa na `src/views/FilaView.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-23.3
 - **Subtarefas:** Nenhuma (atômica)
@@ -1450,6 +1560,7 @@
 
 #### [x] SUB-23.10: `TravaItem` em `src/components/tasks/TravaItem.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-23.6
 - **Subtarefas:** Nenhuma (atômica)
@@ -1462,6 +1573,7 @@
 
 #### [x] SUB-23.11: `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 00:55, conclusão: 2026-10-12 00:56)
 - **Depende de:** SUB-23.3
 - **Subtarefas:** Nenhuma (atômica)
@@ -1474,6 +1586,7 @@
 
 #### [x] SUB-23.12: Teste de integração de `liberarTrava`: viewer e outro projeto
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-23.4
 - **Subtarefas:** Nenhuma (atômica)
@@ -1486,6 +1599,7 @@
 
 #### [x] SUB-23.13: `travaExpirada` em `src/lib/saudeFila.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** não registrado (sem commit de trava) (conclusão: 2026-10-12 00:33; registrado na revisão de 2026-10-12)
 - **Depende de:** SUB-23.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -1502,6 +1616,7 @@
 
 ### [x] SUB-24: Script de Sincronização de Tasks (`scripts/sincronizar_tasks.py`)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:21, conclusão: 2026-10-11 22:23)
 - **Depende de:** SUB-04, SUB-05
 - **Subtarefas:** Nenhuma (atômica)
@@ -1520,6 +1635,7 @@
 
 #### [x] SUB-25.1: Script `scripts/validar.sh` + `npm run validar`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 00:59 → 2026-10-12 01:00)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -1534,6 +1650,7 @@
 
 #### [x] SUB-26.1: Esqueleto do `README.md`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 01:00 → 2026-10-12 01:01)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -1546,6 +1663,7 @@
 
 #### [x] SUB-26.2: Seção Arquitetura
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Grok (xAI) (2026-10-12 05:35 → 2026-10-12 05:40)
 - **Depende de:** SUB-26.1, SUB-33
 - **Subtarefas:** Nenhuma (atômica)
@@ -1558,6 +1676,7 @@
 
 #### [x] SUB-26.4: Seção Banco de dados
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 01:02 → 2026-10-12 01:02)
 - **Depende de:** SUB-26.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -1570,6 +1689,7 @@
 
 #### [x] SUB-26.6: Seção Agentes de IA: configurar clientes MCP
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 01:06 → 2026-10-12 01:07)
 - **Depende de:** SUB-26.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -1582,6 +1702,7 @@
 
 #### [x] SUB-26.7: Seção Memória via MCP
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 01:03 → 2026-10-12 01:04)
 - **Depende de:** SUB-26.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -1594,6 +1715,7 @@
 
 #### [x] SUB-26.8: Seção Segurança
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-26.1, SUB-27.13, SUB-27.17, SUB-27.21
 - **Subtarefas:** Nenhuma (atômica)
@@ -1606,6 +1728,7 @@
 
 #### [x] SUB-26.10: Seção Agentes de IA: exemplos do ciclo da fila
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 01:05 → 2026-10-12 01:06)
 - **Depende de:** SUB-26.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -1618,6 +1741,7 @@
 
 ### [x] SUB-27: Autenticação e Login com Supabase Auth
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** nenhum
 - **Depende de:** SUB-03, SUB-29 (papéis `user_roles`/`project_members` e RLS); subtarefas SUB-27.1 a SUB-27.28
 - **Subtarefas:** (22 filhas; subdividida em 18 em 2026-10-11 23:41 e refinada em 22 em 2026-10-11 23:51 por DashboardAI (Grok Bot); liberadas a pedido do usuário em 2026-10-11 23:55 conforme dependências; a mãe só é concluída quando todas estiverem `concluido`; nova revisão para 28 em 2026-10-12 00:17)
@@ -1658,6 +1782,7 @@
 
 #### [x] SUB-27.1: `mensagemErroAuth(erro)` em `src/lib/auth.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -1670,6 +1795,7 @@
 
 #### [x] SUB-27.2: `validarLogin({ email, senha })` em `src/lib/auth.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -1682,6 +1808,7 @@
 
 #### [x] SUB-27.3: `entrarComSenha(email, senha)` em `src/services/authService.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -1694,6 +1821,7 @@
 
 #### [x] SUB-27.4: `sair()` em `src/services/authService.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.3
 - **Subtarefas:** Nenhuma (atômica)
@@ -1706,6 +1834,7 @@
 
 #### [x] SUB-27.5: `enviarLinkMagico()` em `src/services/authService.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.3
 - **Subtarefas:** Nenhuma (atômica)
@@ -1718,6 +1847,7 @@
 
 #### [x] SUB-27.6: Testes unitários de `authService` em `tests/unit/authService.test.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.23, SUB-27.24
 - **Subtarefas:** Nenhuma (atômica)
@@ -1730,6 +1860,7 @@
 
 #### [x] SUB-27.7: `obterPapelGlobal()` em `src/services/authService.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.3
 - **Subtarefas:** Nenhuma (atômica)
@@ -1742,6 +1873,7 @@
 
 #### [x] SUB-27.8: Teste de integração dos papéis em `tests/integration/authService.integration.test.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.25
 - **Subtarefas:** Nenhuma (atômica)
@@ -1754,6 +1886,7 @@
 
 #### [x] SUB-27.9: `AuthProvider` em `src/hooks/AuthContext.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.23, SUB-27.25
 - **Subtarefas:** Nenhuma (atômica)
@@ -1766,6 +1899,7 @@
 
 #### [x] SUB-27.10: Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.2, SUB-27.3
 - **Subtarefas:** Nenhuma (atômica)
@@ -1778,6 +1912,7 @@
 
 #### [x] SUB-27.11: Tela `LoginView` em `src/views/LoginView.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:11, conclusão: 2026-10-12 01:12)
 - **Depende de:** SUB-27.10, SUB-27.19
 - **Subtarefas:** Nenhuma (atômica)
@@ -1790,6 +1925,7 @@
 
 #### [x] SUB-27.12: Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:13, conclusão: 2026-10-12 01:14)
 - **Depende de:** SUB-27.26, SUB-27.11
 - **Subtarefas:** Nenhuma (atômica)
@@ -1802,6 +1938,7 @@
 
 #### [x] SUB-27.13: Integrar autenticação no `src/App.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 01:14; conclusão: 2026-10-12 01:16)
 - **Depende de:** SUB-27.12
 - **Subtarefas:** Nenhuma (atômica)
@@ -1814,6 +1951,7 @@
 
 #### [x] SUB-27.14: Componente `UserMenu` em `src/components/layout/UserMenu.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.26
 - **Subtarefas:** Nenhuma (atômica)
@@ -1826,6 +1964,7 @@
 
 #### [x] SUB-27.15: Rechecar conexão no login/logout em `src/hooks/useConexao.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.26
 - **Subtarefas:** Nenhuma (atômica)
@@ -1838,6 +1977,7 @@
 
 #### [x] SUB-27.16: `urlDeRetorno()` para link mágico e redefinição de senha
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -1850,6 +1990,7 @@
 
 #### [x] SUB-27.17: Documentar configuração do Supabase Auth em `src/README.md`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.13
 - **Subtarefas:** Nenhuma (atômica)
@@ -1862,6 +2003,7 @@
 
 #### [x] SUB-27.18: Validação automatizada da SUB-27
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.6, SUB-27.8, SUB-27.13, SUB-27.27, SUB-27.15, SUB-27.16, SUB-27.17, SUB-27.20, SUB-27.21
 - **Subtarefas:** Nenhuma (atômica)
@@ -1874,6 +2016,7 @@
 
 #### [x] SUB-27.19: `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.24, SUB-27.16
 - **Subtarefas:** Nenhuma (atômica)
@@ -1886,6 +2029,7 @@
 
 #### [x] SUB-27.20: Limpar `ProjetoContext` ao sair
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.26
 - **Subtarefas:** Nenhuma (atômica)
@@ -1898,6 +2042,7 @@
 
 #### [x] SUB-27.21: Documentar primeiro administrador e membros em `database/README.md`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 01:16; conclusão: 2026-10-12 01:17)
 - **Depende de:** SUB-27.13
 - **Subtarefas:** Nenhuma (atômica)
@@ -1910,6 +2055,7 @@
 
 #### [x] SUB-27.22: Conferência no navegador (entrar, sair, restaurar sessão) — SUB-27
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.18
 - **Subtarefas:** Nenhuma (atômica)
@@ -1922,6 +2068,7 @@
 
 #### [x] SUB-27.23: `obterSessao()` em `src/services/authService.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.4
 - **Subtarefas:** Nenhuma (atômica)
@@ -1934,6 +2081,7 @@
 
 #### [x] SUB-27.24: `redefinirSenha()` em `src/services/authService.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.5
 - **Subtarefas:** Nenhuma (atômica)
@@ -1946,6 +2094,7 @@
 
 #### [x] SUB-27.25: `papelNoProjeto()` em `src/services/authService.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.7
 - **Subtarefas:** Nenhuma (atômica)
@@ -1958,6 +2107,7 @@
 
 #### [x] SUB-27.26: Hook `useAuth` em `src/hooks/useAuth.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.9
 - **Subtarefas:** Nenhuma (atômica)
@@ -1970,6 +2120,7 @@
 
 #### [x] SUB-27.27: Incluir `UserMenu` no `src/components/layout/Header.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 01:10; conclusão: 2026-10-12 01:13)
 - **Depende de:** SUB-27.14
 - **Subtarefas:** Nenhuma (atômica)
@@ -1982,6 +2133,7 @@
 
 #### [x] SUB-27.28: Varredura do bundle por `service_role` (SUB-27)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.22
 - **Subtarefas:** Nenhuma (atômica)
@@ -1994,6 +2146,7 @@
 
 #### [x] SUB-25.2: Rodar `npm ci` + `npm run validar` e registrar em `docs/VALIDACAO.md`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:32, conclusão: 2026-10-12 13:34)
 - **Depende de:** SUB-25.1, SUB-08.9, SUB-19, SUB-20, SUB-21, SUB-23, SUB-27 (inclui SUB-27.28), SUB-33, SUB-34
 - **Subtarefas:** Nenhuma (atômica)
@@ -2006,6 +2159,7 @@
 
 #### [x] SUB-25.3: Rodar `database/tests/run_tests.sh`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:34, conclusão: 2026-10-12 13:35)
 - **Depende de:** SUB-25.2
 - **Subtarefas:** Nenhuma (atômica)
@@ -2018,6 +2172,7 @@
 
 #### [x] SUB-25.6: Rodar `npm run test:integration`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:35, conclusão: 2026-10-12 13:35)
 - **Depende de:** SUB-25.2
 - **Subtarefas:** Nenhuma (atômica)
@@ -2036,6 +2191,7 @@
 
 #### [x] SUB-28.1: Contrato: identificadores e estado mínimo em `docs/langgraph-contrato.md`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-01 a SUB-27, SUB-29 a SUB-34
 - **Subtarefas:** Nenhuma (atômica)
@@ -2048,6 +2204,7 @@
 
 #### [x] SUB-28.3: Annotation `EstadoExecucao` em `worker/estado.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Claude Code (início: 2026-10-12 02:02, conclusão: 2026-10-12 02:03) — registro recuperado de `310fab9` (horários do registro não batem com o commit)
 - **Depende de:** SUB-28.28
 - **Subtarefas:** Nenhuma (atômica)
@@ -2060,6 +2217,7 @@
 
 #### [x] SUB-28.4: `reivindicar(agente, projeto)` em `worker/fila.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:34, conclusão: 2026-10-12 12:35)
 - **Depende de:** SUB-28.28
 - **Subtarefas:** Nenhuma (atômica)
@@ -2072,6 +2230,7 @@
 
 #### [x] SUB-28.5: Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:38, conclusão: 2026-10-12 12:39)
 - **Depende de:** SUB-28.29
 - **Subtarefas:** Nenhuma (atômica)
@@ -2084,6 +2243,7 @@
 
 #### [x] SUB-28.6: Nó `carregarContexto` em `worker/nos/carregarContexto.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:42, conclusão: 2026-10-12 12:42)
 - **Depende de:** SUB-28.29, SUB-28.19
 - **Subtarefas:** Nenhuma (atômica)
@@ -2096,6 +2256,7 @@
 
 #### [x] SUB-28.7: Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:43, conclusão: 2026-10-12 12:43)
 - **Depende de:** SUB-28.31
 - **Subtarefas:** Nenhuma (atômica)
@@ -2108,6 +2269,7 @@
 
 #### [x] SUB-28.8: Nó `politica` (aprovação humana) em `worker/nos/politica.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:44, conclusão: 2026-10-12 12:45)
 - **Depende de:** SUB-28.19
 - **Subtarefas:** Nenhuma (atômica)
@@ -2120,6 +2282,7 @@
 
 #### [x] SUB-28.9: Nó `executar` em `worker/nos/executar.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:45, conclusão: 2026-10-12 12:46)
 - **Depende de:** SUB-28.19
 - **Subtarefas:** Nenhuma (atômica)
@@ -2132,6 +2295,7 @@
 
 #### [x] SUB-28.10: Nó `revisar` (roteamento) em `worker/nos/revisar.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:41, conclusão: 2026-10-12 12:42)
 - **Depende de:** SUB-28.21
 - **Subtarefas:** Nenhuma (atômica)
@@ -2144,6 +2308,7 @@
 
 #### [x] SUB-28.11: Nó `finalizar` em `worker/nos/finalizar.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:40, conclusão: 2026-10-12 12:41)
 - **Depende de:** SUB-28.30
 - **Subtarefas:** Nenhuma (atômica)
@@ -2156,6 +2321,7 @@
 
 #### [x] SUB-28.12: Montagem do `StateGraph` em `worker/grafo.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:48, conclusão: 2026-10-12 12:49)
 - **Depende de:** SUB-28.6, SUB-28.7, SUB-28.8, SUB-28.9, SUB-28.10, SUB-28.11
 - **Subtarefas:** Nenhuma (atômica)
@@ -2168,6 +2334,7 @@
 
 #### [x] SUB-28.13: Checkpointer durável em `worker/checkpointer.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:49, conclusão: 2026-10-12 12:50)
 - **Depende de:** SUB-28.28
 - **Subtarefas:** Nenhuma (atômica)
@@ -2180,6 +2347,7 @@
 
 #### [x] SUB-28.14: Reconciliação na retomada em `worker/reconciliar.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:46, conclusão: 2026-10-12 12:47)
 - **Depende de:** SUB-28.30
 - **Subtarefas:** Nenhuma (atômica)
@@ -2192,6 +2360,7 @@
 
 #### [x] SUB-28.15: CLI do worker em `worker/index.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:54, conclusão: 2026-10-12 12:57)
 - **Depende de:** SUB-28.22
 - **Subtarefas:** Nenhuma (atômica)
@@ -2204,6 +2373,7 @@
 
 #### [x] SUB-28.19: Adaptar ferramentas para `tool()` do LangChain em `worker/ferramentas.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:39, conclusão: 2026-10-12 12:40)
 - **Depende de:** SUB-28.5
 - **Subtarefas:** Nenhuma (atômica)
@@ -2216,6 +2386,7 @@
 
 #### [x] SUB-28.20: `PlanoSchema` em `worker/plano.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:33, conclusão: 2026-10-12 12:34)
 - **Depende de:** SUB-28.29
 - **Subtarefas:** Nenhuma (atômica)
@@ -2228,6 +2399,7 @@
 
 #### [x] SUB-28.21: `classificarFalha(err)` em `worker/falhas.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Claude Code (início: 2026-10-12 02:10, conclusão: 2026-10-12 02:11) — registro recuperado de `310fab9` (horários do registro não batem com o commit)
 - **Depende de:** SUB-28.29
 - **Subtarefas:** Nenhuma (atômica)
@@ -2240,6 +2412,7 @@
 
 #### [x] SUB-28.22: `executarUmaTask(deps)` em `worker/executar.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:53, conclusão: 2026-10-12 12:54)
 - **Depende de:** SUB-28.12, SUB-28.13, SUB-28.14
 - **Subtarefas:** Nenhuma (atômica)
@@ -2252,6 +2425,7 @@
 
 #### [x] SUB-28.26: Contrato: ferramentas permitidas e idempotência em `docs/langgraph-contrato.md`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 04 (Grok Bot) (2026-10-12 01:46 → 2026-10-12 01:47)
 - **Depende de:** SUB-28.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -2264,6 +2438,7 @@
 
 #### [x] SUB-28.27: Contrato: mapeamento de erros para `finalizar_task` em `docs/langgraph-contrato.md`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 01:48 → 2026-10-12 01:49)
 - **Depende de:** SUB-28.26
 - **Subtarefas:** Nenhuma (atômica)
@@ -2276,6 +2451,7 @@
 
 #### [x] SUB-28.28: `worker/tsconfig.json` e `typecheck:worker`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Claude Code (início: 2026-10-12 01:58, conclusão: 2026-10-12 01:59) — registro recuperado de `310fab9` (horários do registro não batem com o commit)
 - **Depende de:** SUB-28.2
 - **Subtarefas:** Nenhuma (atômica)
@@ -2288,6 +2464,7 @@
 
 #### [x] SUB-28.29: Schema zod `EstadoSchema` em `worker/estado.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Claude Code (início: 2026-10-12 02:06, conclusão: 2026-10-12 02:07) — registro recuperado de `310fab9` (horários do registro não batem com o commit)
 - **Depende de:** SUB-28.3
 - **Subtarefas:** Nenhuma (atômica)
@@ -2300,6 +2477,7 @@
 
 #### [x] SUB-28.30: `finalizar(...)` em `worker/fila.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:35, conclusão: 2026-10-12 12:35)
 - **Depende de:** SUB-28.4
 - **Subtarefas:** Nenhuma (atômica)
@@ -2312,6 +2490,7 @@
 
 #### [x] SUB-28.31: `montarPromptPlano(estado)` em `worker/plano.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:36, conclusão: 2026-10-12 12:37)
 - **Depende de:** SUB-28.20
 - **Subtarefas:** Nenhuma (atômica)
@@ -2324,6 +2503,7 @@
 
 #### [x] SUB-28.33: Corrigir `finalizar()` para a assinatura real de `finalizar_task`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:58, conclusão: 2026-10-12 12:59)
 - **Depende de:** SUB-28.30
 - **Subtarefas:** Nenhuma (atômica)
@@ -2336,6 +2516,7 @@
 
 #### [x] SUB-28.17: Testes do worker: caminho feliz e erro
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:43, conclusão: 2026-10-12 13:44)
 - **Depende de:** SUB-28.15
 - **Subtarefas:** Nenhuma (atômica)
@@ -2348,6 +2529,7 @@
 
 #### [x] SUB-28.34: `resumoSeguro`/`chaves` só com os passos `passo-<i>` em `worker/nos/finalizar.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:46, conclusão: 2026-10-12 13:47)
 - **Depende de:** SUB-28.17
 - **Subtarefas:** Nenhuma (atômica)
@@ -2360,6 +2542,7 @@
 
 #### [x] SUB-28.24: Testes do worker: interrupção e retomada sem duplicar efeitos
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:47, conclusão: 2026-10-12 13:48)
 - **Depende de:** SUB-28.15
 - **Subtarefas:** Nenhuma (atômica)
@@ -2372,6 +2555,7 @@
 
 #### [x] SUB-28.16: Endpoint `api/aprovacao.ts`: autenticação e papel (401/403)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:48, conclusão: 2026-10-12 13:50)
 - **Depende de:** SUB-28.15, SUB-33.2, SUB-27.26
 - **Subtarefas:** Nenhuma (atômica)
@@ -2384,6 +2568,7 @@
 
 #### [x] SUB-28.2: Dependências do worker no `package.json`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DeepSeek Harness (deepseek-flash) (início: 2026-10-12 14:53, conclusão: 2026-10-12 15:12)
 - **Depende de:** SUB-28.27
 - **Subtarefas:** Nenhuma (atômica)
@@ -2402,6 +2587,7 @@
 
 #### [x] SUB-35.1: Tabela `agent_events` em `database/07_agent_events.sql`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 01:01; conclusão: 2026-10-12 01:02)
 - **Depende de:** SUB-29
 - **Subtarefas:** Nenhuma (atômica)
@@ -2414,6 +2600,7 @@
 
 #### [x] SUB-35.2: Trigger `validar_agent_event` em `database/07_agent_events.sql`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 01:02; conclusão: 2026-10-12 01:03)
 - **Depende de:** SUB-35.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -2426,6 +2613,7 @@
 
 #### [x] SUB-35.3: RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 01:05; conclusão: 2026-10-12 01:05)
 - **Depende de:** SUB-35.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -2438,6 +2626,7 @@
 
 #### [x] SUB-35.4: Publicar `agent_events` no Supabase Realtime
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-35.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -2450,6 +2639,7 @@
 
 #### [x] SUB-35.5: Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-35.3
 - **Subtarefas:** Nenhuma (atômica)
@@ -2462,6 +2652,7 @@
 
 #### [x] SUB-35.6: Teste de integração de `agent_events` (RLS e trigger)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 01:07; conclusão: 2026-10-12 01:09)
 - **Depende de:** SUB-35.2, SUB-35.3
 - **Subtarefas:** Nenhuma (atômica)
@@ -2474,6 +2665,7 @@
 
 #### [x] SUB-35.7: Seção "Eventos dos agentes (07)" no `database/README.md`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-35.4, SUB-35.5
 - **Subtarefas:** Nenhuma (atômica)
@@ -2486,6 +2678,7 @@
 
 #### [x] SUB-35.8: Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 01:10; conclusão: 2026-10-12 01:11)
 - **Depende de:** SUB-35.5
 - **Subtarefas:** Nenhuma (atômica)
@@ -2498,6 +2691,7 @@
 
 #### [x] SUB-35.9: `listarEventos()` em `src/services/eventService.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 01:12; conclusão: 2026-10-12 01:13)
 - **Depende de:** SUB-35.8
 - **Subtarefas:** Nenhuma (atômica)
@@ -2510,6 +2704,7 @@
 
 #### [x] SUB-35.10: `atividadeAtual()` em `src/services/eventService.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 09 (Grok Bot)
 - **Depende de:** SUB-35.9
 - **Subtarefas:** Nenhuma (atômica)
@@ -2522,6 +2717,7 @@
 
 #### [x] SUB-35.11: `assinarEventos()` (Supabase Realtime) em `src/services/eventService.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 09 (Grok Bot)
 - **Depende de:** SUB-35.10
 - **Subtarefas:** Nenhuma (atômica)
@@ -2534,6 +2730,7 @@
 
 #### [x] SUB-35.12: Testes de `eventService` em `tests/unit/eventService.test.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 09 (Grok Bot)
 - **Depende de:** SUB-35.11
 - **Subtarefas:** Nenhuma (atômica)
@@ -2546,6 +2743,7 @@
 
 #### [x] SUB-35.13: Teste de integração de `listarEventos`/`atividadeAtual`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 01:15; conclusão: 2026-10-12 01:16)
 - **Depende de:** SUB-35.10, SUB-35.6
 - **Subtarefas:** Nenhuma (atômica)
@@ -2558,6 +2756,7 @@
 
 #### [x] SUB-35.14: `mesclarEvento()` em `src/lib/monitor.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 04 (Grok Bot) (2026-10-12 01:13 → 2026-10-12 01:14)
 - **Depende de:** SUB-35.8
 - **Subtarefas:** Nenhuma (atômica)
@@ -2570,6 +2769,7 @@
 
 #### [x] SUB-35.15: `estadoDoAgente()` em `src/lib/monitor.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 04 (Grok Bot) (2026-10-12 01:14 → 2026-10-12 01:15)
 - **Depende de:** SUB-35.14
 - **Subtarefas:** Nenhuma (atômica)
@@ -2582,6 +2782,7 @@
 
 #### [x] SUB-35.16: `contarPorStatus()` em `src/lib/monitor.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 04 (Grok Bot) (2026-10-12 01:15 → 2026-10-12 01:17)
 - **Depende de:** SUB-35.15
 - **Subtarefas:** Nenhuma (atômica)
@@ -2594,6 +2795,7 @@
 
 #### [x] SUB-35.17: `contarPorAgente()` em `src/lib/monitor.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 04 + DashboardAI (Grok Bot) (2026-10-12 01:17 → 2026-10-12 01:22)
 - **Depende de:** SUB-35.16
 - **Subtarefas:** Nenhuma (atômica)
@@ -2606,6 +2808,7 @@
 
 #### [x] SUB-35.18: `segmentosLinhaDoTempo()` em `src/lib/monitor.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Claude Code (início: 2026-10-12 01:33, conclusão: 2026-10-12 01:36)
 - **Depende de:** SUB-35.17
 - **Subtarefas:** Nenhuma (atômica)
@@ -2618,6 +2821,7 @@
 
 #### [x] SUB-35.19: Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 09 + DashboardAI (Grok Bot) (2026-10-12 01:17 → 2026-10-12 01:22)
 - **Depende de:** SUB-35.11, SUB-35.14
 - **Subtarefas:** Nenhuma (atômica)
@@ -2630,6 +2834,7 @@
 
 #### [x] SUB-35.20: Hook `useAtividadeAgentes(projectId)` em `src/hooks/useAtividadeAgentes.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Claude Code (início: 2026-10-12 01:37, conclusão: 2026-10-12 01:42)
 - **Depende de:** SUB-35.19, SUB-35.15
 - **Subtarefas:** Nenhuma (atômica)
@@ -2642,6 +2847,7 @@
 
 #### [x] SUB-35.21: Instalar `chart.js` e `react-chartjs-2`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 01:06; conclusão: 2026-10-12 01:08)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -2654,6 +2860,7 @@
 
 #### [x] SUB-35.22: Registro do Chart.js e paleta em `src/lib/charts.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 01:08; conclusão: 2026-10-12 01:09)
 - **Depende de:** SUB-35.21
 - **Subtarefas:** Nenhuma (atômica)
@@ -2666,6 +2873,7 @@
 
 #### [x] SUB-35.23: Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Claude Code (conclusão: 2026-10-12 01:27; registrado na revisão de 2026-10-12)
 - **Depende de:** SUB-35.15
 - **Subtarefas:** Nenhuma (atômica)
@@ -2678,6 +2886,7 @@
 
 #### [x] SUB-35.24: Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 07 (Grok Bot) (início: 2026-10-12 01:37, conclusão: 2026-10-12 01:39)
 - **Depende de:** SUB-35.23
 - **Subtarefas:** Nenhuma (atômica)
@@ -2690,6 +2899,7 @@
 
 #### [x] SUB-35.25: Gráfico `GraficoPorStatus` em `src/components/monitor/GraficoPorStatus.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 02 (2026-10-12 01:39 → 2026-10-12 01:40)
 - **Depende de:** SUB-35.22, SUB-35.16
 - **Subtarefas:** Nenhuma (atômica)
@@ -2702,6 +2912,7 @@
 
 #### [x] SUB-35.26: Gráfico `GraficoPorAgente` em `src/components/monitor/GraficoPorAgente.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 09 (Grok Bot)
 - **Depende de:** SUB-35.22, SUB-35.17
 - **Subtarefas:** Nenhuma (atômica)
@@ -2714,6 +2925,7 @@
 
 #### [x] SUB-35.27: Linha do tempo `LinhaDoTempoAgentes` em `src/components/monitor/LinhaDoTempoAgentes.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 03 (Grok Bot) (2026-10-12 01:46 → 2026-10-12 01:52)
 - **Depende de:** SUB-35.22, SUB-35.18
 - **Subtarefas:** Nenhuma (atômica)
@@ -2726,6 +2938,7 @@
 
 #### [x] SUB-35.28: Feed `FeedEventos` em `src/components/monitor/FeedEventos.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-35.8
 - **Subtarefas:** Nenhuma (atômica)
@@ -2738,6 +2951,7 @@
 
 #### [x] SUB-35.29: Indicador `IndicadorAoVivo` em `src/components/monitor/IndicadorAoVivo.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 03 (Grok Bot) (2026-10-12 01:40 → 2026-10-12 01:42)
 - **Depende de:** SUB-35.19
 - **Subtarefas:** Nenhuma (atômica)
@@ -2750,6 +2964,7 @@
 
 #### [x] SUB-35.30: Tela `MonitorView` em `src/views/MonitorView.tsx`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:41, conclusão: 2026-10-12 01:42)
 - **Depende de:** SUB-35.20, SUB-35.24, SUB-35.25, SUB-35.26, SUB-35.27, SUB-35.28, SUB-35.29
 - **Subtarefas:** Nenhuma (atômica)
@@ -2762,6 +2977,7 @@
 
 #### [x] SUB-35.31: Registrar a tela `monitor` (rota `#/monitor` e menu)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:42, conclusão: 2026-10-12 01:43)
 - **Depende de:** SUB-35.30, SUB-34.2
 - **Subtarefas:** Nenhuma (atômica)
@@ -2774,6 +2990,7 @@
 
 #### [x] SUB-35.40: Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 01:08 → 2026-10-12 01:09)
 - **Depende de:** SUB-35.2
 - **Subtarefas:** Nenhuma (atômica)
@@ -2786,6 +3003,7 @@
 
 #### [x] SUB-35.41: Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 01:10 → 2026-10-12 01:11)
 - **Depende de:** SUB-35.40
 - **Subtarefas:** Nenhuma (atômica)
@@ -2798,6 +3016,7 @@
 
 #### [x] SUB-35.42: `commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-35.1
 - **Subtarefas:** Nenhuma (atômica)
@@ -2810,6 +3029,7 @@
 
 #### [x] SUB-35.43: CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-35.42
 - **Subtarefas:** Nenhuma (atômica)
@@ -2822,6 +3042,7 @@
 
 #### [x] SUB-35.44: Seção "Monitor em tempo real" no `README.md`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:43, conclusão: 2026-10-12 01:44)
 - **Depende de:** SUB-35.31, SUB-35.40, SUB-35.43
 - **Subtarefas:** Nenhuma (atômica)
@@ -2834,6 +3055,7 @@
 
 #### [x] SUB-35.45: Seção "Reporte de progresso (opcional)" no `AGENTS.md`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 01:11 → 2026-10-12 01:13)
 - **Depende de:** SUB-35.41
 - **Subtarefas:** Nenhuma (atômica)
@@ -2846,6 +3068,7 @@
 
 ### [x] SUB-36: Gráfico em rede (cérebro) dos agentes no `dashboard-task-principal.html`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -2858,6 +3081,7 @@
 
 ### [x] SUB-37: Ranking e prêmios dos agentes no `dashboard-task-principal.html`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** DashboardAI (Grok Bot)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -2870,6 +3094,7 @@
 
 #### [x] SUB-35.33: `emitirEvento()` em `worker/eventos.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:36, conclusão: 2026-10-12 13:37)
 - **Depende de:** SUB-35.1, SUB-28.28
 - **Subtarefas:** Nenhuma (atômica)
@@ -2882,6 +3107,7 @@
 
 #### [x] SUB-35.34: Testes de `emitirEvento` em `tests/unit/worker-eventos.test.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:37, conclusão: 2026-10-12 13:38)
 - **Depende de:** SUB-35.33
 - **Subtarefas:** Nenhuma (atômica)
@@ -2894,6 +3120,7 @@
 
 #### [x] SUB-35.35: `comEventos(nome, no)` em `worker/eventos.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:39, conclusão: 2026-10-12 13:40)
 - **Depende de:** SUB-35.33, SUB-28.3
 - **Subtarefas:** Nenhuma (atômica)
@@ -2906,6 +3133,7 @@
 
 #### [x] SUB-35.36: Envolver os nós em `worker/grafo.ts` com `comEventos`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:40, conclusão: 2026-10-12 13:41)
 - **Depende de:** SUB-35.35, SUB-28.12
 - **Subtarefas:** Nenhuma (atômica)
@@ -2918,6 +3146,7 @@
 
 #### [x] SUB-35.37: `iniciarHeartbeat()` em `worker/heartbeat.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:41, conclusão: 2026-10-12 13:42)
 - **Depende de:** SUB-35.33
 - **Subtarefas:** Nenhuma (atômica)
@@ -2930,6 +3159,7 @@
 
 #### [x] SUB-35.38: Ligar o heartbeat no CLI `worker/index.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:42, conclusão: 2026-10-12 13:43)
 - **Depende de:** SUB-35.37, SUB-28.15
 - **Subtarefas:** Nenhuma (atômica)
@@ -2942,6 +3172,7 @@
 
 #### [x] SUB-35.39: Teste do worker: eventos emitidos na ordem dos nós
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:45, conclusão: 2026-10-12 13:46)
 - **Depende de:** SUB-35.36, SUB-28.17
 - **Subtarefas:** Nenhuma (atômica)

@@ -13,11 +13,11 @@
 
 > **TRAVA ATIVA (LOCK):** Se houver uma task marcada na seção **"🔒 TRAVA ATIVA NO MOMENTO"** com status `EM EXECUÇÃO`, **NENHUMA OUTRA IA PODE ASSUMIR AQUELA MESMA TAREFA**.
 > Para assumir uma nova tarefa, o agente **DEVE OBRIGATORIAMENTE**:
-> 1. Executar `git pull origin main` **PRIMEIRO** para garantir o estado mais recente.
+> 1. Executar `git pull --rebase origin main` **PRIMEIRO** para garantir o estado mais recente.
 > 2. Ler obrigatoriamente este arquivo (task-principal.md) ATUALIZADO.
 > 3. Conferir a seção **"🔒 TRAVA ATIVA NO MOMENTO"**:
 >    - ⛔ **PROIBIÇÃO TOTAL DE CONFLITO:** Se já existir uma task com trava ativa ou status `EM EXECUÇÃO` associada a outro agente, **NENHUMA OUTRA IA PODE ASSUMIR AQUELA MESMA TAREFA**.
-> 4. Localizar a próxima sub-task com status `pendente` cujas dependências estejam `concluido`.
+> 4. Localizar a próxima sub-task com status `pendente` cujas dependências estejam `concluido`, **pela prioridade**: `MAXIMA` → `ALTA` → `MEDIA` → `BAIXA` (na mesma prioridade, a ordem do quadro). Prioridade menor (ex.: `BAIXA`) só com orientação explícita do usuário — ver seção 1.2 do [`AGENTS.md`](AGENTS.md).
 > 5. Gravar a tarefa como bloqueada (status `em_execucao`, nome do agente, data/hora).
 > 6. **Executar COMMIT e PUSH do bloqueio IMEDIATAMENTE (antes de criar código da tarefa):**
 >    ```bash
@@ -60,16 +60,32 @@
 ---
 
 ## 📊 Resumo de Progresso
-- **Total de Tasks Principais:** 38
+- **Total de Tasks Principais:** 39
 - **Subtarefas atômicas (~3 min):** 205
 - **Em Execução:** 1 (SUB-25.8)
-- **Pendentes:** 5 principais (25, 26, 28, 35, KIRO-DEV-CLONE) + 7 subtarefas
-  - livres agora: 3 — SUB-25.4, SUB-25.7 e SUB-35.32 (a atômica KIRO-DEV-CLONE está 🔴 travada para todas as IAs)
+- **Pendentes:** 6 principais (SUB-38, 25, 26, 28, 35, KIRO-DEV-CLONE) + 7 subtarefas
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 4 — **SUB-38 (`MAXIMA`)**; depois SUB-25.4, SUB-25.7 e SUB-35.32 (`MEDIA`). A atômica KIRO-DEV-CLONE (`BAIXA`) está 🔴 travada para todas as IAs
   - bloqueadas por dependência: 3 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente) e SUB-35.46 (depende da SUB-35.32)
   - em execução: 1 — SUB-25.8 (criada em 2026-10-12 15:15 para desbloquear `typecheck` e `build`)
   - reservadas: 0
-- **Concluídas:** 226 de 242 blocos (33 principais + 193 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 226 de 243 blocos (33 principais + 193 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
+
+---
+
+## ⭐ PRIORIDADE MÁXIMA
+
+### [ ] SUB-38: Verificação geral de todas as tarefas (marcador `VERIFICADOR-CLAUDE`)
+- **Status:** pendente
+- **Prioridade:** MAXIMA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica; mantida como 1 tarefa por decisão do usuário em 2026-10-12, apesar de passar de ~3 min)
+- **Descrição:** Ler todos os blocos do `task-principal.md` e do `task_complete.md` e conferir, um por vez, se a entrega está correta (commits citados existem, arquivos e funções existem e atendem aos critérios, testes e validação). O resultado vai no marcador `- **VERIFICADOR-CLAUDE:**` de cada bloco (já inserido como `PENDENTE`). Valores: `✅ OK`, `⚠️ RESSALVA`, `❌ FALHA` ou `⬜ NÃO IMPLEMENTADA`, sempre com data, hora, agente e evidência. Só leitura: problemas achados viram subtarefas novas, não são corrigidos aqui. Commit e push a cada bloco verificado (`docs(verificador): SUB-XX verificada (<resultado>) por <agente>`). Plano e critérios: [`docs/verificador-claude.md`](docs/verificador-claude.md).
+- **Critérios de Aceitação:** Nenhum marcador `VERIFICADOR-CLAUDE: PENDENTE` nos dois quadros; relatório final com a lista de ressalvas e falhas.
+- **Commit:** pendente
+- **Anotação:** Iniciada por Claude Code em 2026-10-12 15:20 e adiada a pedido do usuário. Feito até agora: marcador inserido em 246 blocos (`5fb92f7`); validação geral registrada em `docs/verificador-claude.md` (`npm run typecheck`/`build` falhavam com TS6133, tratado na SUB-25.8); 6 blocos já verificados: SUB-25, SUB-25.4, SUB-25.7, SUB-26, SUB-26.3 e SUB-26.9 (`⬜ NÃO IMPLEMENTADA`). Próximo bloco: SUB-28. A SUB-25.8 (travada por DeepSeek Harness no momento) ainda não tem os campos `Prioridade` (`ALTA`) e `VERIFICADOR-CLAUDE`: incluir quando a trava for liberada.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 ---
 
@@ -77,6 +93,7 @@
 
 ### [ ] SUB-25: Validação de Build e Execução Local
 - **Status:** pendente (aguardando subtarefas)
+- **Prioridade:** ALTA
 - **Executor:** nenhum
 - **Depende de:** SUB-01 a SUB-24; subtarefas SUB-25.1 a SUB-25.8
 - **Subtarefas:** (subdividida em 4 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 6 em 2026-10-11 23:51; SUB-25.8 criada em 2026-10-12 15:15 por DeepSeek Harness (deepseek-flash) para desbloquear `typecheck` e `build`)
@@ -95,6 +112,7 @@
 
 #### [ ] SUB-25.4: Teste rápido local: telas Fila e Logs
 - **Status:** pendente
+- **Prioridade:** MEDIA
 - **Executor:** nenhum
 - **Depende de:** SUB-25.2
 - **Subtarefas:** Nenhuma (atômica)
@@ -106,6 +124,7 @@
 
 #### [ ] SUB-25.7: Teste rápido local: telas Memória e Configurações
 - **Status:** pendente
+- **Prioridade:** MEDIA
 - **Executor:** nenhum
 - **Depende de:** SUB-25.2
 - **Subtarefas:** Nenhuma (atômica)
@@ -127,6 +146,7 @@
 
 ### [ ] SUB-26: Documentação Completa e Manual Operacional no `README.md`
 - **Status:** pendente (aguardando subtarefas)
+- **Prioridade:** MEDIA
 - **Executor:** nenhum
 - **Depende de:** SUB-25; subtarefas SUB-26.1 a SUB-26.10
 - **Subtarefas:** (subdividida em 9 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 10 em 2026-10-11 23:51)
@@ -148,6 +168,7 @@
 
 #### [ ] SUB-26.3: Seção Execução local
 - **Status:** pendente
+- **Prioridade:** MEDIA
 - **Executor:** nenhum
 - **Depende de:** SUB-26.1, SUB-08.9, SUB-25
 - **Subtarefas:** Nenhuma (atômica)
@@ -160,6 +181,7 @@
 
 #### [ ] SUB-26.9: Revisão final do README
 - **Status:** pendente
+- **Prioridade:** MEDIA
 - **Executor:** nenhum
 - **Depende de:** SUB-26.2, SUB-26.3, SUB-26.4, SUB-26.5, SUB-26.6, SUB-26.7, SUB-26.8, SUB-26.10, SUB-25
 - **Subtarefas:** Nenhuma (atômica)
@@ -176,6 +198,7 @@
 
 ### [ ] SUB-28: Integração LangChain/LangGraph para Execução de Tasks
 - **Status:** pendente (aguardando subtarefas)
+- **Prioridade:** MEDIA
 - **Executor:** nenhum
 - **Depende de:** SUB-01 a SUB-27, SUB-29, SUB-30 (todas as tasks anteriores concluídas); subtarefas SUB-28.1 a SUB-28.32
 - **Subtarefas:** (subdividida em 18 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 25 em 2026-10-11 23:51; nova revisão para 32 em 2026-10-12 00:17)
@@ -222,6 +245,7 @@
 
 #### [x] SUB-28.18: Atualizar `LangChain_LangGraph.md` (status e desvios)
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:36, conclusão: 2026-10-12 14:38)
 - **Depende de:** SUB-28.15, SUB-28.32
 - **Subtarefas:** Nenhuma (atômica)
@@ -233,6 +257,7 @@
 
 #### [x] SUB-28.23: Retomada da aprovação (`Command({ resume })`) em `api/aprovacao.ts`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:26, conclusão: 2026-10-12 14:30)
 - **Depende de:** SUB-28.16
 - **Subtarefas:** Nenhuma (atômica)
@@ -244,6 +269,7 @@
 
 #### [x] SUB-28.25: Variáveis do worker no `api/README.md`
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:40, conclusão: 2026-10-12 14:42)
 - **Depende de:** SUB-28.15, SUB-28.32
 - **Subtarefas:** Nenhuma (atômica)
@@ -255,6 +281,7 @@
 
 #### [x] SUB-28.32: Registro de auditoria da aprovação
 - **Status:** concluido
+- **Prioridade:** MEDIA
 - **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:32, conclusão: 2026-10-12 14:35)
 - **Depende de:** SUB-28.23
 - **Subtarefas:** Nenhuma (atômica)
@@ -270,6 +297,7 @@
 
 ### [ ] SUB-35: Monitor em Tempo Real dos Agentes
 - **Status:** pendente (aguardando subtarefas)
+- **Prioridade:** MEDIA
 - **Executor:** nenhum
 - **Depende de:** SUB-12, SUB-29, SUB-30; subtarefas SUB-35.1 a SUB-35.46 (as partes do worker dependem de SUB-28.x)
 - **Subtarefas:** (criada e subdividida em 46 em 2026-10-12 00:39 por DashboardAI (Grok Bot) a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`)
@@ -329,6 +357,7 @@
 
 #### [ ] SUB-35.32: Validação visual do monitor (SUB-35)
 - **Status:** pendente
+- **Prioridade:** MEDIA
 - **Executor:** nenhum
 - **Depende de:** SUB-35.31
 - **Subtarefas:** Nenhuma (atômica)
@@ -341,6 +370,7 @@
 
 #### [ ] SUB-35.46: Validação automatizada da SUB-35
 - **Status:** pendente
+- **Prioridade:** MEDIA
 - **Executor:** nenhum
 - **Depende de:** SUB-35.7, SUB-35.12, SUB-35.13, SUB-35.32, SUB-35.34, SUB-35.38, SUB-35.39, SUB-35.41, SUB-35.43, SUB-35.44, SUB-35.45
 - **Subtarefas:** Nenhuma (atômica)
@@ -357,6 +387,7 @@
 
 ### [ ] KIRO-DEV-CLONE: Clone do Kiro.dev
 - **Status:** pendente
+- **Prioridade:** BAIXA
 - **Executor:** nenhum
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
