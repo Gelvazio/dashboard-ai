@@ -595,7 +595,7 @@
   - `SUB-34.3`: Modais da fila sob demanda na `src/views/FilaView.tsx` (`pendente`)
   - `SUB-34.4`: Separar dependências grandes no `vite.config.ts` (`pendente`)
   - `SUB-34.5`: Checagem de tamanho `scripts/checar-chunks.mjs` (`pendente`)
-  - `SUB-34.6`: `Suspense` com `CarregandoTela` no `src/App.tsx` (`pendente`)
+  - `SUB-34.6`: `Suspense` com `CarregandoTela` no `src/App.tsx` (`em_execucao`)
 - **Descrição:** Carregar as telas (Fila, Memória, Logs, Configurações) e os modais pesados com `React.lazy` + `Suspense` (fallback leve), e separar dependências grandes (ex.: supabase-js) em chunks próprios, eliminando o aviso de bundle > 500 kB do Vite.
 - **Escopo por projeto:** não altera dados; apenas o empacotamento do frontend.
 - **Critérios de Aceitação:** `npm run build` sem o aviso de chunk > 500 kB; navegação e modais continuam funcionando; typecheck e testes verdes.
@@ -653,8 +653,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-34.6: `Suspense` com `CarregandoTela` no `src/App.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:03)
 - **Depende de:** SUB-34.1, SUB-34.2
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Envolver `<Tela />` em `<Suspense fallback={<CarregandoTela />}>` no `src/App.tsx`.
