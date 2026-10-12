@@ -69,19 +69,6 @@
 ---
 
 
-### 🔒 TRAVA ADICIONAL — Claude Code (Opus 5.5) — SUB-40.7
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-40.7** |
-| **Título da Sub-task:** | Aplicar o `08_admin_inicial.sql` no Supabase do projeto (só com autorização do usuário) |
-| **Agente Responsável:** | Claude Code (Opus 5.5) |
-| **Data e Hora de Início:** | 2026-10-12 18:37 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-40.7 |
-
----
-
 ### 🔒 TRAVA ADICIONAL — Claude Code (Opus 5.5, sessão em nuvem) — SUB-43
 
 | Propriedade | Valor Atual |
@@ -115,13 +102,13 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 44
 - **Subtarefas atômicas (~3 min):** 251
-- **Em Execução:** 4 (SUB-38, SUB-41.1, SUB-40.7, SUB-43)
-- **Pendentes:** 11 principais (SUB-38, 25, 26, 28, 35, 39, 40, 41, 42, 43, KIRO-DEV-CLONE) + 41 subtarefas
+- **Em Execução:** 3 (SUB-38, SUB-41.1, SUB-43)
+- **Pendentes:** 10 principais (SUB-38, 25, 26, 28, 35, 39, 41, 42, 43, KIRO-DEV-CLONE) + 40 subtarefas
   - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 4 — SUB-25.4, SUB-25.7 e SUB-35.32 (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
   - bloqueadas por dependência: 6 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41) e SUB-42 (depende da SUB-41)
-  - em execução: 4 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI)); SUB-40.7 (Claude Code (Opus 5.5)); SUB-43 (Claude Code (Opus 5.5, sessão em nuvem))
+  - em execução: 3 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI)); SUB-43 (Claude Code (Opus 5.5, sessão em nuvem))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 239 de 295 blocos (33 principais + 206 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 241 de 295 blocos (34 principais + 207 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -455,49 +442,6 @@
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** A seção "Deploy na Vercel → 3. Limits e timeouts" do `README.md` (linhas ~201-218) mostra um `vercel.json` de exemplo com `"maxDuration": 60` e diz "padrão 60s". O `vercel.json` real usa `30` para `api/mcp.ts` e `15` para `api/embedding.ts`. Atualizar o exemplo e o texto para os valores reais, mantendo a nota de limites por plano da Vercel (conferir os limites atuais na documentação da Vercel antes de manter os números de Hobby/Pro).
 - **Critérios de Aceitação:** Exemplo e texto do `README.md` iguais ao `vercel.json`; `npm run validar` verde.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
----
-
-## 🔐 FASE 14: Login — Cadastro de Usuário e Administrador Inicial
-
-### [ ] SUB-40: Login com opção de criar usuário (formulário de cadastro) e administrador inicial `gelvazio@gmail.com`
-- **Status:** pendente (aguardando subtarefas)
-- **Prioridade:** MEDIA
-- **Executor:** nenhum
-- **Depende de:** subtarefas SUB-40.1 a SUB-40.7
-- **Subtarefas:** (criada e subdividida em 7 em 2026-10-12 por Claude Code (Opus 5.5) a pedido do usuário; a mãe só é concluída quando todas as filhas estiverem `concluido`)
-  - `SUB-40.1`: SQL do administrador inicial (`database/08_admin_inicial.sql`) (`concluido`, `e64524e`)
-  - `SUB-40.2`: Validação e mensagens do cadastro em `src/lib/auth.ts` (`concluido`, `b2a9289`)
-  - `SUB-40.3`: Serviço `cadastrarUsuario` em `src/services/authService.ts` (`concluido`, `a48672a`)
-  - `SUB-40.4`: Componente `src/components/auth/CadastroForm.tsx` (`concluido`, `a86f688`)
-  - `SUB-40.5`: Alternar "Entrar" / "Criar usuário" na `LoginView` (`concluido`, `d7b0fba`)
-  - `SUB-40.6`: Documentar o cadastro e o administrador inicial (`README.md` e `database/README.md`) (`concluido`, `7bc0f0e`)
-  - `SUB-40.7`: Aplicar o `08_admin_inicial.sql` no Supabase do projeto (só com autorização do usuário) (`em_execucao`, Claude Code (Opus 5.5))
-- **Descrição:** Na tela de login, oferecer o link **"Criar usuário"**, que abre um **novo formulário** de cadastro (nome, e-mail, senha e confirmação) usando o Supabase Auth (`signUp`). Regra pedida pelo usuário: se o e-mail cadastrado for **`gelvazio@gmail.com`** e ele **ainda não existir** no banco, o usuário é criado como **administrador** (`user_roles.role = 'admin'`). **Segurança:** o papel de administrador é dado **só pelo banco** (função `security definer` + trigger em `auth.users`), nunca pelo frontend (o cliente não escolhe o próprio papel), e **só depois do e-mail confirmado** (`email_confirmed_at` preenchido), para que ninguém se registre com esse e-mail sem ter acesso à caixa de entrada. Os demais cadastros entram sem papel global (acesso só pelos `project_members`, como hoje).
-- **Critérios de Aceitação:** Todas as filhas `concluido`; `npm run validar` verde; cadastro com `gelvazio@gmail.com` (inexistente) gera `user_roles` admin após a confirmação do e-mail; cadastro com outro e-mail não ganha papel de administrador; se `gelvazio@gmail.com` já existir, nada muda.
-- **Commit:** pendente
-- **Anotação:** Criada a pedido do usuário em 2026-10-12. Sem testes automatizados novos (regra do usuário no `CLAUDE.md` global: só para correção de bug); a verificação de cada filha é por `npm run validar`, `npm run typecheck` e leitura do código/SQL.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-
-
-
-
-
-
-#### [ ] SUB-40.7: Aplicar o `08_admin_inicial.sql` no Supabase do projeto (só com autorização do usuário)
-- **Status:** em_execucao
-- **Prioridade:** MEDIA
-- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 18:37)
-- **Depende de:** SUB-40.1
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** **Pedir autorização explícita do usuário no chat antes de qualquer comando no banco remoto.** Com a autorização, aplicar `database/08_admin_inicial.sql` no projeto Supabase e conferir com consultas só de leitura: a função e a trigger existem (`pg_trigger` em `auth.users`), e, se `gelvazio@gmail.com` já existir e estiver confirmado, há linha `admin` em `user_roles`. Sem autorização ou sem acesso ao banco, marcar ⛔ com o motivo na anotação e deixar a aplicação para o usuário.
-- **Critérios de Aceitação:** Script aplicado sem erro e conferências registradas na anotação (sem e-mails de outros usuários, sem chaves ou tokens).
 - **Commit:** pendente
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE

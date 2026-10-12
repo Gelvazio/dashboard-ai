@@ -2,7 +2,7 @@
 
 - **Criado em:** 2026-10-12 · **Executor:** Claude Code (Opus 5.5) · **Aprovação:** pedido do usuário no chat ("PEGUE A TAREFA DE LOGIN E EXECUTE A SUB-40")
 - **Quadro:** blocos `SUB-40` e `SUB-40.1` a `SUB-40.7` em [`task-principal.md`](../task-principal.md) (fonte da verdade do detalhamento de cada passo)
-- **Conclusão:** pendente · **Tempo decorrido:** pendente
+- **Conclusão:** 2026-10-12 18:39 · **Tempo decorrido:** ~26 min (18:13 a 18:39)
 
 ## Objetivo
 
@@ -38,4 +38,4 @@ e-mail cadastrado for `gelvazio@gmail.com` e ainda não existir, ele vira admini
 | 4 | SUB-40.4 Formulário de cadastro | `src/components/auth/CadastroForm.tsx`, `index.ts` | `npm run typecheck`, `lint`, `build` | ✅ Concluído (`a86f688`) |
 | 5 | SUB-40.5 Alternar Entrar/Criar usuário | `src/views/LoginView.tsx` | `npm run validar` | ✅ Concluído (`d7b0fba`) |
 | 6 | SUB-40.6 Documentação | `README.md`, `database/README.md` | `npm run validar` | ✅ Concluído (`7bc0f0e`) |
-| 7 | SUB-40.7 Aplicar SQL no Supabase | banco remoto | consultas só de leitura | ⬜ Pendente (precisa de autorização) |
+| 7 | SUB-40.7 Aplicar SQL no Supabase | banco remoto | consultas só de leitura | ✅ Concluído (00 a 08 aplicados com autorização) |

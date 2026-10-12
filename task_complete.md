@@ -3271,6 +3271,26 @@
 
 ## 🔐 FASE 14: Login — Cadastro de Usuário e Administrador Inicial
 
+### [x] SUB-40: Login com opção de criar usuário (formulário de cadastro) e administrador inicial `gelvazio@gmail.com`
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** subtarefas SUB-40.1 a SUB-40.7
+- **Subtarefas:** (criada e subdividida em 7 em 2026-10-12 por Claude Code (Opus 5.5) a pedido do usuário; a mãe só é concluída quando todas as filhas estiverem `concluido`)
+  - `SUB-40.1`: SQL do administrador inicial (`database/08_admin_inicial.sql`) (`concluido`, `e64524e`)
+  - `SUB-40.2`: Validação e mensagens do cadastro em `src/lib/auth.ts` (`concluido`, `b2a9289`)
+  - `SUB-40.3`: Serviço `cadastrarUsuario` em `src/services/authService.ts` (`concluido`, `a48672a`)
+  - `SUB-40.4`: Componente `src/components/auth/CadastroForm.tsx` (`concluido`, `a86f688`)
+  - `SUB-40.5`: Alternar "Entrar" / "Criar usuário" na `LoginView` (`concluido`, `d7b0fba`)
+  - `SUB-40.6`: Documentar o cadastro e o administrador inicial (`README.md` e `database/README.md`) (`concluido`, `7bc0f0e`)
+  - `SUB-40.7`: Aplicar o `08_admin_inicial.sql` no Supabase do projeto (só com autorização do usuário) (`concluido`, aplicado no banco)
+- **Descrição:** Na tela de login, oferecer o link **"Criar usuário"**, que abre um **novo formulário** de cadastro (nome, e-mail, senha e confirmação) usando o Supabase Auth (`signUp`). Regra pedida pelo usuário: se o e-mail cadastrado for **`gelvazio@gmail.com`** e ele **ainda não existir** no banco, o usuário é criado como **administrador** (`user_roles.role = 'admin'`). **Segurança:** o papel de administrador é dado **só pelo banco** (função `security definer` + trigger em `auth.users`), nunca pelo frontend (o cliente não escolhe o próprio papel), e **só depois do e-mail confirmado** (`email_confirmed_at` preenchido), para que ninguém se registre com esse e-mail sem ter acesso à caixa de entrada. Os demais cadastros entram sem papel global (acesso só pelos `project_members`, como hoje).
+- **Critérios de Aceitação:** Todas as filhas `concluido`; `npm run validar` verde; cadastro com `gelvazio@gmail.com` (inexistente) gera `user_roles` admin após a confirmação do e-mail; cadastro com outro e-mail não ganha papel de administrador; se `gelvazio@gmail.com` já existir, nada muda.
+- **Commit:** filhas `e64524e`, `b2a9289`, `a48672a`, `a86f688`, `d7b0fba`, `7bc0f0e`; SUB-40.7 aplicada no banco
+- **Anotação:** Criada a pedido do usuário em 2026-10-12. Sem testes automatizados novos (regra do usuário no `CLAUDE.md` global: só para correção de bug); a verificação de cada filha é por `npm run validar`, `npm run typecheck` e leitura do código/SQL. **Concluída em 2026-10-12 18:39 por Claude Code (Opus 5.5):** todas as 7 filhas `concluido`; `npm run validar` verde; scripts `00` a `08` aplicados no Supabase com autorização do usuário (SUB-40.7). Plano em [`docs/login-cadastro-admin-inicial.md`](docs/login-cadastro-admin-inicial.md). Falta só o usuário conferir a tela e se cadastrar com `gelvazio@gmail.com`.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:39 — Claude Code (Opus 5.5): filhas conferidas
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
 #### [x] SUB-40.1: SQL do administrador inicial (`database/08_admin_inicial.sql`)
 - **Status:** concluido
 - **Prioridade:** MEDIA
@@ -3347,4 +3367,17 @@
 - **Commit:** `7bc0f0e`
 - **Anotação:** Executada em 2026-10-12 por Claude Code (Opus 5.5) por orientação do usuário no chat ("continue a SUB-40 a partir da SUB-40.2"). `database/README.md`: `08_admin_inicial.sql` na tabela de ordem de aplicação, "Como aplicar" passa a ir de 00 a 08 e nova seção **Administrador inicial (08)** (e-mail `gelvazio@gmail.com`; papel só pelo banco via trigger; só após `email_confirmed_at`; só se ainda não houver linha em `user_roles`; e-mail centralizado em `email_administrador_inicial()`; backfill; comportamento sem schema `auth`; consultas de conferência). `README.md`: autenticação na Arquitetura cita o cadastro; a tabela "Aplicar os scripts" vai de 00 a 08 (incluí também o `07_agent_events.sql`, que faltava); nova seção **4. Cadastro de usuários ("Criar usuário")** com o administrador inicial e a configuração do Supabase (**Authentication → Providers → Email** com cadastro habilitado e **Confirm email** ligado; **Authentication → URL Configuration** com a URL do site). Verificação: `npm run validar` verde; âncoras relativas (`#4-cadastro-de-usuários-criar-usuário`, `database/README.md#administrador-inicial-08`) conferidas pelo título.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:32 — Claude Code (Opus 5.5): entrega verificada
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [x] SUB-40.7: Aplicar o `08_admin_inicial.sql` no Supabase do projeto (só com autorização do usuário)
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 18:37)
+- **Depende de:** SUB-40.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** **Pedir autorização explícita do usuário no chat antes de qualquer comando no banco remoto.** Com a autorização, aplicar `database/08_admin_inicial.sql` no projeto Supabase e conferir com consultas só de leitura: a função e a trigger existem (`pg_trigger` em `auth.users`), e, se `gelvazio@gmail.com` já existir e estiver confirmado, há linha `admin` em `user_roles`. Sem autorização ou sem acesso ao banco, marcar ⛔ com o motivo na anotação e deixar a aplicação para o usuário.
+- **Critérios de Aceitação:** Script aplicado sem erro e conferências registradas na anotação (sem e-mails de outros usuários, sem chaves ou tokens).
+- **Commit:** sem commit de código (aplicação no banco remoto; registro no quadro)
+- **Anotação:** **Autorização explícita do usuário no chat em 2026-10-12** ("pode aplicar os scripts 00 a 08"), depois de conferir com ele o projeto pelo MCP do Supabase: `fcmntkzpjoetdabllabn` (DASHBOARD AI, `sa-east-1`, Postgres 17), o mesmo do `.env`. **Achado:** o banco estava vazio (0 tabelas em `public`, 0 usuários, sem `pgvector`), e o `08` depende do `00`; por isso, com a autorização, foram aplicados **todos** os scripts `database/00` a `08`, em ordem e sem alteração, um arquivo por transação (`psycopg2` com a conexão do `.env`; nenhum erro, só os `NOTICE` de `drop ... if exists`). **Conferência só de leitura pelo MCP:** 9 tabelas em `public` (`agendamento_tarefa_logs`, `agent_events`, `agent_messages`, `ai_memories`, `project_members`, `project_rules`, `projects`, `tasks`, `user_roles`), todas com RLS; `pgvector` instalado; projeto `default` criado; `agent_events` na publicação do Realtime; `email_administrador_inicial()` e `garantir_admin_inicial()` criadas (`security definer`, sem `execute` para `anon` e `authenticated`); trigger `garantir_admin_inicial_trg` **ativa** em `auth.users`; `user_roles` vazia (`gelvazio@gmail.com` ainda não existe — o papel admin será criado quando ele se cadastrar e confirmar o e-mail). **Advisor de segurança do Supabase** (avisos `WARN`, fora do escopo, nada corrigido): `search_path` mutável em `set_updated_at` e `tasks_ciclo_de_vida`; extensão `vector` no schema `public`; funções `security definer` executáveis por `authenticated` (`eh_administrador`, `tem_acesso_projeto`, `projeto_padrao_id`, `projeto_id_por_slug`, `liberar_trava_task` — usadas pela RLS/interface por desenho) e `rls_auto_enable()` (função padrão do Supabase, não é dos nossos scripts) executável por `anon`.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:39 — Claude Code (Opus 5.5): entrega verificada
 - **VERIFICADOR-CLAUDE:** PENDENTE
