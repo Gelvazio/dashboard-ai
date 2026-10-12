@@ -10,9 +10,9 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
 - **Subtarefas atômicas (~3 min):** 153 (SUB-08.x, SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x; atualizado em 2026-10-12 00:17)
-- **Em Execução:** 1 (SUB-23.1)
+- **Em Execução:** 2 (SUB-33.2, SUB-23.1)
 - **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 148 subtarefas
-  - livres agora: 26 (SUB-33.2, SUB-33.3, SUB-33.5, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.3, SUB-21.13, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
+  - livres agora: 25 (SUB-33.3, SUB-33.5, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.3, SUB-21.13, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
   - bloqueadas por dependência: 121
   - reservadas: 0
 - **Concluídas:** 30
@@ -158,7 +158,7 @@
 - **Depende de:** SUB-07, SUB-03; subtarefas SUB-33.1 a SUB-33.13
 - **Subtarefas:** (subdividida em 2026-10-11 23:38 e refinada para 12 em 2026-10-11 23:47 por DashboardAI (Grok Bot); trava liberada a pedido do usuário, filhas livres conforme dependências; a mãe só é concluída quando todas estiverem `concluido`; nova revisão para 13 em 2026-10-12 00:17)
   - `SUB-33.1`: `bearerToken(req)` em `api/_lib/auth.ts` (`concluido`)
-  - `SUB-33.2`: `verificarSessaoSupabase(token)` em `api/_lib/auth.ts` (`pendente`)
+  - `SUB-33.2`: `verificarSessaoSupabase(token)` em `api/_lib/auth.ts` (`em_execucao`)
   - `SUB-33.3`: `lerTextoEmbedding(body)` em `api/_lib/embedding-input.ts` (`pendente`)
   - `SUB-33.4`: Esqueleto do handler `api/embedding.ts` (CORS, OPTIONS, 405) (`concluido`)
   - `SUB-33.5`: Registrar `api/embedding.ts` no `vercel.json` (`pendente`)
@@ -186,8 +186,8 @@
 - **Anotação:** Criado `api/_lib/auth.ts` com `bearerToken(headers)`: lê `authorization` (string ou array, usa o primeiro), aceita só o esquema `Bearer` sem diferenciar maiúsculas e devolve o token sem espaços; `null` se ausente/malformado. Testes em `tests/unit/api-auth.test.ts` (ausente, `Basic`, `Bearer` vazio, array, ok). `npm run typecheck` (app + api) e `npm test` verdes.
 
 #### [ ] SUB-33.2: `verificarSessaoSupabase(token)` em `api/_lib/auth.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (desde 2026-10-12 00:23)
 - **Depende de:** SUB-33.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `export async function verificarSessaoSupabase(token: string, env = process.env): Promise<{ userId: string } | null>` que chama `GET ${SUPABASE_URL}/auth/v1/user` com `Authorization: Bearer <token>` e `apikey` (`SUPABASE_ANON_KEY` ou `SUPABASE_SERVICE_ROLE_KEY`), timeout 10 s; 200 com `id` -> `{ userId }`, 401/403 -> `null`, outros erros lançam `AuthError`. Testes com `fetch` simulado (`vi.stubGlobal`) em `tests/unit/api-auth.test.ts`.
