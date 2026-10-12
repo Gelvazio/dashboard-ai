@@ -9,3 +9,4 @@ export { TaskDetailModal } from './TaskDetailModal';
 export { TaskToolbar } from './TaskToolbar';
 export { PendentesResumo, type PendentesResumoProps } from './PendentesResumo';
 export { TravaItem, type TravaItemProps } from './TravaItem';
+export { SaudeFilaPanel, type SaudeFilaPanelProps } from './SaudeFilaPanel';
