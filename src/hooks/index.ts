@@ -10,3 +10,5 @@ export { useConexao } from './useConexao';
 export { useTasks } from './useTasks';
 export { ToastProvider } from './ToastContext';
 export { useToast } from './useToast';
+export { useIndicadores } from './useIndicadores';
+export { useContagemAnimada } from './useContagemAnimada';

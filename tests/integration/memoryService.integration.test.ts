@@ -44,6 +44,11 @@ describe.skipIf(!integracaoDisponivel)('memoryService (RLS, globais e busca)', (
     expect(todas.map((m) => m.title).sort()).toEqual(['Banco', `Global ${p.slug}`, 'Sem vetor'].sort());
     expect(todas.some((m) => 'embedding' in m)).toBe(false);
     expect((await mem.listarMemorias(p.id, { incluirGlobais: false }, sb)).length).toBe(2);
+    const cont = await mem.contarMemorias(p.id, sb);
+    expect(cont.projeto).toBe(2);
+    expect(cont.globais).toBeGreaterThanOrEqual(1);
+    expect(cont.total).toBe(cont.projeto + cont.globais);
+    expect((await mem.contarMemorias(outro.id, sb)).projeto).toBe(1);
     expect((await mem.listarMemorias(p.id, { tags: ['banco'] }, sb)).map((m) => m.title)).toEqual(['Banco']);
     expect((await mem.listarMemorias(p.id, { busca: 'vercel' }, sb)).map((m) => m.title)).toEqual(['Sem vetor']);
   });

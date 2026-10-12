@@ -56,6 +56,25 @@ export async function listarMemorias(projectId: number, filtro: FiltroMemorias =
   return resultado(await q.order('updated_at', { ascending: false }).limit(filtro.limite ?? 200), 'Listar memórias');
 }
 
+export interface ContagemMemorias {
+  projeto: number;
+  globais: number;
+  total: number;
+}
+
+/** Quantidade de memórias do projeto e globais (só contagens, sem trazer as linhas). */
+export async function contarMemorias(projectId: number, client: DashboardClient = getSupabase()): Promise<ContagemMemorias> {
+  const [doProjeto, globais] = await Promise.all([
+    client.from('ai_memories').select('id', { count: 'exact', head: true }).eq('project_id', projectId),
+    client.from('ai_memories').select('id', { count: 'exact', head: true }).is('project_id', null),
+  ]);
+  resultado(doProjeto, 'Contar memórias');
+  resultado(globais, 'Contar memórias globais');
+  const projeto = doProjeto.count ?? 0;
+  const g = globais.count ?? 0;
+  return { projeto, globais: g, total: projeto + g };
+}
+
 export interface OpcoesBusca {
   /** Similaridade mínima de 0 a 1 (padrão 0.5). */
   limiar?: number;

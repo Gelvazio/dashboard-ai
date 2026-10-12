@@ -85,10 +85,10 @@ function Resultado({ task }: { task: Task }) {
 
 function Titulo({ task, bloqueada }: { task: Task; bloqueada: boolean }) {
   return (
-    <span className="flex min-w-0 max-w-48 flex-col">
+    <span className="flex min-w-0 flex-col md:max-w-48">
       <span className="flex items-center gap-1.5">
         <Tooltip conteudo={resumo(task.instrucao, 240)} className="flex min-w-0">
-          <span className="block truncate font-medium text-slate-900 dark:text-slate-100">{task.titulo}</span>
+          <span className="block font-medium text-slate-900 md:truncate dark:text-slate-100">{task.titulo}</span>
         </Tooltip>
         {task.tipo === 'humano' && (
           <Tooltip conteudo="Task humana — concluída por uma pessoa, não pela IA">

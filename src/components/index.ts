@@ -13,3 +13,4 @@ export { Tooltip } from './ui/Tooltip';
 export * from './tasks';
 export { Modal } from './ui/Modal';
 export { Botao } from './ui/Botao';
+export * from './kpi';
