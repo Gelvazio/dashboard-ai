@@ -3322,3 +3322,16 @@
 - **Anotação:** Executada em 2026-10-12 por Claude Code (Opus 5.5) por orientação do usuário no chat ("continue a SUB-40 a partir da SUB-40.2"). Novo `src/components/auth/CadastroForm.tsx` no visual do `LoginForm` (mesma classe `CAMPO`, `Botao`, `useId`, mostrar/ocultar senha com `Eye`/`EyeOff`): campos Nome, E-mail, Senha e Confirmar senha, cada um com rótulo e erro acessível (`aria-invalid`/`aria-describedby`) pelo subcomponente `CampoCadastro`; valida com `validarCadastro` e chama `cadastrarUsuario` com `redirectTo = urlDeRetorno(window.location)`. Em sucesso, limpa as senhas e mostra aviso `role="status"` ("Usuário criado. Confira seu e-mail para confirmar o cadastro e depois entre." quando `precisaConfirmar`). Props `onCadastrou?()` e `onVoltar?()` (botão "Já tenho conta — Entrar"). Exportado em `src/components/auth/index.ts`. Verificação: `npm run typecheck` e `npm run build` verdes. **Ressalva:** o critério cita `npm run lint`, mas o projeto não tem script nem configuração do ESLint (o `npx eslint` pede migração de configuração); lint não executado.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:27 — Claude Code (Opus 5.5): entrega verificada
 - **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [x] SUB-40.5: Alternar "Entrar" / "Criar usuário" na `LoginView`
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 18:28)
+- **Depende de:** SUB-40.4
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Em `src/views/LoginView.tsx`, adicionar o estado `modo: 'entrar' | 'cadastrar'`. No modo `entrar`, abaixo do `RecuperarAcesso`, um botão-link **"Não tem conta? Criar usuário"**; no modo `cadastrar`, a `section` mostra o `CadastroForm` (com `aria-label="Criar usuário"`) no lugar do `LoginForm`, e o `onVoltar` volta para `entrar`. Manter o aviso de Supabase não configurado nos dois modos.
+- **Critérios de Aceitação:** `npm run validar` verde; o login atual continua funcionando igual.
+- **Commit:** `d7b0fba`
+- **Anotação:** Executada em 2026-10-12 por Claude Code (Opus 5.5) por orientação do usuário no chat ("continue a SUB-40 a partir da SUB-40.2"). `src/views/LoginView.tsx`: estado `modo: 'entrar' | 'cadastrar'`; no modo `entrar`, abaixo do `RecuperarAcesso`, o texto "Não tem conta?" com o botão-link **Criar usuário**; no modo `cadastrar`, a `section` (`aria-label="Criar usuário"`) mostra o `CadastroForm`, cujo `onVoltar` volta para `entrar`. O aviso de Supabase não configurado ficou fora da alternância, então aparece nos dois modos; o login continua igual. Verificação: `npm run validar` verde (typecheck, testes, build, chunks, env, python e audit). Sem teste no navegador (regra do usuário): o fluxo visual fica para o usuário conferir.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:29 — Claude Code (Opus 5.5): entrega verificada
+- **VERIFICADOR-CLAUDE:** PENDENTE
