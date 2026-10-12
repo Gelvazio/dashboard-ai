@@ -2298,8 +2298,8 @@
 - **Anotação:** Adicionado `atividadeAtual(projectId, client?)` em `src/services/eventService.ts`: chama a RPC `atividade_atual_agentes` (`p_project_id`), trata erro com `resultado` (contexto "Atividade dos agentes") e devolve `AtividadeAgente[]` ordenado por `ultimo_em` desc (lista vazia se `null`). typecheck e `npm test` OK.
 
 #### [ ] SUB-35.11: `assinarEventos()` (Supabase Realtime) em `src/services/eventService.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 09 (Grok Bot)
 - **Depende de:** SUB-35.10
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `assinarEventos(projectId, { onEvento, onStatus }, client?): () => void`: canal `agent_events:<projectId>` com `postgres_changes` (`INSERT`, filtro `project_id=eq.<id>`), repassa o status do canal (`SUBSCRIBED`, `CHANNEL_ERROR`, `TIMED_OUT`, `CLOSED`) e devolve a função que remove o canal. Sem polling.
