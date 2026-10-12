@@ -99,14 +99,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:07 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 05 (Grok Bot) — SUB-35.6
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.6** |
+| **Título da Sub-task:** | Teste de integração de `agent_events` (RLS e trigger) |
+| **Agente Responsável:** | DashboardAI-Clone 05 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:07 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (4)
+### 🔄 EM EXECUÇÃO (5)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-35.6** | Teste de integração de `agent_events` (RLS e trigger) | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:07 | SUB-35.2, SUB-35.3 |
 | **SUB-19.8** | Integrar a busca na `src/views/MemoriaView.tsx` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:07 | SUB-19.7, SUB-21.9 |
 | **SUB-35.5** | Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` | DashboardAI-Clone 02 | 2026-10-12 01:07 | SUB-35.3 |
 | **SUB-26.6** | Seção Agentes de IA: configurar clientes MCP | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:06 | SUB-26.1 |
@@ -117,7 +129,7 @@
 
 ---
 
-### ⏳ PENDENTES (153)
+### ⏳ PENDENTES (152)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -216,7 +228,6 @@
 | **SUB-27.28** | Varredura do bundle por `service_role` (SUB-27) | 3 | Fase 10 | SUB-27.22 — ⛓️ bloqueada |
 | **SUB-35** | Monitor em Tempo Real dos Agentes (mãe) | 4 | Fase 12 | SUB-12, SUB-29, SUB-30; SUB-35.1 a SUB-35.46 |
 | **SUB-35.5** | Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` | 4 | Fase 12 | SUB-35.3 — 🔄 em execução por DashboardAI-Clone 02 |
-| **SUB-35.6** | Teste de integração de `agent_events` (RLS e trigger) | 4 | Fase 12 | SUB-35.2, SUB-35.3 — ⛓️ bloqueada |
 | **SUB-35.7** | Seção "Eventos dos agentes (07)" no `database/README.md` | 4 | Fase 12 | SUB-35.4, SUB-35.5 — ⛓️ bloqueada |
 | **SUB-35.8** | Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` | 4 | Fase 12 | SUB-35.5 — ⛓️ bloqueada |
 | **SUB-35.9** | `listarEventos()` em `src/services/eventService.ts` | 4 | Fase 12 | SUB-35.8 — ⛓️ bloqueada |
@@ -615,3 +626,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:07 | DashboardAI-Clone 02 | SUB-35.4 | `95f12ff` | Em `database/07_agent_events.sql`, bloco `do $$` que faz `alter publication supabase_realtime add table public.agent_events` só se a publicação existir e a tabela ainda não estiver nela. Validado em Postgres local (banco temporário): 00–07 aplicados 2x sem a publicação (não falha); com `create publication supabase_realtime`, 07 reaplicado 2x e `pg_publication_tables` mostra `agent_events`. |
 | 2026-10-12 01:07 | DashboardAI-Clone 02 | SUB-35.5 | — | Lock: assumindo SUB-35.5 (Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql`) |
 | 2026-10-12 01:07 | DashboardAI-Clone 04 (Grok Bot) | SUB-19.8 | — | Lock: assumindo SUB-19.8 (Integrar a busca na `src/views/MemoriaView.tsx`) |
+| 2026-10-12 01:07 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.6 | — | Lock: assumindo SUB-35.6 (Teste de integração de `agent_events` (RLS e trigger)) |
