@@ -125,11 +125,86 @@ deploy pela integração com o GitHub.
 
 ## Agentes de IA (fila via MCP)
 
-> Seção provisória (detalhada nas SUB-26.6 e SUB-26.10).
+> Configuração dos clientes MCP: seção provisória (detalhada na SUB-26.6).
 
 Os agentes se conectam ao endpoint `/mcp` com o token `MCP_AUTH_TOKEN` e usam as
-ferramentas da fila (`task_next`, `task_finish`, `task_list`, `task_create`) para pegar,
-executar e finalizar tasks do projeto, sempre respeitando travas e dependências.
+ferramentas da fila (`task_next`, `task_finish`, `task_list`, `task_create`, em
+[`api/_lib/queue-tools.ts`](api/_lib/queue-tools.ts)) para pegar, executar e finalizar tasks
+do projeto, sempre respeitando travas e dependências.
+
+### Ciclo da fila (exemplos)
+
+Todas as chamadas são `tools/call` (JSON-RPC 2.0) com o nome da ferramenta em `params.name`.
+O argumento `project` (slug) é opcional; sem ele vale `MCP_DEFAULT_PROJECT`.
+
+**1. Pegar a próxima task** — `task_next` trava a task elegível de maior prioridade (dependências
+concluídas, ON, `executar_apos` alcançado, tentativas sobrando) para o agente:
+
+```json
+{ "jsonrpc": "2.0", "id": 1, "method": "tools/call",
+  "params": { "name": "task_next", "arguments": {
+    "agent": "Claude Code", "project": "meu-app", "lock_minutes": 90, "routine": "agendador-ia" } } }
+```
+
+A resposta traz `task` (com `id`, `codigo`, `titulo`, `instrucao`, `dependencias`, `tentativas`
+etc.) ou `task: null` com a fila vazia (com `routine`, grava um log `sem_tarefa`).
+`exclusive: true` limita a 1 task em execução por projeto.
+
+**2. Executar** a `instrucao` da task (código, commit, PR...).
+
+**3. Finalizar** — `task_finish` com o `id` recebido libera a trava e grava o log. Use o mesmo
+`agent` do `task_next` (confere o dono da trava):
+
+```json
+{ "jsonrpc": "2.0", "id": 2, "method": "tools/call",
+  "params": { "name": "task_finish", "arguments": {
+    "task_id": 42, "status": "concluida", "agent": "Claude Code", "routine": "agendador-ia",
+    "result": "Implementado o filtro por data, com testes.",
+    "pr_url": "https://github.com/minha-org/meu-app/pull/17", "commit_sha": "a1b2c3d",
+    "metadata": { "repositorio": "minha-org/meu-app", "branch": "feat/filtro-data", "arquivos_alterados": 4 } } } }
+```
+
+```json
+{ "jsonrpc": "2.0", "id": 3, "method": "tools/call",
+  "params": { "name": "task_finish", "arguments": {
+    "task_id": 43, "status": "recusada", "agent": "Claude Code",
+    "result": "A instrução pede para apagar dados de produção; precisa de decisão humana." } } }
+```
+
+```json
+{ "jsonrpc": "2.0", "id": 4, "method": "tools/call",
+  "params": { "name": "task_finish", "arguments": {
+    "task_id": 44, "status": "erro", "agent": "Claude Code",
+    "result": "Build falhou: dependência indisponível.",
+    "metadata": { "erro_mensagem": "npm ERR! 503 Service Unavailable" } } } }
+```
+
+| `status` | Quando usar | Efeito |
+|---|---|---|
+| `concluida` | Trabalho feito | Task concluída |
+| `recusada` | Fere uma regra, está ambígua ou precisa de decisão humana (explique em `result`) | Task recusada, sai da fila |
+| `erro` | Falha técnica | Volta para `pendente` se ainda houver tentativas (`tentativas`/`max_tentativas`); senão fica `erro` |
+
+**Listar** — `task_list` devolve as tasks não excluídas na ordem da fila (filtro opcional de
+`status`, `limit` 1–200, padrão 50; `include_instruction` traz instrução e resultado):
+
+```json
+{ "jsonrpc": "2.0", "id": 5, "method": "tools/call",
+  "params": { "name": "task_list", "arguments": {
+    "project": "meu-app", "status": ["pendente", "em_execucao"], "limit": 20 } } }
+```
+
+**Criar** — `task_create` (origem `mcp`); o código `<PREFIXO>-NNNN` é gerado se `code` for
+omitido. `type: "humano"` cria etapas de pessoas, que agentes não pegam:
+
+```json
+{ "jsonrpc": "2.0", "id": 6, "method": "tools/call",
+  "params": { "name": "task_create", "arguments": {
+    "project": "meu-app", "title": "Testes do filtro por data",
+    "instruction": "Cobrir com testes unitários o filtro por data da listagem.",
+    "type": "ia", "priority": 2, "order": 10, "dependencies": ["MEUAPP-0042"],
+    "execute_after": "2026-10-13T08:00:00-03:00", "max_attempts": 3 } } }
+```
 
 ## Memória via MCP
 
