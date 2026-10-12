@@ -45,17 +45,28 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
+### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.4
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-28.4** |
+| **Título da Sub-task:** | `reivindicar(agente, projeto)` em `worker/fila.ts` |
+| **Agente Responsável:** | Devin (Cognition AI) |
+| **Data e Hora de Início:** | 2026-10-12 12:34 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
-- **Subtarefas atômicas (~3 min):** 202 (atualizado em 2026-10-12 na revisão do quadro por Devin)
-- **Em Execução:** 0
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 42 subtarefas
-  - livres agora: 10 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.4, SUB-28.5, SUB-28.10, SUB-28.13, SUB-28.20, SUB-35.32, SUB-35.33)
-  - bloqueadas por dependência: 32
+- **Subtarefas atômicas (~3 min):** 202
+- **Em Execução:** 1 (SUB-28.4, Devin (Cognition AI), desde 2026-10-12 12:34)
+- **Pendentes:** 4 principais (25, 26, 28, 35) + 40 subtarefas
+  - livres agora: 9 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.5, SUB-28.10, SUB-28.13, SUB-28.31, SUB-35.32, SUB-35.33)
+  - bloqueadas por dependência: 31
   - reservadas: 0
-- **Concluídas:** 193 de 239 blocos (33 principais + 160 subtarefas)
+- **Concluídas:** 194 de 239 blocos (33 principais + 161 subtarefas)
 - **Canceladas:** 0
 
 ---
@@ -1964,7 +1975,7 @@
   - `SUB-28.1`: Contrato: identificadores e estado mínimo em `docs/langgraph-contrato.md` (`concluido`, `fc379a6`)
   - `SUB-28.2`: Dependências do worker no `package.json` (`pendente`)
   - `SUB-28.3`: Annotation `EstadoExecucao` em `worker/estado.ts` (`concluido`, `21c908b`)
-  - `SUB-28.4`: `reivindicar(agente, projeto)` em `worker/fila.ts` (`pendente`)
+  - `SUB-28.4`: `reivindicar(agente, projeto)` em `worker/fila.ts` (`em_execucao`)
   - `SUB-28.5`: Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts` (`pendente`)
   - `SUB-28.6`: Nó `carregarContexto` em `worker/nos/carregarContexto.ts` (`pendente`)
   - `SUB-28.7`: Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts` (`pendente`)
@@ -2033,8 +2044,8 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:15 — Devin (revisão do quadro): commit e arquivos conferidos na `main`; `npm run typecheck`, `npm test` e `npm run build` verdes
 
 #### [ ] SUB-28.4: `reivindicar(agente, projeto)` em `worker/fila.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:34)
 - **Depende de:** SUB-28.28
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `worker/fila.ts` com `reivindicar(agente, projeto)` (RPC `pegar_proxima_task`), reutilizando `db()` de `api/_lib/supabase.ts`. `finalizar` fica na SUB-28.30.
