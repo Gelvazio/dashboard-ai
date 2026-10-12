@@ -885,7 +885,7 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-20.9: Componente `TagSugestoes` em `src/components/ui/TagSugestoes.tsx`
-- **Status:** pendente
+- **Status:** em_execucao
 - **Executor:** nenhum
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)

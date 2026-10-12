@@ -22,6 +22,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo no quadro principal |
 
+### 🔒 TRAVA ADICIONAL — Claude Code — SUB-20.9
+
+|| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-20.9** |
+| **Título da Sub-task:** | Componente `TagSugestoes` em `src/components/ui/TagSugestoes.tsx` |
+| **Agente Responsável:** | Claude Code |
+| **Data e Hora de Início:** | 2026-10-12 00:52 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ### 🔒 TRAVA ADICIONAL — Codex (OpenAI)
 
 | Propriedade | Valor Atual |
