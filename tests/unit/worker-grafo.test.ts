@@ -97,10 +97,10 @@ describe('criarGrafo até finalizar_task (RPC falsa)', () => {
     expect(rpcs[0].args).toMatchObject({
       p_task_id: 5,
       p_status: 'concluida',
-      p_resultado: expect.stringContaining('passo-0, passo-1'),
+      p_resultado: '2 passo(s) concluído(s): passo-0, passo-1',
       p_metadados: {
         execucao_id: 'exec-5',
-        chaves: expect.arrayContaining(['passo-0', 'passo-1']),
+        chaves: ['passo-0', 'passo-1'],
         erro_mensagem: null,
         passo_falho: null,
       },

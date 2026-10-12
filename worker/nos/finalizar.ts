@@ -7,9 +7,16 @@ export interface DepsFinalizar {
   finalizar: (args: FinalizarArgs) => Promise<void>;
 }
 
+const CHAVE_PASSO = /^passo-\d+$/;
+
+/** Chaves dos passos executados (`passo-<i>`), sem memórias, contadores nem classe de falha. */
+export function chavesDosPassos(resultados: Record<string, unknown>): string[] {
+  return Object.keys(resultados).filter((chave) => CHAVE_PASSO.test(chave));
+}
+
 /** Resumo sem valores dos resultados (podem conter dados sensíveis): só os passos concluídos. */
 export function resumoSeguro(resultados: Record<string, unknown>): string {
-  const passos = Object.keys(resultados).filter((chave) => chave !== 'erro');
+  const passos = chavesDosPassos(resultados);
   const resumo = passos.length ? `${passos.length} passo(s) concluído(s): ${passos.join(', ')}` : 'Nenhum passo executado';
   return resumo.slice(0, LIMITE_RESUMO);
 }
@@ -36,7 +43,7 @@ export async function finalizarNode(state: typeof EstadoExecucao.State, deps: De
     resultado: resumoSeguro(resultados),
     erroMensagem: status === 'erro' ? String(erro).slice(0, LIMITE_RESUMO) : status === 'recusada' ? 'Aprovação recusada' : undefined,
     passoFalho: status === 'erro' && passoAtual ? passoAtual : undefined,
-    chaves: Object.keys(resultados).filter((chave) => chave !== 'erro'),
+    chaves: chavesDosPassos(resultados),
   });
 
   return { final: true };
