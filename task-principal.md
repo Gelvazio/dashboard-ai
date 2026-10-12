@@ -49,17 +49,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-35.25
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.25** |
-| **Título da Sub-task:** | Gráfico `GraficoPorStatus` em `src/components/monitor/GraficoPorStatus.tsx` |
-| **Agente Responsável:** | DashboardAI-Clone 02 |
-| **Data e Hora de Início:** | 2026-10-12 01:38 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 03 (Grok Bot) — SUB-35.27
 
 | Propriedade | Valor Atual |
@@ -2246,7 +2235,7 @@
   - `SUB-35.22`: Registro do Chart.js e paleta em `src/lib/charts.ts` (`concluido`, `cabdbc0`)
   - `SUB-35.23`: Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx` (`pendente`)
   - `SUB-35.24`: Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx` (`concluido`, `4bc0b25`)
-  - `SUB-35.25`: Gráfico `GraficoPorStatus` em `src/components/monitor/GraficoPorStatus.tsx` (`em_execucao`)
+  - `SUB-35.25`: Gráfico `GraficoPorStatus` em `src/components/monitor/GraficoPorStatus.tsx` (`concluido`)
   - `SUB-35.26`: Gráfico `GraficoPorAgente` em `src/components/monitor/GraficoPorAgente.tsx` (`pendente`)
   - `SUB-35.27`: Linha do tempo `LinhaDoTempoAgentes` em `src/components/monitor/LinhaDoTempoAgentes.tsx` (`em_execucao`)
   - `SUB-35.28`: Feed `FeedEventos` em `src/components/monitor/FeedEventos.tsx` (`pendente`)
@@ -2514,15 +2503,15 @@
 - **Commit:** `4bc0b25`
 - **Anotação:** Criado `src/components/monitor/AtividadeAgentesGrid.tsx`: grade responsiva (1/2/3 colunas) de `AgenteCard`, ordenada por estado (ativo, ocioso, sem sinal, finalizado) e depois pelo sinal mais recente; estado vazio "Nenhum agente reportou atividade". Exportado no barrel sem remover exports. `npm run typecheck`, `npm test` e `npm run build` OK.
 
-#### [🔄] SUB-35.25: Gráfico `GraficoPorStatus` em `src/components/monitor/GraficoPorStatus.tsx`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 02 (início: 2026-10-12 01:38)
+#### [x] SUB-35.25: Gráfico `GraficoPorStatus` em `src/components/monitor/GraficoPorStatus.tsx`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 02 (2026-10-12 01:39 → 2026-10-12 01:40)
 - **Depende de:** SUB-35.22, SUB-35.16
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Rosca (`Doughnut` do `react-chartjs-2`) com `contarPorStatus`, cores de `CORES_ESTADO`, legenda e texto alternativo acessível. Exportar no barrel.
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `a2d2ed9`
+- **Anotação:** Criado `src/components/monitor/GraficoPorStatus.tsx` (`{ atividades, agora?, limites?, escuro?, className? }`): rosca `Doughnut` (react-chartjs-2, registro de `@/lib/charts`) com `contarPorStatus` na ordem fixa dos estados, cores de `CORES_ESTADO` conforme o tema (padrão: classe `dark` no `<html>`), legenda com cor de `CORES_EIXO`, `role=img` + `aria-label` e `figcaption` sr-only com o texto alternativo. Exportado no barrel `src/components/monitor/index.ts` (mantidos os exports de outros agentes). typecheck e build OK.
 
 #### [x] SUB-35.26: Gráfico `GraficoPorAgente` em `src/components/monitor/GraficoPorAgente.tsx`
 - **Status:** concluido
