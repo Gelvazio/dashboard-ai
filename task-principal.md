@@ -8,8 +8,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 26
-- **Em Execução:** 1 (`SUB-01.1`)
-- **Pendentes:** 24
+- **Em Execução:** 2 (`SUB-01.1`, `SUB-06`)
+- **Pendentes:** 23
 - **Concluídas:** 3
 - **Canceladas:** 0
 
@@ -106,8 +106,8 @@
 ## 🧠 FASE 3: Módulo Backend / API Serverless de Memória (Jev-Mem MCP)
 
 ### [ ] SUB-06: Estrutura do Endpoint Serverless Vercel MCP
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:23)
 - **Depende de:** SUB-04, SUB-05
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Configurar `api/mcp.ts`, `api/tsconfig.json` e rotas serverless Vercel para responder no protocolo JSON-RPC.
