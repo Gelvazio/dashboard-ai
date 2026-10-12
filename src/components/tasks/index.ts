@@ -6,3 +6,4 @@ export { Dependencias } from './Dependencias';
 export { TaskFormModal } from './TaskFormModal';
 export { TaskRowActions } from './TaskRowActions';
 export { TaskDetailModal } from './TaskDetailModal';
+export { TaskToolbar } from './TaskToolbar';

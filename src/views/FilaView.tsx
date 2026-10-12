@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
+import { filtrarTasks, type FiltroLocal } from '@/lib/tasks';
 import { AlertCircle, ListTodo, Plus } from 'lucide-react';
 import { useProjetoAtual } from '@/hooks/useProjetoAtual';
 import { useTasks } from '@/hooks/useTasks';
@@ -8,13 +9,16 @@ import { EmConstrucao } from '@/components/EmConstrucao';
 import { Botao } from '@/components/ui/Botao';
 import { ConfirmDialog } from '@/components/ui/ConfirmDialog';
 import { useAcoesTask } from '@/hooks/useAcoesTask';
-import { ProgressoFila, TaskDetailModal, TaskFormModal, TaskRowActions, TaskTable } from '@/components/tasks';
+import { ProgressoFila, TaskDetailModal, TaskFormModal, TaskRowActions, TaskTable, TaskToolbar } from '@/components/tasks';
 import type { Task } from '@/types';
 
 /** Fila de tarefas do projeto selecionado. */
 export function FilaView() {
   const { projeto } = useProjetoAtual();
-  const { tasks, carregando, erro, recarregar, substituir, remover } = useTasks(projeto?.id);
+  const { tasks, carregando, erro, recarregar, substituir, remover, atualizadoEm } = useTasks(projeto?.id);
+  const [filtro, setFiltro] = useState<FiltroLocal>({ busca: '', status: 'todos' });
+  const visiveis = useMemo(() => filtrarTasks(tasks, filtro), [tasks, filtro]);
+  const contagem = useMemo(() => tasks.reduce<Record<string, number>>((a, t) => ({ ...a, [t.status]: (a[t.status] ?? 0) + 1 }), {}), [tasks]);
   const indicadores = useIndicadores(projeto?.id);
   const acoes = useAcoesTask({ projectId: projeto?.id, substituir, remover, recarregar, onMudou: () => void indicadores.recarregar() });
   const [excluindo, setExcluindo] = useState<Task | null>(null);
@@ -41,7 +45,7 @@ export function FilaView() {
             <ListTodo className="size-4 text-brand-500" aria-hidden />
             Tasks
             <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">
-              {tasks.length}
+              {visiveis.length === tasks.length ? tasks.length : `${visiveis.length}/${tasks.length}`}
             </span>
           </h2>
           <ProgressoFila tasks={tasks} />
@@ -59,8 +63,21 @@ export function FilaView() {
             {erro}
           </p>
         )}
+        <TaskToolbar
+          filtro={filtro}
+          onFiltro={setFiltro}
+          contagem={contagem}
+          carregando={carregando}
+          onRecarregar={() => {
+            void recarregar();
+            void indicadores.recarregar();
+          }}
+          atualizadoEm={atualizadoEm}
+        />
         <TaskTable
-          tasks={tasks}
+          tasks={visiveis}
+          referencia={tasks}
+          vazio={tasks.length ? 'Nenhuma task corresponde aos filtros.' : undefined}
           carregando={carregando}
           onAbrir={(t) => setDetalhe(t.id)}
           onAlternar={(t) => void acoes.alternar(t)}

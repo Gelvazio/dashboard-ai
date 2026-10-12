@@ -173,3 +173,20 @@ export function taskComoMarkdown(t: Task, projeto?: { nome: string; slug: string
   if (t.resultado?.trim()) linhas.push('', '## Resultado', '', t.resultado.trim());
   return `${linhas.join('\n')}\n`;
 }
+
+export interface FiltroLocal {
+  busca?: string;
+  status?: TaskStatus | 'todos';
+}
+
+const semAcento = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+/** Filtro instantâneo na lista já carregada (código, título e instrução; status). */
+export function filtrarTasks<T extends Pick<Task, 'codigo' | 'titulo' | 'instrucao' | 'status'>>(tasks: T[], f: FiltroLocal): T[] {
+  const termo = semAcento(f.busca?.trim() ?? '');
+  return tasks.filter(
+    (t) =>
+      (!f.status || f.status === 'todos' || t.status === f.status) &&
+      (!termo || semAcento(`${t.codigo} ${t.titulo} ${t.instrucao}`).includes(termo)),
+  );
+}

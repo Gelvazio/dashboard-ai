@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
-  acoesDisponiveis, bloqueadaPorDependencia, dependenciasDa, formatarDataHora, infoPrioridade, progressoTentativas, resumo, STATUS_INFO, tempoRelativo,
+  acoesDisponiveis, bloqueadaPorDependencia, filtrarTasks, dependenciasDa, formatarDataHora, infoPrioridade, progressoTentativas, resumo, STATUS_INFO, tempoRelativo,
 } from '@/lib/tasks';
 import { TASK_STATUS, type Task } from '@/types';
 
@@ -59,5 +59,22 @@ describe('lib/tasks', () => {
     expect(acoesDisponiveis({ status: 'recusada', tipo: 'ia', excluido: false }).reabrir).toBe(true);
     expect(acoesDisponiveis({ status: 'cancelada', tipo: 'ia', excluido: false })).toMatchObject({ reabrir: true, cancelar: false, alternar: false });
     expect(acoesDisponiveis({ status: 'concluida', tipo: 'ia', excluido: false })).toMatchObject({ reabrir: false, cancelar: false, alternar: false, editar: true });
+  });
+});
+
+describe('filtrarTasks', () => {
+  const lista = [
+    { codigo: 'LOJA-0001', titulo: 'Criar página de checkout', instrucao: 'Usar Stripe', status: 'pendente' as const },
+    { codigo: 'LOJA-0002', titulo: 'Corrigir frete', instrucao: 'Cálculo por CEP', status: 'erro' as const },
+  ];
+  it('busca em código, título e instrução sem acento/maiúsculas', () => {
+    expect(filtrarTasks(lista, { busca: 'pagina' }).map((t) => t.codigo)).toEqual(['LOJA-0001']);
+    expect(filtrarTasks(lista, { busca: 'calculo' }).map((t) => t.codigo)).toEqual(['LOJA-0002']);
+    expect(filtrarTasks(lista, { busca: '0002' })).toHaveLength(1);
+    expect(filtrarTasks(lista, {})).toHaveLength(2);
+  });
+  it('filtra por status', () => {
+    expect(filtrarTasks(lista, { status: 'erro' }).map((t) => t.codigo)).toEqual(['LOJA-0002']);
+    expect(filtrarTasks(lista, { status: 'todos', busca: 'stripe' })).toHaveLength(1);
   });
 });
