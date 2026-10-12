@@ -1,5 +1,14 @@
 import { TIPOS_EVENTO_AGENTE, type AgentEvent, type AtividadeAgente, type TipoEventoAgente } from '@/types/database';
 
+export type EstadoAgente = 'ativo' | 'ocioso' | 'sem_sinal' | 'finalizado';
+
+export interface LimitesEstadoAgente {
+  /** Até quantos segundos desde o último sinal o agente conta como ativo (padrão 120). */
+  ativoAteSeg?: number;
+  /** Até quantos segundos conta como ocioso; acima disso, sem sinal (padrão 900). */
+  ociosoAteSeg?: number;
+}
+
 /** Ordem do feed: `created_at` mais recente primeiro; empate pelo `id` maior. */
 function maisRecentePrimeiro(a: AgentEvent, b: AgentEvent): number {
   const ta = Date.parse(a.created_at);
@@ -20,15 +29,6 @@ export function mesclarEvento(lista: readonly AgentEvent[], novo: AgentEvent, ma
   const i = lista.findIndex((e) => maisRecentePrimeiro(novo, e) < 0);
   const mesclada = i === -1 ? [...lista, novo] : [...lista.slice(0, i), novo, ...lista.slice(i)];
   return mesclada.length > limite ? mesclada.slice(0, limite) : mesclada;
-}
-
-export type EstadoAgente = 'ativo' | 'ocioso' | 'sem_sinal' | 'finalizado';
-
-export interface LimitesEstadoAgente {
-  /** Até quantos segundos desde o último sinal o agente conta como ativo (padrão 120). */
-  ativoAteSeg?: number;
-  /** Até quantos segundos conta como ocioso; acima disso, sem sinal (padrão 900). */
-  ociosoAteSeg?: number;
 }
 
 /** Tipos de evento que encerram o trabalho do agente. */

@@ -31,12 +31,12 @@
 
 | Propriedade | Valor Atual |
 |---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.20** |
-| **Título da Sub-task:** | Hook `useAtividadeAgentes(projectId)` em `src/hooks/useAtividadeAgentes.ts` |
-| **Agente Responsável:** | Claude Code |
-| **Data e Hora de Início:** | 2026-10-12 01:37 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
+| **Status da Trava:** | ✅ **LIVRE** |
+| **Sub-task em Execução:** | **—** |
+| **Título da Sub-task:** | — |
+| **Agente Responsável:** | — |
+| **Data e Hora de Início:** | — |
+| **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
 ### 🔒 TRAVA ADICIONAL — Codex (OpenAI)
 
@@ -2475,15 +2475,15 @@
 - **Commit:** `7d2181e`
 - **Anotação:** Hook carrega `listarEventos`, assina `assinarEventos` e mescla com `mesclarEvento`; expõe `eventos`, `statusConexao`, `erro`, `recarregar`; exportado em `src/hooks/index.ts`.
 
-#### [ ] SUB-35.20: Hook `useAtividadeAgentes(projectId)` em `src/hooks/useAtividadeAgentes.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [x] SUB-35.20: Hook `useAtividadeAgentes(projectId)` em `src/hooks/useAtividadeAgentes.ts`
+- **Status:** concluido
+- **Executor:** Claude Code (início: 2026-10-12 01:37, conclusão: 2026-10-12 01:42)
 - **Depende de:** SUB-35.19, SUB-35.15
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Carrega `atividadeAtual`, recarrega (com debounce de 1 s) quando `useEventosAgentes` recebe evento novo e atualiza um relógio a cada 15 s para recalcular `estadoDoAgente`; expõe `{ atividades, agora, carregando, erro }`. Exportar em `src/hooks/index.ts`.
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** pendente
-- **Anotação:** pendente
+- **Anotação:** Hook `useAtividadeAgentes(projectId)` em `src/hooks/useAtividadeAgentes.ts`: carrega `atividadeAtual`, `recarregarDebounced` (1 s debounce) para quando `useEventosAgentes` recebe evento novo, relógio a cada 15 s para recalcular `estadoDoAgente`. Expõe `{ atividades, agora, carregando, erro, recarregar, recarregarDebounced }`. Exportado em `src/hooks/index.ts`. typecheck OK.
 
 #### [x] SUB-35.21: Instalar `chart.js` e `react-chartjs-2`
 - **Status:** concluido

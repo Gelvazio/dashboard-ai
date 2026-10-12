@@ -23,3 +23,4 @@ export { useMemorias } from './useMemorias';
 export { useBuscaSemantica } from './useBuscaSemantica';
 export { useExcluirMemoria } from './useExcluirMemoria';
 export { useEventosAgentes, type StatusConexaoEventos } from './useEventosAgentes';
+export { useAtividadeAgentes } from './useAtividadeAgentes';
