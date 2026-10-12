@@ -2588,8 +2588,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-35.40: Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 01:08)
 - **Depende de:** SUB-35.2
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Registrar `agent_event` (`registerTool`) para agentes fora do LangGraph (Claude Code, Codex…): args `project?`, `agente`, `tipo`, `task_codigo?`, `etapa?`, `status?`, `mensagem?`, `chave_idempotencia?`; exige `MCP_AUTH_TOKEN` (`requireAuth`), resolve o projeto (`resolveProject`) e insere em `agent_events`. Importar em `api/mcp.ts` junto das outras ferramentas.

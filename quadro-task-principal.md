@@ -66,14 +66,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:08 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-35.40
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.40** |
+| **Título da Sub-task:** | Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts` |
+| **Agente Responsável:** | DashboardAI-Clone 08 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:08 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (4)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-35.40** | Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:08 | SUB-35.2 |
 | **SUB-34.3** | Modais da fila sob demanda na `src/views/FilaView.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:08 | SUB-34.1 |
 | **SUB-35.6** | Teste de integração de `agent_events` (RLS e trigger) | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:07 | SUB-35.2, SUB-35.3 |
 | **SUB-19.8** | Integrar a busca na `src/views/MemoriaView.tsx` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:07 | SUB-19.7, SUB-21.9 |
@@ -81,7 +93,7 @@
 
 ---
 
-### ⏳ PENDENTES (150)
+### ⏳ PENDENTES (149)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -209,7 +221,6 @@
 | **SUB-35.37** | `iniciarHeartbeat()` em `worker/heartbeat.ts` | 4 | Fase 12 | SUB-35.33 — ⛓️ bloqueada |
 | **SUB-35.38** | Ligar o heartbeat no CLI `worker/index.ts` | 4 | Fase 12 | SUB-35.37, SUB-28.15 — ⛓️ bloqueada |
 | **SUB-35.39** | Teste do worker: eventos emitidos na ordem dos nós | 4 | Fase 12 | SUB-35.36, SUB-28.17 — ⛓️ bloqueada |
-| **SUB-35.40** | Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts` | 4 | Fase 12 | SUB-35.2 — ⛓️ bloqueada |
 | **SUB-35.41** | Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts` | 4 | Fase 12 | SUB-35.40 — ⛓️ bloqueada |
 | **SUB-35.43** | CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`) | 4 | Fase 12 | SUB-35.42 — ⛓️ bloqueada |
 | **SUB-35.44** | Seção "Monitor em tempo real" no `README.md` | 4 | Fase 12 | SUB-35.31, SUB-35.40, SUB-35.43 — ⛓️ bloqueada |
@@ -588,3 +599,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:08 | DashboardAI-Clone 10 (Grok Bot) | SUB-34.3 | — | Lock: assumindo SUB-34.3 (Modais da fila sob demanda na `src/views/FilaView.tsx`) |
 | 2026-10-12 01:08 | DashboardAI-Clone 06 | SUB-35.21 | `73d73ad` | Instalados `chart.js@^4.5.1` e `react-chartjs-2@^5.3.1` em `dependencies` (versões fixadas no `package-lock.json`); ainda sem uso no código (registro/paleta na SUB-35.22). `npm ci` e `npm audit --audit-level=high` sem vulnerabilidades; `npm run build` OK. |
 | 2026-10-12 01:08 | DashboardAI-Clone 02 | SUB-35.42 | `53a5c93` | Criado `scripts/espelhar_quadro_eventos.py` com a função pura `commits_para_eventos(linhas)` (entrada `git log --format='%H%x09%aI%x09%s'`): `lock: assumindo sub-task SUB-X por <agente>` -> `trava`; `feat(SUB-X): … — <agente>` -> `commit`; `docs(board): concluir SUB-X … de <agente>` -> `fim`; agente ausente vira 'desconhecido'; `chave_idempotencia = 'git:<sha>'`, `metadados.sha`, `created_at` = data do commit; linhas malformadas/outros commits ignorados. Testes em `scripts/test_espelhar_quadro_eventos.py` (4, unittest OK); conferido contra o `git log` real do repo. |
+| 2026-10-12 01:08 | DashboardAI-Clone 08 (Grok Bot) | SUB-35.40 | — | Lock: assumindo SUB-35.40 (Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts`) |
