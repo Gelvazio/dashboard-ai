@@ -44,28 +44,16 @@
 | **Data e Hora de Início:** | 2026-10-11 22:41 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot)
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-15** |
-| **Título da Sub-task:** | Barra de Ferramentas e Filtros em Tempo Real |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-11 23:24 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27** | Autenticação e Login com Supabase Auth | Codex (OpenAI) | 2026-10-11 22:27 | SUB-03, SUB-29 |
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` | xAI (Grok) | 2026-10-11 22:41 | SUB-06 |
-| **SUB-15** | Barra de Ferramentas e Filtros em Tempo Real | DashboardAI (Grok Bot) | 2026-10-11 23:24 | SUB-14 |
 
 ---
 
@@ -86,7 +74,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (23)
+### ✅ CONCLUÍDAS (24)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -113,6 +101,7 @@
 | **SUB-13** | Painel de Indicadores Gerais (KPI Cards) | DashboardAI (Grok Bot) | 2026-10-11 23:17 | 2026-10-11 23:19 | `4af10c9` |
 | **SUB-18** | Controles de Ação Rápida na Linha da Tabela | DashboardAI (Grok Bot) | 2026-10-11 23:19 | 2026-10-11 23:21 | `1e8c3a7` |
 | **SUB-17** | Modal de Visualização Detalhada da Task | DashboardAI (Grok Bot) | 2026-10-11 23:21 | 2026-10-11 23:23 | `231b665` |
+| **SUB-15** | Barra de Ferramentas e Filtros em Tempo Real | DashboardAI (Grok Bot) | 2026-10-11 23:24 | 2026-10-11 23:26 | `1f94252` |
 
 ---
 
@@ -154,3 +143,4 @@
 | 2026-10-11 23:19 | DashboardAI (Grok Bot) | SUB-13 | `4af10c9` | Seis cards no topo da Fila escopados pelo projeto: Total de tasks (% concluídas), Pendentes, Em execução (ícone girando quando há agente), Concluídas (com erro/recusadas), Memórias (projeto + globais, novo contarMemorias com count head) e Última execução (tempo relativo, status e task; tooltip com data/rotina/agente). Números com contagem animada (respeita reduzir movimento), entrada escalonada, esqueletos de carregamento e falhas parciais isoladas (Promise.allSettled). Recarregam junto com a tabela após salvar task. Validado: typecheck, build, vitest (unit+integração, contarMemorias testado) e screenshots 1280x800/390x844. |
 | 2026-10-11 23:21 | DashboardAI (Grok Bot) | SUB-18 | `1e8c3a7` | Switch ON/OFF na coluna da tabela com atualização otimista (reverte em erro); botões Reabrir (erro/recusada/cancelada, zera tentativas), Cancelar, Concluir (só tasks humanas pendentes), Editar e Excluir (confirmação em diálogo; exclusão lógica com Desfazer no aviso). Ações exibidas conforme acoesDisponiveis(), que espelha a trigger do banco (task em execução fica bloqueada). Indicadores recarregam após cada ação. Validado: typecheck, build, vitest (unit+integração), persistência conferida no banco local e screenshots 1280x800/390x844. |
 | 2026-10-11 23:23 | DashboardAI (Grok Bot) | SUB-17 | `231b665` | Clique na linha (ou no código, acessível por teclado) abre a visualização completa: instrução formatada (abas Formatado/Texto), relatório da IA destacado por status, link do PR, SHA do commit, tentativas, dependências, datas, origem e arquivo; aviso de trava quando em execução. Botões de copiar (instrução, relatório, PR, SHA) e Copiar tudo em Markdown. Renderizador Markdown próprio sem HTML cru (sem XSS; só links http/https/mailto), testado. Validado: typecheck, build, vitest (unit+integração) e screenshots 1280x800/390x844. |
+| 2026-10-11 23:26 | DashboardAI (Grok Bot) | SUB-15 | `1f94252` | Busca instantânea no cliente (código, título e instrução; sem acento/maiúsculas), filtro por status com contagem, contador filtradas/total, botão Recarregar (tabela + indicadores, com hora da última atualização) e mensagem de vazio por filtro. Dependências seguem resolvidas pela lista completa. Validado: typecheck, build, vitest (unit+integração) e screenshot. |

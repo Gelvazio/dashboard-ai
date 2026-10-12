@@ -9,9 +9,9 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
-- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-15`)
+- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
 - **Pendentes:** 10
-- **Concluídas:** 23
+- **Concluídas:** 24
 - **Canceladas:** 0
 
 ---
@@ -268,16 +268,16 @@
 - **Commit:** `830979e`
 - **Anotação:** Arquivos: src/lib/tasks.ts, src/hooks/useTasks.ts, src/components/ui/Tooltip.tsx, src/components/tasks/*, src/views/FilaView.tsx, tests/unit/tasks.test.ts.
 
-### [🔄] SUB-15: Barra de Ferramentas e Filtros em Tempo Real
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:24)
+### [x] SUB-15: Barra de Ferramentas e Filtros em Tempo Real
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:24, conclusão: 2026-10-11 23:26)
 - **Depende de:** SUB-14
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar barra de filtros com busca textual (por código, título e instrução), filtro dropdown por status e botão de recarregamento manual.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Filtros aplicados instantaneamente na tabela sem latência perceptível.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `1f94252`
+- **Anotação:** Arquivos: src/components/tasks/TaskToolbar.tsx, lib/tasks.filtrarTasks (+testes), FilaView.
 
 ### [x] SUB-16: Modal de Cadastro e Edição de Task
 - **Status:** concluido
