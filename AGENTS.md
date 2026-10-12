@@ -140,6 +140,11 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
    - ⛔ **Não** usar `git pull --all` nem `git pull` sem `--rebase`: sem o `--rebase` o comando cria um **merge**, proibido por esta seção. Para "pegar tudo de todos os remotos", a forma correta é `git fetch --all` seguido de `git pull --rebase origin main`.
    - Este item é **verificado mecanicamente** pelo hook [`.githooks/pre-merge-commit`](.githooks/pre-merge-commit), que recusa o merge (ver seção 1.3).
 
+9. **Resumo de Progresso: editar só o próprio item:**
+   - Ao travar ou concluir um item, mude no `📊 Resumo de Progresso` **apenas o trecho do seu item** (incluir ou retirar o código dele de "livres agora", "em execução", "bloqueadas", e somar/subtrair 1 nas contagens).
+   - ⛔ **Nunca reescrever a linha inteira** (nem gerá-la de uma lista fixa, nem por script): outro agente pode ter criado, travado ou concluído itens depois do seu último `pull`, e a reescrita apaga esses itens do resumo sem aviso.
+   - Logo antes de editar o resumo, faça `git fetch --all --prune` + `git pull --rebase origin main` e **releia** o resumo atual; depois do commit, confira no diff que só o seu trecho mudou.
+
 ---
 
 ## 🎯 1.2 PRIORIDADE DAS TAREFAS (OBRIGATÓRIA)
