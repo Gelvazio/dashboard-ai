@@ -44,6 +44,17 @@
 | **Data e Hora de Início:** | 2026-10-12 00:52 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.24
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-27.24** |
+| **Título da Sub-task:** | `redefinirSenha()` em `src/services/authService.ts` |
+| **Agente Responsável:** | DashboardAI-Clone 01 |
+| **Data e Hora de Início:** | 2026-10-12 00:53 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -52,6 +63,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-27.24** | `redefinirSenha()` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:53 | SUB-27.5 |
 | **SUB-19.4** | Componente `SimilaridadeBadge` em `src/components/memoria/` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:52 | SUB-19.10 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
@@ -451,3 +463,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:53 | DashboardAI-Clone 06 | SUB-20.4 | `3d44cd1` | Criado `src/components/ui/TagInput.tsx` (`{ valor, onChange, erro?, rotulo?, placeholder?, desabilitado? }`): chips `#tag` com botão de remover (aria-label), Enter/vírgula adicionam o texto via `parseTags` (ignora tags já presentes), Backspace com campo vazio remove a última, colar texto com separadores adiciona várias, perder o foco confirma o texto pendente; erro com `aria-invalid`/`aria-describedby` e borda vermelha; modo escuro. Sugestões ficam no `TagSugestoes` (SUB-20.9). `npm run typecheck`, `npm run build` e `npm test` OK. |
 | 2026-10-12 00:53 | DashboardAI-Clone 02 | SUB-23.2 | `84011c8` | Adicionado `classificarPendentes(tasks, agora)` em `src/lib/saudeFila.ts`: agrupa pendentes não excluídas em prontas/bloqueadas_dependencia/desligadas/agendadas/sem_tentativas (um grupo por task; precedência desligada > sem tentativas > agendada > dependência) usando `dependenciasDa`/`bloqueadaPorDependencia`. Teste com um caso de cada grupo em `tests/unit/saudeFila.test.ts`. typecheck e `npm test` verdes. |
 | 2026-10-12 00:53 | DashboardAI-Clone 01 | SUB-27.23 | `c696d9f` | Adicionado `obterSessao(client = getSupabase())` em `src/services/authService.ts`: `auth.getSession()` -> sessão ou `null`; erro -> `ServiceError(mensagemErroAuth(error), 'AUTH')`. typecheck verde. |
+| 2026-10-12 00:53 | DashboardAI-Clone 01 | SUB-27.24 | — | Lock: assumindo SUB-27.24 (`redefinirSenha()` em `src/services/authService.ts`) |

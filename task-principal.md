@@ -1721,8 +1721,8 @@
 - **Anotação:** Adicionado `obterSessao(client = getSupabase())` em `src/services/authService.ts`: `auth.getSession()` -> sessão ou `null`; erro -> `ServiceError(mensagemErroAuth(error), 'AUTH')`. typecheck verde.
 
 #### [ ] SUB-27.24: `redefinirSenha()` em `src/services/authService.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.5
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `redefinirSenha(email, redirectTo, client)` (`auth.resetPasswordForEmail` com `redirectTo`), com mensagens via `mensagemErroAuth`.
