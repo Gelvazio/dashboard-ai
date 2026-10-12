@@ -1640,15 +1640,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-27.16: `urlDeRetorno()` para link mágico e redefinição de senha
-- **Status:** em_execucao
+#### [x] SUB-27.16: `urlDeRetorno()` para link mágico e redefinição de senha
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar em `src/lib/auth.ts` `urlDeRetorno(loc: Pick<Location,'origin'|'pathname'|'hash'>): string` (origem + caminho + hash da tela, sem tokens anteriores). Testes. Quem a usa como `redirectTo` é o `RecuperarAcesso` (SUB-27.19).
 - **Critérios de Aceitação:** `npm test` passa.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `1e3240c`
+- **Anotação:** Adicionado `urlDeRetorno(loc)` em `src/lib/auth.ts`: origem + caminho + tela do hash (`#/rota`), descartando tokens/parâmetros anteriores. 4 testes em `tests/unit/auth.test.ts`; vitest e typecheck verdes.
 
 #### [ ] SUB-27.17: Documentar configuração do Supabase Auth em `src/README.md`
 - **Status:** pendente
