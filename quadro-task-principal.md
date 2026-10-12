@@ -88,14 +88,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:10 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 05 (Grok Bot) — SUB-35.8
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.8** |
+| **Título da Sub-task:** | Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` |
+| **Agente Responsável:** | DashboardAI-Clone 05 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:10 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (4)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-35.8** | Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:10 | SUB-35.5 |
 | **SUB-35.7** | Seção "Eventos dos agentes (07)" no `database/README.md` | DashboardAI-Clone 02 | 2026-10-12 01:10 | SUB-35.4, SUB-35.5 |
 | **SUB-35.41** | Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:10 | SUB-35.40 |
 | **SUB-20.7** | Botão "Nova memória" na `src/views/MemoriaView.tsx` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:10 | SUB-20.6, SUB-19.8, SUB-21.9 |
@@ -105,7 +117,7 @@
 
 ---
 
-### ⏳ PENDENTES (146)
+### ⏳ PENDENTES (145)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -200,7 +212,6 @@
 | **SUB-27.28** | Varredura do bundle por `service_role` (SUB-27) | 3 | Fase 10 | SUB-27.22 — ⛓️ bloqueada |
 | **SUB-35** | Monitor em Tempo Real dos Agentes (mãe) | 4 | Fase 12 | SUB-12, SUB-29, SUB-30; SUB-35.1 a SUB-35.46 |
 | **SUB-35.7** | Seção "Eventos dos agentes (07)" no `database/README.md` | 4 | Fase 12 | SUB-35.4, SUB-35.5 — 🔄 em execução por DashboardAI-Clone 02 |
-| **SUB-35.8** | Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` | 4 | Fase 12 | SUB-35.5 — ⛓️ bloqueada |
 | **SUB-35.9** | `listarEventos()` em `src/services/eventService.ts` | 4 | Fase 12 | SUB-35.8 — ⛓️ bloqueada |
 | **SUB-35.10** | `atividadeAtual()` em `src/services/eventService.ts` | 4 | Fase 12 | SUB-35.9 — ⛓️ bloqueada |
 | **SUB-35.11** | `assinarEventos()` (Supabase Realtime) em `src/services/eventService.ts` | 4 | Fase 12 | SUB-35.10 — ⛓️ bloqueada |
@@ -626,3 +637,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:10 | DashboardAI-Clone 04 (Grok Bot) | SUB-20.7 | — | Lock: assumindo SUB-20.7 (Botão "Nova memória" na `src/views/MemoriaView.tsx`) |
 | 2026-10-12 01:10 | DashboardAI-Clone 08 (Grok Bot) | SUB-35.41 | — | Lock: assumindo SUB-35.41 (Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts`) |
 | 2026-10-12 01:10 | DashboardAI-Clone 02 | SUB-35.7 | — | Lock: assumindo SUB-35.7 (Seção "Eventos dos agentes (07)" no `database/README.md`) |
+| 2026-10-12 01:10 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.8 | — | Lock: assumindo SUB-35.8 (Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts`) |

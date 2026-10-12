@@ -2152,7 +2152,7 @@
   - `SUB-35.5`: Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` (`concluido`)
   - `SUB-35.6`: Teste de integração de `agent_events` (RLS e trigger) (`concluido`)
   - `SUB-35.7`: Seção "Eventos dos agentes (07)" no `database/README.md` (`em_execucao`)
-  - `SUB-35.8`: Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` (`pendente`)
+  - `SUB-35.8`: Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` (`em_execucao`)
   - `SUB-35.9`: `listarEventos()` em `src/services/eventService.ts` (`pendente`)
   - `SUB-35.10`: `atividadeAtual()` em `src/services/eventService.ts` (`pendente`)
   - `SUB-35.11`: `assinarEventos()` (Supabase Realtime) em `src/services/eventService.ts` (`pendente`)
@@ -2268,8 +2268,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-35.8: Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 01:10)
 - **Depende de:** SUB-35.5
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `AgentEvent`, `AgentEventInsert`, `TipoEventoAgente` e `AtividadeAgente`, e registrar a tabela `agent_events` e a função `atividade_atual_agentes` no tipo `Database`.
