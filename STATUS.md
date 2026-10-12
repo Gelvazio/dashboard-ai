@@ -46,6 +46,15 @@ Legenda: ⬜ Pendente · 🔄 Em progresso · ✅ Concluído · ⛔ Bloqueado
 | 3.2 | Criar SUB-39 (mãe) e SUB-39.1 a 39.5 com prioridade | ✅ Concluído | 2026-10-12 16:45 | 39.1 `BAIXA`; demais `MEDIA`; resumo do quadro recalculado |
 | 3.3 | Aceite do usuário | ⬜ Pendente | — | — |
 
+## Etapa 4 — Executar SUB-39.2, SUB-39.3 e SUB-39.4 (pedida em 2026-10-12)
+| Item | Descrição | Status | Concluído em | Verificação |
+|------|-----------|--------|--------------|-------------|
+| 4.1 | SUB-39.2: allowlist do contrato igual ao `worker/ferramentas.ts` | ✅ Concluído | 2026-10-12 17:58 | `e7a08be`; `typecheck:worker` verde |
+| 4.2 | SUB-39.3: sem `as any` em `worker/fila.ts` e `worker/falhas.ts` | ✅ Concluído | 2026-10-12 | `5df4f1d`; typecheck e testes verdes |
+| 4.3 | SUB-39.4: fábrica `worker/grafoFabrica.ts` usada pelo `worker/index.ts` | ✅ Concluído | 2026-10-12 | `e789db4`; typecheck e testes verdes |
+| 4.4 | Achado: teste do supabase falha com `.env` local → SUB-39.6 | ✅ Concluído | 2026-10-12 | bloco criado no quadro |
+| 4.5 | Aceite do usuário | ⬜ Pendente | — | — |
+
 ## Riscos
 | Risco | Chance | Impacto | Plano B | Situação |
 |-------|--------|---------|---------|----------|

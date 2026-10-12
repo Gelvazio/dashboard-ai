@@ -3227,3 +3227,16 @@
 - **Anotação:** `worker/fila.ts`: nova interface local `LinhaTaskReivindicada` (`id: number`, `codigo: string`, `tentativas: number`, `instrucao: string`, conferidos em `database/01_tasks_schema.sql`; a RPC `pegar_proxima_task` devolve `setof public.tasks`) e `rpc<LinhaTaskReivindicada[] | null>` no lugar de `rpc<any>`. `worker/falhas.ts`: `err as Error & { status?: number; statusCode?: number; code?: string }` no lugar de `err as any`. Comportamento igual. Validação: `npm run typecheck:worker` e `npm run typecheck` verdes; `npm test` 300 passam/30 pulados **com** `VITE_SUPABASE_URL`/`VITE_SUPABASE_ANON_KEY` vazias. **Achado fora do escopo:** um `.env` local (não versionado, criado às 17:52) faz `tests/unit/supabase.test.ts` ("sem variáveis de ambiente a conexão fica sem_config") falhar, porque o Vitest carrega o `.env`; falha também sem esta mudança. Registrado como SUB-39.6.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:00 — Claude Code (Opus 5.5): entrega verificada (nenhum `any` nos dois arquivos; `typecheck:worker`, `typecheck` e `npm test` verdes com as variáveis Supabase vazias)
 - **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [x] SUB-39.4: Fábrica `criarGrafoComCheckpointer` em `worker/grafoFabrica.ts` usada pelo `worker/index.ts`
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 18:00, conclusão: 2026-10-12 18:02)
+- **Depende de:** SUB-28.13, SUB-28.15
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** `worker/index.ts` (`criarGrafoReal`, linhas ~41-47) e `api/aprovacao.ts` (`criarGrafoComCheckpointerPadrao`, linhas ~84-93) repetem a mesma montagem: `ChatOpenAI` (`WORKER_MODELO` ou `gpt-4o-mini`, `temperature: 0`), `criarCheckpointer()` e `criarGrafo()`, com o cast do checkpointer em cada um. Criar `worker/grafoFabrica.ts` com `criarGrafoComCheckpointer(env = process.env)`, que valida `OPENAI_API_KEY`, monta modelo e checkpointer, isola o cast `as unknown as BaseCheckpointSaver` num único ponto e devolve `GrafoExecucao`. Trocar `criarGrafoReal` do `worker/index.ts` por ela. O `api/aprovacao.ts` fica para a SUB-39.5.
+- **Critérios de Aceitação:** `worker/index.ts` usa a fábrica; `npm run typecheck:worker`, `npm run typecheck` e `npm test` verdes.
+- **Commit:** `e789db4`
+- **Anotação:** Novo `worker/grafoFabrica.ts` com `criarGrafoComCheckpointer(env = process.env)`: valida `OPENAI_API_KEY`, cria `ChatOpenAI` (`WORKER_MODELO` ou `gpt-4o-mini`, `temperature: 0`), `criarCheckpointer(env)` (que exige `LANGGRAPH_DATABASE_URL`) e `criarGrafo`, com o cast `as unknown as BaseCheckpointSaver` num único ponto; documentada com JSDoc. `worker/index.ts`: `criarGrafoReal` removida e `rodarWorker` usa `grafoSobDemanda(() => criarGrafoComCheckpointer())`; imports sem uso (`ChatOpenAI`, `BaseCheckpointSaver`, `criarCheckpointer`, `criarGrafo`) retirados. Comportamento igual. `api/aprovacao.ts` continua com a cópia própria até a SUB-39.5 (agora livre). Validação: `npm run typecheck`, `npm run typecheck:worker` e `npm test` (300 passam/30 pulados, com as variáveis Supabase vazias por causa da SUB-39.6) verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:02 — Claude Code (Opus 5.5): entrega verificada (`worker/index.ts` usa a fábrica; `typecheck`, `typecheck:worker` e `npm test` verdes)
+- **VERIFICADOR-CLAUDE:** PENDENTE

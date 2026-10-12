@@ -55,19 +55,6 @@
 
 ---
 
-### 🔒 TRAVA ADICIONAL — Claude Code (Opus 5.5) — SUB-39.4
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-39.4** |
-| **Título da Sub-task:** | Fábrica `criarGrafoComCheckpointer` em `worker/grafoFabrica.ts` usada pelo `worker/index.ts` |
-| **Agente Responsável:** | Claude Code (Opus 5.5) |
-| **Data e Hora de Início:** | 2026-10-12 18:00 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-39.4 |
-
----
-
 ### 🔒 TRAVA ESPECIAL: KIRO-DEV-CLONE
 
 > **ATENÇÃO:** A tarefa `KIRO-DEV-CLONE` está **TRAVADA PARA TODAS AS IAS**.
@@ -88,13 +75,13 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 40
 - **Subtarefas atômicas (~3 min):** 241
-- **Em Execução:** 2 (SUB-38, SUB-39.4)
-- **Pendentes:** 7 principais (SUB-38, 25, 26, 28, 35, 39, KIRO-DEV-CLONE) + 40 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 5 — SUB-25.4, SUB-25.7, SUB-35.32 e SUB-39.6 (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
-  - bloqueadas por dependência: 4 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32) e SUB-39.5 (depende da SUB-39.4)
-  - em execução: 2 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-39.4 (Claude Code (Opus 5.5))
+- **Em Execução:** 1 (SUB-38)
+- **Pendentes:** 7 principais (SUB-38, 25, 26, 28, 35, 39, KIRO-DEV-CLONE) + 39 subtarefas
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 6 — SUB-25.4, SUB-25.7, SUB-35.32, SUB-39.5 e SUB-39.6 (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - bloqueadas por dependência: 3 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente) e SUB-35.46 (depende da SUB-35.32)
+  - em execução: 2 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 230 de 281 blocos (33 principais + 197 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 231 de 281 blocos (33 principais + 198 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -410,7 +397,7 @@
   - `SUB-39.1`: Alinhar `maxDuration` do `README.md` ao `vercel.json` (`pendente`)
   - `SUB-39.2`: Alinhar a allowlist do contrato (`docs/langgraph-contrato.md`) ao `worker/ferramentas.ts` (`concluido`, `e7a08be`)
   - `SUB-39.3`: Remover `as any` de `worker/fila.ts` e `worker/falhas.ts` (`concluido`, `5df4f1d`)
-  - `SUB-39.4`: Fábrica `criarGrafoComCheckpointer` em `worker/grafoFabrica.ts` usada pelo `worker/index.ts` (`em_execucao`)
+  - `SUB-39.4`: Fábrica `criarGrafoComCheckpointer` em `worker/grafoFabrica.ts` usada pelo `worker/index.ts` (`concluido`, `e789db4`)
   - `SUB-39.5`: Usar a fábrica da SUB-39.4 em `api/aprovacao.ts` (`pendente`)
   - `SUB-39.6`: Isolar `tests/unit/supabase.test.ts` das variáveis do `.env` local (`pendente`)
 - **Descrição:** Corrigir divergências entre documentação e código e reduzir castings inseguros e duplicação no worker LangGraph e na API de aprovação.
@@ -428,19 +415,6 @@
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** A seção "Deploy na Vercel → 3. Limits e timeouts" do `README.md` (linhas ~201-218) mostra um `vercel.json` de exemplo com `"maxDuration": 60` e diz "padrão 60s". O `vercel.json` real usa `30` para `api/mcp.ts` e `15` para `api/embedding.ts`. Atualizar o exemplo e o texto para os valores reais, mantendo a nota de limites por plano da Vercel (conferir os limites atuais na documentação da Vercel antes de manter os números de Hobby/Pro).
 - **Critérios de Aceitação:** Exemplo e texto do `README.md` iguais ao `vercel.json`; `npm run validar` verde.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-#### [ ] SUB-39.4: Fábrica `criarGrafoComCheckpointer` em `worker/grafoFabrica.ts` usada pelo `worker/index.ts`
-- **Status:** em_execucao
-- **Prioridade:** MEDIA
-- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 18:00)
-- **Depende de:** SUB-28.13, SUB-28.15
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** `worker/index.ts` (`criarGrafoReal`, linhas ~41-47) e `api/aprovacao.ts` (`criarGrafoComCheckpointerPadrao`, linhas ~84-93) repetem a mesma montagem: `ChatOpenAI` (`WORKER_MODELO` ou `gpt-4o-mini`, `temperature: 0`), `criarCheckpointer()` e `criarGrafo()`, com o cast do checkpointer em cada um. Criar `worker/grafoFabrica.ts` com `criarGrafoComCheckpointer(env = process.env)`, que valida `OPENAI_API_KEY`, monta modelo e checkpointer, isola o cast `as unknown as BaseCheckpointSaver` num único ponto e devolve `GrafoExecucao`. Trocar `criarGrafoReal` do `worker/index.ts` por ela. O `api/aprovacao.ts` fica para a SUB-39.5.
-- **Critérios de Aceitação:** `worker/index.ts` usa a fábrica; `npm run typecheck:worker`, `npm run typecheck` e `npm test` verdes.
 - **Commit:** pendente
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
