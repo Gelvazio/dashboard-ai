@@ -45,28 +45,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.4
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-28.4** |
-| **Título da Sub-task:** | `reivindicar(agente, projeto)` em `worker/fila.ts` |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 12:34 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202
-- **Em Execução:** 1 (SUB-28.4, Devin (Cognition AI), desde 2026-10-12 12:34)
+- **Em Execução:** 0
 - **Pendentes:** 4 principais (25, 26, 28, 35) + 40 subtarefas
-  - livres agora: 9 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.5, SUB-28.10, SUB-28.13, SUB-28.31, SUB-35.32, SUB-35.33)
-  - bloqueadas por dependência: 31
+  - livres agora: 10 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.5, SUB-28.10, SUB-28.13, SUB-28.30, SUB-28.31, SUB-35.32, SUB-35.33)
+  - bloqueadas por dependência: 30
   - reservadas: 0
-- **Concluídas:** 194 de 239 blocos (33 principais + 161 subtarefas)
+- **Concluídas:** 195 de 239 blocos (33 principais + 162 subtarefas)
 - **Canceladas:** 0
 
 ---
@@ -1975,7 +1964,7 @@
   - `SUB-28.1`: Contrato: identificadores e estado mínimo em `docs/langgraph-contrato.md` (`concluido`, `fc379a6`)
   - `SUB-28.2`: Dependências do worker no `package.json` (`pendente`)
   - `SUB-28.3`: Annotation `EstadoExecucao` em `worker/estado.ts` (`concluido`, `21c908b`)
-  - `SUB-28.4`: `reivindicar(agente, projeto)` em `worker/fila.ts` (`em_execucao`)
+  - `SUB-28.4`: `reivindicar(agente, projeto)` em `worker/fila.ts` (`concluido`, `06e7e4b`)
   - `SUB-28.5`: Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts` (`pendente`)
   - `SUB-28.6`: Nó `carregarContexto` em `worker/nos/carregarContexto.ts` (`pendente`)
   - `SUB-28.7`: Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts` (`pendente`)
@@ -2043,16 +2032,16 @@
 - **Anotação:** Criado `worker/estado.ts` com `EstadoExecucao` (Annotation.Root): campos com reducers adequados (overwrites simples, merge para resultados, defaults). Sem segredos. typecheck:worker OK. Revisão de 2026-10-12 (Devin (revisão do quadro)): entrega conferida em `21c908b`.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:15 — Devin (revisão do quadro): commit e arquivos conferidos na `main`; `npm run typecheck`, `npm test` e `npm run build` verdes
 
-#### [ ] SUB-28.4: `reivindicar(agente, projeto)` em `worker/fila.ts`
-- **Status:** em_execucao
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:34)
+#### [x] SUB-28.4: `reivindicar(agente, projeto)` em `worker/fila.ts`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:34, conclusão: 2026-10-12 12:35)
 - **Depende de:** SUB-28.28
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `worker/fila.ts` com `reivindicar(agente, projeto)` (RPC `pegar_proxima_task`), reutilizando `db()` de `api/_lib/supabase.ts`. `finalizar` fica na SUB-28.30.
 - **Critérios de Aceitação:** `typecheck:worker` OK; teste com cliente falso.
-- **Commit:** pendente (código parcial em `d6545d9`)
-- **Anotação:** Reaberta na revisão de 2026-10-12 (Devin (revisão do quadro)): marcada como concluída em `310fab9`, mas `reivindicar()` existe, mas falta o teste com cliente falso exigido.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (reaberta: critérios de aceitação não atendidos)
+- **Commit:** `06e7e4b`
+- **Anotação:** `reivindicar(agente, projeto, lockMinutos = 90, exclusivo = false)` já existia em `worker/fila.ts` (`d6545d9`, via `rpc()` → `db()` de `api/_lib/supabase.ts`); criado `tests/unit/worker-fila.test.ts` com cliente falso (mock de `rpc`): argumentos de `pegar_proxima_task` com padrões, repasse de `lockMinutos`/`exclusivo`, `null` sem task (lista vazia ou nula), mapeamento da primeira task e instrução nula. `npm test` verde, `npm run typecheck` e `npm run typecheck:worker` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:35 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
 #### [ ] SUB-28.5: Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts`
 - **Status:** pendente
