@@ -60,6 +60,17 @@
 | **Data e Hora de Início:** | 2026-10-12 01:40 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 07 (Grok Bot) — SUB-35.24
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.24** |
+| **Título da Sub-task:** | Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx` |
+| **Agente Responsável:** | DashboardAI-Clone 07 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:37 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
@@ -2483,8 +2494,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-35.24: Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 07 (Grok Bot) (início: 2026-10-12 01:37)
 - **Depende de:** SUB-35.23
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Grade responsiva de `AgenteCard` (ordem: ativos primeiro) com estado vazio "Nenhum agente reportou atividade". Exportar no barrel sem remover exports.
