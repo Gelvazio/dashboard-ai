@@ -145,6 +145,20 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
    - ⛔ **Nunca reescrever a linha inteira** (nem gerá-la de uma lista fixa, nem por script): outro agente pode ter criado, travado ou concluído itens depois do seu último `pull`, e a reescrita apaga esses itens do resumo sem aviso.
    - Logo antes de editar o resumo, faça `git fetch --all --prune` + `git pull --rebase origin main` e **releia** o resumo atual; depois do commit, confira no diff que só o seu trecho mudou.
 
+10. **Quadro ativo sem concluídas (atualizador de tasks completas):**
+   - O `task-principal.md` só guarda o que **não** terminou. Todo bloco concluído (cabeçalho `[x]` **ou** `Status: concluido`, tarefa-mãe ou subtarefa) fica no [`task_complete.md`](task_complete.md).
+   - **Quem conclui move:** ao concluir um item, o próprio agente move o bloco no mesmo commit da conclusão (PARTE 3, passo 2).
+   - **Quem encontra move:** qualquer agente que, ao ler o quadro, achar um bloco concluído que ficou para trás deve movê-lo, sem esperar pedido. O commit é separado: `docs(board): mover concluídas para task_complete.md por <agente>`.
+   - **Como mover:**
+     - mover o bloco **inteiro e sem alterar o texto** para o **fim da fase correspondente** no `task_complete.md`, com o mesmo título de fase (criar o cabeçalho da fase lá, se ainda não existir);
+     - na lista `Subtarefas:` da tarefa-mãe que continua no quadro, deixar só `(concluido, <sha>)`;
+     - não apagar nem duplicar blocos: a soma de blocos dos dois arquivos é igual antes e depois.
+   - ⛔ **Não mover:**
+     - bloco com trava ativa (`em_execucao`);
+     - tarefa-mãe com alguma filha ainda não `concluido`;
+     - bloco sob 🔒 TRAVA ESPECIAL.
+   - As contagens do `📊 Resumo de Progresso` **não mudam** com a mudança de arquivo, porque o bloco já contava como concluído (regra 9).
+
 ---
 
 ## 🎯 1.2 PRIORIDADE DAS TAREFAS (OBRIGATÓRIA)

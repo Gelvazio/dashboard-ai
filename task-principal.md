@@ -73,15 +73,15 @@
 ---
 
 ## 📊 Resumo de Progresso
-- **Total de Tasks Principais:** 43
+- **Total de Tasks Principais:** 44
 - **Subtarefas atômicas (~3 min):** 251
 - **Em Execução:** 1 (SUB-38)
-- **Pendentes:** 10 principais (SUB-38, 25, 26, 28, 35, 39, 40, 41, 42, KIRO-DEV-CLONE) + 46 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 7 — SUB-25.4, SUB-25.7, SUB-35.32, SUB-40.2, SUB-40.7 (só com autorização do usuário) e SUB-41.1 (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+- **Pendentes:** 11 principais (SUB-38, 25, 26, 28, 35, 39, 40, 41, 42, 43, KIRO-DEV-CLONE) + 46 subtarefas
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 8 — SUB-25.4, SUB-25.7, SUB-35.32, SUB-40.2, SUB-40.7 (só com autorização do usuário), SUB-41.1 e SUB-43 (atômica) (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
   - bloqueadas por dependência: 10 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41), SUB-42 (depende da SUB-41) e SUB-40.3 a SUB-40.6 (cadeia da SUB-40)
   - em execução: 1 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 234 de 294 blocos (33 principais + 201 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 234 de 295 blocos (33 principais + 201 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -536,7 +536,7 @@
   - `SUB-41.1`: Criar `docs/plano-cerebro-memoria-persistente.md` e mover a seção "1. Arquitetura do Banco de Dados (Supabase)" (`pendente`)
   - `SUB-41.2`: Mover a seção "2. Estrutura do Servidor MCP (Vercel Serverless)" (`pendente`)
   - `SUB-41.3`: Mover a seção "3. Ativação no Terminal (Claude Code)" e fechar a limpeza do `AGENTS.md` (`pendente`)
-- **Descrição:** **Regra do usuário (2026-10-12):** o `AGENTS.md` deve conter **apenas regras de como executar tarefas**, e **nenhuma tarefa em si**. Hoje, depois da seção "✅ 5. Regra de confirmação de status", o arquivo traz o plano de implementação `# 🧠 Plano de Implementação: Cérebro de Memória Persistente (Estilo Jev-Mem)` (linhas ~303-483), com as seções `## 1. Arquitetura do Banco de Dados (Supabase)` (SQL), `## 2. Estrutura do Servidor MCP (Vercel Serverless)` (nota da implementação real, estrutura de arquivos e exemplo ilustrativo de `api/mcp.ts`) e `## 3. Ativação no Terminal (Claude Code)`. Isso é tarefa/plano, não regra. O plano inteiro vai, **sem alterar o texto**, para `docs/plano-cerebro-memoria-persistente.md`, uma seção por subtarefa, ajustando os links relativos do trecho movido (`api/...` → `../api/...`, `database/...` → `../database/...`). No `AGENTS.md`, o bloco é apagado **sem deixar resumo de tarefa**.
+- **Descrição:** **Regra do usuário (2026-10-12):** o `AGENTS.md` deve conter **apenas regras de como executar tarefas**, e **nenhuma tarefa em si**. Hoje, depois da seção "✅ 5. Regra de confirmação de status", o arquivo traz o plano de implementação `# 🧠 Plano de Implementação: Cérebro de Memória Persistente (Estilo Jev-Mem)` (linhas ~345-525; números aproximados, conferir com `grep`), com as seções `## 1. Arquitetura do Banco de Dados (Supabase)` (SQL), `## 2. Estrutura do Servidor MCP (Vercel Serverless)` (nota da implementação real, estrutura de arquivos e exemplo ilustrativo de `api/mcp.ts`) e `## 3. Ativação no Terminal (Claude Code)`. Isso é tarefa/plano, não regra. O plano inteiro vai, **sem alterar o texto**, para `docs/plano-cerebro-memoria-persistente.md`, uma seção por subtarefa, ajustando os links relativos do trecho movido (`api/...` → `../api/...`, `database/...` → `../database/...`). No `AGENTS.md`, o bloco é apagado **sem deixar resumo de tarefa**.
 - **Critérios de Aceitação:** Todas as filhas `concluido`; `docs/plano-cerebro-memoria-persistente.md` com o conteúdo completo das seções 1, 2 e 3; `AGENTS.md` sem o plano e só com regras de execução de tarefas; nenhum link relativo quebrado (inclusive links de outros arquivos que apontem para esse trecho do `AGENTS.md`); `npm run validar` verde.
 - **Commit:** pendente
 - **Anotação:** Criada a pedido do usuário em 2026-10-12 por Claude Code (Opus 5.5). Pedido original: "isso daqui *## 2. Estrutura do Servidor MCP (Vercel Serverless)* precisa estar numa tarefa separada"; ampliado na mesma conversa: "no agents.md, devem ficar apenas regras de como executar tarefas e nenhuma tarefa em si mesmo" — por isso a tarefa cobre o plano inteiro (seções 1, 2 e 3), não só a seção 2. O plano já está implementado (SUB-07 e seguintes; o SQL consolidado está em `database/`, scripts `01` a `04`); esta tarefa só reorganiza a documentação, sem nada a aplicar no banco. Os outros trechos do `AGENTS.md` que citam tarefas específicas foram separados na SUB-42. **Subdivisão (2026-10-12, a pedido do usuário):** a mãe, antes atômica, passou a ter as filhas SUB-41.1 a SUB-41.3 (uma por seção do plano).
@@ -598,6 +598,24 @@
 - **Critérios de Aceitação:** `grep -n "SUB-[0-9]\|KIRO-DEV-CLONE" AGENTS.md` sem resultados (os `SUB-XX`/`SUB-01.1` genéricos de exemplo podem ficar); a trava da `KIRO-DEV-CLONE` continua valendo pelo bloco do `task-principal.md`; `npm run validar` verde.
 - **Commit:** pendente
 - **Anotação:** Criada a pedido do usuário em 2026-10-12 por Claude Code (Opus 5.5) ("veja se tem mais alguma"), depois da SUB-41. Varredura feita com `grep` no `AGENTS.md`; os itens acima são todos os que citam tarefas concretas. As seções 1 a 5 são regras e ficam. **Releitura completa (2026-10-12, Claude Code (Opus 5.5), a pedido do usuário):** o `AGENTS.md` (483 linhas, já com a regra 9 da seção 1.1, `26e949b`) foi lido do início ao fim. A única **tarefa** é o plano "🧠 Cérebro de Memória Persistente" (linhas ~303-483, SUB-41); as referências a tarefas concretas e os relatos de histórico são os itens 1 a 5 acima. Os números de linha foram atualizados (+5 por causa da regra 9) e o item 5 foi acrescentado.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+### [ ] SUB-43: ATUALIZADOR DE TASKS COMPLETAS
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Ler o `task-principal.md` **inteiro** e mover para o `task_complete.md` **todo bloco concluído** que ainda estiver no quadro ativo, seguindo a regra 10 da seção 1.1 do [`AGENTS.md`](AGENTS.md). Bloco concluído = cabeçalho `[x]` **ou** `Status: concluido` (tarefa-mãe ou subtarefa). Para cada um:
+  1. mover o bloco **inteiro**, sem alterar o texto (status, commit, anotação, `STATUS-TAREFA-CONFIRMADO-CONCLUIDO` e `VERIFICADOR-CLAUDE`), para o **fim da fase correspondente** no `task_complete.md`, com o mesmo título de fase (`## <emoji> FASE N: …`); se a fase ainda não existir lá, criar o cabeçalho dela;
+  2. na lista `Subtarefas:` da tarefa-mãe que continua no quadro, deixar só a referência `(concluido, <sha>)`;
+  3. **não mover**: bloco com trava ativa (`em_execucao`), tarefa-mãe com alguma filha não `concluido` e qualquer bloco sob 🔒 TRAVA ESPECIAL;
+  4. no `📊 Resumo de Progresso`, as contagens não mudam (o bloco já contava como concluído); só corrigir o texto se ele citar o bloco movido como se estivesse no quadro.
+  Na varredura de 2026-10-12 estavam no quadro ativo, já concluídas: `SUB-28.18`, `SUB-28.23`, `SUB-28.25` e `SUB-28.32` (fase 11, LangChain/LangGraph). Refazer a varredura na hora de executar, porque outros agentes podem ter concluído ou movido blocos.
+- **Critérios de Aceitação:** `grep -n "^#\{3,4\} \[x\]\|Status:\*\* concluido" task-principal.md` sem resultados (fora os casos do item 3, citados na anotação); cada bloco movido aparece uma única vez, no `task_complete.md`, na fase certa; nenhum bloco perdido (contagem de blocos `### `/`#### ` dos dois arquivos somada antes = depois); commit `docs(board): mover concluídas para task_complete.md (SUB-43) por <agente>`.
+- **Commit:** pendente
+- **Anotação:** Criada a pedido do usuário em 2026-10-12 por Claude Code (Opus 5.5): "crie mais 1 tarefa de nome ATUALIZADOR DE TASKS COMPLETAS, onde deve ler o arquivo task-principal.md inteiro e toda tarefa que estiver concluída deve ser movida para task_complete.md". A regra permanente (qualquer agente que encontrar bloco concluído no quadro ativo deve movê-lo) foi registrada no `AGENTS.md` (regra 10 da seção 1.1).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
