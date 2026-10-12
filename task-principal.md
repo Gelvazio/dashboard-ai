@@ -9,8 +9,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 31
-- **Em Execução:** 3 (`SUB-01.1`, `SUB-27`, `SUB-29`)
-- **Pendentes:** 26
+- **Em Execução:** 4 (`SUB-01.1`, `SUB-27`, `SUB-29`, `SUB-08`)
+- **Pendentes:** 25
 - **Concluídas:** 4
 - **Canceladas:** 0
 
@@ -160,9 +160,9 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-### [ ] SUB-08: Configuração de Variáveis de Ambiente e `.env.example`
-- **Status:** pendente
-- **Executor:** nenhum
+### [🔄] SUB-08: Configuração de Variáveis de Ambiente e `.env.example`
+- **Status:** em_execucao
+- **Executor:** xAI (Grok) (início: 2026-10-11 22:41)
 - **Depende de:** SUB-06
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Documentar e padronizar as variáveis `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` (frontend) e `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `OPENAI_API_KEY`, `EMBEDDING_MODEL`, `MCP_AUTH_TOKEN`, `MCP_CORS_ORIGIN`, `MCP_DEFAULT_PROJECT`, `DASHBOARD_AI_PROJECT` (servidor/scripts) em `.env.example`.
