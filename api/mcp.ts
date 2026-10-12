@@ -12,6 +12,10 @@
  *   - tools/list                 -> { tools: [...] }
  *   - tools/call                 -> despacha pelo nome em params.name, com params.arguments
  *
+ * Ferramentas registradas:
+ *   - fila de tasks (multi-projeto): task_next, task_finish, task_list, task_create (_lib/queue-tools.ts)
+ *   - memória: brain_store, brain_search, brain_delete (SUB-07)
+ *
  * Segurança opcional: se a variável MCP_AUTH_TOKEN estiver definida, exige
  * `Authorization: Bearer <MCP_AUTH_TOKEN>`.
  */
@@ -28,6 +32,7 @@ import {
   type JsonRpcResponse,
 } from './_lib/jsonrpc.js';
 import { getTool, listTools, textResult } from './_lib/tools.js';
+import './_lib/queue-tools.js'; // registra task_next, task_finish, task_list, task_create
 
 export const SERVER_INFO = { name: 'dashboard-ai-brain', version: '0.1.0' } as const;
 export const SUPPORTED_PROTOCOL_VERSIONS = ['2025-06-18', '2025-03-26', '2024-11-05'] as const;
@@ -67,8 +72,10 @@ async function dispatch(msg: JsonRpcRequest): Promise<unknown> {
         capabilities: { tools: { listChanged: false } },
         serverInfo: SERVER_INFO,
         instructions:
-          'Cérebro de memória persistente do Dashboard AI. Use brain_search antes de decidir, ' +
-          'brain_store para registrar decisões e brain_delete para remover memórias obsoletas.',
+          'Dashboard AI: fila de tasks de IA multi-projeto e memória persistente. Fila: task_next pega ' +
+          'e trava a próxima task (argumento project = slug do projeto), task_finish encerra com ' +
+          'concluida/recusada/erro, task_list e task_create gerenciam a fila. Memória: brain_search antes ' +
+          'de decidir, brain_store para registrar decisões e brain_delete para remover memórias obsoletas.',
       };
     }
 
