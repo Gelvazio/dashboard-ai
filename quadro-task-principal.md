@@ -58,7 +58,7 @@
 
 ---
 
-### ⏳ PENDENTES (22)
+### ⏳ PENDENTES (23)
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
@@ -84,6 +84,7 @@
 | **SUB-25** | Validação de Build e Execução Local | 5 | Fase 10 | SUB-01 a SUB-24 |
 | **SUB-26** | Documentação Completa e Manual Operacional no `README.md` | 5 | Fase 10 | SUB-25 |
 | **SUB-28** | Integração LangChain/LangGraph para Execução de Tasks | 5 | Fase 11 (última) | SUB-01 a SUB-27, SUB-29, SUB-30 |
+| **SUB-32** | Trocar cliente fetch por `@supabase/supabase-js` em `api/_lib` | 3 | Fase 2B | SUB-01.1, SUB-30, SUB-07 |
 
 ---
 
