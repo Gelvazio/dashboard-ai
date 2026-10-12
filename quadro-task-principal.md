@@ -33,20 +33,30 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhuma tarefa reservada para Codex |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — SUB-08.1
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-08.1** |
+| **Título da Sub-task:** | Esqueleto do `.env.example` |
+| **Agente Responsável:** | DashboardAI (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 00:19 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém mais assume a SUB-08.1 |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (0)
+### 🔄 EM EXECUÇÃO (1)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
-
-*(Nenhuma tarefa em execução)*
+| **SUB-08.1** | Esqueleto do `.env.example` | DashboardAI (Grok Bot) | 2026-10-12 00:19 | Nenhuma |
 
 ---
 
-### ⏳ PENDENTES (164)
+### ⏳ PENDENTES (163)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -54,12 +64,11 @@
 
 > **SUB-27 liberada a pedido do usuário** (2026-10-11 23:55): mãe e 22 subtarefas estão disponíveis; cada agente deve respeitar as dependências indicadas. Nenhum código da SUB-27 havia sido enviado à main.
 
-**🟢 Livres agora (22):** SUB-33.1, SUB-33.4, SUB-33.13, SUB-08.1, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.1, SUB-21.3, SUB-23.1, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1
+**🟢 Livres agora (21):** SUB-33.1, SUB-33.4, SUB-33.13, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.1, SUB-21.3, SUB-23.1, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` (mãe) | 3 | Fase 3 | SUB-06; SUB-08.1 a SUB-08.11 |
-| **SUB-08.1** | Esqueleto do `.env.example` | 3 | Fase 3 | Nenhuma — 🟢 livre |
 | **SUB-08.2** | Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` | 3 | Fase 3 | SUB-08.1 — ⛓️ bloqueada |
 | **SUB-08.3** | Seção Servidor Supabase: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `SUPABASE_REST_URL` | 3 | Fase 3 | SUB-08.1 — ⛓️ bloqueada |
 | **SUB-08.4** | Seção Embeddings: `OPENAI_API_KEY`, `EMBEDDING_API_URL`, `EMBEDDING_MODEL` | 3 | Fase 3 | SUB-08.1 — ⛓️ bloqueada |
@@ -310,3 +319,4 @@
 | 2026-10-12 00:08 | DashboardAI (Grok Bot) | Subdivisão SUB-08 | (este commit) | SUB-08 subdividida em 9 subtarefas (08.1 esqueleto do `.env.example`; 08.2 frontend; 08.3 servidor Supabase; 08.4 embeddings; 08.5 MCP; 08.6 scripts; 08.7 `.gitignore`; 08.8 extração em `scripts/checar-env.mjs` + testes; 08.9 `npm run check:env`). SUB-25.2, 26.3 e 26.5 passam a depender de SUB-08.9. Trava de planejamento liberada. Corrigido no quadro o texto trocado no commit 687f149 ("SUB-26.1" virou "SUB-26.1, SUB-27.1" e "SUB-26.10" virou "SUB-26.1, SUB-27.10"). Total 130; livres 19; reservadas 0; bloqueadas 111 |
 | 2026-10-12 00:16 | DashboardAI (Grok Bot) | Lock revisão | — | Trava de planejamento (exceção da seção 1.1 do AGENTS.md: subdivisão pedida pelo usuário) em SUB-08, 19, 20, 21, 23, 27, 28, 33 e 34 para subdividir subtarefas ainda grandes |
 | 2026-10-12 00:17 | DashboardAI (Grok Bot) | Nova revisão da subdivisão | (este commit) | Revisão rigorosa (~3 min = 1 função/componente/arquivo de teste/seção): 22 subtarefas divididas gerando 23 novas — 08.8->08.10, 08.9->08.11, 19.3->19.10, 20.3->20.10, 20.4->20.9, 21.1->21.13, 21.2->21.14, 23.1->23.13, 27.4->27.23, 27.5->27.24, 27.7->27.25, 27.9->27.26, 27.14->27.27, 27.22->27.28, 33.3->33.13, 34.2->34.6, 28.1->28.26/28.27, 28.2->28.28, 28.3->28.29, 28.4->28.30, 28.20->28.31, 28.23->28.32; 27.16 reduzida (só `urlDeRetorno`, depende de 27.1). Dependentes religados para a última parte (ex.: 27.12/14/15/20 e 28.16 -> 27.26; 27.18 -> 27.27; 25.2 cita 27.28; 28.5/6/20/21 -> 28.29; 34.5 -> 34.6). Travas de planejamento liberadas. Total 153; livres 22; reservadas 0; bloqueadas 131 |
+| 2026-10-12 00:19 | DashboardAI (Grok Bot) | SUB-08.1 | — | Lock: assumindo SUB-08.1 (Esqueleto do `.env.example`) |

@@ -10,9 +10,9 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
 - **Subtarefas atômicas (~3 min):** 153 (SUB-08.x, SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x; atualizado em 2026-10-12 00:17)
-- **Em Execução:** 0
+- **Em Execução:** 1 (SUB-08.1 — DashboardAI (Grok Bot))
 - **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 153 subtarefas
-  - livres agora: 22 (SUB-33.1, SUB-33.4, SUB-33.13, SUB-08.1, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.1, SUB-21.3, SUB-23.1, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
+  - livres agora: 21 (SUB-33.1, SUB-33.4, SUB-33.13, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.1, SUB-21.3, SUB-23.1, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
   - bloqueadas por dependência: 131
   - reservadas: 0
 - **Concluídas:** 25
@@ -334,7 +334,7 @@
 - **Executor:** nenhum
 - **Depende de:** SUB-06; subtarefas SUB-08.1 a SUB-08.11
 - **Subtarefas:** (subdividida em 9 em 2026-10-12 00:08 por DashboardAI (Grok Bot) a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`; nova revisão para 11 em 2026-10-12 00:17)
-  - `SUB-08.1`: Esqueleto do `.env.example` (`pendente`)
+  - `SUB-08.1`: Esqueleto do `.env.example` (`em_execucao`)
   - `SUB-08.2`: Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` (`pendente`)
   - `SUB-08.3`: Seção Servidor Supabase: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `SUPABASE_REST_URL` (`pendente`)
   - `SUB-08.4`: Seção Embeddings: `OPENAI_API_KEY`, `EMBEDDING_API_URL`, `EMBEDDING_MODEL` (`pendente`)
@@ -351,8 +351,8 @@
 - **Anotação:** Trava de xAI (Grok) (desde 2026-10-11 22:41, sem commits e sem `.env.example`) liberada pelo usuário em 2026-10-12 00:08; subdividida por DashboardAI (Grok Bot).
 
 #### [ ] SUB-08.1: Esqueleto do `.env.example`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (desde 2026-10-12 00:19)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `.env.example` na raiz só com o cabeçalho (copiar para `.env`/`.env.local`, nunca commitar valores reais, quais variáveis vão para o navegador `VITE_*` e quais ficam só no servidor) e os títulos vazios das seções: Frontend, Servidor Supabase, Embeddings, MCP, Scripts.
