@@ -68,6 +68,19 @@
 
 ---
 
+### 🔒 TRAVA ADICIONAL — Claude Code (Opus 5.5, sessão em nuvem) — SUB-39.1
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-39.1** |
+| **Título da Sub-task:** | Alinhar `maxDuration` do `README.md` ao `vercel.json` |
+| **Agente Responsável:** | Claude Code (Opus 5.5, sessão em nuvem) |
+| **Data e Hora de Início:** | 2026-10-12 21:41 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-39.1 |
+
+---
+
 ### 🔒 TRAVA ESPECIAL: KIRO-DEV-CLONE
 
 > **ATENÇÃO:** A tarefa `KIRO-DEV-CLONE` está **TRAVADA PARA TODAS AS IAS**.
@@ -88,11 +101,11 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 44
 - **Subtarefas atômicas (~3 min):** 251
-- **Em Execução:** 2 (SUB-38, SUB-41.1)
+- **Em Execução:** 3 (SUB-38, SUB-41.1, SUB-39.1)
 - **Pendentes:** 9 principais (SUB-38, 25, 26, 28, 35, 39, 41, 42, KIRO-DEV-CLONE) + 40 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 4 — SUB-25.4, SUB-25.7 e SUB-35.32 (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 3 — SUB-25.4, SUB-25.7 e SUB-35.32 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
   - bloqueadas por dependência: 6 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41) e SUB-42 (depende da SUB-41)
-  - em execução: 2 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI))
+  - em execução: 3 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI)); SUB-39.1 (Claude Code (Opus 5.5, sessão em nuvem))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
 - **Concluídas:** 242 de 295 blocos (35 principais + 207 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
@@ -359,7 +372,7 @@
 - **Executor:** nenhum
 - **Depende de:** subtarefas SUB-39.1 a SUB-39.6
 - **Subtarefas:** (criadas em 2026-10-12 por Claude Code a partir do `TASKS-SUGERIDAS.md`, investigação só-leitura feita em outro clone; números trocados de SUB-36.x para SUB-39.x porque a SUB-36 já existe)
-  - `SUB-39.1`: Alinhar `maxDuration` do `README.md` ao `vercel.json` (`pendente`)
+  - `SUB-39.1`: Alinhar `maxDuration` do `README.md` ao `vercel.json` (`em_execucao`)
   - `SUB-39.2`: Alinhar a allowlist do contrato (`docs/langgraph-contrato.md`) ao `worker/ferramentas.ts` (`concluido`, `e7a08be`)
   - `SUB-39.3`: Remover `as any` de `worker/fila.ts` e `worker/falhas.ts` (`concluido`, `5df4f1d`)
   - `SUB-39.4`: Fábrica `criarGrafoComCheckpointer` em `worker/grafoFabrica.ts` usada pelo `worker/index.ts` (`concluido`, `e789db4`)
@@ -373,9 +386,9 @@
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
 #### [ ] SUB-39.1: Alinhar `maxDuration` do `README.md` ao `vercel.json`
-- **Status:** pendente
+- **Status:** em_execucao
 - **Prioridade:** BAIXA
-- **Executor:** nenhum
+- **Executor:** Claude Code (Opus 5.5, sessão em nuvem) (início: 2026-10-12 21:41)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** A seção "Deploy na Vercel → 3. Limits e timeouts" do `README.md` (linhas ~201-218) mostra um `vercel.json` de exemplo com `"maxDuration": 60` e diz "padrão 60s". O `vercel.json` real usa `30` para `api/mcp.ts` e `15` para `api/embedding.ts`. Atualizar o exemplo e o texto para os valores reais, mantendo a nota de limites por plano da Vercel (conferir os limites atuais na documentação da Vercel antes de manter os números de Hobby/Pro).
