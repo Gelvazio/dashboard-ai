@@ -44,17 +44,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:09 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 09 (Grok Bot) — SUB-34.5
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-34.5** |
-| **Título da Sub-task:** | Checagem de tamanho `scripts/checar-chunks.mjs` |
-| **Agente Responsável:** | DashboardAI-Clone 09 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:11 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-35.45
 
 | Propriedade | Valor Atual |
@@ -92,20 +81,19 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-35.14** | `mesclarEvento()` em `src/lib/monitor.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:13 | SUB-35.8 |
 | **SUB-21.12** | Conferir exclusão com editor e viewer | DashboardAI-Clone 02 | 2026-10-12 01:12 | SUB-21.11 |
 | **SUB-35.45** | Seção "Reporte de progresso (opcional)" no `AGENTS.md` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:11 | SUB-35.41 |
-| **SUB-34.5** | Checagem de tamanho `scripts/checar-chunks.mjs` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:11 | SUB-34.6, SUB-34.3, SUB-34.4 |
 | **SUB-37** | Ranking e prêmios dos agentes no `dashboard-task-principal.html` | DashboardAI (Grok Bot) | 2026-10-12 01:09 | Nenhuma |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
 
-### ⏳ PENDENTES (139)
+### ⏳ PENDENTES (138)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -137,7 +125,6 @@
 | **SUB-34.1** | Fallback `CarregandoTela` em `src/components/ui/CarregandoTela.tsx` | 4 | Fase 6 | Nenhuma — 🟢 livre |
 | **SUB-34.2** | Telas com `React.lazy` em `src/views/index.ts` | 4 | Fase 6 | Nenhuma — 🟢 livre |
 | **SUB-34.4** | Separar dependências grandes no `vite.config.ts` | 4 | Fase 6 | Nenhuma — 🟢 livre |
-| **SUB-34.5** | Checagem de tamanho `scripts/checar-chunks.mjs` | 4 | Fase 6 | SUB-34.6, SUB-34.3, SUB-34.4 — 🔄 em execução por DashboardAI-Clone 09 (Grok Bot) |
 | **SUB-25** | Validação de Build e Execução Local (mãe) | 5 | Fase 10 | SUB-01 a SUB-24; SUB-25.1 a SUB-25.7 |
 | **SUB-25.2** | Rodar `npm ci` + `npm run validar` e registrar em `docs/VALIDACAO.md` | 5 | Fase 10 | SUB-25.1, SUB-08.9, SUB-19, SUB-20, SUB-21, SUB-23, SUB-27 (inclui SUB-27.28), SUB-33, SUB-34 — ⛓️ bloqueada |
 | **SUB-25.3** | Rodar `database/tests/run_tests.sh` | 5 | Fase 10 | SUB-25.2 — ⛓️ bloqueada |
@@ -227,10 +214,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (100)
+### ✅ CONCLUÍDAS (101)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-34.5** | Checagem de tamanho `scripts/checar-chunks.mjs` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:11 | 2026-10-12 01:13 | `ac0f232` |
 | **SUB-35.9** | `listarEventos()` em `src/services/eventService.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:12 | 2026-10-12 01:13 | `89c6a43` |
 | **SUB-27.27** | Incluir `UserMenu` no `src/components/layout/Header.tsx` | DashboardAI-Clone 06 | 2026-10-12 01:10 | 2026-10-12 01:13 | `a7817f8` |
 | **SUB-21.10** | Validação visual da SUB-21 (screenshots) | DashboardAI-Clone 01 | 2026-10-12 01:10 | 2026-10-12 01:13 | `(este commit)` |
@@ -643,3 +631,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:13 | DashboardAI-Clone 06 | SUB-27.27 | `a7817f8` | O `Header` renderiza o `UserMenu` (SUB-27.14) depois do `ThemeToggle`, separado por uma borda, só quando há usuário logado; lê o `AuthContext` com `useContext` (tolerante fora do `AuthProvider`, como o `ProjetoContext`), então nada quebra até a SUB-27.13 montar o provider no `App`. Para caber em 390 px, o ícone de usuário e o selo Admin do `UserMenu` ficam só a partir de `sm` (no celular sobra só o botão Sair com ícone). `npm run typecheck`, `npm run build` e `npm test` OK; screenshots headless do header em 1280 e 390 px conferidos com sessão simulada (harness temporário, não commitado). |
 | 2026-10-12 01:13 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.9 | `89c6a43` | Criado `src/services/eventService.ts` com `listarEventos(projectId, { desde?, agente?, limite = 200 }, client = getSupabase())` -> `AgentEvent[]`: filtra por `project_id`, `created_at >= desde` (data inválida -> `ServiceError`) e agente exato (trim); ordena por `created_at` desc e `id` desc; limite entre 1 e 1000; erros via `resultado(res, 'Listar eventos')`. Exportado no barrel `src/services/index.ts` (demais exports mantidos). `npm run typecheck` e `npm test` OK. |
 | 2026-10-12 01:13 | DashboardAI-Clone 04 (Grok Bot) | SUB-35.14 | — | Lock: assumindo SUB-35.14 (`mesclarEvento()` em `src/lib/monitor.ts`) |
+| 2026-10-12 01:13 | DashboardAI-Clone 09 (Grok Bot) | SUB-34.5 | `ac0f232` | Criado `scripts/checar-chunks.mjs` (Node puro): lê `dist/assets/*.js`, lista tamanhos e sai 1 se algum passar de 500 kB (`CHUNK_LIMITE_KB` opcional) ou se `dist/assets` não existir; `"check:chunks"` no `package.json`. `npm run build && npm run check:chunks` OK (14 chunks, todos até 500 kB, sem aviso); typecheck e `npm test` OK. |

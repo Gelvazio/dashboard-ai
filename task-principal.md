@@ -643,14 +643,14 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-34.5: Checagem de tamanho `scripts/checar-chunks.mjs`
-- **Status:** em_execucao
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 09 (Grok Bot)
 - **Depende de:** SUB-34.6, SUB-34.3, SUB-34.4
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `scripts/checar-chunks.mjs` (Node, sem dependências) que lê `dist/assets/*.js` e falha se algum passar de 500 kB; adicionar `"check:chunks"` no `package.json`.
 - **Critérios de Aceitação:** `npm run build && npm run check:chunks` passa sem o aviso de chunk > 500 kB; `npm test` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `ac0f232`
+- **Anotação:** Criado `scripts/checar-chunks.mjs` (Node puro): lê `dist/assets/*.js`, lista tamanhos e sai 1 se algum passar de 500 kB (`CHUNK_LIMITE_KB` opcional) ou se `dist/assets` não existir; `"check:chunks"` no `package.json`. `npm run build && npm run check:chunks` OK (14 chunks, todos até 500 kB, sem aviso); typecheck e `npm test` OK.
 
 #### [x] SUB-34.6: `Suspense` com `CarregandoTela` no `src/App.tsx`
 - **Status:** concluido
