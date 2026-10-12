@@ -12,7 +12,7 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
 
 **CHECKLIST OBRIGATÓRIO ANTES DE ASSUMIR QUALQUER TAREFA:**
 ☐ [ ] Fiz `git pull --rebase origin main` **PRIMEIRO**?
-☐ [ ] Li os arquivos ATUALIZADOS (quadro-task-principal.md e task-principal.md)?
+☐ [ ] Li o arquivo ATUALIZADO (task-principal.md)?
 ☐ [ ] Verifiquei que a trava está LIVRE ou que minha task não conflita?
 ☐ [ ] Confirmei que todas as dependências estão `concluido`?
 ☐ [ ] Não tenho nenhum outro item travado (máximo 1 subtarefa ou 1 tarefa atômica por agente)?
@@ -32,11 +32,10 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
    - ⛔ **NÃO** assumir nenhuma tarefa sem garantir que está no estado mais recente
    - Se houver conflito de merge, resolver antes de prosseguir
 
-✅ **PASSO 2 (SÓ DEPOIS DO GIT PULL):** Ler obrigatoriamente os arquivos ATUALIZADOS:
-   - 📄 [`quadro-task-principal.md`](file:///c:/fontes/dashboard-ai/quadro-task-principal.md)
+✅ **PASSO 2 (SÓ DEPOIS DO GIT PULL):** Ler obrigatoriamente o arquivo ATUALIZADO:
    - 📄 [`task-principal.md`](file:///c:/fontes/dashboard-ai/task-principal.md)
 
-✅ **PASSO 3:** Conferir a seção **"🔒 TRAVA ATIVA NO MOMENTO"** em `quadro-task-principal.md`:
+✅ **PASSO 3:** Conferir a seção **"🔒 TRAVA ATIVA NO MOMENTO"** em `task-principal.md`:
    - ⛔ **PROIBIÇÃO TOTAL DE CONFLITO:** Se já existir uma task com trava ativa ou status `EM EXECUÇÃO` associada a outro agente, **NENHUMA OUTRA IA PODE ASSUMIR AQUELA MESMA TAREFA**.
 
 ✅ **PASSO 4:** Localizar a próxima sub-task com status `pendente`:
@@ -56,11 +55,10 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
 
 ### 🔹 PARTE 2 — GRAVAR O BLOQUEIO NO QUADRO, FAZER COMMIT E PUSH IMEDIATOS
 1. Gravar a tarefa como bloqueada no quadro para que nenhuma outra IA a pegue:
-   - Em `quadro-task-principal.md`: marcar a trava como `OCUPADO`, preencher o código da sub-task, nome do agente e data/hora de início. Mover a sub-task para a seção `🔄 EM EXECUÇÃO`.
    - Em `task-principal.md`: mudar o status da sub-task para `em_execucao` e registrar o executor.
 2. **Executar COMMIT e PUSH do bloqueio IMEDIATAMENTE (antes de criar código da tarefa):**
    ```bash
-   git add quadro-task-principal.md task-principal.md
+   git add task-principal.md
    git commit -m "lock: assumindo sub-task SUB-XX por [Nome do Agente]"
    git push origin main
    ```
@@ -71,13 +69,9 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
 ### 🔹 PARTE 3 — EXECUÇÃO, FINALIZAÇÃO, COMMIT E PUSH DA ENTREGA
 1. Executar e validar o código da mini-task com qualidade.
 2. Atualizar `task-principal.md`: alterar status para `concluido` e registrar a anotação técnica detalhada.
-3. Atualizar `quadro-task-principal.md`:
-   - Liberar a trava para `LIVRE`.
-   - Mover a sub-task para a seção `✅ CONCLUÍDAS`.
-   - Registrar no histórico a data/hora, o nome do agente, o código da sub-task, o SHA do commit e a nota do que foi feito.
-4. **Executar COMMIT e PUSH da conclusão IMEDIATAMENTE:**
+3. **Executar COMMIT e PUSH da conclusão IMEDIATAMENTE:**
    ```bash
-   git add <arquivos da tarefa> quadro-task-principal.md task-principal.md
+   git add <arquivos da tarefa> task-principal.md
    git commit -m "feat(SUB-XX): descrição do que foi implementado"
    git push origin main
    ```

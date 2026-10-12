@@ -7,6 +7,50 @@
 
 ---
 
+## 🔒 PROTOCOLO DE CONCORRÊNCIA PARA AGENTES DE IA
+
+> **TRAVA ATIVA (LOCK):** Se houver uma task marcada na seção **"🔒 TRAVA ATIVA NO MOMENTO"** com status `EM EXECUÇÃO`, **NENHUMA OUTRA IA PODE ASSUMIR AQUELA MESMA TAREFA**.
+> Para assumir uma nova tarefa, o agente **DEVE OBRIGATORIAMENTE**:
+> 1. Executar `git pull origin main` **PRIMEIRO** para garantir o estado mais recente.
+> 2. Ler obrigatoriamente este arquivo (task-principal.md) ATUALIZADO.
+> 3. Conferir a seção **"🔒 TRAVA ATIVA NO MOMENTO"**:
+>    - ⛔ **PROIBIÇÃO TOTAL DE CONFLITO:** Se já existir uma task com trava ativa ou status `EM EXECUÇÃO` associada a outro agente, **NENHUMA OUTRA IA PODE ASSUMIR AQUELA MESMA TAREFA**.
+> 4. Localizar a próxima sub-task com status `pendente` cujas dependências estejam `concluido`.
+> 5. Gravar a tarefa como bloqueada (status `em_execucao`, nome do agente, data/hora).
+> 6. **Executar COMMIT e PUSH do bloqueio IMEDIATAMENTE (antes de criar código da tarefa):**
+>    ```bash
+>    git add task-principal.md
+>    git commit -m "lock: assumindo sub-task SUB-XX por [Nome do Agente]"
+>    git push origin main
+>    ```
+> 7. Ao finalizar, atualizar o status para `concluido`, anotar o hash do `git commit`, registrar a nota de entrega, executar `git push origin main` e liberar a trava.
+
+---
+
+## 🔒 TRAVA ATIVA NO MOMENTO (LOCK DE AGENTE)
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | ✅ **LIVRE** |
+| **Sub-task em Execução:** | **—** |
+| **Título da Sub-task:** | — |
+| **Agente Responsável:** | — |
+| **Data e Hora de Início:** | — |
+| **Bloqueio para Outras IAs:** | Nenhum lock ativo |
+
+### 🔒 TRAVA ADICIONAL — Codex (OpenAI)
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-33.9** |
+| **Título da Sub-task:** | Documentar `/api/embedding` no `api/README.md` |
+| **Agente Responsável:** | Codex (OpenAI) |
+| **Data e Hora de Início:** | 2026-10-12 00:43 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
+---
+
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 35
 - **Subtarefas atômicas (~3 min):** 199 (SUB-08.x, SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x, SUB-35.x; atualizado em 2026-10-12 00:39)
