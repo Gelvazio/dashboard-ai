@@ -78,4 +78,52 @@ describe('api/embedding — handler', () => {
     expect(res.codigo).toBe(401);
     expect(res.cabecalhos['WWW-Authenticate']).toBe('Bearer');
   });
+
+  describe('POST autenticado', () => {
+    const VETOR = Array.from({ length: 1536 }, (_, i) => i / 1536);
+    const autenticado = { authorization: 'Bearer jwt-valido' };
+
+    /** Auth responde 200 com id; a API de embeddings responde com `embeddings`. */
+    function simular(embeddings: () => Response) {
+      const fetchFalso = vi.fn(async (url: string | URL) =>
+        String(url).includes('/auth/v1/user') ? new Response(JSON.stringify({ id: 'u-1' })) : embeddings(),
+      );
+      vi.stubGlobal('fetch', fetchFalso);
+      return fetchFalso;
+    }
+
+    it('texto longo demais -> 413', async () => {
+      simular(() => new Response('{}'));
+      const res = await chamar({ method: 'POST', headers: autenticado, body: { texto: 'a'.repeat(8_001) } });
+      expect(res.codigo).toBe(413);
+    });
+
+    it('sem texto -> 400', async () => {
+      simular(() => new Response('{}'));
+      const res = await chamar({ method: 'POST', headers: autenticado, body: {} });
+      expect(res.codigo).toBe(400);
+    });
+
+    it('falha da API de embeddings -> 502 sem vazar a chave', async () => {
+      simular(
+        () =>
+          new Response(JSON.stringify({ error: { message: 'Incorrect API key provided: sk-chave-de-teste' } }), {
+            status: 401,
+          }),
+      );
+      const res = await chamar({ method: 'POST', headers: autenticado, body: { texto: 'oi' } });
+      expect(res.codigo).toBe(502);
+      expect(JSON.stringify(res.corpo)).not.toContain('sk-');
+      expect(JSON.stringify(res.corpo)).not.toContain('anon-de-teste');
+    });
+
+    it('sucesso -> 200 com vetor de 1536', async () => {
+      const fetchFalso = simular(() => new Response(JSON.stringify({ data: [{ embedding: VETOR }] })));
+      const res = await chamar({ method: 'POST', headers: autenticado, body: { texto: 'busca semântica' } });
+      expect(res.codigo).toBe(200);
+      expect(res.corpo).toMatchObject({ dimensoes: 1536, modelo: expect.any(String) });
+      expect((res.corpo as { embedding: number[] }).embedding).toHaveLength(1536);
+      expect(fetchFalso).toHaveBeenCalledTimes(2);
+    });
+  });
 });
