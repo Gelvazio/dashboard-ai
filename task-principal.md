@@ -441,8 +441,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-08.10: `variaveisDoExemplo(texto)` em `scripts/checar-env.mjs` + testes
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 00:56)
 - **Depende de:** SUB-08.8
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar a `scripts/checar-env.mjs` `variaveisDoExemplo(texto): string[]` (nomes das linhas `NOME=` do `.env.example`, ignorando comentários e linhas vazias). Testes em `tests/unit/checar-env.test.ts`.
