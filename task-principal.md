@@ -1890,15 +1890,15 @@
 - **Commit:** pendente
 - **Anotação:** Criado `worker/estado.ts` com `EstadoExecucao` (Annotation.Root): campos com reducers adequados (overwrites simples, merge para resultados, defaults). Sem segredos. typecheck:worker OK.
 
-#### [ ] SUB-28.4: `reivindicar(agente, projeto)` em `worker/fila.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [x] SUB-28.4: `reivindicar(agente, projeto)` em `worker/fila.ts`
+- **Status:** concluido
+- **Executor:** Claude Code (início: 2026-10-12 02:04, conclusão: 2026-10-12 02:05)
 - **Depende de:** SUB-28.28
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `worker/fila.ts` com `reivindicar(agente, projeto)` (RPC `pegar_proxima_task`), reutilizando `db()` de `api/_lib/supabase.ts`. `finalizar` fica na SUB-28.30.
 - **Critérios de Aceitação:** `typecheck:worker` OK; teste com cliente falso.
 - **Commit:** pendente
-- **Anotação:** pendente
+- **Anotação:** Criado `worker/fila.ts` com `reivindicar(agente, projeto, lockMinutos, exclusivo)`: chama RPC `pegar_proxima_task` via `rpc()` de `api/_lib/supabase.ts`. Retorna null se sem task. typecheck:worker OK.
 
 #### [ ] SUB-28.5: Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts`
 - **Status:** pendente
