@@ -793,7 +793,7 @@
   - `SUB-20.3`: `sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts` (`concluido`, `e5e67e5`)
   - `SUB-20.4`: Componente `TagInput` em `src/components/ui/TagInput.tsx` (`concluido`, `3d44cd1`)
   - `SUB-20.5`: Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts` (`concluido`, `3208e66`)
-  - `SUB-20.6`: Modal `MemoriaFormModal` em `src/components/memoria/` (`em_execucao`)
+  - `SUB-20.6`: Modal `MemoriaFormModal` em `src/components/memoria/` (`concluido`, `62dea7a`)
   - `SUB-20.7`: Botão "Nova memória" na `src/views/MemoriaView.tsx` (`pendente`)
   - `SUB-20.8`: `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` (`pendente`)
   - `SUB-20.9`: Componente `TagSugestoes` em `src/components/ui/TagSugestoes.tsx` (`pendente`)
@@ -854,15 +854,15 @@
 - **Commit:** `3208e66`
 - **Anotação:** Criado `src/hooks/useSalvarMemoria.ts` (exportado em `src/hooks/index.ts`): `{ salvar(projectId | null, dados): Promise<Memoria | null>, salvando }` chamando `salvarMemoria` (SUB-10) com o gerador de `criarGeradorEmbedding()` (SUB-33.7, memoizado). Se o gerador falhar (marcado com erro próprio para não confundir com erro do banco), salva de novo sem vetor e avisa em toast (`info`) que a memória não aparece na busca semântica; sucesso -> `toast.sucesso`; erro do banco/RLS -> `toast.erro` e devolve `null`. Ignora cliques repetidos enquanto salva. `npm run typecheck`, `npm test` e `npm run build` OK.
 
-#### [ ] SUB-20.6: Modal `MemoriaFormModal` em `src/components/memoria/`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 00:55)
+#### [x] SUB-20.6: Modal `MemoriaFormModal` em `src/components/memoria/`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 00:55; conclusão: 2026-10-12 01:00)
 - **Depende de:** SUB-20.1, SUB-20.3, SUB-20.4, SUB-20.5, SUB-20.8, SUB-20.9
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/components/memoria/MemoriaFormModal.tsx` (usa `Modal`/`Botao`): Título, Conteúdo com `MarkdownEditor` (SUB-20.8), Tags (`TagInput` + `TagSugestoes` alimentado por `sugerirTags`), opção "Memória global" (erro da RLS exibido no modal). Validação com `validarMemoria`; `onSalvo(memoria)`.
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK; screenshot do modal.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `62dea7a`
+- **Anotação:** Criado `src/components/memoria/MemoriaFormModal.tsx` (exportado no `index.ts`): `{ aberto, projeto, onFechar, onSalvo(memoria) }` com `Modal`/`Botao`; Título (até 200), Conteúdo com `MarkdownEditor`, Tags com `TagInput` + `TagSugestoes` alimentado por `sugerirTags(titulo, conteudo, 8)`, opção "Memória global" (`projectId = null`). Valida com `validarMemoria` (erro por campo, foco no 1º inválido), salva com `useSalvarMemoria`; o hook ganhou `erro`/`limparErro` para o erro do banco/RLS aparecer no modal (além do toast). Estado zerado ao abrir. `npm run typecheck`, `npm run build` e `npm test` OK; screenshots headless 1280x800 e 390x844 conferidos (harness temporário, não commitado).
 
 #### [ ] SUB-20.7: Botão "Nova memória" na `src/views/MemoriaView.tsx`
 - **Status:** pendente
