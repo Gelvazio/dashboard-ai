@@ -21,3 +21,4 @@ export { AuthProvider, AuthContext, type AuthContextValue } from './AuthContext'
 export { useAuth } from './useAuth';
 export { useMemorias } from './useMemorias';
 export { useBuscaSemantica } from './useBuscaSemantica';
+export { useExcluirMemoria } from './useExcluirMemoria';
