@@ -9,9 +9,9 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 33
-- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-13`)
+- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
 - **Pendentes:** 12
-- **Concluídas:** 20
+- **Concluídas:** 21
 - **Canceladas:** 0
 
 ---
@@ -242,16 +242,16 @@
 - **Commit:** `69fa615`
 - **Anotação:** src/components/layout (AppLayout, Sidebar fixa no desktop e gaveta no mobile, Header, ProjectSelector, ConnectionStatus, ThemeToggle) e EmConstrucao; ProjetoProvider/useProjetoAtual (projetos visíveis pela RLS, seleção salva por slug no navegador), useNavegacao (tela no hash #/fila, #/memoria, #/logs, #/configuracoes, sem recarregar), useTema (claro/escuro/sistema salvo, classe dark no html), useConexao (verificarConexao a cada 60 s); services/projectService.listarProjetos (ativos, não excluídos); views com TELAS e placeholders que mostram o projeto selecionado. Sem Supabase configurado a app abre e explica o que falta. Validado: 6 unitários (hash/tema) + 4 de integração (listarProjetos respeita membros e projetos inativos), build e typecheck OK, screenshots headless 1280x800 e 390x844 conferidos.
 
-### [🔄] SUB-13: Painel de Indicadores Gerais (KPI Cards)
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:17)
+### [x] SUB-13: Painel de Indicadores Gerais (KPI Cards)
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:17, conclusão: 2026-10-11 23:19)
 - **Depende de:** SUB-09, SUB-10, SUB-11, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Construir cards de estatísticas no topo da tela: Total de Tasks, Tasks Pendentes, Em Execução, Concluídas, Total de Memórias e Última Execução da IA.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Cards com ícones, números calculados dinamicamente e animação visual.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `4af10c9`
+- **Anotação:** Arquivos: src/components/kpi/KpiCards.tsx, src/hooks/{useIndicadores,useContagemAnimada}.ts, memoryService.contarMemorias, FilaView; títulos da tabela quebram linha no celular.
 
 ---
 

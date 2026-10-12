@@ -44,28 +44,16 @@
 | **Data e Hora de Início:** | 2026-10-11 22:41 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot)
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-13** |
-| **Título da Sub-task:** | Painel de Indicadores Gerais (KPI Cards) |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-11 23:17 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27** | Autenticação e Login com Supabase Auth | Codex (OpenAI) | 2026-10-11 22:27 | SUB-03, SUB-29 |
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` | xAI (Grok) | 2026-10-11 22:41 | SUB-06 |
-| **SUB-13** | Painel de Indicadores Gerais (KPI Cards) | DashboardAI (Grok Bot) | 2026-10-11 23:17 | SUB-09, SUB-10, SUB-11, SUB-12 |
 
 ---
 
@@ -88,7 +76,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (20)
+### ✅ CONCLUÍDAS (21)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -112,6 +100,7 @@
 | **SUB-11** | Serviço de Logs do Agendador (`src/services/logService.ts`) | DashboardAI (Grok Bot) | 2026-10-11 23:08 | 2026-10-11 23:09 | `c8879bb` |
 | **SUB-14** | Tabela Avançada da Fila de Tasks | DashboardAI (Grok Bot) | 2026-10-11 23:11 | 2026-10-11 23:13 | `830979e` |
 | **SUB-16** | Modal de Cadastro e Edição de Task | DashboardAI (Grok Bot) | 2026-10-11 23:13 | 2026-10-11 23:16 | `b8486f1` |
+| **SUB-13** | Painel de Indicadores Gerais (KPI Cards) | DashboardAI (Grok Bot) | 2026-10-11 23:17 | 2026-10-11 23:19 | `4af10c9` |
 
 ---
 
@@ -150,3 +139,4 @@
 | 2026-10-11 23:09 | DashboardAI (Grok Bot) | SUB-11 | `c8879bb` | logService: listarLogs (data_hora desc, filtros, paginação com total), contarLogsPorStatus, ultimaExecucao, opcoesDeFiltro |
 | 2026-10-11 23:13 | DashboardAI (Grok Bot) | SUB-14 | `830979e` | Tabela da fila escopada pelo projeto selecionado: Código, Título, Prioridade (badges 1-5), Ordem, Dependências (chips coloridos pela situação), ON/OFF, Status (spinner em execução com agente da trava), Tentativas (barra), Resultado (PR/commit/resumo) e coluna Ações (render prop para SUB-18); tooltips acessíveis em portal; barra de progresso da fila; cartões no celular; esqueleto de carregamento. Validado: typecheck, build, vitest (unit+integração) e screenshots 1280x800/390x844. |
 | 2026-10-11 23:16 | DashboardAI (Grok Bot) | SUB-16 | `b8486f1` | Modal acessível (Esc, foco preso, tela cheia no celular) para criar/editar tasks do projeto selecionado: Título, Instrução (textarea Markdown com contador), Prioridade 1-5 (seletor colorido), Ordem, Executar após (datetime-local convertido para ISO), Máximo de tentativas, Depende de, Executor IA/Humano e ON/OFF. Validação por campo (lib/taskForm puro + testes), erros do banco/RLS exibidos no modal e em toast; botão Nova task e ação Editar na tabela. Validado: typecheck, build, vitest (unit+integração), criação real via PostgREST e screenshots 1280x800/390x844. |
+| 2026-10-11 23:19 | DashboardAI (Grok Bot) | SUB-13 | `4af10c9` | Seis cards no topo da Fila escopados pelo projeto: Total de tasks (% concluídas), Pendentes, Em execução (ícone girando quando há agente), Concluídas (com erro/recusadas), Memórias (projeto + globais, novo contarMemorias com count head) e Última execução (tempo relativo, status e task; tooltip com data/rotina/agente). Números com contagem animada (respeita reduzir movimento), entrada escalonada, esqueletos de carregamento e falhas parciais isoladas (Promise.allSettled). Recarregam junto com a tabela após salvar task. Validado: typecheck, build, vitest (unit+integração, contarMemorias testado) e screenshots 1280x800/390x844. |
