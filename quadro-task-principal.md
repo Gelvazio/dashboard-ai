@@ -44,17 +44,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:15 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 09 (Grok Bot) — SUB-35.12
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.12** |
-| **Título da Sub-task:** | Testes de `eventService` em `tests/unit/eventService.test.ts` |
-| **Agente Responsável:** | DashboardAI-Clone 09 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:16 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 06 — SUB-27.21
 
 | Propriedade | Valor Atual |
@@ -70,18 +59,17 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27.21** | Documentar primeiro administrador e membros em `database/README.md` | DashboardAI-Clone 06 | 2026-10-12 01:16 | SUB-27.13 |
-| **SUB-35.12** | Testes de `eventService` em `tests/unit/eventService.test.ts` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:16 | SUB-35.11 |
 | **SUB-35.16** | `contarPorStatus()` em `src/lib/monitor.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:15 | SUB-35.15 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
 
-### ⏳ PENDENTES (131)
+### ⏳ PENDENTES (130)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -165,7 +153,6 @@
 | **SUB-27.22** | Conferência no navegador (entrar, sair, restaurar sessão) — SUB-27 | 3 | Fase 10 | SUB-27.18 — ⛓️ bloqueada |
 | **SUB-27.28** | Varredura do bundle por `service_role` (SUB-27) | 3 | Fase 10 | SUB-27.22 — ⛓️ bloqueada |
 | **SUB-35** | Monitor em Tempo Real dos Agentes (mãe) | 4 | Fase 12 | SUB-12, SUB-29, SUB-30; SUB-35.1 a SUB-35.46 |
-| **SUB-35.12** | Testes de `eventService` em `tests/unit/eventService.test.ts` | 4 | Fase 12 | SUB-35.11 — 🔄 em execução por DashboardAI-Clone 09 (Grok Bot) |
 | **SUB-35.16** | `contarPorStatus()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.15 — ⛓️ bloqueada — 🔄 em execução por DashboardAI-Clone 04 (Grok Bot) |
 | **SUB-35.17** | `contarPorAgente()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.16 — ⛓️ bloqueada |
 | **SUB-35.18** | `segmentosLinhaDoTempo()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.17 — ⛓️ bloqueada |
@@ -192,10 +179,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (109)
+### ✅ CONCLUÍDAS (110)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-35.12** | Testes de `eventService` em `tests/unit/eventService.test.ts` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:16 | 2026-10-12 01:17 | `b045c12` |
 | **SUB-27.17** | Documentar configuração do Supabase Auth em `src/README.md` | DashboardAI-Clone 01 | 2026-10-12 01:16 | 2026-10-12 01:16 | `1a25734` |
 | **SUB-35.28** | Feed `FeedEventos` em `src/components/monitor/FeedEventos.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:13 | 2026-10-12 01:16 | `0d90464` |
 | **SUB-35.13** | Teste de integração de `listarEventos`/`atividadeAtual` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:15 | 2026-10-12 01:16 | `8628ec3` |
@@ -642,3 +630,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:16 | DashboardAI-Clone 01 | SUB-27.17 | — | Lock: assumindo SUB-27.17 (Documentar configuração do Supabase Auth em `src/README.md`) |
 | 2026-10-12 01:16 | DashboardAI-Clone 06 | SUB-27.21 | — | Lock: assumindo SUB-27.21 (Documentar primeiro administrador e membros em `database/README.md`) |
 | 2026-10-12 01:16 | DashboardAI-Clone 01 | SUB-27.17 | `1a25734` | Seção "Autenticação (Supabase Auth)" no `src/README.md`: habilitar o provedor Email (confirmação de e-mail, cadastro aberto opcional já que o link mágico usa `shouldCreateUser: false`), Site URL e Redirect URLs (localhost 5173/4173, produção e previews da Vercel) usadas por `urlDeRetorno`, e persistência da sessão (`persistSession`/`autoRefreshToken`/`detectSessionInUrl`, `AuthProvider`, `useAuth`, `RotaProtegida`, `sair`). Sem chaves reais. |
+| 2026-10-12 01:17 | DashboardAI-Clone 09 (Grok Bot) | SUB-35.12 | `b045c12` | Criado `tests/unit/eventService.test.ts` (6 testes, cliente falso): `listarEventos` aplica projeto, `desde`, agente com trim, ordenação created_at/id desc e limite (padrão 200, faixa 1–1000) e rejeita data inválida sem consultar; `atividadeAtual` chama `atividade_atual_agentes` com `p_project_id`, ordena por `ultimo_em` desc e converte erro em ServiceError; `assinarEventos` cria `agent_events:<id>` com filtro `project_id=eq.<id>`, repassa eventos e status e chama `removeChannel` ao cancelar. `npm test` e typecheck OK. |

@@ -2308,14 +2308,14 @@
 - **Anotação:** Adicionado `assinarEventos(projectId, { onEvento, onStatus }, client?)` em `src/services/eventService.ts`: canal `agent_events:<projectId>` com `postgres_changes` (INSERT, `project_id=eq.<id>`), repassa o status do canal (`StatusCanalEventos`: SUBSCRIBED/CHANNEL_ERROR/TIMED_OUT/CLOSED, com erro opcional) e devolve a função que chama `removeChannel`. Sem polling. typecheck e `npm test` OK.
 
 #### [ ] SUB-35.12: Testes de `eventService` em `tests/unit/eventService.test.ts`
-- **Status:** em_execucao
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 09 (Grok Bot)
 - **Depende de:** SUB-35.11
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Com cliente falso: `listarEventos` aplica filtros e limite; `atividadeAtual` chama a RPC e ordena; `assinarEventos` cria o canal com o filtro do projeto, repassa eventos e status e remove o canal ao cancelar.
 - **Critérios de Aceitação:** `npm test` passa.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `b045c12`
+- **Anotação:** Criado `tests/unit/eventService.test.ts` (6 testes, cliente falso): `listarEventos` aplica projeto, `desde`, agente com trim, ordenação created_at/id desc e limite (padrão 200, faixa 1–1000) e rejeita data inválida sem consultar; `atividadeAtual` chama `atividade_atual_agentes` com `p_project_id`, ordena por `ultimo_em` desc e converte erro em ServiceError; `assinarEventos` cria `agent_events:<id>` com filtro `project_id=eq.<id>`, repassa eventos e status e chama `removeChannel` ao cancelar. `npm test` e typecheck OK.
 
 #### [x] SUB-35.13: Teste de integração de `listarEventos`/`atividadeAtual`
 - **Status:** concluido
