@@ -1651,8 +1651,8 @@
 - **Anotação:** Adicionado `urlDeRetorno(loc)` em `src/lib/auth.ts`: origem + caminho + tela do hash (`#/rota`), descartando tokens/parâmetros anteriores. 4 testes em `tests/unit/auth.test.ts`; vitest e typecheck verdes.
 
 #### [ ] SUB-27.17: Documentar configuração do Supabase Auth em `src/README.md`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.13
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** No `src/README.md`: habilitar provedor e-mail no Supabase Auth, URLs de redirecionamento (local e Vercel) usadas por `urlDeRetorno`, e como a sessão é persistida. Sem chaves reais.

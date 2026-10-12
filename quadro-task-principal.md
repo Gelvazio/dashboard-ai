@@ -55,6 +55,17 @@
 | **Data e Hora de Início:** | 2026-10-12 01:16 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.17
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-27.17** |
+| **Título da Sub-task:** | Documentar configuração do Supabase Auth em `src/README.md` |
+| **Agente Responsável:** | DashboardAI-Clone 01 |
+| **Data e Hora de Início:** | 2026-10-12 01:16 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -63,6 +74,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-27.17** | Documentar configuração do Supabase Auth em `src/README.md` | DashboardAI-Clone 01 | 2026-10-12 01:16 | SUB-27.13 |
 | **SUB-35.12** | Testes de `eventService` em `tests/unit/eventService.test.ts` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:16 | SUB-35.11 |
 | **SUB-35.16** | `contarPorStatus()` em `src/lib/monitor.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:15 | SUB-35.15 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
@@ -627,3 +639,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:16 | DashboardAI-Clone 06 | SUB-27.13 | `d6a9129` | `src/App.tsx` agora monta `ToastProvider` > `AuthProvider` > `RotaProtegida` > `ProjetoProvider` (com `key={usuario?.id}` via componente interno `ProjetoDoUsuario`, recarregando os projetos da RLS ao trocar de usuário) > `AppLayout` + tela lazy com `Suspense`. Sem sessão a `RotaProtegida` mostra a `LoginView` (conferido em screenshot headless 1280x800 sem Supabase configurado: login com aviso de `.env`); com sessão renderiza o dashboard (lógica da `RotaProtegida`; não conferido contra Supabase Auth real, que não há no ambiente). `npm run typecheck`, `npm run build` e `npm test` OK. |
 | 2026-10-12 01:16 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.13 | `8628ec3` | Criado `tests/integration/eventService.integration.test.ts`: com eventos de dois agentes (datas fixas) e um de outro projeto, `atividadeAtual` devolve um por agente ordenado por `ultimo_em` desc, com o último evento (tipo/etapa/task/mensagem) e `ultimo_heartbeat_em` (null sem heartbeat); `listarEventos` traz os mais recentes primeiro e respeita `agente` (com trim), `limite` e `desde`; outro projeto não aparece e usuário sem acesso recebe listas vazias (RLS). `npm run test:integration` (PostgREST + Postgres 17 locais, Node 22) verde: 8 arquivos, 29 testes; `npm test` verde (skipped sem PostgREST); typecheck OK. |
 | 2026-10-12 01:16 | DashboardAI-Clone 01 | SUB-35.28 | `0d90464` | Criado `src/components/monitor/FeedEventos.tsx` (`{ eventos, limite?=100, className? }`, eventos do mais novo ao mais antigo): linhas com hora, agente, selo do tipo (cor por `TipoEventoAgente`), task, etapa e mensagem; Pausar/Retomar congela a lista e mostra "+N novos" (`aria-pressed`, `aria-live` desligado quando pausado); eventos novos destacados por 2 s com `motion-safe:` (respeita `prefers-reduced-motion`). Exportado em `src/components/monitor/index.ts`. typecheck e build OK. |
+| 2026-10-12 01:16 | DashboardAI-Clone 01 | SUB-27.17 | — | Lock: assumindo SUB-27.17 (Documentar configuração do Supabase Auth em `src/README.md`) |
