@@ -40,28 +40,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.24
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-28.24** |
-| **Título da Sub-task:** | Testes do worker: interrupção e retomada sem duplicar efeitos |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 13:47 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 204
-- **Em Execução:** 1 (SUB-28.24, Devin (Cognition AI), desde 2026-10-12 13:47)
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 14 subtarefas
+- **Em Execução:** 0
+- **Pendentes:** 4 principais (25, 26, 28, 35) + 13 subtarefas
   - livres agora: 6 (SUB-26.5, SUB-28.2, SUB-28.16, SUB-35.32, SUB-25.4, SUB-25.7)
   - bloqueadas por dependência: 7
   - reservadas: 0
-- **Concluídas:** 223 de 241 blocos (33 principais + 190 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 224 de 241 blocos (33 principais + 191 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -189,7 +178,7 @@
   - `SUB-28.21`: `classificarFalha(err)` em `worker/falhas.ts` (`concluido`, `04c0f02`)
   - `SUB-28.22`: `executarUmaTask(deps)` em `worker/executar.ts` (`concluido`, `c18fcbd`)
   - `SUB-28.23`: Retomada da aprovação (`Command({ resume })`) em `api/aprovacao.ts` (`pendente`)
-  - `SUB-28.24`: Testes do worker: interrupção e retomada sem duplicar efeitos (`em_execucao`)
+  - `SUB-28.24`: Testes do worker: interrupção e retomada sem duplicar efeitos (`concluido`, `057b3a1`)
   - `SUB-28.25`: Variáveis do worker no `api/README.md` (`pendente`)
   - `SUB-28.26`: Contrato: ferramentas permitidas e idempotência em `docs/langgraph-contrato.md` (`concluido`, `07b64cc`)
   - `SUB-28.27`: Contrato: mapeamento de erros para `finalizar_task` em `docs/langgraph-contrato.md` (`concluido`, `52df1e7`)
@@ -246,17 +235,6 @@
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Após autorizar, retomar o grafo com `Command({ resume: { aprovado, por, em } })` no `thread_id` da execução. O registro de auditoria fica na SUB-28.32.
 - **Critérios de Aceitação:** `typecheck:api` OK; teste de retomada com grafo falso.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-
-#### [ ] SUB-28.24: Testes do worker: interrupção e retomada sem duplicar efeitos
-- **Status:** em_execucao
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:47)
-- **Depende de:** SUB-28.15
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Em `tests/unit/worker-grafo.test.ts`: passo sensível interrompe; retomada aprovada executa uma única vez (chave de idempotência); retomada após trava expirada aborta.
-- **Critérios de Aceitação:** `npm test` passa.
 - **Commit:** pendente
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE

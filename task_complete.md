@@ -2121,6 +2121,17 @@
 - **Anotação:** Em `worker/nos/finalizar.ts`, novo `chavesDosPassos(resultados)` (só chaves `passo-<i>`) usado por `resumoSeguro` e por `chaves` do `finalizarNode`: memórias (`brain_search`), `classe_falha` e `tentativas:*` não contam mais como passos. O teste do caminho feliz em `tests/unit/worker-grafo.test.ts` agora exige o valor exato ("2 passo(s) concluído(s): passo-0, passo-1" e `chaves = [passo-0, passo-1]`). `npm test` 287 aprovados / 30 pulados; `typecheck` e `typecheck:worker` OK.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:47 (confirmado por Devin (Cognition AI))
 
+#### [x] SUB-28.24: Testes do worker: interrupção e retomada sem duplicar efeitos
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:47, conclusão: 2026-10-12 13:48)
+- **Depende de:** SUB-28.15
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Em `tests/unit/worker-grafo.test.ts`: passo sensível interrompe; retomada aprovada executa uma única vez (chave de idempotência); retomada após trava expirada aborta.
+- **Critérios de Aceitação:** `npm test` passa.
+- **Commit:** `057b3a1`
+- **Anotação:** Em `tests/unit/worker-grafo.test.ts`, novo bloco com `MemorySaver` e `interrupt` real (sem `pedirAprovacao` injetado): passo sensível para em `politica` (`getState` com `next = [politica]` e o pedido de aprovação) sem chamar a ferramenta nem finalizar; `Command({ resume: { aprovado: true } })` executa o passo uma única vez com a chave `exec-5:passo-0` e finaliza `concluida`, e repetir a retomada na mesma thread não reexecuta nem finaliza de novo; com `executarUmaTask` + `reconciliar` real e trava de 91 min (limite 90), a retomada aborta com `trava expirada` sem invocar o grafo. `npm test` 290 aprovados / 30 pulados; `typecheck` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:48 (confirmado por Devin (Cognition AI))
+
 ---
 
 ## 📡 FASE 12: Monitor em Tempo Real dos Agentes
