@@ -127,6 +127,8 @@ $$;
 
 O Claude Code precisa de respostas em formato JSON-RPC padrão do protocolo MCP. Crie o endpoint na Vercel utilizando a estrutura abaixo para processar os três verbos cognitivos principais.
 
+> ℹ️ **Implementação real:** [`api/mcp.ts`](api/mcp.ts) (roteador JSON-RPC 2.0 / MCP Streamable HTTP) + [`api/_lib/`](api/_lib/) (registro de ferramentas). Diferente do exemplo abaixo, no MCP o método é sempre **`tools/call`** com o nome da ferramenta em **`params.name`** (não `tools/call/brain_store`), e toda resposta vai no envelope `{ "jsonrpc": "2.0", "id", "result" | "error" }`. O handshake `initialize` também é obrigatório. Ao implementar as primitivas (SUB-07), usar o pacote `@supabase/supabase-js` e a URL `https://api.openai.com/v1/embeddings`.
+
 ### Estrutura de Arquivos Recomendada
 ```text
 📦 meu-mcp-brain

@@ -8,9 +8,9 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 26
-- **Em Execução:** 2 (`SUB-01.1`, `SUB-06`)
+- **Em Execução:** 1 (`SUB-01.1`)
 - **Pendentes:** 23
-- **Concluídas:** 3
+- **Concluídas:** 4
 - **Canceladas:** 0
 
 ---
@@ -105,15 +105,15 @@
 
 ## 🧠 FASE 3: Módulo Backend / API Serverless de Memória (Jev-Mem MCP)
 
-### [ ] SUB-06: Estrutura do Endpoint Serverless Vercel MCP
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:23)
+### [x] SUB-06: Estrutura do Endpoint Serverless Vercel MCP
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:23, conclusão: 2026-10-11 22:24)
 - **Depende de:** SUB-04, SUB-05
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Configurar `api/mcp.ts`, `api/tsconfig.json` e rotas serverless Vercel para responder no protocolo JSON-RPC.
 - **Critérios de Aceitação:** Arquivo `api/mcp.ts` com validação de método POST e roteador para primitivas cognitivas.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `PENDING_SHA`
+- **Anotação:** api/mcp.ts: handler default compatível com VercelRequest/VercelResponse; 405 para não-POST (Allow: POST, OPTIONS), 204 no preflight OPTIONS, CORS (MCP_CORS_ORIGIN), autenticação opcional via MCP_AUTH_TOKEN (401). Parse do corpo (objeto, string ou Buffer; -32700 para JSON inválido), validação JSON-RPC 2.0 (-32600), suporte a lote e notificações (HTTP 202 sem corpo). Métodos: initialize (negocia protocolVersion 2025-06-18/2025-03-26/2024-11-05, capabilities.tools, serverInfo), ping, notifications/initialized|cancelled, tools/list e tools/call (nome em params.name, argumentos em params.arguments; ferramenta desconhecida -32602; exceção do handler vira result com isError=true; método inexistente -32601). api/_lib/tools.ts: registro registerTool/listTools/getTool/textResult onde a SUB-07 vai plugar brain_store/brain_search/brain_delete. api/_lib/jsonrpc.ts: tipos, códigos de erro e helpers ok/fail/RpcError. api/tsconfig.json estrito (NodeNext). vercel.json: maxDuration 30s e rewrite /mcp -> /api/mcp. Sem dependências novas (tipos HTTP locais) para não conflitar com o package.json da SUB-01.1; para tsc local é preciso typescript + @types/node como devDependencies. Validado: tsc --noEmit sem erros e harness esbuild/node com 18 cenários. AGENTS.md seção 3 recebeu nota apontando para api/ e corrigindo tools/call + params.name, @supabase/supabase-js e https://api.openai.com/v1/embeddings.
 
 ### [ ] SUB-07: Implementação das Primitivas de Memória e Embeddings
 - **Status:** pendente
