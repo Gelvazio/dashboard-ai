@@ -38,6 +38,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 07 (Grok Bot) — SUB-35.32
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.32** |
+| **Título da Sub-task:** | Validação visual do monitor (SUB-35) — subdivisão |
+| **Agente Responsável:** | DashboardAI-Clone 07 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:49 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
@@ -2541,8 +2552,8 @@
 - **Anotação:** Registrada a tela `monitor`: `'monitor'` em `ViewId` (`src/types/index.ts`), `VIEW_IDS` (`src/lib/navegacao.ts`), `VIEWS` (`src/views/meta.ts`, título "Monitor dos Agentes", antes de Configurações), `TELAS` com `lazy` (`src/views/index.ts`) e ícone `Activity` no `ICONES` do `Sidebar`. `tests/unit/navegacao.test.ts` cobre `#/monitor`. Build gera chunk próprio `MonitorView` (19,2 kB). `npm run typecheck`, `npm test` e `npm run build` OK.
 
 #### [ ] SUB-35.32: Validação visual do monitor (SUB-35)
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 07 (Grok Bot) (início: 2026-10-12 01:49)
 - **Depende de:** SUB-35.31
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Contra o banco local, inserir eventos (SQL ou MCP `agent_event`) e conferir que cards, gráficos e feed atualizam sem recarregar; screenshots 1280x800 e 390x844, tema claro e escuro; registrar na anotação da SUB-35.
