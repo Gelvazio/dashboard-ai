@@ -45,6 +45,23 @@ export function validarMemoria({ titulo, conteudo, tags }: DadosMemoriaForm): Er
 }
 
 /**
+ * Converte o texto digitado no campo de tags em lista: separa por vírgula,
+ * espaço (qualquer espaço em branco) ou `#`, passa para minúsculas, remove
+ * vazios e duplicados mantendo a ordem da primeira ocorrência (mesma regra do
+ * `normalizarTags` do `memoryService`).
+ */
+export function parseTags(texto: string): string[] {
+  return [
+    ...new Set(
+      (texto ?? '')
+        .split(/[,#\s]+/)
+        .map((t) => t.trim().toLowerCase())
+        .filter(Boolean),
+    ),
+  ];
+}
+
+/**
  * Sugere tags a partir do título e do conteúdo ("geração de tags dinâmicas").
  * Conta a frequência das palavras de `palavrasDe` (cada ocorrência no título
  * vale 2, no conteúdo vale 1), ordena por pontuação decrescente, desempata em

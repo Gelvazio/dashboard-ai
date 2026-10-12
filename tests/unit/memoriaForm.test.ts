@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { sugerirTags, validarMemoria, MAX_TITULO_MEMORIA, MAX_TAGS_MEMORIA, MAX_TAMANHO_TAG } from '@/lib/memoriaForm';
+import { parseTags, sugerirTags, validarMemoria, MAX_TITULO_MEMORIA, MAX_TAGS_MEMORIA, MAX_TAMANHO_TAG } from '@/lib/memoriaForm';
 
 const valido = { titulo: 'Decisão de arquitetura', conteudo: 'Usar pgvector.', tags: ['banco', 'supabase'] };
 
@@ -73,5 +73,25 @@ describe('sugerirTags', () => {
     const a = sugerirTags('Fila de tasks', 'trava trava fila agente');
     expect(sugerirTags('Fila de tasks', 'trava trava fila agente')).toEqual(a);
     expect(a).toEqual(['fila', 'tasks', 'trava', 'agente']);
+  });
+});
+
+describe('parseTags', () => {
+  it('devolve vazio para texto vazio ou só separadores', () => {
+    expect(parseTags('')).toEqual([]);
+    expect(parseTags(' , # ,,  ')).toEqual([]);
+  });
+
+  it('separa por vírgula, espaço e #', () => {
+    expect(parseTags('banco, supabase #vetor  mcp')).toEqual(['banco', 'supabase', 'vetor', 'mcp']);
+    expect(parseTags('#um#dois\ntres\tquatro')).toEqual(['um', 'dois', 'tres', 'quatro']);
+  });
+
+  it('passa para minúsculas e remove duplicados mantendo a ordem', () => {
+    expect(parseTags('Supabase, banco, SUPABASE #Banco api')).toEqual(['supabase', 'banco', 'api']);
+  });
+
+  it('preserva hífens, acentos e outros caracteres dentro da tag', () => {
+    expect(parseTags('front-end, memória, v1.2')).toEqual(['front-end', 'memória', 'v1.2']);
   });
 });
