@@ -101,6 +101,7 @@ Plano: [`docs/login-cadastro-admin-inicial.md`](docs/login-cadastro-admin-inicia
 ## Registro de decisões
 | Data | Decisão | Quem | Por quê |
 |------|---------|------|---------|
+| 2026-10-12 | Plano em `docs/` obrigatório para tarefas grandes vale para todas as IAs (seção 6 do `AGENTS.md`, `efc7719`) | Gelvazio | Pedido no chat: outras IAs devem fazer o mesmo que o Claude Code |
 | 2026-10-12 | Admin `gelvazio@gmail.com` criado só pelo banco (trigger em `auth.users`) e só após a confirmação do e-mail | Claude Code | Evitar que o frontend escolha papel e que alguém se registre com o e-mail sem acesso à caixa |
 | 2026-10-12 | Sugestões viram SUB-39.x (SUB-36 já existe); 36.1 e 36.6 descartadas por já estarem feitas; 36.5 dividida em 39.4 e 39.5 | Claude Code | Pedido do usuário para ajustar as tarefas |
 | 2026-10-12 | Verificar todas as tarefas com o marcador `VERIFICADOR-CLAUDE`, commit e push por item | Gelvazio | Pedido explícito no chat |
