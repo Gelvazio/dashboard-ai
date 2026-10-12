@@ -46,9 +46,9 @@
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 204
 - **Em Execução:** 0
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 11 subtarefas
-  - livres agora: 4 (SUB-28.2, SUB-35.32, SUB-25.4, SUB-25.7)
-  - bloqueadas por dependência: 7
+- **Pendentes:** 4 principais (25, 26, 28, 35) + 10 subtarefas
+  - livres agora: 2 (SUB-28.32, SUB-25.4)
+  - bloqueadas por dependência: 8
   - reservadas: 0
 - **Concluídas:** 225 de 241 blocos (33 principais + 192 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
@@ -145,7 +145,7 @@
 - **Depende de:** SUB-01 a SUB-27, SUB-29, SUB-30 (todas as tasks anteriores concluídas); subtarefas SUB-28.1 a SUB-28.32
 - **Subtarefas:** (subdividida em 18 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 25 em 2026-10-11 23:51; nova revisão para 32 em 2026-10-12 00:17)
   - `SUB-28.1`: Contrato: identificadores e estado mínimo em `docs/langgraph-contrato.md` (`concluido`, `fc379a6`)
-  - `SUB-28.2`: Dependências do worker no `package.json` (`pendente`)
+  - `SUB-28.2`: Dependências do worker no `package.json` (`concluido`, package.json já tem @langchain/*)
   - `SUB-28.3`: Annotation `EstadoExecucao` em `worker/estado.ts` (`concluido`, `21c908b`)
   - `SUB-28.4`: `reivindicar(agente, projeto)` em `worker/fila.ts` (`concluido`, `06e7e4b`)
   - `SUB-28.5`: Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts` (`concluido`, `999d1e0`)
