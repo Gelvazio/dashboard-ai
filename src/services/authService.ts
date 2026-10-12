@@ -62,3 +62,13 @@ export async function obterSessao(client: DashboardClient = getSupabase()): Prom
   if (error) throw new ServiceError(mensagemErroAuth(error), 'AUTH');
   return data.session ?? null;
 }
+
+/** Envia o e-mail de redefinição de senha, voltando para `redirectTo`. */
+export async function redefinirSenha(
+  email: string,
+  redirectTo: string,
+  client: DashboardClient = getSupabase(),
+): Promise<void> {
+  const { error } = await client.auth.resetPasswordForEmail(email.trim(), { redirectTo });
+  if (error) throw new ServiceError(mensagemErroAuth(error), 'AUTH');
+}
