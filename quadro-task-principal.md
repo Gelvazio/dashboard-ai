@@ -44,24 +44,35 @@
 | **Data e Hora de Início:** | 2026-10-11 22:41 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot)
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-11** |
+| **Título da Sub-task:** | Serviço de Logs do Agendador (`src/services/logService.ts`) |
+| **Agente Responsável:** | DashboardAI (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-11 23:08 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (2)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27** | Autenticação e Login com Supabase Auth | Codex (OpenAI) | 2026-10-11 22:27 | SUB-03, SUB-29 |
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` | xAI (Grok) | 2026-10-11 22:41 | SUB-06 |
+| **SUB-11** | Serviço de Logs do Agendador (`src/services/logService.ts`) | DashboardAI (Grok Bot) | 2026-10-11 23:08 | SUB-03 |
 
 ---
 
-### ⏳ PENDENTES (15)
+### ⏳ PENDENTES (14)
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
-| **SUB-11** | Serviço de Logs do Agendador (`src/services/logService.ts`) | 3 | Fase 4 | SUB-03 |
 | **SUB-13** | Painel de Indicadores Gerais (KPI Cards) | 3 | Fase 5 | SUB-09, SUB-10, SUB-11, SUB-12 |
 | **SUB-14** | Tabela Avançada da Fila de Tasks | 3 | Fase 6 | SUB-09, SUB-12 |
 | **SUB-15** | Barra de Ferramentas e Filtros em Tempo Real | 3 | Fase 6 | SUB-14 |

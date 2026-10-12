@@ -9,8 +9,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 32
-- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
-- **Pendentes:** 15
+- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-11`)
+- **Pendentes:** 14
 - **Concluídas:** 17
 - **Canceladas:** 0
 
@@ -207,9 +207,9 @@
 - **Commit:** `086689f`
 - **Anotação:** src/services/memoryService.ts: listarMemorias(projectId, {incluirGlobais, tags, busca, limite}) sem trafegar o vetor; buscarMemoriasSimilares(slug, embedding 1536, {limiar, limite, tags, incluirGlobais}) via RPC match_memories; buscarMemorias(projeto, consulta, {gerador}) semântica quando há GeradorEmbedding, senão busca textual em título/conteúdo; salvarMemoria(projectId | null para global, {title, content, tags}) com upsert por project_id+title, tags normalizadas e embedding opcional; excluirMemoria(id) com erro claro quando a RLS não deixa. Decisão: o navegador não tem chave de embeddings; a busca semântica recebe um gerador injetável (endpoint de servidor a criar) e sem ele cai para busca textual. Validado contra PostgREST local com gerador determinístico: 3 cenários (upsert, globais, filtros, busca semântica e textual, isolamento entre projetos, viewer não grava, não-admin não grava/exclui global, editor exclui); build e typecheck OK.
 
-### [ ] SUB-11: Serviço de Logs do Agendador (`src/services/logService.ts`)
-- **Status:** pendente
-- **Executor:** nenhum
+### [🔄] SUB-11: Serviço de Logs do Agendador (`src/services/logService.ts`)
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:08)
 - **Depende de:** SUB-03
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Implementar consulta e filtros de histórico da tabela `agendamento_tarefa_logs`.
