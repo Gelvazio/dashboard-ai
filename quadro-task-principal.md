@@ -44,17 +44,6 @@
 | **Data e Hora de Início:** | 2026-10-11 22:41 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — Refino de subdivisão
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO (planejamento)** |
-| **Sub-task em Execução:** | **SUB-19, SUB-20, SUB-21, SUB-23, SUB-25, SUB-26, SUB-28** (e as subtarefas delas) |
-| **Título da Sub-task:** | Refino das subtarefas grandes em partes de ~3 min (sem código) |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-11 23:50 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** até o commit do refino |
-
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -68,37 +57,49 @@
 
 ---
 
-### ⏳ PENDENTES (109; a linha da SUB-27 mãe, em execução por Codex, aparece só como referência)
+### ⏳ PENDENTES (130; a linha da SUB-27 mãe, em execução por Codex, aparece só como referência)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
 > **SUB-27 subdividida a pedido do usuário** (2026-10-11 23:41, DashboardAI (Grok Bot)): as 18 subtarefas abaixo ficam **reservadas para Codex (OpenAI)**, dono da trava da SUB-27 (iniciada 2026-10-11 22:27); outros agentes não devem assumi-las. Nenhum código da SUB-27 havia sido enviado à main.
 
-**🟢 Livres agora (14):** SUB-33.1, SUB-33.3, SUB-33.4, SUB-34.1, SUB-34.4, SUB-19.1, SUB-19.3, SUB-20.1, SUB-21.1, SUB-21.3, SUB-23.1, SUB-23.4, SUB-25.1, SUB-26.1
+**🟢 Livres agora (16):** SUB-33.1, SUB-33.3, SUB-33.4, SUB-34.1, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-21.1, SUB-21.3, SUB-23.1, SUB-23.4, SUB-25.1, SUB-26.1
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
-| **SUB-23** | Diagnóstico de Travas e Saúde da Fila (mãe) | 4 | Fase 8 | SUB-09, SUB-11, SUB-12; SUB-23.1 a SUB-23.9 |
+| **SUB-23** | Diagnóstico de Travas e Saúde da Fila (mãe) | 4 | Fase 8 | SUB-09, SUB-11, SUB-12; SUB-23.1 a SUB-23.12 |
 | **SUB-23.1** | `minutosDeTrava` e `travaExpirada` em `src/lib/saudeFila.ts` | 4 | Fase 8 | Nenhuma — 🟢 livre |
 | **SUB-23.2** | `classificarPendentes(tasks)` em `src/lib/saudeFila.ts` | 4 | Fase 8 | SUB-23.1 — ⛓️ bloqueada |
 | **SUB-23.3** | `diagnosticarFila(tasks)` em `src/lib/saudeFila.ts` | 4 | Fase 8 | SUB-23.2 — ⛓️ bloqueada |
 | **SUB-23.4** | `liberarTrava()` em `src/services/taskService.ts` | 4 | Fase 8 | Nenhuma — 🟢 livre |
-| **SUB-23.5** | Teste de integração de `liberarTrava` | 4 | Fase 8 | SUB-23.4 — ⛓️ bloqueada |
+| **SUB-23.5** | Teste de integração de `liberarTrava`: expirada e forçada | 4 | Fase 8 | SUB-23.4 — ⛓️ bloqueada |
 | **SUB-23.6** | Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts` | 4 | Fase 8 | SUB-23.3, SUB-23.4 — ⛓️ bloqueada |
-| **SUB-23.7** | Componente `SaudeFilaPanel` em `src/components/tasks/SaudeFilaPanel.tsx` | 4 | Fase 8 | SUB-23.6 — ⛓️ bloqueada |
+| **SUB-23.7** | Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx` | 4 | Fase 8 | SUB-23.10, SUB-23.11 — ⛓️ bloqueada |
 | **SUB-23.8** | Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` | 4 | Fase 8 | SUB-23.7 — ⛓️ bloqueada |
 | **SUB-23.9** | Alerta de trava presa na `src/views/FilaView.tsx` | 4 | Fase 8 | SUB-23.3 — ⛓️ bloqueada |
-| **SUB-19** | Interface de Pesquisa Semântica Vetorial (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-19.1 a SUB-19.8 |
+| **SUB-23.10** | `TravaItem` em `src/components/tasks/TravaItem.tsx` | 4 | Fase 8 | SUB-23.6 — ⛓️ bloqueada |
+| **SUB-23.11** | `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx` | 4 | Fase 8 | SUB-23.3 — ⛓️ bloqueada |
+| **SUB-23.12** | Teste de integração de `liberarTrava`: viewer e outro projeto | 4 | Fase 8 | SUB-23.4 — ⛓️ bloqueada |
+| **SUB-19** | Interface de Pesquisa Semântica Vetorial (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-19.1 a SUB-19.9 |
 | **SUB-19.1** | `debounce(fn, ms)` em `src/lib/debounce.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-19.2** | Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts` | 4 | Fase 7 | SUB-19.1 — ⛓️ bloqueada |
 | **SUB-19.3** | `formatarSimilaridade` e `classeSimilaridade` em `src/lib/similaridade.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-19.4** | Componente `SimilaridadeBadge` em `src/components/memoria/` | 4 | Fase 7 | SUB-19.3 — ⛓️ bloqueada |
 | **SUB-19.5** | Componente `ResultadoBuscaCard` em `src/components/memoria/` | 4 | Fase 7 | SUB-19.4 — ⛓️ bloqueada |
 | **SUB-19.6** | Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts` | 4 | Fase 7 | SUB-19.2, SUB-33.7 — ⛓️ bloqueada |
-| **SUB-19.7** | Painel `BuscaSemanticaPanel` em `src/components/memoria/` | 4 | Fase 7 | SUB-19.5, SUB-19.6 — ⛓️ bloqueada |
+| **SUB-19.7** | Painel `BuscaSemanticaPanel` (campo, grade e estados) | 4 | Fase 7 | SUB-19.5, SUB-19.6, SUB-19.9 — ⛓️ bloqueada |
 | **SUB-19.8** | Integrar a busca na `src/views/MemoriaView.tsx` | 4 | Fase 7 | SUB-19.7, SUB-21.9 — ⛓️ bloqueada |
-| **SUB-20** | Formulário de Nova Memória Canônica (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-20.1 a SUB-20.7 |
-| **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias (mãe) | 4 | Fase 7 | SUB-10, SUB-12; SUB-21.1 a SUB-21.10 |
+| **SUB-19.9** | `BuscaControles` (limiar, globais, modo) em `src/components/memoria/BuscaControles.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
+| **SUB-20** | Formulário de Nova Memória Canônica (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-20.1 a SUB-20.8 |
+| **SUB-20.1** | `validarMemoria(dados)` em `src/lib/memoriaForm.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
+| **SUB-20.2** | `parseTags(texto)` em `src/lib/memoriaForm.ts` | 4 | Fase 7 | SUB-20.1 — ⛓️ bloqueada |
+| **SUB-20.3** | `sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts` | 4 | Fase 7 | SUB-20.1 — ⛓️ bloqueada |
+| **SUB-20.4** | Componente `TagInput` em `src/components/ui/TagInput.tsx` | 4 | Fase 7 | SUB-20.2 — ⛓️ bloqueada |
+| **SUB-20.5** | Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts` | 4 | Fase 7 | SUB-33.7 — ⛓️ bloqueada |
+| **SUB-20.6** | Modal `MemoriaFormModal` em `src/components/memoria/` | 4 | Fase 7 | SUB-20.1, SUB-20.3, SUB-20.4, SUB-20.5, SUB-20.8 — ⛓️ bloqueada |
+| **SUB-20.7** | Botão "Nova memória" na `src/views/MemoriaView.tsx` | 4 | Fase 7 | SUB-20.6, SUB-19.8, SUB-21.9 — ⛓️ bloqueada |
+| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
+| **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias (mãe) | 4 | Fase 7 | SUB-10, SUB-12; SUB-21.1 a SUB-21.12 |
 | **SUB-21.1** | `memoriaComoMarkdown` e `escopoMemoria` em `src/lib/memorias.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-21.2** | `filtrarMemoriasLocal` e `tagsDisponiveis` em `src/lib/memorias.ts` | 4 | Fase 7 | SUB-21.1 — ⛓️ bloqueada |
 | **SUB-21.3** | Hook `useMemorias` em `src/hooks/useMemorias.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
@@ -107,55 +108,60 @@
 | **SUB-21.6** | Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` | 4 | Fase 7 | SUB-21.1 — ⛓️ bloqueada |
 | **SUB-21.7** | Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` | 4 | Fase 7 | SUB-21.3 — ⛓️ bloqueada |
 | **SUB-21.8** | Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` | 4 | Fase 7 | SUB-21.2 — ⛓️ bloqueada |
-| **SUB-21.9** | Montar a tela em `src/views/MemoriaView.tsx` | 4 | Fase 7 | SUB-21.3, SUB-21.5, SUB-21.6, SUB-21.7, SUB-21.8 — ⛓️ bloqueada |
-| **SUB-21.10** | Validação visual e de exclusão da SUB-21 | 4 | Fase 7 | SUB-21.9 — ⛓️ bloqueada |
-| **SUB-20.1** | `validarMemoria(dados)` em `src/lib/memoriaForm.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
-| **SUB-20.2** | `parseTags(texto)` em `src/lib/memoriaForm.ts` | 4 | Fase 7 | SUB-20.1 — ⛓️ bloqueada |
-| **SUB-20.3** | `sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts` | 4 | Fase 7 | SUB-20.1 — ⛓️ bloqueada |
-| **SUB-20.4** | Componente `TagInput` em `src/components/ui/TagInput.tsx` | 4 | Fase 7 | SUB-20.2 — ⛓️ bloqueada |
-| **SUB-20.5** | Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts` | 4 | Fase 7 | SUB-33.7 — ⛓️ bloqueada |
-| **SUB-20.6** | Modal `MemoriaFormModal` em `src/components/memoria/` | 4 | Fase 7 | SUB-20.1, SUB-20.3, SUB-20.4, SUB-20.5 — ⛓️ bloqueada |
-| **SUB-20.7** | Botão "Nova memória" na `src/views/MemoriaView.tsx` | 4 | Fase 7 | SUB-20.6, SUB-19.8, SUB-21.9 — ⛓️ bloqueada |
+| **SUB-21.9** | Montar a `MemoriaView` (toolbar + grade) | 4 | Fase 7 | SUB-21.3, SUB-21.5, SUB-21.8 — ⛓️ bloqueada |
+| **SUB-21.10** | Validação visual da SUB-21 (screenshots) | 4 | Fase 7 | SUB-21.11 — ⛓️ bloqueada |
+| **SUB-21.11** | Ligar detalhe e exclusão na `MemoriaView` | 4 | Fase 7 | SUB-21.9, SUB-21.6, SUB-21.7 — ⛓️ bloqueada |
+| **SUB-21.12** | Conferir exclusão com editor e viewer | 4 | Fase 7 | SUB-21.11 — ⛓️ bloqueada |
 | **SUB-34** | Carregamento Sob Demanda de Telas e Modais (code splitting) (mãe) | 4 | Fase 6 | SUB-13, SUB-14, SUB-16, SUB-17, SUB-18; SUB-34.1 a SUB-34.5 |
 | **SUB-34.1** | Fallback `CarregandoTela` em `src/components/ui/CarregandoTela.tsx` | 4 | Fase 6 | Nenhuma — 🟢 livre |
 | **SUB-34.2** | Telas com `React.lazy` em `src/views/index.ts` e `Suspense` no `App.tsx` | 4 | Fase 6 | SUB-34.1 — ⛓️ bloqueada |
 | **SUB-34.3** | Modais da fila sob demanda na `src/views/FilaView.tsx` | 4 | Fase 6 | SUB-34.1 — ⛓️ bloqueada |
 | **SUB-34.4** | Separar dependências grandes no `vite.config.ts` | 4 | Fase 6 | Nenhuma — 🟢 livre |
 | **SUB-34.5** | Checagem de tamanho `scripts/checar-chunks.mjs` | 4 | Fase 6 | SUB-34.2, SUB-34.3, SUB-34.4 — ⛓️ bloqueada |
-| **SUB-25** | Validação de Build e Execução Local (mãe) | 5 | Fase 10 | SUB-01 a SUB-24; SUB-25.1 a SUB-25.4 |
+| **SUB-25** | Validação de Build e Execução Local (mãe) | 5 | Fase 10 | SUB-01 a SUB-24; SUB-25.1 a SUB-25.7 |
 | **SUB-25.1** | Script `scripts/validar.sh` + `npm run validar` | 5 | Fase 10 | Nenhuma — 🟢 livre |
-| **SUB-25.2** | Rodar a validação completa e corrigir erros de tipo | 5 | Fase 10 | SUB-25.1, SUB-08, SUB-19, SUB-20, SUB-21, SUB-23, SUB-27 (inclui SUB-27.18), SUB-33, SUB-34 — ⛓️ bloqueada |
-| **SUB-25.3** | Rodar integração do banco e do frontend | 5 | Fase 10 | SUB-25.2 — ⛓️ bloqueada |
-| **SUB-25.4** | Smoke test local com `vite preview` | 5 | Fase 10 | SUB-25.2 — ⛓️ bloqueada |
-| **SUB-26** | Documentação Completa e Manual Operacional no `README.md` (mãe) | 5 | Fase 10 | SUB-25; SUB-26.1 a SUB-26.9 |
+| **SUB-25.2** | Rodar `npm ci` + `npm run validar` e registrar em `docs/VALIDACAO.md` | 5 | Fase 10 | SUB-25.1, SUB-08, SUB-19, SUB-20, SUB-21, SUB-23, SUB-27 (inclui SUB-27.22), SUB-33, SUB-34 — ⛓️ bloqueada |
+| **SUB-25.3** | Rodar `database/tests/run_tests.sh` | 5 | Fase 10 | SUB-25.2 — ⛓️ bloqueada |
+| **SUB-25.4** | Teste rápido local: telas Fila e Logs | 5 | Fase 10 | SUB-25.2 — ⛓️ bloqueada |
+| **SUB-25.6** | Rodar `npm run test:integration` | 5 | Fase 10 | SUB-25.2 — ⛓️ bloqueada |
+| **SUB-25.7** | Teste rápido local: telas Memória e Configurações | 5 | Fase 10 | SUB-25.2 — ⛓️ bloqueada |
+| **SUB-26** | Documentação Completa e Manual Operacional no `README.md` (mãe) | 5 | Fase 10 | SUB-25; SUB-26.1 a SUB-26.10 |
 | **SUB-26.1** | Esqueleto do `README.md` | 5 | Fase 10 | Nenhuma — 🟢 livre |
 | **SUB-26.2** | Seção Arquitetura | 5 | Fase 10 | SUB-26.1, SUB-33 — ⛓️ bloqueada |
 | **SUB-26.3** | Seção Execução local | 5 | Fase 10 | SUB-26.1, SUB-08, SUB-25 — ⛓️ bloqueada |
 | **SUB-26.4** | Seção Banco de dados | 5 | Fase 10 | SUB-26.1 — ⛓️ bloqueada |
 | **SUB-26.5** | Seção Deploy na Vercel | 5 | Fase 10 | SUB-26.1, SUB-08, SUB-33 — ⛓️ bloqueada |
-| **SUB-26.6** | Seção Agentes de IA: fila via MCP | 5 | Fase 10 | SUB-26.1 — ⛓️ bloqueada |
+| **SUB-26.6** | Seção Agentes de IA: configurar clientes MCP | 5 | Fase 10 | SUB-26.1 — ⛓️ bloqueada |
 | **SUB-26.7** | Seção Memória via MCP | 5 | Fase 10 | SUB-26.1 — ⛓️ bloqueada |
-| **SUB-26.8** | Seção Segurança | 5 | Fase 10 | SUB-26.1, SUB-27.13, SUB-27.17 — ⛓️ bloqueada |
-| **SUB-26.9** | Revisão final do README | 5 | Fase 10 | SUB-26.2, SUB-26.3, SUB-26.4, SUB-26.5, SUB-26.6, SUB-26.7, SUB-26.8, SUB-25 — ⛓️ bloqueada |
-| **SUB-28** | Integração LangChain/LangGraph para Execução de Tasks (mãe) | 5 | Fase 11 (última) | SUB-01 a SUB-27, SUB-29, SUB-30; SUB-28.1 a SUB-28.18 |
+| **SUB-26.8** | Seção Segurança | 5 | Fase 10 | SUB-26.1, SUB-27.13, SUB-27.17, SUB-27.21 — ⛓️ bloqueada |
+| **SUB-26.9** | Revisão final do README | 5 | Fase 10 | SUB-26.2, SUB-26.3, SUB-26.4, SUB-26.5, SUB-26.6, SUB-26.7, SUB-26.8, SUB-26.10, SUB-25 — ⛓️ bloqueada |
+| **SUB-26.10** | Seção Agentes de IA: exemplos do ciclo da fila | 5 | Fase 10 | SUB-26.1 — ⛓️ bloqueada |
+| **SUB-28** | Integração LangChain/LangGraph para Execução de Tasks (mãe) | 5 | Fase 11 (última) | SUB-01 a SUB-27, SUB-29, SUB-30; SUB-28.1 a SUB-28.25 |
 | **SUB-28.1** | Contrato worker ↔ RPC ↔ MCP em `docs/langgraph-contrato.md` | 5 | Fase 11 (última) | SUB-01 a SUB-27, SUB-29 a SUB-34 — ⛓️ bloqueada |
 | **SUB-28.2** | Dependências e `worker/tsconfig.json` | 5 | Fase 11 (última) | SUB-28.1 — ⛓️ bloqueada |
 | **SUB-28.3** | Estado tipado do grafo em `worker/estado.ts` | 5 | Fase 11 (última) | SUB-28.2 — ⛓️ bloqueada |
 | **SUB-28.4** | Adaptador de RPCs em `worker/fila.ts` | 5 | Fase 11 (última) | SUB-28.2 — ⛓️ bloqueada |
-| **SUB-28.5** | Allowlist de ferramentas em `worker/ferramentas.ts` | 5 | Fase 11 (última) | SUB-28.3 — ⛓️ bloqueada |
-| **SUB-28.6** | Nó `carregarContexto` em `worker/nos/carregarContexto.ts` | 5 | Fase 11 (última) | SUB-28.3, SUB-28.5 — ⛓️ bloqueada |
-| **SUB-28.7** | Nó `planejar` em `worker/nos/planejar.ts` | 5 | Fase 11 (última) | SUB-28.3 — ⛓️ bloqueada |
-| **SUB-28.8** | Nó `politica` (aprovação humana) em `worker/nos/politica.ts` | 5 | Fase 11 (última) | SUB-28.5 — ⛓️ bloqueada |
-| **SUB-28.9** | Nó `executar` em `worker/nos/executar.ts` | 5 | Fase 11 (última) | SUB-28.5 — ⛓️ bloqueada |
-| **SUB-28.10** | Nó `revisar` em `worker/nos/revisar.ts` | 5 | Fase 11 (última) | SUB-28.3 — ⛓️ bloqueada |
+| **SUB-28.5** | Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts` | 5 | Fase 11 (última) | SUB-28.3 — ⛓️ bloqueada |
+| **SUB-28.6** | Nó `carregarContexto` em `worker/nos/carregarContexto.ts` | 5 | Fase 11 (última) | SUB-28.3, SUB-28.19 — ⛓️ bloqueada |
+| **SUB-28.7** | Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts` | 5 | Fase 11 (última) | SUB-28.20 — ⛓️ bloqueada |
+| **SUB-28.8** | Nó `politica` (aprovação humana) em `worker/nos/politica.ts` | 5 | Fase 11 (última) | SUB-28.19 — ⛓️ bloqueada |
+| **SUB-28.9** | Nó `executar` em `worker/nos/executar.ts` | 5 | Fase 11 (última) | SUB-28.19 — ⛓️ bloqueada |
+| **SUB-28.10** | Nó `revisar` (roteamento) em `worker/nos/revisar.ts` | 5 | Fase 11 (última) | SUB-28.21 — ⛓️ bloqueada |
 | **SUB-28.11** | Nó `finalizar` em `worker/nos/finalizar.ts` | 5 | Fase 11 (última) | SUB-28.4 — ⛓️ bloqueada |
 | **SUB-28.12** | Montagem do `StateGraph` em `worker/grafo.ts` | 5 | Fase 11 (última) | SUB-28.6, SUB-28.7, SUB-28.8, SUB-28.9, SUB-28.10, SUB-28.11 — ⛓️ bloqueada |
 | **SUB-28.13** | Checkpointer durável em `worker/checkpointer.ts` | 5 | Fase 11 (última) | SUB-28.2 — ⛓️ bloqueada |
 | **SUB-28.14** | Reconciliação na retomada em `worker/reconciliar.ts` | 5 | Fase 11 (última) | SUB-28.4 — ⛓️ bloqueada |
-| **SUB-28.15** | CLI do worker em `worker/index.ts` | 5 | Fase 11 (última) | SUB-28.12, SUB-28.13, SUB-28.14 — ⛓️ bloqueada |
-| **SUB-28.16** | Endpoint de aprovação `api/aprovacao.ts` | 5 | Fase 11 (última) | SUB-28.15, SUB-33.2, SUB-27.9 — ⛓️ bloqueada |
-| **SUB-28.17** | Testes ponta a ponta do worker em `tests/unit/worker-grafo.test.ts` | 5 | Fase 11 (última) | SUB-28.15 — ⛓️ bloqueada |
-| **SUB-28.18** | Documentação de operação e segurança | 5 | Fase 11 (última) | SUB-28.15, SUB-28.16 — ⛓️ bloqueada |
+| **SUB-28.15** | CLI do worker em `worker/index.ts` | 5 | Fase 11 (última) | SUB-28.22 — ⛓️ bloqueada |
+| **SUB-28.16** | Endpoint `api/aprovacao.ts`: autenticação e papel (401/403) | 5 | Fase 11 (última) | SUB-28.15, SUB-33.2, SUB-27.9 — ⛓️ bloqueada |
+| **SUB-28.17** | Testes do worker: caminho feliz e erro | 5 | Fase 11 (última) | SUB-28.15 — ⛓️ bloqueada |
+| **SUB-28.18** | Atualizar `LangChain_LangGraph.md` (status e desvios) | 5 | Fase 11 (última) | SUB-28.15, SUB-28.23 — ⛓️ bloqueada |
+| **SUB-28.19** | Adaptar ferramentas para `tool()` do LangChain em `worker/ferramentas.ts` | 5 | Fase 11 (última) | SUB-28.5 — ⛓️ bloqueada |
+| **SUB-28.20** | `PlanoSchema` e `montarPromptPlano` em `worker/plano.ts` | 5 | Fase 11 (última) | SUB-28.3 — ⛓️ bloqueada |
+| **SUB-28.21** | `classificarFalha(err)` em `worker/falhas.ts` | 5 | Fase 11 (última) | SUB-28.3 — ⛓️ bloqueada |
+| **SUB-28.22** | `executarUmaTask(deps)` em `worker/executar.ts` | 5 | Fase 11 (última) | SUB-28.12, SUB-28.13, SUB-28.14 — ⛓️ bloqueada |
+| **SUB-28.23** | Retomada da aprovação em `api/aprovacao.ts` | 5 | Fase 11 (última) | SUB-28.16 — ⛓️ bloqueada |
+| **SUB-28.24** | Testes do worker: interrupção e retomada sem duplicar efeitos | 5 | Fase 11 (última) | SUB-28.15 — ⛓️ bloqueada |
+| **SUB-28.25** | Variáveis do worker no `api/README.md` | 5 | Fase 11 (última) | SUB-28.15, SUB-28.23 — ⛓️ bloqueada |
 | **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) (mãe) | 3 | Fase 2B | SUB-07, SUB-03; SUB-33.1 a SUB-33.12 |
 | **SUB-33.1** | `bearerToken(req)` em `api/_lib/auth.ts` | 3 | Fase 2B | Nenhuma — 🟢 livre |
 | **SUB-33.2** | `verificarSessaoSupabase(token)` em `api/_lib/auth.ts` | 3 | Fase 2B | SUB-33.1 — ⛓️ bloqueada |
@@ -169,7 +175,7 @@
 | **SUB-33.10** | Autenticação no handler `api/embedding.ts` (401) | 3 | Fase 2B | SUB-33.4, SUB-33.2 — ⛓️ bloqueada |
 | **SUB-33.11** | Corpo, geração do embedding e erros no handler (400/413/502/200) | 3 | Fase 2B | SUB-33.10, SUB-33.3 — ⛓️ bloqueada |
 | **SUB-33.12** | Testes do handler: 413, 502 e 200 | 3 | Fase 2B | SUB-33.11 — ⛓️ bloqueada |
-| **SUB-27** | Autenticação e Login com Supabase Auth (mãe; em execução por Codex (OpenAI)) | 3 | Fase 10 | SUB-03, SUB-29; SUB-27.1 a SUB-27.18 — 🔒 travada por Codex (OpenAI) |
+| **SUB-27** | Autenticação e Login com Supabase Auth (mãe; em execução por Codex (OpenAI)) | 3 | Fase 10 | SUB-03, SUB-29; SUB-27.1 a SUB-27.22 — 🔒 travada por Codex (OpenAI) |
 | **SUB-27.1** | `mensagemErroAuth(erro)` em `src/lib/auth.ts` | 3 | Fase 10 | Nenhuma — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
 | **SUB-27.2** | `validarLogin({ email, senha })` em `src/lib/auth.ts` | 3 | Fase 10 | SUB-27.1 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
 | **SUB-27.3** | `entrarComSenha(email, senha)` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.1 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
@@ -179,15 +185,19 @@
 | **SUB-27.7** | `obterPapelGlobal()` e `papelNoProjeto()` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.3 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
 | **SUB-27.8** | Teste de integração dos papéis em `tests/integration/authService.integration.test.ts` | 3 | Fase 10 | SUB-27.7 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
 | **SUB-27.9** | `AuthProvider` e `useAuth` em `src/hooks/AuthContext.tsx` / `src/hooks/useAuth.ts` | 3 | Fase 10 | SUB-27.4, SUB-27.7 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
-| **SUB-27.10** | Formulário `LoginForm` em `src/components/auth/LoginForm.tsx` | 3 | Fase 10 | SUB-27.2, SUB-27.3, SUB-27.5 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
-| **SUB-27.11** | Tela `LoginView` em `src/views/LoginView.tsx` | 3 | Fase 10 | SUB-27.10 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.10** | Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx` | 3 | Fase 10 | SUB-27.2, SUB-27.3 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.11** | Tela `LoginView` em `src/views/LoginView.tsx` | 3 | Fase 10 | SUB-27.10, SUB-27.19 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
 | **SUB-27.12** | Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` | 3 | Fase 10 | SUB-27.9, SUB-27.11 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
 | **SUB-27.13** | Integrar autenticação no `src/App.tsx` | 3 | Fase 10 | SUB-27.12 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
 | **SUB-27.14** | Menu do usuário `UserMenu` no header | 3 | Fase 10 | SUB-27.9 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
-| **SUB-27.15** | Reagir ao login/logout em `useConexao` e `ProjetoContext` | 3 | Fase 10 | SUB-27.9 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.15** | Rechecar conexão no login/logout em `src/hooks/useConexao.ts` | 3 | Fase 10 | SUB-27.9 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
 | **SUB-27.16** | `urlDeRetorno()` para link mágico e redefinição de senha | 3 | Fase 10 | SUB-27.5 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
-| **SUB-27.17** | Documentar autenticação e primeiro administrador | 3 | Fase 10 | SUB-27.13 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
-| **SUB-27.18** | Validação final da SUB-27 | 3 | Fase 10 | SUB-27.6, SUB-27.8, SUB-27.13, SUB-27.14, SUB-27.15, SUB-27.16, SUB-27.17 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.17** | Documentar configuração do Supabase Auth em `src/README.md` | 3 | Fase 10 | SUB-27.13 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.18** | Validação automatizada da SUB-27 | 3 | Fase 10 | SUB-27.6, SUB-27.8, SUB-27.13, SUB-27.14, SUB-27.15, SUB-27.16, SUB-27.17, SUB-27.20, SUB-27.21 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.19** | `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx` | 3 | Fase 10 | SUB-27.5, SUB-27.16 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.20** | Limpar `ProjetoContext` ao sair | 3 | Fase 10 | SUB-27.9 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.21** | Documentar primeiro administrador e membros em `database/README.md` | 3 | Fase 10 | SUB-27.13 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.22** | Conferência no navegador e varredura do bundle (SUB-27) | 3 | Fase 10 | SUB-27.18 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
 
 ---
 
@@ -269,3 +279,4 @@
 | 2026-10-11 23:45 | DashboardAI (Grok Bot) | Lock planejamento SUB-21 | — | Trava de planejamento na SUB-21 (livre desde 9fedf35) para subdividir em subtarefas de ~3 min, a pedido do usuário |
 | 2026-10-11 23:47 | DashboardAI (Grok Bot) | Subdivisão SUB-21 + liberação SUB-33 | (este commit) | A pedido do usuário: SUB-21 subdividida em 10 subtarefas (SUB-21.1–21.10; a 21.9 cria a `MemoriaView`, e SUB-19.8/20.7 agora dependem dela); trava de planejamento da SUB-21 liberada. Trava da SUB-33 (DashboardAI (Grok Bot), desde 23:34) liberada sem código; SUB-33.4 e 33.6 refinadas (novas 33.10, 33.11, 33.12), total 12, filhas livres conforme dependências. Livres: 14; reservadas (SUB-27, Codex): 18; bloqueadas: 68 |
 | 2026-10-11 23:50 | DashboardAI (Grok Bot) | Lock refino | — | Trava de planejamento em SUB-19, 20, 21, 23, 25, 26 e 28 (e subtarefas) para refinar as subtarefas grandes, a pedido do usuário; SUB-27 (Codex) e SUB-08 (xAI) não travadas por mim |
+| 2026-10-11 23:51 | DashboardAI (Grok Bot) | Refino de subdivisão | (este commit) | A pedido do usuário, 21 subtarefas grandes refinadas (19.7, 20.6, 21.9, 21.10, 23.5, 23.7, 25.2, 25.3, 25.4, 26.6, 27.10, 27.15, 27.17, 27.18, 28.5, 28.7, 28.10, 28.15, 28.16, 28.17, 28.18) gerando 21 novas: 19.9, 20.8, 21.11, 21.12, 23.10–23.12, 25.6, 25.7, 26.10, 27.19–27.22 (reservadas para Codex), 28.19–28.25; dependências religadas (26.8 -> 27.17/27.21, 26.9 -> +26.10, 25.2 cita 27.22, 28.6/28.8/28.9 -> 28.19). Falhas da SUB-25.2 viram SUB-25.8+. Travas de refino liberadas; SUB-27 (Codex) e SUB-08 (xAI) intactas. Total 121; livres 16; reservadas 22; bloqueadas 83 |

@@ -9,12 +9,12 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
-- **Subtarefas atômicas (~3 min):** 100 (SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x; atualizado em 2026-10-11 23:47)
+- **Subtarefas atômicas (~3 min):** 121 (SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x; atualizado em 2026-10-11 23:51)
 - **Em Execução:** 2 (`SUB-27`, `SUB-08`)
-- **Pendentes:** 9 principais aguardando subtarefas (SUB-19, 20, 21, 23, 25, 26, 28, 33, 34) + 100 subtarefas
-  - livres agora: 14 (SUB-33.1, SUB-33.3, SUB-33.4, SUB-34.1, SUB-34.4, SUB-19.1, SUB-19.3, SUB-20.1, SUB-21.1, SUB-21.3, SUB-23.1, SUB-23.4, SUB-25.1, SUB-26.1)
-  - reservadas sob a trava da SUB-27 (Codex (OpenAI)): 18
-  - bloqueadas por dependência: 68
+- **Pendentes:** 9 principais aguardando subtarefas (SUB-19, 20, 21, 23, 25, 26, 28, 33, 34) + 121 subtarefas
+  - livres agora: 16 (SUB-33.1, SUB-33.3, SUB-33.4, SUB-34.1, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-21.1, SUB-21.3, SUB-23.1, SUB-23.4, SUB-25.1, SUB-26.1)
+  - reservadas sob a trava da SUB-27 (Codex (OpenAI)): 22
+  - bloqueadas por dependência: 83
 - **Concluídas:** 25
 - **Canceladas:** 0
 
@@ -520,18 +520,19 @@
 - **Anotação:** pendente
 
 ### [ ] SUB-19: Interface de Pesquisa Semântica Vetorial
-- **Status:** em_planejamento (travada para refinar subdivisão)
-- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:50)
-- **Depende de:** SUB-10, SUB-12, SUB-33; subtarefas SUB-19.1 a SUB-19.8
-- **Subtarefas:** (subdividida em 8 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`)
+- **Status:** pendente (aguardando subtarefas)
+- **Executor:** nenhum
+- **Depende de:** SUB-10, SUB-12, SUB-33; subtarefas SUB-19.1 a SUB-19.9
+- **Subtarefas:** (subdividida em 8 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 9 em 2026-10-11 23:51)
   - `SUB-19.1`: `debounce(fn, ms)` em `src/lib/debounce.ts` (`pendente`)
   - `SUB-19.2`: Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts` (`pendente`)
   - `SUB-19.3`: `formatarSimilaridade` e `classeSimilaridade` em `src/lib/similaridade.ts` (`pendente`)
   - `SUB-19.4`: Componente `SimilaridadeBadge` em `src/components/memoria/` (`pendente`)
   - `SUB-19.5`: Componente `ResultadoBuscaCard` em `src/components/memoria/` (`pendente`)
   - `SUB-19.6`: Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts` (`pendente`)
-  - `SUB-19.7`: Painel `BuscaSemanticaPanel` em `src/components/memoria/` (`pendente`)
+  - `SUB-19.7`: Painel `BuscaSemanticaPanel` (campo, grade e estados) (`pendente`)
   - `SUB-19.8`: Integrar a busca na `src/views/MemoriaView.tsx` (`pendente`)
+  - `SUB-19.9`: `BuscaControles` (limiar, globais, modo) em `src/components/memoria/BuscaControles.tsx` (`pendente`)
 - **Descrição:** Criar componente de busca semântica onde o usuário insere uma consulta e o sistema busca memórias similares via RPC `match_memories`, exibindo a porcentagem de similaridade.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Campo de busca com debounce, exibição de cards de resultado com badge de similaridade (ex: 89%).
@@ -598,12 +599,12 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-19.7: Painel `BuscaSemanticaPanel` em `src/components/memoria/`
+#### [ ] SUB-19.7: Painel `BuscaSemanticaPanel` (campo, grade e estados)
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-19.5, SUB-19.6
+- **Depende de:** SUB-19.5, SUB-19.6, SUB-19.9
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Criar `src/components/memoria/BuscaSemanticaPanel.tsx`: campo de busca, controle de limiar (0,5–0,95), opção incluir globais, indicação do modo (semântica/texto), grade responsiva de `ResultadoBuscaCard`, estados carregando/vazio/erro.
+- **Descrição:** Criar `src/components/memoria/BuscaSemanticaPanel.tsx` que só compõe: campo de busca, `BuscaControles` (SUB-19.9), grade responsiva de `ResultadoBuscaCard` e estados carregando/vazio/erro, usando `useBuscaSemantica`.
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK; screenshot 1280x800 e 390x844.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -618,11 +619,21 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
+#### [ ] SUB-19.9: `BuscaControles` (limiar, globais, modo) em `src/components/memoria/BuscaControles.tsx`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Componente controlado `{ limiar, onLimiar, incluirGlobais, onIncluirGlobais, modo?: 'semantica'|'texto' }`: controle de limiar 0,5–0,95 com valor em %, checkbox incluir globais e selo do modo da última busca.
+- **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
 ### [ ] SUB-20: Formulário de Nova Memória Canônica
-- **Status:** em_planejamento (travada para refinar subdivisão)
-- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:50)
-- **Depende de:** SUB-10, SUB-12, SUB-33; subtarefas SUB-20.1 a SUB-20.7
-- **Subtarefas:** (subdividida em 7 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`)
+- **Status:** pendente (aguardando subtarefas)
+- **Executor:** nenhum
+- **Depende de:** SUB-10, SUB-12, SUB-33; subtarefas SUB-20.1 a SUB-20.8
+- **Subtarefas:** (subdividida em 7 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 8 em 2026-10-11 23:51)
   - `SUB-20.1`: `validarMemoria(dados)` em `src/lib/memoriaForm.ts` (`pendente`)
   - `SUB-20.2`: `parseTags(texto)` em `src/lib/memoriaForm.ts` (`pendente`)
   - `SUB-20.3`: `sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts` (`pendente`)
@@ -630,6 +641,7 @@
   - `SUB-20.5`: Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts` (`pendente`)
   - `SUB-20.6`: Modal `MemoriaFormModal` em `src/components/memoria/` (`pendente`)
   - `SUB-20.7`: Botão "Nova memória" na `src/views/MemoriaView.tsx` (`pendente`)
+  - `SUB-20.8`: `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` (`pendente`)
 - **Descrição:** Componente para adicionar nova memória: Título único, Conteúdo estruturado em Markdown e Tags de categorização.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Criação persistida no banco Supabase com geração de tags dinâmicas.
@@ -689,9 +701,9 @@
 #### [ ] SUB-20.6: Modal `MemoriaFormModal` em `src/components/memoria/`
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-20.1, SUB-20.3, SUB-20.4, SUB-20.5
+- **Depende de:** SUB-20.1, SUB-20.3, SUB-20.4, SUB-20.5, SUB-20.8
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Criar `src/components/memoria/MemoriaFormModal.tsx` (usa `Modal`/`Botao`): Título, Conteúdo Markdown (textarea + aba de pré-visualização com `components/ui/Markdown`), Tags (`TagInput` + `sugerirTags`), opção "Memória global" (só aplica se a RLS permitir; erro exibido no modal). Validação com `validarMemoria`; `onSalvo(memoria)`.
+- **Descrição:** Criar `src/components/memoria/MemoriaFormModal.tsx` (usa `Modal`/`Botao`): Título, Conteúdo com `MarkdownEditor` (SUB-20.8), Tags (`TagInput` + `sugerirTags`), opção "Memória global" (erro da RLS exibido no modal). Validação com `validarMemoria`; `onSalvo(memoria)`.
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK; screenshot do modal.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -706,11 +718,21 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
+#### [ ] SUB-20.8: `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Componente `{ valor, onChange, erro?, rotulo }`: abas Escrever/Pré-visualizar, textarea com contador de caracteres e pré-visualização com `components/ui/Markdown` (sem HTML cru).
+- **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
 ### [ ] SUB-21: Grid de Gerenciamento e Exclusão de Memórias
-- **Status:** em_planejamento (travada para refinar subdivisão)
-- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:50)
-- **Depende de:** SUB-10, SUB-12; subtarefas SUB-21.1 a SUB-21.10
-- **Subtarefas:** (subdividida em 10 em 2026-10-11 23:47 por DashboardAI (Grok Bot) a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`)
+- **Status:** pendente (aguardando subtarefas)
+- **Executor:** nenhum
+- **Depende de:** SUB-10, SUB-12; subtarefas SUB-21.1 a SUB-21.12
+- **Subtarefas:** (subdividida em 10 em 2026-10-11 23:47 por DashboardAI (Grok Bot) a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`; refinada para 12 em 2026-10-11 23:51)
   - `SUB-21.1`: `memoriaComoMarkdown` e `escopoMemoria` em `src/lib/memorias.ts` (`pendente`)
   - `SUB-21.2`: `filtrarMemoriasLocal` e `tagsDisponiveis` em `src/lib/memorias.ts` (`pendente`)
   - `SUB-21.3`: Hook `useMemorias` em `src/hooks/useMemorias.ts` (`pendente`)
@@ -719,8 +741,10 @@
   - `SUB-21.6`: Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` (`pendente`)
   - `SUB-21.7`: Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` (`pendente`)
   - `SUB-21.8`: Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` (`pendente`)
-  - `SUB-21.9`: Montar a tela em `src/views/MemoriaView.tsx` (`pendente`)
-  - `SUB-21.10`: Validação visual e de exclusão da SUB-21 (`pendente`)
+  - `SUB-21.9`: Montar a `MemoriaView` (toolbar + grade) (`pendente`)
+  - `SUB-21.10`: Validação visual da SUB-21 (screenshots) (`pendente`)
+  - `SUB-21.11`: Ligar detalhe e exclusão na `MemoriaView` (`pendente`)
+  - `SUB-21.12`: Conferir exclusão com editor e viewer (`pendente`)
 - **Descrição:** Exibição em cartões de todas as memórias cadastradas, com botão para copiar conteúdo Markdown, visualizar detalhes e excluir memória.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Grid responsivo com paginação/scroll e feedback de exclusão.
@@ -807,23 +831,43 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-21.9: Montar a tela em `src/views/MemoriaView.tsx`
+#### [ ] SUB-21.9: Montar a `MemoriaView` (toolbar + grade)
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-21.3, SUB-21.5, SUB-21.6, SUB-21.7, SUB-21.8
+- **Depende de:** SUB-21.3, SUB-21.5, SUB-21.8
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Substituir o `EmConstrucao` da `MemoriaView`: projeto de `useProjetoAtual`, `useMemorias`, `MemoriaToolbar` + `filtrarMemoriasLocal`, `MemoriaGrid`, `MemoriaDetailModal` e `ConfirmDialog` de exclusão (`useExcluirMemoria`). Deixar uma área no topo para a busca semântica (SUB-19.8) e um cabeçalho com espaço para o botão "Nova memória" (SUB-20.7). É a subtarefa que cria a tela usada por 19.8 e 20.7.
+- **Descrição:** Substituir o `EmConstrucao` da `src/views/MemoriaView.tsx`: projeto de `useProjetoAtual`, `useMemorias`, `MemoriaToolbar` + `filtrarMemoriasLocal` e `MemoriaGrid`. Deixar uma área no topo para a busca semântica (SUB-19.8) e espaço no cabeçalho para o botão "Nova memória" (SUB-20.7). Detalhe e exclusão entram na SUB-21.11.
 - **Critérios de Aceitação:** `npm run typecheck`, `npm run build` e `npm test` OK; `#/memoria` mostra a grade.
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-21.10: Validação visual e de exclusão da SUB-21
+#### [ ] SUB-21.10: Validação visual da SUB-21 (screenshots)
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-21.9
+- **Depende de:** SUB-21.11
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Contra o banco local (`tests/integration/run.sh` + `vite`), conferir grade em 1280x800 e 390x844, copiar, detalhes, exclusão com sucesso (editor) e recusa (viewer) com reinserção; registrar na anotação da SUB-21.
-- **Critérios de Aceitação:** Checklist registrado; nenhum erro no console.
+- **Descrição:** Contra o banco local (`tests/integration/run.sh` + `vite`), conferir a grade, copiar e detalhes em 1280x800 e 390x844; registrar na anotação da SUB-21.
+- **Critérios de Aceitação:** Screenshots conferidos; nenhum erro no console.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-21.11: Ligar detalhe e exclusão na `MemoriaView`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-21.9, SUB-21.6, SUB-21.7
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Na `src/views/MemoriaView.tsx`: `onVer` abre `MemoriaDetailModal`; `onExcluir` (cartão ou modal) abre `ConfirmDialog` e chama `useExcluirMemoria`.
+- **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-21.12: Conferir exclusão com editor e viewer
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-21.11
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Contra o banco local: editor exclui (some da grade, toast de sucesso); viewer tenta excluir e a memória é reinserida com toast de erro. Registrar na anotação da SUB-21.
+- **Critérios de Aceitação:** Checklist registrado.
 - **Commit:** pendente
 - **Anotação:** pendente
 
@@ -843,19 +887,22 @@
 - **Anotação:** Arquivos: src/lib/logs.ts (+testes), src/hooks/useLogs.ts, src/views/LogsView.tsx.
 
 ### [ ] SUB-23: Diagnóstico de Travas e Saúde da Fila
-- **Status:** em_planejamento (travada para refinar subdivisão)
-- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:50)
-- **Depende de:** SUB-09, SUB-11, SUB-12; subtarefas SUB-23.1 a SUB-23.9
-- **Subtarefas:** (subdividida em 9 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`)
+- **Status:** pendente (aguardando subtarefas)
+- **Executor:** nenhum
+- **Depende de:** SUB-09, SUB-11, SUB-12; subtarefas SUB-23.1 a SUB-23.12
+- **Subtarefas:** (subdividida em 9 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 12 em 2026-10-11 23:51)
   - `SUB-23.1`: `minutosDeTrava` e `travaExpirada` em `src/lib/saudeFila.ts` (`pendente`)
   - `SUB-23.2`: `classificarPendentes(tasks)` em `src/lib/saudeFila.ts` (`pendente`)
   - `SUB-23.3`: `diagnosticarFila(tasks)` em `src/lib/saudeFila.ts` (`pendente`)
   - `SUB-23.4`: `liberarTrava()` em `src/services/taskService.ts` (`pendente`)
-  - `SUB-23.5`: Teste de integração de `liberarTrava` (`pendente`)
+  - `SUB-23.5`: Teste de integração de `liberarTrava`: expirada e forçada (`pendente`)
   - `SUB-23.6`: Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts` (`pendente`)
-  - `SUB-23.7`: Componente `SaudeFilaPanel` em `src/components/tasks/SaudeFilaPanel.tsx` (`pendente`)
+  - `SUB-23.7`: Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx` (`pendente`)
   - `SUB-23.8`: Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` (`pendente`)
   - `SUB-23.9`: Alerta de trava presa na `src/views/FilaView.tsx` (`pendente`)
+  - `SUB-23.10`: `TravaItem` em `src/components/tasks/TravaItem.tsx` (`pendente`)
+  - `SUB-23.11`: `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx` (`pendente`)
+  - `SUB-23.12`: Teste de integração de `liberarTrava`: viewer e outro projeto (`pendente`)
 - **Descrição:** Painel indicando se há lock ativo (task com `trava_frente` e `trava_em` dentro dos 90 minutos) e botão de liberação manual de trava caso expire.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Alerta visual se uma task estiver presa além do tempo limite.
@@ -902,12 +949,12 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-23.5: Teste de integração de `liberarTrava`
+#### [ ] SUB-23.5: Teste de integração de `liberarTrava`: expirada e forçada
 - **Status:** pendente
 - **Executor:** nenhum
 - **Depende de:** SUB-23.4
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Em `tests/integration/taskService.integration.test.ts`, novo caso: task travada há 100 min (via `service_role`) é liberada por editor; trava recente é recusada sem `forcar` e liberada com `forcar`; viewer é recusado; task de outro projeto é recusada.
+- **Descrição:** Em `tests/integration/taskService.integration.test.ts`: task travada há 100 min (via `service_role`) é liberada por editor; trava recente é recusada sem `forcar` e liberada com `forcar`.
 - **Critérios de Aceitação:** `npm run test:integration` passa (ou o teste fica skipped sem PostgREST, e `npm test` segue verde).
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -922,12 +969,12 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-23.7: Componente `SaudeFilaPanel` em `src/components/tasks/SaudeFilaPanel.tsx`
+#### [ ] SUB-23.7: Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx`
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-23.6
+- **Depende de:** SUB-23.10, SUB-23.11
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Criar o painel: lista de travas ativas (código, título, agente `trava_frente`, minutos, destaque vermelho se expirada), botão "Liberar trava" com `ConfirmDialog` (forçar só com aviso extra quando não expirou), contadores das pendentes por grupo. Exportar em `src/components/tasks/index.ts`.
+- **Descrição:** Compor o painel: título, lista de `TravaItem` (SUB-23.10) ou mensagem "Nenhuma trava ativa", e `PendentesResumo` (SUB-23.11). Exportar em `src/components/tasks/index.ts`.
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -952,6 +999,36 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
+#### [ ] SUB-23.10: `TravaItem` em `src/components/tasks/TravaItem.tsx`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-23.6
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Linha de uma trava: código, título, agente (`trava_frente`), minutos, destaque vermelho se expirada, botão "Liberar trava" com `ConfirmDialog` (forçar só com aviso extra quando não expirou), chamando `liberar(task, forcar)` do `useSaudeFila`.
+- **Critérios de Aceitação:** `npm run typecheck` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-23.11: `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-23.3
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Contadores das pendentes por grupo (`classificarPendentes`: prontas, bloqueadas por dependência, desligadas, agendadas, sem tentativas) com ícones e tooltips.
+- **Critérios de Aceitação:** `npm run typecheck` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-23.12: Teste de integração de `liberarTrava`: viewer e outro projeto
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-23.4
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Em `tests/integration/taskService.integration.test.ts`: viewer é recusado ao liberar trava; task de outro projeto é recusada por `liberarTrava(projectId errado, id)`.
+- **Critérios de Aceitação:** `npm run test:integration` passa (skipped sem PostgREST; `npm test` segue verde).
+- **Commit:** pendente
+- **Anotação:** pendente
+
 ---
 
 ## 🔄 FASE 9: Sincronização e Utilitários
@@ -971,14 +1048,16 @@
 ## 🚀 FASE 10: Build, Validação e Documentação
 
 ### [ ] SUB-25: Validação de Build e Execução Local
-- **Status:** em_planejamento (travada para refinar subdivisão)
-- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:50)
-- **Depende de:** SUB-01 a SUB-24; subtarefas SUB-25.1 a SUB-25.4
-- **Subtarefas:** (subdividida em 4 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`)
+- **Status:** pendente (aguardando subtarefas)
+- **Executor:** nenhum
+- **Depende de:** SUB-01 a SUB-24; subtarefas SUB-25.1 a SUB-25.7
+- **Subtarefas:** (subdividida em 4 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 6 em 2026-10-11 23:51)
   - `SUB-25.1`: Script `scripts/validar.sh` + `npm run validar` (`pendente`)
-  - `SUB-25.2`: Rodar a validação completa e corrigir erros de tipo (`pendente`)
-  - `SUB-25.3`: Rodar integração do banco e do frontend (`pendente`)
-  - `SUB-25.4`: Smoke test local com `vite preview` (`pendente`)
+  - `SUB-25.2`: Rodar `npm ci` + `npm run validar` e registrar em `docs/VALIDACAO.md` (`pendente`)
+  - `SUB-25.3`: Rodar `database/tests/run_tests.sh` (`pendente`)
+  - `SUB-25.4`: Teste rápido local: telas Fila e Logs (`pendente`)
+  - `SUB-25.6`: Rodar `npm run test:integration` (`pendente`)
+  - `SUB-25.7`: Teste rápido local: telas Memória e Configurações (`pendente`)
 - **Descrição:** Rodar compilação de produção (`npm run build`), validar ausência de erros de tipagem TypeScript e verificar integridade de pacotes.
 - **Critérios de Aceitação:** Build gerado com sucesso na pasta `dist/` sem alertas impeditivos.
 - **Commit:** pendente
@@ -994,50 +1073,71 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-25.2: Rodar a validação completa e corrigir erros de tipo
+#### [ ] SUB-25.2: Rodar `npm ci` + `npm run validar` e registrar em `docs/VALIDACAO.md`
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-25.1, SUB-08, SUB-19, SUB-20, SUB-21, SUB-23, SUB-27 (inclui SUB-27.18), SUB-33, SUB-34
+- **Depende de:** SUB-25.1, SUB-08, SUB-19, SUB-20, SUB-21, SUB-23, SUB-27 (inclui SUB-27.22), SUB-33, SUB-34
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Com todas as tasks anteriores concluídas, rodar `npm ci && npm run validar`, corrigir erros de tipagem/teste remanescentes (commits pequenos) e registrar o resultado em `docs/VALIDACAO.md` (versões de Node/npm, tamanhos dos chunks, nº de testes).
-- **Critérios de Aceitação:** `npm run validar` verde; `dist/` gerado; `docs/VALIDACAO.md` criado.
+- **Descrição:** Com todas as tasks anteriores concluídas, rodar `npm ci && npm run validar` e registrar o resultado em `docs/VALIDACAO.md` (versões de Node/npm, tamanhos dos chunks, nº de testes). **Sem corrigir nada aqui:** cada falha encontrada vira uma subtarefa nova (SUB-25.8, 25.9…), atômica, criada no quadro com lock + commit + push.
+- **Critérios de Aceitação:** `docs/VALIDACAO.md` criado; falhas (se houver) cadastradas como SUB-25.8+.
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-25.3: Rodar integração do banco e do frontend
+#### [ ] SUB-25.3: Rodar `database/tests/run_tests.sh`
 - **Status:** pendente
 - **Executor:** nenhum
 - **Depende de:** SUB-25.2
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Rodar `database/tests/run_tests.sh` e `npm run test:integration` (PostgreSQL + pgvector + PostgREST locais) e anexar o resultado ao `docs/VALIDACAO.md`.
-- **Critérios de Aceitação:** Todos os testes de integração passam; resultado registrado.
+- **Descrição:** Rodar a suíte do banco (`database/tests/run_tests.sh`: PostgreSQL + pgvector local) e anexar o resultado ao `docs/VALIDACAO.md`.
+- **Critérios de Aceitação:** Suíte do banco verde; resultado registrado.
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-25.4: Smoke test local com `vite preview`
+#### [ ] SUB-25.4: Teste rápido local: telas Fila e Logs
 - **Status:** pendente
 - **Executor:** nenhum
 - **Depende de:** SUB-25.2
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Subir `npm run preview` contra o banco local e conferir as 4 telas (fila, memória, logs, configurações) em 1280x800 e 390x844; registrar no `docs/VALIDACAO.md` o que foi verificado (sem commitar screenshots grandes).
+- **Descrição:** Subir `npm run preview` contra o banco local e conferir as telas Fila e Logs em 1280x800 e 390x844; registrar no `docs/VALIDACAO.md` (sem commitar screenshots grandes).
+- **Critérios de Aceitação:** Sem erros no console; checklist registrado.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-25.6: Rodar `npm run test:integration`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-25.2
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Rodar a integração do frontend (`tests/integration/run.sh`: PostgreSQL + pgvector + PostgREST locais) e anexar o resultado ao `docs/VALIDACAO.md`.
+- **Critérios de Aceitação:** Testes de integração verdes; resultado registrado.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-25.7: Teste rápido local: telas Memória e Configurações
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-25.2
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Com `npm run preview` contra o banco local, conferir as telas Memória e Configurações em 1280x800 e 390x844; registrar no `docs/VALIDACAO.md`.
 - **Critérios de Aceitação:** Sem erros no console; checklist registrado.
 - **Commit:** pendente
 - **Anotação:** pendente
 
 ### [ ] SUB-26: Documentação Completa e Manual Operacional no `README.md`
-- **Status:** em_planejamento (travada para refinar subdivisão)
-- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:50)
-- **Depende de:** SUB-25; subtarefas SUB-26.1 a SUB-26.9
-- **Subtarefas:** (subdividida em 9 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`)
+- **Status:** pendente (aguardando subtarefas)
+- **Executor:** nenhum
+- **Depende de:** SUB-25; subtarefas SUB-26.1 a SUB-26.10
+- **Subtarefas:** (subdividida em 9 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 10 em 2026-10-11 23:51)
   - `SUB-26.1`: Esqueleto do `README.md` (`pendente`)
   - `SUB-26.2`: Seção Arquitetura (`pendente`)
   - `SUB-26.3`: Seção Execução local (`pendente`)
   - `SUB-26.4`: Seção Banco de dados (`pendente`)
   - `SUB-26.5`: Seção Deploy na Vercel (`pendente`)
-  - `SUB-26.6`: Seção Agentes de IA: fila via MCP (`pendente`)
+  - `SUB-26.6`: Seção Agentes de IA: configurar clientes MCP (`pendente`)
   - `SUB-26.7`: Seção Memória via MCP (`pendente`)
   - `SUB-26.8`: Seção Segurança (`pendente`)
   - `SUB-26.9`: Revisão final do README (`pendente`)
+  - `SUB-26.10`: Seção Agentes de IA: exemplos do ciclo da fila (`pendente`)
 - **Descrição:** Documentar no `README.md` a arquitetura da solução, guia de execução local, deploy na Vercel e instruções para agentes de IA operarem a fila e a memória.
 - **Critérios de Aceitação:** Documentação clara, completa e em conformidade com as regras do projeto.
 - **Commit:** pendente
@@ -1093,13 +1193,13 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-26.6: Seção Agentes de IA: fila via MCP
+#### [ ] SUB-26.6: Seção Agentes de IA: configurar clientes MCP
 - **Status:** pendente
 - **Executor:** nenhum
 - **Depende de:** SUB-26.1
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Configurar o MCP em clientes (Claude Code, Codex etc.) com `Authorization: Bearer <MCP_AUTH_TOKEN>`; ciclo `task_next` -> trabalho -> `task_finish`; `task_list`/`task_create`; argumento `project`; protocolo do quadro (`AGENTS.md`).
-- **Critérios de Aceitação:** Exemplos JSON-RPC conferidos com `api/_lib/queue-tools.ts`.
+- **Descrição:** Como configurar o MCP em clientes (Claude Code, Codex etc.) com `Authorization: Bearer <MCP_AUTH_TOKEN>`, URL `/mcp`, argumento `project` e protocolo do quadro (`AGENTS.md`).
+- **Critérios de Aceitação:** Configuração conferida com `api/mcp.ts`.
 - **Commit:** pendente
 - **Anotação:** pendente
 
@@ -1116,9 +1216,9 @@
 #### [ ] SUB-26.8: Seção Segurança
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-26.1, SUB-27.13, SUB-27.17
+- **Depende de:** SUB-26.1, SUB-27.13, SUB-27.17, SUB-27.21
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Somente a chave anon no navegador, service_role e chaves de IA só no servidor, RLS por projeto e papéis, `MCP_AUTH_TOKEN` obrigatório para ferramentas de dados, login (SUB-27.13; primeiro administrador conforme SUB-27.17) e rotação de chaves.
+- **Descrição:** Somente a chave anon no navegador, service_role e chaves de IA só no servidor, RLS por projeto e papéis, `MCP_AUTH_TOKEN` obrigatório para ferramentas de dados, login (SUB-27.13; configuração do Auth na SUB-27.17 e primeiro administrador na SUB-27.21) e rotação de chaves.
 - **Critérios de Aceitação:** Seção completa e coerente com `database/05_rls_policies.sql`.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -1126,18 +1226,28 @@
 #### [ ] SUB-26.9: Revisão final do README
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-26.2, SUB-26.3, SUB-26.4, SUB-26.5, SUB-26.6, SUB-26.7, SUB-26.8, SUB-25
+- **Depende de:** SUB-26.2, SUB-26.3, SUB-26.4, SUB-26.5, SUB-26.6, SUB-26.7, SUB-26.8, SUB-26.10, SUB-25
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Remover placeholders, conferir links e comandos, incluir a seção Validação com o resultado da SUB-25.
 - **Critérios de Aceitação:** Nenhum placeholder; links válidos.
 - **Commit:** pendente
 - **Anotação:** pendente
 
+#### [ ] SUB-26.10: Seção Agentes de IA: exemplos do ciclo da fila
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-26.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Exemplos JSON-RPC de `task_next` -> trabalho -> `task_finish` (concluida/recusada/erro) e de `task_list`/`task_create`.
+- **Critérios de Aceitação:** Exemplos conferidos com `api/_lib/queue-tools.ts`.
+- **Commit:** pendente
+- **Anotação:** pendente
+
 ### [🔄] SUB-27: Autenticação e Login com Supabase Auth
 - **Status:** em_execucao
 - **Executor:** Codex (OpenAI) (início: 2026-10-11 22:27)
-- **Depende de:** SUB-03, SUB-29 (papéis `user_roles`/`project_members` e RLS); subtarefas SUB-27.1 a SUB-27.18
-- **Subtarefas:** (subdividida em 18 em 2026-10-11 23:41 por DashboardAI (Grok Bot) **a pedido do usuário**; todas **reservadas para Codex (OpenAI) — SUB-27 travada**; a mãe só é concluída quando todas estiverem `concluido`)
+- **Depende de:** SUB-03, SUB-29 (papéis `user_roles`/`project_members` e RLS); subtarefas SUB-27.1 a SUB-27.22
+- **Subtarefas:** (subdividida em 18 em 2026-10-11 23:41 por DashboardAI (Grok Bot) **a pedido do usuário**; todas **reservadas para Codex (OpenAI) — SUB-27 travada**; a mãe só é concluída quando todas estiverem `concluido`; refinada para 22 em 2026-10-11 23:51)
   - `SUB-27.1`: `mensagemErroAuth(erro)` em `src/lib/auth.ts` (`pendente`, reservada)
   - `SUB-27.2`: `validarLogin({ email, senha })` em `src/lib/auth.ts` (`pendente`, reservada)
   - `SUB-27.3`: `entrarComSenha(email, senha)` em `src/services/authService.ts` (`pendente`, reservada)
@@ -1147,15 +1257,19 @@
   - `SUB-27.7`: `obterPapelGlobal()` e `papelNoProjeto()` em `src/services/authService.ts` (`pendente`, reservada)
   - `SUB-27.8`: Teste de integração dos papéis em `tests/integration/authService.integration.test.ts` (`pendente`, reservada)
   - `SUB-27.9`: `AuthProvider` e `useAuth` em `src/hooks/AuthContext.tsx` / `src/hooks/useAuth.ts` (`pendente`, reservada)
-  - `SUB-27.10`: Formulário `LoginForm` em `src/components/auth/LoginForm.tsx` (`pendente`, reservada)
+  - `SUB-27.10`: Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx` (`pendente`, reservada)
   - `SUB-27.11`: Tela `LoginView` em `src/views/LoginView.tsx` (`pendente`, reservada)
   - `SUB-27.12`: Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` (`pendente`, reservada)
   - `SUB-27.13`: Integrar autenticação no `src/App.tsx` (`pendente`, reservada)
   - `SUB-27.14`: Menu do usuário `UserMenu` no header (`pendente`, reservada)
-  - `SUB-27.15`: Reagir ao login/logout em `useConexao` e `ProjetoContext` (`pendente`, reservada)
+  - `SUB-27.15`: Rechecar conexão no login/logout em `src/hooks/useConexao.ts` (`pendente`, reservada)
   - `SUB-27.16`: `urlDeRetorno()` para link mágico e redefinição de senha (`pendente`, reservada)
-  - `SUB-27.17`: Documentar autenticação e primeiro administrador (`pendente`, reservada)
-  - `SUB-27.18`: Validação final da SUB-27 (`pendente`, reservada)
+  - `SUB-27.17`: Documentar configuração do Supabase Auth em `src/README.md` (`pendente`, reservada)
+  - `SUB-27.18`: Validação automatizada da SUB-27 (`pendente`, reservada)
+  - `SUB-27.19`: `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx` (`pendente`, reservada)
+  - `SUB-27.20`: Limpar `ProjetoContext` ao sair (`pendente`, reservada)
+  - `SUB-27.21`: Documentar primeiro administrador e membros em `database/README.md` (`pendente`, reservada)
+  - `SUB-27.22`: Conferência no navegador e varredura do bundle (SUB-27) (`pendente`, reservada)
 - **Descrição:** Implementar tela e fluxo de login do Dashboard usando Supabase Auth, mantendo a sessão do usuário, protegendo as áreas autenticadas e oferecendo logout.
 - **Critérios de Aceitação:** Login e logout funcionam via Supabase Auth; sessão é restaurada e páginas privadas redirecionam usuários não autenticados; chamadas ao banco usam o JWT do usuário e respeitam RLS; somente a chave pública anon pode estar no frontend, sem senha persistida nem chave service_role exposta.
 - **Commit:** pendente
@@ -1251,12 +1365,12 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-27.10: Formulário `LoginForm` em `src/components/auth/LoginForm.tsx`
+#### [ ] SUB-27.10: Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx`
 - **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
 - **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
-- **Depende de:** SUB-27.2, SUB-27.3, SUB-27.5
+- **Depende de:** SUB-27.2, SUB-27.3
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Formulário acessível (labels, `autocomplete=email/current-password`, mostrar/ocultar senha) com validação `validarLogin`, botão Entrar com estado carregando (`Botao`), erro em `role=alert`, e links "Esqueci a senha" e "Entrar com link por e-mail" (usam 27.5 e mostram confirmação). Criar `src/components/auth/index.ts`.
+- **Descrição:** Formulário acessível (labels, `autocomplete=email/current-password`, mostrar/ocultar senha) com validação `validarLogin`, botão Entrar com estado carregando (`Botao`) e erro em `role=alert`. Criar `src/components/auth/index.ts`. Recuperação de acesso fica na SUB-27.19.
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -1264,9 +1378,9 @@
 #### [ ] SUB-27.11: Tela `LoginView` em `src/views/LoginView.tsx`
 - **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
 - **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
-- **Depende de:** SUB-27.10
+- **Depende de:** SUB-27.10, SUB-27.19
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Página cheia centralizada (fora do `AppLayout`): nome do produto, descrição curta, `LoginForm`, `ThemeToggle` e aviso quando o Supabase não estiver configurado (`supabaseConfigurado`). Responsiva 390x844.
+- **Descrição:** Página cheia centralizada (fora do `AppLayout`): nome do produto, descrição curta, `LoginForm`, `RecuperarAcesso` (SUB-27.19), `ThemeToggle` e aviso quando o Supabase não estiver configurado (`supabaseConfigurado`). Responsiva 390x844.
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK; screenshots 1280x800 e 390x844.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -1301,12 +1415,12 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-27.15: Reagir ao login/logout em `useConexao` e `ProjetoContext`
+#### [ ] SUB-27.15: Rechecar conexão no login/logout em `src/hooks/useConexao.ts`
 - **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
 - **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
 - **Depende de:** SUB-27.9
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Em `src/hooks/useConexao.ts`, verificar a conexão de novo quando `auth.onAuthStateChange` disparar (estado `sem_sessao` -> `conectado` sem esperar 60 s). Em `src/hooks/ProjetoContext.tsx`, limpar `projetos`/erro quando não houver sessão.
+- **Descrição:** Em `useConexao`, verificar a conexão de novo quando `auth.onAuthStateChange` disparar (estado `sem_sessao` -> `conectado` sem esperar 60 s), cancelando a assinatura no cleanup.
 - **Critérios de Aceitação:** `npm run typecheck` OK; status do header atualiza logo após entrar/sair.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -1321,23 +1435,63 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-27.17: Documentar autenticação e primeiro administrador
+#### [ ] SUB-27.17: Documentar configuração do Supabase Auth em `src/README.md`
 - **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
 - **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
 - **Depende de:** SUB-27.13
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** No `src/README.md` (e nota em `database/README.md`): habilitar provedor e-mail no Supabase Auth, URLs de redirecionamento (local e Vercel), criar o primeiro admin (`insert into user_roles (user_id, role) values (..., 'admin')` no SQL editor) e adicionar membros em `project_members`. Sem chaves reais.
+- **Descrição:** No `src/README.md`: habilitar provedor e-mail no Supabase Auth, URLs de redirecionamento (local e Vercel) usadas por `urlDeRetorno`, e como a sessão é persistida. Sem chaves reais.
 - **Critérios de Aceitação:** Documentação revisada.
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-27.18: Validação final da SUB-27
+#### [ ] SUB-27.18: Validação automatizada da SUB-27
 - **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
 - **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
-- **Depende de:** SUB-27.6, SUB-27.8, SUB-27.13, SUB-27.14, SUB-27.15, SUB-27.16, SUB-27.17
+- **Depende de:** SUB-27.6, SUB-27.8, SUB-27.13, SUB-27.14, SUB-27.15, SUB-27.16, SUB-27.17, SUB-27.20, SUB-27.21
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Rodar `npm run typecheck`, `npm test`, `npm run build` e `npm run test:integration`; conferir no navegador entrar/sair/restaurar sessão (recarregar a página) e que nenhuma senha/service_role aparece no bundle (`rg -n service_role dist/` só nas mensagens de recusa). Registrar o resultado na anotação da SUB-27.
-- **Critérios de Aceitação:** Tudo verde; critérios de aceitação da SUB-27 atendidos.
+- **Descrição:** Rodar `npm run typecheck`, `npm test`, `npm run build` e `npm run test:integration`; registrar o resultado na anotação da SUB-27.
+- **Critérios de Aceitação:** Tudo verde.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-27.19: `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx`
+- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
+- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Depende de:** SUB-27.5, SUB-27.16
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Dois botões/links: "Entrar com link por e-mail" (`enviarLinkMagico`) e "Esqueci a senha" (`redefinirSenha`), usando o e-mail informado e `urlDeRetorno(location)`; mostra confirmação de envio ou erro.
+- **Critérios de Aceitação:** `npm run typecheck` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-27.20: Limpar `ProjetoContext` ao sair
+- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
+- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Depende de:** SUB-27.9
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Em `src/hooks/ProjetoContext.tsx`, limpar `projetos` e erro quando não houver sessão (usando `useAuth`), sem perder o slug salvo.
+- **Critérios de Aceitação:** `npm run typecheck` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-27.21: Documentar primeiro administrador e membros em `database/README.md`
+- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
+- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Depende de:** SUB-27.13
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Como criar o primeiro admin (`insert into user_roles (user_id, role) values (..., 'admin')` no SQL editor) e adicionar membros em `project_members` (owner/editor/viewer). Sem chaves reais.
+- **Critérios de Aceitação:** Documentação revisada.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-27.22: Conferência no navegador e varredura do bundle (SUB-27)
+- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
+- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Depende de:** SUB-27.18
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Conferir no navegador entrar, sair e restaurar sessão (recarregar a página) e rodar `rg -n service_role dist/` (só mensagens de recusa); registrar na anotação da SUB-27.
+- **Critérios de Aceitação:** Critérios de aceitação da SUB-27 atendidos.
 - **Commit:** pendente
 - **Anotação:** pendente
 
@@ -1346,28 +1500,35 @@
 ## 🚀 FASE 11: Orquestração de Tasks com LangChain/LangGraph (última fase)
 
 ### [ ] SUB-28: Integração LangChain/LangGraph para Execução de Tasks
-- **Status:** em_planejamento (travada para refinar subdivisão)
-- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:50)
-- **Depende de:** SUB-01 a SUB-27, SUB-29, SUB-30 (todas as tasks anteriores concluídas); subtarefas SUB-28.1 a SUB-28.18
-- **Subtarefas:** (subdividida em 18 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`)
+- **Status:** pendente (aguardando subtarefas)
+- **Executor:** nenhum
+- **Depende de:** SUB-01 a SUB-27, SUB-29, SUB-30 (todas as tasks anteriores concluídas); subtarefas SUB-28.1 a SUB-28.25
+- **Subtarefas:** (subdividida em 18 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 25 em 2026-10-11 23:51)
   - `SUB-28.1`: Contrato worker ↔ RPC ↔ MCP em `docs/langgraph-contrato.md` (`pendente`)
   - `SUB-28.2`: Dependências e `worker/tsconfig.json` (`pendente`)
   - `SUB-28.3`: Estado tipado do grafo em `worker/estado.ts` (`pendente`)
   - `SUB-28.4`: Adaptador de RPCs em `worker/fila.ts` (`pendente`)
-  - `SUB-28.5`: Allowlist de ferramentas em `worker/ferramentas.ts` (`pendente`)
+  - `SUB-28.5`: Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts` (`pendente`)
   - `SUB-28.6`: Nó `carregarContexto` em `worker/nos/carregarContexto.ts` (`pendente`)
-  - `SUB-28.7`: Nó `planejar` em `worker/nos/planejar.ts` (`pendente`)
+  - `SUB-28.7`: Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts` (`pendente`)
   - `SUB-28.8`: Nó `politica` (aprovação humana) em `worker/nos/politica.ts` (`pendente`)
   - `SUB-28.9`: Nó `executar` em `worker/nos/executar.ts` (`pendente`)
-  - `SUB-28.10`: Nó `revisar` em `worker/nos/revisar.ts` (`pendente`)
+  - `SUB-28.10`: Nó `revisar` (roteamento) em `worker/nos/revisar.ts` (`pendente`)
   - `SUB-28.11`: Nó `finalizar` em `worker/nos/finalizar.ts` (`pendente`)
   - `SUB-28.12`: Montagem do `StateGraph` em `worker/grafo.ts` (`pendente`)
   - `SUB-28.13`: Checkpointer durável em `worker/checkpointer.ts` (`pendente`)
   - `SUB-28.14`: Reconciliação na retomada em `worker/reconciliar.ts` (`pendente`)
   - `SUB-28.15`: CLI do worker em `worker/index.ts` (`pendente`)
-  - `SUB-28.16`: Endpoint de aprovação `api/aprovacao.ts` (`pendente`)
-  - `SUB-28.17`: Testes ponta a ponta do worker em `tests/unit/worker-grafo.test.ts` (`pendente`)
-  - `SUB-28.18`: Documentação de operação e segurança (`pendente`)
+  - `SUB-28.16`: Endpoint `api/aprovacao.ts`: autenticação e papel (401/403) (`pendente`)
+  - `SUB-28.17`: Testes do worker: caminho feliz e erro (`pendente`)
+  - `SUB-28.18`: Atualizar `LangChain_LangGraph.md` (status e desvios) (`pendente`)
+  - `SUB-28.19`: Adaptar ferramentas para `tool()` do LangChain em `worker/ferramentas.ts` (`pendente`)
+  - `SUB-28.20`: `PlanoSchema` e `montarPromptPlano` em `worker/plano.ts` (`pendente`)
+  - `SUB-28.21`: `classificarFalha(err)` em `worker/falhas.ts` (`pendente`)
+  - `SUB-28.22`: `executarUmaTask(deps)` em `worker/executar.ts` (`pendente`)
+  - `SUB-28.23`: Retomada da aprovação em `api/aprovacao.ts` (`pendente`)
+  - `SUB-28.24`: Testes do worker: interrupção e retomada sem duplicar efeitos (`pendente`)
+  - `SUB-28.25`: Variáveis do worker no `api/README.md` (`pendente`)
 - **Descrição:** Implementar a orquestração multi-etapas de execução descrita em `LangChain_LangGraph.md`, mantendo Supabase como autoridade sobre a fila, dependências, locks, tentativas e resultado. Integrar o worker LangGraph às RPCs existentes e às ferramentas MCP autorizadas, com checkpoint durável, retomada, tratamento de falhas e aprovação humana para ações sensíveis.
 - **Critérios de Aceitação:** A task só inicia após todas as dependências SUB-01 a SUB-27 concluídas; execução reivindicada por `pegar_proxima_task`; estado do grafo é retomável e não duplica efeitos; escrita ocorre por ferramentas autenticadas e autorizadas; ações sensíveis pausam para aprovação; conclusão/erro e liberação do lock passam por `finalizar_task`; documentação de operação e segurança atualizada conforme `LangChain_LangGraph.md`.
 - **Commit:** pendente
@@ -1413,12 +1574,12 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-28.5: Allowlist de ferramentas em `worker/ferramentas.ts`
+#### [ ] SUB-28.5: Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts`
 - **Status:** pendente
 - **Executor:** nenhum
 - **Depende de:** SUB-28.3
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Adaptar ferramentas do registro MCP (`api/_lib/tools.ts`) para o grafo só por allowlist (`brain_search`, `brain_store`, `task_list`), com flag `sensivel` e validação de argumentos.
+- **Descrição:** Definir a allowlist (`brain_search`, `brain_store`, `task_list`) com flag `sensivel` e `obterFerramenta(nome)` que consulta o registro MCP (`api/_lib/tools.ts`) e recusa nomes fora da lista. A adaptação para o LangChain fica na SUB-28.19.
 - **Critérios de Aceitação:** Teste: ferramenta fora da allowlist é recusada.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -1426,19 +1587,19 @@
 #### [ ] SUB-28.6: Nó `carregarContexto` em `worker/nos/carregarContexto.ts`
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-28.3, SUB-28.5
+- **Depende de:** SUB-28.3, SUB-28.19
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Busca memórias relevantes (`brain_search`) para a instrução e guarda no estado como dado não confiável.
 - **Critérios de Aceitação:** Teste unitário com ferramenta falsa.
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-28.7: Nó `planejar` em `worker/nos/planejar.ts`
+#### [ ] SUB-28.7: Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts`
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-28.3
+- **Depende de:** SUB-28.20
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Gera plano estruturado (zod) com modelo injetável (LangChain `BaseChatModel`), limitado ao objetivo da task.
+- **Descrição:** Chama o modelo injetável (LangChain `BaseChatModel`, saída estruturada com `PlanoSchema` da SUB-28.20) com o prompt de `montarPromptPlano` e grava o plano no estado.
 - **Critérios de Aceitação:** Teste com modelo falso; plano inválido vira erro de validação.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -1446,7 +1607,7 @@
 #### [ ] SUB-28.8: Nó `politica` (aprovação humana) em `worker/nos/politica.ts`
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-28.5
+- **Depende de:** SUB-28.19
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Valida passos contra a allowlist e, para passo sensível, chama `interrupt()` com pedido de aprovação.
 - **Critérios de Aceitação:** Teste: passo sensível interrompe; não sensível segue.
@@ -1456,20 +1617,20 @@
 #### [ ] SUB-28.9: Nó `executar` em `worker/nos/executar.ts`
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-28.5
+- **Depende de:** SUB-28.19
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Executa o passo atual com chave de idempotência `${execucaoId}:${passo}`; se o resultado já existe no estado, não repete.
 - **Critérios de Aceitação:** Teste: retomada não duplica a chamada.
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-28.10: Nó `revisar` em `worker/nos/revisar.ts`
+#### [ ] SUB-28.10: Nó `revisar` (roteamento) em `worker/nos/revisar.ts`
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-28.3
+- **Depende de:** SUB-28.21
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Confere critérios de aceitação, classifica falha (transitória/validação/permanente) e decide repetir (limite por nó) ou finalizar.
-- **Critérios de Aceitação:** Teste das três classes de falha.
+- **Descrição:** Usa `classificarFalha` (SUB-28.21) e decide repetir o passo (limite por nó, espera progressiva) ou seguir para finalizar.
+- **Critérios de Aceitação:** Teste: transitória repete até o limite; permanente finaliza.
 - **Commit:** pendente
 - **Anotação:** pendente
 
@@ -1516,40 +1677,109 @@
 #### [ ] SUB-28.15: CLI do worker em `worker/index.ts`
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-28.12, SUB-28.13, SUB-28.14
+- **Depende de:** SUB-28.22
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Loop `reivindicar` -> `grafo.invoke` com `thread_id = execucaoId` -> finalizar; flags `--projeto`, `--agente`, `--uma-vez`; `"worker"` no `package.json`.
+- **Descrição:** Opções `--projeto`, `--agente`, `--uma-vez`; loop chamando `executarUmaTask` (SUB-28.22) até não haver task; `"worker"` no `package.json`.
 - **Critérios de Aceitação:** `npm run worker -- --uma-vez` roda contra banco local.
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-28.16: Endpoint de aprovação `api/aprovacao.ts`
+#### [ ] SUB-28.16: Endpoint `api/aprovacao.ts`: autenticação e papel (401/403)
 - **Status:** pendente
 - **Executor:** nenhum
 - **Depende de:** SUB-28.15, SUB-33.2, SUB-27.9
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** `POST /api/aprovacao` com JWT de editor do projeto (`verificarSessaoSupabase` + `tem_acesso_projeto`) que retoma o grafo com `Command({ resume })`, registrando quem aprovou e quando.
-- **Critérios de Aceitação:** `typecheck:api` OK; testes 401/403/200.
+- **Descrição:** `POST /api/aprovacao` exige JWT (`bearerToken` + `verificarSessaoSupabase`) e papel editor no projeto da task (`tem_acesso_projeto`); 401 sem sessão, 403 sem papel, 400 corpo inválido. A retomada fica na SUB-28.23.
+- **Critérios de Aceitação:** `typecheck:api` OK; testes 401/403/400.
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-28.17: Testes ponta a ponta do worker em `tests/unit/worker-grafo.test.ts`
+#### [ ] SUB-28.17: Testes do worker: caminho feliz e erro
 - **Status:** pendente
 - **Executor:** nenhum
 - **Depende de:** SUB-28.15
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Com modelo, ferramentas e RPC falsos: caminho feliz, interrupção e retomada sem duplicar efeitos, erro -> `finalizar_task` com `erro`.
+- **Descrição:** Em `tests/unit/worker-grafo.test.ts`, com modelo, ferramentas e RPC falsos: caminho feliz até `finalizar_task` concluida e erro permanente -> `finalizar_task` com `erro`.
 - **Critérios de Aceitação:** `npm test` passa.
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-28.18: Documentação de operação e segurança
+#### [ ] SUB-28.18: Atualizar `LangChain_LangGraph.md` (status e desvios)
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-28.15, SUB-28.16
+- **Depende de:** SUB-28.15, SUB-28.23
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Atualizar `LangChain_LangGraph.md` (status implementado, desvios justificados) e `api/README.md` (variáveis `LANGGRAPH_DATABASE_URL`, modelo, aprovação).
+- **Descrição:** Atualizar `LangChain_LangGraph.md`: status implementado, nós, retomada, aprovação e desvios justificados.
 - **Critérios de Aceitação:** Documentação coerente com o código.
 - **Commit:** pendente
 - **Anotação:** pendente
 
+#### [ ] SUB-28.19: Adaptar ferramentas para `tool()` do LangChain em `worker/ferramentas.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-28.5
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Converter cada ferramenta permitida em `tool()` do LangChain com schema zod derivado do `inputSchema` MCP, validando argumentos antes de chamar o handler.
+- **Critérios de Aceitação:** Teste: argumento inválido é recusado sem chamar o handler.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-28.20: `PlanoSchema` e `montarPromptPlano` em `worker/plano.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-28.3
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Schema zod do plano (passos com ferramenta, argumentos, `sensivel`, critério) e função pura `montarPromptPlano(estado)` que trata instrução e memórias como dados não confiáveis.
+- **Critérios de Aceitação:** Testes do schema e do prompt (sem segredos).
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-28.21: `classificarFalha(err)` em `worker/falhas.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-28.3
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Função pura que classifica erros em `transitoria` (rede, 429, timeout), `validacao`/`permissao` e `permanente`. Testes.
+- **Critérios de Aceitação:** `npm test` passa.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-28.22: `executarUmaTask(deps)` em `worker/executar.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-28.12, SUB-28.13, SUB-28.14
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Uma execução: `reivindicar` -> `reconciliar` -> `grafo.invoke` com `thread_id = execucaoId` e checkpointer -> garantir `finalizar` em caso de exceção. Dependências injetáveis.
+- **Critérios de Aceitação:** Teste com fakes: sem task retorna `null`; exceção finaliza com `erro`.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-28.23: Retomada da aprovação em `api/aprovacao.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-28.16
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Após autorizar, retomar o grafo com `Command({ resume: { aprovado, por, em } })` no `thread_id` da execução e registrar quem aprovou, quando e a ação (sem credenciais).
+- **Critérios de Aceitação:** `typecheck:api` OK; teste de retomada com grafo falso.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-28.24: Testes do worker: interrupção e retomada sem duplicar efeitos
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-28.15
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Em `tests/unit/worker-grafo.test.ts`: passo sensível interrompe; retomada aprovada executa uma única vez (chave de idempotência); retomada após trava expirada aborta.
+- **Critérios de Aceitação:** `npm test` passa.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-28.25: Variáveis do worker no `api/README.md`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-28.15, SUB-28.23
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Documentar `LANGGRAPH_DATABASE_URL`, variáveis do modelo, endpoint de aprovação e operação do worker no `api/README.md`.
+- **Critérios de Aceitação:** Documentação coerente com o código.
+- **Commit:** pendente
+- **Anotação:** pendente
