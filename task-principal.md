@@ -2347,9 +2347,9 @@
 - **Commit:** `c47df6b`
 - **Anotação:** Adicionado em `src/lib/monitor.ts` `estadoDoAgente(atividade, agora = Date.now(), { ativoAteSeg = 120, ociosoAteSeg = 900 })` -> `'ativo' | 'ocioso' | 'sem_sinal' | 'finalizado'` (tipo `EstadoAgente` exportado): último `tipo` `fim`/`liberacao` = finalizado; senão usa o sinal mais recente entre `ultimo_em` e `ultimo_heartbeat_em` (até 120 s ativo, até 900 s ocioso, depois ou sem data válida sem_sinal). Só exibição: não sugere nem libera travas. 6 testes novos em `tests/unit/monitor.test.ts` (um por estado + heartbeat + limites). `npm test` e `npm run typecheck` verdes.
 
-#### [ ] SUB-35.16: `contarPorStatus()` em `src/lib/monitor.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [🔄] SUB-35.16: `contarPorStatus()` em `src/lib/monitor.ts`
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 04 (Grok Bot) (início: 2026-10-12 01:15)
 - **Depende de:** SUB-35.15
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `contarPorStatus(atividades, agora)` -> `{ estado, total }[]` usando `estadoDoAgente`, em ordem fixa (para o gráfico de rosca). Testes.
