@@ -9,8 +9,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 33
-- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
-- **Pendentes:** 14
+- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-16`)
+- **Pendentes:** 13
 - **Concluídas:** 19
 - **Canceladas:** 0
 
@@ -279,9 +279,9 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-### [ ] SUB-16: Modal de Cadastro e Edição de Task
-- **Status:** pendente
-- **Executor:** nenhum
+### [🔄] SUB-16: Modal de Cadastro e Edição de Task
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:13)
 - **Depende de:** SUB-09, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar modal com campos: Título, Instrução (editor Markdown/textarea responsivo), Prioridade (1 a 5), Ordem, Executar Após (datetime), e Máximo de Tentativas.
