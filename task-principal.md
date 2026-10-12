@@ -8,8 +8,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Mini-tasks:** 26
-- **Pendentes:** 26
-- **Em Execução:** 0
+- **Pendentes:** 25
+- **Em Execução:** 1
 - **Concluídas:** 0
 - **Canceladas:** 0
 
@@ -18,8 +18,8 @@
 ## 🧩 FASE 1: Preparação do Ambiente e Infraestrutura Básica
 
 ### [ ] SUB-01: Setup do Projeto Frontend (Vite + React + TypeScript + Tailwind CSS)
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** Antigravity AI (início: 2026-10-11 22:13)
 - **Descrição:** Inicializar a estrutura base do frontend moderno em `c:\fontes\dashboard-ai` utilizando Vite, React, TypeScript, Tailwind CSS e ícones Lucide.
 - **Critérios de Aceitação:** `package.json` configurado com scripts `dev` e `build`, Tailwind funcionando, dependências instaladas.
 - **Commit:** pendente

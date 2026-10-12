@@ -13,27 +13,29 @@
 
 | Propriedade | Valor Atual |
 |---|---|
-| **Status da Trava:** | 🟢 **LIVRE** (Nenhuma sub-task travada no momento) |
-| **Sub-task em Execução:** | *Nenhuma* |
-| **Título da Sub-task:** | *Aguardando próximo agente* |
-| **Agente Responsável:** | *Nenhum* |
-| **Data e Hora de Início:** | *--* |
-| **Bloqueio para Outras IAs:** | **DESATIVADO** (Fila liberada para a próxima sub-task pendente) |
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-01** |
+| **Título da Sub-task:** | Setup do Projeto Frontend (Vite + React + TS + Tailwind) |
+| **Agente Responsável:** | Antigravity AI |
+| **Data e Hora de Início:** | 2026-10-11 22:13 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** (Nenhum outro agente pode assumir esta tarefa) |
 
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (0)
-*(Nenhuma no momento)*
+### 🔄 EM EXECUÇÃO (1)
+
+| Código | Título da Mini-task | Agente | Início |
+|---|---|---|---|
+| **SUB-01** | Setup do Projeto Frontend (Vite + React + TS + Tailwind) | Antigravity AI | 2026-10-11 22:13 |
 
 ---
 
-### ⏳ PENDENTES (26)
+### ⏳ PENDENTES (25)
 
 | Código | Título da Mini-task | Prioridade | Fase |
 |---|---|---|---|
-| **SUB-01** | Setup do Projeto Frontend (Vite + React + TS + Tailwind) | 1 (Alta) | Fase 1 |
 | **SUB-02** | Estrutura Modular de Diretórios do Frontend | 1 (Alta) | Fase 1 |
 | **SUB-03** | Configuração do Cliente Supabase e Tipagem TypeScript | 1 (Alta) | Fase 1 |
 | **SUB-04** | Consolidação dos Schemas SQL na Pasta `database/` | 2 | Fase 2 |
