@@ -1,5 +1,9 @@
 # 🤖 DIRETRIZES DE AGENTES DE IA & PROTOCOLO DE CONCORRÊNCIA
 
+> 📜 **Fonte única das regras:** este `AGENTS.md` vale para **todas as IAs** (Claude, Gemini, Grok, Copilot, Devin, Antigravity etc.). Toda **regra nova** pedida pelo usuário é escrita **aqui**, e não em arquivos de uma IA só (`CLAUDE.md`, `GEMINI.md`, `.cursorrules`, `copilot-instructions.md` etc.). Esses arquivos só apontam para o `AGENTS.md` e não guardam regras próprias. As regras daqui são **só de como executar tarefas**. Tarefas ficam no [`task-principal.md`](task-principal.md); planos ficam em `docs/`.
+
+> ✅ **TAREFA CONCLUÍDA = BLOCO MOVIDO PARA O [`task_complete.md`](task_complete.md) (OBRIGATÓRIO, SEM EXCEÇÃO):** sempre que uma tarefa ou subtarefa for concluída, o bloco dela sai do `task-principal.md` e vai para o `task_complete.md` **no mesmo commit da conclusão**. Na tarefa-mãe fica só a referência `(concluido, <sha>)`. Se você achar no quadro ativo um bloco concluído que ficou para trás, mova-o na hora. Detalhes na PARTE 3 (passo 2) e na regra 10 da seção 1.1.
+
 > 📌 **Quadro único:** o antigo `quadro-task-principal.md` foi incorporado ao `task-principal.md`. Travas, status e tarefas ativas ficam só no `task-principal.md`; não recrie o arquivo antigo.
 
 > 🔄 **Sincronizar SEMPRE com `fetch` antes do `pull`:** rode `git fetch --all --prune` **antes** de qualquer `git pull --rebase origin main`. Sem o `fetch`, a referência `origin/main` é **local e envelhece**: um `git status` mostrando `## main...origin/main` (sem `ahead`/`behind`) **não** prova que você está atualizado. Já houve agente lendo o quadro "sincronizado" com o remoto vários commits à frente. **Com os hooks da seção 1.3 instalados, o Git passa a barrar o push atrasado sozinho** — instale uma vez por clone.
