@@ -33,17 +33,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-19.10
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-19.10** |
-| **Título da Sub-task:** | `classeSimilaridade` em `src/lib/similaridade.ts` |
-| **Agente Responsável:** | DashboardAI-Clone 10 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 00:51 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.7
 
 | Propriedade | Valor Atual |
@@ -70,18 +59,17 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-20.4** | Componente `TagInput` em `src/components/ui/TagInput.tsx` | DashboardAI-Clone 06 | 2026-10-12 00:52 | SUB-20.2 |
 | **SUB-27.7** | `obterPapelGlobal()` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:51 | SUB-27.3 |
-| **SUB-19.10** | `classeSimilaridade` em `src/lib/similaridade.ts` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:51 | SUB-19.3 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
 
-### ⏳ PENDENTES (187)
+### ⏳ PENDENTES (186)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -125,7 +113,6 @@
 | **SUB-19.7** | Painel `BuscaSemanticaPanel` (campo, grade e estados) | 4 | Fase 7 | SUB-19.5, SUB-19.6, SUB-19.9 — ⛓️ bloqueada |
 | **SUB-19.8** | Integrar a busca na `src/views/MemoriaView.tsx` | 4 | Fase 7 | SUB-19.7, SUB-21.9 — ⛓️ bloqueada |
 | **SUB-19.9** | `BuscaControles` (limiar, globais, modo) em `src/components/memoria/BuscaControles.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
-| **SUB-19.10** | `classeSimilaridade` em `src/lib/similaridade.ts` | 4 | Fase 7 | SUB-19.3 — 🔄 em execução por DashboardAI-Clone 10 (Grok Bot) |
 | **SUB-20** | Formulário de Nova Memória Canônica (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-20.1 a SUB-20.10 |
 | **SUB-20.4** | Componente `TagInput` em `src/components/ui/TagInput.tsx` | 4 | Fase 7 | SUB-20.2 — 🔄 em execução por DashboardAI-Clone 06 |
 | **SUB-20.5** | Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts` | 4 | Fase 7 | SUB-33.7 — 🟢 livre |
@@ -279,7 +266,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (52)
+### ✅ CONCLUÍDAS (53)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -333,6 +320,7 @@
 | **SUB-33.7** | `criarGeradorEmbedding()` em `src/services/embeddingService.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:29 | 2026-10-12 00:30 | `64aa288` |
 | **SUB-08.3** | Seção Servidor Supabase: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `SUPABASE_REST_URL` | DashboardAI (Grok Bot) | 2026-10-12 00:30 | 2026-10-12 00:30 | `35aff13` |
 | **SUB-33.5** | Registrar `api/embedding.ts` no `vercel.json` | Codex (OpenAI) | 2026-10-12 00:35 | 2026-10-12 00:41 | `1d68ea6` |
+| **SUB-19.10** | `classeSimilaridade` em `src/lib/similaridade.ts` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:51 | 2026-10-12 00:52 | `4f6700d` |
 
 n|| **SUB-20.1** | `validarMemoria(dados)` em `src/lib/memoriaForm.ts` | DashboardAI-Clone 06 | 2026-10-12 00:46 | 2026-10-12 00:47 | `5662f1a` |
 || **SUB-19.3** | `formatarSimilaridade` em `src/lib/similaridade.ts` | Claude Code | 2026-10-12 00:45 | 2026-10-12 00:45 | `21d035c` |
@@ -466,3 +454,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:51 | DashboardAI-Clone 01 | SUB-27.5 | `500e307` | Adicionado `enviarLinkMagico(email, redirectTo, client = getSupabase())` em `src/services/authService.ts`: `auth.signInWithOtp` com `emailRedirectTo` e `shouldCreateUser: false` (e-mail com trim); erro -> `ServiceError(mensagemErroAuth(error), 'AUTH')`. typecheck e vitest verdes. |
 | 2026-10-12 00:51 | DashboardAI-Clone 01 | SUB-27.7 | — | Lock: assumindo SUB-27.7 (`obterPapelGlobal()` em `src/services/authService.ts`) |
 | 2026-10-12 00:52 | DashboardAI-Clone 06 | SUB-20.4 | — | Lock: assumindo SUB-20.4 (Componente `TagInput` em `src/components/ui/TagInput.tsx`) |
+| 2026-10-12 00:52 | DashboardAI-Clone 10 (Grok Bot) | SUB-19.10 | `4f6700d` | Adicionado `classeSimilaridade(s)` em `src/lib/similaridade.ts` com classes Tailwind de badge (fundo, texto e ring, com variantes `dark:`): `>= 0.85` verde (emerald), `>= 0.7` âmbar, abaixo disso ou valor não finito cinza (slate); limiares exportados como `LIMIAR_SIMILARIDADE_ALTA`/`LIMIAR_SIMILARIDADE_MEDIA`. 4 testes novos em `tests/unit/similaridade.test.ts` (limites 0.85 e 0.7). `npm run typecheck` e `npm test` verdes. |
