@@ -76,7 +76,7 @@ Não guardar senhas, chaves, tokens, credenciais, prompts enormes ou cópias des
 - Separar falhas transitórias (rede, rate limit) de falhas de validação/permissão e de erros permanentes.
 - Definir máximo de tentativas por nó e para a task; alinhar o encerramento final às tentativas registradas pelo Supabase.
 - Persistir o resultado de cada ferramenta antes de avançar para ações não idempotentes.
-- Após falha irrecuperável, chamar `finalizar_task` com `erro` e uma explicação segura; deixar a RPC e as regras da fila decidirem se haverá nova tentativa.
+- Após falha irrecuperável, chamar `finalizar_task` com `erro` e uma explicação segura; deixar a RPC e as regras da fila decidirem se haverá nova tentativa. O mapeamento de cada classe de falha para o status e os metadados está na seção 3 de [`docs/langgraph-contrato.md`](docs/langgraph-contrato.md).
 - Não deixar dois grafos executarem mutações simultâneas para a mesma task. O lock do banco prevalece; a expiração deve levar a uma checagem antes de retomar efeitos.
 - Agentes especializados ou trabalho paralelo são opcionais. Se introduzidos, partilhar o mesmo limite de permissões e impedir que workers paralelos reivindiquem a mesma task.
 
@@ -93,7 +93,7 @@ Não guardar senhas, chaves, tokens, credenciais, prompts enormes ou cópias des
 
 A SUB-28 deve, depois de concluídas as tasks anteriores:
 
-1. Definir e documentar o contrato entre worker, RPCs do Supabase, LangGraph e ferramentas MCP.
+1. Definir e documentar o contrato entre worker, RPCs do Supabase, LangGraph e ferramentas MCP (ver [`docs/langgraph-contrato.md`](docs/langgraph-contrato.md): identificadores e estado, ferramentas permitidas e idempotência, mapeamento de erros para `finalizar_task`).
 2. Implementar um grafo inicial de execução de tasks com estado tipado, checkpoint durável, falha/retomada e finalização pela RPC existente.
 3. Adaptar somente as ferramentas necessárias do registro MCP, com autenticação obrigatória e autorização por operação.
 4. Implementar pausa e retomada humana para ações marcadas como sensíveis.

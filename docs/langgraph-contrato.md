@@ -5,8 +5,8 @@ MCP, conforme a seção 9.1 do [`LangChain_LangGraph.md`](../LangChain_LangGraph
 continua sendo a fonte de verdade da fila, das travas e do status; o grafo só coordena uma task
 **já reivindicada** por `pegar_proxima_task`.
 
-> A seção 2 (ferramentas permitidas e idempotência) veio na SUB-28.26; o mapeamento de
-> erros para `finalizar_task` fica na SUB-28.27.
+> A seção 2 (ferramentas permitidas e idempotência) veio na SUB-28.26; a seção 3 (mapeamento
+> de erros para `finalizar_task`) veio na SUB-28.27.
 
 ## 1. Identificadores e estado mínimo
 
@@ -129,3 +129,50 @@ avançar** (seção 7 do `LangChain_LangGraph.md`). Se o processo cair entre a c
 persistência, a retomada consulta `agent_events` pela chave antes de repetir; ferramentas com
 idempotência natural (`brain_store`, `brain_delete`) podem simplesmente ser repetidas.
 
+## 3. Mapeamento de erros para `finalizar_task`
+
+O grafo **classifica** a falha; quem decide o status oficial e se haverá nova tentativa é a RPC
+`finalizar_task` (`database/04_rpc_functions.sql`), chamada **só pelo worker** com
+`p_agente = agente` do checkpoint (1.3). Com `p_status = 'erro'`, a RPC devolve a task para
+`pendente` enquanto `tentativas < max_tentativas` e só a encerra como `erro` quando as tentativas
+se esgotam; `concluida` e `recusada` são sempre finais. Toda chamada grava o log em
+`agendamento_tarefa_logs` e libera a trava.
+
+### 3.1 Tabela de mapeamento
+
+| Classe da falha | Exemplos | Tratamento no grafo | `p_status` | Nova tentativa da task |
+|---|---|---|---|---|
+| **Transitória** | timeout/rede, HTTP 429 ou 5xx do modelo ou do MCP, Supabase indisponível (503) | repete **o nó** com espera progressiva (até 3 vezes, ex.: 2 s, 4 s, 8 s); se passar, segue normalmente | `erro` (só se esgotar as repetições do nó) | sim, decidida pela RPC (`tentativas < max_tentativas`) |
+| **Validação / permissão** | argumentos rejeitados pelo schema ou pelo servidor, ferramenta fora da allowlist (2.1), 401/403 do MCP, `projetoId` divergente, RLS recusou | não repete; o passo vira `falhou` | `erro` | sim pela RPC, mas a próxima tentativa só deve prosseguir se algo mudou (config, permissão); o resumo diz o que corrigir |
+| **Permanente** | instrução impossível ou contraditória, dependência externa inexistente, critérios de aceitação não atingidos após o plano completo, limite de passos do grafo atingido | não repete | `erro` | pela RPC; quando a nova tentativa não pode mudar o resultado, preferir `recusada` (linha abaixo) |
+| **Recusa** | humano negou a aprovação de uma ação sensível (2.1, regra 3), instrução pede algo proibido (seção 6 do `LangChain_LangGraph.md`), task fora do escopo do projeto | encerra sem efeitos adicionais | `recusada` | não (final) |
+| **Trava perdida** | na retomada, `status`, `trava_frente` ou `tentativas` não batem com o checkpoint (1.3, regra 2) | descarta o checkpoint | **nenhum**: não chamar `finalizar_task` (a RPC recusaria; a task já é de outro agente/tentativa) | não se aplica |
+| **Sucesso** | todos os critérios atendidos | — | `concluida` | não (final) |
+
+Regras:
+
+1. Sem status intermediário: o grafo nunca grava `tasks.status` diretamente nem cria um segundo
+   sistema de status (seção 9 do `LangChain_LangGraph.md`).
+2. A classificação usa o tipo do erro (código HTTP, classe da exceção, código do Postgres), não o
+   texto livre devolvido por modelo ou ferramenta, que é dado **não confiável**.
+3. Se a própria chamada a `finalizar_task` falhar de forma transitória, o worker repete só a
+   chamada (mesmos argumentos); se a RPC responder que a task não está em execução ou que a trava
+   pertence a outro agente, o worker para e registra o evento, sem repetir.
+
+### 3.2 Argumentos e metadados
+
+| Argumento | Conteúdo |
+|---|---|
+| `p_resultado` | resumo seguro (sem segredos, tokens, prompts ou saídas grandes): o que foi feito ou, em falha, classe + passo + motivo curto |
+| `p_pr_url`, `p_commit_sha` | só quando houver efeito confirmado (passo `feito`) |
+| `p_agente` | `agente` do checkpoint (a RPC confere o dono da trava) |
+| `p_rotina` | `langgraph` |
+| `p_metadados.execucao_id` | `execucaoId` (1.1) |
+| `p_metadados.chaves` | chaves de idempotência dos passos confirmados (2.2) |
+| `p_metadados.classe_falha` | `transitoria`, `validacao`, `permanente` ou `recusa` (ausente no sucesso) |
+| `p_metadados.passo_falho` | `passoId` do passo que falhou, se houver |
+| `p_metadados.erro_mensagem` | mensagem segura copiada para `agendamento_tarefa_logs.erro_mensagem` |
+| `p_metadados.branch`, `sessao_url`, `arquivos_alterados` | quando aplicável (copiados para o log pela RPC) |
+
+Antes de chamar a RPC, o worker emite um `agent_event` do tipo `fim` (sucesso) ou `erro` com a
+mesma `classe_falha` e a chave `task-<taskId>-t<tentativa>:finalizar`, para o monitor em tempo real.
