@@ -1974,12 +1974,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-28.11: Nó `finalizar` em `worker/nos/finalizar.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [x] SUB-28.11: Nó `finalizar` em `worker/nos/finalizar.ts`
+- **Status:** concluido
+- **Executor:** Claude Code (início: 2026-10-12 02:37, conclusão: 2026-10-12 02:38)
 - **Depende de:** SUB-28.30
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Chama `finalizar` (RPC `finalizar_task`) com `concluida`/`recusada`/`erro`, resumo seguro e `execucaoId` nos metadados.
+- **Critérios de Aceitação:** Teste: desfecho é gravado no banco.
+- **Commit:** pendente
+- **Anotação:** Criado `worker/nos/finalizar.ts` com nó que chama `finalizar` da fila com status baseado nos resultados. typecheck:worker OK.
 - **Critérios de Aceitação:** Teste com adaptador falso.
 - **Commit:** pendente
 - **Anotação:** pendente
