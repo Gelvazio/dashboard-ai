@@ -2656,3 +2656,13 @@
 - **Critérios de Aceitação:** Tudo verde.
 - **Commit:** pendente
 - **Anotação:** pendente
+
+### [ ] SUB-36: Gráfico em rede (cérebro) dos agentes no `dashboard-task-principal.html`
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot)
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** (criada em 2026-10-12 01:01 a pedido do usuário) Grafo de força estilo cérebro: nó central do quadro, um nó por agente ligado à subtarefa travada agora e às últimas entregas; agentes sem trava como ociosos; atualiza a cada leitura do painel.
+- **Critérios de Aceitação:** Gráfico renderiza com o quadro atual sem erros de console; gráficos existentes intactos.
+- **Commit:** pendente
+- **Anotação:** pendente
