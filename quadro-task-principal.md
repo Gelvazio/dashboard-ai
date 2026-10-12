@@ -33,17 +33,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-34.3
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-34.3** |
-| **Título da Sub-task:** | Modais da fila sob demanda na `src/views/FilaView.tsx` |
-| **Agente Responsável:** | DashboardAI-Clone 10 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:08 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — SUB-37
 
 | Propriedade | Valor Atual |
@@ -103,7 +92,7 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (4)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
@@ -112,12 +101,11 @@
 | **SUB-35.41** | Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:10 | SUB-35.40 |
 | **SUB-20.7** | Botão "Nova memória" na `src/views/MemoriaView.tsx` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:10 | SUB-20.6, SUB-19.8, SUB-21.9 |
 | **SUB-37** | Ranking e prêmios dos agentes no `dashboard-task-principal.html` | DashboardAI (Grok Bot) | 2026-10-12 01:09 | Nenhuma |
-| **SUB-34.3** | Modais da fila sob demanda na `src/views/FilaView.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:08 | SUB-34.1 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
 
-### ⏳ PENDENTES (145)
+### ⏳ PENDENTES (144)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -150,7 +138,6 @@
 | **SUB-34** | Carregamento Sob Demanda de Telas e Modais (code splitting) (mãe) | 4 | Fase 6 | SUB-13, SUB-14, SUB-16, SUB-17, SUB-18; SUB-34.1 a SUB-34.6 |
 | **SUB-34.1** | Fallback `CarregandoTela` em `src/components/ui/CarregandoTela.tsx` | 4 | Fase 6 | Nenhuma — 🟢 livre |
 | **SUB-34.2** | Telas com `React.lazy` em `src/views/index.ts` | 4 | Fase 6 | Nenhuma — 🟢 livre |
-| **SUB-34.3** | Modais da fila sob demanda na `src/views/FilaView.tsx` | 4 | Fase 6 | SUB-34.1 — 🔄 em execução por DashboardAI-Clone 10 (Grok Bot) |
 | **SUB-34.4** | Separar dependências grandes no `vite.config.ts` | 4 | Fase 6 | Nenhuma — 🟢 livre |
 | **SUB-34.5** | Checagem de tamanho `scripts/checar-chunks.mjs` | 4 | Fase 6 | SUB-34.6, SUB-34.3, SUB-34.4 — ⛓️ bloqueada |
 | **SUB-25** | Validação de Build e Execução Local (mãe) | 5 | Fase 10 | SUB-01 a SUB-24; SUB-25.1 a SUB-25.7 |
@@ -247,7 +234,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (93)
+### ✅ CONCLUÍDAS (94)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -355,6 +342,7 @@
 | **SUB-34.6** | `Suspense` com `CarregandoTela` no `src/App.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:03 | 2026-10-12 01:03 | `67d89b6` |
 | **SUB-21.9** | Montar a `MemoriaView` (toolbar + grade) | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:04 | 2026-10-12 01:05 | `4b8d62b` |
 | **SUB-21.11** | Ligar detalhe e exclusão na `MemoriaView` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:06 | 2026-10-12 01:08 | `e4bacb0` |
+| **SUB-34.3** | Modais da fila sob demanda na `src/views/FilaView.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:08 | 2026-10-12 01:10 | `964764e` |
 
 n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | Claude Code | 2026-10-12 00:50 | 2026-10-12 00:51 | `fc4c3ee` |
 || **SUB-20.1** | `validarMemoria(dados)` em `src/lib/memoriaForm.ts` | DashboardAI-Clone 06 | 2026-10-12 00:46 | 2026-10-12 00:47 | `5662f1a` |
@@ -638,3 +626,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:10 | DashboardAI-Clone 08 (Grok Bot) | SUB-35.41 | — | Lock: assumindo SUB-35.41 (Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts`) |
 | 2026-10-12 01:10 | DashboardAI-Clone 02 | SUB-35.7 | — | Lock: assumindo SUB-35.7 (Seção "Eventos dos agentes (07)" no `database/README.md`) |
 | 2026-10-12 01:10 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.8 | — | Lock: assumindo SUB-35.8 (Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts`) |
+| 2026-10-12 01:10 | DashboardAI-Clone 10 (Grok Bot) | SUB-34.3 | `964764e` | Na `src/views/FilaView.tsx`, `TaskFormModal` e `TaskDetailModal` passam a ser `React.lazy` com import direto do arquivo e só são montados quando abertos (`form.aberto` / task de detalhe encontrada), dentro de `<Suspense fallback={null}>`. Para o split ser efetivo, os dois saíram do barrel `src/components/tasks/index.ts` (o Rolldown acusava `INEFFECTIVE_DYNAMIC_IMPORT`; nenhum outro arquivo os importava pelo barrel). Resultado do build: chunks próprios `TaskFormModal` (8,6 kB) e `TaskDetailModal` (6,7 kB); `FilaView` caiu de 40,4 kB para 26,3 kB. `npm run typecheck`, `npm test` e `npm run build` OK. |

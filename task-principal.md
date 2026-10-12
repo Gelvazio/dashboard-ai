@@ -592,7 +592,7 @@
 - **Subtarefas:** (subdividida em 5 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; nova revisão para 6 em 2026-10-12 00:17)
   - `SUB-34.1`: Fallback `CarregandoTela` em `src/components/ui/CarregandoTela.tsx` (`pendente`)
   - `SUB-34.2`: Telas com `React.lazy` em `src/views/index.ts` (`pendente`)
-  - `SUB-34.3`: Modais da fila sob demanda na `src/views/FilaView.tsx` (`em_execucao`)
+  - `SUB-34.3`: Modais da fila sob demanda na `src/views/FilaView.tsx` (`concluido`, `964764e`)
   - `SUB-34.4`: Separar dependências grandes no `vite.config.ts` (`pendente`)
   - `SUB-34.5`: Checagem de tamanho `scripts/checar-chunks.mjs` (`pendente`)
   - `SUB-34.6`: `Suspense` com `CarregandoTela` no `src/App.tsx` (`concluido`, `67d89b6`)
@@ -622,15 +622,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-34.3: Modais da fila sob demanda na `src/views/FilaView.tsx`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:08)
+#### [x] SUB-34.3: Modais da fila sob demanda na `src/views/FilaView.tsx`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:08, conclusão: 2026-10-12 01:10)
 - **Depende de:** SUB-34.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Carregar `TaskFormModal` e `TaskDetailModal` com `lazy` (import direto do arquivo, não do barrel `@/components/tasks`) e renderizá-los só quando abertos, dentro de `Suspense`.
 - **Critérios de Aceitação:** `npm run build` gera chunks dos modais; abrir/editar/detalhar task funciona.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `964764e`
+- **Anotação:** Na `src/views/FilaView.tsx`, `TaskFormModal` e `TaskDetailModal` passam a ser `React.lazy` com import direto do arquivo e só são montados quando abertos (`form.aberto` / task de detalhe encontrada), dentro de `<Suspense fallback={null}>`. Para o split ser efetivo, os dois saíram do barrel `src/components/tasks/index.ts` (o Rolldown acusava `INEFFECTIVE_DYNAMIC_IMPORT`; nenhum outro arquivo os importava pelo barrel). Resultado do build: chunks próprios `TaskFormModal` (8,6 kB) e `TaskDetailModal` (6,7 kB); `FilaView` caiu de 40,4 kB para 26,3 kB. `npm run typecheck`, `npm test` e `npm run build` OK.
 
 #### [ ] SUB-34.4: Separar dependências grandes no `vite.config.ts`
 - **Status:** concluido
