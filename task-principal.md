@@ -1093,7 +1093,7 @@
   - `SUB-23.2`: `classificarPendentes(tasks)` em `src/lib/saudeFila.ts` (`concluido`)
   - `SUB-23.3`: `diagnosticarFila(tasks)` em `src/lib/saudeFila.ts` (`concluido`)
   - `SUB-23.4`: `liberarTrava()` em `src/services/taskService.ts` (`pendente`)
-  - `SUB-23.5`: Teste de integração de `liberarTrava`: expirada e forçada (`pendente`)
+  - `SUB-23.5`: Teste de integração de `liberarTrava`: expirada e forçada (`em_execucao`)
   - `SUB-23.6`: Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts` (`concluido`)
   - `SUB-23.7`: Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx` (`concluido`)
   - `SUB-23.8`: Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` (`concluido`)
@@ -1148,9 +1148,9 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-23.5: Teste de integração de `liberarTrava`: expirada e forçada
-- **Status:** pendente
-- **Executor:** nenhum
+#### [🔄] SUB-23.5: Teste de integração de `liberarTrava`: expirada e forçada
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-23.4
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Em `tests/integration/taskService.integration.test.ts`: task travada há 100 min (via `service_role`) é liberada por editor; trava recente é recusada sem `forcar` e liberada com `forcar`.
