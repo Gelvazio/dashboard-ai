@@ -40,28 +40,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-35.39
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.39** |
-| **Título da Sub-task:** | Teste do worker: eventos emitidos na ordem dos nós |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 13:45 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 204
-- **Em Execução:** 1 (SUB-35.39, Devin (Cognition AI), desde 2026-10-12 13:45)
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 16 subtarefas
+- **Em Execução:** 0
+- **Pendentes:** 4 principais (25, 26, 28, 35) + 15 subtarefas
   - livres agora: 8 (SUB-26.5, SUB-28.2, SUB-28.16, SUB-28.24, SUB-35.32, SUB-25.4, SUB-25.7, SUB-28.34)
   - bloqueadas por dependência: 7
   - reservadas: 0
-- **Concluídas:** 221 de 241 blocos (33 principais + 188 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 222 de 241 blocos (33 principais + 189 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -341,7 +330,7 @@
   - `SUB-35.36`: Envolver os nós em `worker/grafo.ts` com `comEventos` (`concluido`, `469ce5c`)
   - `SUB-35.37`: `iniciarHeartbeat()` em `worker/heartbeat.ts` (`concluido`, `64c0b11`)
   - `SUB-35.38`: Ligar o heartbeat no CLI `worker/index.ts` (`concluido`, `34bf1c1`)
-  - `SUB-35.39`: Teste do worker: eventos emitidos na ordem dos nós (`em_execucao`)
+  - `SUB-35.39`: Teste do worker: eventos emitidos na ordem dos nós (`concluido`, `4a1156d`)
   - `SUB-35.40`: Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts` (`concluido`, `176aadb`)
   - `SUB-35.41`: Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts` (`concluido`, `0263ae9`)
   - `SUB-35.42`: `commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py` (`concluido`, `53a5c93`)
@@ -365,17 +354,6 @@
 - **Critérios de Aceitação:** Screenshots conferidos; nenhum erro no console.
 - **Commit:** pendente
 - **Anotação:** Trava de DashboardAI-Clone 07 (Grok Bot) (desde 2026-10-12 01:49, commit `8d700c5`) liberada em 2026-10-12 a pedido do usuário, sem entrega registrada; tarefa volta a ficar livre.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-
-#### [ ] SUB-35.39: Teste do worker: eventos emitidos na ordem dos nós
-- **Status:** em_execucao
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:45)
-- **Depende de:** SUB-35.36, SUB-28.17
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Em `tests/unit/worker-grafo-eventos.test.ts`, rodar o grafo com modelo/fila falsos e emissor espião: sequência `inicio`/`fim` por nó na ordem esperada e `erro` no nó que falha.
-- **Critérios de Aceitação:** `npm test` passa.
-- **Commit:** pendente
-- **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-35.46: Validação automatizada da SUB-35

@@ -2611,4 +2611,15 @@
 - **Anotação:** No bloco de execução direta de `worker/index.ts`, o CLI inicia `iniciarHeartbeat({ agente, projeto })` com as opções lidas por `lerOpcoes`, para no fim do loop (`rodarWorker(...).finally(pararHeartbeat)`) e em `SIGINT`/`SIGTERM` (para e sai com 130/143). `rodarWorker` não mudou, então os testes do CLI seguem sem emitir eventos. `npm run typecheck:worker` e `typecheck` OK; `tests/unit/worker-cli.test.ts` 5 aprovados; rodar `tsx worker/index.ts --uma-vez` sem Supabase registrou o aviso do heartbeat sem derrubar nada e o processo encerrou.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:43 (confirmado por Devin (Cognition AI))
 
+#### [x] SUB-35.39: Teste do worker: eventos emitidos na ordem dos nós
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:45, conclusão: 2026-10-12 13:46)
+- **Depende de:** SUB-35.36, SUB-28.17
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Em `tests/unit/worker-grafo-eventos.test.ts`, rodar o grafo com modelo/fila falsos e emissor espião: sequência `inicio`/`fim` por nó na ordem esperada e `erro` no nó que falha.
+- **Critérios de Aceitação:** `npm test` passa.
+- **Commit:** `4a1156d`
+- **Anotação:** Criei `tests/unit/worker-grafo-eventos.test.ts` (2 testes): o grafo roda com modelo, ferramentas e `finalizar` falsos e emissor espião (`db` falso que guarda as linhas de `agent_events`). Caminho feliz com 2 passos: `inicio`/`fim` por nó na ordem carregarContexto, planejar, politica, (executar, revisar) x3, finalizar, todos com agente/task/execução e `duracao_ms` no `fim`. Modelo que falha: `planejar:erro` com a mensagem segura e o grafo rejeita sem seguir para os próximos nós. `npm test` 287 aprovados / 30 pulados; `typecheck` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:46 (confirmado por Devin (Cognition AI))
+
 ---
