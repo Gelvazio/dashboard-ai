@@ -65,7 +65,6 @@ Gere um plano de execução em JSON com o seguinte formato:
 Ferramentas disponíveis:
 - brain_search: busca memórias por similaridade
 - brain_store: salva nova memória
-- brain_delete: exclui memória
 - task_list: lista tasks do projeto
 
 Para passos sensíveis (que alteram dados irreversivelmente), defina "sensivel": true.

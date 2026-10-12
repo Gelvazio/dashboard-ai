@@ -28,4 +28,15 @@ describe('obterFerramenta', () => {
     const resultado = await obterFerramenta('brain_search');
     expect(resultado).toBeNull();
   });
+
+  it('recusa brain_delete mesmo existindo no registro MCP', async () => {
+    vi.mocked(listTools).mockResolvedValue([
+      { name: 'brain_delete', description: 'Exclui memória', inputSchema: { type: 'object', properties: {} } },
+    ]);
+    expect(await obterFerramenta('brain_delete')).toBeNull();
+  });
+
+  it('a allowlist contém só brain_search, brain_store e task_list', () => {
+    expect(Object.keys(ALLOWLIST).sort()).toEqual(['brain_search', 'brain_store', 'task_list']);
+  });
 });

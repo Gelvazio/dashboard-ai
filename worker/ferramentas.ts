@@ -11,7 +11,6 @@ export interface FerramentaPermitida {
 export const ALLOWLIST: Record<string, FerramentaPermitida> = {
   brain_search: { nome: 'brain_search', sensivel: false },
   brain_store: { nome: 'brain_store', sensivel: false },
-  brain_delete: { nome: 'brain_delete', sensivel: false },
   task_list: { nome: 'task_list', sensivel: false },
 };
 
