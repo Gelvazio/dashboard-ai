@@ -31,3 +31,16 @@ export async function sair(client: DashboardClient = getSupabase()): Promise<voi
   }
   if (error) throw new ServiceError(mensagemErroAuth(error), 'AUTH');
 }
+
+/** Envia o link mágico de acesso (só para usuários já cadastrados). */
+export async function enviarLinkMagico(
+  email: string,
+  redirectTo: string,
+  client: DashboardClient = getSupabase(),
+): Promise<void> {
+  const { error } = await client.auth.signInWithOtp({
+    email: email.trim(),
+    options: { emailRedirectTo: redirectTo, shouldCreateUser: false },
+  });
+  if (error) throw new ServiceError(mensagemErroAuth(error), 'AUTH');
+}
