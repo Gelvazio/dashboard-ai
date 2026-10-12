@@ -9,9 +9,9 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 33
-- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-18`)
+- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
 - **Pendentes:** 11
-- **Concluídas:** 21
+- **Concluídas:** 22
 - **Canceladas:** 0
 
 ---
@@ -301,16 +301,16 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-### [🔄] SUB-18: Controles de Ação Rápida na Linha da Tabela
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:19)
+### [x] SUB-18: Controles de Ação Rápida na Linha da Tabela
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:19, conclusão: 2026-10-11 23:21)
 - **Depende de:** SUB-09, SUB-14
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Ações rápidas: Switch ON/OFF com persistência imediata, botão "Reabrir" (para recusadas/erros), botão "Cancelar" e botão "Excluir" com confirmação.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Ações executadas com atualização otimista ou recarregamento automático da tabela.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `1e8c3a7`
+- **Anotação:** Arquivos: src/hooks/useAcoesTask.ts, src/components/tasks/TaskRowActions.tsx, src/components/ui/{Switch,ConfirmDialog}.tsx, lib/tasks.acoesDisponiveis, toast com ação, useTasks.remover, FilaView.
 
 ---
 
