@@ -9,8 +9,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 31
-- **Em Execução:** 3 (`SUB-01.1`, `SUB-27`, `SUB-08`)
-- **Pendentes:** 25
+- **Em Execução:** 4 (`SUB-01.1`, `SUB-27`, `SUB-08`, `SUB-30`)
+- **Pendentes:** 24
 - **Concluídas:** 5
 - **Canceladas:** 0
 
@@ -116,9 +116,9 @@
 - **Commit:** `30fe077`
 - **Anotação:** Arquivos novos database/00_projects_roles.sql e database/05_rls_policies.sql; 01-04 reescritos e idempotentes (também migram instalações da versão anterior sem project_id: backfill no projeto default, unique (project_id, codigo), contador por projeto ajustado). Papéis: user_roles (admin/member) e project_members (owner/editor/viewer); eh_administrador() (user_roles ou JWT app_metadata.role=admin) e tem_acesso_projeto(project_id, papel); professores_administradores migrada para user_roles e removida junto com eh_professor_administrador. Fila: pegar_proxima_task(p_agente, p_projeto slug, p_lock_minutos=90, p_exclusivo=false) com FOR UPDATE SKIP LOCKED, só tipo ia, projeto ativo, dependências do mesmo projeto; p_exclusivo=true serializa por projeto (advisory lock). finalizar_task(..., p_metadados jsonb) sempre grava log genérico e tasks.log_id; registrar_execucao_sem_tarefa; liberar_trava_task exige editor do projeto quando chamada pela interface. match_memories(..., p_projeto, p_incluir_globais) security invoker sob RLS. Segurança: RPCs da fila security definer + search_path fixo, revoke de public/anon/authenticated, grant só a service_role; RLS em todas as tabelas (anon sem acesso; viewer lê; editor cria/edita; sem DELETE em tasks; logs só leitura). Trigger de guarda: interface não põe/tira de em_execucao, não mexe em trava/tentativas e só conclui tasks humano. Script sincronizar_tasks.py: --projeto/DASHBOARD_AI_PROJECT, campo tipo, projeto: no cabeçalho, recusa arquivo de outro projeto, sem fallback para chave anon. Validação: database/tests/run_tests.sh (00-05 aplicados 2x, 72 verificações com anon/authenticated/service_role, 12 agentes em paralelo em 3 projetos sem duplicidade, exclusivo entrega 1), upgrade a partir da versão anterior com dados, 8 testes Python e e2e do script contra PostgREST 12.
 
-### [ ] SUB-30: Ferramentas da Fila no MCP
-- **Status:** pendente
-- **Executor:** nenhum
+### [🔄] SUB-30: Ferramentas da Fila no MCP
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:43)
 - **Depende de:** SUB-06, SUB-29
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Publicar no `api/mcp.ts` as ferramentas `task_next`, `task_finish`, `task_list` e `task_create`, com argumento opcional `project` (padrão `MCP_DEFAULT_PROJECT`), chamando as RPCs da SUB-29 com a chave `service_role` no servidor, para que agentes de qualquer projeto operem a fila pelo MCP.
