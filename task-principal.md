@@ -912,7 +912,7 @@
   - `SUB-21.1`: `memoriaComoMarkdown` em `src/lib/memorias.ts` (`concluido`)
   - `SUB-21.2`: `filtrarMemoriasLocal` em `src/lib/memorias.ts` (`concluido`)
   - `SUB-21.3`: Hook `useMemorias` em `src/hooks/useMemorias.ts` (`pendente`)
-  - `SUB-21.4`: Componente `MemoriaCard` em `src/components/memoria/MemoriaCard.tsx` (`pendente`)
+  - `SUB-21.4`: Componente `MemoriaCard` em `src/components/memoria/MemoriaCard.tsx` (`em_execucao`)
   - `SUB-21.5`: Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx` (`pendente`)
   - `SUB-21.6`: Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` (`pendente`)
   - `SUB-21.7`: Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` (`pendente`)
@@ -960,8 +960,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-21.4: Componente `MemoriaCard` em `src/components/memoria/MemoriaCard.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 00:56)
 - **Depende de:** SUB-21.13
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Cartão com título, selo Global/Projeto, chips de tags, resumo do conteúdo (`resumo()` de `src/lib/tasks.ts`, 220 caracteres), atualização relativa (`tempoRelativo`) e botões Copiar (`CopyButton` com `memoriaComoMarkdown`), Ver e Excluir (callbacks `onVer`/`onExcluir`). Criar/atualizar `src/components/memoria/index.ts` sem remover exports de outras subtarefas (SUB-19.4).
