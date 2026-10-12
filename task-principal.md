@@ -40,14 +40,25 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
+### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.16
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-28.16** |
+| **Título da Sub-task:** | Endpoint `api/aprovacao.ts`: autenticação e papel (401/403) |
+| **Agente Responsável:** | Devin (Cognition AI) |
+| **Data e Hora de Início:** | 2026-10-12 13:48 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 204
-- **Em Execução:** 0
+- **Em Execução:** 1 (SUB-28.16, Devin (Cognition AI), desde 2026-10-12 13:48)
 - **Pendentes:** 4 principais (25, 26, 28, 35) + 13 subtarefas
-  - livres agora: 6 (SUB-26.5, SUB-28.2, SUB-28.16, SUB-35.32, SUB-25.4, SUB-25.7)
+  - livres agora: 5 (SUB-26.5, SUB-28.2, SUB-35.32, SUB-25.4, SUB-25.7)
   - bloqueadas por dependência: 7
   - reservadas: 0
 - **Concluídas:** 224 de 241 blocos (33 principais + 191 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
@@ -170,7 +181,7 @@
   - `SUB-28.13`: Checkpointer durável em `worker/checkpointer.ts` (`concluido`, `1bd4ca7`)
   - `SUB-28.14`: Reconciliação na retomada em `worker/reconciliar.ts` (`concluido`, `206ba39`)
   - `SUB-28.15`: CLI do worker em `worker/index.ts` (`concluido`, `ba04cc1`)
-  - `SUB-28.16`: Endpoint `api/aprovacao.ts`: autenticação e papel (401/403) (`pendente`)
+  - `SUB-28.16`: Endpoint `api/aprovacao.ts`: autenticação e papel (401/403) (`em_execucao`)
   - `SUB-28.17`: Testes do worker: caminho feliz e erro (`concluido`, `46718f9`)
   - `SUB-28.18`: Atualizar `LangChain_LangGraph.md` (status e desvios) (`pendente`)
   - `SUB-28.19`: Adaptar ferramentas para `tool()` do LangChain em `worker/ferramentas.ts` (`concluido`, `a9bb258`)
@@ -207,8 +218,8 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (reaberta: critérios de aceitação não atendidos)
 
 #### [ ] SUB-28.16: Endpoint `api/aprovacao.ts`: autenticação e papel (401/403)
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:48)
 - **Depende de:** SUB-28.15, SUB-33.2, SUB-27.26
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** `POST /api/aprovacao` exige JWT (`bearerToken` + `verificarSessaoSupabase`) e papel editor no projeto da task (`tem_acesso_projeto`); 401 sem sessão, 403 sem papel, 400 corpo inválido. A retomada fica na SUB-28.23.
