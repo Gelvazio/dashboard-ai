@@ -98,6 +98,11 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
 2. **Push da trava recusado (corrida entre agentes):**
    - Se o `git push` do lock for recusado, executar `git pull --rebase origin main` e **reler o quadro**.
    - Se outro agente travou o mesmo item, **desfazer o seu lock local** e escolher outro item livre. Nunca sobrescrever a trava de outro agente.
+
+3. **Tarefas travadas para todas as IAs:**
+   - ⛔ **KIRO-DEV-CLONE**: Esta tarefa está **TRAVADA PARA TODAS AS IAS** — nenhuma IA pode assumir suas subtarefas sem autorização explícita do usuário.
+   - Para liberar a trava, o usuário deve editar o `task-principal.md` e remover a trava manualmente.
+   - Esta trava tem precedência sobre o protocolo normal de captura de tarefas.
    - ⛔ Nunca usar `git push --force`.
 
 3. **Travas em paralelo:**

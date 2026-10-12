@@ -42,6 +42,23 @@
 
 ---
 
+### 🔒 TRAVA ESPECIAL: KIRO-DEV-CLONE
+
+> **ATENÇÃO:** A tarefa `KIRO-DEV-CLONE` está **TRAVADA PARA TODAS AS IAS**.
+> Nenhuma IA pode assumir suas subtarefas sem autorização explícita do usuário.
+> Para liberar, o usuário deve remover esta trava manualmente no quadro.
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **TRAVADO PARA TODAS AS IAS** |
+| **Tarefa:** | KIRO-DEV-CLONE |
+| **Motivo:** Tarefa reservada para implementação manual pelo usuário |
+| **Agente Responsável:** — (usuário) |
+| **Data e Hora de Início:** 2026-10-12 15:10 |
+| **Bloqueio para Outras IAs:** **ATIVADO** |
+
+---
+
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 38
 - **Subtarefas atômicas (~3 min):** 204
@@ -331,5 +348,5 @@
 - **Descrição:** Detalhes na pasta `kiro-dev-clone/`. O usuário preencherá os detalhes nesta pasta.
 - **Critérios de Aceitação:** A ser definido pelo usuário na pasta `kiro-dev-clone/`.
 - **Commit:** pendente
-- **Anotação:** pendente
+- **Anotação:** ⛔ **TRAVADO PARA TODAS AS IAS** (2026-10-12 15:10): Tarefa reservada para implementação manual pelo usuário. Nenhuma IA pode assumir subtarefas sem autorização explícita. Ver trava especial no início do quadro.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
