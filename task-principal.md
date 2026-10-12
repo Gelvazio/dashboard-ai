@@ -1096,7 +1096,7 @@
   - `SUB-23.5`: Teste de integração de `liberarTrava`: expirada e forçada (`pendente`)
   - `SUB-23.6`: Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts` (`concluido`)
   - `SUB-23.7`: Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx` (`concluido`)
-  - `SUB-23.8`: Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` (`em_execucao`)
+  - `SUB-23.8`: Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` (`concluido`)
   - `SUB-23.9`: Alerta de trava presa na `src/views/FilaView.tsx` (`pendente`)
   - `SUB-23.10`: `TravaItem` em `src/components/tasks/TravaItem.tsx` (`concluido`)
   - `SUB-23.11`: `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx` (`concluido`, `5bce2d7`)
@@ -1178,15 +1178,15 @@
 - **Commit:** `e587121`
 - **Anotação:** Criado `src/components/tasks/SaudeFilaPanel.tsx` (`{ diagnostico, liberando, onLiberar, className? }`, ligado ao `useSaudeFila`): título 'Saúde da fila' com selo 'Trava expirada' quando `alerta`, lista de `TravaItem` (contagem) ou 'Nenhuma trava ativa', e `PendentesResumo`. Exportado em `src/components/tasks/index.ts`. typecheck e build OK.
 
-#### [🔄] SUB-23.8: Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx`
-- **Status:** em_execucao
+#### [x] SUB-23.8: Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-23.7
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Na `LogsView`, carregar `useTasks(projeto.id)` e exibir o `SaudeFilaPanel` acima da linha do tempo de logs.
 - **Critérios de Aceitação:** `npm run typecheck`, `npm run build` e `npm test` OK; screenshot.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `6c409d3`
+- **Anotação:** Na `src/views/LogsView.tsx`: `useTasks(projeto?.id)` + `useSaudeFila` e `SaudeFilaPanel` exibido acima da linha do tempo de execuções. typecheck, build e `npm test` verdes (162 passed). Screenshot não gerado (sem Supabase configurado no ambiente do clone).
 
 #### [ ] SUB-23.9: Alerta de trava presa na `src/views/FilaView.tsx`
 - **Status:** pendente
