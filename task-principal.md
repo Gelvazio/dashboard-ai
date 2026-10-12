@@ -99,15 +99,15 @@
 ---
 
 ## 📊 Resumo de Progresso
-- **Total de Tasks Principais:** 45
-- **Subtarefas atômicas (~3 min):** 251
+- **Total de Tasks Principais:** 46
+- **Subtarefas atômicas (~3 min):** 269
 - **Em Execução:** 3 (SUB-38, SUB-41.1, SUB-25.4)
-- **Pendentes:** 8 principais (SUB-38, 25, 26, 28, 35, 41, 42, KIRO-DEV-CLONE) + 39 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 2 — SUB-25.7 e SUB-35.32 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
-  - bloqueadas por dependência: 6 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41) e SUB-42 (depende da SUB-41)
+- **Pendentes:** 9 principais (SUB-38, 25, 26, 28, 35, 41, 42, 45, KIRO-DEV-CLONE) + 57 subtarefas
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 3 — SUB-25.7, SUB-35.32 e SUB-45.1 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - bloqueadas por dependência: 23 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41) e SUB-42 (depende da SUB-41); SUB-45.2 a SUB-45.18 (cadeia da SUB-45)
   - em execução: 3 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI)); SUB-25.4 (Claude Code (Opus 5.5))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 245 de 296 blocos (37 principais + 208 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 245 de 315 blocos (37 principais + 208 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -437,6 +437,276 @@
 - **Critérios de Aceitação:** `grep -n "SUB-[0-9]\|KIRO-DEV-CLONE" AGENTS.md` sem resultados (os `SUB-XX`/`SUB-01.1` genéricos de exemplo podem ficar); a trava da `KIRO-DEV-CLONE` continua valendo pelo bloco do `task-principal.md`; `npm run validar` verde.
 - **Commit:** pendente
 - **Anotação:** Criada a pedido do usuário em 2026-10-12 por Claude Code (Opus 5.5) ("veja se tem mais alguma"), depois da SUB-41. Varredura feita com `grep` no `AGENTS.md`; os itens acima são todos os que citam tarefas concretas. As seções 1 a 5 são regras e ficam. **Releitura completa (2026-10-12, Claude Code (Opus 5.5), a pedido do usuário):** o `AGENTS.md` (483 linhas, já com a regra 9 da seção 1.1, `26e949b`) foi lido do início ao fim. A única **tarefa** é o plano "🧠 Cérebro de Memória Persistente" (linhas ~345-525 depois das seções 6 e da regra 10, SUB-41); as referências a tarefas concretas e os relatos de histórico são os itens 1 a 5 acima. Os números de linha foram atualizados (+5 por causa da regra 9) e o item 5 foi acrescentado.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+---
+
+## 🗂️ FASE 16: Cadastro de Projetos
+
+### [ ] SUB-45: Cadastro de projetos (campos novos na tabela `projects` e tela `#/projetos`)
+- **Status:** pendente (aguardando subtarefas)
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** subtarefas SUB-45.1 a SUB-45.18
+- **Subtarefas:** (criada e subdividida em 18 em 2026-10-12 por Claude Code (Opus 5.5, sessão em nuvem) a pedido do usuário, cada uma com até ~3 min; a mãe só é concluída quando todas as filhas estiverem `concluido`)
+  - `SUB-45.1`: Colunas `responsavel_id` e `data_prevista_fim` em `database/08_projects_campos.sql` (`pendente`)
+  - `SUB-45.2`: Colunas `cor` e `icone` em `database/08_projects_campos.sql` (`pendente`)
+  - `SUB-45.3`: Colunas `url_producao` e `url_documentacao` em `database/08_projects_campos.sql` (`pendente`)
+  - `SUB-45.4`: Colunas `prioridade` e `tags` em `database/08_projects_campos.sql` (`pendente`)
+  - `SUB-45.5`: Teste SQL `database/tests/test_projects_campos.sql` (`pendente`)
+  - `SUB-45.6`: Aplicar o `database/08_projects_campos.sql` no Supabase (só com autorização do usuário) (`pendente`)
+  - `SUB-45.7`: Tipos novos de `Project` em `src/types/database.ts` (`pendente`)
+  - `SUB-45.8`: `validarProjeto()` em `src/lib/projeto.ts` (`pendente`)
+  - `SUB-45.9`: `criarProjeto()` em `src/services/projectService.ts` (`pendente`)
+  - `SUB-45.10`: `atualizarProjeto()` e `definirProjetoAtivo()` em `src/services/projectService.ts` (`pendente`)
+  - `SUB-45.11`: Componente `src/components/projetos/StatusProjetoBadge.tsx` (`pendente`)
+  - `SUB-45.12`: `ProjetoForm.tsx`: campos básicos (`pendente`)
+  - `SUB-45.13`: `ProjetoForm.tsx`: campos novos (`pendente`)
+  - `SUB-45.14`: Componente `src/components/projetos/ProjetosLista.tsx` (`pendente`)
+  - `SUB-45.15`: Tela `src/views/ProjetosView.tsx` (`pendente`)
+  - `SUB-45.16`: Registrar a tela `projetos` (rota `#/projetos` e menu) (`pendente`)
+  - `SUB-45.17`: Documentar projetos no `README.md` e no `database/README.md` (`pendente`)
+  - `SUB-45.18`: Validação visual da tela Projetos (`pendente`)
+- **Descrição:** Pedido do usuário: "criar os projetos; cada task deve ser ligada a um projeto; tabela no banco com descrição do projeto, status (1-ATIVO, 0-INATIVO) e data de criação". **O que já existe (SUB-29, `database/00_projects_roles.sql`):** a tabela `public.projects` com `nome`, `slug`, `descricao`, `repositorio`, `branch_padrao`, `prefixo_codigo`, `ativo` (boolean), `excluido`, `criado_por`, `created_at` e `updated_at`; e `tasks.project_id` já é `not null` com chave estrangeira para `projects` (toda task já pertence a um projeto). A RLS já deixa só o administrador criar projeto e só o owner (ou admin) editar. **O que falta:** os campos novos escolhidos pelo usuário (responsável, prazo, cor, ícone, URL de produção, URL de documentação, prioridade e tags) e a tela para listar, criar, editar e ativar/inativar projetos (no frontend só existe `listarProjetos()`).
+- **Decisões do usuário (2026-10-12):** (1) o status **continua** sendo a coluna `ativo boolean` (as RPCs da fila já usam), exibido na tela como **1-ATIVO / 0-INATIVO**; (2) campos novos: `responsavel_id`, `data_prevista_fim`, `cor`, `icone`, `url_producao`, `url_documentacao`, `prioridade` e `tags`; (3) escopo: banco **e** tela de cadastro.
+- **Critérios de Aceitação:** Todas as filhas `concluido`; `database/08_projects_campos.sql` idempotente e aplicado (com autorização); tela `#/projetos` funcionando (admin cria; owner edita; ativar/inativar); `npm run validar` verde.
+- **Commit:** pendente
+- **Anotação:** Tarefa grande (banco + várias partes): pela seção 6 do `AGENTS.md`, quem pegar a primeira subtarefa cria o plano em `docs/cadastro-de-projetos.md`. As filhas SUB-45.5, SUB-45.6 e SUB-45.18 exigem banco e, pela regra 11 da seção 1.1, só o Claude Code executa. O número do script (`08_`) é o próximo livre em `database/` depois da remoção do `08_admin_inicial.sql` na SUB-44 (`4f4c443`); se outro script ocupar o `08_` antes, usar o próximo número livre e corrigir as filhas. Sem testes unitários novos no frontend, seguindo a mesma orientação registrada na SUB-40 (só para correção de bug); o teste SQL da SUB-45.5 cobre os checks do banco.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-45.1: Colunas `responsavel_id` e `data_prevista_fim` em `database/08_projects_campos.sql`
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `database/08_projects_campos.sql` (idempotente, no padrão dos scripts `00`–`07`: `alter table public.projects add column if not exists ...`). Colunas: `responsavel_id uuid references auth.users (id) on delete set null` (dono do projeto) e `data_prevista_fim date` (prazo). `comment on column` em cada uma. Cabeçalho do arquivo explicando que o script complementa o `00_projects_roles.sql` e depende dele.
+- **Critérios de Aceitação:** Arquivo criado; SQL relido (sintaxe, idempotência com `if not exists`); nada aplicado no banco nesta subtarefa.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-45.2: Colunas `cor` e `icone` em `database/08_projects_campos.sql`
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-45.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** No mesmo arquivo: `cor text` com `check (cor is null or cor ~ '^#[0-9a-fA-F]{6}$')` e `icone text` (nome de ícone do lucide-react, ex.: `folder-kanban`) com `check (icone is null or icone ~ '^[a-z0-9-]{1,64}$')`. Constraints criadas de forma idempotente (bloco `do $$ ... if not exists (select 1 from pg_constraint ...)`). Comentários nas colunas.
+- **Critérios de Aceitação:** Colunas e checks no arquivo, idempotentes.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-45.3: Colunas `url_producao` e `url_documentacao` em `database/08_projects_campos.sql`
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-45.2
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** No mesmo arquivo: `url_producao text` e `url_documentacao text`, cada uma com `check (<col> is null or <col> ~ '^https?://')`, idempotentes. Comentários nas colunas.
+- **Critérios de Aceitação:** Colunas e checks no arquivo, idempotentes.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-45.4: Colunas `prioridade` e `tags` em `database/08_projects_campos.sql`
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-45.3
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** No mesmo arquivo: `prioridade text not null default 'MEDIA'` com `check (prioridade in ('MAXIMA','ALTA','MEDIA','BAIXA'))` (mesmos valores da seção 1.2 do `AGENTS.md`) e `tags text[] not null default '{}'`. Índice GIN em `tags` (`create index if not exists`). Comentários. **Status continua sendo a coluna `ativo boolean`** (decisão do usuário): na tela aparece como 1-ATIVO / 0-INATIVO.
+- **Critérios de Aceitação:** Colunas, check e índice no arquivo, idempotentes.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-45.5: Teste SQL `database/tests/test_projects_campos.sql`
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-45.4
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Teste no padrão de `database/tests/test_multi_projeto.sql` (`raise notice 'ok: ...'` e `TODOS_OS_TESTES_PASSARAM`): defaults de `prioridade` e `tags`; checks recusam cor `azul`, ícone `Folder Kanban`, URL `ftp://x` e prioridade `URGENTE`; aceitam valores válidos; `responsavel_id` vira `null` quando o usuário é apagado. Incluir o arquivo no `database/tests/run_tests.sh` e corrigir a mensagem "schema 00-06" para o intervalo real. ⚠️ Exige banco: pela regra 11 da seção 1.1 do `AGENTS.md`, só o Claude Code executa.
+- **Critérios de Aceitação:** `database/tests/run_tests.sh` verde contra um Postgres com pgvector descartável (nunca o Supabase de produção).
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-45.6: Aplicar o `database/08_projects_campos.sql` no Supabase (só com autorização do usuário)
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-45.5
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** **Pedir autorização explícita do usuário no chat antes de qualquer comando no banco remoto** e confirmar com ele qual é o projeto Supabase do Dashboard AI. Com a autorização, aplicar o script e conferir com consultas só de leitura que as 8 colunas e os checks existem (`information_schema.columns`, `pg_constraint`). ⚠️ Exige banco: pela regra 11 da seção 1.1 do `AGENTS.md`, só o Claude Code executa.
+- **Critérios de Aceitação:** Script aplicado sem erro; conferências registradas na anotação (sem chaves, tokens ou dados de usuários).
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-45.7: Tipos novos de `Project` em `src/types/database.ts`
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-45.4
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Acrescentar ao tipo `Project` os campos `responsavel_id: string | null`, `data_prevista_fim: string | null`, `cor: string | null`, `icone: string | null`, `url_producao: string | null`, `url_documentacao: string | null`, `prioridade: PrioridadeProjeto` e `tags: string[]`, e exportar `type PrioridadeProjeto = 'MAXIMA' | 'ALTA' | 'MEDIA' | 'BAIXA'`. Ajustar `ProjectInsert`/`ProjectUpdate` se precisar e corrigir mocks de teste que montam `Project`.
+- **Critérios de Aceitação:** `npm run typecheck` e `npm test` verdes.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-45.8: `validarProjeto()` em `src/lib/projeto.ts`
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-45.7
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Função pura que recebe os campos do formulário e devolve `{ campo: mensagem }` só com os erros: `nome` obrigatório; `slug` e `prefixo_codigo` com as mesmas regex do `00_projects_roles.sql`; `cor` hex `#RRGGBB`; `icone` `^[a-z0-9-]{1,64}$`; URLs `http(s)://`; `prioridade` na lista; `data_prevista_fim` data válida. Mensagens em português, no estilo de `src/lib/auth.ts`. Exportar em `src/lib/index.ts`, se existir.
+- **Critérios de Aceitação:** `npm run typecheck` e `npm run lint` verdes.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-45.9: `criarProjeto()` em `src/services/projectService.ts`
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-45.7
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Insere em `projects` (`insert(...).select().single()`) e devolve o `Project` criado, no padrão de `listarProjetos()` (recebe `client` opcional). Erro de RLS (não admin) vira mensagem clara: "Só administradores podem criar projetos."; slug repetido vira "Já existe um projeto com esse identificador.".
+- **Critérios de Aceitação:** `npm run typecheck` verde.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-45.10: `atualizarProjeto()` e `definirProjetoAtivo()` em `src/services/projectService.ts`
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-45.9
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** `atualizarProjeto(id, campos)` faz `update` e devolve o projeto; `definirProjetoAtivo(id, ativo)` é um atalho para ativar/inativar. Mesmo tratamento de erro da SUB-45.9 (RLS: só o owner do projeto ou admin).
+- **Critérios de Aceitação:** `npm run typecheck` verde.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-45.11: Componente `src/components/projetos/StatusProjetoBadge.tsx`
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-45.7
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Badge que recebe `ativo: boolean` e mostra **1-ATIVO** (verde) ou **0-INATIVO** (cinza), no visual dos badges já usados na tela Fila. Criar `src/components/projetos/index.ts` exportando o componente.
+- **Critérios de Aceitação:** `npm run typecheck` e `npm run lint` verdes.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-45.12: `ProjetoForm.tsx`: campos básicos
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-45.8, SUB-45.9
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `src/components/projetos/ProjetoForm.tsx` no visual do `LoginForm`/`CadastroForm` (classe `CAMPO`, `Botao`, `useId`, erros com `aria-invalid`/`aria-describedby`), com os campos Nome, Identificador (slug), Descrição, Prefixo do código, Repositório e Branch padrão. Valida com `validarProjeto` e, no modo criar, chama `criarProjeto`. Props: `projeto?` (modo editar), `onSalvou?(projeto)` e `onCancelar?()`.
+- **Critérios de Aceitação:** `npm run typecheck`, `npm run lint` e `npm run build` verdes.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-45.13: `ProjetoForm.tsx`: campos novos
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-45.12, SUB-45.10
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** No mesmo formulário: Responsável (select com os membros do projeto, ou campo de texto do e-mail se não houver lista), Prazo (date), Cor (`input type=color`), Ícone, URL de produção, URL de documentação, Prioridade (select) e Tags (texto separado por vírgula → `string[]`). No modo editar, chama `atualizarProjeto`.
+- **Critérios de Aceitação:** `npm run typecheck`, `npm run lint` e `npm run build` verdes.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-45.14: Componente `src/components/projetos/ProjetosLista.tsx`
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-45.10, SUB-45.11
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Tabela (cards no celular) com: bolinha da cor, nome, slug, prioridade, `StatusProjetoBadge`, data de criação (`created_at` formatada) e botões Editar e Ativar/Inativar (`definirProjetoAtivo`). Estado vazio: "Nenhum projeto cadastrado.".
+- **Critérios de Aceitação:** `npm run typecheck`, `npm run lint` e `npm run build` verdes.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-45.15: Tela `src/views/ProjetosView.tsx`
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-45.13, SUB-45.14
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Tela com a `ProjetosLista` e o botão "Novo projeto" (abre o `ProjetoForm`). Só administrador vê o botão "Novo projeto"; quem não é admin vê a lista dos projetos a que tem acesso. Depois de salvar, recarrega a lista e o seletor de projeto do `ProjetoContext`.
+- **Critérios de Aceitação:** `npm run typecheck`, `npm run lint` e `npm run build` verdes; `npm run check:chunks` sem chunk acima de 500 kB.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-45.16: Registrar a tela `projetos` (rota `#/projetos` e menu)
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-45.15
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Adicionar `{ id: 'projetos', titulo: 'Projetos' }` em `src/views/meta.ts`, exportar em `src/views/index.ts` e ligar a rota e o item de menu do mesmo jeito que a tela `monitor` (SUB-35.31), com carregamento preguiçoso (lazy).
+- **Critérios de Aceitação:** `npm run validar` verde.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-45.17: Documentar projetos no `README.md` e no `database/README.md`
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-45.4, SUB-45.16
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** No `database/README.md`: incluir o `08_projects_campos.sql` na ordem de aplicação, com a lista de colunas novas e os checks. No `README.md`: descrever a tela Projetos (quem cria, quem edita, status 1-ATIVO/0-INATIVO, toda task pertence a um projeto via `tasks.project_id`).
+- **Critérios de Aceitação:** `npm run validar` verde; links relativos funcionando.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-45.18: Validação visual da tela Projetos
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-45.6, SUB-45.16
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Com `npm run preview` contra o Supabase do Dashboard AI (já com o `08` aplicado), entrar como admin, criar, editar, inativar e reativar um projeto de teste, em 1280x800 e 390x844; conferir que o projeto aparece no seletor e que uma task nova fica ligada a ele. Registrar no `docs/VALIDACAO.md` (sem screenshots grandes). Apagar o projeto de teste só com autorização do usuário. ⚠️ Exige banco: pela regra 11 da seção 1.1 do `AGENTS.md`, só o Claude Code executa.
+- **Critérios de Aceitação:** Sem erros no console; checklist registrado.
+- **Commit:** pendente
+- **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
