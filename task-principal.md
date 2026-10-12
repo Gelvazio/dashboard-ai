@@ -9,9 +9,9 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 31
-- **Em Execução:** 4 (`SUB-01.1`, `SUB-27`, `SUB-08`, `SUB-31`)
+- **Em Execução:** 3 (`SUB-01.1`, `SUB-27`, `SUB-08`)
 - **Pendentes:** 22
-- **Concluídas:** 7
+- **Concluídas:** 8
 - **Canceladas:** 0
 
 ---
@@ -126,15 +126,15 @@
 - **Commit:** `5d7c995`
 - **Anotação:** api/_lib/queue-tools.ts + api/_lib/supabase.ts (cliente fetch sem dependências). tsc strict OK; e2e com PostgREST local: 27 checagens (dependências, humano ignorado, dono da trava, erro volta à fila, log sem_tarefa, projeto padrão, allowlist, 401 sem token).
 
-### [🔄] SUB-31: Recados entre Agentes e Regras por Projeto
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:47)
+### [x] SUB-31: Recados entre Agentes e Regras por Projeto
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:47, conclusão: 2026-10-11 22:49)
 - **Depende de:** SUB-29
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Tabelas genéricas `agent_messages` (recados entre agentes/frentes, por projeto e task) e `project_rules` (cópia por seção das regras do repositório de cada projeto, conferida por md5), com RLS por projeto.
 - **Critérios de Aceitação:** SQL idempotente aplicado 2x e testado com RLS.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `0b34257`
+- **Anotação:** database/06_messages_rules.sql: agent_messages (remetente, destinatario nulo = todos, tipo recado/pergunta/resposta/alerta/handoff, task por id ou código do mesmo projeto, resposta_de, lido/arquivado) e ler_recados(projeto, agente, só não lidos, marcar lidos, desde, limite); project_rules (arquivo + seção únicos por projeto, md5 gerado do conteúdo, commit_sha, ativo) e conferir_regras(projeto, jsonb) -> igual/diverge/so_local/so_banco. RLS: viewer lê; editor cria recados e só altera lido/arquivado (sem DELETE); regras só owner/admin escrevem; criado_por forçado ao usuário logado; anon sem acesso. Validado: 00-06 aplicados 2x; 46 verificações novas (tests/test_recados_regras.sql) + 72 de SUB-29 + paralelo, todos OK.
 
 ---
 
