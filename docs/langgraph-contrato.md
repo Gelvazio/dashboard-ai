@@ -85,9 +85,19 @@ estado (1.2) e passam pela autenticação do MCP (`MCP_AUTH_TOKEN` obrigatório)
 | `brain_search` | leitura | não | não se aplica (sem efeito) |
 | `task_list` | leitura | não | não se aplica (sem efeito) |
 | `brain_store` | escrita | não | natural: upsert por `(project_id, title)`; repetir grava o mesmo conteúdo |
-| `agent_event` | escrita (só-inclusão) | não | `chave_idempotencia` única por projeto em `agent_events` |
-| `task_create` | escrita | **sim** (cria trabalho para outros agentes) | chave do passo gravada no checkpoint; só executa após aprovação |
-| `brain_delete` | escrita destrutiva | **sim** (apaga dados) | natural: apagar o que já não existe não muda nada |
+
+Esta é a allowlist da **v1**, igual ao `ALLOWLIST` de [`worker/ferramentas.ts`](../worker/ferramentas.ts)
+(SUB-39.2). Nenhuma ferramenta da v1 é sensível por si; um passo ainda pode pausar para aprovação
+quando o próprio plano o marca como `sensivel` (nó `politica`, `worker/nos/politica.ts`).
+
+**Fora da allowlist na v1 (decisão da SUB-39.2):**
+
+- **`agent_event`:** não é ferramenta do modelo. Os eventos são emitidos pelo próprio worker
+  (`worker/eventos.ts`: `emitirEvento` e `comEventos`, que envolve cada nó do grafo), com
+  `chave_idempotencia` única por projeto em `agent_events` (2.2).
+- **`task_create`** (escrita; criaria trabalho para outros agentes) e **`brain_delete`** (escrita
+  destrutiva): o worker autônomo não precisa deles na v1. Se entrarem numa v2, entram como
+  **sensíveis** (pausa para aprovação humana, regra 1) e com chave do passo gravada no checkpoint.
 
 **Fora da allowlist do grafo:** `task_next` e `task_finish`. A reivindicação e o desfecho da task
 são feitos pelo **worker** direto nas RPCs (`pegar_proxima_task` / `finalizar_task`), nunca
@@ -112,8 +122,8 @@ chave = "<execucaoId>:<passoId>"                  ex.: task-42-t2:passo-3
 ```
 
 - `passoId` é o `id` estável do passo no `plano` validado (não muda em retomadas).
-- Para efeitos que **devem valer entre tentativas** (ex.: não criar a mesma task de novo na
-  tentativa 3), usa-se a chave da task sem a tentativa: `task-<taskId>:<passoId>`.
+- Para efeitos que **devem valer entre tentativas** (ex.: não repetir na tentativa 3 um efeito
+  já confirmado na tentativa 2), usa-se a chave da task sem a tentativa: `task-<taskId>:<passoId>`.
 
 Onde a chave é gravada:
 
@@ -127,7 +137,7 @@ Ordem obrigatória num passo de escrita: **persistir no checkpoint que o passo v
 chamar a ferramenta → persistir o resultado (`feito`) e emitir o evento com a chave → só então
 avançar** (seção 7 do `LangChain_LangGraph.md`). Se o processo cair entre a chamada e a
 persistência, a retomada consulta `agent_events` pela chave antes de repetir; ferramentas com
-idempotência natural (`brain_store`, `brain_delete`) podem simplesmente ser repetidas.
+idempotência natural (`brain_store`; leituras não têm efeito) podem simplesmente ser repetidas.
 
 ## 3. Mapeamento de erros para `finalizar_task`
 
