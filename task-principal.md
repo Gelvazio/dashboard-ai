@@ -45,14 +45,25 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
+### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.22
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-28.22** |
+| **Título da Sub-task:** | `executarUmaTask(deps)` em `worker/executar.ts` |
+| **Agente Responsável:** | Devin (Cognition AI) |
+| **Data e Hora de Início:** | 2026-10-12 12:53 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202
-- **Em Execução:** 0
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 27 subtarefas
-  - livres agora: 6 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.22, SUB-35.32, SUB-35.33)
+- **Em Execução:** 1 (SUB-28.22, Devin (Cognition AI), desde 2026-10-12 12:53)
+- **Pendentes:** 4 principais (25, 26, 28, 35) + 26 subtarefas
+  - livres agora: 5 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-35.32, SUB-35.33)
   - bloqueadas por dependência: 21
   - reservadas: 0
 - **Concluídas:** 208 de 239 blocos (33 principais + 175 subtarefas)
@@ -1982,7 +1993,7 @@
   - `SUB-28.19`: Adaptar ferramentas para `tool()` do LangChain em `worker/ferramentas.ts` (`concluido`, `a9bb258`)
   - `SUB-28.20`: `PlanoSchema` em `worker/plano.ts` (`concluido`, `048e647`)
   - `SUB-28.21`: `classificarFalha(err)` em `worker/falhas.ts` (`concluido`, `04c0f02`)
-  - `SUB-28.22`: `executarUmaTask(deps)` em `worker/executar.ts` (`pendente`)
+  - `SUB-28.22`: `executarUmaTask(deps)` em `worker/executar.ts` (`em_execucao`)
   - `SUB-28.23`: Retomada da aprovação (`Command({ resume })`) em `api/aprovacao.ts` (`pendente`)
   - `SUB-28.24`: Testes do worker: interrupção e retomada sem duplicar efeitos (`pendente`)
   - `SUB-28.25`: Variáveis do worker no `api/README.md` (`pendente`)
@@ -2231,8 +2242,8 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:15 — Devin (revisão do quadro): commit e arquivos conferidos na `main`; `npm run typecheck`, `npm test` e `npm run build` verdes
 
 #### [ ] SUB-28.22: `executarUmaTask(deps)` em `worker/executar.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:53)
 - **Depende de:** SUB-28.12, SUB-28.13, SUB-28.14
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Uma execução: `reivindicar` -> `reconciliar` -> `grafo.invoke` com `thread_id = execucaoId` e checkpointer -> garantir `finalizar` em caso de exceção. Dependências injetáveis.
