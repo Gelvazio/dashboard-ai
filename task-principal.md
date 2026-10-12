@@ -671,7 +671,7 @@
   - `SUB-19.2`: Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts` (`pendente`)
   - `SUB-19.3`: `formatarSimilaridade` em `src/lib/similaridade.ts` (`pendente`)
   - `SUB-19.4`: Componente `SimilaridadeBadge` em `src/components/memoria/` (`concluido`, `ef9ec9b`)
-  - `SUB-19.5`: Componente `ResultadoBuscaCard` em `src/components/memoria/` (`em_execucao`)
+  - `SUB-19.5`: Componente `ResultadoBuscaCard` em `src/components/memoria/` (`concluido`, `c92d3f9`)
   - `SUB-19.6`: Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts` (`pendente`)
   - `SUB-19.7`: Painel `BuscaSemanticaPanel` (campo, grade e estados) (`pendente`)
   - `SUB-19.8`: Integrar a busca na `src/views/MemoriaView.tsx` (`pendente`)
@@ -723,15 +723,15 @@
 - **Commit:** `ef9ec9b`
 - **Anotação:** Criado `src/components/memoria/SimilaridadeBadge.tsx` (`{ similaridade, className? }`): pílula arredondada com `formatarSimilaridade` (ex.: `89%`) e cor de `classeSimilaridade` (verde/âmbar/cinza, com `dark:`), `title` e `aria-label` "Similaridade de 89%". Criado `src/components/memoria/index.ts` exportando `BuscaControles` (SUB-19.9) e `SimilaridadeBadge`. `npm run typecheck`, `npm test` e `npm run build` OK.
 
-#### [ ] SUB-19.5: Componente `ResultadoBuscaCard` em `src/components/memoria/`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 00:54)
+#### [x] SUB-19.5: Componente `ResultadoBuscaCard` em `src/components/memoria/`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 00:54, conclusão: 2026-10-12 00:54)
 - **Depende de:** SUB-19.4
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/components/memoria/ResultadoBuscaCard.tsx` com props `{ titulo, conteudo, tags, similaridade?: number, global: boolean, atualizadoEm }`: título, resumo do conteúdo (`resumo()` de `src/lib/tasks.ts`, 200 caracteres), chips de tags, selo "Global" e `SimilaridadeBadge` quando houver similaridade.
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `c92d3f9`
+- **Anotação:** Criado `src/components/memoria/ResultadoBuscaCard.tsx` (`{ titulo, conteudo, tags, similaridade?, global, atualizadoEm, onClick?, className? }`): título truncado com `title`, resumo do conteúdo via `resumo(conteudo, 200)` de `src/lib/tasks.ts`, chips de tags, selo "Global" (ícone Globe) quando `global`, `SimilaridadeBadge` só quando há similaridade e data relativa (`tempoRelativo`, `title` com `formatarDataHora`); vira `<button>` acessível quando recebe `onClick`, senão `<article>`. Exportado em `src/components/memoria/index.ts`. `npm run typecheck`, `npm test` e `npm run build` OK.
 
 #### [ ] SUB-19.6: Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts`
 - **Status:** pendente

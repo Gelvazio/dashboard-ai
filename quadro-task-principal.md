@@ -33,17 +33,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-19.5
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-19.5** |
-| **Título da Sub-task:** | Componente `ResultadoBuscaCard` em `src/components/memoria/` |
-| **Agente Responsável:** | DashboardAI-Clone 10 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 00:54 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-08.8
 
 | Propriedade | Valor Atual |
@@ -81,19 +70,18 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27.6** | Testes unitários de `authService` em `tests/unit/authService.test.ts` | DashboardAI-Clone 01 | 2026-10-12 00:54 | SUB-27.23, SUB-27.24 |
 | **SUB-23.6** | Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts` | DashboardAI-Clone 02 | 2026-10-12 00:54 | SUB-23.3, SUB-23.4 |
 | **SUB-08.8** | `extrairVariaveis(texto)` em `scripts/checar-env.mjs` + testes | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:54 | Nenhuma |
-| **SUB-19.5** | Componente `ResultadoBuscaCard` em `src/components/memoria/` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:54 | SUB-19.4 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
 
-### ⏳ PENDENTES (182)
+### ⏳ PENDENTES (181)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -128,7 +116,6 @@
 | **SUB-19.1** | `debounce(fn, ms)` em `src/lib/debounce.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-19.2** | Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts` | 4 | Fase 7 | SUB-19.1 — ⛓️ bloqueada |
 | **SUB-19.3** | `formatarSimilaridade` em `src/lib/similaridade.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
-| **SUB-19.5** | Componente `ResultadoBuscaCard` em `src/components/memoria/` | 4 | Fase 7 | SUB-19.4 — 🔄 em execução por DashboardAI-Clone 10 (Grok Bot) |
 | **SUB-19.6** | Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts` | 4 | Fase 7 | SUB-19.2, SUB-33.7 — ⛓️ bloqueada |
 | **SUB-19.7** | Painel `BuscaSemanticaPanel` (campo, grade e estados) | 4 | Fase 7 | SUB-19.5, SUB-19.6, SUB-19.9 — ⛓️ bloqueada |
 | **SUB-19.8** | Integrar a busca na `src/views/MemoriaView.tsx` | 4 | Fase 7 | SUB-19.7, SUB-21.9 — ⛓️ bloqueada |
@@ -280,7 +267,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (56)
+### ✅ CONCLUÍDAS (57)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -342,6 +329,7 @@
 | **SUB-33.5** | Registrar `api/embedding.ts` no `vercel.json` | Codex (OpenAI) | 2026-10-12 00:35 | 2026-10-12 00:41 | `1d68ea6` |
 | **SUB-19.10** | `classeSimilaridade` em `src/lib/similaridade.ts` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:51 | 2026-10-12 00:52 | `4f6700d` |
 | **SUB-19.4** | Componente `SimilaridadeBadge` em `src/components/memoria/` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:52 | 2026-10-12 00:53 | `ef9ec9b` |
+| **SUB-19.5** | Componente `ResultadoBuscaCard` em `src/components/memoria/` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:54 | 2026-10-12 00:54 | `c92d3f9` |
 
 n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | Claude Code | 2026-10-12 00:50 | 2026-10-12 00:51 | `fc4c3ee` |
 || **SUB-20.1** | `validarMemoria(dados)` em `src/lib/memoriaForm.ts` | DashboardAI-Clone 06 | 2026-10-12 00:46 | 2026-10-12 00:47 | `5662f1a` |
@@ -499,3 +487,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:54 | DashboardAI-Clone 02 | SUB-23.6 | — | Lock: assumindo SUB-23.6 (Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts`) |
 | 2026-10-12 00:54 | DashboardAI-Clone 01 | SUB-27.6 | — | Lock: assumindo SUB-27.6 (Testes unitários de `authService` em `tests/unit/authService.test.ts`) |
 | 2026-10-12 00:54 | DashboardAI-Clone 06 | SUB-20.5 | `3208e66` | Criado `src/hooks/useSalvarMemoria.ts` (exportado em `src/hooks/index.ts`): `{ salvar(projectId | null, dados): Promise<Memoria | null>, salvando }` chamando `salvarMemoria` (SUB-10) com o gerador de `criarGeradorEmbedding()` (SUB-33.7, memoizado). Se o gerador falhar (marcado com erro próprio para não confundir com erro do banco), salva de novo sem vetor e avisa em toast (`info`) que a memória não aparece na busca semântica; sucesso -> `toast.sucesso`; erro do banco/RLS -> `toast.erro` e devolve `null`. Ignora cliques repetidos enquanto salva. `npm run typecheck`, `npm test` e `npm run build` OK. |
+| 2026-10-12 00:54 | DashboardAI-Clone 10 (Grok Bot) | SUB-19.5 | `c92d3f9` | Criado `src/components/memoria/ResultadoBuscaCard.tsx` (`{ titulo, conteudo, tags, similaridade?, global, atualizadoEm, onClick?, className? }`): título truncado com `title`, resumo do conteúdo via `resumo(conteudo, 200)` de `src/lib/tasks.ts`, chips de tags, selo "Global" (ícone Globe) quando `global`, `SimilaridadeBadge` só quando há similaridade e data relativa (`tempoRelativo`, `title` com `formatarDataHora`); vira `<button>` acessível quando recebe `onClick`, senão `<article>`. Exportado em `src/components/memoria/index.ts`. `npm run typecheck`, `npm test` e `npm run build` OK. |
