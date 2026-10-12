@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vis-network@9.1.9/standalone/umd/vis-network.min.js"></script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%8F%86%3C/text%3E%3C/svg%3E" />
   <style>
     :root {
       --bg: #080c14;
@@ -142,6 +143,36 @@
     .brain-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
     .brain-tip { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font-size: 0.8rem; max-width: 320px; line-height: 1.4; }
     div.vis-tooltip { background: transparent !important; border: 0 !important; padding: 0 !important; box-shadow: none !important; }
+    /* SUB-37: ranking e prêmios */
+    .brain-card #brainNet { height: min(72vh, 680px); min-height: 520px; }
+    #brainNet canvas { max-height: none !important; }
+    @media (max-width: 720px) { .brain-card #brainNet { height: 420px; min-height: 0; } }
+    .podium { display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 12px; align-items: end; margin: 8px 0 14px; }
+    .podium .step { background: var(--panel-2); border: 1px solid var(--line); border-radius: 14px; padding: 14px 10px; text-align: center; position: relative; }
+    .podium .step .medal { font-size: 2rem; line-height: 1; }
+    .podium .step .who { font-weight: 700; margin: 6px 0 2px; font-size: 0.95rem; word-break: break-word; }
+    .podium .step .n { font-family: "JetBrains Mono", monospace; font-size: 1.6rem; font-weight: 700; }
+    .podium .step .n small { font-size: 0.72rem; color: var(--muted); font-weight: 400; }
+    .podium .p1 { order: 2; min-height: 170px; border-color: #b8901f; background: linear-gradient(180deg, #2a2310 0%, var(--panel-2) 70%); box-shadow: 0 0 24px rgba(255, 209, 102, 0.18); }
+    .podium .p1 .n { color: var(--warn); }
+    .podium .p1 .crown { position: absolute; top: -18px; left: 50%; transform: translateX(-50%); font-size: 1.6rem; animation: crownBob 2.4s ease-in-out infinite; }
+    .podium .p2 { order: 1; min-height: 140px; border-color: #6c7a92; }
+    .podium .p3 { order: 3; min-height: 120px; border-color: #8a5a32; }
+    .podium .empty-step { opacity: 0.35; }
+    @keyframes crownBob { 0%, 100% { transform: translate(-50%, 0) rotate(-6deg); } 50% { transform: translate(-50%, -4px) rotate(6deg); } }
+    .rank-medals { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 10px; margin-bottom: 12px; }
+    .rank-medals .m { background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+    .rank-medals .m .t { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .rank-medals .m .v { font-weight: 700; margin-top: 4px; font-size: 0.9rem; line-height: 1.4; }
+    .rank-medals .m .d { color: var(--muted); font-size: 0.8rem; margin-top: 2px; }
+    .rank-table td.num { font-family: "JetBrains Mono", monospace; }
+    .rank-table tr.leader td { color: var(--warn); }
+    .rank-bar { display: inline-block; height: 6px; background: var(--done); border-radius: 99px; vertical-align: middle; margin-left: 8px; }
+    .rank-flash { background: linear-gradient(90deg, #3a2a08, #2a2310); border: 1px solid #b8901f; color: #ffe39a; border-radius: 10px; padding: 8px 12px; margin: 6px 0 10px; font-weight: 600; animation: rankFlash 1.2s ease-in-out 4; }
+    @keyframes rankFlash { 0%, 100% { box-shadow: 0 0 0 rgba(255, 209, 102, 0); } 50% { box-shadow: 0 0 22px rgba(255, 209, 102, 0.55); } }
+    .podium .p1.new-leader { animation: leaderPop 0.9s ease-out 3; }
+    @keyframes leaderPop { 0% { transform: scale(1); } 40% { transform: scale(1.06); } 100% { transform: scale(1); } }
+    @media (max-width: 700px) { .podium { grid-template-columns: 1fr; } .podium .p1, .podium .p2, .podium .p3 { order: 0; min-height: 0; } }
   </style>
 </head>
 <body>
@@ -164,6 +195,32 @@
     </header>
 
     <div id="errorBanner" class="error-banner"></div>
+
+    <article class="card brain-card" id="brainCard" style="margin-bottom:16px">
+      <div class="brain-head"><h2 class="panel-title">Cérebro dos agentes (ao vivo)</h2><span class="meta" id="brainSummary">—</span></div>
+      <div class="brain-legend">
+        <span><i style="background:#6ea8ff"></i>Quadro</span>
+        <span><i style="background:#f5a524"></i>Agente trabalhando</span>
+        <span><i style="background:#3a4660;border:1px solid #8b9bb4"></i>Agente ocioso</span>
+        <span><i style="background:#ff6b6b;border-radius:2px"></i>Subtarefa travada agora (ligação pulsando)</span>
+        <span><i style="background:#3dd68c"></i>Entregas recentes (até 5 por agente)</span>
+      </div>
+      <div id="brainNet"></div>
+    </article>
+
+    <article class="card rank-card" id="rankCard" style="margin-bottom:16px">
+      <div class="brain-head"><h2 class="panel-title">🏆 Ranking e prêmios dos agentes</h2><span class="meta" id="rankSummary">—</span></div>
+      <div id="rankLeaderFlash" class="rank-flash" hidden></div>
+      <div class="podium" id="rankPodium"></div>
+      <div class="rank-medals" id="rankMedals"></div>
+      <div style="overflow:auto;">
+        <table class="rank-table">
+          <thead><tr><th>#</th><th>Agente</th><th>Entregas</th><th>Última hora</th><th>Última entrega</th><th>Prêmios</th></tr></thead>
+          <tbody id="rankBody"></tbody>
+        </table>
+      </div>
+      <p class="meta" style="margin:8px 0 0">Conta subtarefas entregues (com SHA) no histórico e em CONCLUÍDAS, uma vez por código; nomes como "Clone 01" e "Clone 01 (Grok Bot)" contam juntos.</p>
+    </article>
 
     <section class="kpis" id="kpis">
       <article class="card kpi" data-filter="all" title="Mostrar todas as tarefas"><div class="label">Total</div><div class="value" id="kpiTotal">—</div><div class="hint">linhas do kanban</div></article>
@@ -189,17 +246,6 @@
       <article class="card"><h2 class="panel-title">Carga por agente</h2><canvas id="chartAgent"></canvas></article>
     </section>
 
-    <article class="card" style="margin-bottom:16px">
-      <div class="brain-head"><h2 class="panel-title">Cérebro dos agentes (ao vivo)</h2><span class="meta" id="brainSummary">—</span></div>
-      <div class="brain-legend">
-        <span><i style="background:#6ea8ff"></i>Quadro</span>
-        <span><i style="background:#f5a524"></i>Agente trabalhando</span>
-        <span><i style="background:#3a4660;border:1px solid #8b9bb4"></i>Agente ocioso</span>
-        <span><i style="background:#ff6b6b;border-radius:2px"></i>Subtarefa travada agora (ligação pulsando)</span>
-        <span><i style="background:#3dd68c"></i>Entregas recentes (até 5 por agente)</span>
-      </div>
-      <div id="brainNet"></div>
-    </article>
 
     <div class="filters">
       <input id="q" type="search" placeholder="Filtrar por código, título, agente ou dependência…" />
@@ -511,6 +557,8 @@
           edges: { smooth: { type: "continuous" } }
         });
         brainNet.once("stabilizationIterationsDone", () => brainNet.fit({ animation: false }));
+        brainNet.once("stabilized", () => brainNet.fit({ animation: { duration: 500, easingFunction: "easeInOutQuad" } })); // SUB-37: encaixa no cartão maior do topo
+        window.addEventListener("resize", () => brainNet && brainNet.fit({ animation: false }));
         let phase = 0;
         brainPulse = setInterval(() => {
           phase = (phase + 1) % 2;
@@ -525,6 +573,126 @@
       }
     }
     // ===== fim SUB-36 =====
+
+    // ===== SUB-37: ranking e prêmios dos agentes =====
+    const RANK_MILESTONES = [10, 25, 50, 100];
+    function rankKey(name) {
+      return agentKey(name).replace(/clone\s*0*(\d+)/, "clone $1");
+    }
+    function rankDisplay(name) {
+      return String(name || "").replace(/\s*\(.*?\)\s*/g, " ").replace(/\s+/g, " ").trim();
+    }
+    function parseBoardTime(s) {
+      const m = String(s || "").match(/(\d{4})-(\d{2})-(\d{2})[ T](\d{1,2}):(\d{2})/);
+      if (!m) return null;
+      const d = new Date(`${m[1]}-${m[2]}-${m[3]}T${m[4].padStart(2, "0")}:${m[5]}:00-03:00`);
+      return isNaN(d) ? null : d.getTime();
+    }
+    function validSha(sha) {
+      return /[0-9a-f]{7,40}/i.test(String(sha || ""));
+    }
+    function buildRanking(board, nowMs) {
+      nowMs = nowMs || Date.now();
+      const byCode = new Map();
+      const add = (agent, code, when, sha) => {
+        if (!validAgent(agent) || !code) return;
+        const t = parseBoardTime(when);
+        const prev = byCode.get(code);
+        if (prev) { if (prev.t == null && t != null) prev.t = t; return; }
+        byCode.set(code, { agent: String(agent).trim(), code, t, when, sha: (String(sha || "").match(/[0-9a-f]{7,40}/i) || [""])[0] });
+      };
+      for (const d of board.done || []) {
+        const codes = String(d.code || "").match(/SUB-\d+(?:\.\d+)*/gi) || [];
+        codes.forEach((c) => add(d.agent, c.toUpperCase(), d.end, d.sha));
+      }
+      for (const h of board.history || []) {
+        if (!validSha(h.sha)) continue;
+        if (!/^\s*SUB-/i.test(h.subtask || "") || /^\s*lock\b/i.test(h.note || "")) continue;
+        const codes = String(h.subtask || "").match(/SUB-\d+(?:\.\d+)*/gi) || [];
+        codes.forEach((c) => add(h.agent, c.toUpperCase(), h.datetime, h.sha));
+      }
+      const agents = new Map();
+      for (const e of byCode.values()) {
+        const key = rankKey(e.agent);
+        if (!key) continue;
+        if (!agents.has(key)) agents.set(key, { key, name: rankDisplay(e.agent), total: 0, lastHour: 0, last: null, items: [] });
+        const a = agents.get(key);
+        a.total += 1;
+        a.items.push(e);
+        if (e.t != null && nowMs - e.t <= 3600000 && e.t - nowMs <= 300000) a.lastHour += 1;
+        if (e.t != null && (!a.last || e.t > a.last.t)) a.last = e;
+      }
+      const list = [...agents.values()].sort((x, y) => (y.total - x.total) || (y.lastHour - x.lastHour) ||
+        ((y.last ? y.last.t : 0) - (x.last ? x.last.t : 0)) || x.name.localeCompare(y.name));
+      let rank = 0, prevTotal = null;
+      list.forEach((a, i) => { if (a.total !== prevTotal) { rank = i + 1; prevTotal = a.total; } a.rank = rank; });
+      const fastest = list.filter((a) => a.lastHour > 0).sort((x, y) => (y.lastHour - x.lastHour) || (y.total - x.total))[0] || null;
+      const latest = list.filter((a) => a.last).sort((x, y) => y.last.t - x.last.t)[0] || null;
+      list.forEach((a) => {
+        a.badges = [];
+        if (a.rank === 1) a.badges.push("👑 Líder");
+        if (fastest && a === fastest) a.badges.push("🔥 Mais rápido da última hora");
+        if (latest && a === latest) a.badges.push("⚡ Última entrega");
+        const ms = RANK_MILESTONES.filter((m) => a.total >= m);
+        if (ms.length) a.badges.push("🎯 " + ms[ms.length - 1] + "+");
+      });
+      return { list, fastest, latest, totalDeliveries: byCode.size };
+    }
+    function fmtHM(t) {
+      if (t == null) return "—";
+      return new Date(t).toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit", timeZone: "America/Sao_Paulo" });
+    }
+    let rankLastLeader = null;
+    function renderRanking(board) {
+      const r = buildRanking(board);
+      const list = r.list;
+      const sum = document.getElementById("rankSummary");
+      if (sum) sum.textContent = `${r.totalDeliveries} entregas · ${list.length} agentes`;
+      const podium = document.getElementById("rankPodium");
+      const medals = ["🥇", "🥈", "🥉"];
+      const leaderKeys = list.filter((a) => a.rank === 1).map((a) => a.key).join("|");
+      const leaderChanged = rankLastLeader !== null && leaderKeys && leaderKeys !== rankLastLeader;
+      let pHtml = "";
+      for (let i = 0; i < 3; i++) {
+        const a = list[i];
+        const cls = "step p" + (i + 1) + (a ? "" : " empty-step") + (i === 0 && leaderChanged ? " new-leader" : "");
+        pHtml += `<div class="${cls}">${i === 0 && a ? '<span class="crown" title="Coroa do líder">👑</span>' : ""}
+          <div class="medal">${i === 0 ? "🏆" : medals[i]}</div>
+          <div class="who">${a ? medals[i] + " " + esc(a.name) : "—"}</div>
+          <div class="n">${a ? a.total : 0} <small>entregas</small></div>
+          <div class="meta">${a ? (a.lastHour ? a.lastHour + " na última hora" : "nenhuma na última hora") : ""}</div></div>`;
+      }
+      podium.innerHTML = pHtml;
+      const ms = (a) => RANK_MILESTONES.filter((m) => a.total >= m);
+      const reached = list.filter((a) => ms(a).length);
+      const nextGoal = list[0] ? RANK_MILESTONES.find((m) => m > list[0].total) : null;
+      document.getElementById("rankMedals").innerHTML = `
+        <div class="m"><div class="t">🔥 Mais rápido da última hora</div><div class="v">${r.fastest ? esc(r.fastest.name) : "—"}</div>
+          <div class="d">${r.fastest ? r.fastest.lastHour + " entregas nos últimos 60 min" : "sem entregas com horário na última hora"}</div></div>
+        <div class="m"><div class="t">⚡ Última entrega</div><div class="v">${r.latest ? esc(r.latest.name) : "—"}</div>
+          <div class="d">${r.latest ? esc(r.latest.last.code) + " às " + fmtHM(r.latest.last.t) + (r.latest.last.sha ? " · " + esc(r.latest.last.sha.slice(0, 7)) : "") : ""}</div></div>
+        <div class="m"><div class="t">🎯 Marcos (10 · 25 · 50 · 100)</div><div class="v">${reached.length ? reached.map((a) => esc(a.name) + " " + ms(a)[ms(a).length - 1] + "+").join(", ") : "ninguém ainda"}</div>
+          <div class="d">${list[0] && nextGoal ? "próximo marco do líder: " + nextGoal + " (faltam " + (nextGoal - list[0].total) + ")" : (list[0] ? "líder passou de 100!" : "")}</div></div>`;
+      const max = list.length ? list[0].total : 1;
+      document.getElementById("rankBody").innerHTML = list.map((a) => `
+        <tr class="${a.rank === 1 ? "leader" : ""}"><td class="num">${a.rank <= 3 ? medals[a.rank - 1] : a.rank}</td><td>${esc(a.name)}</td>
+          <td class="num">${a.total}<span class="rank-bar" style="width:${Math.max(4, Math.round((a.total / max) * 120))}px"></span></td>
+          <td class="num">${a.lastHour}</td><td>${a.last ? esc(a.last.code) + " · " + fmtHM(a.last.t) : "—"}</td>
+          <td>${a.badges.map((b) => `<span class="badge">${esc(b)}</span>`).join("")}</td></tr>`).join("") ||
+        '<tr><td colspan="6" class="empty">Nenhuma entrega registrada ainda.</td></tr>';
+      const flash = document.getElementById("rankLeaderFlash");
+      if (leaderChanged) {
+        const names = list.filter((a) => a.rank === 1).map((a) => a.name).join(" e ");
+        flash.textContent = `👑 Novo líder: ${names} com ${list[0].total} entregas!`;
+        flash.hidden = false;
+        flash.style.animation = "none"; void flash.offsetWidth; flash.style.animation = "";
+        clearTimeout(renderRanking._t);
+        renderRanking._t = setTimeout(() => { flash.hidden = true; }, 15000);
+      }
+      if (leaderKeys) rankLastLeader = leaderKeys;
+      window.__rankingSnapshot = list.map((a) => ({ name: a.name, total: a.total, lastHour: a.lastHour, rank: a.rank }));
+    }
+    // ===== fim SUB-37 =====
 
     async function fetchText(url, extraHeaders) {
       const bust = (url.includes("?") ? "&" : "?") + "t=" + Date.now();
@@ -801,6 +969,7 @@
       document.getElementById("progressLabel").textContent = `${board.done.length} de ${total} · ${pct}%`;
       renderCharts(board);
       try { renderBrain(board); } catch (e) { console.error("brain", e); }
+      try { renderRanking(board); } catch (e) { console.error("ranking", e); }
       renderKanban(board);
       renderHistory(board.history);
       applyViewFilter();
