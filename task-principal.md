@@ -2186,7 +2186,7 @@
   - `SUB-35.39`: Teste do worker: eventos emitidos na ordem dos nós (`pendente`)
   - `SUB-35.40`: Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts` (`pendente`)
   - `SUB-35.41`: Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts` (`pendente`)
-  - `SUB-35.42`: `commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py` (`em_execucao`)
+  - `SUB-35.42`: `commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py` (`concluido`)
   - `SUB-35.43`: CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`) (`pendente`)
   - `SUB-35.44`: Seção "Monitor em tempo real" no `README.md` (`pendente`)
   - `SUB-35.45`: Seção "Reporte de progresso (opcional)" no `AGENTS.md` (`pendente`)
@@ -2607,15 +2607,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [🔄] SUB-35.42: `commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py`
-- **Status:** em_execucao
+#### [x] SUB-35.42: `commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-35.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Função pura que recebe linhas de `git log --format='%H%x09%aI%x09%s'` e devolve eventos: `lock: assumindo sub-task SUB-X por <agente>` -> `trava`; `feat(SUB-X): …` -> `commit`; `docs(board): concluir SUB-X …` -> `fim`; `chave_idempotencia = 'git:<sha>'`. Testes em `scripts/test_espelhar_quadro_eventos.py` (unittest).
 - **Critérios de Aceitação:** `python3 -m unittest scripts/test_espelhar_quadro_eventos.py` passa.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `53a5c93`
+- **Anotação:** Criado `scripts/espelhar_quadro_eventos.py` com a função pura `commits_para_eventos(linhas)` (entrada `git log --format='%H%x09%aI%x09%s'`): `lock: assumindo sub-task SUB-X por <agente>` -> `trava`; `feat(SUB-X): … — <agente>` -> `commit`; `docs(board): concluir SUB-X … de <agente>` -> `fim`; agente ausente vira 'desconhecido'; `chave_idempotencia = 'git:<sha>'`, `metadados.sha`, `created_at` = data do commit; linhas malformadas/outros commits ignorados. Testes em `scripts/test_espelhar_quadro_eventos.py` (4, unittest OK); conferido contra o `git log` real do repo.
 
 #### [ ] SUB-35.43: CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`)
 - **Status:** pendente
