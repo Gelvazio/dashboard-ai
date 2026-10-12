@@ -45,14 +45,25 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
+### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.6
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-28.6** |
+| **Título da Sub-task:** | Nó `carregarContexto` em `worker/nos/carregarContexto.ts` |
+| **Agente Responsável:** | Devin (Cognition AI) |
+| **Data e Hora de Início:** | 2026-10-12 12:42 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202
-- **Em Execução:** 0
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 34 subtarefas
-  - livres agora: 11 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.6, SUB-28.7, SUB-28.8, SUB-28.9, SUB-28.13, SUB-28.14, SUB-35.32, SUB-35.33)
+- **Em Execução:** 1 (SUB-28.6, Devin (Cognition AI), desde 2026-10-12 12:42)
+- **Pendentes:** 4 principais (25, 26, 28, 35) + 33 subtarefas
+  - livres agora: 10 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.7, SUB-28.8, SUB-28.9, SUB-28.13, SUB-28.14, SUB-35.32, SUB-35.33)
   - bloqueadas por dependência: 23
   - reservadas: 0
 - **Concluídas:** 201 de 239 blocos (33 principais + 168 subtarefas)
@@ -1966,7 +1977,7 @@
   - `SUB-28.3`: Annotation `EstadoExecucao` em `worker/estado.ts` (`concluido`, `21c908b`)
   - `SUB-28.4`: `reivindicar(agente, projeto)` em `worker/fila.ts` (`concluido`, `06e7e4b`)
   - `SUB-28.5`: Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts` (`concluido`, `999d1e0`)
-  - `SUB-28.6`: Nó `carregarContexto` em `worker/nos/carregarContexto.ts` (`pendente`)
+  - `SUB-28.6`: Nó `carregarContexto` em `worker/nos/carregarContexto.ts` (`em_execucao`)
   - `SUB-28.7`: Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts` (`pendente`)
   - `SUB-28.8`: Nó `politica` (aprovação humana) em `worker/nos/politica.ts` (`pendente`)
   - `SUB-28.9`: Nó `executar` em `worker/nos/executar.ts` (`pendente`)
@@ -2055,8 +2066,8 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:39 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
 #### [ ] SUB-28.6: Nó `carregarContexto` em `worker/nos/carregarContexto.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:42)
 - **Depende de:** SUB-28.29, SUB-28.19
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Busca memórias relevantes (`brain_search`) para a instrução e guarda no estado como dado não confiável.
