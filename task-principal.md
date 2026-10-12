@@ -86,15 +86,15 @@
 ---
 
 ## 📊 Resumo de Progresso
-- **Total de Tasks Principais:** 40
-- **Subtarefas atômicas (~3 min):** 241
+- **Total de Tasks Principais:** 41
+- **Subtarefas atômicas (~3 min):** 248
 - **Em Execução:** 2 (SUB-38, SUB-39.6)
-- **Pendentes:** 7 principais (SUB-38, 25, 26, 28, 35, 39, KIRO-DEV-CLONE) + 38 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 4 — SUB-25.4, SUB-25.7 e SUB-35.32 (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
-  - bloqueadas por dependência: 3 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente) e SUB-35.46 (depende da SUB-35.32)
+- **Pendentes:** 8 principais (SUB-38, 25, 26, 28, 35, 39, 40, KIRO-DEV-CLONE) + 45 subtarefas
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 6 — SUB-25.4, SUB-25.7, SUB-35.32, SUB-40.1 e SUB-40.2 (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - bloqueadas por dependência: 8 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32) e SUB-40.3 a SUB-40.7 (cadeia da SUB-40)
   - em execução: 2 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-39.6 (Claude Code (Opus 5.5))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 232 de 281 blocos (33 principais + 199 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 232 de 289 blocos (33 principais + 199 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -443,6 +443,121 @@
 - **Critérios de Aceitação:** `npm test` verde com e sem `.env` local preenchido.
 - **Commit:** pendente
 - **Anotação:** Criada em 2026-10-12 por Claude Code (Opus 5.5) durante a SUB-39.3 (achado fora do escopo). Confirmado: com `VITE_SUPABASE_URL= VITE_SUPABASE_ANON_KEY= npx vitest run` passam 300/300; sem isso, 1 falha (a mesma falha antes da SUB-39.3).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+---
+
+## 🔐 FASE 14: Login — Cadastro de Usuário e Administrador Inicial
+
+### [ ] SUB-40: Login com opção de criar usuário (formulário de cadastro) e administrador inicial `gelvazio@gmail.com`
+- **Status:** pendente (aguardando subtarefas)
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** subtarefas SUB-40.1 a SUB-40.7
+- **Subtarefas:** (criada e subdividida em 7 em 2026-10-12 por Claude Code (Opus 5.5) a pedido do usuário; a mãe só é concluída quando todas as filhas estiverem `concluido`)
+  - `SUB-40.1`: SQL do administrador inicial (`database/08_admin_inicial.sql`) (`pendente`)
+  - `SUB-40.2`: Validação e mensagens do cadastro em `src/lib/auth.ts` (`pendente`)
+  - `SUB-40.3`: Serviço `cadastrarUsuario` em `src/services/authService.ts` (`pendente`)
+  - `SUB-40.4`: Componente `src/components/auth/CadastroForm.tsx` (`pendente`)
+  - `SUB-40.5`: Alternar "Entrar" / "Criar usuário" na `LoginView` (`pendente`)
+  - `SUB-40.6`: Documentar o cadastro e o administrador inicial (`README.md` e `database/README.md`) (`pendente`)
+  - `SUB-40.7`: Aplicar o `08_admin_inicial.sql` no Supabase do projeto (só com autorização do usuário) (`pendente`)
+- **Descrição:** Na tela de login, oferecer o link **"Criar usuário"**, que abre um **novo formulário** de cadastro (nome, e-mail, senha e confirmação) usando o Supabase Auth (`signUp`). Regra pedida pelo usuário: se o e-mail cadastrado for **`gelvazio@gmail.com`** e ele **ainda não existir** no banco, o usuário é criado como **administrador** (`user_roles.role = 'admin'`). **Segurança:** o papel de administrador é dado **só pelo banco** (função `security definer` + trigger em `auth.users`), nunca pelo frontend (o cliente não escolhe o próprio papel), e **só depois do e-mail confirmado** (`email_confirmed_at` preenchido), para que ninguém se registre com esse e-mail sem ter acesso à caixa de entrada. Os demais cadastros entram sem papel global (acesso só pelos `project_members`, como hoje).
+- **Critérios de Aceitação:** Todas as filhas `concluido`; `npm run validar` verde; cadastro com `gelvazio@gmail.com` (inexistente) gera `user_roles` admin após a confirmação do e-mail; cadastro com outro e-mail não ganha papel de administrador; se `gelvazio@gmail.com` já existir, nada muda.
+- **Commit:** pendente
+- **Anotação:** Criada a pedido do usuário em 2026-10-12. Sem testes automatizados novos (regra do usuário no `CLAUDE.md` global: só para correção de bug); a verificação de cada filha é por `npm run validar`, `npm run typecheck` e leitura do código/SQL.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-40.1: SQL do administrador inicial (`database/08_admin_inicial.sql`)
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `database/08_admin_inicial.sql` (idempotente, no padrão dos arquivos `00`–`07`): (1) função `public.email_administrador_inicial()` que devolve `'gelvazio@gmail.com'` (único lugar com o e-mail); (2) função `public.garantir_admin_inicial()` `security definer`, `set search_path = public`, que, quando `lower(new.email) = email_administrador_inicial()` **e** `new.email_confirmed_at is not null` **e** não houver linha em `user_roles` para `new.id`, faz `insert into public.user_roles (user_id, role, email, nome) values (new.id, 'admin', new.email, new.raw_user_meta_data ->> 'nome') on conflict (user_id) do nothing`; (3) trigger `after insert or update of email_confirmed_at on auth.users`, criada só se `to_regclass('auth.users')` existir (PostgreSQL puro sem `auth` continua aplicando o script sem erro); (4) bloco de *backfill* que aplica a mesma regra se o usuário já existir e já estiver confirmado. `revoke execute ... from public, anon, authenticated` nas duas funções.
+- **Critérios de Aceitação:** Script idempotente (rodar 2x não falha nem duplica); nenhum outro e-mail vira admin; papel existente em `user_roles` não é alterado.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-40.2: Validação e mensagens do cadastro em `src/lib/auth.ts`
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Adicionar `validarCadastro({ nome, email, senha, confirmacao })`, no mesmo estilo de `validarLogin` (devolve objeto vazio quando está tudo certo): nome obrigatório (mín. 2 caracteres), e-mail válido (reusar `EMAIL_RE`), senha com pelo menos 6 caracteres e confirmação igual à senha ("As senhas não conferem."). Incluir no mapa `MENSAGENS` os códigos do `signUp`: `user_already_exists` / `email_exists` ("Já existe um usuário com este e-mail. Use Entrar ou Esqueci a senha."), `weak_password` ("Senha fraca. Use pelo menos 6 caracteres, com letras e números.") e `signup_disabled` ("O cadastro de novos usuários está desativado. Fale com o administrador.").
+- **Critérios de Aceitação:** `npm run typecheck` e `npm test` verdes; mensagens em português.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-40.3: Serviço `cadastrarUsuario` em `src/services/authService.ts`
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-40.2
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `cadastrarUsuario({ nome, email, senha, redirectTo }, client = getSupabase())`, que chama `client.auth.signUp({ email: email.trim(), password: senha, options: { data: { nome: nome.trim() }, emailRedirectTo: redirectTo } })` e lança `ServiceError(mensagemErroAuth(error), 'AUTH')` em erro. Devolve `{ precisaConfirmar: boolean }` (`true` quando `data.session` vier nulo, ou seja, o Supabase enviou o e-mail de confirmação). **Não** enviar papel nem nenhum campo de permissão no `options.data` (o papel é decidido só pelo banco, SUB-40.1). A senha nunca é guardada nem registrada em log.
+- **Critérios de Aceitação:** `npm run typecheck` e `npm test` verdes; nenhum dado de papel saindo do frontend.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-40.4: Componente `src/components/auth/CadastroForm.tsx`
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-40.3
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Novo formulário de cadastro no mesmo visual do `LoginForm` (classe `CAMPO`, `Botao`, `useId`, mostrar/ocultar senha com `Eye`/`EyeOff`, erros por campo com `aria-invalid`/`aria-describedby`): campos Nome, E-mail, Senha e Confirmar senha; valida com `validarCadastro` e chama `cadastrarUsuario` com `redirectTo = urlDeRetorno(window.location)`. Em sucesso com `precisaConfirmar`, mostra aviso (`role="status"`): "Usuário criado. Confira seu e-mail para confirmar o cadastro e depois entre." e limpa as senhas. Props: `onCadastrou?()` e `onVoltar?()` ("Já tenho conta — Entrar"). Exportar em `src/components/auth/index.ts`.
+- **Critérios de Aceitação:** `npm run typecheck`, `npm run lint` e `npm run build` verdes.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-40.5: Alternar "Entrar" / "Criar usuário" na `LoginView`
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-40.4
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Em `src/views/LoginView.tsx`, adicionar o estado `modo: 'entrar' | 'cadastrar'`. No modo `entrar`, abaixo do `RecuperarAcesso`, um botão-link **"Não tem conta? Criar usuário"**; no modo `cadastrar`, a `section` mostra o `CadastroForm` (com `aria-label="Criar usuário"`) no lugar do `LoginForm`, e o `onVoltar` volta para `entrar`. Manter o aviso de Supabase não configurado nos dois modos.
+- **Critérios de Aceitação:** `npm run validar` verde; o login atual continua funcionando igual.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-40.6: Documentar o cadastro e o administrador inicial (`README.md` e `database/README.md`)
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-40.1, SUB-40.5
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** No `database/README.md`, incluir o `08_admin_inicial.sql` na ordem de aplicação e explicar a regra (e-mail `gelvazio@gmail.com`, admin só após confirmação, só se ainda não houver papel). No `README.md`, na parte de autenticação, descrever o link "Criar usuário" e a configuração necessária no Supabase: **Authentication → Providers → Email** com cadastro habilitado e **"Confirm email" ligado** (sem isso o administrador inicial não é criado), e a URL do site em **Authentication → URL Configuration** para o link de confirmação.
+- **Critérios de Aceitação:** `npm run validar` verde; links relativos funcionando.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-40.7: Aplicar o `08_admin_inicial.sql` no Supabase do projeto (só com autorização do usuário)
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-40.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** **Pedir autorização explícita do usuário no chat antes de qualquer comando no banco remoto.** Com a autorização, aplicar `database/08_admin_inicial.sql` no projeto Supabase e conferir com consultas só de leitura: a função e a trigger existem (`pg_trigger` em `auth.users`), e, se `gelvazio@gmail.com` já existir e estiver confirmado, há linha `admin` em `user_roles`. Sem autorização ou sem acesso ao banco, marcar ⛔ com o motivo na anotação e deixar a aplicação para o usuário.
+- **Critérios de Aceitação:** Script aplicado sem erro e conferências registradas na anotação (sem e-mails de outros usuários, sem chaves ou tokens).
+- **Commit:** pendente
+- **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 

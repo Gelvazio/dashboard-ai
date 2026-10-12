@@ -55,6 +55,13 @@ Legenda: ⬜ Pendente · 🔄 Em progresso · ✅ Concluído · ⛔ Bloqueado
 | 4.4 | Achado: teste do supabase falha com `.env` local → SUB-39.6 | ✅ Concluído | 2026-10-12 | bloco criado no quadro |
 | 4.5 | Aceite do usuário | ⬜ Pendente | — | — |
 
+## Etapa 5 — Task de login com cadastro de usuário e administrador inicial (pedida em 2026-10-12)
+| Item | Descrição | Status | Concluído em | Verificação |
+|------|-----------|--------|--------------|-------------|
+| 5.1 | Criar SUB-40 (mãe) e SUB-40.1 a 40.7 no quadro, com dependências e prioridade `MEDIA` | ✅ Concluído | 2026-10-12 | resumo do quadro recalculado; commit e push para outro agente assumir |
+| 5.2 | Execução das SUB-40.x por algum agente (fila do quadro) | ⬜ Pendente | — | — |
+| 5.3 | Aceite do usuário | ⬜ Pendente | — | — |
+
 ## Riscos
 | Risco | Chance | Impacto | Plano B | Situação |
 |-------|--------|---------|---------|----------|
@@ -69,6 +76,7 @@ Legenda: ⬜ Pendente · 🔄 Em progresso · ✅ Concluído · ⛔ Bloqueado
 ## Registro de decisões
 | Data | Decisão | Quem | Por quê |
 |------|---------|------|---------|
+| 2026-10-12 | Admin `gelvazio@gmail.com` criado só pelo banco (trigger em `auth.users`) e só após a confirmação do e-mail | Claude Code | Evitar que o frontend escolha papel e que alguém se registre com o e-mail sem acesso à caixa |
 | 2026-10-12 | Sugestões viram SUB-39.x (SUB-36 já existe); 36.1 e 36.6 descartadas por já estarem feitas; 36.5 dividida em 39.4 e 39.5 | Claude Code | Pedido do usuário para ajustar as tarefas |
 | 2026-10-12 | Verificar todas as tarefas com o marcador `VERIFICADOR-CLAUDE`, commit e push por item | Gelvazio | Pedido explícito no chat |
 | 2026-10-12 | Problemas achados são só registrados, não corrigidos | Claude Code | O pedido foi "apenas leia e verifique" |
