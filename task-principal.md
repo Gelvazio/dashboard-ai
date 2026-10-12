@@ -10,12 +10,12 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
 - **Subtarefas atômicas (~3 min):** 153 (SUB-08.x, SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x; atualizado em 2026-10-12 00:17)
-- **Em Execução:** 0
-- **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 153 subtarefas
-  - livres agora: 22 (SUB-33.1, SUB-33.4, SUB-33.13, SUB-08.1, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.1, SUB-21.3, SUB-23.1, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
-  - bloqueadas por dependência: 131
+- **Em Execução:** 1 (SUB-33.1 — DashboardAI (Grok Bot))
+- **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 151 subtarefas
+  - livres agora: 26 (SUB-33.3, SUB-33.4, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.1, SUB-21.3, SUB-23.1, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
+  - bloqueadas por dependência: 124
   - reservadas: 0
-- **Concluídas:** 25
+- **Concluídas:** 27
 - **Canceladas:** 0
 
 ---
@@ -157,7 +157,7 @@
 - **Executor:** nenhum
 - **Depende de:** SUB-07, SUB-03; subtarefas SUB-33.1 a SUB-33.13
 - **Subtarefas:** (subdividida em 2026-10-11 23:38 e refinada para 12 em 2026-10-11 23:47 por DashboardAI (Grok Bot); trava liberada a pedido do usuário, filhas livres conforme dependências; a mãe só é concluída quando todas estiverem `concluido`; nova revisão para 13 em 2026-10-12 00:17)
-  - `SUB-33.1`: `bearerToken(req)` em `api/_lib/auth.ts` (`pendente`)
+  - `SUB-33.1`: `bearerToken(req)` em `api/_lib/auth.ts` (`em_execucao`)
   - `SUB-33.2`: `verificarSessaoSupabase(token)` em `api/_lib/auth.ts` (`pendente`)
   - `SUB-33.3`: `lerTextoEmbedding(body)` em `api/_lib/embedding-input.ts` (`pendente`)
   - `SUB-33.4`: Esqueleto do handler `api/embedding.ts` (CORS, OPTIONS, 405) (`pendente`)
@@ -169,15 +169,15 @@
   - `SUB-33.10`: Autenticação no handler `api/embedding.ts` (401) (`pendente`)
   - `SUB-33.11`: Corpo, geração do embedding e erros no handler (400/413/502/200) (`pendente`)
   - `SUB-33.12`: Testes do handler: 413, 502 e 200 (`pendente`)
-  - `SUB-33.13`: Classe `HttpError` em `api/_lib/http-error.ts` (`pendente`)
+  - `SUB-33.13`: Classe `HttpError` em `api/_lib/http-error.ts` (`concluido`)
 - **Descrição:** Criar a função serverless `POST /api/embedding` que valida o JWT da sessão Supabase do usuário (`Authorization: Bearer <access_token>`, conferido no Supabase Auth com a URL e a chave do servidor) e devolve o embedding do texto enviado, usando `OPENAI_API_KEY`, `EMBEDDING_MODEL` e `EMBEDDING_API_URL` somente no servidor (reaproveitar `api/_lib/embeddings.ts`). No frontend, expor um `GeradorEmbedding` que chama esse endpoint para `buscarMemorias`/`salvarMemoria` (SUB-10).
 - **Critérios de Aceitação:** 401 sem sessão ou com JWT inválido; 405 para métodos diferentes de POST; limite de tamanho do texto; resposta com vetor de 1536 dimensões; nenhuma chave no navegador; `tsc` sem erros e testes cobrindo os casos.
 - **Commit:** pendente
 - **Anotação:** Trava de DashboardAI (Grok Bot) (desde 2026-10-11 23:34) liberada em 2026-10-11 23:47 a pedido do usuário, sem código escrito; SUB-33.4 (endpoint) e SUB-33.6 (testes) refinadas em SUB-33.4/33.10/33.11 e SUB-33.6/33.12.
 
 #### [ ] SUB-33.1: `bearerToken(req)` em `api/_lib/auth.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (desde 2026-10-12 00:20)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `api/_lib/auth.ts` com `export function bearerToken(headers: McpRequest['headers']): string | null` que lê `authorization` (string ou array), aceita só o esquema `Bearer` (case-insensitive) e devolve o token sem espaços; `null` se ausente/malformado. Teste em `tests/unit/api-auth.test.ts`.
@@ -295,15 +295,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-33.13: Classe `HttpError` em `api/_lib/http-error.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [x] SUB-33.13: Classe `HttpError` em `api/_lib/http-error.ts`
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:19 → 2026-10-12 00:20)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `api/_lib/http-error.ts` com `export class HttpError extends Error { status: number }` (construtor `(status, mensagem)`, `name = 'HttpError'`). Teste curto em `tests/unit/api-http-error.test.ts`.
 - **Critérios de Aceitação:** `npm test` passa; `npm run typecheck:api` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `4f98dc3`
+- **Anotação:** Criado `api/_lib/http-error.ts` com `HttpError extends Error` (construtor `(status, mensagem)`, `status` somente leitura, `name = 'HttpError'`), para a `lerTextoEmbedding` (SUB-33.3) e o handler `/api/embedding`. Teste `tests/unit/api-http-error.test.ts`; `npm run typecheck` (app + api) e `npm test` verdes.
 
 ---
 
@@ -334,7 +334,7 @@
 - **Executor:** nenhum
 - **Depende de:** SUB-06; subtarefas SUB-08.1 a SUB-08.11
 - **Subtarefas:** (subdividida em 9 em 2026-10-12 00:08 por DashboardAI (Grok Bot) a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`; nova revisão para 11 em 2026-10-12 00:17)
-  - `SUB-08.1`: Esqueleto do `.env.example` (`pendente`)
+  - `SUB-08.1`: Esqueleto do `.env.example` (`concluido`)
   - `SUB-08.2`: Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` (`pendente`)
   - `SUB-08.3`: Seção Servidor Supabase: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `SUPABASE_REST_URL` (`pendente`)
   - `SUB-08.4`: Seção Embeddings: `OPENAI_API_KEY`, `EMBEDDING_API_URL`, `EMBEDDING_MODEL` (`pendente`)
@@ -350,15 +350,15 @@
 - **Commit:** pendente
 - **Anotação:** Trava de xAI (Grok) (desde 2026-10-11 22:41, sem commits e sem `.env.example`) liberada pelo usuário em 2026-10-12 00:08; subdividida por DashboardAI (Grok Bot).
 
-#### [ ] SUB-08.1: Esqueleto do `.env.example`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [x] SUB-08.1: Esqueleto do `.env.example`
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:19 → 2026-10-12 00:19)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `.env.example` na raiz só com o cabeçalho (copiar para `.env`/`.env.local`, nunca commitar valores reais, quais variáveis vão para o navegador `VITE_*` e quais ficam só no servidor) e os títulos vazios das seções: Frontend, Servidor Supabase, Embeddings, MCP, Scripts.
 - **Critérios de Aceitação:** Arquivo criado; `git check-ignore .env.example` não o ignora; nenhum valor real.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `5db1d43`
+- **Anotação:** Criado `.env.example` na raiz: cabeçalho (copiar para `.env`/`.env.local`, nunca commitar valores reais, `VITE_*` vão para o navegador e segredos só no servidor) e seções vazias Frontend, Servidor Supabase, Embeddings, MCP e Scripts. `git check-ignore .env.example` não o ignora (`.env` e `.env.local` seguem ignorados); nenhum valor real.
 
 #### [ ] SUB-08.2: Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY`
 - **Status:** pendente
