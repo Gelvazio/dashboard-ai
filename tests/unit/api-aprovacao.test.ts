@@ -19,6 +19,10 @@ function montar(over: Partial<DepsAprovacao> = {}) {
     verificarSessao: vi.fn(async (token: string) => (token === 'jwt-ok' ? { userId: 'u-1' } : null)),
     projetoDaTask: vi.fn(async (taskId: number) => (taskId === 5 ? 10 : null)),
     ehEditor: vi.fn(async () => true),
+    execucaoIdDaTask: vi.fn(async (taskId: number) => (taskId === 5 ? 'task-5-t1' : null)),
+    criarGrafoComCheckpointer: vi.fn(async () => ({
+      invoke: vi.fn(async () => ({ situacao: 'retomada' })),
+    })),
     ...over,
   };
   const handler = criarHandlerAprovacao(deps);
@@ -73,6 +77,11 @@ describe('api/aprovacao — autenticação e papel (SUB-28.16)', () => {
     expect((await chamar({ headers: autenticado, body: { taskId: 99, aprovado: false } })).codigo).toBe(404);
   });
 
+  it('404 para task sem execucaoId', async () => {
+    const { chamar } = montar({ execucaoIdDaTask: vi.fn(async () => null) });
+    expect((await chamar({ headers: autenticado, body: corpo })).codigo).toBe(404);
+  });
+
   it('503 quando a validação de sessão ou de papel está indisponível', async () => {
     const semAuth = montar({ verificarSessao: vi.fn(async () => Promise.reject(new AuthError('x'))) });
     expect((await semAuth.chamar({ headers: autenticado, body: corpo })).codigo).toBe(503);
@@ -80,12 +89,12 @@ describe('api/aprovacao — autenticação e papel (SUB-28.16)', () => {
     expect((await semPapel.chamar({ headers: autenticado, body: corpo })).codigo).toBe(503);
   });
 
-  it('editor autorizado: 501 até a retomada existir; com `retomar` devolve 200', async () => {
-    expect((await montar().chamar({ headers: autenticado, body: corpo })).codigo).toBe(501);
-    const retomar = vi.fn(async () => ({ situacao: 'retomada' }));
-    const res = await montar({ retomar }).chamar({ headers: autenticado, body: JSON.stringify({ ...corpo, motivo: 'ok' }) });
+  it('editor autorizado: com grafo e execucaoId devolve 200', async () => {
+    const { chamar, deps } = montar();
+    const res = await chamar({ headers: autenticado, body: JSON.stringify({ ...corpo, motivo: 'ok' }) });
     expect(res.codigo).toBe(200);
-    expect(retomar).toHaveBeenCalledWith({ taskId: 5, aprovado: true, motivo: 'ok' }, { userId: 'u-1' });
+    expect(deps.execucaoIdDaTask).toHaveBeenCalledWith(5);
+    expect(deps.criarGrafoComCheckpointer).toHaveBeenCalled();
   });
 });
 

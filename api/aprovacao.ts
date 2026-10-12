@@ -4,12 +4,17 @@
  * SUB-28.16: exige JWT do Supabase Auth (`bearerToken` + `verificarSessaoSupabase`)
  * e papel editor no projeto da task (`tem_acesso_projeto`, avaliado com o JWT do
  * usuário): 401 sem sessão, 403 sem papel, 400 corpo inválido, 404 task inexistente.
- * Corpo: `{ taskId, aprovado, motivo? }`. A retomada do grafo fica na SUB-28.23.
+ * SUB-28.23: retoma o grafo com `Command({ resume })` no `thread_id` da execução.
+ * Corpo: `{ taskId, aprovado, motivo? }`.
  */
 import { AuthError, bearerToken, verificarSessaoSupabase } from './_lib/auth.js';
 import type { McpRequest, McpResponse } from './_lib/http.js';
 import { HttpError } from './_lib/http-error.js';
 import { db, unwrap } from './_lib/supabase.js';
+import { criarGrafo } from '../worker/grafo.js';
+import { criarCheckpointer } from '../worker/checkpointer.js';
+import { ChatOpenAI } from '@langchain/openai';
+import type { GrafoExecucao } from '../worker/executar.js';
 
 export interface PedidoAprovacao {
   taskId: number;
@@ -23,8 +28,10 @@ export interface DepsAprovacao {
   projetoDaTask: (taskId: number) => Promise<number | null>;
   /** `tem_acesso_projeto(projeto, 'editor')` avaliado com o JWT do usuário. */
   ehEditor: (token: string, projectId: number) => Promise<boolean>;
-  /** Retomada do grafo (SUB-28.23); sem ela o pedido autorizado recebe 501. */
-  retomar?: (pedido: PedidoAprovacao, sessao: { userId: string }) => Promise<unknown>;
+  /** Lê o `execucaoId` mais recente da task dos logs (service_role). */
+  execucaoIdDaTask: (taskId: number) => Promise<string | null>;
+  /** Cria o grafo compilado com checkpointer. */
+  criarGrafoComCheckpointer: () => Promise<GrafoExecucao>;
 }
 
 const MOTIVO_MAX = 1000;
@@ -60,6 +67,29 @@ async function projetoDaTaskNoSupabase(taskId: number): Promise<number | null> {
   return linhas[0]?.project_id ?? null;
 }
 
+async function execucaoIdDaTaskNoSupabase(taskId: number): Promise<string | null> {
+  const linhas = unwrap<{ execucao_id: string }[]>(
+    await db()
+      .from('agendamento_tarefa_logs')
+      .select('execucao_id')
+      .eq('task_id', taskId)
+      .order('data_hora', { ascending: false })
+      .limit(1),
+  );
+  return linhas[0]?.execucao_id ?? null;
+}
+
+async function criarGrafoComCheckpointerPadrao(): Promise<GrafoExecucao> {
+  if (!process.env.OPENAI_API_KEY) throw new Error('OPENAI_API_KEY não definida');
+  const checkpointer = await criarCheckpointer();
+  const modelo = new ChatOpenAI({
+    model: process.env.WORKER_MODELO || 'gpt-4o-mini',
+    apiKey: process.env.OPENAI_API_KEY,
+    temperature: 0,
+  });
+  return criarGrafo({ modelo, checkpointer: checkpointer as unknown as any }) as unknown as GrafoExecucao;
+}
+
 async function ehEditorNoSupabase(token: string, projectId: number): Promise<boolean> {
   const url = process.env.SUPABASE_URL?.replace(/\/+$/, '');
   const apikey = process.env.SUPABASE_ANON_KEY;
@@ -83,7 +113,28 @@ const DEPS_PADRAO: DepsAprovacao = {
   verificarSessao: (token) => verificarSessaoSupabase(token),
   projetoDaTask: projetoDaTaskNoSupabase,
   ehEditor: ehEditorNoSupabase,
+  execucaoIdDaTask: execucaoIdDaTaskNoSupabase,
+  criarGrafoComCheckpointer: criarGrafoComCheckpointerPadrao,
 };
+
+/**
+ * Retoma o grafo LangGraph com o comando de aprovação (SUB-28.23).
+ * Usa o `thread_id` da execução (`execucaoId`) e envia `Command({ resume })`
+ * com a decisão do usuário.
+ */
+async function retomarGrafo(pedido: PedidoAprovacao, grafo: GrafoExecucao, execucaoId: string): Promise<unknown> {
+  return grafo.invoke(
+    {
+      aprovacao: {
+        aprovado: pedido.aprovado,
+        por: 'humano',
+        em: new Date().toISOString(),
+        motivo: pedido.motivo,
+      },
+    },
+    { configurable: { thread_id: execucaoId } },
+  );
+}
 
 function setCors(res: McpResponse): void {
   res.setHeader('Access-Control-Allow-Origin', process.env.MCP_CORS_ORIGIN ?? '*');
@@ -115,8 +166,11 @@ export function criarHandlerAprovacao(deps: DepsAprovacao = DEPS_PADRAO) {
         return res.status(403).json({ erro: 'Sem permissão: é preciso ser editor do projeto da task.' });
       }
 
-      if (!deps.retomar) return res.status(501).json({ erro: 'Retomada da aprovação ainda não disponível.' });
-      const resultado = await deps.retomar(pedido, sessao);
+      const execucaoId = await deps.execucaoIdDaTask(pedido.taskId);
+      if (!execucaoId) return res.status(404).json({ erro: 'Execução não encontrada para esta task.' });
+
+      const grafo = await deps.criarGrafoComCheckpointer();
+      const resultado = await retomarGrafo(pedido, grafo, execucaoId);
       return res.status(200).json({ taskId: pedido.taskId, aprovado: pedido.aprovado, resultado });
     } catch (err) {
       if (err instanceof HttpError) return res.status(err.status).json({ erro: err.message });
