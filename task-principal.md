@@ -49,17 +49,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-35.30
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.30** |
-| **Título da Sub-task:** | Tela `MonitorView` em `src/views/MonitorView.tsx` |
-| **Agente Responsável:** | DashboardAI-Clone 10 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:41 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.28
 
 | Propriedade | Valor Atual |
@@ -2240,7 +2229,7 @@
   - `SUB-35.27`: Linha do tempo `LinhaDoTempoAgentes` em `src/components/monitor/LinhaDoTempoAgentes.tsx` (`concluido`)
   - `SUB-35.28`: Feed `FeedEventos` em `src/components/monitor/FeedEventos.tsx` (`pendente`)
   - `SUB-35.29`: Indicador `IndicadorAoVivo` em `src/components/monitor/IndicadorAoVivo.tsx` (`concluido`)
-  - `SUB-35.30`: Tela `MonitorView` em `src/views/MonitorView.tsx` (`em_execucao`)
+  - `SUB-35.30`: Tela `MonitorView` em `src/views/MonitorView.tsx` (`concluido`, `2d1cd0a`)
   - `SUB-35.31`: Registrar a tela `monitor` (rota `#/monitor` e menu) (`pendente`)
   - `SUB-35.32`: Validação visual do monitor (SUB-35) (`pendente`)
   - `SUB-35.33`: `emitirEvento()` em `worker/eventos.ts` (`pendente`)
@@ -2553,15 +2542,15 @@
 - **Commit:** `9c2edf5`
 - **Anotação:** Criado `src/components/monitor/IndicadorAoVivo.tsx` (`statusConexao: StatusConexaoEventos`, `recarregar`): pílula "Ao vivo" com ponto pulsando, "Conectando…" ou "Sem conexão — recarregar" (`role=status`, `aria-live`) e botão "Recarregar" que chama `recarregar`. Exportado no barrel `src/components/monitor/index.ts`. typecheck, `npm test` e `npm run build` OK.
 
-#### [ ] SUB-35.30: Tela `MonitorView` em `src/views/MonitorView.tsx`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:41)
+#### [x] SUB-35.30: Tela `MonitorView` em `src/views/MonitorView.tsx`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:41, conclusão: 2026-10-12 01:42)
 - **Depende de:** SUB-35.20, SUB-35.24, SUB-35.25, SUB-35.26, SUB-35.27, SUB-35.28, SUB-35.29
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Compor a tela: projeto de `useProjetoAtual`, `useEventosAgentes` + `useAtividadeAgentes`, cabeçalho com `IndicadorAoVivo`, `AtividadeAgentesGrid`, os três gráficos e o `FeedEventos`; estados carregando/erro/sem projeto.
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `2d1cd0a`
+- **Anotação:** Criado `src/views/MonitorView.tsx`: projeto de `useProjetoAtual` (sem projeto -> aviso "selecione um projeto"), `useEventosAgentes` + `useAtividadeAgentes` (cada evento novo chama `recarregarDebounced` da atividade); cabeçalho com `IndicadorAoVivo` (recarregar refaz eventos e atividade), alerta de erro (`role="alert"`), cartão "Atividade atual" com esqueletos na 1ª carga e `AtividadeAgentesGrid`, grade 2 colunas com `GraficoPorStatus` (tema escuro pela classe `dark`) e `GraficoPorAgente`, `LinhaDoTempoAgentes` (última hora) e `FeedEventos`. Registro da rota/menu fica na SUB-35.31. `npm run typecheck`, `npm test` e `npm run build` OK.
 
 #### [ ] SUB-35.31: Registrar a tela `monitor` (rota `#/monitor` e menu)
 - **Status:** pendente
