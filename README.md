@@ -23,6 +23,7 @@ a saúde das travas de cada projeto.
 - [Agentes de IA (fila via MCP)](#agentes-de-ia-fila-via-mcp)
 - [Memória via MCP](#memória-via-mcp)
 - [Segurança](#segurança)
+- [Monitor em tempo real](#monitor-em-tempo-real)
 - [Validação](#validação)
 
 ## Arquitetura
@@ -368,6 +369,74 @@ Nenhum segredo vai para o Git: só o `.env.example`, com valores vazios (`.env` 
 2. **`SUPABASE_SERVICE_ROLE_KEY` / anon**: no Supabase, *Project Settings → API* (ou *API Keys*), gere novas chaves/rotacione o JWT secret; atualize Vercel (`SUPABASE_*` e `VITE_SUPABASE_ANON_KEY`), scripts locais (`.env`) e faça *redeploy*. Rotacionar o JWT secret encerra todas as sessões.
 3. **`OPENAI_API_KEY`**: crie uma nova no provedor, atualize na Vercel, *redeploy* e revogue a antiga.
 4. Se uma chave vazou no Git, rotacione primeiro; reescrever o histórico não basta.
+
+## Monitor em tempo real
+
+A tela **Monitor dos Agentes** (`#/monitor`) mostra, por projeto, o que cada agente está fazendo agora: cartões de atividade, gráficos por estado e por agente, linha do tempo da última hora e o feed de eventos.
+
+### Fluxo
+
+```text
+worker LangGraph / agente via MCP / espelho do git log
+        │  insere eventos
+        ▼
+public.agent_events (RLS por projeto; database/07_agent_events.sql)
+        │  Supabase Realtime (INSERT)
+        ▼
+eventService.assinarEventos → useEventosAgentes / useAtividadeAgentes → #/monitor
+```
+
+- O **worker LangGraph** emite um evento por nó (`inicio`, `progresso`, `fim`, `erro`) e `heartbeat` periódicos.
+- A atividade atual vem da função `atividade_atual_agentes(p_project_id)` (último evento e último heartbeat de cada agente); a tela a reconsulta quando chega um evento novo.
+- O indicador "ao vivo" mostra o estado da assinatura Realtime; em caso de erro, o botão recarrega eventos e atividade.
+
+### Reportar progresso pelo MCP (`agent_event`)
+
+Qualquer agente conectado ao MCP pode reportar seu progresso com a ferramenta `agent_event` (exige `MCP_AUTH_TOKEN`):
+
+```json
+{
+  "jsonrpc": "2.0", "id": 1, "method": "tools/call",
+  "params": {
+    "name": "agent_event",
+    "arguments": {
+      "project": "meu-projeto",
+      "agente": "Claude Code",
+      "tipo": "inicio",
+      "task_codigo": "SUB-12.3",
+      "etapa": "implementação",
+      "mensagem": "Começando o componente",
+      "chave_idempotencia": "claude-SUB-12.3-inicio"
+    }
+  }
+}
+```
+
+- `tipo`: `inicio`, `progresso`, `fim`, `erro`, `heartbeat`, `trava`, `liberacao` ou `commit`. Obrigatórios: `agente` e `tipo`.
+- `chave_idempotencia` (opcional): reenviar a mesma chave não duplica o evento.
+- Use em `agente` o mesmo nome usado no quadro (`task-principal.md`). Veja a seção 4 "Reporte de progresso (opcional)" do `AGENTS.md`.
+
+### Espelho do quadro (`scripts/espelhar_quadro_eventos.py`)
+
+Para agentes que não usam o MCP, o script transforma os commits de trava/entrega do `git log` (`lock: assumindo sub-task …` → `trava`, `feat(SUB-…)` → `commit`, `docs(board): concluir SUB-…` → `fim`) em eventos:
+
+```bash
+python3 scripts/espelhar_quadro_eventos.py --desde "2 hours ago" --projeto meu-projeto            # só lista (dry-run)
+python3 scripts/espelhar_quadro_eventos.py --aplicar --desde "2 hours ago" --projeto meu-projeto  # envia
+```
+
+Com `--aplicar` ele usa `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` do `.env` (nunca rodar com chaves no navegador).
+
+### Estados exibidos
+
+| Estado | Quando |
+|---|---|
+| **Ativo** | último sinal (evento ou heartbeat) há até 2 min |
+| **Ocioso** | último sinal entre 2 e 15 min |
+| **Sem sinal** | mais de 15 min sem sinal (ou sem data) |
+| **Finalizado** | último evento foi `fim` ou `liberacao` |
+
+> ⚠️ O monitor é **só exibição**. Um evento `trava`, `inicio` ou `fim` **não** trava, libera nem conclui nada: a trava vale apenas quando está commitada e com push no `task-principal.md`, e uma trava presa só é liberada pelo **usuário** (`AGENTS.md`, seção 1.1). "Sem sinal" não significa tarefa abandonada.
 
 ## Validação
 
