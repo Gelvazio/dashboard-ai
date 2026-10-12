@@ -31,12 +31,12 @@
 
 | Propriedade | Valor Atual |
 |---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.10** |
-| **Título da Sub-task:** | `atividadeAtual()` em `src/services/eventService.ts` |
-| **Agente Responsável:** | Claude Code |
-| **Data e Hora de Início:** | 2026-10-12 01:30 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
+| **Status da Trava:** | ✅ **LIVRE** |
+| **Sub-task em Execução:** | **—** |
+| **Título da Sub-task:** | — |
+| **Agente Responsável:** | — |
+| **Data e Hora de Início:** | — |
+| **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
 ### 🔒 TRAVA ADICIONAL — Codex (OpenAI)
 
@@ -2411,15 +2411,15 @@
 - **Commit:** `7d2181e`
 - **Anotação:** `contarPorAgente(eventos)` -> `{ agente, porTipo, total }[]` com todos os tipos zerados, ordenado por total desc e nome; 2 testes.
 
-#### [ ] SUB-35.18: `segmentosLinhaDoTempo()` em `src/lib/monitor.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [x] SUB-35.18: `segmentosLinhaDoTempo()` em `src/lib/monitor.ts`
+- **Status:** concluido
+- **Executor:** Claude Code (início: 2026-10-12 01:33, conclusão: 2026-10-12 01:36)
 - **Depende de:** SUB-35.17
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `segmentosLinhaDoTempo(eventos, agora)` -> `{ agente, etapa, inicio, fim, status }[]`: une `inicio` e `fim`/`erro` da mesma `execucao_id` + `etapa`; etapa ainda aberta termina em `agora`. Testes (abrir/fechar, erro, aberta).
 - **Critérios de Aceitação:** `npm test` passa.
 - **Commit:** pendente
-- **Anotação:** pendente
+- **Anotação:** Adicionado `segmentosLinhaDoTempo(eventos, agora)` em `src/lib/monitor.ts`: une `inicio` com `fim`/`erro` da mesma `execucao_id` + `etapa`; etapa aberta termina em `agora`. Tipos `SegmentoLinhaDoTempo` exportados. 5 testes em `tests/unit/monitor.test.ts` (abrir/fechar, erro, aberta, datas inválidas). typecheck e `npm test` OK.
 
 #### [x] SUB-35.19: Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts`
 - **Status:** concluido

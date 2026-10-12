@@ -102,3 +102,39 @@ export function contarPorAgente(eventos: readonly Pick<AgentEvent, 'agente' | 't
   }
   return [...mapa.values()].sort((a, b) => b.total - a.total || a.agente.localeCompare(b.agente, 'pt-BR'));
 }
+
+export interface SegmentoLinhaDoTempo {
+  agente: string;
+  etapa: string | null;
+  inicio: number; // timestamp em ms
+  fim: number; // timestamp em ms
+  status: 'aberta' | 'concluida' | 'erro';
+}
+
+/**
+ * Segmentos de linha do tempo para o monitor (SUB-35.18): une `inicio` e
+ * `fim`/`erro` da mesma `execucao_id` + `etapa`; etapa ainda aberta termina em
+ * `agora`.
+ */
+export function segmentosLinhaDoTempo(
+  eventos: readonly { agente: string; execucao_id: string; etapa: string | null; tipo: string; created_at: string }[],
+  agora: number = Date.now(),
+): SegmentoLinhaDoTempo[] {
+  const segmentos = new Map<string, SegmentoLinhaDoTempo>();
+  for (const e of eventos) {
+    const chave = `${e.agente}:${e.execucao_id}`;
+    const inicioMs = Date.parse(e.created_at);
+    if (Number.isNaN(inicioMs)) continue;
+
+    if (e.tipo === 'inicio') {
+      segmentos.set(chave, { agente: e.agente, etapa: e.etapa, inicio: inicioMs, fim: agora, status: 'aberta' });
+    } else if (e.tipo === 'fim' || e.tipo === 'erro') {
+      const s = segmentos.get(chave);
+      if (s) {
+        s.fim = inicioMs;
+        s.status = e.tipo === 'fim' ? 'concluida' : 'erro';
+      }
+    }
+  }
+  return [...segmentos.values()];
+}
