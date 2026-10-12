@@ -3214,3 +3214,16 @@
 - **Anotação:** Só o contrato mudou (código intocado). Tabela 2.1 de `docs/langgraph-contrato.md` agora lista `brain_search`, `task_list` e `brain_store`, igual ao `ALLOWLIST` de `worker/ferramentas.ts`, com nota de que nenhuma ferramenta da v1 é sensível por si (o passo marcado `sensivel` no plano ainda pausa no nó `politica`). Novo item "Fora da allowlist na v1": `agent_event` é emitido pelo próprio worker (`worker/eventos.ts`, `emitirEvento`/`comEventos`), não pelo modelo; `task_create` e `brain_delete` saem da v1 e, se voltarem numa v2, entram como sensíveis. Seção 2.2: exemplo de chave entre tentativas e lista de idempotência natural sem as ferramentas removidas. Validação: `npm run typecheck:worker` verde.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 17:58 — Claude Code (Opus 5.5): entrega verificada (tabela 2.1 conferida contra `worker/ferramentas.ts`; `emitirEvento`/`comEventos` existem em `worker/eventos.ts`; `typecheck:worker` verde)
 - **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [x] SUB-39.3: Remover `as any` de `worker/fila.ts` e `worker/falhas.ts`
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 17:58, conclusão: 2026-10-12 18:00)
+- **Depende de:** SUB-28.4, SUB-28.21
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** (1) `worker/fila.ts:35` — trocar `rpc<any>('pegar_proxima_task', ...)` por um tipo com os campos que `reivindicar()` usa: `id: number`, `codigo: string`, `tentativas: number`, `instrucao: string | null` (de preferência reaproveitando o tipo `Task` de `src/types/database.ts` com `Pick`, se o `worker/tsconfig.json` permitir; senão, interface local). (2) `worker/falhas.ts:16` — trocar `err as any` por um tipo seguro, ex.: `err as Error & { status?: number; statusCode?: number; code?: string }`.
+- **Critérios de Aceitação:** Nenhum `as any`/`<any>` nos dois arquivos; `npm run typecheck:worker` e `npm test` verdes.
+- **Commit:** `5df4f1d`
+- **Anotação:** `worker/fila.ts`: nova interface local `LinhaTaskReivindicada` (`id: number`, `codigo: string`, `tentativas: number`, `instrucao: string`, conferidos em `database/01_tasks_schema.sql`; a RPC `pegar_proxima_task` devolve `setof public.tasks`) e `rpc<LinhaTaskReivindicada[] | null>` no lugar de `rpc<any>`. `worker/falhas.ts`: `err as Error & { status?: number; statusCode?: number; code?: string }` no lugar de `err as any`. Comportamento igual. Validação: `npm run typecheck:worker` e `npm run typecheck` verdes; `npm test` 300 passam/30 pulados **com** `VITE_SUPABASE_URL`/`VITE_SUPABASE_ANON_KEY` vazias. **Achado fora do escopo:** um `.env` local (não versionado, criado às 17:52) faz `tests/unit/supabase.test.ts` ("sem variáveis de ambiente a conexão fica sem_config") falhar, porque o Vitest carrega o `.env`; falha também sem esta mudança. Registrado como SUB-39.6.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:00 — Claude Code (Opus 5.5): entrega verificada (nenhum `any` nos dois arquivos; `typecheck:worker`, `typecheck` e `npm test` verdes com as variáveis Supabase vazias)
+- **VERIFICADOR-CLAUDE:** PENDENTE
