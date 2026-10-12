@@ -77,17 +77,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:57 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-23.10
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-23.10** |
-| **Título da Sub-task:** | `TravaItem` em `src/components/tasks/TravaItem.tsx` |
-| **Agente Responsável:** | DashboardAI-Clone 02 |
-| **Data e Hora de Início:** | 2026-10-12 00:57 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-08.9
 
 | Propriedade | Valor Atual |
@@ -108,7 +97,6 @@
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-08.9** | CLI `npm run check:env` (toda variável usada está no `.env.example`) | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:58 | SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.11 |
-| **SUB-23.10** | `TravaItem` em `src/components/tasks/TravaItem.tsx` | DashboardAI-Clone 02 | 2026-10-12 00:57 | SUB-23.6 |
 | **SUB-21.5** | Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:57 | SUB-21.4 |
 | **SUB-19.2** | Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 00:56 | SUB-19.1 |
 | **SUB-27.26** | Hook `useAuth` em `src/hooks/useAuth.ts` | DashboardAI-Clone 01 | 2026-10-12 00:56 | SUB-27.9 |
@@ -139,7 +127,6 @@
 | **SUB-23.7** | Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx` | 4 | Fase 8 | SUB-23.10, SUB-23.11 — ⛓️ bloqueada |
 | **SUB-23.8** | Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` | 4 | Fase 8 | SUB-23.7 — ⛓️ bloqueada |
 | **SUB-23.9** | Alerta de trava presa na `src/views/FilaView.tsx` | 4 | Fase 8 | SUB-23.3 — ⛓️ bloqueada |
-| **SUB-23.10** | `TravaItem` em `src/components/tasks/TravaItem.tsx` | 4 | Fase 8 | SUB-23.6 — 🔄 em execução por DashboardAI-Clone 02 |
 | **SUB-23.12** | Teste de integração de `liberarTrava`: viewer e outro projeto | 4 | Fase 8 | SUB-23.4 — 🟢 livre |
 | **SUB-23.13** | `travaExpirada` em `src/lib/saudeFila.ts` | 4 | Fase 8 | SUB-23.1 — ⛓️ bloqueada |
 | **SUB-19** | Interface de Pesquisa Semântica Vetorial (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-19.1 a SUB-19.10 |
@@ -378,6 +365,7 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | **SUB-23.2** | `classificarPendentes(tasks)` em `src/lib/saudeFila.ts` | DashboardAI-Clone 02 | 2026-10-12 00:52 | 2026-10-12 00:53 | `84011c8` |
 | **SUB-23.3** | `diagnosticarFila(tasks)` em `src/lib/saudeFila.ts` | DashboardAI-Clone 02 | 2026-10-12 00:53 | 2026-10-12 00:54 | `40fa920` |
 | **SUB-23.6** | Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts` | DashboardAI-Clone 02 | 2026-10-12 00:54 | 2026-10-12 00:57 | `40bb5e0` |
+| **SUB-23.10** | `TravaItem` em `src/components/tasks/TravaItem.tsx` | DashboardAI-Clone 02 | 2026-10-12 00:58 | 2026-10-12 00:58 | `e617cbf` |
 ---
 
 ### ⛔ CANCELADAS (0)
@@ -549,3 +537,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:57 | DashboardAI-Clone 05 (Grok Bot) | SUB-21.14 | `1734052` | Adicionado `tagsDisponiveis(memorias): { tag, total }[]` em `src/lib/memorias.ts` (tipo `TagDisponivel` exportado): conta memórias por tag (trim + minúsculas, vazias ignoradas, cada memória conta uma vez por tag), ordena por total desc e depois por nome (`localeCompare` pt-BR). 2 testes novos em `tests/unit/memorias.test.ts`. `npm run typecheck` e `npm test` verdes. |
 | 2026-10-12 00:58 | DashboardAI-Clone 08 (Grok Bot) | SUB-08.11 | `0ac9843` | Adicionado `listarArquivosFonte(dirs)` em `scripts/checar-env.mjs` (só `node:fs`/`node:path`): varre as pastas recursivamente, só `.ts/.tsx/.js/.mjs/.py` (`EXTENSOES_FONTE`), ignorando `node_modules`, `dist` e `tests` (`PASTAS_IGNORADAS`) e pastas inexistentes; devolve caminhos sem repetição e ordenados. Teste com pasta temporária em `tests/unit/checar-env.test.ts`. `npm run typecheck` e `npm test` verdes. |
 | 2026-10-12 00:58 | DashboardAI-Clone 08 (Grok Bot) | SUB-08.9 | — | Lock: assumindo SUB-08.9 (CLI `npm run check:env` (toda variável usada está no `.env.example`)) |
+| 2026-10-12 00:58 | DashboardAI-Clone 02 | SUB-23.10 | `e617cbf` | Criado `src/components/tasks/TravaItem.tsx` (`{ trava: TravaDiagnostico, liberando?, onLiberar(task, forcar) }`): código, título, agente (`trava_frente`), minutos (min/h), destaque vermelho e '(expirada)' quando expirada; botão 'Liberar trava' abre `ConfirmDialog` — se a trava não expirou, confirma como 'Forçar liberação' com aviso extra de trabalho duplicado e chama `onLiberar(task, true)`. Exportado em `src/components/tasks/index.ts`. typecheck e build OK. |

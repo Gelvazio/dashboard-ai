@@ -1098,7 +1098,7 @@
   - `SUB-23.7`: Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx` (`pendente`)
   - `SUB-23.8`: Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` (`pendente`)
   - `SUB-23.9`: Alerta de trava presa na `src/views/FilaView.tsx` (`pendente`)
-  - `SUB-23.10`: `TravaItem` em `src/components/tasks/TravaItem.tsx` (`em_execucao`)
+  - `SUB-23.10`: `TravaItem` em `src/components/tasks/TravaItem.tsx` (`concluido`)
   - `SUB-23.11`: `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx` (`concluido`, `5bce2d7`)
   - `SUB-23.12`: Teste de integração de `liberarTrava`: viewer e outro projeto (`pendente`)
   - `SUB-23.13`: `travaExpirada` em `src/lib/saudeFila.ts` (`pendente`)
@@ -1198,15 +1198,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [🔄] SUB-23.10: `TravaItem` em `src/components/tasks/TravaItem.tsx`
-- **Status:** em_execucao
+#### [x] SUB-23.10: `TravaItem` em `src/components/tasks/TravaItem.tsx`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-23.6
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Linha de uma trava: código, título, agente (`trava_frente`), minutos, destaque vermelho se expirada, botão "Liberar trava" com `ConfirmDialog` (forçar só com aviso extra quando não expirou), chamando `liberar(task, forcar)` do `useSaudeFila`.
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `e617cbf`
+- **Anotação:** Criado `src/components/tasks/TravaItem.tsx` (`{ trava: TravaDiagnostico, liberando?, onLiberar(task, forcar) }`): código, título, agente (`trava_frente`), minutos (min/h), destaque vermelho e '(expirada)' quando expirada; botão 'Liberar trava' abre `ConfirmDialog` — se a trava não expirou, confirma como 'Forçar liberação' com aviso extra de trabalho duplicado e chama `onLiberar(task, true)`. Exportado em `src/components/tasks/index.ts`. typecheck e build OK.
 
 #### [x] SUB-23.11: `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx`
 - **Status:** concluido
