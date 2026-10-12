@@ -138,7 +138,7 @@
 - **Subtarefas:** (subdividida em 9 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 10 em 2026-10-11 23:51)
   - `SUB-26.1`: Esqueleto do `README.md` (`concluido`, `67e13c2`)
   - `SUB-26.2`: Seção Arquitetura (`concluido`, `b3f4c36`)
-  - `SUB-26.3`: Seção Execução local (`concluido`, `4083c06`)
+  - `SUB-26.3`: Seção Execução local (`concluido`, `b18d9c9`)
   - `SUB-26.4`: Seção Banco de dados (`concluido`, `62ea6c0`)
   - `SUB-26.5`: Seção Deploy na Vercel (`concluido`, a5c2a8a)
   - `SUB-26.6`: Seção Agentes de IA: configurar clientes MCP (`concluido`, `d7f05f6`)

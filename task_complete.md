@@ -2199,7 +2199,7 @@
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Node 22 (`.nvmrc`), `npm ci`, copiar `.env.example`, `npm run dev`, `npm test`, `npm run test:integration`, `npm run validar`.
 - **Critérios de Aceitação:** Comandos conferidos contra o `package.json`.
-- **Commit:** `4083c06`
+- **Commit:** `b18d9c9`
 - **Anotação:** Seção "Execução local" do `README.md` reescrita (sai o aviso "Seção provisória"): pré-requisitos (Node 22.12+ pelo `engines`, `.nvmrc` = 22, npm, Python 3 e PostgreSQL/PostgREST opcionais), passo a passo (`nvm use`, `npm ci`, `cp .env.example .env.local`, `npm run check:env`, `npm run dev` na porta 5173 do `vite.config.ts`), aviso de que o `dev` sobe só o frontend (as funções de `api/` rodam na Vercel), tabela com todos os scripts do `package.json`, testes (`npm test` e `npm run test:integration` com `PSQL`/`POSTGREST_BIN`/`DB`/`PORT` de `tests/integration/run.sh`, com aviso de nunca rodar contra o Supabase) e as etapas do `npm run validar` (`scripts/validar.sh`). Comandos conferidos contra o `package.json`; `npm run check:env` OK (15 variáveis) com Node v22.22.0. Só documentação: nenhum banco foi usado (regra 11). Trabalho direto na `main`, conforme o `AGENTS.md`.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 19:10 — Claude Code (Opus 5.5, nuvem): seção conferida no `README.md` e comandos contra o `package.json`
 - **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:25 (Claude Code): pendente (bloqueada pela SUB-25). `README.md` linha 88-95: seção "Execução local" ainda provisória; `.nvmrc` existe.
