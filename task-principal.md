@@ -1421,6 +1421,7 @@
 - **Critérios de Aceitação:** Seção completa, sem placeholders.
 - **Commit:** b3f4c36
 - **Anotação:** Seção Arquitetura completa no README.md (Frontend, Backend serverless, Banco, Scripts, fluxo Mermaid). Critérios atendidos.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 08:41 (confirmado por Grok)
 
 #### [ ] SUB-26.3: Seção Execução local
 - **Status:** pendente
@@ -1431,6 +1432,7 @@
 - **Critérios de Aceitação:** Comandos conferidos contra o `package.json`.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-26.4: Seção Banco de dados
 - **Status:** concluido
@@ -1441,6 +1443,7 @@
 - **Critérios de Aceitação:** Seção completa.
 - **Commit:** `62ea6c0`
 - **Anotação:** Seção Banco de dados do `README.md` completa: requisitos (Postgres 15+, pgvector ≥ 0.5), tabela dos scripts `00`–`06` e como aplicar (SQL Editor ou laço `psql -v ON_ERROR_STOP=1`), criação do primeiro admin (`user_roles`), de um projeto (`projects`: slug/nome/prefixo_codigo) e de membros (`project_members`, upsert por `(project_id, user_id)`), tabela de papéis viewer/editor/owner/admin, uso de `service_role` x anon, e testes locais com `database/tests/run_tests.sh` (aviso de nunca rodar contra o Supabase). Referencia `database/README.md`; SQL conferido com as colunas/constraints de `00_projects_roles.sql`. Só documentação.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-26.5: Seção Deploy na Vercel
 - **Status:** pendente
@@ -1451,6 +1454,7 @@
 - **Critérios de Aceitação:** Lista de variáveis igual ao `.env.example` (`npm run check:env` verde).
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-26.6: Seção Agentes de IA: configurar clientes MCP
 - **Status:** concluido
@@ -1461,6 +1465,7 @@
 - **Critérios de Aceitação:** Configuração conferida com `api/mcp.ts`.
 - **Commit:** `d7f05f6`
 - **Anotação:** Subseção "Configurar o cliente MCP" em Agentes de IA do `README.md`: transporte Streamable HTTP (POST, protocolos 2025-06-18/2025-03-26/2024-11-05), URL `/mcp` (rewrite do `vercel.json`), `Authorization: Bearer <MCP_AUTH_TOKEN>` (sem token no servidor as ferramentas ficam desativadas; token errado -> 401), argumento `project`/`MCP_DEFAULT_PROJECT` e `MCP_ALLOWED_PROJECTS` para endpoint por projeto; exemplos para Claude Code (`claude mcp add --transport http ... --header`), Codex (`config.toml` com `url` + `bearer_token_env_var` e `codex mcp add --url --bearer-token-env-var`, conferido na documentação atual do Codex), JSON genérico (Cursor/Gemini CLI etc.), `curl` de `tools/list` e resumo do protocolo do `AGENTS.md`. Conferido com `api/mcp.ts` e `api/_lib/args.ts`. Só documentação.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-26.7: Seção Memória via MCP
 - **Status:** concluido
@@ -1471,6 +1476,7 @@
 - **Critérios de Aceitação:** Exemplos conferidos com `api/_lib/brain-tools.ts`.
 - **Commit:** `7fa647b`
 - **Anotação:** Seção Memória via MCP do `README.md`: visão geral (`ai_memories`, embedding 1536, `match_memories`, exige `MCP_AUTH_TOKEN`), escopo projeto (`project` → `MCP_DEFAULT_PROJECT` → `default`, título único por projeto/upsert) x global (`global: true`, não combina com `project`, recusada com `MCP_ALLOWED_PROJECTS`, busca inclui globais por padrão), tabela de argumentos e limites de `brain_store`/`brain_search`/`brain_delete`, explicação do limiar (padrão 0.5) e das tags (todas precisam casar), exemplos JSON-RPC `tools/call` (store por projeto, search com tags/limit/threshold, store global, delete) e `curl`, e boas práticas. Tudo conferido com `api/_lib/brain-tools.ts`, `api/_lib/args.ts`, `api/mcp.ts` e `database/04_rpc_functions.sql`; JSONs validados. Só documentação.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-26.8: Seção Segurança
 - **Status:** concluido
@@ -1481,6 +1487,7 @@
 - **Critérios de Aceitação:** Seção completa e coerente com `database/05_rls_policies.sql`.
 - **Commit:** `0f5b49f`
 - **Anotação:** Seção Segurança do `README.md` completa: tabela de chaves (anon no navegador; service_role, OPENAI_API_KEY e MCP_AUTH_TOKEN só no servidor), RLS por papel conforme `database/05_rls_policies.sql` (anon sem acesso; viewer/editor/owner/admin; memória global; logs só leitura; funções da fila só service_role), login (RotaProtegida, links para `src/README.md` e `database/README.md`) e rotação de chaves.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-26.9: Revisão final do README
 - **Status:** pendente
@@ -1491,6 +1498,7 @@
 - **Critérios de Aceitação:** Nenhum placeholder; links válidos.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-26.10: Seção Agentes de IA: exemplos do ciclo da fila
 - **Status:** concluido
@@ -1501,6 +1509,7 @@
 - **Critérios de Aceitação:** Exemplos conferidos com `api/_lib/queue-tools.ts`.
 - **Commit:** `23153af`
 - **Anotação:** Subseção "Ciclo da fila (exemplos)" em Agentes de IA do `README.md`: JSON-RPC `tools/call` de `task_next` (agent, project, lock_minutes, routine; resposta `task`/`task: null` e log `sem_tarefa`; `exclusive`), `task_finish` como `concluida` (result, pr_url, commit_sha, metadata), `recusada` e `erro` (metadata.erro_mensagem), tabela do efeito de cada status (erro volta a `pendente` com tentativas sobrando), `task_list` (status/limit/include_instruction) e `task_create` (código gerado, type ia/humano, priority, order, dependencies, execute_after, max_attempts). Conferido com `api/_lib/queue-tools.ts` e `finalizar_task` em `database/04_rpc_functions.sql`; JSONs validados. A parte de configuração de clientes ficou marcada para a SUB-26.6. Só documentação.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 ### [x] SUB-27: Autenticação e Login com Supabase Auth
 - **Status:** concluido
@@ -1539,6 +1548,7 @@
 - **Critérios de Aceitação:** Login e logout funcionam via Supabase Auth; sessão é restaurada e páginas privadas redirecionam usuários não autenticados; chamadas ao banco usam o JWT do usuário e respeitam RLS; somente a chave pública anon pode estar no frontend, sem senha persistida nem chave service_role exposta.
 - **Commit:** pendente
 - **Anotação:** Subdivisão (DashboardAI (Grok Bot), 2026-10-11 23:41, a pedido do usuário): até este momento não havia nenhum commit de código da SUB-27 na main, então nada foi marcado como concluído; a trava e a execução continuam com Codex (OpenAI). Original: Iniciado por solicitação do usuário; a dependência SUB-03 permanece pendente e a integração com o cliente Supabase depende da conclusão dela.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.1: `mensagemErroAuth(erro)` em `src/lib/auth.ts`
 - **Status:** concluido
@@ -1549,6 +1559,7 @@
 - **Critérios de Aceitação:** `npm test` passa (um caso por código + genérico); `npm run typecheck` OK.
 - **Commit:** `8ccaf5f`
 - **Anotação:** Criado `src/lib/auth.ts` com `mensagemErroAuth(erro)` (invalid_credentials, email_not_confirmed, rate limit/429, user_banned, rede, genérico; null -> ''). Testes em `tests/unit/auth.test.ts` (7). typecheck e vitest verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.2: `validarLogin({ email, senha })` em `src/lib/auth.ts`
 - **Status:** concluido
@@ -1559,6 +1570,7 @@
 - **Critérios de Aceitação:** `npm test` passa.
 - **Commit:** `07a914b`
 - **Anotação:** Adicionado `validarLogin` em `src/lib/auth.ts` (e-mail obrigatório/formato após trim; senha obrigatória, mín. 6). 4 testes em `tests/unit/auth.test.ts`; vitest e typecheck verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.3: `entrarComSenha(email, senha)` em `src/services/authService.ts`
 - **Status:** concluido
@@ -1569,6 +1581,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** `c80c6c6`
 - **Anotação:** Criado `src/services/authService.ts` com `entrarComSenha(email, senha, client = getSupabase())` via `signInWithPassword` (e-mail com trim); erro -> `ServiceError(mensagemErroAuth(error), 'AUTH')`; senha não guardada/logada. Exportado no barrel `src/services/index.ts`. typecheck e vitest verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.4: `sair()` em `src/services/authService.ts`
 - **Status:** concluido
@@ -1579,6 +1592,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** `7bc78da`
 - **Anotação:** Adicionado `sair(client = getSupabase())` em `src/services/authService.ts`: `auth.signOut()`, remove `localStorage['dashboard-ai:projeto']` (constante `CHAVE_PROJETO_LOCAL`, tolerante sem localStorage); erro -> `ServiceError(..., 'AUTH')`. typecheck e vitest verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.5: `enviarLinkMagico()` em `src/services/authService.ts`
 - **Status:** concluido
@@ -1589,6 +1603,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** `500e307`
 - **Anotação:** Adicionado `enviarLinkMagico(email, redirectTo, client = getSupabase())` em `src/services/authService.ts`: `auth.signInWithOtp` com `emailRedirectTo` e `shouldCreateUser: false` (e-mail com trim); erro -> `ServiceError(mensagemErroAuth(error), 'AUTH')`. typecheck e vitest verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.6: Testes unitários de `authService` em `tests/unit/authService.test.ts`
 - **Status:** concluido
@@ -1599,6 +1614,7 @@
 - **Critérios de Aceitação:** `npm test` passa com os casos.
 - **Commit:** `f830757`
 - **Anotação:** Criado `tests/unit/authService.test.ts` com cliente falso: entrar (sucesso/trim e credenciais inválidas -> ServiceError 'AUTH' traduzido), `sair` limpa o projeto salvo (stub de localStorage), `obterSessao` (sessão/null), link mágico com `shouldCreateUser: false` e `redefinirSenha` (redirectTo + 429). 6 testes verdes; typecheck OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.7: `obterPapelGlobal()` em `src/services/authService.ts`
 - **Status:** concluido
@@ -1609,6 +1625,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** `5ebbd19`
 - **Anotação:** Adicionado `obterPapelGlobal(userId, client = getSupabase())` em `src/services/authService.ts`: lê `role` da própria linha em `user_roles` (`maybeSingle`, policy `user_roles_select`); sem linha -> `null`; erro -> `ServiceError`. typecheck e vitest verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.8: Teste de integração dos papéis em `tests/integration/authService.integration.test.ts`
 - **Status:** concluido
@@ -1619,6 +1636,7 @@
 - **Critérios de Aceitação:** `npm run test:integration` passa (skipped sem PostgREST; `npm test` segue verde).
 - **Commit:** `ca52028`
 - **Anotação:** Criado `tests/integration/authService.integration.test.ts` (PostgREST local, JWT `authenticated`): usuário vê o próprio papel global e não o de outro; admin global -> `admin` em qualquer projeto; editor/viewer -> papel do projeto; não membro -> `null`. `npm run test:integration` 21/21 (Node 20 da box precisou de `NODE_OPTIONS=--experimental-websocket`; o projeto exige Node 22+); `npm test` verde (skipped sem PostgREST).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.9: `AuthProvider` em `src/hooks/AuthContext.tsx`
 - **Status:** concluido
@@ -1629,6 +1647,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** `333f8b9`
 - **Anotação:** Criado `src/hooks/AuthContext.tsx` com `AuthContext`/`AuthProvider` (`sessao, usuario, papelGlobal, carregando, sair`): `obterSessao()` ao montar, `onAuthStateChange` com unsubscribe no cleanup, `papelGlobal` recarregado quando o usuário muda; sem Supabase configurado: `carregando=false`, `sessao=null`. typecheck e vitest verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.10: Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx`
 - **Status:** concluido
@@ -1639,6 +1658,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
 - **Commit:** `a082736`
 - **Anotação:** Criado `src/components/auth/LoginForm.tsx` (props `onEntrou`, `onEmailChange`): labels, `autocomplete=email/current-password`, mostrar/ocultar senha (aria-pressed), `validarLogin` por campo (aria-invalid/describedby), `entrarComSenha` com `Botao` carregando e erro em `role=alert`; senha limpa após entrar. Criado `src/components/auth/index.ts` (LoginForm + RecuperarAcesso). typecheck e build OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.11: Tela `LoginView` em `src/views/LoginView.tsx`
 - **Status:** concluido
@@ -1649,6 +1669,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK; screenshots 1280x800 e 390x844.
 - **Commit:** `213f237`
 - **Anotação:** Criado `src/views/LoginView.tsx` (`{ onEntrou? }`): página cheia centralizada fora do `AppLayout` (`min-h-dvh`, fundo slate claro/escuro), marca "Dashboard AI" com descrição curta, `ThemeToggle` no canto, aviso `role="alert"` quando `supabaseConfigurado` é falso (cita `VITE_SUPABASE_URL`/`VITE_SUPABASE_ANON_KEY` e o `.env.example`), cartão com `LoginForm` (repassa `onEntrou` e o e-mail digitado) e `RecuperarAcesso` com esse e-mail. Ainda não está ligada ao `App` (SUB-27.12/27.13). `npm run typecheck`, `npm test` e `npm run build` OK; screenshots 1280x800 e 390x844 conferidos em Chrome headless via página de pré-visualização temporária (não commitada).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.12: Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx`
 - **Status:** concluido
@@ -1659,6 +1680,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** `e3157a1`
 - **Anotação:** Criado `src/components/auth/RotaProtegida.tsx` (`{ children }`) com `useAuth`: `carregando` -> `CarregandoTela` ("Verificando sessão..."); sem sessão -> `LoginView` (SUB-27.11); com sessão -> `children`. Preserva a rota pedida: guarda o hash de app (`#/...`, ignorando fragmentos do Supabase como `#access_token=`) inicial e os `hashchange` enquanto deslogado e, quando a sessão chega com o hash trocado (link mágico/redefinição), restaura via `history.replaceState` + evento `hashchange` (o `useNavegacao` reage). Exportado em `src/components/auth/index.ts`. Integração no `App` fica na SUB-27.13. `npm run typecheck`, `npm test` e `npm run build` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.13: Integrar autenticação no `src/App.tsx`
 - **Status:** concluido
@@ -1669,6 +1691,7 @@
 - **Critérios de Aceitação:** `npm run typecheck`, `npm run build` e `npm test` OK; sem sessão aparece o login, com sessão o dashboard.
 - **Commit:** `d6a9129`
 - **Anotação:** `src/App.tsx` agora monta `ToastProvider` > `AuthProvider` > `RotaProtegida` > `ProjetoProvider` (com `key={usuario?.id}` via componente interno `ProjetoDoUsuario`, recarregando os projetos da RLS ao trocar de usuário) > `AppLayout` + tela lazy com `Suspense`. Sem sessão a `RotaProtegida` mostra a `LoginView` (conferido em screenshot headless 1280x800 sem Supabase configurado: login com aviso de `.env`); com sessão renderiza o dashboard (lógica da `RotaProtegida`; não conferido contra Supabase Auth real, que não há no ambiente). `npm run typecheck`, `npm run build` e `npm test` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.14: Componente `UserMenu` em `src/components/layout/UserMenu.tsx`
 - **Status:** concluido
@@ -1679,6 +1702,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** `54bf3a6`
 - **Anotação:** Criado `src/components/layout/UserMenu.tsx`: e-mail do usuário (truncado, oculto no celular), selo Admin quando `papelGlobal === 'admin'`, botão Sair com `sair()` do `useAuth` + toast de sucesso/erro; sem sessão não renderiza. typecheck OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.15: Rechecar conexão no login/logout em `src/hooks/useConexao.ts`
 - **Status:** concluido
@@ -1689,6 +1713,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK; status do header atualiza logo após entrar/sair.
 - **Commit:** `65932ae`
 - **Anotação:** Em `src/hooks/useConexao.ts`, assinatura de `auth.onAuthStateChange` (só com Supabase configurado) que roda a verificação na hora (sem_sessao -> conectado sem esperar 60 s), cancelada no cleanup junto com o intervalo. typecheck e vitest verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.16: `urlDeRetorno()` para link mágico e redefinição de senha
 - **Status:** concluido
@@ -1699,6 +1724,7 @@
 - **Critérios de Aceitação:** `npm test` passa.
 - **Commit:** `1e3240c`
 - **Anotação:** Adicionado `urlDeRetorno(loc)` em `src/lib/auth.ts`: origem + caminho + tela do hash (`#/rota`), descartando tokens/parâmetros anteriores. 4 testes em `tests/unit/auth.test.ts`; vitest e typecheck verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.17: Documentar configuração do Supabase Auth em `src/README.md`
 - **Status:** concluido
@@ -1709,6 +1735,7 @@
 - **Critérios de Aceitação:** Documentação revisada.
 - **Commit:** `1a25734`
 - **Anotação:** Seção "Autenticação (Supabase Auth)" no `src/README.md`: habilitar o provedor Email (confirmação de e-mail, cadastro aberto opcional já que o link mágico usa `shouldCreateUser: false`), Site URL e Redirect URLs (localhost 5173/4173, produção e previews da Vercel) usadas por `urlDeRetorno`, e persistência da sessão (`persistSession`/`autoRefreshToken`/`detectSessionInUrl`, `AuthProvider`, `useAuth`, `RotaProtegida`, `sair`). Sem chaves reais.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.18: Validação automatizada da SUB-27
 - **Status:** concluido
@@ -1719,6 +1746,7 @@
 - **Critérios de Aceitação:** Tudo verde.
 - **Commit:** `(este commit)`
 - **Anotação:** Validação automatizada da SUB-27 na main `87ef5ca`: `npm run typecheck` OK; `npm test` 179 passed / 29 skipped (23 arquivos + 8 de integração pulados sem PostgREST); `npm run build` OK; `npm run test:integration` 29/29 (8 arquivos, PostgREST local; Node 20 da box com `NODE_OPTIONS=--experimental-websocket`, o projeto exige Node 22+). Tudo verde.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.19: `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx`
 - **Status:** concluido
@@ -1729,6 +1757,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** `c81668e`
 - **Anotação:** Criado `src/components/auth/RecuperarAcesso.tsx` (props `{ email }`): botões "Entrar com link por e-mail" (`enviarLinkMagico`) e "Esqueci a senha" (`redefinirSenha`) com `urlDeRetorno(window.location)`, carregando por ação e aviso de confirmação/erro (role status/alert); e-mail vazio pede preenchimento. typecheck OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.20: Limpar `ProjetoContext` ao sair
 - **Status:** concluido
@@ -1739,6 +1768,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** `74588f7`
 - **Anotação:** Em `src/hooks/ProjetoContext.tsx`, lê a sessão do `AuthContext` (equivalente a `useAuth`, porém tolerante fora do `AuthProvider` até a SUB-27.13 integrar o provider no App): sem sessão limpa `projetos` e `erro` mantendo o slug salvo; ao logar recarrega. typecheck, vitest e build OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.21: Documentar primeiro administrador e membros em `database/README.md`
 - **Status:** concluido
@@ -1749,6 +1779,7 @@
 - **Critérios de Aceitação:** Documentação revisada.
 - **Commit:** `663e597`
 - **Anotação:** Nova seção "Primeiro administrador e membros" no `database/README.md` (substitui o trecho curto de "Como aplicar"): tabela de papéis (`user_roles` admin/member; `project_members` owner > editor > viewer), como achar o `auth.users.id`, `insert ... on conflict` do 1º admin pelo SQL Editor (a RLS só deixa admin gravar em `user_roles`), adicionar/trocar papel e remover membro por slug + e-mail, consulta de quem tem acesso e aviso sobre `service_role` x login anon e `app_metadata.role`. Só e-mails de exemplo, sem chaves. Todos os SQLs conferidos num banco local descartável (schema 00–07 + `auth.users` mínimo).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.22: Conferência no navegador (entrar, sair, restaurar sessão) — SUB-27
 - **Status:** concluido
@@ -1759,6 +1790,7 @@
 - **Critérios de Aceitação:** Fluxos conferidos; nenhum erro no console.
 - **Commit:** `(este commit)`
 - **Anotação:** Conferência no navegador (Chrome headless via CDP, 1280x800) contra Postgres + PostgREST locais e um Auth simulado no proxy (harness não commitado): sem sessão abre o login; senha errada mostra "E-mail ou senha inválidos." (role=alert); entrar leva à Fila com "Projeto Demo", e-mail e Sair no header e sessão em `sb-localhost-auth-token`; recarregar a página restaura a sessão; Sair chama `/auth/v1/logout`, volta ao login e limpa a sessão (continua deslogado após recarregar). Nenhum erro/aviso no console.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.23: `obterSessao()` em `src/services/authService.ts`
 - **Status:** concluido
@@ -1769,6 +1801,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** `c696d9f`
 - **Anotação:** Adicionado `obterSessao(client = getSupabase())` em `src/services/authService.ts`: `auth.getSession()` -> sessão ou `null`; erro -> `ServiceError(mensagemErroAuth(error), 'AUTH')`. typecheck verde.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.24: `redefinirSenha()` em `src/services/authService.ts`
 - **Status:** concluido
@@ -1779,6 +1812,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** `e5477d2`
 - **Anotação:** Adicionado `redefinirSenha(email, redirectTo, client = getSupabase())` em `src/services/authService.ts`: `auth.resetPasswordForEmail` com `redirectTo` (e-mail com trim); erro -> `ServiceError(mensagemErroAuth(error), 'AUTH')`. typecheck verde.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.25: `papelNoProjeto()` em `src/services/authService.ts`
 - **Status:** concluido
@@ -1789,6 +1823,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** `6223e85`
 - **Anotação:** Adicionado `papelNoProjeto(projectId, userId, client = getSupabase())` em `src/services/authService.ts`: admin global (`obterPapelGlobal`) -> `'admin'`; senão `project_members.role` (`maybeSingle`); não membro -> `null`; erro -> `ServiceError`. typecheck verde.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.26: Hook `useAuth` em `src/hooks/useAuth.ts`
 - **Status:** concluido
@@ -1799,6 +1834,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** `9a947eb`
 - **Anotação:** Criado `src/hooks/useAuth.ts` (`useAuth()` lê o `AuthContext` e lança erro fora do `AuthProvider`); `AuthProvider`, `AuthContext` e `useAuth` exportados em `src/hooks/index.ts` mantendo os exports existentes. typecheck OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.27: Incluir `UserMenu` no `src/components/layout/Header.tsx`
 - **Status:** concluido
@@ -1809,6 +1845,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK; screenshot do header.
 - **Commit:** `a7817f8`
 - **Anotação:** O `Header` renderiza o `UserMenu` (SUB-27.14) depois do `ThemeToggle`, separado por uma borda, só quando há usuário logado; lê o `AuthContext` com `useContext` (tolerante fora do `AuthProvider`, como o `ProjetoContext`), então nada quebra até a SUB-27.13 montar o provider no `App`. Para caber em 390 px, o ícone de usuário e o selo Admin do `UserMenu` ficam só a partir de `sm` (no celular sobra só o botão Sair com ícone). `npm run typecheck`, `npm run build` e `npm test` OK; screenshots headless do header em 1280 e 390 px conferidos com sessão simulada (harness temporário, não commitado).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-27.28: Varredura do bundle por `service_role` (SUB-27)
 - **Status:** concluido
@@ -1819,6 +1856,7 @@
 - **Critérios de Aceitação:** Critérios de aceitação da SUB-27 atendidos; nenhuma chave no bundle.
 - **Commit:** `(este commit)`
 - **Anotação:** Varredura do bundle (`npm run build` na main `8b080c1`): em `dist/**/*.js` `service_role` aparece só 2 vezes, ambas na recusa do `getSupabase()` (`=== 'service_role'` e a mensagem "VITE_SUPABASE_ANON_KEY contém uma chave service_role"). Os `.map` (sourcemap ligado no `vite.config.ts`) trazem também comentários do código e da documentação do `@supabase/supabase-js`, sem valores. Nenhum JWT (`eyJ...`) nem chave `sk-` real no bundle (único casamento de `sk-` era `task-`, falso positivo).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 ---
 
@@ -1865,6 +1903,7 @@
 - **Critérios de Aceitação:** A task só inicia após todas as dependências SUB-01 a SUB-27 concluídas; execução reivindicada por `pegar_proxima_task`; estado do grafo é retomável e não duplica efeitos; escrita ocorre por ferramentas autenticadas e autorizadas; ações sensíveis pausam para aprovação; conclusão/erro e liberação do lock passam por `finalizar_task`; documentação de operação e segurança atualizada conforme `LangChain_LangGraph.md`.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-28.1: Contrato: identificadores e estado mínimo em `docs/langgraph-contrato.md`
 - **Status:** concluido
@@ -1875,6 +1914,7 @@
 - **Critérios de Aceitação:** Seção escrita e coerente com o `LangChain_LangGraph.md`.
 - **Commit:** `fc379a6`
 - **Anotação:** Criado `docs/langgraph-contrato.md` com a seção 1 do contrato (9.1 do `LangChain_LangGraph.md`): `execucaoId = task-<taskId>-t<tentativa>` (tentativa = `tasks.tentativas` após `pegar_proxima_task`; usado como `thread_id` do checkpointer, `execucao_id` dos eventos e metadado do `finalizar_task`), retomada vs. nova tentativa, campos do estado mínimo do checkpoint (e o que nunca entra) e regras de coerência com o banco (reconferir status/trava/tentativa ao iniciar e retomar; status só via `finalizar_task`).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.2: Dependências do worker no `package.json`
 - **Status:** pendente
@@ -1885,6 +1925,7 @@
 - **Critérios de Aceitação:** `npm ci` sem vulnerabilidades altas; `npm test` segue verde.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.3: Annotation `EstadoExecucao` em `worker/estado.ts`
 - **Status:** pendente
@@ -1895,6 +1936,7 @@
 - **Critérios de Aceitação:** `typecheck:worker` OK.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.4: `reivindicar(agente, projeto)` em `worker/fila.ts`
 - **Status:** pendente
@@ -1905,6 +1947,7 @@
 - **Critérios de Aceitação:** `typecheck:worker` OK; teste com cliente falso.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.5: Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts`
 - **Status:** pendente
@@ -1915,6 +1958,7 @@
 - **Critérios de Aceitação:** Teste: ferramenta fora da allowlist é recusada.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.6: Nó `carregarContexto` em `worker/nos/carregarContexto.ts`
 - **Status:** pendente
@@ -1925,6 +1969,8 @@
 - **Critérios de Aceitação:** Teste unitário com ferramenta falsa.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (não confirmado — placeholder ou incompleto)
 
 #### [ ] SUB-28.7: Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts`
 - **Status:** pendente
@@ -1935,6 +1981,8 @@
 - **Critérios de Aceitação:** Teste com modelo falso; plano inválido vira erro de validação.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (não confirmado — placeholder ou incompleto)
 
 #### [ ] SUB-28.8: Nó `politica` (aprovação humana) em `worker/nos/politica.ts`
 - **Status:** pendente
@@ -1945,6 +1993,7 @@
 - **Critérios de Aceitação:** Teste: passo sensível interrompe; não sensível segue.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.9: Nó `executar` em `worker/nos/executar.ts`
 - **Status:** pendente
@@ -1955,6 +2004,8 @@
 - **Critérios de Aceitação:** Teste: retomada não duplica a chamada.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (não confirmado — placeholder ou incompleto)
 
 #### [ ] SUB-28.10: Nó `revisar` (roteamento) em `worker/nos/revisar.ts`
 - **Status:** pendente
@@ -1965,6 +2016,7 @@
 - **Critérios de Aceitação:** Teste: transitória repete até o limite; permanente finaliza.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.11: Nó `finalizar` em `worker/nos/finalizar.ts`
 - **Status:** pendente
@@ -1975,6 +2027,7 @@
 - **Critérios de Aceitação:** Teste com adaptador falso.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.12: Montagem do `StateGraph` em `worker/grafo.ts`
 - **Status:** pendente
@@ -1985,6 +2038,8 @@
 - **Critérios de Aceitação:** `typecheck:worker` OK; teste de caminho feliz com fakes.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (não confirmado — placeholder ou incompleto)
 
 #### [ ] SUB-28.13: Checkpointer durável em `worker/checkpointer.ts`
 - **Status:** pendente
@@ -1995,6 +2050,7 @@
 - **Critérios de Aceitação:** Teste contra Postgres local (ou skipped sem banco).
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.14: Reconciliação na retomada em `worker/reconciliar.ts`
 - **Status:** pendente
@@ -2005,6 +2061,8 @@
 - **Critérios de Aceitação:** Teste com estados divergentes.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (não confirmado — placeholder ou incompleto)
 
 #### [ ] SUB-28.15: CLI do worker em `worker/index.ts`
 - **Status:** pendente
@@ -2015,6 +2073,7 @@
 - **Critérios de Aceitação:** `npm run worker -- --uma-vez` roda contra banco local.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.16: Endpoint `api/aprovacao.ts`: autenticação e papel (401/403)
 - **Status:** pendente
@@ -2025,6 +2084,7 @@
 - **Critérios de Aceitação:** `typecheck:api` OK; testes 401/403/400.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.17: Testes do worker: caminho feliz e erro
 - **Status:** pendente
@@ -2035,6 +2095,7 @@
 - **Critérios de Aceitação:** `npm test` passa.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.18: Atualizar `LangChain_LangGraph.md` (status e desvios)
 - **Status:** pendente
@@ -2045,6 +2106,7 @@
 - **Critérios de Aceitação:** Documentação coerente com o código.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.19: Adaptar ferramentas para `tool()` do LangChain em `worker/ferramentas.ts`
 - **Status:** pendente
@@ -2055,6 +2117,7 @@
 - **Critérios de Aceitação:** Teste: argumento inválido é recusado sem chamar o handler.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.20: `PlanoSchema` em `worker/plano.ts`
 - **Status:** pendente
@@ -2065,6 +2128,7 @@
 - **Critérios de Aceitação:** Testes do schema (válido e inválido).
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.21: `classificarFalha(err)` em `worker/falhas.ts`
 - **Status:** pendente
@@ -2075,6 +2139,7 @@
 - **Critérios de Aceitação:** `npm test` passa.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.22: `executarUmaTask(deps)` em `worker/executar.ts`
 - **Status:** pendente
@@ -2085,6 +2150,7 @@
 - **Critérios de Aceitação:** Teste com fakes: sem task retorna `null`; exceção finaliza com `erro`.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.23: Retomada da aprovação (`Command({ resume })`) em `api/aprovacao.ts`
 - **Status:** pendente
@@ -2095,6 +2161,7 @@
 - **Critérios de Aceitação:** `typecheck:api` OK; teste de retomada com grafo falso.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.24: Testes do worker: interrupção e retomada sem duplicar efeitos
 - **Status:** pendente
@@ -2105,6 +2172,7 @@
 - **Critérios de Aceitação:** `npm test` passa.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.25: Variáveis do worker no `api/README.md`
 - **Status:** pendente
@@ -2115,6 +2183,7 @@
 - **Critérios de Aceitação:** Documentação coerente com o código.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-28.26: Contrato: ferramentas permitidas e idempotência em `docs/langgraph-contrato.md`
 - **Status:** concluido
@@ -2125,6 +2194,7 @@
 - **Critérios de Aceitação:** Seção escrita e coerente com o `LangChain_LangGraph.md`.
 - **Commit:** `07b64cc`
 - **Anotação:** Seção 2 em `docs/langgraph-contrato.md`: allowlist do grafo (`brain_search`, `task_list` leitura; `brain_store`, `agent_event` escrita; `task_create` e `brain_delete` sensíveis com pausa para aprovação), `task_next`/`task_finish` fora do grafo (só o worker chama as RPCs), regras (projetoId do estado, recusa vai para SUB-28.27); chaves de idempotência `<execucaoId>:<passoId>` (e `task-<taskId>:<passoId>` entre tentativas), gravadas no checkpoint, em `agent_events.chave_idempotencia` e em `p_metadados` de `finalizar_task`, com a ordem persistir→chamar→persistir. Coerente com as seções 3, 5, 6 e 7 do `LangChain_LangGraph.md`. Só documentação.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-28.27: Contrato: mapeamento de erros para `finalizar_task` em `docs/langgraph-contrato.md`
 - **Status:** concluido
@@ -2135,6 +2205,7 @@
 - **Critérios de Aceitação:** Documento completo e referenciado no `LangChain_LangGraph.md`.
 - **Commit:** `52df1e7`
 - **Anotação:** Seção 3 em `docs/langgraph-contrato.md`: tabela transitória (repete o nó com espera progressiva, depois `erro`), validação/permissão e permanente (`erro`, nova tentativa decidida pela RPC), recusa (`recusada`, final), trava perdida (não chama a RPC) e sucesso (`concluida`); regras (sem status paralelo, classificar pelo tipo do erro, repetir só a chamada da RPC em falha transitória) e argumentos/`p_metadados` (`execucao_id`, `chaves`, `classe_falha`, `passo_falho`, `erro_mensagem`). Coerente com `finalizar_task` em `database/04_rpc_functions.sql`. Referenciado nas seções 7 e 9 do `LangChain_LangGraph.md`. Só documentação.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.28: `worker/tsconfig.json` e `typecheck:worker`
 - **Status:** pendente
@@ -2145,6 +2216,7 @@
 - **Critérios de Aceitação:** `npm run typecheck:worker` OK.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.29: Schema zod `EstadoSchema` em `worker/estado.ts`
 - **Status:** pendente
@@ -2155,6 +2227,7 @@
 - **Critérios de Aceitação:** `typecheck:worker` OK; teste de parse (válido e inválido) passa.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.30: `finalizar(...)` em `worker/fila.ts`
 - **Status:** pendente
@@ -2165,6 +2238,7 @@
 - **Critérios de Aceitação:** `typecheck:worker` OK; teste com cliente falso passa.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.31: `montarPromptPlano(estado)` em `worker/plano.ts`
 - **Status:** pendente
@@ -2175,6 +2249,7 @@
 - **Critérios de Aceitação:** Testes do prompt (sem segredos; conteúdo não confiável delimitado).
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.32: Registro de auditoria da aprovação
 - **Status:** pendente
@@ -2185,6 +2260,7 @@
 - **Critérios de Aceitação:** `typecheck:api` OK; teste confere o registro sem credenciais.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 ---
 
@@ -2246,6 +2322,7 @@
 - **Critérios de Aceitação:** Com dois agentes emitindo eventos, a tela atualiza em segundos sem recarregar; viewer de outro projeto não vê os eventos; build sem chunk acima de 500 kB (gráficos em chunk da tela).
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.1: Tabela `agent_events` em `database/07_agent_events.sql`
 - **Status:** concluido
@@ -2256,6 +2333,7 @@
 - **Critérios de Aceitação:** Arquivo aplica em banco limpo após 00–06 (`tests/integration/run.sh` ou `psql -f`); reaplicar não falha (`if not exists`).
 - **Commit:** `9f5692f`
 - **Anotação:** Criado `database/07_agent_events.sql` (cabeçalho com as partes 35.1–35.5) com `public.agent_events`: `id` identity, `project_id` (FK projects, cascade), `task_id` (FK tasks, set null), `task_codigo`, `agente` (não vazio, ≤120), `execucao_id` (≤200), `etapa` (≤120), `tipo` (check inicio/progresso/fim/erro/heartbeat/trava/liberacao/commit), `status`, `mensagem` (≤2000), `metadados` jsonb objeto, `chave_idempotencia` (unique com `project_id`), `criado_por` (`usuario_atual()`), `created_at`; índices `(project_id, created_at desc)` e `(project_id, agente, created_at desc)`; comentário da tabela; sem RLS (SUB-35.3). Validado em Postgres 17 local: aplicado após 00–06 em banco limpo e reaplicado sem erro; checks de agente vazio, tipo inválido, metadados não objeto e chave de idempotência duplicada recusam como esperado.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.2: Trigger `validar_agent_event` em `database/07_agent_events.sql`
 - **Status:** concluido
@@ -2266,6 +2344,7 @@
 - **Critérios de Aceitação:** Aplicação limpa; inserir evento com task de outro projeto falha com mensagem clara.
 - **Commit:** `54cdea9`
 - **Anotação:** Adicionados `public.validar_agent_event()` (plpgsql, `security invoker`, `search_path = public`) e o trigger `validar_agent_event_trg` (`before insert or update`) em `database/07_agent_events.sql`, no padrão de `agent_messages_preparar` (06): task informada precisa ser do mesmo projeto (erro "a task N não pertence ao projeto do evento"), `task_codigo` preenchido a partir da task; no insert, `task_codigo` sem `task_id` resolve a task do projeto (código sem task é aceito, ex. subtarefa só no quadro); `agente` com trim; interface (anon/authenticated) não escolhe `criado_por`; em update recusa mudar `project_id`, `agente` e `created_at` e preserva `criado_por`. Validado em Postgres 17 local: 00–07 aplicados em banco limpo e 07 reaplicado; task de outro projeto e as 3 alterações proibidas falham com mensagem clara; resolução por código e update de `mensagem` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.3: RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql`
 - **Status:** concluido
@@ -2276,6 +2355,7 @@
 - **Critérios de Aceitação:** Aplicação limpa; `\dp agent_events` mostra RLS ativa.
 - **Commit:** `2d714d4`
 - **Anotação:** Em `database/07_agent_events.sql`: RLS habilitada em `agent_events`; `revoke all` de anon/authenticated, `grant select, insert` para `authenticated` e `all` para `service_role`; policies `agent_events_select` (`tem_acesso_projeto(project_id, 'viewer')`) e `agent_events_insert` (`tem_acesso_projeto(project_id, 'editor')`); sem policies/grants de update/delete (eventos só-inclusão). Validado em Postgres 17 local (00–07 + 07 reaplicado; `\\dp agent_events` mostra as policies e `relrowsecurity = t`); smoke com `test_multi_projeto.sql`: viewer só lê o próprio projeto e não inclui; editor inclui no próprio projeto (`criado_por` = ele), é recusado em outro projeto e não tem update/delete; anon sem acesso.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.4: Publicar `agent_events` no Supabase Realtime
 - **Status:** concluido
@@ -2286,6 +2366,7 @@
 - **Critérios de Aceitação:** Reaplicar o arquivo não falha; no Supabase a tabela aparece em `pg_publication_tables`.
 - **Commit:** `95f12ff`
 - **Anotação:** Em `database/07_agent_events.sql`, bloco `do $$` que faz `alter publication supabase_realtime add table public.agent_events` só se a publicação existir e a tabela ainda não estiver nela. Validado em Postgres local (banco temporário): 00–07 aplicados 2x sem a publicação (não falha); com `create publication supabase_realtime`, 07 reaplicado 2x e `pg_publication_tables` mostra `agent_events`.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.5: Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql`
 - **Status:** concluido
@@ -2296,6 +2377,7 @@
 - **Critérios de Aceitação:** Aplicação limpa; `select * from atividade_atual_agentes(<id>)` devolve uma linha por agente.
 - **Commit:** `d9d9a6c`
 - **Anotação:** Adicionada `atividade_atual_agentes(p_project_id bigint)` em `database/07_agent_events.sql`: SQL `stable`, `security invoker` (respeita a RLS), `distinct on (agente)` ordenado por `created_at desc` -> agente, task_codigo, etapa, tipo, status, mensagem, execucao_id, ultimo_em e ultimo_heartbeat_em (máximo dos `tipo = 'heartbeat'`). `drop function if exists` + create (reaplicável); execute só para `authenticated`/`service_role`. Validado em Postgres local: 00–07 aplicados 2x; com eventos de 2 agentes devolve 1 linha por agente com o último evento e heartbeat correto.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.6: Teste de integração de `agent_events` (RLS e trigger)
 - **Status:** concluido
@@ -2306,6 +2388,7 @@
 - **Critérios de Aceitação:** `npm run test:integration` passa (skipped sem PostgREST; `npm test` segue verde).
 - **Commit:** `e7a39cd`
 - **Anotação:** Criado `tests/integration/agentEvents.integration.test.ts` (helpers de `tests/helpers/postgrest.ts`; cliente sem tipagem de tabela até a SUB-35.8 incluir `agent_events` no tipo `Database`): viewer lê só eventos do próprio projeto; viewer não inclui (RLS); editor inclui no próprio projeto com `agente` aparado e `criado_por` = ele; update recusado (permission denied, nada alterado); task de outro projeto recusada pelo trigger ("não pertence ao projeto do evento"). `npm run test:integration` (PostgREST + Postgres 17 locais, Node 22) verde: 6 arquivos, 23 testes; `npm test` verde (skipped sem PostgREST); `npm run typecheck` OK. Obs.: no box o Node padrão é 20 e o supabase-js exige Node 22+ para a integração.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.7: Seção "Eventos dos agentes (07)" no `database/README.md`
 - **Status:** concluido
@@ -2316,6 +2399,7 @@
 - **Critérios de Aceitação:** README revisado e coerente com o SQL.
 - **Commit:** `b518611`
 - **Anotação:** No `database/README.md`: `07_agent_events.sql` na tabela de ordem de aplicação (e 'Como aplicar' 00 → 07) e nova seção 'Eventos dos agentes (07)' com colunas, tipos de evento, `chave_idempotencia` (única por projeto; exemplo `git:<sha>` do espelho do quadro), trigger `validar_agent_event`, RLS (viewer lê, editor inclui, sem UPDATE/DELETE), publicação Realtime condicional e `atividade_atual_agentes`. Conferido contra o SQL.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.8: Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts`
 - **Status:** concluido
@@ -2326,6 +2410,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** `5a09109`
 - **Anotação:** Em `src/types/database.ts`: `TIPOS_EVENTO_AGENTE` (const) + `TipoEventoAgente`, `AgentEvent` (colunas de `agent_events`, SUB-35.1), `AtividadeAgente` (retorno de `atividade_atual_agentes`, SUB-35.5, incl. `ultimo_heartbeat_em`) e `AgentEventInsert` (opcionais: id, task, execução, etapa, status, mensagem, metadados, chave, autor, data); `Database` registra `agent_events` (`Update: never`, só-inclusão) e a função `atividade_atual_agentes({ p_project_id })`. Reexportados por `src/types/index.ts`. Comentário do teste de integração da SUB-35.6 atualizado (segue sem tipagem para tentar o update proibido). `npm run typecheck` e `npm test` verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.9: `listarEventos()` em `src/services/eventService.ts`
 - **Status:** concluido
@@ -2336,6 +2421,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** `89c6a43`
 - **Anotação:** Criado `src/services/eventService.ts` com `listarEventos(projectId, { desde?, agente?, limite = 200 }, client = getSupabase())` -> `AgentEvent[]`: filtra por `project_id`, `created_at >= desde` (data inválida -> `ServiceError`) e agente exato (trim); ordena por `created_at` desc e `id` desc; limite entre 1 e 1000; erros via `resultado(res, 'Listar eventos')`. Exportado no barrel `src/services/index.ts` (demais exports mantidos). `npm run typecheck` e `npm test` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-35.10: `atividadeAtual()` em `src/services/eventService.ts`
 - **Status:** concluido
@@ -2346,6 +2432,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** `47fb521`
 - **Anotação:** Adicionado `atividadeAtual(projectId, client?)` em `src/services/eventService.ts`: chama a RPC `atividade_atual_agentes` (`p_project_id`), trata erro com `resultado` (contexto "Atividade dos agentes") e devolve `AtividadeAgente[]` ordenado por `ultimo_em` desc (lista vazia se `null`). typecheck e `npm test` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-35.11: `assinarEventos()` (Supabase Realtime) em `src/services/eventService.ts`
 - **Status:** concluido
@@ -2356,6 +2443,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** `c43ad04`
 - **Anotação:** Adicionado `assinarEventos(projectId, { onEvento, onStatus }, client?)` em `src/services/eventService.ts`: canal `agent_events:<projectId>` com `postgres_changes` (INSERT, `project_id=eq.<id>`), repassa o status do canal (`StatusCanalEventos`: SUBSCRIBED/CHANNEL_ERROR/TIMED_OUT/CLOSED, com erro opcional) e devolve a função que chama `removeChannel`. Sem polling. typecheck e `npm test` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-35.12: Testes de `eventService` em `tests/unit/eventService.test.ts`
 - **Status:** concluido
@@ -2366,6 +2454,7 @@
 - **Critérios de Aceitação:** `npm test` passa.
 - **Commit:** `b045c12`
 - **Anotação:** Criado `tests/unit/eventService.test.ts` (6 testes, cliente falso): `listarEventos` aplica projeto, `desde`, agente com trim, ordenação created_at/id desc e limite (padrão 200, faixa 1–1000) e rejeita data inválida sem consultar; `atividadeAtual` chama `atividade_atual_agentes` com `p_project_id`, ordena por `ultimo_em` desc e converte erro em ServiceError; `assinarEventos` cria `agent_events:<id>` com filtro `project_id=eq.<id>`, repassa eventos e status e chama `removeChannel` ao cancelar. `npm test` e typecheck OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.13: Teste de integração de `listarEventos`/`atividadeAtual`
 - **Status:** concluido
@@ -2376,6 +2465,7 @@
 - **Critérios de Aceitação:** `npm run test:integration` passa (skipped sem PostgREST).
 - **Commit:** `8628ec3`
 - **Anotação:** Criado `tests/integration/eventService.integration.test.ts`: com eventos de dois agentes (datas fixas) e um de outro projeto, `atividadeAtual` devolve um por agente ordenado por `ultimo_em` desc, com o último evento (tipo/etapa/task/mensagem) e `ultimo_heartbeat_em` (null sem heartbeat); `listarEventos` traz os mais recentes primeiro e respeita `agente` (com trim), `limite` e `desde`; outro projeto não aparece e usuário sem acesso recebe listas vazias (RLS). `npm run test:integration` (PostgREST + Postgres 17 locais, Node 22) verde: 8 arquivos, 29 testes; `npm test` verde (skipped sem PostgREST); typecheck OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.14: `mesclarEvento()` em `src/lib/monitor.ts`
 - **Status:** concluido
@@ -2386,6 +2476,7 @@
 - **Critérios de Aceitação:** `npm test` passa.
 - **Commit:** `7e268fb`
 - **Anotação:** Criado `src/lib/monitor.ts` com `mesclarEvento(lista, novo, max = 200)`: `id` repetido devolve a mesma lista; insere na posição certa por `created_at` desc (evento atrasado do Realtime não vai para o topo; empate pelo `id` maior); corta em `max`; não altera a lista recebida. 6 testes em `tests/unit/monitor.test.ts`. `npm test` e `npm run typecheck` verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.15: `estadoDoAgente()` em `src/lib/monitor.ts`
 - **Status:** concluido
@@ -2396,6 +2487,7 @@
 - **Critérios de Aceitação:** `npm test` passa (um caso por estado).
 - **Commit:** `c47df6b`
 - **Anotação:** Adicionado em `src/lib/monitor.ts` `estadoDoAgente(atividade, agora = Date.now(), { ativoAteSeg = 120, ociosoAteSeg = 900 })` -> `'ativo' | 'ocioso' | 'sem_sinal' | 'finalizado'` (tipo `EstadoAgente` exportado): último `tipo` `fim`/`liberacao` = finalizado; senão usa o sinal mais recente entre `ultimo_em` e `ultimo_heartbeat_em` (até 120 s ativo, até 900 s ocioso, depois ou sem data válida sem_sinal). Só exibição: não sugere nem libera travas. 6 testes novos em `tests/unit/monitor.test.ts` (um por estado + heartbeat + limites). `npm test` e `npm run typecheck` verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.16: `contarPorStatus()` em `src/lib/monitor.ts`
 - **Status:** concluido
@@ -2406,6 +2498,7 @@
 - **Critérios de Aceitação:** `npm test` passa.
 - **Commit:** `860e0c9`
 - **Anotação:** Adicionados em `src/lib/monitor.ts` `ORDEM_ESTADOS` (ativo, ocioso, sem_sinal, finalizado) e `contarPorStatus(atividades, agora = Date.now(), limites = {})` -> `{ estado, total }[]` usando `estadoDoAgente`, sempre na ordem fixa e com zeros (para o gráfico de rosca). 2 testes novos em `tests/unit/monitor.test.ts`. `npm test` e `npm run typecheck` verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.17: `contarPorAgente()` em `src/lib/monitor.ts`
 - **Status:** concluido
@@ -2416,6 +2509,7 @@
 - **Critérios de Aceitação:** `npm test` passa.
 - **Commit:** `7d2181e`
 - **Anotação:** `contarPorAgente(eventos)` -> `{ agente, porTipo, total }[]` com todos os tipos zerados, ordenado por total desc e nome; 2 testes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.18: `segmentosLinhaDoTempo()` em `src/lib/monitor.ts`
 - **Status:** concluido
@@ -2426,6 +2520,7 @@
 - **Critérios de Aceitação:** `npm test` passa.
 - **Commit:** pendente
 - **Anotação:** Adicionado `segmentosLinhaDoTempo(eventos, agora)` em `src/lib/monitor.ts`: une `inicio` com `fim`/`erro` da mesma `execucao_id` + `etapa`; etapa aberta termina em `agora`. Tipos `SegmentoLinhaDoTempo` exportados. 5 testes em `tests/unit/monitor.test.ts` (abrir/fechar, erro, aberta, datas inválidas). typecheck e `npm test` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.19: Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts`
 - **Status:** concluido
@@ -2436,6 +2531,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** `7d2181e`
 - **Anotação:** Hook carrega `listarEventos`, assina `assinarEventos` e mescla com `mesclarEvento`; expõe `eventos`, `statusConexao`, `erro`, `recarregar`; exportado em `src/hooks/index.ts`.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.20: Hook `useAtividadeAgentes(projectId)` em `src/hooks/useAtividadeAgentes.ts`
 - **Status:** concluido
@@ -2446,6 +2542,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** pendente
 - **Anotação:** Hook `useAtividadeAgentes(projectId)` em `src/hooks/useAtividadeAgentes.ts`: carrega `atividadeAtual`, `recarregarDebounced` (1 s debounce) para quando `useEventosAgentes` recebe evento novo, relógio a cada 15 s para recalcular `estadoDoAgente`. Expõe `{ atividades, agora, carregando, erro, recarregar, recarregarDebounced }`. Exportado em `src/hooks/index.ts`. typecheck OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.21: Instalar `chart.js` e `react-chartjs-2`
 - **Status:** concluido
@@ -2456,6 +2553,7 @@
 - **Critérios de Aceitação:** `npm ci` sem vulnerabilidades altas; `npm run build` OK.
 - **Commit:** `73d73ad`
 - **Anotação:** Instalados `chart.js@^4.5.1` e `react-chartjs-2@^5.3.1` em `dependencies` (versões fixadas no `package-lock.json`); ainda sem uso no código (registro/paleta na SUB-35.22). `npm ci` e `npm audit --audit-level=high` sem vulnerabilidades; `npm run build` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.22: Registro do Chart.js e paleta em `src/lib/charts.ts`
 - **Status:** concluido
@@ -2466,6 +2564,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
 - **Commit:** `cabdbc0`
 - **Anotação:** Criado `src/lib/charts.ts`: `Chart.register` só com `ArcElement`, `BarElement`, `CategoryScale`, `LinearScale`, `Tooltip` e `Legend` (linha do tempo usará `LinearScale` com ms, sem `TimeScale`/adaptador de datas), reexporta `Chart`; paletas `CORES_ESTADO` (ativo/ocioso/sem_sinal/finalizado) e `CORES_TIPO` (os 8 tipos do check de `agent_events`) com variantes `claro`/`escuro`, mais `CORES_EIXO` e `corDoTema(cor, escuro)`. `npm run typecheck`, `npm run build` e `npm test` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-35.23: Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx`
 - **Status:** concluido
@@ -2476,6 +2575,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.24: Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx`
 - **Status:** concluido
@@ -2486,6 +2586,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** `4bc0b25`
 - **Anotação:** Criado `src/components/monitor/AtividadeAgentesGrid.tsx`: grade responsiva (1/2/3 colunas) de `AgenteCard`, ordenada por estado (ativo, ocioso, sem sinal, finalizado) e depois pelo sinal mais recente; estado vazio "Nenhum agente reportou atividade". Exportado no barrel sem remover exports. `npm run typecheck`, `npm test` e `npm run build` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.25: Gráfico `GraficoPorStatus` em `src/components/monitor/GraficoPorStatus.tsx`
 - **Status:** concluido
@@ -2496,6 +2597,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
 - **Commit:** `a2d2ed9`
 - **Anotação:** Criado `src/components/monitor/GraficoPorStatus.tsx` (`{ atividades, agora?, limites?, escuro?, className? }`): rosca `Doughnut` (react-chartjs-2, registro de `@/lib/charts`) com `contarPorStatus` na ordem fixa dos estados, cores de `CORES_ESTADO` conforme o tema (padrão: classe `dark` no `<html>`), legenda com cor de `CORES_EIXO`, `role=img` + `aria-label` e `figcaption` sr-only com o texto alternativo. Exportado no barrel `src/components/monitor/index.ts` (mantidos os exports de outros agentes). typecheck e build OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.26: Gráfico `GraficoPorAgente` em `src/components/monitor/GraficoPorAgente.tsx`
 - **Status:** concluido
@@ -2506,6 +2608,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
 - **Commit:** `6456092`
 - **Anotação:** Criado `src/components/monitor/GraficoPorAgente.tsx` (`{ eventos, className? }`): Chart.js de barras horizontais empilhadas (`indexAxis: y`, `stacked`), uma barra por agente via `contarPorAgente`, um dataset por tipo de `TIPOS_EVENTO_AGENTE` com cores de `CORES_TIPO`/`CORES_EIXO` no tema atual (observa a classe `dark`), altura proporcional ao nº de agentes, estado vazio, `aria-label` com totais, `destroy()` no cleanup. Exportado no barrel. typecheck, `npm test` e build OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.27: Linha do tempo `LinhaDoTempoAgentes` em `src/components/monitor/LinhaDoTempoAgentes.tsx`
 - **Status:** concluido
@@ -2516,6 +2619,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
 - **Commit:** `173fc36`
 - **Anotação:** Criado `src/components/monitor/LinhaDoTempoAgentes.tsx` (`eventos`, `agora?`, `janelaMs?` = 1 h): Gantt com barras flutuantes `[inicio, fim]` por agente via `segmentosLinhaDoTempo` (recorta à janela; `execucao_id` nulo agrupa por agente), eixo X linear em ms com rótulos HH:MM, cores por status (`CORES_TIPO` progresso/fim/erro no tema atual), tooltip com etapa, status e horário. Exportado no barrel. typecheck, `npm test` e `npm run build` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.28: Feed `FeedEventos` em `src/components/monitor/FeedEventos.tsx`
 - **Status:** concluido
@@ -2526,6 +2630,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** `0d90464`
 - **Anotação:** Criado `src/components/monitor/FeedEventos.tsx` (`{ eventos, limite?=100, className? }`, eventos do mais novo ao mais antigo): linhas com hora, agente, selo do tipo (cor por `TipoEventoAgente`), task, etapa e mensagem; Pausar/Retomar congela a lista e mostra "+N novos" (`aria-pressed`, `aria-live` desligado quando pausado); eventos novos destacados por 2 s com `motion-safe:` (respeita `prefers-reduced-motion`). Exportado em `src/components/monitor/index.ts`. typecheck e build OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.29: Indicador `IndicadorAoVivo` em `src/components/monitor/IndicadorAoVivo.tsx`
 - **Status:** concluido
@@ -2536,6 +2641,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` OK.
 - **Commit:** `9c2edf5`
 - **Anotação:** Criado `src/components/monitor/IndicadorAoVivo.tsx` (`statusConexao: StatusConexaoEventos`, `recarregar`): pílula "Ao vivo" com ponto pulsando, "Conectando…" ou "Sem conexão — recarregar" (`role=status`, `aria-live`) e botão "Recarregar" que chama `recarregar`. Exportado no barrel `src/components/monitor/index.ts`. typecheck, `npm test` e `npm run build` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.30: Tela `MonitorView` em `src/views/MonitorView.tsx`
 - **Status:** concluido
@@ -2546,6 +2652,7 @@
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
 - **Commit:** `2d1cd0a`
 - **Anotação:** Criado `src/views/MonitorView.tsx`: projeto de `useProjetoAtual` (sem projeto -> aviso "selecione um projeto"), `useEventosAgentes` + `useAtividadeAgentes` (cada evento novo chama `recarregarDebounced` da atividade); cabeçalho com `IndicadorAoVivo` (recarregar refaz eventos e atividade), alerta de erro (`role="alert"`), cartão "Atividade atual" com esqueletos na 1ª carga e `AtividadeAgentesGrid`, grade 2 colunas com `GraficoPorStatus` (tema escuro pela classe `dark`) e `GraficoPorAgente`, `LinhaDoTempoAgentes` (última hora) e `FeedEventos`. Registro da rota/menu fica na SUB-35.31. `npm run typecheck`, `npm test` e `npm run build` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.31: Registrar a tela `monitor` (rota `#/monitor` e menu)
 - **Status:** concluido
@@ -2556,6 +2663,7 @@
 - **Critérios de Aceitação:** `npm run typecheck`, `npm test` e `npm run build` OK; `#/monitor` abre a tela em chunk próprio.
 - **Commit:** `8dff43b`
 - **Anotação:** Registrada a tela `monitor`: `'monitor'` em `ViewId` (`src/types/index.ts`), `VIEW_IDS` (`src/lib/navegacao.ts`), `VIEWS` (`src/views/meta.ts`, título "Monitor dos Agentes", antes de Configurações), `TELAS` com `lazy` (`src/views/index.ts`) e ícone `Activity` no `ICONES` do `Sidebar`. `tests/unit/navegacao.test.ts` cobre `#/monitor`. Build gera chunk próprio `MonitorView` (19,2 kB). `npm run typecheck`, `npm test` e `npm run build` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-35.32: Validação visual do monitor (SUB-35)
 - **Status:** em_execucao
@@ -2566,6 +2674,7 @@
 - **Critérios de Aceitação:** Screenshots conferidos; nenhum erro no console.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-35.33: `emitirEvento()` em `worker/eventos.ts`
 - **Status:** pendente
@@ -2576,6 +2685,7 @@
 - **Critérios de Aceitação:** `npm run typecheck:worker` OK.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-35.34: Testes de `emitirEvento` em `tests/unit/worker-eventos.test.ts`
 - **Status:** pendente
@@ -2586,6 +2696,7 @@
 - **Critérios de Aceitação:** `npm test` passa.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-35.35: `comEventos(nome, no)` em `worker/eventos.ts`
 - **Status:** pendente
@@ -2596,6 +2707,7 @@
 - **Critérios de Aceitação:** `npm test` passa.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-35.36: Envolver os nós em `worker/grafo.ts` com `comEventos`
 - **Status:** pendente
@@ -2606,6 +2718,7 @@
 - **Critérios de Aceitação:** `npm run typecheck:worker` OK; testes existentes do worker seguem verdes.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-35.37: `iniciarHeartbeat()` em `worker/heartbeat.ts`
 - **Status:** pendente
@@ -2616,6 +2729,7 @@
 - **Critérios de Aceitação:** `npm test` passa.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-35.38: Ligar o heartbeat no CLI `worker/index.ts`
 - **Status:** pendente
@@ -2626,6 +2740,7 @@
 - **Critérios de Aceitação:** `npm run typecheck:worker` OK.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-35.39: Teste do worker: eventos emitidos na ordem dos nós
 - **Status:** pendente
@@ -2636,6 +2751,7 @@
 - **Critérios de Aceitação:** `npm test` passa.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.40: Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts`
 - **Status:** concluido
@@ -2646,6 +2762,7 @@
 - **Critérios de Aceitação:** `npm run typecheck:api` OK; aparece em `tools/list`.
 - **Commit:** `176aadb`
 - **Anotação:** Criado `api/_lib/event-tools.ts` registrando a ferramenta MCP `agent_event` (args `project?`, `agente` ≤120, `tipo` em inicio/progresso/fim/erro/heartbeat/trava/liberacao/commit, `task_codigo?`, `etapa?` ≤120, `status?`, `mensagem?` ≤2000, `chave_idempotencia?` ≤200): `guard` (exige `MCP_AUTH_TOKEN`), `resolveProject` (respeita `MCP_ALLOWED_PROJECTS`, padrão `default`) + `projectId`, insere em `agent_events`; com chave usa upsert `ignoreDuplicates` em `project_id,chave_idempotencia` (reenvio devolve `duplicate: true`). `montarEvento(args)` e `TIPOS_EVENTO` exportados para os testes da SUB-35.41. Importado em `api/mcp.ts`. `npm run typecheck` (app + api) e `npm test` verdes; conferido (teste local não commitado) que `agent_event` aparece em `tools/list`.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.41: Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts`
 - **Status:** concluido
@@ -2656,6 +2773,7 @@
 - **Critérios de Aceitação:** `npm test` passa.
 - **Commit:** `0263ae9`
 - **Anotação:** Criado `tests/unit/api-event-tools.test.ts` com `db` falso (`vi.mock` de `api/_lib/supabase.js`, construtor encadeável que registra tabela/operação/payload/opções): tipo fora da lista e agente vazio viram erro de ferramenta sem tocar no banco; projeto fora de `MCP_ALLOWED_PROJECTS` é recusado; sem `MCP_AUTH_TOKEN` a ferramenta fica desativada; caso ok insere `{ project_id, agente (trim), tipo, task_codigo, etapa, status, mensagem }`; com `chave_idempotencia` usa upsert `{ onConflict: 'project_id,chave_idempotencia', ignoreDuplicates: true }` e devolve `duplicate: true` sem linha. 6 testes; `npm run typecheck` e `npm test` verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.42: `commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py`
 - **Status:** concluido
@@ -2666,6 +2784,7 @@
 - **Critérios de Aceitação:** `python3 -m unittest scripts/test_espelhar_quadro_eventos.py` passa.
 - **Commit:** `53a5c93`
 - **Anotação:** Criado `scripts/espelhar_quadro_eventos.py` com a função pura `commits_para_eventos(linhas)` (entrada `git log --format='%H%x09%aI%x09%s'`): `lock: assumindo sub-task SUB-X por <agente>` -> `trava`; `feat(SUB-X): … — <agente>` -> `commit`; `docs(board): concluir SUB-X … de <agente>` -> `fim`; agente ausente vira 'desconhecido'; `chave_idempotencia = 'git:<sha>'`, `metadados.sha`, `created_at` = data do commit; linhas malformadas/outros commits ignorados. Testes em `scripts/test_espelhar_quadro_eventos.py` (4, unittest OK); conferido contra o `git log` real do repo.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.43: CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`)
 - **Status:** concluido
@@ -2676,6 +2795,7 @@
 - **Critérios de Aceitação:** Dry-run lista os eventos do repositório; teste da função segue verde; nenhuma chave impressa.
 - **Commit:** `e8917a3`
 - **Anotação:** CLI em `scripts/espelhar_quadro_eventos.py`: lê `git log --reverse` (`--desde`, `--repo`), lista os eventos (dry-run por padrão) e com `--aplicar` envia em lotes a `agent_events` via `ClienteSupabase`/`.env` do `sincronizar_tasks.py` (service_role, `--projeto` ou `DASHBOARD_AI_PROJECT`) com `on_conflict=project_id,chave_idempotencia` e `Prefer: resolution=ignore-duplicates`. Teste unitário de `enviar_eventos` (5 testes OK). Validado ponta a ponta com Postgres + PostgREST locais: 216 eventos enviados 2x -> 216 linhas, sem duplicar.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.44: Seção "Monitor em tempo real" no `README.md`
 - **Status:** concluido
@@ -2686,6 +2806,7 @@
 - **Critérios de Aceitação:** README revisado.
 - **Commit:** `9b785dc`
 - **Anotação:** Nova seção "Monitor em tempo real" no `README.md` (e no sumário), antes de Validação: fluxo worker LangGraph/MCP/espelho -> `agent_events` (RLS) -> Supabase Realtime -> `useEventosAgentes`/`useAtividadeAgentes` -> `#/monitor`, com `atividade_atual_agentes`; exemplo JSON-RPC da ferramenta MCP `agent_event` (campos, tipos válidos, `chave_idempotencia`); uso do `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`, mapeamento lock->trava, feat->commit, concluir->fim); tabela de estados (ativo até 2 min, ocioso até 15 min, sem sinal, finalizado) conforme `src/lib/monitor.ts`; aviso de que o monitor é só exibição e travas só valem no `task-principal.md` e só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [x] SUB-35.45: Seção "Reporte de progresso (opcional)" no `AGENTS.md`
 - **Status:** concluido
@@ -2696,6 +2817,7 @@
 - **Critérios de Aceitação:** Seção revisada; protocolo de lock inalterado.
 - **Commit:** `dcdbc96`
 - **Anotação:** Nova seção "📡 4. REPORTE DE PROGRESSO (OPCIONAL)" no `AGENTS.md` (antes do plano de implementação): orienta emitir `agent_event` com `agente` igual ao do quadro e `task_codigo` — `inicio` após o push do lock, `progresso` (com `etapa`), `heartbeat` a cada ~5 min em trabalho longo, `erro` e `fim` após o push da entrega; exemplo JSON-RPC; regras de `chave_idempotencia`, mensagens sem segredos, falha no evento não bloqueia, e o espelho `scripts/espelhar_quadro_eventos.py` para quem só usa o quadro. Aviso explícito de que o reporte não substitui nem altera o lock das seções 1/1.1 (diff só com inclusões; protocolo inalterado). Só documentação.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-35.46: Validação automatizada da SUB-35
 - **Status:** pendente
@@ -2706,6 +2828,7 @@
 - **Critérios de Aceitação:** Tudo verde.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 ### [x] SUB-36: Gráfico em rede (cérebro) dos agentes no `dashboard-task-principal.html`
 - **Status:** concluido
@@ -2716,6 +2839,7 @@
 - **Critérios de Aceitação:** Gráfico renderiza com o quadro atual sem erros de console; gráficos existentes intactos.
 - **Commit:** `cdbf35b`
 - **Anotação:** Concluída em 2026-10-12 01:02; validado com servidor estático + Chrome headless (9 agentes, sem erros de console, gráficos antigos intactos).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 ### [x] SUB-37: Ranking e prêmios dos agentes no `dashboard-task-principal.html`
 - **Status:** concluido
@@ -2726,3 +2850,4 @@
 - **Critérios de Aceitação:** Cartão renderiza com o quadro atual sem erros de console; contagens batem com contagem manual; gráficos e grafo existentes intactos.
 - **Commit:** `d12bd32`
 - **Anotação:** Concluída em 2026-10-12 01:14; validado com servidor local + Chrome headless: cérebro no topo (648px de altura, canvas sem o limite de 280px), ranking logo abaixo, gráficos intactos, sem erros de console, troca de líder simulada dispara o destaque; contagens conferidas com script independente.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
