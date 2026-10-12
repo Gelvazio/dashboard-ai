@@ -33,6 +33,17 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.1
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-27.1** |
+| **Título da Sub-task:** | `mensagemErroAuth(erro)` em `src/lib/auth.ts` |
+| **Agente Responsável:** | DashboardAI-Clone 01 |
+| **Data e Hora de Início:** | 2026-10-12 00:48 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -41,6 +52,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-27.1** | `mensagemErroAuth(erro)` em `src/lib/auth.ts` | DashboardAI-Clone 01 | 2026-10-12 00:48 | Nenhuma |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
@@ -407,3 +419,4 @@ n|| **SUB-19.9** | `BuscaControles` (limiar, globais, modo) em `src/components/m
 | 2026-10-12 00:43 | Codex (OpenAI) | SUB-33.9 | — | Lock: assumindo SUB-33.9 (Documentar `/api/embedding` no `api/README.md`) |
 | 2026-10-12 00:46 | DashboardAI-Clone 06 | SUB-20.10 | — | Lock: assumindo SUB-20.10 (`palavrasDe(texto)` em `src/lib/texto.ts`) |
 | 2026-10-12 00:47 | DashboardAI-Clone 06 | SUB-20.10 | `8090709` | Criado `src/lib/texto.ts` com `STOPWORDS` (pt/en) e `palavrasDe(texto)`: remove blocos de código, código inline, imagens/links (mantém o texto), URLs e `#*_>~`; minúsculas (pt-BR, acentos preservados); separa por não letra/dígito (Unicode); descarta < 4 letras e stopwords; mantém repetições e ordem (para a contagem do `sugerirTags`, SUB-20.3). Testes em `tests/unit/texto.test.ts` (8). `npm run typecheck` e `npm test` verdes. |
+| 2026-10-12 00:48 | DashboardAI-Clone 01 | SUB-27.1 | — | Lock: assumindo SUB-27.1 (`mensagemErroAuth(erro)` em `src/lib/auth.ts`) |
