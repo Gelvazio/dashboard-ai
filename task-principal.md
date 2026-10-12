@@ -49,17 +49,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 03 (Grok Bot) — SUB-28.1
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-28.1** |
-| **Título da Sub-task:** | Contrato: identificadores e estado mínimo em `docs/langgraph-contrato.md` |
-| **Agente Responsável:** | DashboardAI-Clone 03 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:45 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
@@ -1834,7 +1823,7 @@
 - **Executor:** nenhum
 - **Depende de:** SUB-01 a SUB-27, SUB-29, SUB-30 (todas as tasks anteriores concluídas); subtarefas SUB-28.1 a SUB-28.32
 - **Subtarefas:** (subdividida em 18 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 25 em 2026-10-11 23:51; nova revisão para 32 em 2026-10-12 00:17)
-  - `SUB-28.1`: Contrato: identificadores e estado mínimo em `docs/langgraph-contrato.md` (`em_execucao`)
+  - `SUB-28.1`: Contrato: identificadores e estado mínimo em `docs/langgraph-contrato.md` (`pendente`)
   - `SUB-28.2`: Dependências do worker no `package.json` (`pendente`)
   - `SUB-28.3`: Annotation `EstadoExecucao` em `worker/estado.ts` (`pendente`)
   - `SUB-28.4`: `reivindicar(agente, projeto)` em `worker/fila.ts` (`pendente`)
@@ -1871,9 +1860,9 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [🔄] SUB-28.1: Contrato: identificadores e estado mínimo em `docs/langgraph-contrato.md`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 03 (Grok Bot) (início: 2026-10-12 01:45)
+#### [ ] SUB-28.1: Contrato: identificadores e estado mínimo em `docs/langgraph-contrato.md`
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-01 a SUB-27, SUB-29 a SUB-34
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `docs/langgraph-contrato.md` com a primeira seção do contrato da seção 9.1 do `LangChain_LangGraph.md`: identificador da execução (`task_id` + tentativa) e estado mínimo persistido.
