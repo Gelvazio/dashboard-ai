@@ -10,12 +10,12 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
 - **Subtarefas atômicas (~3 min):** 153 (SUB-08.x, SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x; atualizado em 2026-10-12 00:17)
-- **Em Execução:** 2 (SUB-33.12, SUB-23.1)
-- **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 142 subtarefas
+- **Em Execução:** 1 (SUB-23.1)
+- **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 141 subtarefas
   - livres agora: 28 (SUB-33.5, SUB-33.7, SUB-33.9, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
   - bloqueadas por dependência: 112
   - reservadas: 0
-- **Concluídas:** 36
+- **Concluídas:** 37
 - **Canceladas:** 0
 
 ---
@@ -168,7 +168,7 @@
   - `SUB-33.9`: Documentar `/api/embedding` no `api/README.md` (`pendente`)
   - `SUB-33.10`: Autenticação no handler `api/embedding.ts` (401) (`concluido`)
   - `SUB-33.11`: Corpo, geração do embedding e erros no handler (400/413/502/200) (`concluido`)
-  - `SUB-33.12`: Testes do handler: 413, 502 e 200 (`em_execucao`)
+  - `SUB-33.12`: Testes do handler: 413, 502 e 200 (`concluido`)
   - `SUB-33.13`: Classe `HttpError` em `api/_lib/http-error.ts` (`concluido`)
 - **Descrição:** Criar a função serverless `POST /api/embedding` que valida o JWT da sessão Supabase do usuário (`Authorization: Bearer <access_token>`, conferido no Supabase Auth com a URL e a chave do servidor) e devolve o embedding do texto enviado, usando `OPENAI_API_KEY`, `EMBEDDING_MODEL` e `EMBEDDING_API_URL` somente no servidor (reaproveitar `api/_lib/embeddings.ts`). No frontend, expor um `GeradorEmbedding` que chama esse endpoint para `buscarMemorias`/`salvarMemoria` (SUB-10).
 - **Critérios de Aceitação:** 401 sem sessão ou com JWT inválido; 405 para métodos diferentes de POST; limite de tamanho do texto; resposta com vetor de 1536 dimensões; nenhuma chave no navegador; `tsc` sem erros e testes cobrindo os casos.
@@ -285,15 +285,15 @@
 - **Commit:** `0dca17d`
 - **Anotação:** No `api/embedding.ts`, após a autenticação: `lerTextoEmbedding(req.body)` (`HttpError` -> status dela, 400/413), `generateEmbedding` -> 200 `{ embedding, dimensoes: 1536, modelo }`; `EmbeddingError` -> 502 com mensagem genérica (a mensagem do provedor pode ecoar parte da chave, então não é devolvida). 501 provisório removido. typecheck (app + api) e `npm test` verdes; smoke local (não commitado) conferiu 200/400/413/502 sem `sk-` no corpo.
 
-#### [ ] SUB-33.12: Testes do handler: 413, 502 e 200
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (desde 2026-10-12 00:28)
+#### [x] SUB-33.12: Testes do handler: 413, 502 e 200
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:28 → 2026-10-12 00:29)
 - **Depende de:** SUB-33.11
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Em `tests/unit/api-embedding.test.ts`, adicionar: 413 com texto longo, 400 sem `texto`, 502 quando a API de embeddings falha (sem vazar a chave) e 200 com vetor de 1536 (Auth e embeddings simulados).
 - **Critérios de Aceitação:** `npm test` passa com os 4 casos novos.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `bf48093`
+- **Anotação:** Em `tests/unit/api-embedding.test.ts`, bloco "POST autenticado" com Auth e API de embeddings simulados: 413 com 8.001 caracteres, 400 sem `texto`, 502 quando a API de embeddings recusa (corpo sem `sk-` e sem a chave anon) e 200 com vetor de 1536 (`dimensoes`, `modelo`, 2 chamadas a `fetch`). typecheck (app + api) e `npm test` verdes (57 passed).
 
 #### [x] SUB-33.13: Classe `HttpError` em `api/_lib/http-error.ts`
 - **Status:** concluido
