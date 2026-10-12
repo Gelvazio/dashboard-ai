@@ -2638,8 +2638,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-35.45: Seção "Reporte de progresso (opcional)" no `AGENTS.md`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 01:11)
 - **Depende de:** SUB-35.41
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Orientar os agentes a emitir `agent_event` (`inicio`/`progresso`/`fim`/`erro` e `heartbeat`) ao trabalhar numa subtarefa, sem substituir o protocolo de lock do quadro.
