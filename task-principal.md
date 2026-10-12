@@ -2288,14 +2288,14 @@
 - **Anotação:** Criado `src/services/eventService.ts` com `listarEventos(projectId, { desde?, agente?, limite = 200 }, client = getSupabase())` -> `AgentEvent[]`: filtra por `project_id`, `created_at >= desde` (data inválida -> `ServiceError`) e agente exato (trim); ordena por `created_at` desc e `id` desc; limite entre 1 e 1000; erros via `resultado(res, 'Listar eventos')`. Exportado no barrel `src/services/index.ts` (demais exports mantidos). `npm run typecheck` e `npm test` OK.
 
 #### [ ] SUB-35.10: `atividadeAtual()` em `src/services/eventService.ts`
-- **Status:** em_execucao
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 09 (Grok Bot)
 - **Depende de:** SUB-35.9
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `atividadeAtual(projectId, client?)`: chama a RPC `atividade_atual_agentes` e devolve `AtividadeAgente[]` ordenado por `ultimo_em` desc.
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `47fb521`
+- **Anotação:** Adicionado `atividadeAtual(projectId, client?)` em `src/services/eventService.ts`: chama a RPC `atividade_atual_agentes` (`p_project_id`), trata erro com `resultado` (contexto "Atividade dos agentes") e devolve `AtividadeAgente[]` ordenado por `ultimo_em` desc (lista vazia se `null`). typecheck e `npm test` OK.
 
 #### [ ] SUB-35.11: `assinarEventos()` (Supabase Realtime) em `src/services/eventService.ts`
 - **Status:** pendente
