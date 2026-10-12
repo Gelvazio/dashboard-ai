@@ -6,6 +6,51 @@
 
 Esta é uma v2 do projeto Dashboard AI atual, operando como um clone independente mas compartilhando a mesma base de código. Inspirado no Kiro.dev, que é um ambiente de desenvolvimento AI-powered que ajuda a construir software de protótipo a produção.
 
+## 🔒 PROTOCOLO DE CONCORRÊNCIA (SAME AS AGENTS.md)
+
+> **IMPORTANTE:** Este projeto usa o mesmo protocolo de trava do `AGENTS.md` principal.
+> O quadro único é o `task-principal.md` na raiz do projeto.
+
+**CHECKLIST OBRIGATÓRIO ANTES DE ASSUMIR QUALQUER TAREFA:**
+☐ [ ] Fiz `git pull --rebase origin main` **PRIMEIRO**?
+☐ [ ] Li o arquivo ATUALIZADO (task-principal.md)?
+☐ [ ] Verifiquei que a trava está LIVRE ou que minha task não conflita?
+☐ [ ] Confirmei que todas as dependências estão `concluido`?
+☐ [ ] Não tenho nenhum outro item travado (máximo 1 subtarefa ou 1 tarefa atômica por agente)?
+☐ [ ] O item é uma subtarefa ou tarefa atômica (não uma tarefa-mãe com subtarefas)?
+☐ [ ] Vou fazer commit + push do lock IMEDIATAMENTE antes de codificar?
+
+⛔ **Se NÃO marcou todos os ☐ acima, NÃO assuma a tarefa.**
+
+### Fluxo de Trava (3 Partes)
+
+**PARTE 1 — LER O QUADRO:**
+1. `git pull --rebase origin main` (CRÍTICO — primeiro passo)
+2. Ler `task-principal.md` ATUALIZADO
+3. Conferir se a trava está LIVRE
+4. Localizar sub-task com status `pendente` e dependências `concluido`
+
+**PARTE 2 — GRAVAR LOCK:**
+1. Mudar status da sub-task para `em_execucao` em `task-principal.md`
+2. `git add task-principal.md`
+3. `git commit -m "lock: assumindo sub-task SUB-XX por [Nome do Agente]"`
+4. `git push origin main`
+
+**PARTE 3 — EXECUÇÃO E ENTREGA:**
+1. Implementar e validar a tarefa
+2. Mudar status para `concluido` e registrar commit SHA
+3. Mover bloco concluído para `task_complete.md`
+4. `git add <arquivos> task-principal.md task_complete.md`
+5. `git commit -m "feat(SUB-XX): descrição"`
+6. `git push origin main`
+
+### Regras de Concorrência
+
+- **Máximo 1 item travado por agente** (1 subtarefa ou 1 tarefa atômica)
+- **Proibido travar tarefa-mãe com subtarefas**
+- **Push do lock recusado?** → `git pull --rebase` e reler quadro; se outro agente pegou, liberar e escolher outro
+- **Usar skill `proxima-task`** para o fluxo automatizado
+
 ## Visão Geral do Kiro.dev
 
 Kiro oferece **5 superfícies** (surfaces) que compartilham a mesma configuração `.kiro/`:
@@ -258,10 +303,11 @@ Kiro oferece **5 superfícies** (surfaces) que compartilham a mesma configuraç�
 ## Regras do Projeto Principal
 
 Seguir as mesmas regras do `AGENTS.md` principal:
-- Protocolo de trava no `task-principal.md`
-- Commits com formato padrão
+- Protocolo de trava no `task-principal.md` (ver seção acima)
+- Commits com formato padrão: `feat(SUB-XX): descrição` ou `docs(SUB-XX): descrição`
 - Validação com `npm run typecheck`, `npm test`, `npm run build`
 - Não usar `git push --force`
+- Usar skill `proxima-task` para fluxo automatizado de tarefas
 
 ## Próximos Passos
 
@@ -269,3 +315,4 @@ Seguir as mesmas regras do `AGENTS.md` principal:
 2. Cada tarefa deve levar ≤ 5 minutos
 3. Atualizar `STATUS.md` após cada tarefa
 4. Commit e push após cada fase concluída
+5. **Sempre seguir o protocolo de trava antes de implementar**
