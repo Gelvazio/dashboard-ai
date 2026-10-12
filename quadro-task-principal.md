@@ -77,17 +77,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:06 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-35.5
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.5** |
-| **Título da Sub-task:** | Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` |
-| **Agente Responsável:** | DashboardAI-Clone 02 |
-| **Data e Hora de Início:** | 2026-10-12 01:07 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 04 (Grok Bot) — SUB-19.8
 
 | Propriedade | Valor Atual |
@@ -120,7 +109,6 @@
 |---|---|---|---|---|
 | **SUB-35.6** | Teste de integração de `agent_events` (RLS e trigger) | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:07 | SUB-35.2, SUB-35.3 |
 | **SUB-19.8** | Integrar a busca na `src/views/MemoriaView.tsx` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:07 | SUB-19.7, SUB-21.9 |
-| **SUB-35.5** | Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` | DashboardAI-Clone 02 | 2026-10-12 01:07 | SUB-35.3 |
 | **SUB-26.6** | Seção Agentes de IA: configurar clientes MCP | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:06 | SUB-26.1 |
 | **SUB-21.11** | Ligar detalhe e exclusão na `MemoriaView` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:06 | SUB-21.9, SUB-21.6, SUB-21.7 |
 | **SUB-27.14** | Componente `UserMenu` em `src/components/layout/UserMenu.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:06 | SUB-27.26 |
@@ -227,7 +215,6 @@
 | **SUB-27.27** | Incluir `UserMenu` no `src/components/layout/Header.tsx` | 3 | Fase 10 | SUB-27.14 — ⛓️ bloqueada |
 | **SUB-27.28** | Varredura do bundle por `service_role` (SUB-27) | 3 | Fase 10 | SUB-27.22 — ⛓️ bloqueada |
 | **SUB-35** | Monitor em Tempo Real dos Agentes (mãe) | 4 | Fase 12 | SUB-12, SUB-29, SUB-30; SUB-35.1 a SUB-35.46 |
-| **SUB-35.5** | Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` | 4 | Fase 12 | SUB-35.3 — 🔄 em execução por DashboardAI-Clone 02 |
 | **SUB-35.7** | Seção "Eventos dos agentes (07)" no `database/README.md` | 4 | Fase 12 | SUB-35.4, SUB-35.5 — ⛓️ bloqueada |
 | **SUB-35.8** | Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` | 4 | Fase 12 | SUB-35.5 — ⛓️ bloqueada |
 | **SUB-35.9** | `listarEventos()` em `src/services/eventService.ts` | 4 | Fase 12 | SUB-35.8 — ⛓️ bloqueada |
@@ -390,6 +377,7 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | **SUB-23.5** | Teste de integração de `liberarTrava`: expirada e forçada | DashboardAI-Clone 02 | 2026-10-12 01:04 | 2026-10-12 01:04 | `af0214b` |
 | **SUB-23.12** | Teste de integração de `liberarTrava`: viewer e outro projeto | DashboardAI-Clone 02 | 2026-10-12 01:05 | 2026-10-12 01:05 | `a276f7f` |
 | **SUB-35.4** | Publicar `agent_events` no Supabase Realtime | DashboardAI-Clone 02 | 2026-10-12 01:07 | 2026-10-12 01:07 | `95f12ff` |
+| **SUB-35.5** | Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` | DashboardAI-Clone 02 | 2026-10-12 01:08 | 2026-10-12 01:07 | `d9d9a6c` |
 ---
 
 ### ⛔ CANCELADAS (0)
@@ -627,3 +615,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:07 | DashboardAI-Clone 02 | SUB-35.5 | — | Lock: assumindo SUB-35.5 (Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql`) |
 | 2026-10-12 01:07 | DashboardAI-Clone 04 (Grok Bot) | SUB-19.8 | — | Lock: assumindo SUB-19.8 (Integrar a busca na `src/views/MemoriaView.tsx`) |
 | 2026-10-12 01:07 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.6 | — | Lock: assumindo SUB-35.6 (Teste de integração de `agent_events` (RLS e trigger)) |
+| 2026-10-12 01:07 | DashboardAI-Clone 02 | SUB-35.5 | `d9d9a6c` | Adicionada `atividade_atual_agentes(p_project_id bigint)` em `database/07_agent_events.sql`: SQL `stable`, `security invoker` (respeita a RLS), `distinct on (agente)` ordenado por `created_at desc` -> agente, task_codigo, etapa, tipo, status, mensagem, execucao_id, ultimo_em e ultimo_heartbeat_em (máximo dos `tipo = 'heartbeat'`). `drop function if exists` + create (reaplicável); execute só para `authenticated`/`service_role`. Validado em Postgres local: 00–07 aplicados 2x; com eventos de 2 agentes devolve 1 linha por agente com o último evento e heartbeat correto. |

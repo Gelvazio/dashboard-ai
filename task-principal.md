@@ -2149,7 +2149,7 @@
   - `SUB-35.2`: Trigger `validar_agent_event` em `database/07_agent_events.sql` (`concluido`)
   - `SUB-35.3`: RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql` (`concluido`)
   - `SUB-35.4`: Publicar `agent_events` no Supabase Realtime (`concluido`)
-  - `SUB-35.5`: Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` (`em_execucao`)
+  - `SUB-35.5`: Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` (`concluido`)
   - `SUB-35.6`: Teste de integração de `agent_events` (RLS e trigger) (`em_execucao`)
   - `SUB-35.7`: Seção "Eventos dos agentes (07)" no `database/README.md` (`pendente`)
   - `SUB-35.8`: Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` (`pendente`)
@@ -2237,15 +2237,15 @@
 - **Commit:** `95f12ff`
 - **Anotação:** Em `database/07_agent_events.sql`, bloco `do $$` que faz `alter publication supabase_realtime add table public.agent_events` só se a publicação existir e a tabela ainda não estiver nela. Validado em Postgres local (banco temporário): 00–07 aplicados 2x sem a publicação (não falha); com `create publication supabase_realtime`, 07 reaplicado 2x e `pg_publication_tables` mostra `agent_events`.
 
-#### [🔄] SUB-35.5: Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql`
-- **Status:** em_execucao
+#### [x] SUB-35.5: Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-35.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Função SQL `stable`, `security invoker` (respeita a RLS), que devolve o último evento de cada agente do projeto (`distinct on (agente) ... order by agente, created_at desc`): `agente`, `task_codigo`, `etapa`, `tipo`, `status`, `mensagem`, `execucao_id`, `ultimo_em`, mais `ultimo_heartbeat_em` (último `tipo = 'heartbeat'`). `grant execute` para `authenticated`. Só exibe atividade; não altera travas.
 - **Critérios de Aceitação:** Aplicação limpa; `select * from atividade_atual_agentes(<id>)` devolve uma linha por agente.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `d9d9a6c`
+- **Anotação:** Adicionada `atividade_atual_agentes(p_project_id bigint)` em `database/07_agent_events.sql`: SQL `stable`, `security invoker` (respeita a RLS), `distinct on (agente)` ordenado por `created_at desc` -> agente, task_codigo, etapa, tipo, status, mensagem, execucao_id, ultimo_em e ultimo_heartbeat_em (máximo dos `tipo = 'heartbeat'`). `drop function if exists` + create (reaplicável); execute só para `authenticated`/`service_role`. Validado em Postgres local: 00–07 aplicados 2x; com eventos de 2 agentes devolve 1 linha por agente com o último evento e heartbeat correto.
 
 #### [ ] SUB-35.6: Teste de integração de `agent_events` (RLS e trigger)
 - **Status:** em_execucao
