@@ -33,13 +33,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-n### 🔒 TRAVA ADICIONAL — Claude Code — SUB-35.23
-
-|| Propriedade | Valor Atual |
-||---|---|
-|| **Status da Trava:** | 🔴 **OCUPADO** |
-|| **Sub-task em Execução:** | **SUB-35.23** |
-|| **Título da Sub-task:** | Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx` |
 || **Agente Responsável:** | Claude Code |
 || **Data e Hora de Início:** | 2026-10-12 01:23 |
 || **Bloqueio para Outras IAs:** | **ATIVADO** |
@@ -161,10 +154,11 @@ n### 🔒 TRAVA ADICIONAL — Claude Code — SUB-35.23
 
 ---
 
-### ✅ CONCLUÍDAS (114)
+### ✅ CONCLUÍDAS (115)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+n|| **SUB-35.23** | Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx` | Claude Code | 2026-10-12 01:23 | 2026-10-12 01:25 | `870c471` |
 | **SUB-35.16** | `contarPorStatus()` em `src/lib/monitor.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:15 | 2026-10-12 01:17 | `860e0c9` |
 | **SUB-35.17** | `contarPorAgente()` em `src/lib/monitor.ts` | DashboardAI-Clone 04 + DashboardAI (Grok Bot) | 2026-10-12 01:17 | 2026-10-12 01:22 | `7d2181e` |
 | **SUB-35.19** | Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts` | DashboardAI-Clone 09 + DashboardAI (Grok Bot) | 2026-10-12 01:17 | 2026-10-12 01:22 | `7d2181e` |
