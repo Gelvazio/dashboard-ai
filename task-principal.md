@@ -2166,7 +2166,7 @@
   - `SUB-35.19`: Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts` (`pendente`)
   - `SUB-35.20`: Hook `useAtividadeAgentes(projectId)` em `src/hooks/useAtividadeAgentes.ts` (`pendente`)
   - `SUB-35.21`: Instalar `chart.js` e `react-chartjs-2` (`concluido`, `73d73ad`)
-  - `SUB-35.22`: Registro do Chart.js e paleta em `src/lib/charts.ts` (`em_execucao`)
+  - `SUB-35.22`: Registro do Chart.js e paleta em `src/lib/charts.ts` (`concluido`, `cabdbc0`)
   - `SUB-35.23`: Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx` (`pendente`)
   - `SUB-35.24`: Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx` (`pendente`)
   - `SUB-35.25`: Gráfico `GraficoPorStatus` em `src/components/monitor/GraficoPorStatus.tsx` (`pendente`)
@@ -2407,15 +2407,15 @@
 - **Commit:** `73d73ad`
 - **Anotação:** Instalados `chart.js@^4.5.1` e `react-chartjs-2@^5.3.1` em `dependencies` (versões fixadas no `package-lock.json`); ainda sem uso no código (registro/paleta na SUB-35.22). `npm ci` e `npm audit --audit-level=high` sem vulnerabilidades; `npm run build` OK.
 
-#### [ ] SUB-35.22: Registro do Chart.js e paleta em `src/lib/charts.ts`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 01:08)
+#### [x] SUB-35.22: Registro do Chart.js e paleta em `src/lib/charts.ts`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 01:08; conclusão: 2026-10-12 01:09)
 - **Depende de:** SUB-35.21
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Registrar só os elementos usados (`ArcElement`, `BarElement`, `CategoryScale`, `LinearScale`, `TimeScale` ou escala linear de tempo, `Tooltip`, `Legend`) para manter o bundle pequeno, e exportar `CORES_ESTADO`/`CORES_TIPO` com variantes claro/escuro.
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `cabdbc0`
+- **Anotação:** Criado `src/lib/charts.ts`: `Chart.register` só com `ArcElement`, `BarElement`, `CategoryScale`, `LinearScale`, `Tooltip` e `Legend` (linha do tempo usará `LinearScale` com ms, sem `TimeScale`/adaptador de datas), reexporta `Chart`; paletas `CORES_ESTADO` (ativo/ocioso/sem_sinal/finalizado) e `CORES_TIPO` (os 8 tipos do check de `agent_events`) com variantes `claro`/`escuro`, mais `CORES_EIXO` e `corDoTema(cor, escuro)`. `npm run typecheck`, `npm run build` e `npm test` OK.
 
 #### [ ] SUB-35.23: Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx`
 - **Status:** pendente
