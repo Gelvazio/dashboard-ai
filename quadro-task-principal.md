@@ -55,17 +55,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:10 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-35.41
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.41** |
-| **Título da Sub-task:** | Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts` |
-| **Agente Responsável:** | DashboardAI-Clone 08 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:10 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 05 (Grok Bot) — SUB-35.8
 
 | Propriedade | Valor Atual |
@@ -114,7 +103,7 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (5)
+### 🔄 EM EXECUÇÃO (4)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
@@ -122,7 +111,6 @@
 | **SUB-21.10** | Validação visual da SUB-21 (screenshots) | DashboardAI-Clone 01 | 2026-10-12 01:10 | SUB-21.11 |
 | **SUB-27.27** | Incluir `UserMenu` no `src/components/layout/Header.tsx` | DashboardAI-Clone 06 | 2026-10-12 01:10 | SUB-27.14 |
 | **SUB-35.8** | Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:10 | SUB-35.5 |
-| **SUB-35.41** | Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:10 | SUB-35.40 |
 | **SUB-20.7** | Botão "Nova memória" na `src/views/MemoriaView.tsx` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:10 | SUB-20.6, SUB-19.8, SUB-21.9 |
 | **SUB-37** | Ranking e prêmios dos agentes no `dashboard-task-principal.html` | DashboardAI (Grok Bot) | 2026-10-12 01:09 | Nenhuma |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
@@ -257,10 +245,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (94)
+### ✅ CONCLUÍDAS (95)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-35.41** | Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:10 | 2026-10-12 01:11 | `0263ae9` |
 | **SUB-35.6** | Teste de integração de `agent_events` (RLS e trigger) | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:07 | 2026-10-12 01:09 | `e7a39cd` |
 | **SUB-19.8** | Integrar a busca na `src/views/MemoriaView.tsx` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:07 | 2026-10-12 01:09 | `37df2a9` |
 | **SUB-27.8** | Teste de integração dos papéis em `tests/integration/authService.integration.test.ts` | DashboardAI-Clone 01 | 2026-10-12 01:08 | 2026-10-12 01:09 | `ca52028` |
@@ -654,3 +643,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:10 | DashboardAI-Clone 06 | SUB-27.27 | — | Lock: assumindo SUB-27.27 (Incluir `UserMenu` no `src/components/layout/Header.tsx`) |
 | 2026-10-12 01:10 | DashboardAI-Clone 01 | SUB-21.10 | — | Lock: assumindo SUB-21.10 (Validação visual da SUB-21 (screenshots)) |
 | 2026-10-12 01:11 | DashboardAI-Clone 02 | SUB-35.7 | `b518611` | No `database/README.md`: `07_agent_events.sql` na tabela de ordem de aplicação (e 'Como aplicar' 00 → 07) e nova seção 'Eventos dos agentes (07)' com colunas, tipos de evento, `chave_idempotencia` (única por projeto; exemplo `git:<sha>` do espelho do quadro), trigger `validar_agent_event`, RLS (viewer lê, editor inclui, sem UPDATE/DELETE), publicação Realtime condicional e `atividade_atual_agentes`. Conferido contra o SQL. |
+| 2026-10-12 01:11 | DashboardAI-Clone 08 (Grok Bot) | SUB-35.41 | `0263ae9` | Criado `tests/unit/api-event-tools.test.ts` com `db` falso (`vi.mock` de `api/_lib/supabase.js`, construtor encadeável que registra tabela/operação/payload/opções): tipo fora da lista e agente vazio viram erro de ferramenta sem tocar no banco; projeto fora de `MCP_ALLOWED_PROJECTS` é recusado; sem `MCP_AUTH_TOKEN` a ferramenta fica desativada; caso ok insere `{ project_id, agente (trim), tipo, task_codigo, etapa, status, mensagem }`; com `chave_idempotencia` usa upsert `{ onConflict: 'project_id,chave_idempotencia', ignoreDuplicates: true }` e devolve `duplicate: true` sem linha. 6 testes; `npm run typecheck` e `npm test` verdes. |
