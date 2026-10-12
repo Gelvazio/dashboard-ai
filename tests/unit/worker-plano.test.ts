@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { montarPromptPlano } from '../../worker/plano';
+import { montarPromptPlano, PlanoSchema } from '../../worker/plano';
 
 describe('montarPromptPlano', () => {
   it('deve incluir a instrucao da task', () => {
@@ -46,5 +46,36 @@ describe('montarPromptPlano', () => {
     expect(prompt).toContain('brain_search');
     expect(prompt).toContain('brain_store');
     expect(prompt).toContain('sensivel');
+  });
+});
+
+describe('PlanoSchema', () => {
+  const passoValido = {
+    ferramenta: 'brain_search',
+    argumentos: { query: 'deploy' },
+    sensivel: false,
+    criterio: 'retorna ao menos uma memória',
+  };
+
+  it('aceita um plano válido', () => {
+    const resultado = PlanoSchema.safeParse({ passos: [passoValido] });
+    expect(resultado.success).toBe(true);
+  });
+
+  it('recusa passo sem ferramenta', () => {
+    const { ferramenta: _ferramenta, ...semFerramenta } = passoValido;
+    expect(PlanoSchema.safeParse({ passos: [semFerramenta] }).success).toBe(false);
+  });
+
+  it('recusa sensivel que não é booleano', () => {
+    expect(PlanoSchema.safeParse({ passos: [{ ...passoValido, sensivel: 'nao' }] }).success).toBe(false);
+  });
+
+  it('recusa argumentos que não são objeto', () => {
+    expect(PlanoSchema.safeParse({ passos: [{ ...passoValido, argumentos: 'query=deploy' }] }).success).toBe(false);
+  });
+
+  it('recusa plano sem a lista de passos', () => {
+    expect(PlanoSchema.safeParse({}).success).toBe(false);
   });
 });
