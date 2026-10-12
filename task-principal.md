@@ -38,17 +38,6 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-28.1
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-28.1** |
-| **Título da Sub-task:** | Contrato: identificadores e estado mínimo em `docs/langgraph-contrato.md` |
-| **Agente Responsável:** | DashboardAI-Clone 01 |
-| **Data e Hora de Início:** | 2026-10-12 01:46 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-33.9
 
 | Propriedade | Valor Atual |
@@ -1871,15 +1860,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-28.1: Contrato: identificadores e estado mínimo em `docs/langgraph-contrato.md`
-- **Status:** em_execucao
+#### [x] SUB-28.1: Contrato: identificadores e estado mínimo em `docs/langgraph-contrato.md`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-01 a SUB-27, SUB-29 a SUB-34
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `docs/langgraph-contrato.md` com a primeira seção do contrato da seção 9.1 do `LangChain_LangGraph.md`: identificador da execução (`task_id` + tentativa) e estado mínimo persistido.
 - **Critérios de Aceitação:** Seção escrita e coerente com o `LangChain_LangGraph.md`.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `fc379a6`
+- **Anotação:** Criado `docs/langgraph-contrato.md` com a seção 1 do contrato (9.1 do `LangChain_LangGraph.md`): `execucaoId = task-<taskId>-t<tentativa>` (tentativa = `tasks.tentativas` após `pegar_proxima_task`; usado como `thread_id` do checkpointer, `execucao_id` dos eventos e metadado do `finalizar_task`), retomada vs. nova tentativa, campos do estado mínimo do checkpoint (e o que nunca entra) e regras de coerência com o banco (reconferir status/trava/tentativa ao iniciar e retomar; status só via `finalizar_task`).
 
 #### [ ] SUB-28.2: Dependências do worker no `package.json`
 - **Status:** pendente
