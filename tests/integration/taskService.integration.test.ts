@@ -114,3 +114,38 @@ describe.skipIf(!integracaoDisponivel)('taskService.liberarTrava: expirada e for
     expect((await tasks.liberarTrava(p.id, t.id, true, sb)).status).toBe('pendente');
   });
 });
+
+describe.skipIf(!integracaoDisponivel)('taskService.liberarTrava: viewer e outro projeto (SUB-23.12)', () => {
+  const editor = novoUsuario();
+  const viewer = novoUsuario();
+  let p: Project;
+  let outro: Project;
+
+  beforeAll(async () => {
+    p = await criarProjeto([{ id: editor, role: 'editor' }, { id: viewer, role: 'viewer' }], 'LBV');
+    outro = await criarProjeto([{ id: editor, role: 'editor' }], 'LBO');
+  });
+
+  const travarExpirada = async (id: number) => {
+    const { error } = await servico()
+      .from('tasks')
+      .update({ status: 'em_execucao', trava_frente: 'Agente Y', trava_em: new Date(Date.now() - 100 * 60_000).toISOString() })
+      .eq('id', id);
+    expect(error).toBeNull();
+  };
+
+  it('recusa o viewer ao liberar trava', async () => {
+    const t = await tasks.criarTask(p.id, { titulo: 'Trava viewer', instrucao: 'x' }, usuario(editor));
+    await travarExpirada(t.id);
+    await expect(tasks.liberarTrava(p.id, t.id, true, usuario(viewer))).rejects.toThrow(/Sem permissão/);
+    expect((await tasks.obterTask(p.id, t.id, usuario(editor))).status).toBe('em_execucao');
+  });
+
+  it('recusa liberar task de outro projeto pelo projectId errado', async () => {
+    const sb = usuario(editor);
+    const t = await tasks.criarTask(outro.id, { titulo: 'Outro', instrucao: 'x' }, sb);
+    await travarExpirada(t.id);
+    await expect(tasks.liberarTrava(p.id, t.id, true, sb)).rejects.toThrow(ServiceError);
+    expect((await tasks.obterTask(outro.id, t.id, sb)).status).toBe('em_execucao');
+  });
+});
