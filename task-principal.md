@@ -1109,7 +1109,7 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-23.1: `minutosDeTrava` em `src/lib/saudeFila.ts`
-- **Status:** em_execucao
+- **Status:** concluido
 - **Executor:** nenhum
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
@@ -1229,7 +1229,7 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-23.13: `travaExpirada` em `src/lib/saudeFila.ts`
-- **Status:** pendente
+- **Status:** em_execucao
 - **Executor:** nenhum
 - **Depende de:** SUB-23.1
 - **Subtarefas:** Nenhuma (atômica)
