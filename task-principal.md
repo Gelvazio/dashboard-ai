@@ -592,7 +592,7 @@
 - **Subtarefas:** (subdividida em 5 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; nova revisão para 6 em 2026-10-12 00:17)
   - `SUB-34.1`: Fallback `CarregandoTela` em `src/components/ui/CarregandoTela.tsx` (`pendente`)
   - `SUB-34.2`: Telas com `React.lazy` em `src/views/index.ts` (`pendente`)
-  - `SUB-34.3`: Modais da fila sob demanda na `src/views/FilaView.tsx` (`pendente`)
+  - `SUB-34.3`: Modais da fila sob demanda na `src/views/FilaView.tsx` (`em_execucao`)
   - `SUB-34.4`: Separar dependências grandes no `vite.config.ts` (`pendente`)
   - `SUB-34.5`: Checagem de tamanho `scripts/checar-chunks.mjs` (`pendente`)
   - `SUB-34.6`: `Suspense` com `CarregandoTela` no `src/App.tsx` (`concluido`, `67d89b6`)
@@ -623,8 +623,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-34.3: Modais da fila sob demanda na `src/views/FilaView.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:08)
 - **Depende de:** SUB-34.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Carregar `TaskFormModal` e `TaskDetailModal` com `lazy` (import direto do arquivo, não do barrel `@/components/tasks`) e renderizá-los só quando abertos, dentro de `Suspense`.

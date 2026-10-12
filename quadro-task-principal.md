@@ -77,14 +77,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:08 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-34.3
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-34.3** |
+| **Título da Sub-task:** | Modais da fila sob demanda na `src/views/FilaView.tsx` |
+| **Agente Responsável:** | DashboardAI-Clone 10 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:08 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (4)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-34.3** | Modais da fila sob demanda na `src/views/FilaView.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:08 | SUB-34.1 |
 | **SUB-35.42** | `commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py` | DashboardAI-Clone 02 | 2026-10-12 01:08 | SUB-35.1 |
 | **SUB-35.6** | Teste de integração de `agent_events` (RLS e trigger) | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:07 | SUB-35.2, SUB-35.3 |
 | **SUB-19.8** | Integrar a busca na `src/views/MemoriaView.tsx` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:07 | SUB-19.7, SUB-21.9 |
@@ -127,7 +139,7 @@
 | **SUB-34** | Carregamento Sob Demanda de Telas e Modais (code splitting) (mãe) | 4 | Fase 6 | SUB-13, SUB-14, SUB-16, SUB-17, SUB-18; SUB-34.1 a SUB-34.6 |
 | **SUB-34.1** | Fallback `CarregandoTela` em `src/components/ui/CarregandoTela.tsx` | 4 | Fase 6 | Nenhuma — 🟢 livre |
 | **SUB-34.2** | Telas com `React.lazy` em `src/views/index.ts` | 4 | Fase 6 | Nenhuma — 🟢 livre |
-| **SUB-34.3** | Modais da fila sob demanda na `src/views/FilaView.tsx` | 4 | Fase 6 | SUB-34.1 — ⛓️ bloqueada |
+| **SUB-34.3** | Modais da fila sob demanda na `src/views/FilaView.tsx` | 4 | Fase 6 | SUB-34.1 — 🔄 em execução por DashboardAI-Clone 10 (Grok Bot) |
 | **SUB-34.4** | Separar dependências grandes no `vite.config.ts` | 4 | Fase 6 | Nenhuma — 🟢 livre |
 | **SUB-34.5** | Checagem de tamanho `scripts/checar-chunks.mjs` | 4 | Fase 6 | SUB-34.6, SUB-34.3, SUB-34.4 — ⛓️ bloqueada |
 | **SUB-25** | Validação de Build e Execução Local (mãe) | 5 | Fase 10 | SUB-01 a SUB-24; SUB-25.1 a SUB-25.7 |
@@ -597,3 +609,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:08 | DashboardAI-Clone 10 (Grok Bot) | SUB-21.11 | `e4bacb0` | Na `src/views/MemoriaView.tsx`: `onVer` do `MemoriaGrid` abre o `MemoriaDetailModal`; `onExcluir` (cartão ou modal) fecha o detalhe e abre `ConfirmDialog` (perigo, avisa quando a memória é global e que a exclusão é definitiva e some do `brain_search`); ao confirmar chama `useExcluirMemoria({ remover, reinserir })` do `useMemorias` (remoção otimista, reinsere e mostra toast se o banco/RLS recusar). `npm run typecheck`, `npm test` e `npm run build` OK. |
 | 2026-10-12 01:08 | DashboardAI-Clone 02 | SUB-35.42 | — | Lock: assumindo SUB-35.42 (`commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py`) |
 | 2026-10-12 01:08 | DashboardAI-Clone 01 | SUB-27.14 | `54bf3a6` | Criado `src/components/layout/UserMenu.tsx`: e-mail do usuário (truncado, oculto no celular), selo Admin quando `papelGlobal === 'admin'`, botão Sair com `sair()` do `useAuth` + toast de sucesso/erro; sem sessão não renderiza. typecheck OK. |
+| 2026-10-12 01:08 | DashboardAI-Clone 10 (Grok Bot) | SUB-34.3 | — | Lock: assumindo SUB-34.3 (Modais da fila sob demanda na `src/views/FilaView.tsx`) |
