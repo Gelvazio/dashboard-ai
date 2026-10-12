@@ -220,22 +220,27 @@ Configure as seguintes variáveis no painel da Vercel (*Settings > Environment V
 
 ### 3. Limits e timeouts
 
-Configure no `vercel.json` (já definido):
+Configurado no `vercel.json` (já definido), por função:
 
 ```json
 {
   "functions": {
-    "api/**/*.ts": {
-      "maxDuration": 60
+    "api/mcp.ts": {
+      "maxDuration": 30
+    },
+    "api/embedding.ts": {
+      "maxDuration": 15
     }
   }
 }
 ```
 
-Para long-running functions (worker, embeddings):
-- Aumente `maxDuration` se necessário (padrão 60s)
-- Vercel Hobby: máximo 60s
-- Vercel Pro: até 900s
+- `api/mcp.ts`: até 30s por chamada; `api/embedding.ts`: até 15s.
+- Funções sem entrada no `vercel.json` usam o padrão do plano.
+- Se precisar de mais tempo, aumente o `maxDuration` da função no `vercel.json`, dentro do limite do plano.
+- Limites da Vercel com Fluid compute (ativado por padrão em projetos novos), conferidos em 2026-10-12 em [Configuring Maximum Duration](https://vercel.com/docs/functions/configuring-functions/duration):
+  - Hobby: padrão e máximo de 300s;
+  - Pro e Enterprise: padrão de 300s e máximo de 800s.
 
 ### 4. Rewrite e roteamento
 
