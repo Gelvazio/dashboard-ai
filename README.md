@@ -609,16 +609,24 @@ Nenhum segredo vai para o Git: só o `.env.example`, com valores vazios (`.env` 
 
 ## Monitor em tempo real
 
-> Seção provisória (detalhada na SUB-35).
-
 O monitor (SUB-35) mostra agentes ativos, eventos recentes e o estado da fila em tempo real via Supabase Realtime.
 
 ## Validação
 
-> Seção provisória (detalhada na SUB-26.9).
+A validação completa do projeto (`npm run validar`) garante que:
+- O TypeScript compila sem erros (`tsc -b` para frontend e `api/`)
+- Todos os testes unitários passam (`vitest run`, sem banco nem rede)
+- O build de produção gera a pasta `dist/` sem alertas impeditivos
+- Os chunks do build respeitam o limite de tamanho (padrão 500 kB)
+- Todas as variáveis usadas no código estão documentadas no `.env.example`
+- Os testes Python dos scripts passam (pulados sem `python3`)
+- Não há vulnerabilidades de alta severidade nas dependências (`npm audit`)
 
-`npm run validar` roda typecheck, testes, build, checagem de variáveis de ambiente, testes
-Python dos scripts e `npm audit`, e mostra um resumo no fim.
+O resultado da validação é registrado em [`docs/VALIDACAO.md`](docs/VALIDACAO.md), incluindo:
+- Validação local (scripts `scripts/validar.sh`)
+- Testes rápidos no banco de produção (telas Fila, Logs, Memória e Configurações)
+
+Para detalhes do processo de validação, veja [`docs/validacao-telas-producao.md`](docs/validacao-telas-producao.md).
 
 ---
 
