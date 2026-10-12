@@ -11,10 +11,8 @@ import { AuthError, bearerToken, verificarSessaoSupabase } from './_lib/auth.js'
 import type { McpRequest, McpResponse } from './_lib/http.js';
 import { HttpError } from './_lib/http-error.js';
 import { db, unwrap } from './_lib/supabase.js';
-import { criarGrafo } from '../worker/grafo.js';
-import { criarCheckpointer } from '../worker/checkpointer.js';
-import { ChatOpenAI } from '@langchain/openai';
 import type { GrafoExecucao } from '../worker/executar.js';
+import { criarGrafoComCheckpointer } from '../worker/grafoFabrica.js';
 
 export interface PedidoAprovacao {
   taskId: number;
@@ -81,17 +79,6 @@ async function execucaoIdDaTaskNoSupabase(taskId: number): Promise<string | null
   return linhas[0]?.execucao_id ?? null;
 }
 
-async function criarGrafoComCheckpointerPadrao(): Promise<GrafoExecucao> {
-  if (!process.env.OPENAI_API_KEY) throw new Error('OPENAI_API_KEY não definida');
-  const checkpointer = await criarCheckpointer();
-  const modelo = new ChatOpenAI({
-    model: process.env.WORKER_MODELO || 'gpt-4o-mini',
-    apiKey: process.env.OPENAI_API_KEY,
-    temperature: 0,
-  });
-  return criarGrafo({ modelo, checkpointer: checkpointer as unknown as any }) as unknown as GrafoExecucao;
-}
-
 async function atualizarMetadadosLogPadrao(execucaoId: string, novosMetadados: Record<string, unknown>): Promise<void> {
   const logAtual = unwrap<{ metadados: Record<string, unknown> }[]>(
     await db().from('agendamento_tarefa_logs').select('metadados').eq('execucao_id', execucaoId).limit(1),
@@ -124,7 +111,7 @@ const DEPS_PADRAO: DepsAprovacao = {
   projetoDaTask: projetoDaTaskNoSupabase,
   ehEditor: ehEditorNoSupabase,
   execucaoIdDaTask: execucaoIdDaTaskNoSupabase,
-  criarGrafoComCheckpointer: criarGrafoComCheckpointerPadrao,
+  criarGrafoComCheckpointer: () => criarGrafoComCheckpointer(),
   atualizarMetadadosLog: atualizarMetadadosLogPadrao,
 };
 
