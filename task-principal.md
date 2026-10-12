@@ -9,8 +9,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
-- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
-- **Pendentes:** 9
+- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-23`)
+- **Pendentes:** 8
 - **Concluídas:** 25
 - **Canceladas:** 0
 
@@ -375,9 +375,9 @@
 - **Commit:** `a88f12d`
 - **Anotação:** Arquivos: src/lib/logs.ts (+testes), src/hooks/useLogs.ts, src/views/LogsView.tsx.
 
-### [ ] SUB-23: Diagnóstico de Travas e Saúde da Fila
-- **Status:** pendente
-- **Executor:** nenhum
+### [🔄] SUB-23: Diagnóstico de Travas e Saúde da Fila
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:27)
 - **Depende de:** SUB-09, SUB-11, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Painel indicando se há lock ativo (task com `trava_frente` e `trava_em` dentro dos 90 minutos) e botão de liberação manual de trava caso expire.
