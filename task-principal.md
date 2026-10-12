@@ -71,6 +71,17 @@
 | **Data e Hora de Início:** | 2026-10-12 01:37 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-35.25
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.25** |
+| **Título da Sub-task:** | Gráfico `GraficoPorStatus` em `src/components/monitor/GraficoPorStatus.tsx` |
+| **Agente Responsável:** | DashboardAI-Clone 02 |
+| **Data e Hora de Início:** | 2026-10-12 01:38 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
@@ -2235,7 +2246,7 @@
   - `SUB-35.22`: Registro do Chart.js e paleta em `src/lib/charts.ts` (`concluido`, `cabdbc0`)
   - `SUB-35.23`: Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx` (`pendente`)
   - `SUB-35.24`: Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx` (`pendente`)
-  - `SUB-35.25`: Gráfico `GraficoPorStatus` em `src/components/monitor/GraficoPorStatus.tsx` (`pendente`)
+  - `SUB-35.25`: Gráfico `GraficoPorStatus` em `src/components/monitor/GraficoPorStatus.tsx` (`em_execucao`)
   - `SUB-35.26`: Gráfico `GraficoPorAgente` em `src/components/monitor/GraficoPorAgente.tsx` (`pendente`)
   - `SUB-35.27`: Linha do tempo `LinhaDoTempoAgentes` em `src/components/monitor/LinhaDoTempoAgentes.tsx` (`pendente`)
   - `SUB-35.28`: Feed `FeedEventos` em `src/components/monitor/FeedEventos.tsx` (`pendente`)
@@ -2503,9 +2514,9 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-35.25: Gráfico `GraficoPorStatus` em `src/components/monitor/GraficoPorStatus.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [🔄] SUB-35.25: Gráfico `GraficoPorStatus` em `src/components/monitor/GraficoPorStatus.tsx`
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 02 (início: 2026-10-12 01:38)
 - **Depende de:** SUB-35.22, SUB-35.16
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Rosca (`Doughnut` do `react-chartjs-2`) com `contarPorStatus`, cores de `CORES_ESTADO`, legenda e texto alternativo acessível. Exportar no barrel.
