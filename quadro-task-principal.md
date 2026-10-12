@@ -66,6 +66,17 @@
 | **Data e Hora de Início:** | 2026-10-12 01:06 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.14
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-27.14** |
+| **Título da Sub-task:** | Componente `UserMenu` em `src/components/layout/UserMenu.tsx` |
+| **Agente Responsável:** | DashboardAI-Clone 01 |
+| **Data e Hora de Início:** | 2026-10-12 01:06 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -74,6 +85,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-27.14** | Componente `UserMenu` em `src/components/layout/UserMenu.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:06 | SUB-27.26 |
 | **SUB-35.21** | Instalar `chart.js` e `react-chartjs-2` | DashboardAI-Clone 06 | 2026-10-12 01:06 | Nenhuma |
 | **SUB-26.10** | Seção Agentes de IA: exemplos do ciclo da fila | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:05 | SUB-26.1 |
 | **SUB-19.7** | Painel `BuscaSemanticaPanel` (campo, grade e estados) | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:04 | SUB-19.5, SUB-19.6, SUB-19.9 |
@@ -570,3 +582,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:05 | DashboardAI-Clone 02 | SUB-23.12 | `a276f7f` | Em `tests/integration/taskService.integration.test.ts`, bloco 'liberarTrava: viewer e outro projeto' (projetos LBV/LBO): viewer recebe 'Sem permissão' ao liberar (mesmo forçando) e a task segue `em_execucao`; `liberarTrava(projectId errado, id)` rejeita com `ServiceError` (`obterTask` não acha a task no projeto) sem alterar a trava. Skipped sem PostgREST no clone; `npm test` verde. |
 | 2026-10-12 01:06 | DashboardAI-Clone 06 | SUB-35.21 | — | Lock: assumindo SUB-35.21 (Instalar `chart.js` e `react-chartjs-2`) |
 | 2026-10-12 01:06 | DashboardAI-Clone 01 | SUB-27.20 | `74588f7` | Em `src/hooks/ProjetoContext.tsx`, lê a sessão do `AuthContext` (equivalente a `useAuth`, porém tolerante fora do `AuthProvider` até a SUB-27.13 integrar o provider no App): sem sessão limpa `projetos` e `erro` mantendo o slug salvo; ao logar recarrega. typecheck, vitest e build OK. |
+| 2026-10-12 01:06 | DashboardAI-Clone 01 | SUB-27.14 | — | Lock: assumindo SUB-27.14 (Componente `UserMenu` em `src/components/layout/UserMenu.tsx`) |

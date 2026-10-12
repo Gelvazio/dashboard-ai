@@ -1621,8 +1621,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.14: Componente `UserMenu` em `src/components/layout/UserMenu.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.26
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/components/layout/UserMenu.tsx` (e-mail do usuário, selo Admin quando `papelGlobal === 'admin'`, botão Sair com `sair()` e toast). A inclusão no `Header` fica na SUB-27.27.
