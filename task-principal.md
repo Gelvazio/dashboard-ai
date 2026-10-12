@@ -1900,15 +1900,15 @@
 - **Commit:** pendente
 - **Anotação:** Criado `worker/fila.ts` com `reivindicar(agente, projeto, lockMinutos, exclusivo)`: chama RPC `pegar_proxima_task` via `rpc()` de `api/_lib/supabase.ts`. Retorna null se sem task. typecheck:worker OK.
 
-#### [ ] SUB-28.5: Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [x] SUB-28.5: Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts`
+- **Status:** concluido
+- **Executor:** Claude Code (início: 2026-10-12 02:08, conclusão: 2026-10-12 02:09)
 - **Depende de:** SUB-28.29
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Definir a allowlist (`brain_search`, `brain_store`, `task_list`) com flag `sensivel` e `obterFerramenta(nome)` que consulta o registro MCP (`api/_lib/tools.ts`) e recusa nomes fora da lista. A adaptação para o LangChain fica na SUB-28.19.
 - **Critérios de Aceitação:** Teste: ferramenta fora da allowlist é recusada.
 - **Commit:** pendente
-- **Anotação:** pendente
+- **Anotação:** Criado `worker/ferramentas.ts` com ALLOWLIST (brain_search, brain_store, brain_delete, task_list, todas não sensíveis) e `obterFerramenta(nome)`: consulta `listTools()` de `api/_lib/tools.ts` e recusa nomes fora da allowlist ou não existentes no registro. Criado `tests/unit/worker-ferramentas.test.ts` com 3 testes. typecheck:worker OK, npm test OK (185 passed).
 
 #### [ ] SUB-28.6: Nó `carregarContexto` em `worker/nos/carregarContexto.ts`
 - **Status:** pendente
