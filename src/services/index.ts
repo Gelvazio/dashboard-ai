@@ -11,3 +11,4 @@ export * from './memoryService';
 export * from './logService';
 export * from './embeddingService';
 export * from './authService';
+export * from './eventService';
