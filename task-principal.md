@@ -91,6 +91,7 @@
 - **Critérios de Aceitação:** Build gerado com sucesso na pasta `dist/` sem alertas impeditivos.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **VERIFICADOR-CLAUDE:** PENDENTE
 
 #### [ ] SUB-25.4: Teste rápido local: telas Fila e Logs
 - **Status:** pendente
@@ -101,6 +102,7 @@
 - **Critérios de Aceitação:** Sem erros no console; checklist registrado.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **VERIFICADOR-CLAUDE:** PENDENTE
 
 #### [ ] SUB-25.7: Teste rápido local: telas Memória e Configurações
 - **Status:** pendente
@@ -111,6 +113,7 @@
 - **Critérios de Aceitação:** Sem erros no console; checklist registrado.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **VERIFICADOR-CLAUDE:** PENDENTE
 
 #### [ ] SUB-25.8: Corrigir erro de tipagem TS6133 em `tests/unit/api-aprovacao.test.ts`
 - **Status:** em_execucao
@@ -141,6 +144,7 @@
 - **Critérios de Aceitação:** Documentação clara, completa e em conformidade com as regras do projeto.
 - **Commit:** pendente
 - **Anotação:** pendente
+- **VERIFICADOR-CLAUDE:** PENDENTE
 
 #### [ ] SUB-26.3: Seção Execução local
 - **Status:** pendente
@@ -152,6 +156,7 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
 
 #### [ ] SUB-26.9: Revisão final do README
 - **Status:** pendente
@@ -163,6 +168,7 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
 
 ---
 
@@ -212,6 +218,7 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
 
 #### [x] SUB-28.18: Atualizar `LangChain_LangGraph.md` (status e desvios)
 - **Status:** concluido
@@ -222,6 +229,7 @@
 - **Critérios de Aceitação:** Documentação coerente com o código.
 - **Commit:** 18c8d9d
 - **Anotação:** Atualizado status para "Implementado na SUB-28" com lista de itens implementados (grafo, checkpointer, retomada, aprovação, auditoria, idempotência, classificação de falhas, integração com RPCs, segurança, allowlist, CLI, heartbeat). Adicionada seção 11 com desvios justificados (modelo simplificado, eventos via RPC, endpoint separado, checkpointer em schema separado, limites de espera) e cobertura de testes.
+- **VERIFICADOR-CLAUDE:** PENDENTE
 
 #### [x] SUB-28.23: Retomada da aprovação (`Command({ resume })`) em `api/aprovacao.ts`
 - **Status:** concluido
@@ -232,6 +240,7 @@
 - **Critérios de Aceitação:** `typecheck:api` OK; teste de retomada com grafo falso.
 - **Commit:** fa99fe2
 - **Anotação:** Implementada retomada do grafo LangGraph com Command({ resume }) no thread_id da execução. Adicionadas: execucaoIdDaTask (lê o execucaoId mais recente dos logs), criarGrafoComCheckpointer (cria grafo com checkpointer Postgres), retomarGrafo (envia Command({ resume }) com decisão do usuário). Testes atualizados para cobrir os novos deps. typecheck:api OK, testes OK (9 passed).
+- **VERIFICADOR-CLAUDE:** PENDENTE
 
 #### [x] SUB-28.25: Variáveis do worker no `api/README.md`
 - **Status:** concluido
@@ -242,6 +251,7 @@
 - **Critérios de Aceitação:** Documentação coerente com o código.
 - **Commit:** 3345ccd
 - **Anotação:** Adicionada seção "Worker LangGraph (SUB-28)" no api/README.md com: tabela de variáveis do worker (OPENAI_API_KEY, WORKER_MODELO, LANGGRAPH_DATABASE_URL, SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, MCP_DEFAULT_PROJECT), exemplos de execução (local, uma task, produção), endpoint de aprovação humana (POST /api/aprovacao com JWT) e monitoramento (heartbeats via emitir_event). typecheck:api OK.
+- **VERIFICADOR-CLAUDE:** PENDENTE
 
 #### [x] SUB-28.32: Registro de auditoria da aprovação
 - **Status:** concluido
@@ -252,6 +262,7 @@
 - **Critérios de Aceitação:** `typecheck:api` OK; teste confere o registro sem credenciais.
 - **Commit:** ff049de
 - **Anotação:** Adicionada dependência atualizarMetadadosLog que registra auditoria da aprovação nos metadados da execução (aprovado, usuario_id, em, motivo) sem expor credenciais. Testes atualizados para verificar que metadados são chamados com os dados corretos. typecheck:api OK, testes OK (10 passed).
+- **VERIFICADOR-CLAUDE:** PENDENTE
 
 ---
 
@@ -314,6 +325,7 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
 
 #### [ ] SUB-35.32: Validação visual do monitor (SUB-35)
 - **Status:** pendente
@@ -325,6 +337,7 @@
 - **Commit:** pendente
 - **Anotação:** Trava de DashboardAI-Clone 07 (Grok Bot) (desde 2026-10-12 01:49, commit `8d700c5`) liberada em 2026-10-12 a pedido do usuário, sem entrega registrada; tarefa volta a ficar livre.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
 
 #### [ ] SUB-35.46: Validação automatizada da SUB-35
 - **Status:** pendente
@@ -336,6 +349,7 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
 
 ---
 
@@ -351,3 +365,4 @@
 - **Commit:** pendente
 - **Anotação:** ⛔ **TRAVADO PARA TODAS AS IAS** (2026-10-12 15:10): Tarefa reservada para implementação manual pelo usuário. Nenhuma IA pode assumir subtarefas sem autorização explícita. Ver trava especial no início do quadro.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
