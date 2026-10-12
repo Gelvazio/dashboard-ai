@@ -15,7 +15,8 @@
     "typecheck:api": "tsc -p api/tsconfig.json",
     "test": "vitest run",
     "test:integration": "bash tests/integration/run.sh",
-    "check:env": "node scripts/checar-env.mjs"
+    "check:env": "node scripts/checar-env.mjs",
+    "validar": "bash scripts/validar.sh"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.117.3",
