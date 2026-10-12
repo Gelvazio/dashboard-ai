@@ -165,6 +165,13 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
      - bloco sob 🔒 TRAVA ESPECIAL.
    - As contagens do `📊 Resumo de Progresso` **não mudam** com a mudança de arquivo, porque o bloco já contava como concluído (regra 9).
 
+11. **Testes em banco de dados: só o Claude Code:**
+   - Só o **Claude Code** pode executar testes em banco de dados, porque é a IA que tem o **MCP do Supabase** conectado.
+   - Valem como "teste em banco": consultas, scripts SQL, suítes do banco (`database/tests/`), testes de integração (`npm run test:integration`) e validação de telas contra um banco real.
+   - ⛔ As outras IAs (Gemini, Grok, Copilot, Devin, DeepSeek, Antigravity etc.) **não pegam** item cuja descrição ou critério exige teste em banco. Para elas, esse item fica indisponível, qualquer que seja a prioridade (seção 1.2).
+   - Se o item tiver uma parte sem banco (código, documentação), crie uma subtarefa separada para essa parte (seção 2), e deixe a parte de banco para o Claude Code.
+   - Esta regra não libera nada: mudança em banco de produção (aplicar SQL, criar usuário, gravar dados) continua exigindo autorização explícita do usuário.
+
 ---
 
 ## 🎯 1.2 PRIORIDADE DAS TAREFAS (OBRIGATÓRIA)
