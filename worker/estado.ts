@@ -1,4 +1,5 @@
 import { Annotation } from '@langchain/langgraph';
+import { z } from 'zod';
 
 export const EstadoExecucao = Annotation.Root({
   taskId: Annotation<number>({
@@ -49,4 +50,19 @@ export const EstadoExecucao = Annotation.Root({
     reducer: (x, y) => y ?? x,
     default: () => false,
   }),
+});
+
+export const EstadoSchema = z.object({
+  taskId: z.number(),
+  taskCodigo: z.string(),
+  projeto: z.string(),
+  agente: z.string(),
+  tentativa: z.number(),
+  execucaoId: z.string(),
+  instrucao: z.string(),
+  plano: z.string(),
+  passoAtual: z.string(),
+  resultados: z.record(z.unknown()),
+  aprovacao: z.unknown().nullable(),
+  final: z.boolean(),
 });

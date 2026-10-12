@@ -2140,15 +2140,15 @@
 - **Commit:** pendente
 - **Anotação:** Criado `worker/tsconfig.json` (NodeNext, strict) e `"typecheck:worker": "tsc -p worker/tsconfig.json"` no `package.json`. Criado `worker/index.ts` com tipo provisório `EstadoExecucao`. `npm run typecheck:worker` OK.
 
-#### [ ] SUB-28.29: Schema zod `EstadoSchema` em `worker/estado.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [x] SUB-28.29: Schema zod `EstadoSchema` em `worker/estado.ts`
+- **Status:** concluido
+- **Executor:** Claude Code (início: 2026-10-12 02:06, conclusão: 2026-10-12 02:07)
 - **Depende de:** SUB-28.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `EstadoSchema` (zod) espelhando a `EstadoExecucao` para validar o estado carregado/retomado. Teste de parse em `tests/unit/worker-estado.test.ts`.
 - **Critérios de Aceitação:** `typecheck:worker` OK; teste de parse (válido e inválido) passa.
 - **Commit:** pendente
-- **Anotação:** pendente
+- **Anotação:** Adicionado `EstadoSchema` (zod) em `worker/estado.ts` espelhando `EstadoExecucao`. Criado `tests/unit/worker-estado.test.ts` com 3 testes (válido, campo faltando, tipo errado). typecheck:worker OK, npm test OK (182 passed).
 
 #### [ ] SUB-28.30: `finalizar(...)` em `worker/fila.ts`
 - **Status:** pendente
