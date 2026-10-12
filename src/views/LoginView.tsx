@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { Session } from '@supabase/supabase-js';
 import { AlertTriangle } from 'lucide-react';
+import { CadastroForm } from '@/components/auth/CadastroForm';
 import { LoginForm } from '@/components/auth/LoginForm';
 import { RecuperarAcesso } from '@/components/auth/RecuperarAcesso';
 import { ThemeToggle } from '@/components/layout/ThemeToggle';
@@ -14,10 +15,12 @@ export interface LoginViewProps {
 /**
  * Tela de login em página cheia, fora do `AppLayout` (SUB-27.11): marca do produto,
  * `LoginForm`, alternativas de acesso (`RecuperarAcesso`), alternância de tema e
- * aviso quando o Supabase não está configurado no `.env`.
+ * aviso quando o Supabase não está configurado no `.env`. O link "Criar usuário" troca o
+ * formulário pelo `CadastroForm` (SUB-40.5); "Já tenho conta — Entrar" volta.
  */
 export function LoginView({ onEntrou }: LoginViewProps) {
   const [email, setEmail] = useState('');
+  const [modo, setModo] = useState<'entrar' | 'cadastrar'>('entrar');
 
   return (
     <div className="relative flex min-h-dvh flex-col items-center justify-center bg-slate-50 px-4 py-10 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
@@ -52,12 +55,24 @@ export function LoginView({ onEntrou }: LoginViewProps) {
           </div>
         )}
 
-        <section className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900" aria-label="Entrar">
-          <LoginForm onEntrou={onEntrou} onEmailChange={setEmail} />
-          <div className="mt-5 border-t border-slate-200 pt-4 dark:border-slate-800">
-            <RecuperarAcesso email={email} />
-          </div>
-        </section>
+        {modo === 'entrar' ? (
+          <section className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900" aria-label="Entrar">
+            <LoginForm onEntrou={onEntrou} onEmailChange={setEmail} />
+            <div className="mt-5 border-t border-slate-200 pt-4 dark:border-slate-800">
+              <RecuperarAcesso email={email} />
+            </div>
+            <p className="mt-4 text-center text-sm text-slate-500 dark:text-slate-400">
+              Não tem conta?{' '}
+              <button type="button" onClick={() => setModo('cadastrar')} className="font-medium text-brand-600 hover:underline dark:text-brand-400">
+                Criar usuário
+              </button>
+            </p>
+          </section>
+        ) : (
+          <section className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900" aria-label="Criar usuário">
+            <CadastroForm onVoltar={() => setModo('entrar')} />
+          </section>
+        )}
       </main>
     </div>
   );
