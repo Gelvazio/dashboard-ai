@@ -1382,15 +1382,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-26.4: Seção Banco de dados
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 01:02)
+#### [x] SUB-26.4: Seção Banco de dados
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 01:02 → 2026-10-12 01:02)
 - **Depende de:** SUB-26.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Como aplicar `database/00`–`06` no Supabase (SQL editor ou `psql`), criar projeto e membros (`projects`, `project_members`, `user_roles`), e rodar `database/tests/run_tests.sh`. Referenciar `database/README.md`.
 - **Critérios de Aceitação:** Seção completa.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `62ea6c0`
+- **Anotação:** Seção Banco de dados do `README.md` completa: requisitos (Postgres 15+, pgvector ≥ 0.5), tabela dos scripts `00`–`06` e como aplicar (SQL Editor ou laço `psql -v ON_ERROR_STOP=1`), criação do primeiro admin (`user_roles`), de um projeto (`projects`: slug/nome/prefixo_codigo) e de membros (`project_members`, upsert por `(project_id, user_id)`), tabela de papéis viewer/editor/owner/admin, uso de `service_role` x anon, e testes locais com `database/tests/run_tests.sh` (aviso de nunca rodar contra o Supabase). Referencia `database/README.md`; SQL conferido com as colunas/constraints de `00_projects_roles.sql`. Só documentação.
 
 #### [ ] SUB-26.5: Seção Deploy na Vercel
 - **Status:** pendente
