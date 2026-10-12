@@ -55,19 +55,6 @@
 
 ---
 
-### 🔒 TRAVA ADICIONAL — Claude Code (Opus 5.5) — SUB-39.2
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-39.2** |
-| **Título da Sub-task:** | Alinhar a allowlist do contrato (`docs/langgraph-contrato.md`) ao `worker/ferramentas.ts` |
-| **Agente Responsável:** | Claude Code (Opus 5.5) |
-| **Data e Hora de Início:** | 2026-10-12 17:57 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-39.2 |
-
----
-
 ### 🔒 TRAVA ESPECIAL: KIRO-DEV-CLONE
 
 > **ATENÇÃO:** A tarefa `KIRO-DEV-CLONE` está **TRAVADA PARA TODAS AS IAS**.
@@ -88,13 +75,13 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 40
 - **Subtarefas atômicas (~3 min):** 240
-- **Em Execução:** 2 (SUB-38, SUB-39.2)
-- **Pendentes:** 7 principais (SUB-38, 25, 26, 28, 35, 39, KIRO-DEV-CLONE) + 41 subtarefas
+- **Em Execução:** 1 (SUB-38)
+- **Pendentes:** 7 principais (SUB-38, 25, 26, 28, 35, 39, KIRO-DEV-CLONE) + 40 subtarefas
   - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 6 — SUB-25.4, SUB-25.7, SUB-35.32, SUB-39.3 e SUB-39.4 (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
   - bloqueadas por dependência: 4 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32) e SUB-39.5 (depende da SUB-39.4)
-  - em execução: 2 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-39.2 (Claude Code (Opus 5.5))
+  - em execução: 2 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 228 de 280 blocos (33 principais + 195 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 229 de 280 blocos (33 principais + 196 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -408,7 +395,7 @@
 - **Depende de:** subtarefas SUB-39.1 a SUB-39.5
 - **Subtarefas:** (criadas em 2026-10-12 por Claude Code a partir do `TASKS-SUGERIDAS.md`, investigação só-leitura feita em outro clone; números trocados de SUB-36.x para SUB-39.x porque a SUB-36 já existe)
   - `SUB-39.1`: Alinhar `maxDuration` do `README.md` ao `vercel.json` (`pendente`)
-  - `SUB-39.2`: Alinhar a allowlist do contrato (`docs/langgraph-contrato.md`) ao `worker/ferramentas.ts` (`em_execucao`)
+  - `SUB-39.2`: Alinhar a allowlist do contrato (`docs/langgraph-contrato.md`) ao `worker/ferramentas.ts` (`concluido`, `e7a08be`)
   - `SUB-39.3`: Remover `as any` de `worker/fila.ts` e `worker/falhas.ts` (`pendente`)
   - `SUB-39.4`: Fábrica `criarGrafoComCheckpointer` em `worker/grafoFabrica.ts` usada pelo `worker/index.ts` (`pendente`)
   - `SUB-39.5`: Usar a fábrica da SUB-39.4 em `api/aprovacao.ts` (`pendente`)
@@ -427,19 +414,6 @@
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** A seção "Deploy na Vercel → 3. Limits e timeouts" do `README.md` (linhas ~201-218) mostra um `vercel.json` de exemplo com `"maxDuration": 60` e diz "padrão 60s". O `vercel.json` real usa `30` para `api/mcp.ts` e `15` para `api/embedding.ts`. Atualizar o exemplo e o texto para os valores reais, mantendo a nota de limites por plano da Vercel (conferir os limites atuais na documentação da Vercel antes de manter os números de Hobby/Pro).
 - **Critérios de Aceitação:** Exemplo e texto do `README.md` iguais ao `vercel.json`; `npm run validar` verde.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-#### [ ] SUB-39.2: Alinhar a allowlist do contrato (`docs/langgraph-contrato.md`) ao `worker/ferramentas.ts`
-- **Status:** em_execucao
-- **Prioridade:** MEDIA
-- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 17:57)
-- **Depende de:** Nenhuma
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** A tabela 2.1 do contrato lista `brain_search`, `task_list`, `brain_store`, `agent_event`, `task_create` (sensível) e `brain_delete` (sensível), mas o `ALLOWLIST` de `worker/ferramentas.ts` só tem `brain_search`, `brain_store` e `task_list`. Atualizar **só o contrato** para a v1 real: (1) `task_create` e `brain_delete` ficam fora da v1 (podem entrar numa v2, sempre como sensíveis e com aprovação); (2) `agent_event` não é ferramenta do modelo: é emitido pelo próprio worker (`worker/eventos.ts`, `comEventos`); (3) ajustar as menções a essas ferramentas nas seções 2.2 e 3 se ficarem incoerentes. Não mudar o código.
-- **Critérios de Aceitação:** Tabela 2.1 igual ao `ALLOWLIST` do código, com as exclusões justificadas; `npm run typecheck:worker` verde.
 - **Commit:** pendente
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE

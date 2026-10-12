@@ -3197,3 +3197,20 @@
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
 ---
+
+---
+
+## 🛠️ FASE 13: Ajustes Técnicos e Alinhamento (sugeridas)
+
+#### [x] SUB-39.2: Alinhar a allowlist do contrato (`docs/langgraph-contrato.md`) ao `worker/ferramentas.ts`
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 17:57, conclusão: 2026-10-12 17:58)
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** A tabela 2.1 do contrato lista `brain_search`, `task_list`, `brain_store`, `agent_event`, `task_create` (sensível) e `brain_delete` (sensível), mas o `ALLOWLIST` de `worker/ferramentas.ts` só tem `brain_search`, `brain_store` e `task_list`. Atualizar **só o contrato** para a v1 real: (1) `task_create` e `brain_delete` ficam fora da v1 (podem entrar numa v2, sempre como sensíveis e com aprovação); (2) `agent_event` não é ferramenta do modelo: é emitido pelo próprio worker (`worker/eventos.ts`, `comEventos`); (3) ajustar as menções a essas ferramentas nas seções 2.2 e 3 se ficarem incoerentes. Não mudar o código.
+- **Critérios de Aceitação:** Tabela 2.1 igual ao `ALLOWLIST` do código, com as exclusões justificadas; `npm run typecheck:worker` verde.
+- **Commit:** `e7a08be`
+- **Anotação:** Só o contrato mudou (código intocado). Tabela 2.1 de `docs/langgraph-contrato.md` agora lista `brain_search`, `task_list` e `brain_store`, igual ao `ALLOWLIST` de `worker/ferramentas.ts`, com nota de que nenhuma ferramenta da v1 é sensível por si (o passo marcado `sensivel` no plano ainda pausa no nó `politica`). Novo item "Fora da allowlist na v1": `agent_event` é emitido pelo próprio worker (`worker/eventos.ts`, `emitirEvento`/`comEventos`), não pelo modelo; `task_create` e `brain_delete` saem da v1 e, se voltarem numa v2, entram como sensíveis. Seção 2.2: exemplo de chave entre tentativas e lista de idempotência natural sem as ferramentas removidas. Validação: `npm run typecheck:worker` verde.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 17:58 — Claude Code (Opus 5.5): entrega verificada (tabela 2.1 conferida contra `worker/ferramentas.ts`; `emitirEvento`/`comEventos` existem em `worker/eventos.ts`; `typecheck:worker` verde)
+- **VERIFICADOR-CLAUDE:** PENDENTE
