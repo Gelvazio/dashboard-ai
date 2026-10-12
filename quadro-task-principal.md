@@ -66,14 +66,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:05 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 06 — SUB-35.21
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.21** |
+| **Título da Sub-task:** | Instalar `chart.js` e `react-chartjs-2` |
+| **Agente Responsável:** | DashboardAI-Clone 06 |
+| **Data e Hora de Início:** | 2026-10-12 01:06 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (2)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-35.21** | Instalar `chart.js` e `react-chartjs-2` | DashboardAI-Clone 06 | 2026-10-12 01:06 | Nenhuma |
 | **SUB-26.10** | Seção Agentes de IA: exemplos do ciclo da fila | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:05 | SUB-26.1 |
 | **SUB-27.20** | Limpar `ProjetoContext` ao sair | DashboardAI-Clone 01 | 2026-10-12 01:05 | SUB-27.26 |
 | **SUB-19.7** | Painel `BuscaSemanticaPanel` (campo, grade e estados) | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:04 | SUB-19.5, SUB-19.6, SUB-19.9 |
@@ -91,7 +103,7 @@
 
 > **SUB-27 liberada a pedido do usuário** (2026-10-11 23:55): mãe e 22 subtarefas estão disponíveis; cada agente deve respeitar as dependências indicadas. Nenhum código da SUB-27 havia sido enviado à main.
 
-**🟢 Livres agora (21):** SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.8, SUB-20.9, SUB-21.2, SUB-21.4, SUB-21.6, SUB-23.2, SUB-23.5, SUB-23.12, SUB-25.1, SUB-26.1, SUB-35.1, SUB-35.21
+**🟢 Livres agora (20):** SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.8, SUB-20.9, SUB-21.2, SUB-21.4, SUB-21.6, SUB-23.2, SUB-23.5, SUB-23.12, SUB-25.1, SUB-26.1, SUB-35.1
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
@@ -199,7 +211,7 @@
 | **SUB-35.18** | `segmentosLinhaDoTempo()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.17 — ⛓️ bloqueada |
 | **SUB-35.19** | Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts` | 4 | Fase 12 | SUB-35.11, SUB-35.14 — ⛓️ bloqueada |
 | **SUB-35.20** | Hook `useAtividadeAgentes(projectId)` em `src/hooks/useAtividadeAgentes.ts` | 4 | Fase 12 | SUB-35.19, SUB-35.15 — ⛓️ bloqueada |
-| **SUB-35.21** | Instalar `chart.js` e `react-chartjs-2` | 4 | Fase 12 | Nenhuma — 🟢 livre |
+| **SUB-35.21** | Instalar `chart.js` e `react-chartjs-2` | 4 | Fase 12 | Nenhuma — 🔄 em execução por DashboardAI-Clone 06 |
 | **SUB-35.22** | Registro do Chart.js e paleta em `src/lib/charts.ts` | 4 | Fase 12 | SUB-35.21 — ⛓️ bloqueada |
 | **SUB-35.23** | Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx` | 4 | Fase 12 | SUB-35.15 — ⛓️ bloqueada |
 | **SUB-35.24** | Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx` | 4 | Fase 12 | SUB-35.23 — ⛓️ bloqueada |
@@ -568,3 +580,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:05 | DashboardAI-Clone 08 (Grok Bot) | SUB-26.10 | — | Lock: assumindo SUB-26.10 (Seção Agentes de IA: exemplos do ciclo da fila) |
 | 2026-10-12 01:05 | DashboardAI-Clone 10 (Grok Bot) | SUB-21.9 | `4b8d62b` | Substituído o `EmConstrucao` da `src/views/MemoriaView.tsx`: projeto de `useProjetoAtual` (sem projeto mantém o aviso "selecione um projeto"), dados de `useMemorias(projeto.id)`, cartão com cabeçalho "Memórias" + contador, `MemoriaToolbar` (filtro controlado, `tagsDisponiveis`, contador filtradas/total, recarregar com hora da última carga), aviso de erro (`role="alert"`) e `MemoriaGrid` com `filtrarMemoriasLocal`, estado vazio por filtro e "Carregar mais". Filtros zerados ao trocar de projeto. Pontos reservados por comentário: busca semântica no topo (SUB-19.8), botão "Nova memória" no cabeçalho (SUB-20.7); detalhe/exclusão ficam para a SUB-21.11. `npm run typecheck`, `npm test` e `npm run build` OK (conferência visual em `#/memoria` com Supabase real não feita neste ambiente). |
 | 2026-10-12 01:05 | DashboardAI-Clone 02 | SUB-23.12 | `a276f7f` | Em `tests/integration/taskService.integration.test.ts`, bloco 'liberarTrava: viewer e outro projeto' (projetos LBV/LBO): viewer recebe 'Sem permissão' ao liberar (mesmo forçando) e a task segue `em_execucao`; `liberarTrava(projectId errado, id)` rejeita com `ServiceError` (`obterTask` não acha a task no projeto) sem alterar a trava. Skipped sem PostgREST no clone; `npm test` verde. |
+| 2026-10-12 01:06 | DashboardAI-Clone 06 | SUB-35.21 | — | Lock: assumindo SUB-35.21 (Instalar `chart.js` e `react-chartjs-2`) |

@@ -2165,7 +2165,7 @@
   - `SUB-35.18`: `segmentosLinhaDoTempo()` em `src/lib/monitor.ts` (`pendente`)
   - `SUB-35.19`: Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts` (`pendente`)
   - `SUB-35.20`: Hook `useAtividadeAgentes(projectId)` em `src/hooks/useAtividadeAgentes.ts` (`pendente`)
-  - `SUB-35.21`: Instalar `chart.js` e `react-chartjs-2` (`pendente`)
+  - `SUB-35.21`: Instalar `chart.js` e `react-chartjs-2` (`em_execucao`)
   - `SUB-35.22`: Registro do Chart.js e paleta em `src/lib/charts.ts` (`pendente`)
   - `SUB-35.23`: Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx` (`pendente`)
   - `SUB-35.24`: Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx` (`pendente`)
@@ -2398,8 +2398,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-35.21: Instalar `chart.js` e `react-chartjs-2`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 01:06)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** `npm install chart.js react-chartjs-2` (versões fixadas no lockfile). Sem uso no código ainda.
