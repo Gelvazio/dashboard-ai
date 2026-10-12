@@ -145,7 +145,7 @@
 - **Critérios de Aceitação:** Sem erros no console; checklist registrado.
 - **Commit:** pendente
 - **Anotação:** pendente
-- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:25 (Claude Code): pendente, sem executor. Não há registro das telas Memória e Configurações no `docs/VALIDACAO.md`; depende de navegador (não usado nesta verificação).
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:49 (Devin): pendente, sem executor. Não há registro das telas Memória e Configurações no `docs/VALIDACAO.md`; depende de navegador (não usado nesta verificação).
 
 ### [ ] SUB-26: Documentação Completa e Manual Operacional no `README.md`
 - **Status:** pendente (aguardando subtarefas)
