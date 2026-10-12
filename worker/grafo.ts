@@ -1,5 +1,6 @@
 import { END, START, StateGraph, type BaseCheckpointSaver } from '@langchain/langgraph';
 import { EstadoExecucao } from './estado.js';
+import { comEventos, type EventosDeps } from './eventos.js';
 import { carregarContexto, type DepsContexto } from './nos/carregarContexto.js';
 import { executar, type DepsExecutar } from './nos/executar.js';
 import { finalizarNode, type DepsFinalizar } from './nos/finalizar.js';
@@ -19,6 +20,8 @@ export interface DepsGrafo {
   revisao?: OpcoesRevisao;
   esperar?: (ms: number) => Promise<void>;
   finalizar?: DepsFinalizar;
+  /** Destino dos eventos de etapa (`agent_events`); omitido usa `db()`. */
+  eventos?: EventosDeps;
 }
 
 function aprovacaoNegada(aprovacao: unknown): boolean {
@@ -29,15 +32,20 @@ function aprovacaoNegada(aprovacao: unknown): boolean {
  * Grafo principal do worker LangGraph (SUB-28.12):
  * carregarContexto -> planejar -> politica -> executar -> revisar -> (executar | finalizar).
  * Aprovação negada em `politica` vai direto para `finalizar` (status `recusada`).
+ * Cada nó emite `inicio`/`fim`/`erro` para o monitor via `comEventos` (SUB-35.36).
  */
 export function criarGrafo(deps: DepsGrafo) {
+  const ev = deps.eventos;
   return new StateGraph(EstadoExecucao)
-    .addNode('carregarContexto', (state: Estado) => carregarContexto(state, deps.contexto))
-    .addNode('planejar', criarNoPlanejar(deps.modelo))
-    .addNode('politica', (state: Estado) => politica(state, deps.pedirAprovacao))
-    .addNode('executar', (state: Estado) => executar(state, deps.executar))
-    .addNode('revisar', (state: Estado) => revisar(state, deps.revisao ?? OPCOES_REVISAO_PADRAO, deps.esperar))
-    .addNode('finalizar', (state: Estado) => finalizarNode(state, deps.finalizar))
+    .addNode('carregarContexto', comEventos('carregarContexto', (state: Estado) => carregarContexto(state, deps.contexto), ev))
+    .addNode('planejar', comEventos('planejar', criarNoPlanejar(deps.modelo), ev))
+    .addNode('politica', comEventos('politica', (state: Estado) => politica(state, deps.pedirAprovacao), ev))
+    .addNode('executar', comEventos('executar', (state: Estado) => executar(state, deps.executar), ev))
+    .addNode(
+      'revisar',
+      comEventos('revisar', (state: Estado) => revisar(state, deps.revisao ?? OPCOES_REVISAO_PADRAO, deps.esperar), ev),
+    )
+    .addNode('finalizar', comEventos('finalizar', (state: Estado) => finalizarNode(state, deps.finalizar), ev))
     .addEdge(START, 'carregarContexto')
     .addEdge('carregarContexto', 'planejar')
     .addEdge('planejar', 'politica')
