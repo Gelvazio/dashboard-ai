@@ -1620,15 +1620,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-27.14: Componente `UserMenu` em `src/components/layout/UserMenu.tsx`
-- **Status:** em_execucao
+#### [x] SUB-27.14: Componente `UserMenu` em `src/components/layout/UserMenu.tsx`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.26
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/components/layout/UserMenu.tsx` (e-mail do usuário, selo Admin quando `papelGlobal === 'admin'`, botão Sair com `sair()` e toast). A inclusão no `Header` fica na SUB-27.27.
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `54bf3a6`
+- **Anotação:** Criado `src/components/layout/UserMenu.tsx`: e-mail do usuário (truncado, oculto no celular), selo Admin quando `papelGlobal === 'admin'`, botão Sair com `sair()` do `useAuth` + toast de sucesso/erro; sem sessão não renderiza. typecheck OK.
 
 #### [x] SUB-27.15: Rechecar conexão no login/logout em `src/hooks/useConexao.ts`
 - **Status:** concluido

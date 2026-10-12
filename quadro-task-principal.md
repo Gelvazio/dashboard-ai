@@ -44,17 +44,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:06 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.14
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-27.14** |
-| **Título da Sub-task:** | Componente `UserMenu` em `src/components/layout/UserMenu.tsx` |
-| **Agente Responsável:** | DashboardAI-Clone 01 |
-| **Data e Hora de Início:** | 2026-10-12 01:06 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 04 (Grok Bot) — SUB-19.8
 
 | Propriedade | Valor Atual |
@@ -99,7 +88,6 @@
 | **SUB-35.42** | `commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py` | DashboardAI-Clone 02 | 2026-10-12 01:08 | SUB-35.1 |
 | **SUB-35.6** | Teste de integração de `agent_events` (RLS e trigger) | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:07 | SUB-35.2, SUB-35.3 |
 | **SUB-19.8** | Integrar a busca na `src/views/MemoriaView.tsx` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:07 | SUB-19.7, SUB-21.9 |
-| **SUB-27.14** | Componente `UserMenu` em `src/components/layout/UserMenu.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:06 | SUB-27.26 |
 | **SUB-35.21** | Instalar `chart.js` e `react-chartjs-2` | DashboardAI-Clone 06 | 2026-10-12 01:06 | Nenhuma |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
@@ -194,7 +182,6 @@
 | **SUB-27.11** | Tela `LoginView` em `src/views/LoginView.tsx` | 3 | Fase 10 | SUB-27.10, SUB-27.19 — ⛓️ bloqueada |
 | **SUB-27.12** | Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` | 3 | Fase 10 | SUB-27.26, SUB-27.11 — ⛓️ bloqueada |
 | **SUB-27.13** | Integrar autenticação no `src/App.tsx` | 3 | Fase 10 | SUB-27.12 — ⛓️ bloqueada |
-| **SUB-27.14** | Componente `UserMenu` em `src/components/layout/UserMenu.tsx` | 3 | Fase 10 | SUB-27.26 — ⛓️ bloqueada |
 | **SUB-27.17** | Documentar configuração do Supabase Auth em `src/README.md` | 3 | Fase 10 | SUB-27.13 — ⛓️ bloqueada |
 | **SUB-27.18** | Validação automatizada da SUB-27 | 3 | Fase 10 | SUB-27.6, SUB-27.8, SUB-27.13, SUB-27.27, SUB-27.15, SUB-27.16, SUB-27.17, SUB-27.20, SUB-27.21 — ⛓️ bloqueada |
 | **SUB-27.21** | Documentar primeiro administrador e membros em `database/README.md` | 3 | Fase 10 | SUB-27.13 — ⛓️ bloqueada |
@@ -249,6 +236,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-27.14** | Componente `UserMenu` em `src/components/layout/UserMenu.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:06 | 2026-10-12 01:08 | `54bf3a6` |
 | **SUB-26.6** | Seção Agentes de IA: configurar clientes MCP | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:06 | 2026-10-12 01:07 | `d7f05f6` |
 | **SUB-19.7** | Painel `BuscaSemanticaPanel` (campo, grade e estados) | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:04 | 2026-10-12 01:07 | `3187754` |
 | **SUB-26.10** | Seção Agentes de IA: exemplos do ciclo da fila | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:05 | 2026-10-12 01:06 | `23153af` |
@@ -608,3 +596,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:07 | DashboardAI-Clone 08 (Grok Bot) | SUB-26.6 | `d7f05f6` | Subseção "Configurar o cliente MCP" em Agentes de IA do `README.md`: transporte Streamable HTTP (POST, protocolos 2025-06-18/2025-03-26/2024-11-05), URL `/mcp` (rewrite do `vercel.json`), `Authorization: Bearer <MCP_AUTH_TOKEN>` (sem token no servidor as ferramentas ficam desativadas; token errado -> 401), argumento `project`/`MCP_DEFAULT_PROJECT` e `MCP_ALLOWED_PROJECTS` para endpoint por projeto; exemplos para Claude Code (`claude mcp add --transport http ... --header`), Codex (`config.toml` com `url` + `bearer_token_env_var` e `codex mcp add --url --bearer-token-env-var`, conferido na documentação atual do Codex), JSON genérico (Cursor/Gemini CLI etc.), `curl` de `tools/list` e resumo do protocolo do `AGENTS.md`. Conferido com `api/mcp.ts` e `api/_lib/args.ts`. Só documentação. |
 | 2026-10-12 01:08 | DashboardAI-Clone 10 (Grok Bot) | SUB-21.11 | `e4bacb0` | Na `src/views/MemoriaView.tsx`: `onVer` do `MemoriaGrid` abre o `MemoriaDetailModal`; `onExcluir` (cartão ou modal) fecha o detalhe e abre `ConfirmDialog` (perigo, avisa quando a memória é global e que a exclusão é definitiva e some do `brain_search`); ao confirmar chama `useExcluirMemoria({ remover, reinserir })` do `useMemorias` (remoção otimista, reinsere e mostra toast se o banco/RLS recusar). `npm run typecheck`, `npm test` e `npm run build` OK. |
 | 2026-10-12 01:08 | DashboardAI-Clone 02 | SUB-35.42 | — | Lock: assumindo SUB-35.42 (`commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py`) |
+| 2026-10-12 01:08 | DashboardAI-Clone 01 | SUB-27.14 | `54bf3a6` | Criado `src/components/layout/UserMenu.tsx`: e-mail do usuário (truncado, oculto no celular), selo Admin quando `papelGlobal === 'admin'`, botão Sair com `sair()` do `useAuth` + toast de sucesso/erro; sem sessão não renderiza. typecheck OK. |
