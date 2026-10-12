@@ -18,18 +18,18 @@
 
 ## 🧩 FASE 1: Preparação do Ambiente e Infraestrutura Básica
 
-### [🔄] SUB-01: Setup do Projeto Frontend
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:56; assumida após liberação, pelo usuário, da trava de Gemini (Antigravity) de 2026-10-11 22:13)
+### [x] SUB-01: Setup do Projeto Frontend
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:56; assumida após liberação, pelo usuário, da trava de Gemini (Antigravity) de 2026-10-11 22:13; conclusão: 2026-10-11 22:59)
 - **Depende de:** Nenhuma
 - **Subtarefas:**
   - `SUB-01.1`: Inicialização do package.json, Vite, React e TypeScript (`concluido`, `374dc99`)
   - `SUB-01.2`: Configuração do Tailwind CSS, PostCSS e estilos globais (`concluido`, `97697e3`)
-  - `SUB-01.3`: Instalação e verificação de dependências base (Lucide Icons, clsx) (`pendente`)
-- **Descrição:** Inicializar a estrutura base do frontend moderno em `c:\fontes\dashboard-ai`.
+  - `SUB-01.3`: Instalação e verificação de dependências base (Lucide Icons, clsx) (`concluido`, `25b9664`)
+- **Descrição:** Inicializar a estrutura base do frontend moderno na raiz do repositório `dashboard-ai`.
 - **Critérios de Aceitação:** Aplicação compilando com Vite, React, TS e Tailwind.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `374dc99`, `97697e3`, `25b9664` (SUB-01.1, SUB-01.2, SUB-01.3)
+- **Anotação:** Todas as subtarefas concluídas: Vite 8 + React 19 + TypeScript 5.9, Tailwind CSS v4 (PostCSS, tema, modo escuro) e lucide-react/clsx/tailwind-merge com cn(). `npm run build` e `npm run typecheck` (frontend + api/) OK.
 
 #### [x] SUB-01.1: Inicialização do package.json, Vite, React e TypeScript
 - **Status:** concluido
