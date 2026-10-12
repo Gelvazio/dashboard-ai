@@ -875,7 +875,7 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-20.8: `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx`
-- **Status:** pendente
+- **Status:** em_execucao
 - **Executor:** nenhum
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
