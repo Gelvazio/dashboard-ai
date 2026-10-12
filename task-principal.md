@@ -40,28 +40,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-35.35
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.35** |
-| **Título da Sub-task:** | `comEventos(nome, no)` em `worker/eventos.ts` |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 13:39 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 203
-- **Em Execução:** 1 (SUB-35.35, Devin (Cognition AI), desde 2026-10-12 13:39)
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 20 subtarefas
-  - livres agora: 9 (SUB-26.5, SUB-28.2, SUB-28.16, SUB-28.17, SUB-28.24, SUB-35.32, SUB-25.4, SUB-25.7, SUB-35.37)
-  - bloqueadas por dependência: 10
+- **Em Execução:** 0
+- **Pendentes:** 4 principais (25, 26, 28, 35) + 19 subtarefas
+  - livres agora: 10 (SUB-26.5, SUB-28.2, SUB-28.16, SUB-28.17, SUB-28.24, SUB-35.32, SUB-25.4, SUB-25.7, SUB-35.37, SUB-35.36)
+  - bloqueadas por dependência: 9
   - reservadas: 0
-- **Concluídas:** 216 de 240 blocos (33 principais + 183 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 217 de 240 blocos (33 principais + 184 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -336,7 +325,7 @@
   - `SUB-35.32`: Validação visual do monitor (SUB-35) (`pendente`)
   - `SUB-35.33`: `emitirEvento()` em `worker/eventos.ts` (`concluido`, `2750ba4`)
   - `SUB-35.34`: Testes de `emitirEvento` em `tests/unit/worker-eventos.test.ts` (`concluido`, `8e63d4c`)
-  - `SUB-35.35`: `comEventos(nome, no)` em `worker/eventos.ts` (`em_execucao`)
+  - `SUB-35.35`: `comEventos(nome, no)` em `worker/eventos.ts` (`concluido`, `bd6563e`)
   - `SUB-35.36`: Envolver os nós em `worker/grafo.ts` com `comEventos` (`pendente`)
   - `SUB-35.37`: `iniciarHeartbeat()` em `worker/heartbeat.ts` (`pendente`)
   - `SUB-35.38`: Ligar o heartbeat no CLI `worker/index.ts` (`pendente`)
@@ -364,17 +353,6 @@
 - **Critérios de Aceitação:** Screenshots conferidos; nenhum erro no console.
 - **Commit:** pendente
 - **Anotação:** Trava de DashboardAI-Clone 07 (Grok Bot) (desde 2026-10-12 01:49, commit `8d700c5`) liberada em 2026-10-12 a pedido do usuário, sem entrega registrada; tarefa volta a ficar livre.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-
-#### [ ] SUB-35.35: `comEventos(nome, no)` em `worker/eventos.ts`
-- **Status:** em_execucao
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:39)
-- **Depende de:** SUB-35.33, SUB-28.3
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Função de ordem superior que envolve um nó do LangGraph: emite `inicio` antes, `fim` com duração depois e `erro` (mensagem segura, relançando o erro) com `agente`, `taskId`, `execucaoId` e `etapa = nome` do estado. Testes no mesmo arquivo de teste da SUB-35.34.
-- **Critérios de Aceitação:** `npm test` passa.
-- **Commit:** pendente
-- **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-35.36: Envolver os nós em `worker/grafo.ts` com `comEventos`

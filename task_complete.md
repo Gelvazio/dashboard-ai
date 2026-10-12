@@ -2556,4 +2556,15 @@
 - **Anotação:** Criei `tests/unit/worker-eventos.test.ts` (6 testes) com cliente `db` falso que registra as chamadas: payload de `agent_events` (project_id resolvido pelo slug, agente, execucao_id, etapa, tipo, task, status, mensagem, metadados), corte da mensagem em 2000 caracteres, `metadados` não-objeto virando `{}`, upsert com `chave_idempotencia`, e falha do banco, cliente quebrado ou projeto inexistente devolvendo `false` sem lançar e sem o payload no aviso. `npm test` 274 aprovados / 30 pulados; `typecheck` OK.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:38 (confirmado por Devin (Cognition AI))
 
+#### [x] SUB-35.35: `comEventos(nome, no)` em `worker/eventos.ts`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:39, conclusão: 2026-10-12 13:40)
+- **Depende de:** SUB-35.33, SUB-28.3
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Função de ordem superior que envolve um nó do LangGraph: emite `inicio` antes, `fim` com duração depois e `erro` (mensagem segura, relançando o erro) com `agente`, `taskId`, `execucaoId` e `etapa = nome` do estado. Testes no mesmo arquivo de teste da SUB-35.34.
+- **Critérios de Aceitação:** `npm test` passa.
+- **Commit:** `bd6563e`
+- **Anotação:** Adicionei em `worker/eventos.ts` `comEventos(nome, no, deps?, agora?)`: emite `inicio` antes do nó, `fim` com `metadados.duracao_ms` depois e, em falha, `erro` com `mensagemSegura(erro)` (mascara JWT, chaves de API, Bearer/Basic, `token=`/`key=` e credencial em URL; até 500 caracteres) e relança o erro original. Os eventos levam `agente`, `taskId`, `taskCodigo`, `execucaoId` e `etapa = nome` do estado; falha ao emitir não interrompe o nó. 5 testes novos em `tests/unit/worker-eventos.test.ts` (11 no arquivo); `npm test` 279 aprovados / 30 pulados; `typecheck` e `typecheck:worker` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:40 (confirmado por Devin (Cognition AI))
+
 ---
