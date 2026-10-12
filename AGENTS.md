@@ -102,9 +102,10 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
    - Cada agente registra sua trava em um bloco próprio `### 🔒 TRAVA ADICIONAL — <Nome da IA> — <SUB-XX>` em `quadro-task-principal.md`, e nunca edita o bloco de outro agente.
    - A proibição vale para o **mesmo item**: ninguém assume um item que já tem trava de outro agente.
 
-4. **Trava abandonada (prazo):**
-   - Uma trava sem nenhum commit/push do agente responsável há **mais de 30 minutos** é considerada abandonada.
-   - Ela só pode ser liberada pelo usuário ou por um agente com autorização do usuário, registrando no histórico: quem liberou, quando e o motivo.
+4. **Travas só são liberadas pelo usuário:**
+   - Não existe tarefa "abandonada": uma tarefa travada é uma tarefa que ainda não terminou.
+   - ⛔ Nenhum agente pode liberar, assumir ou alterar a trava de outro agente por conta própria, independentemente do tempo sem commits.
+   - Se uma trava estiver causando problemas, quem decide e libera manualmente é o **usuário**.
 
 5. **Estados das subtarefas no quadro:**
    - 🟢 **livre:** `pendente`, sem trava e com todas as dependências `concluido`; qualquer agente pode pegar.
