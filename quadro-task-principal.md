@@ -5,7 +5,7 @@
 > Para assumir uma nova tarefa, o agente **DEVE OBRIGATORIAMENTE**:
 > 1. Verificar se a trava está livre ou se a task anterior foi finalizada.
 > 2. Registrar seu nome/ID de agente, data/hora e o código da sub-task neste quadro antes de iniciar o código.
-> 3. Ao finalizar, atualizar o status para `CONCLUÍDO`, anotar o hash do `git commit`, registrar a nota de entrega e liberar a trava.
+> 3. Ao finalizar, atualizar o status para `CONCLUÍDO`, anotar o hash do `git commit`, registrar a nota de entrega, executar `git push origin main` e liberar a trava.
 
 ---
 
@@ -76,4 +76,4 @@
 
 | Data/Hora | Agente | Sub-task | Commit SHA | Anotação / O que foi feito |
 |---|---|---|---|---|
-| *Aguardando primeiro commit* | | | | |
+| 2026-10-11 22:08 | Antigravity AI | Setup Inicial | `c225b9f` | Inicialização do task-principal.md, quadro de locks e protocolo em AGENTS.md |

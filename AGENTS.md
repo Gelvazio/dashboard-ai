@@ -28,11 +28,12 @@
    - `concluido`: Entregue com sucesso e validada.
    - `cancelado`: Descontinuada ou substituída.
 
-5. **Commit e Anotação Imediatos Pós-Finalização:**
+5. **Commit, Push e Anotação Imediatos Pós-Finalização:**
    - Toda e qualquer mini-task concluída **DEVE OBRIGATORIAMENTE** gerar:
      - Atualização do status em `task-principal.md` para `concluido` com a anotação detalhada do que foi feito.
      - Atualização em `quadro-task-principal.md`: liberação da trava (`LIVRE`), inserção da linha no histórico com o hash do commit (`Commit SHA`), agente responsável e nota técnica.
      - Execução imediata do comando `git commit` registrando o código da sub-task na mensagem.
+     - Execução imediata do comando `git push origin main` para que todos os demais agentes e sessões de IA tenham a branch `main` sempre atualizada.
 
 ---
 
