@@ -1510,15 +1510,15 @@
 - **Commit:** `07a914b`
 - **Anotação:** Adicionado `validarLogin` em `src/lib/auth.ts` (e-mail obrigatório/formato após trim; senha obrigatória, mín. 6). 4 testes em `tests/unit/auth.test.ts`; vitest e typecheck verdes.
 
-#### [ ] SUB-27.3: `entrarComSenha(email, senha)` em `src/services/authService.ts`
-- **Status:** em_execucao
+#### [x] SUB-27.3: `entrarComSenha(email, senha)` em `src/services/authService.ts`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/services/authService.ts` com `export async function entrarComSenha(email: string, senha: string, client = getSupabase()): Promise<Session>` usando `client.auth.signInWithPassword`; erro vira `ServiceError(mensagemErroAuth(error), 'AUTH')`. A senha nunca é guardada nem logada. Exportar no barrel `src/services/index.ts`.
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `c80c6c6`
+- **Anotação:** Criado `src/services/authService.ts` com `entrarComSenha(email, senha, client = getSupabase())` via `signInWithPassword` (e-mail com trim); erro -> `ServiceError(mensagemErroAuth(error), 'AUTH')`; senha não guardada/logada. Exportado no barrel `src/services/index.ts`. typecheck e vitest verdes.
 
 #### [ ] SUB-27.4: `sair()` em `src/services/authService.ts`
 - **Status:** pendente

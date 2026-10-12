@@ -33,17 +33,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.3
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-27.3** |
-| **Título da Sub-task:** | `entrarComSenha(email, senha)` em `src/services/authService.ts` |
-| **Agente Responsável:** | DashboardAI-Clone 01 |
-| **Data e Hora de Início:** | 2026-10-12 00:50 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -52,7 +41,6 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
-| **SUB-27.3** | `entrarComSenha(email, senha)` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:50 | SUB-27.1 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
@@ -184,7 +172,6 @@
 | **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) (mãe) | 3 | Fase 2B | SUB-07, SUB-03; SUB-33.1 a SUB-33.13 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | 3 | Fase 2B | SUB-33.11 — 🔄 em execução por Codex (OpenAI) |
 | **SUB-27** | Autenticação e Login com Supabase Auth (mãe; pendente, liberada) | 3 | Fase 10 | SUB-03, SUB-29; SUB-27.1 a SUB-27.28 — 🟢 livre |
-| **SUB-27.3** | `entrarComSenha(email, senha)` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.1 — ⛓️ bloqueada |
 | **SUB-27.4** | `sair()` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.3 — ⛓️ bloqueada |
 | **SUB-27.5** | `enviarLinkMagico()` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.3 — ⛓️ bloqueada |
 | **SUB-27.6** | Testes unitários de `authService` em `tests/unit/authService.test.ts` | 3 | Fase 10 | SUB-27.23, SUB-27.24 — ⛓️ bloqueada |
@@ -263,6 +250,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-27.3** | `entrarComSenha(email, senha)` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:50 | 2026-10-12 00:50 | `c80c6c6` |
 | **SUB-20.3** | `sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts` | DashboardAI-Clone 06 | 2026-10-12 00:49 | 2026-10-12 00:50 | `e5e67e5` |
 | **SUB-27.16** | `urlDeRetorno()` para link mágico e redefinição de senha | DashboardAI-Clone 01 | 2026-10-12 00:49 | 2026-10-12 00:49 | `1e3240c` |
 | **SUB-27.2** | `validarLogin({ email, senha })` em `src/lib/auth.ts` | DashboardAI-Clone 01 | 2026-10-12 00:48 | 2026-10-12 00:49 | `07a914b` |
@@ -430,3 +418,4 @@ n|| **SUB-19.9** | `BuscaControles` (limiar, globais, modo) em `src/components/m
 | 2026-10-12 00:49 | DashboardAI-Clone 01 | SUB-27.16 | `1e3240c` | Adicionado `urlDeRetorno(loc)` em `src/lib/auth.ts`: origem + caminho + tela do hash (`#/rota`), descartando tokens/parâmetros anteriores. 4 testes em `tests/unit/auth.test.ts`; vitest e typecheck verdes. |
 | 2026-10-12 00:50 | DashboardAI-Clone 01 | SUB-27.3 | — | Lock: assumindo SUB-27.3 (`entrarComSenha(email, senha)` em `src/services/authService.ts`) |
 | 2026-10-12 00:50 | DashboardAI-Clone 06 | SUB-20.3 | `e5e67e5` | Adicionado `sugerirTags(titulo, conteudo, max = 5)` em `src/lib/memoriaForm.ts`: usa `palavrasDe` (SUB-20.10) no título (peso 2) e no conteúdo (peso 1), soma a frequência, ordena por pontuação decrescente com desempate alfabético e devolve as `max` primeiras (`max <= 0` -> vazio). Determinística. 6 testes novos em `tests/unit/memoriaForm.test.ts`. `npm run typecheck` e `npm test` verdes. |
+| 2026-10-12 00:50 | DashboardAI-Clone 01 | SUB-27.3 | `c80c6c6` | Criado `src/services/authService.ts` com `entrarComSenha(email, senha, client = getSupabase())` via `signInWithPassword` (e-mail com trim); erro -> `ServiceError(mensagemErroAuth(error), 'AUTH')`; senha não guardada/logada. Exportado no barrel `src/services/index.ts`. typecheck e vitest verdes. |
