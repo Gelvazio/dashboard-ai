@@ -77,6 +77,17 @@
 | **Data e Hora de Início:** | 2026-10-12 01:06 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-35.4
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.4** |
+| **Título da Sub-task:** | Publicar `agent_events` no Supabase Realtime |
+| **Agente Responsável:** | DashboardAI-Clone 02 |
+| **Data e Hora de Início:** | 2026-10-12 01:06 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -85,6 +96,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-35.4** | Publicar `agent_events` no Supabase Realtime | DashboardAI-Clone 02 | 2026-10-12 01:06 | SUB-35.1 |
 | **SUB-27.14** | Componente `UserMenu` em `src/components/layout/UserMenu.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:06 | SUB-27.26 |
 | **SUB-35.21** | Instalar `chart.js` e `react-chartjs-2` | DashboardAI-Clone 06 | 2026-10-12 01:06 | Nenhuma |
 | **SUB-26.10** | Seção Agentes de IA: exemplos do ciclo da fila | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:05 | SUB-26.1 |
@@ -193,7 +205,7 @@
 | **SUB-27.27** | Incluir `UserMenu` no `src/components/layout/Header.tsx` | 3 | Fase 10 | SUB-27.14 — ⛓️ bloqueada |
 | **SUB-27.28** | Varredura do bundle por `service_role` (SUB-27) | 3 | Fase 10 | SUB-27.22 — ⛓️ bloqueada |
 | **SUB-35** | Monitor em Tempo Real dos Agentes (mãe) | 4 | Fase 12 | SUB-12, SUB-29, SUB-30; SUB-35.1 a SUB-35.46 |
-| **SUB-35.4** | Publicar `agent_events` no Supabase Realtime | 4 | Fase 12 | SUB-35.1 — ⛓️ bloqueada |
+| **SUB-35.4** | Publicar `agent_events` no Supabase Realtime | 4 | Fase 12 | SUB-35.1 — 🔄 em execução por DashboardAI-Clone 02 |
 | **SUB-35.5** | Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` | 4 | Fase 12 | SUB-35.3 — ⛓️ bloqueada |
 | **SUB-35.6** | Teste de integração de `agent_events` (RLS e trigger) | 4 | Fase 12 | SUB-35.2, SUB-35.3 — ⛓️ bloqueada |
 | **SUB-35.7** | Seção "Eventos dos agentes (07)" no `database/README.md` | 4 | Fase 12 | SUB-35.4, SUB-35.5 — ⛓️ bloqueada |
@@ -583,3 +595,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:06 | DashboardAI-Clone 06 | SUB-35.21 | — | Lock: assumindo SUB-35.21 (Instalar `chart.js` e `react-chartjs-2`) |
 | 2026-10-12 01:06 | DashboardAI-Clone 01 | SUB-27.20 | `74588f7` | Em `src/hooks/ProjetoContext.tsx`, lê a sessão do `AuthContext` (equivalente a `useAuth`, porém tolerante fora do `AuthProvider` até a SUB-27.13 integrar o provider no App): sem sessão limpa `projetos` e `erro` mantendo o slug salvo; ao logar recarrega. typecheck, vitest e build OK. |
 | 2026-10-12 01:06 | DashboardAI-Clone 01 | SUB-27.14 | — | Lock: assumindo SUB-27.14 (Componente `UserMenu` em `src/components/layout/UserMenu.tsx`) |
+| 2026-10-12 01:06 | DashboardAI-Clone 02 | SUB-35.4 | — | Lock: assumindo SUB-35.4 (Publicar `agent_events` no Supabase Realtime) |

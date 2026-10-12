@@ -2148,7 +2148,7 @@
   - `SUB-35.1`: Tabela `agent_events` em `database/07_agent_events.sql` (`concluido`)
   - `SUB-35.2`: Trigger `validar_agent_event` em `database/07_agent_events.sql` (`concluido`)
   - `SUB-35.3`: RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql` (`concluido`)
-  - `SUB-35.4`: Publicar `agent_events` no Supabase Realtime (`pendente`)
+  - `SUB-35.4`: Publicar `agent_events` no Supabase Realtime (`em_execucao`)
   - `SUB-35.5`: Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` (`pendente`)
   - `SUB-35.6`: Teste de integração de `agent_events` (RLS e trigger) (`pendente`)
   - `SUB-35.7`: Seção "Eventos dos agentes (07)" no `database/README.md` (`pendente`)
@@ -2227,9 +2227,9 @@
 - **Commit:** `2d714d4`
 - **Anotação:** Em `database/07_agent_events.sql`: RLS habilitada em `agent_events`; `revoke all` de anon/authenticated, `grant select, insert` para `authenticated` e `all` para `service_role`; policies `agent_events_select` (`tem_acesso_projeto(project_id, 'viewer')`) e `agent_events_insert` (`tem_acesso_projeto(project_id, 'editor')`); sem policies/grants de update/delete (eventos só-inclusão). Validado em Postgres 17 local (00–07 + 07 reaplicado; `\\dp agent_events` mostra as policies e `relrowsecurity = t`); smoke com `test_multi_projeto.sql`: viewer só lê o próprio projeto e não inclui; editor inclui no próprio projeto (`criado_por` = ele), é recusado em outro projeto e não tem update/delete; anon sem acesso.
 
-#### [ ] SUB-35.4: Publicar `agent_events` no Supabase Realtime
-- **Status:** pendente
-- **Executor:** nenhum
+#### [🔄] SUB-35.4: Publicar `agent_events` no Supabase Realtime
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-35.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Em `database/07_agent_events.sql`, bloco `do $$` que executa `alter publication supabase_realtime add table public.agent_events` só se a publicação existir e a tabela ainda não estiver nela (no Postgres local de testes a publicação não existe e o bloco não falha).
