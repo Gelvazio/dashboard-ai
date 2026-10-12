@@ -1,10 +1,7 @@
 import { parseArgs } from 'node:util';
 import { pathToFileURL } from 'node:url';
-import { ChatOpenAI } from '@langchain/openai';
-import type { BaseCheckpointSaver } from '@langchain/langgraph';
-import { criarCheckpointer } from './checkpointer.js';
 import { executarUmaTask, type DepsExecucao, type GrafoExecucao, type ResultadoExecucao } from './executar.js';
-import { criarGrafo } from './grafo.js';
+import { criarGrafoComCheckpointer } from './grafoFabrica.js';
 import { iniciarHeartbeat } from './heartbeat.js';
 
 export interface OpcoesWorker {
@@ -38,14 +35,6 @@ export function grafoSobDemanda(criar: () => Promise<GrafoExecucao>): GrafoExecu
   };
 }
 
-async function criarGrafoReal(env: NodeJS.ProcessEnv = process.env): Promise<GrafoExecucao> {
-  if (!env.OPENAI_API_KEY) throw new Error('OPENAI_API_KEY não definida');
-  const modelo = new ChatOpenAI({ model: env.WORKER_MODELO || 'gpt-4o-mini', apiKey: env.OPENAI_API_KEY, temperature: 0 });
-  // `langgraph-checkpoint-postgres` traz outra versão de `langgraph-checkpoint`; a interface usada é a mesma.
-  const checkpointer = (await criarCheckpointer(env)) as unknown as BaseCheckpointSaver;
-  return criarGrafo({ modelo, checkpointer }) as unknown as GrafoExecucao;
-}
-
 /**
  * Loop do worker: chama `executarUmaTask` até não haver task (ou uma vez só com `--uma-vez`).
  * Devolve as execuções feitas.
@@ -53,7 +42,7 @@ async function criarGrafoReal(env: NodeJS.ProcessEnv = process.env): Promise<Gra
 export async function rodarWorker(
   opcoes: OpcoesWorker,
   executar: (deps: DepsExecucao) => Promise<ResultadoExecucao | null> = executarUmaTask,
-  grafo: GrafoExecucao = grafoSobDemanda(() => criarGrafoReal()),
+  grafo: GrafoExecucao = grafoSobDemanda(() => criarGrafoComCheckpointer()),
   log: (mensagem: string) => void = console.log,
 ): Promise<ResultadoExecucao[]> {
   const execucoes: ResultadoExecucao[] = [];
