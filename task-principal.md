@@ -40,28 +40,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.17
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-28.17** |
-| **Título da Sub-task:** | Testes do worker: caminho feliz e erro |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 13:43 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
-- **Subtarefas atômicas (~3 min):** 203
-- **Em Execução:** 1 (SUB-28.17, Devin (Cognition AI), desde 2026-10-12 13:43)
+- **Subtarefas atômicas (~3 min):** 204
+- **Em Execução:** 0
 - **Pendentes:** 4 principais (25, 26, 28, 35) + 16 subtarefas
-  - livres agora: 7 (SUB-26.5, SUB-28.2, SUB-28.16, SUB-28.24, SUB-35.32, SUB-25.4, SUB-25.7)
-  - bloqueadas por dependência: 8
+  - livres agora: 9 (SUB-26.5, SUB-28.2, SUB-28.16, SUB-28.24, SUB-35.32, SUB-25.4, SUB-25.7, SUB-35.39, SUB-28.34)
+  - bloqueadas por dependência: 7
   - reservadas: 0
-- **Concluídas:** 220 de 240 blocos (33 principais + 187 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 221 de 241 blocos (33 principais + 188 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -182,7 +171,7 @@
   - `SUB-28.14`: Reconciliação na retomada em `worker/reconciliar.ts` (`concluido`, `206ba39`)
   - `SUB-28.15`: CLI do worker em `worker/index.ts` (`concluido`, `ba04cc1`)
   - `SUB-28.16`: Endpoint `api/aprovacao.ts`: autenticação e papel (401/403) (`pendente`)
-  - `SUB-28.17`: Testes do worker: caminho feliz e erro (`em_execucao`)
+  - `SUB-28.17`: Testes do worker: caminho feliz e erro (`concluido`, `46718f9`)
   - `SUB-28.18`: Atualizar `LangChain_LangGraph.md` (status e desvios) (`pendente`)
   - `SUB-28.19`: Adaptar ferramentas para `tool()` do LangChain em `worker/ferramentas.ts` (`concluido`, `a9bb258`)
   - `SUB-28.20`: `PlanoSchema` em `worker/plano.ts` (`concluido`, `048e647`)
@@ -199,6 +188,7 @@
   - `SUB-28.31`: `montarPromptPlano(estado)` em `worker/plano.ts` (`concluido`, `8a43f2b`)
   - `SUB-28.32`: Registro de auditoria da aprovação (`pendente`)
   - `SUB-28.33`: Corrigir `finalizar()` para a assinatura real de `finalizar_task` (`concluido`, `76f243e`)
+  - `SUB-28.34`: `resumoSeguro`/`chaves` só com os passos `passo-<i>` em `worker/nos/finalizar.ts` (`pendente`)
 - **Descrição:** Implementar a orquestração multi-etapas de execução descrita em `LangChain_LangGraph.md`, mantendo Supabase como autoridade sobre a fila, dependências, locks, tentativas e resultado. Integrar o worker LangGraph às RPCs existentes e às ferramentas MCP autorizadas, com checkpoint durável, retomada, tratamento de falhas e aprovação humana para ações sensíveis.
 - **Critérios de Aceitação:** A task só inicia após todas as dependências SUB-01 a SUB-27 concluídas; execução reivindicada por `pegar_proxima_task`; estado do grafo é retomável e não duplica efeitos; escrita ocorre por ferramentas autenticadas e autorizadas; ações sensíveis pausam para aprovação; conclusão/erro e liberação do lock passam por `finalizar_task`; documentação de operação e segurança atualizada conforme `LangChain_LangGraph.md`.
 - **Commit:** pendente
@@ -223,17 +213,6 @@
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** `POST /api/aprovacao` exige JWT (`bearerToken` + `verificarSessaoSupabase`) e papel editor no projeto da task (`tem_acesso_projeto`); 401 sem sessão, 403 sem papel, 400 corpo inválido. A retomada fica na SUB-28.23.
 - **Critérios de Aceitação:** `typecheck:api` OK; testes 401/403/400.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-
-#### [ ] SUB-28.17: Testes do worker: caminho feliz e erro
-- **Status:** em_execucao
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:43)
-- **Depende de:** SUB-28.15
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Em `tests/unit/worker-grafo.test.ts`, com modelo, ferramentas e RPC falsos: caminho feliz até `finalizar_task` concluida e erro permanente -> `finalizar_task` com `erro`.
-- **Critérios de Aceitação:** `npm test` passa.
 - **Commit:** pendente
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
@@ -296,6 +275,17 @@
 ---
 
 ## 📡 FASE 12: Monitor em Tempo Real dos Agentes
+
+#### [ ] SUB-28.34: `resumoSeguro`/`chaves` só com os passos `passo-<i>` em `worker/nos/finalizar.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-28.17
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Achado da SUB-28.17 (cadastrado em 2026-10-12 por Devin (Cognition AI)): `resumoSeguro()` e `chaves` do `finalizarNode` usam todas as chaves de `resultados` menos `erro`, então contam `brain_search` (memórias de `carregarContexto`), `classe_falha` e `tentativas:<passo>` como passos concluídos (ex.: "3 passo(s) concluído(s): brain_search, passo-0, passo-1" com 2 passos). Filtrar só as chaves `passo-<i>` e ajustar o teste do caminho feliz em `tests/unit/worker-grafo.test.ts` para o valor exato.
+- **Critérios de Aceitação:** `npm test` passa; caminho feliz com 2 passos gera "2 passo(s) concluído(s): passo-0, passo-1" e `chaves = ['passo-0', 'passo-1']`.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 ### [ ] SUB-35: Monitor em Tempo Real dos Agentes
 - **Status:** pendente (aguardando subtarefas)

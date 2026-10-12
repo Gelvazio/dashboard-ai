@@ -2099,6 +2099,17 @@
 - **Anotação:** `finalizar()` em `worker/fila.ts` deixou de enviar `p_erro_mensagem` (inexistente na RPC): a mensagem vai em `p_metadados.erro_mensagem`, que `finalizar_task` grava em `agendamento_tarefa_logs.erro_mensagem`. Novo campo opcional `agente` → `p_agente`, para a RPC validar a trava; `executarUmaTask` e `finalizarNode` passam o agente. Teste em `tests/unit/worker-fila.test.ts` confere que só são enviados parâmetros que existem em `finalizar_task` (`database/04_rpc_functions.sql`). Rodado contra banco local (Postgres 16 + PostgREST em Docker), sem `OPENAI_API_KEY`: `npm run worker -- --uma-vez` reivindicou a task, finalizou com `erro` (`OPENAI_API_KEY não definida`), a task voltou a `pendente` (tentativa 1 de 3) sem trava e o log registrou a mensagem. `npm test` (268 ok, 30 pulados), `npm run typecheck`, `npm run typecheck:worker`, `npm run build`, `npm run check:chunks` e `npm run check:env` verdes.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:59 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
+#### [x] SUB-28.17: Testes do worker: caminho feliz e erro
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:43, conclusão: 2026-10-12 13:44)
+- **Depende de:** SUB-28.15
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Em `tests/unit/worker-grafo.test.ts`, com modelo, ferramentas e RPC falsos: caminho feliz até `finalizar_task` concluida e erro permanente -> `finalizar_task` com `erro`.
+- **Critérios de Aceitação:** `npm test` passa.
+- **Commit:** `46718f9`
+- **Anotação:** Em `tests/unit/worker-grafo.test.ts`, novo bloco com modelo, ferramentas e RPC falsos (`rpc` de `api/_lib/supabase` mockado; `finalizar` real de `worker/fila.ts`; eventos silenciados): caminho feliz executa os 2 passos e chama `finalizar_task` com `p_status = concluida`; erro permanente no 2º de 3 passos não repete, grava `classe_falha = permanente` e chama `finalizar_task` com `p_status = erro`, `passo_falho` e `erro_mensagem`. `npm test` 285 aprovados / 30 pulados; `typecheck` OK. Achado fora do escopo, cadastrado como SUB-28.34: `resumoSeguro` e `chaves` contam `brain_search` (memórias do contexto), `classe_falha` e `tentativas:*` como passos concluídos.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:44 (confirmado por Devin (Cognition AI))
+
 ---
 
 ## 📡 FASE 12: Monitor em Tempo Real dos Agentes
