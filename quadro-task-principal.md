@@ -66,14 +66,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:15 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 05 (Grok Bot) — SUB-35.13
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.13** |
+| **Título da Sub-task:** | Teste de integração de `listarEventos`/`atividadeAtual` |
+| **Agente Responsável:** | DashboardAI-Clone 05 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:15 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (2)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-35.13** | Teste de integração de `listarEventos`/`atividadeAtual` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:15 | SUB-35.10, SUB-35.6 |
 | **SUB-35.11** | `assinarEventos()` (Supabase Realtime) em `src/services/eventService.ts` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:15 | SUB-35.10 |
 | **SUB-27.13** | Integrar autenticação no `src/App.tsx` | DashboardAI-Clone 06 | 2026-10-12 01:14 | SUB-27.12 |
 | **SUB-35.28** | Feed `FeedEventos` em `src/components/monitor/FeedEventos.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:13 | SUB-35.8 |
@@ -81,7 +93,7 @@
 
 ---
 
-### ⏳ PENDENTES (134)
+### ⏳ PENDENTES (133)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -169,7 +181,6 @@
 | **SUB-35** | Monitor em Tempo Real dos Agentes (mãe) | 4 | Fase 12 | SUB-12, SUB-29, SUB-30; SUB-35.1 a SUB-35.46 |
 | **SUB-35.11** | `assinarEventos()` (Supabase Realtime) em `src/services/eventService.ts` | 4 | Fase 12 | SUB-35.10 — 🔄 em execução por DashboardAI-Clone 09 (Grok Bot) |
 | **SUB-35.12** | Testes de `eventService` em `tests/unit/eventService.test.ts` | 4 | Fase 12 | SUB-35.11 — ⛓️ bloqueada |
-| **SUB-35.13** | Teste de integração de `listarEventos`/`atividadeAtual` | 4 | Fase 12 | SUB-35.10, SUB-35.6 — ⛓️ bloqueada |
 | **SUB-35.16** | `contarPorStatus()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.15 — ⛓️ bloqueada |
 | **SUB-35.17** | `contarPorAgente()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.16 — ⛓️ bloqueada |
 | **SUB-35.18** | `segmentosLinhaDoTempo()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.17 — ⛓️ bloqueada |
@@ -633,3 +644,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:14 | DashboardAI-Clone 06 | SUB-27.13 | — | Lock: assumindo SUB-27.13 (Integrar autenticação no `src/App.tsx`) |
 | 2026-10-12 01:15 | DashboardAI-Clone 09 (Grok Bot) | SUB-35.10 | `47fb521` | Adicionado `atividadeAtual(projectId, client?)` em `src/services/eventService.ts`: chama a RPC `atividade_atual_agentes` (`p_project_id`), trata erro com `resultado` (contexto "Atividade dos agentes") e devolve `AtividadeAgente[]` ordenado por `ultimo_em` desc (lista vazia se `null`). typecheck e `npm test` OK. |
 | 2026-10-12 01:15 | DashboardAI-Clone 04 (Grok Bot) | SUB-35.15 | `c47df6b` | Adicionado em `src/lib/monitor.ts` `estadoDoAgente(atividade, agora = Date.now(), { ativoAteSeg = 120, ociosoAteSeg = 900 })` -> `'ativo' | 'ocioso' | 'sem_sinal' | 'finalizado'` (tipo `EstadoAgente` exportado): último `tipo` `fim`/`liberacao` = finalizado; senão usa o sinal mais recente entre `ultimo_em` e `ultimo_heartbeat_em` (até 120 s ativo, até 900 s ocioso, depois ou sem data válida sem_sinal). Só exibição: não sugere nem libera travas. 6 testes novos em `tests/unit/monitor.test.ts` (um por estado + heartbeat + limites). `npm test` e `npm run typecheck` verdes. |
+| 2026-10-12 01:15 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.13 | — | Lock: assumindo SUB-35.13 (Teste de integração de `listarEventos`/`atividadeAtual`) |

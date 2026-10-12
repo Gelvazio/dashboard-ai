@@ -2157,7 +2157,7 @@
   - `SUB-35.10`: `atividadeAtual()` em `src/services/eventService.ts` (`pendente`)
   - `SUB-35.11`: `assinarEventos()` (Supabase Realtime) em `src/services/eventService.ts` (`pendente`)
   - `SUB-35.12`: Testes de `eventService` em `tests/unit/eventService.test.ts` (`pendente`)
-  - `SUB-35.13`: Teste de integração de `listarEventos`/`atividadeAtual` (`pendente`)
+  - `SUB-35.13`: Teste de integração de `listarEventos`/`atividadeAtual` (`em_execucao`)
   - `SUB-35.14`: `mesclarEvento()` em `src/lib/monitor.ts` (`pendente`)
   - `SUB-35.15`: `estadoDoAgente()` em `src/lib/monitor.ts` (`pendente`)
   - `SUB-35.16`: `contarPorStatus()` em `src/lib/monitor.ts` (`pendente`)
@@ -2318,8 +2318,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-35.13: Teste de integração de `listarEventos`/`atividadeAtual`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 01:15)
 - **Depende de:** SUB-35.10, SUB-35.6
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `tests/integration/eventService.integration.test.ts`: com eventos de dois agentes, `atividadeAtual` devolve um por agente com o último evento e `ultimo_heartbeat_em`; `listarEventos` respeita `agente` e `limite`; outro projeto não aparece.
