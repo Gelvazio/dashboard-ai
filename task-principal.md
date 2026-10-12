@@ -1710,15 +1710,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-27.23: `obterSessao()` em `src/services/authService.ts`
-- **Status:** em_execucao
+#### [x] SUB-27.23: `obterSessao()` em `src/services/authService.ts`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.4
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `obterSessao(client): Promise<Session | null>` (`auth.getSession()`, erro -> `ServiceError`).
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `c696d9f`
+- **Anotação:** Adicionado `obterSessao(client = getSupabase())` em `src/services/authService.ts`: `auth.getSession()` -> sessão ou `null`; erro -> `ServiceError(mensagemErroAuth(error), 'AUTH')`. typecheck verde.
 
 #### [ ] SUB-27.24: `redefinirSenha()` em `src/services/authService.ts`
 - **Status:** pendente
