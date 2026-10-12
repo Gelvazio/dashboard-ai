@@ -2147,7 +2147,7 @@
 - **Subtarefas:** (criada e subdividida em 46 em 2026-10-12 00:39 por DashboardAI (Grok Bot) a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`)
   - `SUB-35.1`: Tabela `agent_events` em `database/07_agent_events.sql` (`concluido`)
   - `SUB-35.2`: Trigger `validar_agent_event` em `database/07_agent_events.sql` (`concluido`)
-  - `SUB-35.3`: RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql` (`pendente`)
+  - `SUB-35.3`: RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql` (`em_execucao`)
   - `SUB-35.4`: Publicar `agent_events` no Supabase Realtime (`pendente`)
   - `SUB-35.5`: Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` (`pendente`)
   - `SUB-35.6`: Teste de integração de `agent_events` (RLS e trigger) (`pendente`)
@@ -2218,8 +2218,8 @@
 - **Anotação:** Adicionados `public.validar_agent_event()` (plpgsql, `security invoker`, `search_path = public`) e o trigger `validar_agent_event_trg` (`before insert or update`) em `database/07_agent_events.sql`, no padrão de `agent_messages_preparar` (06): task informada precisa ser do mesmo projeto (erro "a task N não pertence ao projeto do evento"), `task_codigo` preenchido a partir da task; no insert, `task_codigo` sem `task_id` resolve a task do projeto (código sem task é aceito, ex. subtarefa só no quadro); `agente` com trim; interface (anon/authenticated) não escolhe `criado_por`; em update recusa mudar `project_id`, `agente` e `created_at` e preserva `criado_por`. Validado em Postgres 17 local: 00–07 aplicados em banco limpo e 07 reaplicado; task de outro projeto e as 3 alterações proibidas falham com mensagem clara; resolução por código e update de `mensagem` OK.
 
 #### [ ] SUB-35.3: RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 01:05)
 - **Depende de:** SUB-35.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Habilitar RLS e criar as policies: `select` para quem tem `tem_acesso_projeto(project_id, 'viewer')`; `insert` para `tem_acesso_projeto(project_id, 'editor')`; sem policies de `update`/`delete` (só o service_role/administração apaga). `grant select, insert` para `authenticated`.
