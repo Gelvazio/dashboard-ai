@@ -743,15 +743,15 @@
 - **Commit:** `f145aab`
 - **Anotação:** Criado `src/hooks/useBuscaSemantica.ts` (exportado em `src/hooks/index.ts`): `useBuscaSemantica(projeto | null, consulta, { limiar, incluirGlobais })` -> `{ resultado: ResultadoBusca | null, carregando, erro }`. Usa `useDebounce(consulta.trim(), 400)` (SUB-19.2), `buscarMemorias` (SUB-10) com `gerador` de `criarGeradorEmbedding()` (SUB-33.7, memoizado); texto vazio ou sem projeto não busca e limpa o resultado; respostas antigas descartadas por contador de requisição (também invalidado ao desmontar). `npm run typecheck`, `npm test` e `npm run build` OK.
 
-#### [🔄] SUB-19.7: Painel `BuscaSemanticaPanel` (campo, grade e estados)
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 04 (Grok Bot) (início: 2026-10-12 01:04)
+#### [x] SUB-19.7: Painel `BuscaSemanticaPanel` (campo, grade e estados)
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 04 (Grok Bot) (2026-10-12 01:04 → 2026-10-12 01:07)
 - **Depende de:** SUB-19.5, SUB-19.6, SUB-19.9
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/components/memoria/BuscaSemanticaPanel.tsx` que só compõe: campo de busca, `BuscaControles` (SUB-19.9), grade responsiva de `ResultadoBuscaCard` e estados carregando/vazio/erro, usando `useBuscaSemantica`.
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK; screenshot 1280x800 e 390x844.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `3187754`
+- **Anotação:** Criado `src/components/memoria/BuscaSemanticaPanel.tsx` (`{ projeto | null, onAbrir?(id) }`, exportado em `src/components/memoria/index.ts`), só composição: campo de busca com ícone e spinner (desativado sem projeto), `BuscaControles` (limiar padrão 70%, globais, selo do modo), grade responsiva 1/2/3 colunas (`grid-cols-1` + `min-w-0` para não estourar no celular) de `ResultadoBuscaCard` (similaridade só na busca semântica, Global quando `project_id` nulo) e estados: dica inicial, esqueleto carregando, vazio e erro (`role=alert`), dados de `useBuscaSemantica` (SUB-19.6). `npm run typecheck`, `npm test` e `npm run build` OK; screenshots 1280x800 e 390x844 conferidos com serviços simulados num harness local não commitado.
 
 #### [ ] SUB-19.8: Integrar a busca na `src/views/MemoriaView.tsx`
 - **Status:** pendente
