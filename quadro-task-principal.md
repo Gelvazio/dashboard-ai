@@ -44,28 +44,16 @@
 | **Data e Hora de Início:** | 2026-10-11 22:41 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot)
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-11** |
-| **Título da Sub-task:** | Serviço de Logs do Agendador (`src/services/logService.ts`) |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-11 23:08 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27** | Autenticação e Login com Supabase Auth | Codex (OpenAI) | 2026-10-11 22:27 | SUB-03, SUB-29 |
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` | xAI (Grok) | 2026-10-11 22:41 | SUB-06 |
-| **SUB-11** | Serviço de Logs do Agendador (`src/services/logService.ts`) | DashboardAI (Grok Bot) | 2026-10-11 23:08 | SUB-03 |
 
 ---
 
@@ -90,7 +78,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (17)
+### ✅ CONCLUÍDAS (18)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -111,6 +99,7 @@
 | **SUB-12** | Layout Principal Responsivo (Sidebar + Header + Navegação) | DashboardAI (Grok Bot) | 2026-10-11 23:04 | 2026-10-11 23:06 | `69fa615` |
 | **SUB-09** | Serviço de Tarefas (`src/services/taskService.ts`) | DashboardAI (Grok Bot) | 2026-10-11 23:06 | 2026-10-11 23:07 | `8b6829c` |
 | **SUB-10** | Serviço de Memória Semântica (`src/services/memoryService.ts`) | DashboardAI (Grok Bot) | 2026-10-11 23:07 | 2026-10-11 23:08 | `086689f` |
+| **SUB-11** | Serviço de Logs do Agendador (`src/services/logService.ts`) | DashboardAI (Grok Bot) | 2026-10-11 23:08 | 2026-10-11 23:09 | `c8879bb` |
 
 ---
 
@@ -146,3 +135,4 @@
 | 2026-10-11 23:06 | DashboardAI (Grok Bot) | SUB-12 | `69fa615` | Layout responsivo: sidebar/gaveta, header com seletor de projeto (contexto global), status da conexão, tema claro/escuro/sistema; navegação por hash |
 | 2026-10-11 23:07 | DashboardAI (Grok Bot) | SUB-09 | `8b6829c` | taskService: listar/criar/atualizar/alternarExecucao/cancelar/reabrir/excluirLogico (+obter, concluir humana, restaurar, contar por status), sempre por project_id |
 | 2026-10-11 23:08 | DashboardAI (Grok Bot) | SUB-10 | `086689f` | memoryService: listarMemorias, buscarMemoriasSimilares (match_memories), buscarMemorias (semântica com gerador ou textual), salvarMemoria (upsert), excluirMemoria |
+| 2026-10-11 23:09 | DashboardAI (Grok Bot) | SUB-11 | `c8879bb` | logService: listarLogs (data_hora desc, filtros, paginação com total), contarLogsPorStatus, ultimaExecucao, opcoesDeFiltro |
