@@ -9,9 +9,9 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 32
-- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-02`)
+- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
 - **Pendentes:** 19
-- **Concluídas:** 12
+- **Concluídas:** 13
 - **Canceladas:** 0
 
 ---
@@ -59,15 +59,15 @@
 - **Commit:** `25b9664`
 - **Anotação:** Dependências lucide-react, clsx e tailwind-merge; src/lib/utils.ts com cn(...classes) = twMerge(clsx(...)) para classes condicionais sem conflito de Tailwind; App.tsx usa ícones Lucide e cn() (cards Fila, Memória, Agendador). Validado: cn('px-2 py-1', true && 'bg-brand-600', false && 'hidden', 'px-4') = 'py-1 bg-brand-600 px-4'; build e typecheck (frontend + api) OK; npm audit sem vulnerabilidades.
 
-### [🔄] SUB-02: Estrutura Modular de Diretórios do Frontend
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:01)
+### [x] SUB-02: Estrutura Modular de Diretórios do Frontend
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:01, conclusão: 2026-10-11 23:01)
 - **Depende de:** SUB-01
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar árvore de pastas: `src/components`, `src/services`, `src/hooks`, `src/types`, `src/views`, `src/styles`.
 - **Critérios de Aceitação:** Diretórios criados com arquivos de exportação e organização padrão.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `4b999f7`
+- **Anotação:** Pastas src/components, src/services, src/hooks, src/types, src/views e src/styles, cada uma com index.ts (barrel) documentando a responsabilidade e as regras (serviços sempre filtrados por project_id, só chave anon + RLS no navegador; componentes sem acesso a dados). types/index.ts com ViewId e ProjectSlug; views/index.ts com VIEWS (Fila de Tarefas, Cérebro de Memória, Logs do Agendador, Configurações) para a navegação da SUB-12. CSS global movido para src/styles/index.css. Alias @/ -> src/ no vite.config.ts e em tsconfig.app.json (paths). src/README.md com a estrutura e convenções do produto genérico multi-projeto. Validado: build e typecheck (frontend + api) OK.
 
 ### [ ] SUB-03: Configuração do Cliente Supabase e Tipagem TypeScript
 - **Status:** pendente
