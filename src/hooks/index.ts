@@ -12,3 +12,4 @@ export { ToastProvider } from './ToastContext';
 export { useToast } from './useToast';
 export { useIndicadores } from './useIndicadores';
 export { useContagemAnimada } from './useContagemAnimada';
+export { useAcoesTask } from './useAcoesTask';

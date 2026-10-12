@@ -123,3 +123,31 @@ export function resumo(texto: string | null | undefined, max = 80): string {
   const linha = (texto ?? '').split('\n').map((l) => l.trim()).find(Boolean) ?? '';
   return linha.length > max ? `${linha.slice(0, max - 1)}…` : linha;
 }
+
+export interface AcoesDisponiveis {
+  editar: boolean;
+  alternar: boolean;
+  reabrir: boolean;
+  cancelar: boolean;
+  concluir: boolean;
+  excluir: boolean;
+}
+
+/**
+ * Ações que a interface pode fazer na task (espelha a trigger de proteção do banco:
+ * nada muda em `em_execucao`; só tasks `humano` são concluídas pela interface).
+ */
+export function acoesDisponiveis(t: Pick<Task, 'status' | 'tipo' | 'excluido'>): AcoesDisponiveis {
+  if (t.excluido || t.status === 'em_execucao') {
+    return { editar: false, alternar: false, reabrir: false, cancelar: false, concluir: false, excluir: false };
+  }
+  const aberta = t.status === 'pendente' || t.status === 'erro' || t.status === 'recusada';
+  return {
+    editar: true,
+    alternar: aberta,
+    reabrir: t.status === 'erro' || t.status === 'recusada' || t.status === 'cancelada',
+    cancelar: aberta,
+    concluir: t.tipo === 'humano' && t.status === 'pendente',
+    excluir: true,
+  };
+}

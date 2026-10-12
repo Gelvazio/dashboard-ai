@@ -4,3 +4,4 @@ export { PrioridadeBadge } from './PrioridadeBadge';
 export { TentativasBar } from './TentativasBar';
 export { Dependencias } from './Dependencias';
 export { TaskFormModal } from './TaskFormModal';
+export { TaskRowActions } from './TaskRowActions';

@@ -1,20 +1,23 @@
 import { useState } from 'react';
-import { AlertCircle, ListTodo, Pencil, Plus } from 'lucide-react';
+import { AlertCircle, ListTodo, Plus } from 'lucide-react';
 import { useProjetoAtual } from '@/hooks/useProjetoAtual';
 import { useTasks } from '@/hooks/useTasks';
 import { useIndicadores } from '@/hooks/useIndicadores';
 import { KpiCards } from '@/components/kpi';
 import { EmConstrucao } from '@/components/EmConstrucao';
 import { Botao } from '@/components/ui/Botao';
-import { Tooltip } from '@/components/ui/Tooltip';
-import { ProgressoFila, TaskFormModal, TaskTable } from '@/components/tasks';
+import { ConfirmDialog } from '@/components/ui/ConfirmDialog';
+import { useAcoesTask } from '@/hooks/useAcoesTask';
+import { ProgressoFila, TaskFormModal, TaskRowActions, TaskTable } from '@/components/tasks';
 import type { Task } from '@/types';
 
 /** Fila de tarefas do projeto selecionado. */
 export function FilaView() {
   const { projeto } = useProjetoAtual();
-  const { tasks, carregando, erro, recarregar } = useTasks(projeto?.id);
+  const { tasks, carregando, erro, recarregar, substituir, remover } = useTasks(projeto?.id);
   const indicadores = useIndicadores(projeto?.id);
+  const acoes = useAcoesTask({ projectId: projeto?.id, substituir, remover, recarregar, onMudou: () => void indicadores.recarregar() });
+  const [excluindo, setExcluindo] = useState<Task | null>(null);
   const [form, setForm] = useState<{ aberto: boolean; task: Task | null }>({
     aberto: false,
     task: null,
@@ -58,18 +61,9 @@ export function FilaView() {
         <TaskTable
           tasks={tasks}
           carregando={carregando}
-          acoes={(t) => (
-            <Tooltip conteudo={`Editar ${t.codigo}`}>
-              <button
-                type="button"
-                onClick={() => editar(t)}
-                className="rounded-md p-1.5 text-slate-500 hover:bg-slate-100 hover:text-brand-600 dark:hover:bg-slate-800"
-                aria-label={`Editar ${t.codigo}`}
-              >
-                <Pencil className="size-4" />
-              </button>
-            </Tooltip>
-          )}
+          onAlternar={(t) => void acoes.alternar(t)}
+          ocupados={acoes.ocupados}
+          acoes={(t) => <TaskRowActions task={t} acoes={acoes} onEditar={editar} onPedirExcluir={setExcluindo} />}
         />
         <TaskFormModal
           aberto={form.aberto}
@@ -77,6 +71,27 @@ export function FilaView() {
           task={form.task}
           onFechar={() => setForm((f) => ({ ...f, aberto: false }))}
           onSalva={atualizarTudo}
+        />
+        <ConfirmDialog
+          aberto={excluindo !== null}
+          titulo={`Excluir ${excluindo?.codigo ?? ''}?`}
+          perigo
+          rotuloConfirmar="Excluir task"
+          ocupado={excluindo ? acoes.ocupados.has(excluindo.id) : false}
+          mensagem={
+            <>
+              <p>
+                A task <strong>{excluindo?.titulo}</strong> sai da fila e não será executada.
+              </p>
+              <p className="mt-2 text-slate-500">
+                A exclusão é lógica: dá para desfazer logo em seguida (o histórico e os logs são mantidos).
+              </p>
+            </>
+          }
+          onCancelar={() => setExcluindo(null)}
+          onConfirmar={() => {
+            if (excluindo) void acoes.excluir(excluindo).then(() => setExcluindo(null));
+          }}
         />
       </section>
     </div>

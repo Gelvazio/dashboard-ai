@@ -14,3 +14,5 @@ export * from './tasks';
 export { Modal } from './ui/Modal';
 export { Botao } from './ui/Botao';
 export * from './kpi';
+export { Switch } from './ui/Switch';
+export { ConfirmDialog } from './ui/ConfirmDialog';

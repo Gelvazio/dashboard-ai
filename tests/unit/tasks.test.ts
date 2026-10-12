@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
-  bloqueadaPorDependencia, dependenciasDa, formatarDataHora, infoPrioridade, progressoTentativas, resumo, STATUS_INFO, tempoRelativo,
+  acoesDisponiveis, bloqueadaPorDependencia, dependenciasDa, formatarDataHora, infoPrioridade, progressoTentativas, resumo, STATUS_INFO, tempoRelativo,
 } from '@/lib/tasks';
 import { TASK_STATUS, type Task } from '@/types';
 
@@ -47,5 +47,17 @@ describe('lib/tasks', () => {
     expect(resumo('\n  Olá mundo\nsegunda')).toBe('Olá mundo');
     expect(resumo('x'.repeat(100), 10)).toBe(`${'x'.repeat(9)}…`);
     expect(resumo(null)).toBe('');
+  });
+
+  it('ações disponíveis espelham a proteção do banco', () => {
+    const nada = { editar: false, alternar: false, reabrir: false, cancelar: false, concluir: false, excluir: false };
+    expect(acoesDisponiveis({ status: 'em_execucao', tipo: 'ia', excluido: false })).toEqual(nada);
+    expect(acoesDisponiveis({ status: 'pendente', tipo: 'ia', excluido: true })).toEqual(nada);
+    expect(acoesDisponiveis({ status: 'pendente', tipo: 'ia', excluido: false })).toEqual({ editar: true, alternar: true, reabrir: false, cancelar: true, concluir: false, excluir: true });
+    expect(acoesDisponiveis({ status: 'pendente', tipo: 'humano', excluido: false }).concluir).toBe(true);
+    expect(acoesDisponiveis({ status: 'erro', tipo: 'ia', excluido: false })).toMatchObject({ reabrir: true, cancelar: true, alternar: true });
+    expect(acoesDisponiveis({ status: 'recusada', tipo: 'ia', excluido: false }).reabrir).toBe(true);
+    expect(acoesDisponiveis({ status: 'cancelada', tipo: 'ia', excluido: false })).toMatchObject({ reabrir: true, cancelar: false, alternar: false });
+    expect(acoesDisponiveis({ status: 'concluida', tipo: 'ia', excluido: false })).toMatchObject({ reabrir: false, cancelar: false, alternar: false, editar: true });
   });
 });

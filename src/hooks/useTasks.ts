@@ -10,6 +10,8 @@ export interface UseTasks {
   recarregar: () => Promise<void>;
   /** Substitui uma task na lista local após uma ação (sem nova consulta). */
   substituir: (task: Task) => void;
+  /** Tira uma task da lista local (ex.: após exclusão lógica). */
+  remover: (id: number) => void;
   atualizadoEm: Date | null;
 }
 
@@ -57,5 +59,9 @@ export function useTasks(projectId: number | null | undefined, filtro: FiltroTas
     setTasks((atual) => atual.map((t) => (t.id === task.id ? task : t)));
   }, []);
 
-  return { tasks, carregando, erro, recarregar, substituir, atualizadoEm };
+  const remover = useCallback((id: number) => {
+    setTasks((atual) => atual.filter((t) => t.id !== id));
+  }, []);
+
+  return { tasks, carregando, erro, recarregar, substituir, remover, atualizadoEm };
 }

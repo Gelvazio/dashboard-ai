@@ -1,9 +1,10 @@
 import { useMemo, type ReactNode } from 'react';
 import { ExternalLink, GitCommit, Inbox, Lock, Power, PowerOff, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { bloqueadaPorDependencia, dependenciasDa, formatarDataHora, resumo, tempoRelativo } from '@/lib/tasks';
+import { acoesDisponiveis, bloqueadaPorDependencia, dependenciasDa, formatarDataHora, resumo, tempoRelativo } from '@/lib/tasks';
 import type { Task } from '@/types';
 import { Tooltip } from '@/components/ui/Tooltip';
+import { Switch } from '@/components/ui/Switch';
 import { StatusBadge } from './StatusBadge';
 import { PrioridadeBadge } from './PrioridadeBadge';
 import { TentativasBar } from './TentativasBar';
@@ -22,6 +23,10 @@ export interface TaskTableProps {
   /** Conteúdo da coluna Ações (botões de ação rápida). */
   acoes?: (task: Task) => ReactNode;
   vazio?: ReactNode;
+  /** Liga/desliga direto na tabela (vira um switch quando a task permite). */
+  onAlternar?: (task: Task) => void;
+  /** Ids com ação em andamento (switch pulsando). */
+  ocupados?: ReadonlySet<number>;
 }
 
 const TH = 'whitespace-nowrap px-2 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400';
@@ -34,7 +39,15 @@ function detalheStatus(t: Task): string | undefined {
   return undefined;
 }
 
-function OnOff({ ligado }: { ligado: boolean }) {
+function OnOff({ task, onAlternar, ocupado }: { task: Task; onAlternar?: (t: Task) => void; ocupado?: boolean }) {
+  const ligado = task.executar;
+  if (onAlternar && acoesDisponiveis(task).alternar) {
+    return (
+      <Tooltip conteudo={ligado ? 'ON — clique para pausar (a fila não vai pegá-la)' : 'OFF — clique para liberar para a fila'}>
+        <Switch ligado={ligado} ocupado={ocupado} desabilitado={ocupado} rotulo={`${ligado ? 'Desligar' : 'Ligar'} ${task.codigo}`} onAlternar={() => onAlternar(task)} />
+      </Tooltip>
+    );
+  }
   return (
     <Tooltip conteudo={ligado ? 'ON — a fila pode executar esta task' : 'OFF — pausada; a fila não vai pegá-la'}>
       <span
@@ -54,7 +67,7 @@ function OnOff({ ligado }: { ligado: boolean }) {
 function Resultado({ task }: { task: Task }) {
   const texto = resumo(task.resultado, 60);
   return (
-    <span className="flex min-w-0 max-w-36 items-center gap-2">
+    <span className="flex min-w-0 max-w-28 items-center gap-2">
       {task.pr_url && (
         <Tooltip conteudo={`Abrir PR: ${task.pr_url}`}>
           <a href={task.pr_url} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} className="shrink-0 text-brand-600 hover:text-brand-800 dark:text-brand-400" aria-label="Abrir pull request">
@@ -85,7 +98,7 @@ function Resultado({ task }: { task: Task }) {
 
 function Titulo({ task, bloqueada }: { task: Task; bloqueada: boolean }) {
   return (
-    <span className="flex min-w-0 flex-col md:max-w-48">
+    <span className="flex min-w-0 flex-col md:max-w-44">
       <span className="flex items-center gap-1.5">
         <Tooltip conteudo={resumo(task.instrucao, 240)} className="flex min-w-0">
           <span className="block font-medium text-slate-900 md:truncate dark:text-slate-100">{task.titulo}</span>
@@ -147,7 +160,7 @@ export function ProgressoFila({ tasks }: { tasks: Task[] }) {
 }
 
 /** Tabela da fila de tasks do projeto (vira lista de cartões em telas pequenas). */
-export function TaskTable({ tasks, carregando, referencia, onAbrir, acoes, vazio }: TaskTableProps) {
+export function TaskTable({ tasks, carregando, referencia, onAbrir, acoes, vazio, onAlternar, ocupados }: TaskTableProps) {
   const porCodigo = useMemo(() => new Map((referencia ?? tasks).map((t) => [t.codigo, t])), [referencia, tasks]);
   const linhas = useMemo(
     () => tasks.map((t) => { const deps = dependenciasDa(t, porCodigo); return { t, deps, bloqueada: bloqueadaPorDependencia(deps) }; }),
@@ -192,7 +205,7 @@ export function TaskTable({ tasks, carregando, referencia, onAbrir, acoes, vazio
                 <td className={cn(TD, 'text-center')}><PrioridadeBadge prioridade={t.prioridade} /></td>
                 <td className={cn(TD, 'text-center tabular-nums text-slate-600 dark:text-slate-400')}>{t.ordem}</td>
                 <td className={TD}><Dependencias deps={deps} /></td>
-                <td className={TD}><OnOff ligado={t.executar} /></td>
+                <td className={TD}><OnOff task={t} onAlternar={onAlternar} ocupado={ocupados?.has(t.id)} /></td>
                 <td className={TD}><StatusBadge status={t.status} detalhe={detalheStatus(t)} /></td>
                 <td className={TD}><TentativasBar task={t} /></td>
                 <td className={TD}><Resultado task={t} /></td>
@@ -216,7 +229,7 @@ export function TaskTable({ tasks, carregando, referencia, onAbrir, acoes, vazio
             </div>
             <Titulo task={t} bloqueada={bloqueada} />
             <div className="flex flex-wrap items-center gap-3">
-              <OnOff ligado={t.executar} />
+              <OnOff task={t} onAlternar={onAlternar} ocupado={ocupados?.has(t.id)} />
               <TentativasBar task={t} />
               {deps.length > 0 && <Dependencias deps={deps} />}
             </div>
