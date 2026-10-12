@@ -431,8 +431,8 @@
 - **Anotação:** Criado `scripts/checar-env.mjs` (Node, sem dependências) exportando `extrairVariaveis(texto)`: reconhece `process.env.X`, `import.meta.env.X`, `env.X` (só maiúsculas), `env['X']`, `os.environ.get('X')`, `os.environ['X']` e `os.getenv('X')`; sem repetidos, ordenada. 8 testes em `tests/unit/checar-env.test.ts`. `npm run typecheck` e `npm test` verdes.
 
 #### [ ] SUB-08.9: CLI `npm run check:env` (toda variável usada está no `.env.example`)
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 00:58)
 - **Depende de:** SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.11
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar ao `scripts/checar-env.mjs` só o bloco de execução direta (`main()`): usar `listarArquivosFonte` (SUB-08.11), `extrairVariaveis` e `variaveisDoExemplo`, sair com código 1 listando as variáveis que faltam no `.env.example` (e avisar as listadas que não são usadas). Adicionar `"check:env"` no `package.json`.
