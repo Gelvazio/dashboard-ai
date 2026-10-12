@@ -788,7 +788,7 @@
 - **Executor:** nenhum
 - **Depende de:** SUB-10, SUB-12, SUB-33; subtarefas SUB-20.1 a SUB-20.10
 - **Subtarefas:** (subdividida em 7 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 8 em 2026-10-11 23:51; nova revisão para 10 em 2026-10-12 00:17)
-  - `SUB-20.1`: `validarMemoria(dados)` em `src/lib/memoriaForm.ts` (`em_execucao`)
+  - `SUB-20.1`: `validarMemoria(dados)` em `src/lib/memoriaForm.ts` (`concluido`, `5662f1a`)
   - `SUB-20.2`: `parseTags(texto)` em `src/lib/memoriaForm.ts` (`pendente`)
   - `SUB-20.3`: `sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts` (`pendente`)
   - `SUB-20.4`: Componente `TagInput` em `src/components/ui/TagInput.tsx` (`pendente`)
@@ -804,15 +804,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-20.1: `validarMemoria(dados)` em `src/lib/memoriaForm.ts`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 00:48)
+#### [x] SUB-20.1: `validarMemoria(dados)` em `src/lib/memoriaForm.ts`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 00:48; conclusão: 2026-10-12 00:48)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/lib/memoriaForm.ts` com `export function validarMemoria({ titulo, conteudo, tags }): Partial<Record<'titulo'|'conteudo'|'tags', string>>` (título obrigatório até 200, conteúdo obrigatório, até 20 tags de até 40 caracteres). Testes em `tests/unit/memoriaForm.test.ts`.
 - **Critérios de Aceitação:** `npm test` passa; `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `5662f1a`
+- **Anotação:** Criado `src/lib/memoriaForm.ts` com `validarMemoria({ titulo, conteudo, tags })` -> `Partial<Record<"titulo"|"conteudo"|"tags", string>>` (objeto vazio = válido): título obrigatório até 200 caracteres, conteúdo obrigatório (espaços nas pontas não contam), até 20 tags, sem tags vazias, cada uma até 40 caracteres; constantes `MAX_TITULO_MEMORIA`, `MAX_TAGS_MEMORIA`, `MAX_TAMANHO_TAG` e tipos `DadosMemoriaForm`/`ErrosMemoria` exportados. Testes em `tests/unit/memoriaForm.test.ts` (6). `npm run typecheck` e `npm test` verdes.
 
 #### [ ] SUB-20.2: `parseTags(texto)` em `src/lib/memoriaForm.ts`
 - **Status:** pendente

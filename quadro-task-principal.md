@@ -33,17 +33,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 06 — SUB-20.1
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-20.1** |
-| **Título da Sub-task:** | `validarMemoria(dados)` em `src/lib/memoriaForm.ts` |
-| **Agente Responsável:** | DashboardAI-Clone 06 |
-| **Data e Hora de Início:** | 2026-10-12 00:48 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.2
 
 | Propriedade | Valor Atual |
@@ -59,17 +48,16 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (2)
+### 🔄 EM EXECUÇÃO (1)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27.2** | `validarLogin({ email, senha })` em `src/lib/auth.ts` | DashboardAI-Clone 01 | 2026-10-12 00:48 | SUB-27.1 |
-| **SUB-20.1** | `validarMemoria(dados)` em `src/lib/memoriaForm.ts` | DashboardAI-Clone 06 | 2026-10-12 00:48 | Nenhuma |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
 
-### ⏳ PENDENTES (190)
+### ⏳ PENDENTES (189)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -115,7 +103,6 @@
 | **SUB-19.9** | `BuscaControles` (limiar, globais, modo) em `src/components/memoria/BuscaControles.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-19.10** | `classeSimilaridade` em `src/lib/similaridade.ts` | 4 | Fase 7 | SUB-19.3 — ⛓️ bloqueada |
 | **SUB-20** | Formulário de Nova Memória Canônica (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-20.1 a SUB-20.10 |
-| **SUB-20.1** | `validarMemoria(dados)` em `src/lib/memoriaForm.ts` | 4 | Fase 7 | Nenhuma — 🔄 em execução por DashboardAI-Clone 06 |
 | **SUB-20.2** | `parseTags(texto)` em `src/lib/memoriaForm.ts` | 4 | Fase 7 | SUB-20.1 — ⛓️ bloqueada |
 | **SUB-20.3** | `sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts` | 4 | Fase 7 | SUB-20.1, SUB-20.10 — ⛓️ bloqueada |
 | **SUB-20.4** | Componente `TagInput` em `src/components/ui/TagInput.tsx` | 4 | Fase 7 | SUB-20.2 — ⛓️ bloqueada |
@@ -275,10 +262,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (49)
+### ✅ CONCLUÍDAS (50)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-20.1** | `validarMemoria(dados)` em `src/lib/memoriaForm.ts` | DashboardAI-Clone 06 | 2026-10-12 00:48 | 2026-10-12 00:48 | `5662f1a` |
 | **SUB-27.1** | `mensagemErroAuth(erro)` em `src/lib/auth.ts` | DashboardAI-Clone 01 | 2026-10-12 00:48 | 2026-10-12 00:48 | `8ccaf5f` |
 | **SUB-20.10** | `palavrasDe(texto)` em `src/lib/texto.ts` | DashboardAI-Clone 06 | 2026-10-12 00:46 | 2026-10-12 00:47 | `8090709` |
 | **SUB-04** | Consolidação dos Schemas SQL na Pasta `database/` | DashboardAI (Grok Bot) | 2026-10-11 22:18 | 2026-10-11 22:20 | `f7d6e04` |
@@ -435,3 +423,4 @@ n|| **SUB-19.9** | `BuscaControles` (limiar, globais, modo) em `src/components/m
 | 2026-10-12 00:48 | DashboardAI-Clone 06 | SUB-20.1 | — | Lock: assumindo SUB-20.1 (`validarMemoria(dados)` em `src/lib/memoriaForm.ts`) |
 | 2026-10-12 00:48 | DashboardAI-Clone 01 | SUB-27.1 | `8ccaf5f` | Criado `src/lib/auth.ts` com `mensagemErroAuth(erro)` (invalid_credentials, email_not_confirmed, rate limit/429, user_banned, rede, genérico; null -> ''). Testes em `tests/unit/auth.test.ts` (7). typecheck e vitest verdes. |
 | 2026-10-12 00:48 | DashboardAI-Clone 01 | SUB-27.2 | — | Lock: assumindo SUB-27.2 (`validarLogin({ email, senha })` em `src/lib/auth.ts`) |
+| 2026-10-12 00:48 | DashboardAI-Clone 06 | SUB-20.1 | `5662f1a` | Criado `src/lib/memoriaForm.ts` com `validarMemoria({ titulo, conteudo, tags })` -> `Partial<Record<"titulo"|"conteudo"|"tags", string>>` (objeto vazio = válido): título obrigatório até 200 caracteres, conteúdo obrigatório (espaços nas pontas não contam), até 20 tags, sem tags vazias, cada uma até 40 caracteres; constantes `MAX_TITULO_MEMORIA`, `MAX_TAGS_MEMORIA`, `MAX_TAMANHO_TAG` e tipos `DadosMemoriaForm`/`ErrosMemoria` exportados. Testes em `tests/unit/memoriaForm.test.ts` (6). `npm run typecheck` e `npm test` verdes. |
