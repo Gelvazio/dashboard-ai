@@ -55,6 +55,19 @@
 
 ---
 
+### 🔒 TRAVA ADICIONAL — Claude Code (Opus 5.5) — SUB-40.2
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-40.2** |
+| **Título da Sub-task:** | Validação e mensagens do cadastro em `src/lib/auth.ts` |
+| **Agente Responsável:** | Claude Code (Opus 5.5) |
+| **Data e Hora de Início:** | 2026-10-12 18:23 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-40.2 |
+
+---
+
 ### 🔒 TRAVA ESPECIAL: KIRO-DEV-CLONE
 
 > **ATENÇÃO:** A tarefa `KIRO-DEV-CLONE` está **TRAVADA PARA TODAS AS IAS**.
@@ -75,11 +88,11 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 44
 - **Subtarefas atômicas (~3 min):** 251
-- **Em Execução:** 1 (SUB-38)
+- **Em Execução:** 2 (SUB-38, SUB-40.2)
 - **Pendentes:** 11 principais (SUB-38, 25, 26, 28, 35, 39, 40, 41, 42, 43, KIRO-DEV-CLONE) + 46 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 8 — SUB-25.4, SUB-25.7, SUB-35.32, SUB-40.2, SUB-40.7 (só com autorização do usuário), SUB-41.1 e SUB-43 (atômica) (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 7 — SUB-25.4, SUB-25.7, SUB-35.32, SUB-40.7 (só com autorização do usuário), SUB-41.1 e SUB-43 (atômica) (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
   - bloqueadas por dependência: 10 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41), SUB-42 (depende da SUB-41) e SUB-40.3 a SUB-40.6 (cadeia da SUB-40)
-  - em execução: 1 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25
+  - em execução: 2 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-40.2 (Claude Code (Opus 5.5))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
 - **Concluídas:** 234 de 295 blocos (33 principais + 201 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
@@ -431,7 +444,7 @@
 - **Depende de:** subtarefas SUB-40.1 a SUB-40.7
 - **Subtarefas:** (criada e subdividida em 7 em 2026-10-12 por Claude Code (Opus 5.5) a pedido do usuário; a mãe só é concluída quando todas as filhas estiverem `concluido`)
   - `SUB-40.1`: SQL do administrador inicial (`database/08_admin_inicial.sql`) (`concluido`, `e64524e`)
-  - `SUB-40.2`: Validação e mensagens do cadastro em `src/lib/auth.ts` (`pendente`)
+  - `SUB-40.2`: Validação e mensagens do cadastro em `src/lib/auth.ts` (`em_execucao`, Claude Code (Opus 5.5))
   - `SUB-40.3`: Serviço `cadastrarUsuario` em `src/services/authService.ts` (`pendente`)
   - `SUB-40.4`: Componente `src/components/auth/CadastroForm.tsx` (`pendente`)
   - `SUB-40.5`: Alternar "Entrar" / "Criar usuário" na `LoginView` (`pendente`)
@@ -446,9 +459,9 @@
 
 
 #### [ ] SUB-40.2: Validação e mensagens do cadastro em `src/lib/auth.ts`
-- **Status:** pendente
+- **Status:** em_execucao
 - **Prioridade:** MEDIA
-- **Executor:** nenhum
+- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 18:23)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `validarCadastro({ nome, email, senha, confirmacao })`, no mesmo estilo de `validarLogin` (devolve objeto vazio quando está tudo certo): nome obrigatório (mín. 2 caracteres), e-mail válido (reusar `EMAIL_RE`), senha com pelo menos 6 caracteres e confirmação igual à senha ("As senhas não conferem."). Incluir no mapa `MENSAGENS` os códigos do `signUp`: `user_already_exists` / `email_exists` ("Já existe um usuário com este e-mail. Use Entrar ou Esqueci a senha."), `weak_password` ("Senha fraca. Use pelo menos 6 caracteres, com letras e números.") e `signup_disabled` ("O cadastro de novos usuários está desativado. Fale com o administrador.").
