@@ -66,17 +66,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:08 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-35.40
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.40** |
-| **Título da Sub-task:** | Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts` |
-| **Agente Responsável:** | DashboardAI-Clone 08 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:08 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.8
 
 | Propriedade | Valor Atual |
@@ -114,14 +103,13 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (5)
+### 🔄 EM EXECUÇÃO (4)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-35.43** | CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`) | DashboardAI-Clone 02 | 2026-10-12 01:08 | SUB-35.42 |
 | **SUB-35.22** | Registro do Chart.js e paleta em `src/lib/charts.ts` | DashboardAI-Clone 06 | 2026-10-12 01:08 | SUB-35.21 |
 | **SUB-27.8** | Teste de integração dos papéis em `tests/integration/authService.integration.test.ts` | DashboardAI-Clone 01 | 2026-10-12 01:08 | SUB-27.25 |
-| **SUB-35.40** | Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:08 | SUB-35.2 |
 | **SUB-34.3** | Modais da fila sob demanda na `src/views/FilaView.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:08 | SUB-34.1 |
 | **SUB-35.6** | Teste de integração de `agent_events` (RLS e trigger) | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:07 | SUB-35.2, SUB-35.3 |
 | **SUB-19.8** | Integrar a busca na `src/views/MemoriaView.tsx` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:07 | SUB-19.7, SUB-21.9 |
@@ -265,10 +253,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (89)
+### ✅ CONCLUÍDAS (90)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-35.40** | Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:08 | 2026-10-12 01:09 | `176aadb` |
 | **SUB-35.21** | Instalar `chart.js` e `react-chartjs-2` | DashboardAI-Clone 06 | 2026-10-12 01:06 | 2026-10-12 01:08 | `73d73ad` |
 | **SUB-27.14** | Componente `UserMenu` em `src/components/layout/UserMenu.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:06 | 2026-10-12 01:08 | `54bf3a6` |
 | **SUB-26.6** | Seção Agentes de IA: configurar clientes MCP | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:06 | 2026-10-12 01:07 | `d7f05f6` |
@@ -639,3 +628,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:08 | DashboardAI-Clone 01 | SUB-27.8 | — | Lock: assumindo SUB-27.8 (Teste de integração dos papéis em `tests/integration/authService.integration.test.ts`) |
 | 2026-10-12 01:08 | DashboardAI-Clone 06 | SUB-35.22 | — | Lock: assumindo SUB-35.22 (Registro do Chart.js e paleta em `src/lib/charts.ts`) |
 | 2026-10-12 01:08 | DashboardAI-Clone 02 | SUB-35.43 | — | Lock: assumindo SUB-35.43 (CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`)) |
+| 2026-10-12 01:09 | DashboardAI-Clone 08 (Grok Bot) | SUB-35.40 | `176aadb` | Criado `api/_lib/event-tools.ts` registrando a ferramenta MCP `agent_event` (args `project?`, `agente` ≤120, `tipo` em inicio/progresso/fim/erro/heartbeat/trava/liberacao/commit, `task_codigo?`, `etapa?` ≤120, `status?`, `mensagem?` ≤2000, `chave_idempotencia?` ≤200): `guard` (exige `MCP_AUTH_TOKEN`), `resolveProject` (respeita `MCP_ALLOWED_PROJECTS`, padrão `default`) + `projectId`, insere em `agent_events`; com chave usa upsert `ignoreDuplicates` em `project_id,chave_idempotencia` (reenvio devolve `duplicate: true`). `montarEvento(args)` e `TIPOS_EVENTO` exportados para os testes da SUB-35.41. Importado em `api/mcp.ts`. `npm run typecheck` (app + api) e `npm test` verdes; conferido (teste local não commitado) que `agent_event` aparece em `tools/list`. |

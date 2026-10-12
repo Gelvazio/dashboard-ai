@@ -2587,15 +2587,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-35.40: Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 01:08)
+#### [x] SUB-35.40: Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 01:08 → 2026-10-12 01:09)
 - **Depende de:** SUB-35.2
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Registrar `agent_event` (`registerTool`) para agentes fora do LangGraph (Claude Code, Codex…): args `project?`, `agente`, `tipo`, `task_codigo?`, `etapa?`, `status?`, `mensagem?`, `chave_idempotencia?`; exige `MCP_AUTH_TOKEN` (`requireAuth`), resolve o projeto (`resolveProject`) e insere em `agent_events`. Importar em `api/mcp.ts` junto das outras ferramentas.
 - **Critérios de Aceitação:** `npm run typecheck:api` OK; aparece em `tools/list`.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `176aadb`
+- **Anotação:** Criado `api/_lib/event-tools.ts` registrando a ferramenta MCP `agent_event` (args `project?`, `agente` ≤120, `tipo` em inicio/progresso/fim/erro/heartbeat/trava/liberacao/commit, `task_codigo?`, `etapa?` ≤120, `status?`, `mensagem?` ≤2000, `chave_idempotencia?` ≤200): `guard` (exige `MCP_AUTH_TOKEN`), `resolveProject` (respeita `MCP_ALLOWED_PROJECTS`, padrão `default`) + `projectId`, insere em `agent_events`; com chave usa upsert `ignoreDuplicates` em `project_id,chave_idempotencia` (reenvio devolve `duplicate: true`). `montarEvento(args)` e `TIPOS_EVENTO` exportados para os testes da SUB-35.41. Importado em `api/mcp.ts`. `npm run typecheck` (app + api) e `npm test` verdes; conferido (teste local não commitado) que `agent_event` aparece em `tools/list`.
 
 #### [ ] SUB-35.41: Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts`
 - **Status:** pendente
