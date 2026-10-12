@@ -1353,8 +1353,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-26.1: Esqueleto do `README.md`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 01:00)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Reescrever o `README.md` com título, descrição do produto genérico multi-projeto, badges simples e sumário com âncoras para as seções: Arquitetura, Execução local, Banco de dados, Deploy na Vercel, Agentes de IA (fila via MCP), Memória via MCP, Segurança, Validação. Cada seção com um parágrafo provisório.
