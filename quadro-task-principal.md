@@ -44,29 +44,17 @@
 | **Data e Hora de Início:** | 2026-10-11 22:41 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot)
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-07** |
-| **Título da Sub-task:** | Implementação das Primitivas de Memória e Embeddings |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-11 22:45 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (4)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-01.1** | Inicialização do package.json, Vite, React e TypeScript | Gemini (Antigravity) | 2026-10-11 22:13 | Nenhuma |
 | **SUB-27** | Autenticação e Login com Supabase Auth | Codex (OpenAI) | 2026-10-11 22:27 | SUB-03, SUB-29 |
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` | xAI (Grok) | 2026-10-11 22:41 | SUB-06 |
-| **SUB-07** | Implementação das Primitivas de Memória e Embeddings | DashboardAI (Grok Bot) | 2026-10-11 22:45 | SUB-06, SUB-29 |
 
 ---
 
@@ -100,7 +88,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (6)
+### ✅ CONCLUÍDAS (7)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -110,6 +98,7 @@
 | **SUB-06** | Estrutura do Endpoint Serverless Vercel MCP | DashboardAI (Grok Bot) | 2026-10-11 22:23 | 2026-10-11 22:24 | `ce840a4` |
 | **SUB-29** | Multi-projeto, Papéis e RLS no Banco | DashboardAI (Grok Bot) | 2026-10-11 22:37 | 2026-10-11 22:43 | `30fe077` |
 | **SUB-30** | Ferramentas da Fila no MCP | DashboardAI (Grok Bot) | 2026-10-11 22:43 | 2026-10-11 22:45 | `5d7c995` |
+| **SUB-07** | Implementação das Primitivas de Memória e Embeddings | DashboardAI (Grok Bot) | 2026-10-11 22:45 | 2026-10-11 22:47 | `746bd8d` |
 
 ---
 
@@ -132,3 +121,4 @@
 | 2026-10-11 22:24 | DashboardAI (Grok Bot) | SUB-06 | `ce840a4` | Criados api/mcp.ts (roteador JSON-RPC 2.0/MCP: POST-only, CORS, token opcional, initialize/ping/tools/list/tools/call por params.name, lotes, notificações 202), api/_lib/{jsonrpc,tools,http}.ts, api/tsconfig.json, api/README.md e vercel.json. tsc estrito OK + 18 cenários de runtime testados |
 | 2026-10-11 22:43 | DashboardAI (Grok Bot) | SUB-29 | `30fe077` | Banco multi-projeto: projects, user_roles/project_members, eh_administrador/tem_acesso_projeto (removido professores_administradores), project_id + código por projeto, tipo ia/humano, guarda da interface, validação de dependências, logs genéricos, memórias por projeto/globais, pegar_proxima_task paralela com p_projeto, RPCs security definer só para service_role, RLS em tudo; --projeto no sincronizar_tasks.py. Testes: 00-05 aplicados 2x, upgrade da versão anterior, 72 verificações RLS/fila, 12 agentes paralelos sem duplicidade, PostgREST e2e |
 | 2026-10-11 22:45 | DashboardAI (Grok Bot) | SUB-30 | `5d7c995` | task_next/finish/list/create via RPCs com service_role; exige MCP_AUTH_TOKEN; MCP_ALLOWED_PROJECTS |
+| 2026-10-11 22:47 | DashboardAI (Grok Bot) | SUB-07 | `746bd8d` | brain_store/search/delete por projeto + memória global; embeddings OpenAI-compatível 1536d |
