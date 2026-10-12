@@ -917,7 +917,7 @@
   - `SUB-21.6`: Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` (`concluido`, `4cab033`)
   - `SUB-21.7`: Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` (`concluido`, `ad9bd52`)
   - `SUB-21.8`: Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` (`concluido`)
-  - `SUB-21.9`: Montar a `MemoriaView` (toolbar + grade) (`em_execucao`)
+  - `SUB-21.9`: Montar a `MemoriaView` (toolbar + grade) (`concluido`, `4b8d62b`)
   - `SUB-21.10`: Validação visual da SUB-21 (screenshots) (`pendente`)
   - `SUB-21.11`: Ligar detalhe e exclusão na `MemoriaView` (`pendente`)
   - `SUB-21.12`: Conferir exclusão com editor e viewer (`pendente`)
@@ -1009,15 +1009,15 @@
 - **Commit:** `3217841`
 - **Anotação:** Criado `src/components/memoria/MemoriaToolbar.tsx` (`{ filtro, onFiltro, tags, filtradas, total, carregando, onRecarregar, atualizadoEm? }`, controlado com `FiltroMemoriasLocal`): busca instantânea com botão limpar, seletor de tag com contagem (`tagsDisponiveis`; mantém a tag escolhida mesmo se sumir da lista), escopo Todas/Projeto/Globais (radiogroup acessível), contador `filtradas de total` quando há filtro (`aria-live`) e Recarregar com ícone girando e hora da última atualização no `title`; mesmo visual da `TaskToolbar`. Exportado em `src/components/memoria/index.ts`. `npm run typecheck` e `npm run build` OK.
 
-#### [ ] SUB-21.9: Montar a `MemoriaView` (toolbar + grade)
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:04)
+#### [x] SUB-21.9: Montar a `MemoriaView` (toolbar + grade)
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:04, conclusão: 2026-10-12 01:05)
 - **Depende de:** SUB-21.3, SUB-21.5, SUB-21.8
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Substituir o `EmConstrucao` da `src/views/MemoriaView.tsx`: projeto de `useProjetoAtual`, `useMemorias`, `MemoriaToolbar` + `filtrarMemoriasLocal` e `MemoriaGrid`. Deixar uma área no topo para a busca semântica (SUB-19.8) e espaço no cabeçalho para o botão "Nova memória" (SUB-20.7). Detalhe e exclusão entram na SUB-21.11.
 - **Critérios de Aceitação:** `npm run typecheck`, `npm run build` e `npm test` OK; `#/memoria` mostra a grade.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `4b8d62b`
+- **Anotação:** Substituído o `EmConstrucao` da `src/views/MemoriaView.tsx`: projeto de `useProjetoAtual` (sem projeto mantém o aviso "selecione um projeto"), dados de `useMemorias(projeto.id)`, cartão com cabeçalho "Memórias" + contador, `MemoriaToolbar` (filtro controlado, `tagsDisponiveis`, contador filtradas/total, recarregar com hora da última carga), aviso de erro (`role="alert"`) e `MemoriaGrid` com `filtrarMemoriasLocal`, estado vazio por filtro e "Carregar mais". Filtros zerados ao trocar de projeto. Pontos reservados por comentário: busca semântica no topo (SUB-19.8), botão "Nova memória" no cabeçalho (SUB-20.7); detalhe/exclusão ficam para a SUB-21.11. `npm run typecheck`, `npm test` e `npm run build` OK (conferência visual em `#/memoria` com Supabase real não feita neste ambiente).
 
 #### [ ] SUB-21.10: Validação visual da SUB-21 (screenshots)
 - **Status:** pendente
