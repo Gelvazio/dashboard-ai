@@ -9,9 +9,9 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 32
-- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-03`)
+- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
 - **Pendentes:** 18
-- **Concluídas:** 13
+- **Concluídas:** 14
 - **Canceladas:** 0
 
 ---
@@ -69,15 +69,15 @@
 - **Commit:** `4b999f7`
 - **Anotação:** Pastas src/components, src/services, src/hooks, src/types, src/views e src/styles, cada uma com index.ts (barrel) documentando a responsabilidade e as regras (serviços sempre filtrados por project_id, só chave anon + RLS no navegador; componentes sem acesso a dados). types/index.ts com ViewId e ProjectSlug; views/index.ts com VIEWS (Fila de Tarefas, Cérebro de Memória, Logs do Agendador, Configurações) para a navegação da SUB-12. CSS global movido para src/styles/index.css. Alias @/ -> src/ no vite.config.ts e em tsconfig.app.json (paths). src/README.md com a estrutura e convenções do produto genérico multi-projeto. Validado: build e typecheck (frontend + api) OK.
 
-### [🔄] SUB-03: Configuração do Cliente Supabase e Tipagem TypeScript
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:02)
+### [x] SUB-03: Configuração do Cliente Supabase e Tipagem TypeScript
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:02, conclusão: 2026-10-11 23:04)
 - **Depende de:** SUB-02
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar cliente Supabase reutilizável em `src/services/supabase.ts` e interfaces em `src/types/database.ts` para `Task`, `AiMemory`, `AgendamentoLog`, `Project`, `ProjectMember` (multi-projeto, ver SUB-29).
 - **Critérios de Aceitação:** Tipos e cliente exportados com suporte a variáveis de ambiente (sem chaves fixas no código; somente a chave anon no frontend).
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `14992e4`
+- **Anotação:** src/types/database.ts: Database no formato do supabase gen types (Tables projects, project_members, user_roles, tasks, agendamento_tarefa_logs, ai_memories, agent_messages, project_rules; Functions match_memories, liberar_trava_task, tem_acesso_projeto, eh_administrador, ler_recados, conferir_regras) + tipos Task, AiMemory, AgendamentoLog, Project, ProjectMember, inserts/updates e enums de status. src/services/supabase.ts: getSupabase() sob demanda só com VITE_SUPABASE_URL/VITE_SUPABASE_ANON_KEY (sessão persistida para o Auth da SUB-27), recusa chave service_role no navegador, supabaseConfigurado, resultado() que converte erros em ServiceError com mensagens em português, verificarConexao() (sem_config/sem_sessao/conectado/erro) e definirClienteSupabase() para testes. src/vite-env.d.ts tipa as variáveis. Testes: Vitest (npm test) com tests/unit e tests/integration/run.sh (npm run test:integration: banco temporário com 00-06, PostgREST com segredo aleatório, supabase-js real com JWTs anon/authenticated/service_role). Validado: 4 unitários + 3 de integração (RLS, código TIP-0001, tipos), build e typecheck OK.
 
 ---
 
