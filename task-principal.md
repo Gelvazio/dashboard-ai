@@ -49,17 +49,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-35.44
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.44** |
-| **Título da Sub-task:** | Seção "Monitor em tempo real" no `README.md` |
-| **Agente Responsável:** | DashboardAI-Clone 10 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:43 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
@@ -2243,7 +2232,7 @@
   - `SUB-35.41`: Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts` (`pendente`)
   - `SUB-35.42`: `commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py` (`concluido`)
   - `SUB-35.43`: CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`) (`concluido`)
-  - `SUB-35.44`: Seção "Monitor em tempo real" no `README.md` (`em_execucao`)
+  - `SUB-35.44`: Seção "Monitor em tempo real" no `README.md` (`concluido`, ``)
   - `SUB-35.45`: Seção "Reporte de progresso (opcional)" no `AGENTS.md` (`pendente`)
   - `SUB-35.46`: Validação automatizada da SUB-35 (`pendente`)
 - **Descrição:** Tela `#/monitor` que mostra, ao vivo, o que cada agente de IA está fazendo agora — versão do `dashboard-task-principal.html` (que lê o quadro em Markdown do GitHub a cada `POLL_MS` e desenha gráficos Chart.js por status, fase e agente) apoiada no **banco**: nova tabela `agent_events` (por projeto, com RLS e publicação no Supabase Realtime), assinatura Realtime no frontend (sem polling), cartões de atividade atual por agente (heartbeat), gráficos por estado e por agente, linha do tempo das etapas e feed de eventos. Os eventos vêm do worker LangGraph (SUB-28, cada nó emite `inicio`/`fim`/`erro` + heartbeat), da ferramenta MCP `agent_event` (agentes como Claude Code e Codex) e, opcionalmente, de um espelho dos commits de lock/entrega do quadro. Biblioteca de gráficos: Chart.js via `react-chartjs-2` (mesma do HTML atual, registro só dos elementos usados, canvas leve para atualização contínua). **Só exibição:** não há regra de expiração de trava; travas continuam sendo liberadas só pelo usuário.
@@ -2682,15 +2671,15 @@
 - **Commit:** `e8917a3`
 - **Anotação:** CLI em `scripts/espelhar_quadro_eventos.py`: lê `git log --reverse` (`--desde`, `--repo`), lista os eventos (dry-run por padrão) e com `--aplicar` envia em lotes a `agent_events` via `ClienteSupabase`/`.env` do `sincronizar_tasks.py` (service_role, `--projeto` ou `DASHBOARD_AI_PROJECT`) com `on_conflict=project_id,chave_idempotencia` e `Prefer: resolution=ignore-duplicates`. Teste unitário de `enviar_eventos` (5 testes OK). Validado ponta a ponta com Postgres + PostgREST locais: 216 eventos enviados 2x -> 216 linhas, sem duplicar.
 
-#### [ ] SUB-35.44: Seção "Monitor em tempo real" no `README.md`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:43)
+#### [x] SUB-35.44: Seção "Monitor em tempo real" no `README.md`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:43, conclusão: 2026-10-12 01:44)
 - **Depende de:** SUB-35.31, SUB-35.40, SUB-35.43
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Explicar o fluxo (worker LangGraph -> `agent_events` -> Realtime -> `#/monitor`), como outros agentes reportam via MCP `agent_event`, o espelho do quadro e o significado dos estados (só exibição; travas só o usuário libera).
 - **Critérios de Aceitação:** README revisado.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** ``
+- **Anotação:** Nova seção "Monitor em tempo real" no `README.md` (e no sumário), antes de Validação: fluxo worker LangGraph/MCP/espelho -> `agent_events` (RLS) -> Supabase Realtime -> `useEventosAgentes`/`useAtividadeAgentes` -> `#/monitor`, com `atividade_atual_agentes`; exemplo JSON-RPC da ferramenta MCP `agent_event` (campos, tipos válidos, `chave_idempotencia`); uso do `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`, mapeamento lock->trava, feat->commit, concluir->fim); tabela de estados (ativo até 2 min, ocioso até 15 min, sem sinal, finalizado) conforme `src/lib/monitor.ts`; aviso de que o monitor é só exibição e travas só valem no `task-principal.md` e só o usuário libera.
 
 #### [x] SUB-35.45: Seção "Reporte de progresso (opcional)" no `AGENTS.md`
 - **Status:** concluido
