@@ -45,14 +45,25 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
+### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.5
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-28.5** |
+| **Título da Sub-task:** | Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts` |
+| **Agente Responsável:** | Devin (Cognition AI) |
+| **Data e Hora de Início:** | 2026-10-12 12:38 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202
-- **Em Execução:** 0
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 38 subtarefas
-  - livres agora: 11 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.5, SUB-28.7, SUB-28.10, SUB-28.11, SUB-28.13, SUB-28.14, SUB-35.32, SUB-35.33)
+- **Em Execução:** 1 (SUB-28.5, Devin (Cognition AI), desde 2026-10-12 12:38)
+- **Pendentes:** 4 principais (25, 26, 28, 35) + 37 subtarefas
+  - livres agora: 10 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.7, SUB-28.10, SUB-28.11, SUB-28.13, SUB-28.14, SUB-35.32, SUB-35.33)
   - bloqueadas por dependência: 27
   - reservadas: 0
 - **Concluídas:** 197 de 239 blocos (33 principais + 164 subtarefas)
@@ -1965,7 +1976,7 @@
   - `SUB-28.2`: Dependências do worker no `package.json` (`pendente`)
   - `SUB-28.3`: Annotation `EstadoExecucao` em `worker/estado.ts` (`concluido`, `21c908b`)
   - `SUB-28.4`: `reivindicar(agente, projeto)` em `worker/fila.ts` (`concluido`, `06e7e4b`)
-  - `SUB-28.5`: Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts` (`pendente`)
+  - `SUB-28.5`: Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts` (`em_execucao`)
   - `SUB-28.6`: Nó `carregarContexto` em `worker/nos/carregarContexto.ts` (`pendente`)
   - `SUB-28.7`: Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts` (`pendente`)
   - `SUB-28.8`: Nó `politica` (aprovação humana) em `worker/nos/politica.ts` (`pendente`)
@@ -2044,8 +2055,8 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:35 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
 #### [ ] SUB-28.5: Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:38)
 - **Depende de:** SUB-28.29
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Definir a allowlist (`brain_search`, `brain_store`, `task_list`) com flag `sensivel` e `obterFerramenta(nome)` que consulta o registro MCP (`api/_lib/tools.ts`) e recusa nomes fora da lista. A adaptação para o LangChain fica na SUB-28.19.
