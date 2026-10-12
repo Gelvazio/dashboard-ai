@@ -29,12 +29,12 @@ export function UserMenu() {
 
   return (
     <div className="flex items-center gap-2">
-      <UserCircle2 className="size-5 shrink-0 text-slate-500" aria-hidden />
+      <UserCircle2 className="hidden size-5 shrink-0 text-slate-500 sm:block" aria-hidden />
       <span className="hidden max-w-[16rem] truncate text-sm text-slate-700 sm:inline dark:text-slate-200" title={usuario.email ?? undefined}>
         {usuario.email ?? 'Usuário'}
       </span>
       {papelGlobal === 'admin' && (
-        <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-800 dark:bg-amber-900/40 dark:text-amber-300">
+        <span className="hidden items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-800 sm:inline-flex dark:bg-amber-900/40 dark:text-amber-300">
           <ShieldCheck className="size-3.5" aria-hidden />
           Admin
         </span>
