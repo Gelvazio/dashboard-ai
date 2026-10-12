@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { lazy, Suspense, useMemo, useState } from 'react';
 import { filtrarTasks, type FiltroLocal } from '@/lib/tasks';
 import { diagnosticarFila, LIMITE_TRAVA_MIN } from '@/lib/saudeFila';
 import { AlertCircle, AlertTriangle, ListTodo, Plus } from 'lucide-react';
@@ -10,8 +10,12 @@ import { EmConstrucao } from '@/components/EmConstrucao';
 import { Botao } from '@/components/ui/Botao';
 import { ConfirmDialog } from '@/components/ui/ConfirmDialog';
 import { useAcoesTask } from '@/hooks/useAcoesTask';
-import { ProgressoFila, TaskDetailModal, TaskFormModal, TaskRowActions, TaskTable, TaskToolbar } from '@/components/tasks';
+import { ProgressoFila, TaskRowActions, TaskTable, TaskToolbar } from '@/components/tasks';
 import type { Task } from '@/types';
+
+// Modais carregados sob demanda (SUB-34.3): import direto do arquivo (não do barrel) para virarem chunks próprios.
+const TaskFormModal = lazy(() => import('@/components/tasks/TaskFormModal').then((m) => ({ default: m.TaskFormModal })));
+const TaskDetailModal = lazy(() => import('@/components/tasks/TaskDetailModal').then((m) => ({ default: m.TaskDetailModal })));
 
 /** Fila de tarefas do projeto selecionado. */
 export function FilaView() {
@@ -33,6 +37,7 @@ export function FilaView() {
   if (!projeto) return <EmConstrucao titulo="Fila de Tarefas" tarefa="selecione um projeto para ver a fila" />;
 
   const editar = (task: Task) => setForm({ aberto: true, task });
+  const taskDetalhe = detalhe === null ? null : (tasks.find((t) => t.id === detalhe) ?? null);
   const atualizarTudo = () => {
     void recarregar();
     void indicadores.recarregar();
@@ -95,20 +100,20 @@ export function FilaView() {
           ocupados={acoes.ocupados}
           acoes={(t) => <TaskRowActions task={t} acoes={acoes} onEditar={editar} onPedirExcluir={setExcluindo} />}
         />
-        <TaskFormModal
-          aberto={form.aberto}
-          projeto={projeto}
-          task={form.task}
-          onFechar={() => setForm((f) => ({ ...f, aberto: false }))}
-          onSalva={atualizarTudo}
-        />
-        <TaskDetailModal
-          task={tasks.find((t) => t.id === detalhe) ?? null}
-          projeto={projeto}
-          referencia={tasks}
-          onFechar={() => setDetalhe(null)}
-          onEditar={editar}
-        />
+        <Suspense fallback={null}>
+          {form.aberto && (
+            <TaskFormModal
+              aberto
+              projeto={projeto}
+              task={form.task}
+              onFechar={() => setForm((f) => ({ ...f, aberto: false }))}
+              onSalva={atualizarTudo}
+            />
+          )}
+          {taskDetalhe && (
+            <TaskDetailModal task={taskDetalhe} projeto={projeto} referencia={tasks} onFechar={() => setDetalhe(null)} onEditar={editar} />
+          )}
+        </Suspense>
         <ConfirmDialog
           aberto={excluindo !== null}
           titulo={`Excluir ${excluindo?.codigo ?? ''}?`}
