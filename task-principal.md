@@ -40,28 +40,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-35.38
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.38** |
-| **Título da Sub-task:** | Ligar o heartbeat no CLI `worker/index.ts` |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 13:42 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 203
-- **Em Execução:** 1 (SUB-35.38, Devin (Cognition AI), desde 2026-10-12 13:42)
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 17 subtarefas
+- **Em Execução:** 0
+- **Pendentes:** 4 principais (25, 26, 28, 35) + 16 subtarefas
   - livres agora: 8 (SUB-26.5, SUB-28.2, SUB-28.16, SUB-28.17, SUB-28.24, SUB-35.32, SUB-25.4, SUB-25.7)
   - bloqueadas por dependência: 8
   - reservadas: 0
-- **Concluídas:** 219 de 240 blocos (33 principais + 186 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 220 de 240 blocos (33 principais + 187 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -339,7 +328,7 @@
   - `SUB-35.35`: `comEventos(nome, no)` em `worker/eventos.ts` (`concluido`, `bd6563e`)
   - `SUB-35.36`: Envolver os nós em `worker/grafo.ts` com `comEventos` (`concluido`, `469ce5c`)
   - `SUB-35.37`: `iniciarHeartbeat()` em `worker/heartbeat.ts` (`concluido`, `64c0b11`)
-  - `SUB-35.38`: Ligar o heartbeat no CLI `worker/index.ts` (`em_execucao`)
+  - `SUB-35.38`: Ligar o heartbeat no CLI `worker/index.ts` (`concluido`, `34bf1c1`)
   - `SUB-35.39`: Teste do worker: eventos emitidos na ordem dos nós (`pendente`)
   - `SUB-35.40`: Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts` (`concluido`, `176aadb`)
   - `SUB-35.41`: Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts` (`concluido`, `0263ae9`)
@@ -364,17 +353,6 @@
 - **Critérios de Aceitação:** Screenshots conferidos; nenhum erro no console.
 - **Commit:** pendente
 - **Anotação:** Trava de DashboardAI-Clone 07 (Grok Bot) (desde 2026-10-12 01:49, commit `8d700c5`) liberada em 2026-10-12 a pedido do usuário, sem entrega registrada; tarefa volta a ficar livre.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-
-#### [ ] SUB-35.38: Ligar o heartbeat no CLI `worker/index.ts`
-- **Status:** em_execucao
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:42)
-- **Depende de:** SUB-35.37, SUB-28.15
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Iniciar o heartbeat ao subir o worker e pará-lo em `SIGINT`/`SIGTERM` e no fim do loop.
-- **Critérios de Aceitação:** `npm run typecheck:worker` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-35.39: Teste do worker: eventos emitidos na ordem dos nós

@@ -2589,4 +2589,15 @@
 - **Anotação:** Criei `worker/heartbeat.ts` com `iniciarHeartbeat({ agente, projeto, intervaloMs = 30000, emitir = emitirEvento, atual? })`: emite `tipo = heartbeat` ao iniciar e a cada intervalo, com `taskId`/`taskCodigo`/`execucaoId`/`etapa` do callback `atual` (status `ocupado` com task, `livre` sem), engole falhas do emissor e do callback, usa `unref()` no timer e devolve a função de parada (idempotente). 4 testes com `vi.useFakeTimers` em `tests/unit/worker-heartbeat.test.ts`; `npm test` 283 aprovados / 30 pulados; `typecheck` e `typecheck:worker` OK.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:42 (confirmado por Devin (Cognition AI))
 
+#### [x] SUB-35.38: Ligar o heartbeat no CLI `worker/index.ts`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:42, conclusão: 2026-10-12 13:43)
+- **Depende de:** SUB-35.37, SUB-28.15
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Iniciar o heartbeat ao subir o worker e pará-lo em `SIGINT`/`SIGTERM` e no fim do loop.
+- **Critérios de Aceitação:** `npm run typecheck:worker` OK.
+- **Commit:** `34bf1c1`
+- **Anotação:** No bloco de execução direta de `worker/index.ts`, o CLI inicia `iniciarHeartbeat({ agente, projeto })` com as opções lidas por `lerOpcoes`, para no fim do loop (`rodarWorker(...).finally(pararHeartbeat)`) e em `SIGINT`/`SIGTERM` (para e sai com 130/143). `rodarWorker` não mudou, então os testes do CLI seguem sem emitir eventos. `npm run typecheck:worker` e `typecheck` OK; `tests/unit/worker-cli.test.ts` 5 aprovados; rodar `tsx worker/index.ts --uma-vez` sem Supabase registrou o aviso do heartbeat sem derrubar nada e o processo encerrou.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:43 (confirmado por Devin (Cognition AI))
+
 ---
