@@ -44,6 +44,17 @@
 | **Data e Hora de Início:** | 2026-10-12 00:51 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.7
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-27.7** |
+| **Título da Sub-task:** | `obterPapelGlobal()` em `src/services/authService.ts` |
+| **Agente Responsável:** | DashboardAI-Clone 01 |
+| **Data e Hora de Início:** | 2026-10-12 00:51 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -52,6 +63,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-27.7** | `obterPapelGlobal()` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:51 | SUB-27.3 |
 | **SUB-19.10** | `classeSimilaridade` em `src/lib/similaridade.ts` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:51 | SUB-19.3 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
@@ -440,3 +452,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:51 | DashboardAI-Clone 01 | SUB-27.5 | — | Lock: assumindo SUB-27.5 (`enviarLinkMagico()` em `src/services/authService.ts`) |
 | 2026-10-12 00:51 | DashboardAI-Clone 10 (Grok Bot) | SUB-19.10 | — | Lock: assumindo SUB-19.10 (`classeSimilaridade` em `src/lib/similaridade.ts`) |
 | 2026-10-12 00:51 | DashboardAI-Clone 01 | SUB-27.5 | `500e307` | Adicionado `enviarLinkMagico(email, redirectTo, client = getSupabase())` em `src/services/authService.ts`: `auth.signInWithOtp` com `emailRedirectTo` e `shouldCreateUser: false` (e-mail com trim); erro -> `ServiceError(mensagemErroAuth(error), 'AUTH')`. typecheck e vitest verdes. |
+| 2026-10-12 00:51 | DashboardAI-Clone 01 | SUB-27.7 | — | Lock: assumindo SUB-27.7 (`obterPapelGlobal()` em `src/services/authService.ts`) |

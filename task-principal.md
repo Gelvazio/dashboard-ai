@@ -1551,8 +1551,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.7: `obterPapelGlobal()` em `src/services/authService.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `obterPapelGlobal(userId, client): Promise<UserRole | null>` (lê a própria linha em `user_roles`, permitido pela policy `user_roles_select`; sem linha -> `null`).
