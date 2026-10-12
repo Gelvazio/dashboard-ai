@@ -9,8 +9,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 32
-- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
-- **Pendentes:** 20
+- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-02`)
+- **Pendentes:** 19
 - **Concluídas:** 12
 - **Canceladas:** 0
 
@@ -59,9 +59,9 @@
 - **Commit:** `25b9664`
 - **Anotação:** Dependências lucide-react, clsx e tailwind-merge; src/lib/utils.ts com cn(...classes) = twMerge(clsx(...)) para classes condicionais sem conflito de Tailwind; App.tsx usa ícones Lucide e cn() (cards Fila, Memória, Agendador). Validado: cn('px-2 py-1', true && 'bg-brand-600', false && 'hidden', 'px-4') = 'py-1 bg-brand-600 px-4'; build e typecheck (frontend + api) OK; npm audit sem vulnerabilidades.
 
-### [ ] SUB-02: Estrutura Modular de Diretórios do Frontend
-- **Status:** pendente
-- **Executor:** nenhum
+### [🔄] SUB-02: Estrutura Modular de Diretórios do Frontend
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:01)
 - **Depende de:** SUB-01
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar árvore de pastas: `src/components`, `src/services`, `src/hooks`, `src/types`, `src/views`, `src/styles`.

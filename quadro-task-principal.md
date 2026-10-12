@@ -44,24 +44,35 @@
 | **Data e Hora de Início:** | 2026-10-11 22:41 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot)
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-02** |
+| **Título da Sub-task:** | Estrutura Modular de Diretórios do Frontend |
+| **Agente Responsável:** | DashboardAI (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-11 23:01 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (2)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27** | Autenticação e Login com Supabase Auth | Codex (OpenAI) | 2026-10-11 22:27 | SUB-03, SUB-29 |
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` | xAI (Grok) | 2026-10-11 22:41 | SUB-06 |
+| **SUB-02** | Estrutura Modular de Diretórios do Frontend | DashboardAI (Grok Bot) | 2026-10-11 23:01 | SUB-01 |
 
 ---
 
-### ⏳ PENDENTES (20)
+### ⏳ PENDENTES (19)
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
-| **SUB-02** | Estrutura Modular de Diretórios do Frontend | 1 (Alta) | Fase 1 | SUB-01 |
 | **SUB-03** | Configuração do Cliente Supabase e Tipagem TypeScript | 1 (Alta) | Fase 1 | SUB-02 |
 | **SUB-09** | Serviço de Tarefas (`src/services/taskService.ts`) | 3 | Fase 4 | SUB-03 |
 | **SUB-10** | Serviço de Memória Semântica (`src/services/memoryService.ts`) | 3 | Fase 4 | SUB-03 |
