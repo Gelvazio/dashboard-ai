@@ -99,14 +99,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:11 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-27.11
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-27.11** |
+| **Título da Sub-task:** | Tela `LoginView` em `src/views/LoginView.tsx` |
+| **Agente Responsável:** | DashboardAI-Clone 10 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:11 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (4)
+### 🔄 EM EXECUÇÃO (5)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-27.11** | Tela `LoginView` em `src/views/LoginView.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:11 | SUB-27.10, SUB-27.19 |
 | **SUB-34.5** | Checagem de tamanho `scripts/checar-chunks.mjs` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:11 | SUB-34.6, SUB-34.3, SUB-34.4 |
 | **SUB-21.10** | Validação visual da SUB-21 (screenshots) | DashboardAI-Clone 01 | 2026-10-12 01:10 | SUB-21.11 |
 | **SUB-27.27** | Incluir `UserMenu` no `src/components/layout/Header.tsx` | DashboardAI-Clone 06 | 2026-10-12 01:10 | SUB-27.14 |
@@ -200,7 +212,7 @@
 | **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) (mãe) | 3 | Fase 2B | SUB-07, SUB-03; SUB-33.1 a SUB-33.13 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | 3 | Fase 2B | SUB-33.11 — 🔄 em execução por Codex (OpenAI) |
 | **SUB-27** | Autenticação e Login com Supabase Auth (mãe; pendente, liberada) | 3 | Fase 10 | SUB-03, SUB-29; SUB-27.1 a SUB-27.28 — 🟢 livre |
-| **SUB-27.11** | Tela `LoginView` em `src/views/LoginView.tsx` | 3 | Fase 10 | SUB-27.10, SUB-27.19 — ⛓️ bloqueada |
+| **SUB-27.11** | Tela `LoginView` em `src/views/LoginView.tsx` | 3 | Fase 10 | SUB-27.10, SUB-27.19 — 🔄 em execução por DashboardAI-Clone 10 (Grok Bot) |
 | **SUB-27.12** | Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` | 3 | Fase 10 | SUB-27.26, SUB-27.11 — ⛓️ bloqueada |
 | **SUB-27.13** | Integrar autenticação no `src/App.tsx` | 3 | Fase 10 | SUB-27.12 — ⛓️ bloqueada |
 | **SUB-27.17** | Documentar configuração do Supabase Auth em `src/README.md` | 3 | Fase 10 | SUB-27.13 — ⛓️ bloqueada |
@@ -644,3 +656,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:10 | DashboardAI-Clone 01 | SUB-21.10 | — | Lock: assumindo SUB-21.10 (Validação visual da SUB-21 (screenshots)) |
 | 2026-10-12 01:11 | DashboardAI-Clone 02 | SUB-35.7 | `b518611` | No `database/README.md`: `07_agent_events.sql` na tabela de ordem de aplicação (e 'Como aplicar' 00 → 07) e nova seção 'Eventos dos agentes (07)' com colunas, tipos de evento, `chave_idempotencia` (única por projeto; exemplo `git:<sha>` do espelho do quadro), trigger `validar_agent_event`, RLS (viewer lê, editor inclui, sem UPDATE/DELETE), publicação Realtime condicional e `atividade_atual_agentes`. Conferido contra o SQL. |
 | 2026-10-12 01:11 | DashboardAI-Clone 08 (Grok Bot) | SUB-35.41 | `0263ae9` | Criado `tests/unit/api-event-tools.test.ts` com `db` falso (`vi.mock` de `api/_lib/supabase.js`, construtor encadeável que registra tabela/operação/payload/opções): tipo fora da lista e agente vazio viram erro de ferramenta sem tocar no banco; projeto fora de `MCP_ALLOWED_PROJECTS` é recusado; sem `MCP_AUTH_TOKEN` a ferramenta fica desativada; caso ok insere `{ project_id, agente (trim), tipo, task_codigo, etapa, status, mensagem }`; com `chave_idempotencia` usa upsert `{ onConflict: 'project_id,chave_idempotencia', ignoreDuplicates: true }` e devolve `duplicate: true` sem linha. 6 testes; `npm run typecheck` e `npm test` verdes. |
+| 2026-10-12 01:11 | DashboardAI-Clone 10 (Grok Bot) | SUB-27.11 | — | Lock: assumindo SUB-27.11 (Tela `LoginView` em `src/views/LoginView.tsx`) |

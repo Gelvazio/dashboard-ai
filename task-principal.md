@@ -1467,7 +1467,7 @@
   - `SUB-27.8`: Teste de integração dos papéis em `tests/integration/authService.integration.test.ts` (`pendente`)
   - `SUB-27.9`: `AuthProvider` em `src/hooks/AuthContext.tsx` (`pendente`)
   - `SUB-27.10`: Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx` (`pendente`)
-  - `SUB-27.11`: Tela `LoginView` em `src/views/LoginView.tsx` (`pendente`)
+  - `SUB-27.11`: Tela `LoginView` em `src/views/LoginView.tsx` (`em_execucao`)
   - `SUB-27.12`: Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` (`pendente`)
   - `SUB-27.13`: Integrar autenticação no `src/App.tsx` (`pendente`)
   - `SUB-27.14`: Componente `UserMenu` em `src/components/layout/UserMenu.tsx` (`pendente`)
@@ -1591,8 +1591,8 @@
 - **Anotação:** Criado `src/components/auth/LoginForm.tsx` (props `onEntrou`, `onEmailChange`): labels, `autocomplete=email/current-password`, mostrar/ocultar senha (aria-pressed), `validarLogin` por campo (aria-invalid/describedby), `entrarComSenha` com `Botao` carregando e erro em `role=alert`; senha limpa após entrar. Criado `src/components/auth/index.ts` (LoginForm + RecuperarAcesso). typecheck e build OK.
 
 #### [ ] SUB-27.11: Tela `LoginView` em `src/views/LoginView.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:11)
 - **Depende de:** SUB-27.10, SUB-27.19
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Página cheia centralizada (fora do `AppLayout`): nome do produto, descrição curta, `LoginForm`, `RecuperarAcesso` (SUB-27.19), `ThemeToggle` e aviso quando o Supabase não estiver configurado (`supabaseConfigurado`). Responsiva 390x844.
