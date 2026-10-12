@@ -2468,8 +2468,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-35.28: Feed `FeedEventos` em `src/components/monitor/FeedEventos.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-35.8
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Lista ao vivo dos eventos (hora, agente, tipo, task, etapa, mensagem) com botão Pausar/Retomar a rolagem e destaque curto no evento novo; respeita `prefers-reduced-motion`. Exportar no barrel.
