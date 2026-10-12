@@ -10,12 +10,12 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
 - **Subtarefas atômicas (~3 min):** 153 (SUB-08.x, SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x; atualizado em 2026-10-12 00:17)
-- **Em Execução:** 2 (SUB-33.3, SUB-23.1)
-- **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 147 subtarefas
+- **Em Execução:** 1 (SUB-23.1)
+- **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 146 subtarefas
   - livres agora: 25 (SUB-33.5, SUB-33.10, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.3, SUB-21.13, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
   - bloqueadas por dependência: 120
   - reservadas: 0
-- **Concluídas:** 31
+- **Concluídas:** 32
 - **Canceladas:** 0
 
 ---
@@ -159,7 +159,7 @@
 - **Subtarefas:** (subdividida em 2026-10-11 23:38 e refinada para 12 em 2026-10-11 23:47 por DashboardAI (Grok Bot); trava liberada a pedido do usuário, filhas livres conforme dependências; a mãe só é concluída quando todas estiverem `concluido`; nova revisão para 13 em 2026-10-12 00:17)
   - `SUB-33.1`: `bearerToken(req)` em `api/_lib/auth.ts` (`concluido`)
   - `SUB-33.2`: `verificarSessaoSupabase(token)` em `api/_lib/auth.ts` (`concluido`)
-  - `SUB-33.3`: `lerTextoEmbedding(body)` em `api/_lib/embedding-input.ts` (`em_execucao`)
+  - `SUB-33.3`: `lerTextoEmbedding(body)` em `api/_lib/embedding-input.ts` (`concluido`)
   - `SUB-33.4`: Esqueleto do handler `api/embedding.ts` (CORS, OPTIONS, 405) (`concluido`)
   - `SUB-33.5`: Registrar `api/embedding.ts` no `vercel.json` (`pendente`)
   - `SUB-33.6`: Testes do handler: OPTIONS, 405 e 401 (`pendente`)
@@ -195,15 +195,15 @@
 - **Commit:** `b7d1188`
 - **Anotação:** Adicionados `AuthError` e `verificarSessaoSupabase(token, env)` em `api/_lib/auth.ts`: `GET ${SUPABASE_URL}/auth/v1/user` com `Authorization: Bearer` e `apikey` (`SUPABASE_ANON_KEY` ou `SUPABASE_SERVICE_ROLE_KEY`), timeout 10 s; 200 com `id` -> `{ userId }`, 401/403 -> `null`, demais casos (config ausente, rede, timeout, HTTP != 2xx, corpo sem id) -> `AuthError` sem chave/token na mensagem. Testes 200/401/403/500/timeout/sem config em `tests/unit/api-auth.test.ts`. typecheck (app + api) e `npm test` verdes.
 
-#### [ ] SUB-33.3: `lerTextoEmbedding(body)` em `api/_lib/embedding-input.ts`
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (desde 2026-10-12 00:24)
+#### [x] SUB-33.3: `lerTextoEmbedding(body)` em `api/_lib/embedding-input.ts`
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:24 → 2026-10-12 00:24)
 - **Depende de:** SUB-33.13
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `api/_lib/embedding-input.ts` com `export function lerTextoEmbedding(body: unknown): string`: aceita objeto, string JSON ou Buffer; exige `texto` string não vazia (`HttpError` 400 da SUB-33.13), máximo 8.000 caracteres (413). Testes em `tests/unit/api-embedding-input.test.ts`.
 - **Critérios de Aceitação:** Testes (vazio, JSON inválido, sem `texto`, longo demais, ok) passam; `typecheck:api` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `593fad1`
+- **Anotação:** Criado `api/_lib/embedding-input.ts` com `MAX_TEXTO_EMBEDDING = 8000` e `lerTextoEmbedding(body)`: aceita objeto, string JSON ou Buffer; `HttpError` 400 para corpo vazio, JSON inválido, corpo não objeto ou `texto` ausente/não string/vazio; 413 acima de 8.000 caracteres. Testes em `tests/unit/api-embedding-input.test.ts` (vazio, JSON inválido, sem texto, longo demais, ok). typecheck (app + api) e `npm test` verdes.
 
 #### [x] SUB-33.4: Esqueleto do handler `api/embedding.ts` (CORS, OPTIONS, 405)
 - **Status:** concluido

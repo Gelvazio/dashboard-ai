@@ -33,26 +33,16 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhuma tarefa reservada para Codex |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — SUB-33.3
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-33.3** |
-| **Título da Sub-task:** | `lerTextoEmbedding(body)` em `api/_lib/embedding-input.ts` |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 00:24 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém mais assume a SUB-33.3 |
-
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (1)
+### 🔄 EM EXECUÇÃO (0)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
-| **SUB-33.3** | `lerTextoEmbedding(body)` em `api/_lib/embedding-input.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:24 | SUB-33.13 |
+
+*(Nenhuma tarefa em execução)*
 
 ---
 
@@ -228,7 +218,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (31)
+### ✅ CONCLUÍDAS (32)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -263,6 +253,7 @@
 | **SUB-33.4** | Esqueleto do handler `api/embedding.ts` (CORS, OPTIONS, 405) | DashboardAI (Grok Bot) | 2026-10-12 00:21 | 2026-10-12 00:21 | `8660199` |
 | **SUB-21.1** | `memoriaComoMarkdown` em `src/lib/memorias.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:22 | 2026-10-12 00:22 | `7b2ef64` |
 | **SUB-33.2** | `verificarSessaoSupabase(token)` em `api/_lib/auth.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:23 | 2026-10-12 00:23 | `b7d1188` |
+| **SUB-33.3** | `lerTextoEmbedding(body)` em `api/_lib/embedding-input.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:24 | 2026-10-12 00:24 | `593fad1` |
 
 ---
 
@@ -332,3 +323,4 @@
 | 2026-10-12 00:23 | DashboardAI (Grok Bot) | SUB-33.2 | — | Lock: assumindo SUB-33.2 (`verificarSessaoSupabase(token)` em `api/_lib/auth.ts`) |
 | 2026-10-12 00:23 | DashboardAI (Grok Bot) | SUB-33.2 | `b7d1188` | Adicionados `AuthError` e `verificarSessaoSupabase(token, env)` em `api/_lib/auth.ts`: `GET ${SUPABASE_URL}/auth/v1/user` com `Authorization: Bearer` e `apikey` (`SUPABASE_ANON_KEY` ou `SUPABASE_SERVICE_ROLE_KEY`), timeout 10 s; 200 com `id` -> `{ userId }`, 401/403 -> `null`, demais casos (config ausente, rede, timeout, HTTP != 2xx, corpo sem id) -> `AuthError` sem chave/token na mensagem. Testes 200/401/403/500/timeout/sem config em `tests/unit/api-auth.test.ts`. typecheck (app + api) e `npm test` verdes. |
 | 2026-10-12 00:24 | DashboardAI (Grok Bot) | SUB-33.3 | — | Lock: assumindo SUB-33.3 (`lerTextoEmbedding(body)` em `api/_lib/embedding-input.ts`) |
+| 2026-10-12 00:24 | DashboardAI (Grok Bot) | SUB-33.3 | `593fad1` | Criado `api/_lib/embedding-input.ts` com `MAX_TEXTO_EMBEDDING = 8000` e `lerTextoEmbedding(body)`: aceita objeto, string JSON ou Buffer; `HttpError` 400 para corpo vazio, JSON inválido, corpo não objeto ou `texto` ausente/não string/vazio; 413 acima de 8.000 caracteres. Testes em `tests/unit/api-embedding-input.test.ts` (vazio, JSON inválido, sem texto, longo demais, ok). typecheck (app + api) e `npm test` verdes. |
