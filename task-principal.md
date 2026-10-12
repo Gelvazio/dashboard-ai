@@ -45,14 +45,25 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
+### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.12
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-28.12** |
+| **Título da Sub-task:** | Montagem do `StateGraph` em `worker/grafo.ts` |
+| **Agente Responsável:** | Devin (Cognition AI) |
+| **Data e Hora de Início:** | 2026-10-12 12:48 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202
-- **Em Execução:** 0
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 29 subtarefas
-  - livres agora: 7 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.12, SUB-28.13, SUB-35.32, SUB-35.33)
+- **Em Execução:** 1 (SUB-28.12, Devin (Cognition AI), desde 2026-10-12 12:48)
+- **Pendentes:** 4 principais (25, 26, 28, 35) + 28 subtarefas
+  - livres agora: 6 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.13, SUB-35.32, SUB-35.33)
   - bloqueadas por dependência: 22
   - reservadas: 0
 - **Concluídas:** 206 de 239 blocos (33 principais + 173 subtarefas)
@@ -1972,7 +1983,7 @@
   - `SUB-28.9`: Nó `executar` em `worker/nos/executar.ts` (`concluido`, `9cf0e2a`)
   - `SUB-28.10`: Nó `revisar` (roteamento) em `worker/nos/revisar.ts` (`concluido`, `b1c35a9`)
   - `SUB-28.11`: Nó `finalizar` em `worker/nos/finalizar.ts` (`concluido`, `9575b13`)
-  - `SUB-28.12`: Montagem do `StateGraph` em `worker/grafo.ts` (`pendente`)
+  - `SUB-28.12`: Montagem do `StateGraph` em `worker/grafo.ts` (`em_execucao`)
   - `SUB-28.13`: Checkpointer durável em `worker/checkpointer.ts` (`pendente`)
   - `SUB-28.14`: Reconciliação na retomada em `worker/reconciliar.ts` (`concluido`, `206ba39`)
   - `SUB-28.15`: CLI do worker em `worker/index.ts` (`pendente`)
@@ -2121,8 +2132,8 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:41 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
 #### [ ] SUB-28.12: Montagem do `StateGraph` em `worker/grafo.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:48)
 - **Depende de:** SUB-28.6, SUB-28.7, SUB-28.8, SUB-28.9, SUB-28.10, SUB-28.11
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Conectar nós e rotas condicionais: contexto -> planejar -> politica -> executar -> revisar -> (executar | finalizar).
