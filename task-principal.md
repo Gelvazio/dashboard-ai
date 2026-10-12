@@ -10,11 +10,11 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
 - **Subtarefas atômicas (~3 min):** 121 (SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x; atualizado em 2026-10-11 23:51)
-- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
-- **Pendentes:** 9 principais aguardando subtarefas (SUB-19, 20, 21, 23, 25, 26, 28, 33, 34) + 121 subtarefas
-  - livres agora: 16 (SUB-33.1, SUB-33.3, SUB-33.4, SUB-34.1, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-21.1, SUB-21.3, SUB-23.1, SUB-23.4, SUB-25.1, SUB-26.1)
-  - reservadas sob a trava da SUB-27 (Codex (OpenAI)): 22
-  - bloqueadas por dependência: 83
+- **Em Execução:** 1 (`SUB-08`)
+- **Pendentes:** 10 principais aguardando subtarefas (SUB-19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 121 subtarefas
+  - livres agora: 17 (SUB-33.1, SUB-33.3, SUB-33.4, SUB-34.1, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-21.1, SUB-21.3, SUB-23.1, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
+  - reservadas sob a trava da SUB-27: 0
+  - bloqueadas por dependência: 104
 - **Concluídas:** 25
 - **Canceladas:** 0
 
@@ -1243,41 +1243,41 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-### [🔄] SUB-27: Autenticação e Login com Supabase Auth
-- **Status:** em_execucao
-- **Executor:** Codex (OpenAI) (início: 2026-10-11 22:27)
+### [ ] SUB-27: Autenticação e Login com Supabase Auth
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-03, SUB-29 (papéis `user_roles`/`project_members` e RLS); subtarefas SUB-27.1 a SUB-27.22
-- **Subtarefas:** (subdividida em 18 em 2026-10-11 23:41 por DashboardAI (Grok Bot) **a pedido do usuário**; todas **reservadas para Codex (OpenAI) — SUB-27 travada**; a mãe só é concluída quando todas estiverem `concluido`; refinada para 22 em 2026-10-11 23:51)
-  - `SUB-27.1`: `mensagemErroAuth(erro)` em `src/lib/auth.ts` (`pendente`, reservada)
-  - `SUB-27.2`: `validarLogin({ email, senha })` em `src/lib/auth.ts` (`pendente`, reservada)
-  - `SUB-27.3`: `entrarComSenha(email, senha)` em `src/services/authService.ts` (`pendente`, reservada)
-  - `SUB-27.4`: `sair()` e `obterSessao()` em `src/services/authService.ts` (`pendente`, reservada)
-  - `SUB-27.5`: `enviarLinkMagico()` e `redefinirSenha()` em `src/services/authService.ts` (`pendente`, reservada)
-  - `SUB-27.6`: Testes unitários de `authService` em `tests/unit/authService.test.ts` (`pendente`, reservada)
-  - `SUB-27.7`: `obterPapelGlobal()` e `papelNoProjeto()` em `src/services/authService.ts` (`pendente`, reservada)
-  - `SUB-27.8`: Teste de integração dos papéis em `tests/integration/authService.integration.test.ts` (`pendente`, reservada)
-  - `SUB-27.9`: `AuthProvider` e `useAuth` em `src/hooks/AuthContext.tsx` / `src/hooks/useAuth.ts` (`pendente`, reservada)
-  - `SUB-27.10`: Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx` (`pendente`, reservada)
-  - `SUB-27.11`: Tela `LoginView` em `src/views/LoginView.tsx` (`pendente`, reservada)
-  - `SUB-27.12`: Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` (`pendente`, reservada)
-  - `SUB-27.13`: Integrar autenticação no `src/App.tsx` (`pendente`, reservada)
-  - `SUB-27.14`: Menu do usuário `UserMenu` no header (`pendente`, reservada)
-  - `SUB-27.15`: Rechecar conexão no login/logout em `src/hooks/useConexao.ts` (`pendente`, reservada)
-  - `SUB-27.16`: `urlDeRetorno()` para link mágico e redefinição de senha (`pendente`, reservada)
-  - `SUB-27.17`: Documentar configuração do Supabase Auth em `src/README.md` (`pendente`, reservada)
-  - `SUB-27.18`: Validação automatizada da SUB-27 (`pendente`, reservada)
-  - `SUB-27.19`: `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx` (`pendente`, reservada)
-  - `SUB-27.20`: Limpar `ProjetoContext` ao sair (`pendente`, reservada)
-  - `SUB-27.21`: Documentar primeiro administrador e membros em `database/README.md` (`pendente`, reservada)
-  - `SUB-27.22`: Conferência no navegador e varredura do bundle (SUB-27) (`pendente`, reservada)
+- **Subtarefas:** (22 filhas; subdividida em 18 em 2026-10-11 23:41 e refinada em 22 em 2026-10-11 23:51 por DashboardAI (Grok Bot); liberadas a pedido do usuário em 2026-10-11 23:55 conforme dependências; a mãe só é concluída quando todas estiverem `concluido`)
+  - `SUB-27.1`: `mensagemErroAuth(erro)` em `src/lib/auth.ts` (`pendente`)
+  - `SUB-27.2`: `validarLogin({ email, senha })` em `src/lib/auth.ts` (`pendente`)
+  - `SUB-27.3`: `entrarComSenha(email, senha)` em `src/services/authService.ts` (`pendente`)
+  - `SUB-27.4`: `sair()` e `obterSessao()` em `src/services/authService.ts` (`pendente`)
+  - `SUB-27.5`: `enviarLinkMagico()` e `redefinirSenha()` em `src/services/authService.ts` (`pendente`)
+  - `SUB-27.6`: Testes unitários de `authService` em `tests/unit/authService.test.ts` (`pendente`)
+  - `SUB-27.7`: `obterPapelGlobal()` e `papelNoProjeto()` em `src/services/authService.ts` (`pendente`)
+  - `SUB-27.8`: Teste de integração dos papéis em `tests/integration/authService.integration.test.ts` (`pendente`)
+  - `SUB-27.9`: `AuthProvider` e `useAuth` em `src/hooks/AuthContext.tsx` / `src/hooks/useAuth.ts` (`pendente`)
+  - `SUB-27.10`: Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx` (`pendente`)
+  - `SUB-27.11`: Tela `LoginView` em `src/views/LoginView.tsx` (`pendente`)
+  - `SUB-27.12`: Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` (`pendente`)
+  - `SUB-27.13`: Integrar autenticação no `src/App.tsx` (`pendente`)
+  - `SUB-27.14`: Menu do usuário `UserMenu` no header (`pendente`)
+  - `SUB-27.15`: Rechecar conexão no login/logout em `src/hooks/useConexao.ts` (`pendente`)
+  - `SUB-27.16`: `urlDeRetorno()` para link mágico e redefinição de senha (`pendente`)
+  - `SUB-27.17`: Documentar configuração do Supabase Auth em `src/README.md` (`pendente`)
+  - `SUB-27.18`: Validação automatizada da SUB-27 (`pendente`)
+  - `SUB-27.19`: `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx` (`pendente`)
+  - `SUB-27.20`: Limpar `ProjetoContext` ao sair (`pendente`)
+  - `SUB-27.21`: Documentar primeiro administrador e membros em `database/README.md` (`pendente`)
+  - `SUB-27.22`: Conferência no navegador e varredura do bundle (SUB-27) (`pendente`)
 - **Descrição:** Implementar tela e fluxo de login do Dashboard usando Supabase Auth, mantendo a sessão do usuário, protegendo as áreas autenticadas e oferecendo logout.
 - **Critérios de Aceitação:** Login e logout funcionam via Supabase Auth; sessão é restaurada e páginas privadas redirecionam usuários não autenticados; chamadas ao banco usam o JWT do usuário e respeitam RLS; somente a chave pública anon pode estar no frontend, sem senha persistida nem chave service_role exposta.
 - **Commit:** pendente
 - **Anotação:** Subdivisão (DashboardAI (Grok Bot), 2026-10-11 23:41, a pedido do usuário): até este momento não havia nenhum commit de código da SUB-27 na main, então nada foi marcado como concluído; a trava e a execução continuam com Codex (OpenAI). Original: Iniciado por solicitação do usuário; a dependência SUB-03 permanece pendente e a integração com o cliente Supabase depende da conclusão dela.
 
 #### [ ] SUB-27.1: `mensagemErroAuth(erro)` em `src/lib/auth.ts`
-- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
-- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/lib/auth.ts` com `export function mensagemErroAuth(erro: { message?: string; code?: string; status?: number } | null): string` que traduz os erros do Supabase Auth para português (`invalid_credentials`/"Invalid login credentials" -> "E-mail ou senha inválidos.", `email_not_confirmed`, `over_request_rate_limit`/429, `user_banned`, falha de rede, genérico). Testes em `tests/unit/auth.test.ts`.
@@ -1286,8 +1286,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.2: `validarLogin({ email, senha })` em `src/lib/auth.ts`
-- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
-- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-27.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `export function validarLogin(d: { email: string; senha: string }): Partial<Record<'email'|'senha', string>>` (e-mail obrigatório e com formato válido após `trim`, senha obrigatória com no mínimo 6 caracteres). Testes no mesmo arquivo de teste.
@@ -1296,8 +1296,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.3: `entrarComSenha(email, senha)` em `src/services/authService.ts`
-- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
-- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-27.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/services/authService.ts` com `export async function entrarComSenha(email: string, senha: string, client = getSupabase()): Promise<Session>` usando `client.auth.signInWithPassword`; erro vira `ServiceError(mensagemErroAuth(error), 'AUTH')`. A senha nunca é guardada nem logada. Exportar no barrel `src/services/index.ts`.
@@ -1306,8 +1306,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.4: `sair()` e `obterSessao()` em `src/services/authService.ts`
-- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
-- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-27.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `sair(client)` (`auth.signOut()`, limpando também `localStorage['dashboard-ai:projeto']`) e `obterSessao(client): Promise<Session | null>` (`auth.getSession()`, erro -> `ServiceError`).
@@ -1316,8 +1316,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.5: `enviarLinkMagico()` e `redefinirSenha()` em `src/services/authService.ts`
-- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
-- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-27.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `enviarLinkMagico(email, redirectTo, client)` (`auth.signInWithOtp` com `emailRedirectTo` e `shouldCreateUser: false`) e `redefinirSenha(email, redirectTo, client)` (`auth.resetPasswordForEmail`), com mensagens via `mensagemErroAuth`.
@@ -1326,8 +1326,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.6: Testes unitários de `authService` em `tests/unit/authService.test.ts`
-- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
-- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-27.4, SUB-27.5
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Testar com cliente falso (`auth.signInWithPassword/signOut/getSession/signInWithOtp/resetPasswordForEmail` simulados): sucesso, credenciais inválidas traduzidas, `sair` limpa o projeto salvo (stub de `localStorage`), `shouldCreateUser: false` no link mágico.
@@ -1336,8 +1336,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.7: `obterPapelGlobal()` e `papelNoProjeto()` em `src/services/authService.ts`
-- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
-- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-27.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `obterPapelGlobal(userId, client): Promise<UserRole | null>` (lê a própria linha em `user_roles`, permitido pela policy `user_roles_select`) e `papelNoProjeto(projectId, userId, client): Promise<ProjectRole | 'admin' | null>` (admin global tem acesso total; senão `project_members.role`).
@@ -1346,8 +1346,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.8: Teste de integração dos papéis em `tests/integration/authService.integration.test.ts`
-- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
-- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-27.7
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Com `tests/helpers/postgrest.ts` (JWT `authenticated` com `sub`): usuário vê o próprio papel e não o de outro; admin retorna `admin` em qualquer projeto; editor/viewer retornam o papel do projeto; não membro retorna `null`.
@@ -1356,8 +1356,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.9: `AuthProvider` e `useAuth` em `src/hooks/AuthContext.tsx` / `src/hooks/useAuth.ts`
-- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
-- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-27.4, SUB-27.7
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar contexto com `{ sessao, usuario, papelGlobal, carregando, sair }`: lê `obterSessao()` ao montar, assina `auth.onAuthStateChange` (cancelando no cleanup), recarrega `papelGlobal` quando o usuário muda; sem Supabase configurado fica `carregando=false`, `sessao=null`. `useAuth()` lança erro fora do provider. Exportar em `src/hooks/index.ts`.
@@ -1366,8 +1366,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.10: Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx`
-- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
-- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-27.2, SUB-27.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Formulário acessível (labels, `autocomplete=email/current-password`, mostrar/ocultar senha) com validação `validarLogin`, botão Entrar com estado carregando (`Botao`) e erro em `role=alert`. Criar `src/components/auth/index.ts`. Recuperação de acesso fica na SUB-27.19.
@@ -1376,8 +1376,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.11: Tela `LoginView` em `src/views/LoginView.tsx`
-- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
-- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-27.10, SUB-27.19
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Página cheia centralizada (fora do `AppLayout`): nome do produto, descrição curta, `LoginForm`, `RecuperarAcesso` (SUB-27.19), `ThemeToggle` e aviso quando o Supabase não estiver configurado (`supabaseConfigurado`). Responsiva 390x844.
@@ -1386,8 +1386,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.12: Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx`
-- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
-- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-27.9, SUB-27.11
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Componente `{ children }`: enquanto `carregando` mostra fallback leve; sem sessão renderiza `LoginView` (preservando o hash atual, ex. `#/logs`, para voltar após o login); com sessão renderiza `children`.
@@ -1396,8 +1396,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.13: Integrar autenticação no `src/App.tsx`
-- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
-- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-27.12
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Envolver a árvore em `AuthProvider` e `RotaProtegida` (acima de `ProjetoProvider`), e dar `key={usuario?.id}` ao `ProjetoProvider` para recarregar os projetos (RLS) quando o usuário trocar.
@@ -1406,8 +1406,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.14: Menu do usuário `UserMenu` no header
-- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
-- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-27.9
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/components/layout/UserMenu.tsx` (e-mail do usuário, selo Admin quando `papelGlobal === 'admin'`, botão Sair com `sair()` e toast) e incluí-lo no `src/components/layout/Header.tsx` ao lado do `ThemeToggle`.
@@ -1416,8 +1416,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.15: Rechecar conexão no login/logout em `src/hooks/useConexao.ts`
-- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
-- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-27.9
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Em `useConexao`, verificar a conexão de novo quando `auth.onAuthStateChange` disparar (estado `sem_sessao` -> `conectado` sem esperar 60 s), cancelando a assinatura no cleanup.
@@ -1426,8 +1426,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.16: `urlDeRetorno()` para link mágico e redefinição de senha
-- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
-- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-27.5
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar em `src/lib/auth.ts` `urlDeRetorno(loc: Pick<Location,'origin'|'pathname'|'hash'>): string` (origem + caminho + hash da tela, sem tokens anteriores) e usá-la como `redirectTo` nas chamadas da 27.5. Testes.
@@ -1436,8 +1436,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.17: Documentar configuração do Supabase Auth em `src/README.md`
-- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
-- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-27.13
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** No `src/README.md`: habilitar provedor e-mail no Supabase Auth, URLs de redirecionamento (local e Vercel) usadas por `urlDeRetorno`, e como a sessão é persistida. Sem chaves reais.
@@ -1446,8 +1446,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.18: Validação automatizada da SUB-27
-- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
-- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-27.6, SUB-27.8, SUB-27.13, SUB-27.14, SUB-27.15, SUB-27.16, SUB-27.17, SUB-27.20, SUB-27.21
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Rodar `npm run typecheck`, `npm test`, `npm run build` e `npm run test:integration`; registrar o resultado na anotação da SUB-27.
@@ -1456,8 +1456,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.19: `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx`
-- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
-- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-27.5, SUB-27.16
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Dois botões/links: "Entrar com link por e-mail" (`enviarLinkMagico`) e "Esqueci a senha" (`redefinirSenha`), usando o e-mail informado e `urlDeRetorno(location)`; mostra confirmação de envio ou erro.
@@ -1466,8 +1466,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.20: Limpar `ProjetoContext` ao sair
-- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
-- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-27.9
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Em `src/hooks/ProjetoContext.tsx`, limpar `projetos` e erro quando não houver sessão (usando `useAuth`), sem perder o slug salvo.
@@ -1476,8 +1476,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.21: Documentar primeiro administrador e membros em `database/README.md`
-- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
-- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-27.13
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Como criar o primeiro admin (`insert into user_roles (user_id, role) values (..., 'admin')` no SQL editor) e adicionar membros em `project_members` (owner/editor/viewer). Sem chaves reais.
@@ -1486,8 +1486,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.22: Conferência no navegador e varredura do bundle (SUB-27)
-- **Status:** pendente (reservada para Codex (OpenAI) — SUB-27 travada)
-- **Executor:** Codex (OpenAI) (reserva da trava de 2026-10-11 22:27)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-27.18
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Conferir no navegador entrar, sair e restaurar sessão (recarregar a página) e rodar `rg -n service_role dist/` (só mensagens de recusa); registrar na anotação da SUB-27.
