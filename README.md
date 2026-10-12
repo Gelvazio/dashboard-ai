@@ -125,12 +125,65 @@ deploy pela integração com o GitHub.
 
 ## Agentes de IA (fila via MCP)
 
-> Configuração dos clientes MCP: seção provisória (detalhada na SUB-26.6).
-
 Os agentes se conectam ao endpoint `/mcp` com o token `MCP_AUTH_TOKEN` e usam as
 ferramentas da fila (`task_next`, `task_finish`, `task_list`, `task_create`, em
 [`api/_lib/queue-tools.ts`](api/_lib/queue-tools.ts)) para pegar, executar e finalizar tasks
 do projeto, sempre respeitando travas e dependências.
+
+### Configurar o cliente MCP
+
+O servidor ([`api/mcp.ts`](api/mcp.ts)) usa o transporte **Streamable HTTP** (JSON simples, sem
+SSE), protocolos `2025-06-18`, `2025-03-26` e `2024-11-05`, e responde só a `POST`:
+
+- **URL:** `https://<seu-app>.vercel.app/mcp` (rewrite para `/api/mcp`, no `vercel.json`).
+- **Autenticação:** cabeçalho `Authorization: Bearer <MCP_AUTH_TOKEN>`. Sem `MCP_AUTH_TOKEN`
+  no servidor, as ferramentas de fila e memória ficam **desativadas**; com ele, um token
+  errado ou ausente recebe `401`. Guarde o token numa variável de ambiente do cliente, nunca
+  no repositório.
+- **Projeto:** cada ferramenta aceita o argumento `project` (slug); sem ele vale
+  `MCP_DEFAULT_PROJECT`. Para dar a um projeto um endpoint/token só dele, faça um deploy com
+  `MCP_ALLOWED_PROJECTS=meu-app` (outros slugs e memória global são recusados).
+
+**Claude Code:**
+
+```bash
+claude mcp add --transport http dashboard-ai https://<seu-app>.vercel.app/mcp \
+  --header "Authorization: Bearer $MCP_AUTH_TOKEN"
+```
+
+**Codex** (`~/.codex/config.toml` ou `.codex/config.toml` do projeto; o token vem da variável
+de ambiente `MCP_AUTH_TOKEN` exportada antes de abrir o Codex):
+
+```toml
+[mcp_servers.dashboard-ai]
+url = "https://<seu-app>.vercel.app/mcp"
+bearer_token_env_var = "MCP_AUTH_TOKEN"
+```
+
+Ou: `codex mcp add dashboard-ai --url https://<seu-app>.vercel.app/mcp --bearer-token-env-var MCP_AUTH_TOKEN`.
+
+**Outros clientes** com suporte a MCP via HTTP (Cursor, Gemini CLI etc.): informe a mesma URL
+e o cabeçalho `Authorization` no formato de configuração de cada um, por exemplo:
+
+```json
+{ "mcpServers": { "dashboard-ai": {
+  "url": "https://<seu-app>.vercel.app/mcp",
+  "headers": { "Authorization": "Bearer ${MCP_AUTH_TOKEN}" } } } }
+```
+
+**Conferir a conexão** (deve listar `task_next`, `task_finish`, `task_list`, `task_create`,
+`brain_store`, `brain_search` e `brain_delete`):
+
+```bash
+curl -s https://<seu-app>.vercel.app/mcp \
+  -H "Authorization: Bearer $MCP_AUTH_TOKEN" -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+```
+
+**Protocolo de trabalho:** além da fila no banco, agentes que trabalham **neste repositório**
+seguem o [`AGENTS.md`](AGENTS.md): `git pull --rebase` antes de tudo, no máximo 1 item travado
+por agente, trava registrada no `quadro-task-principal.md` com commit + push imediatos antes de
+codar, nunca mexer na trava de outro agente e registrar o SHA da entrega no histórico.
 
 ### Ciclo da fila (exemplos)
 
