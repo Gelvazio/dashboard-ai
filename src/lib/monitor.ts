@@ -1,4 +1,4 @@
-import type { AgentEvent, AtividadeAgente, TipoEventoAgente } from '@/types/database';
+import { TIPOS_EVENTO_AGENTE, type AgentEvent, type AtividadeAgente, type TipoEventoAgente } from '@/types/database';
 
 /** Ordem do feed: `created_at` mais recente primeiro; empate pelo `id` maior. */
 function maisRecentePrimeiro(a: AgentEvent, b: AgentEvent): number {
@@ -75,4 +75,30 @@ export function contarPorStatus(
     totais.set(e, (totais.get(e) ?? 0) + 1);
   }
   return ORDEM_ESTADOS.map((estado) => ({ estado, total: totais.get(estado) ?? 0 }));
+}
+
+export interface ContagemAgente {
+  agente: string;
+  porTipo: Record<TipoEventoAgente, number>;
+  total: number;
+}
+
+/**
+ * Conta os eventos de cada agente por `tipo` (todos os tipos presentes, com
+ * zero) para o gráfico de barras empilhadas (SUB-35.17). Ordena por total desc
+ * e, no empate, pelo nome do agente.
+ */
+export function contarPorAgente(eventos: readonly Pick<AgentEvent, 'agente' | 'tipo'>[]): ContagemAgente[] {
+  const mapa = new Map<string, ContagemAgente>();
+  for (const e of eventos) {
+    let c = mapa.get(e.agente);
+    if (!c) {
+      const porTipo = Object.fromEntries(TIPOS_EVENTO_AGENTE.map((t) => [t, 0])) as Record<TipoEventoAgente, number>;
+      c = { agente: e.agente, porTipo, total: 0 };
+      mapa.set(e.agente, c);
+    }
+    c.porTipo[e.tipo] = (c.porTipo[e.tipo] ?? 0) + 1;
+    c.total += 1;
+  }
+  return [...mapa.values()].sort((a, b) => b.total - a.total || a.agente.localeCompare(b.agente, 'pt-BR'));
 }

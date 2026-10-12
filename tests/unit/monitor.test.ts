@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { contarPorStatus, estadoDoAgente, mesclarEvento, ORDEM_ESTADOS } from '@/lib/monitor';
+import { contarPorAgente, contarPorStatus, estadoDoAgente, mesclarEvento, ORDEM_ESTADOS } from '@/lib/monitor';
 import type { AgentEvent } from '@/types/database';
 
 function ev(id: number, minuto: number): AgentEvent {
@@ -108,5 +108,25 @@ describe('contarPorStatus', () => {
   it('lista vazia devolve todos os estados com zero', () => {
     expect(contarPorStatus([], agora).map((x) => x.estado)).toEqual([...ORDEM_ESTADOS]);
     expect(contarPorStatus([], agora).every((x) => x.total === 0)).toBe(true);
+  });
+});
+
+describe('contarPorAgente', () => {
+  const e = (agente: string, tipo: AgentEvent['tipo']) => ({ agente, tipo });
+
+  it('conta por tipo e ordena por total desc', () => {
+    const r = contarPorAgente([e('B', 'inicio'), e('A', 'commit'), e('B', 'commit'), e('B', 'commit'), e('A', 'fim')]);
+    expect(r.map((x) => [x.agente, x.total])).toEqual([
+      ['B', 3],
+      ['A', 2],
+    ]);
+    expect(r[0].porTipo.commit).toBe(2);
+    expect(r[0].porTipo.inicio).toBe(1);
+    expect(r[0].porTipo.erro).toBe(0);
+  });
+
+  it('desempata pelo nome e lida com lista vazia', () => {
+    expect(contarPorAgente([e('Zeta', 'fim'), e('Alfa', 'fim')]).map((x) => x.agente)).toEqual(['Alfa', 'Zeta']);
+    expect(contarPorAgente([])).toEqual([]);
   });
 });
