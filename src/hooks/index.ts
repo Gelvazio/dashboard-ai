@@ -8,3 +8,5 @@ export { useNavegacao } from './useNavegacao';
 export { useTema } from './useTema';
 export { useConexao } from './useConexao';
 export { useTasks } from './useTasks';
+export { ToastProvider } from './ToastContext';
+export { useToast } from './useToast';

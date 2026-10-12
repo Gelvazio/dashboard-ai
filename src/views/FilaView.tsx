@@ -1,15 +1,22 @@
-import { AlertCircle, ListTodo } from 'lucide-react';
+import { useState } from 'react';
+import { AlertCircle, ListTodo, Pencil, Plus } from 'lucide-react';
 import { useProjetoAtual } from '@/hooks/useProjetoAtual';
 import { useTasks } from '@/hooks/useTasks';
 import { EmConstrucao } from '@/components/EmConstrucao';
-import { ProgressoFila, TaskTable } from '@/components/tasks';
+import { Botao } from '@/components/ui/Botao';
+import { Tooltip } from '@/components/ui/Tooltip';
+import { ProgressoFila, TaskFormModal, TaskTable } from '@/components/tasks';
+import type { Task } from '@/types';
 
 /** Fila de tarefas do projeto selecionado. */
 export function FilaView() {
   const { projeto } = useProjetoAtual();
-  const { tasks, carregando, erro } = useTasks(projeto?.id);
+  const { tasks, carregando, erro, recarregar } = useTasks(projeto?.id);
+  const [form, setForm] = useState<{ aberto: boolean; task: Task | null }>({ aberto: false, task: null });
 
   if (!projeto) return <EmConstrucao titulo="Fila de Tarefas" tarefa="selecione um projeto para ver a fila" />;
+
+  const editar = (task: Task) => setForm({ aberto: true, task });
 
   return (
     <section className="card animate-fade-in overflow-hidden">
@@ -20,6 +27,10 @@ export function FilaView() {
           <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">{tasks.length}</span>
         </h2>
         <ProgressoFila tasks={tasks} />
+        <Botao variante="primario" onClick={() => setForm({ aberto: true, task: null })} className="ml-auto">
+          <Plus className="size-4" aria-hidden />
+          Nova task
+        </Botao>
       </header>
       {erro && (
         <p role="alert" className="flex items-center gap-2 border-b border-rose-200 bg-rose-50 px-4 py-2 text-sm text-rose-700 dark:border-rose-500/30 dark:bg-rose-500/10 dark:text-rose-300">
@@ -27,7 +38,24 @@ export function FilaView() {
           {erro}
         </p>
       )}
-      <TaskTable tasks={tasks} carregando={carregando} />
+      <TaskTable
+        tasks={tasks}
+        carregando={carregando}
+        acoes={(t) => (
+          <Tooltip conteudo={`Editar ${t.codigo}`}>
+            <button type="button" onClick={() => editar(t)} className="rounded-md p-1.5 text-slate-500 hover:bg-slate-100 hover:text-brand-600 dark:hover:bg-slate-800" aria-label={`Editar ${t.codigo}`}>
+              <Pencil className="size-4" />
+            </button>
+          </Tooltip>
+        )}
+      />
+      <TaskFormModal
+        aberto={form.aberto}
+        projeto={projeto}
+        task={form.task}
+        onFechar={() => setForm((f) => ({ ...f, aberto: false }))}
+        onSalva={() => void recarregar()}
+      />
     </section>
   );
 }

@@ -24,8 +24,8 @@ export interface TaskTableProps {
   vazio?: ReactNode;
 }
 
-const TH = 'px-2.5 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400';
-const TD = 'px-2.5 py-2.5 align-middle';
+const TH = 'whitespace-nowrap px-2 py-2.5 text-left text-[11px] font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400';
+const TD = 'px-2 py-2.5 align-middle';
 
 function detalheStatus(t: Task): string | undefined {
   if (t.status === 'em_execucao' && t.trava_frente) return `Travada por ${t.trava_frente} ${tempoRelativo(t.trava_em)}`;
@@ -71,7 +71,7 @@ function Resultado({ task }: { task: Task }) {
         </Tooltip>
       )}
       {texto ? (
-        <Tooltip conteudo={resumo(task.resultado, 240)} className="min-w-0">
+        <Tooltip conteudo={resumo(task.resultado, 240)} className="flex min-w-0">
           <span tabIndex={0} className="block truncate text-xs text-slate-600 dark:text-slate-400">
             {texto}
           </span>
@@ -87,8 +87,8 @@ function Titulo({ task, bloqueada }: { task: Task; bloqueada: boolean }) {
   return (
     <span className="flex min-w-0 max-w-48 flex-col">
       <span className="flex items-center gap-1.5">
-        <Tooltip conteudo={resumo(task.instrucao, 240)} className="min-w-0">
-          <span className="truncate font-medium text-slate-900 dark:text-slate-100">{task.titulo}</span>
+        <Tooltip conteudo={resumo(task.instrucao, 240)} className="flex min-w-0">
+          <span className="block truncate font-medium text-slate-900 dark:text-slate-100">{task.titulo}</span>
         </Tooltip>
         {task.tipo === 'humano' && (
           <Tooltip conteudo="Task humana — concluída por uma pessoa, não pela IA">

@@ -18,7 +18,7 @@ export function Dependencias({ deps }: { deps: DependenciaTask[] }) {
           key={d.codigo}
           conteudo={d.status ? `${d.codigo}: ${STATUS_INFO[d.status].rotulo}` : `${d.codigo}: não encontrada neste projeto (ou fora do filtro)`}
         >
-          <span tabIndex={0} className={cn('rounded px-1.5 py-0.5 font-mono text-[11px] ring-1 ring-inset', COR[d.estado])}>
+          <span tabIndex={0} className={cn('whitespace-nowrap rounded px-1.5 py-0.5 font-mono text-[11px] ring-1 ring-inset', COR[d.estado])}>
             {d.codigo}
           </span>
         </Tooltip>

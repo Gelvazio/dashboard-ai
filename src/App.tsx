@@ -1,5 +1,6 @@
 import { AppLayout } from '@/components/layout/AppLayout';
 import { ProjetoProvider } from '@/hooks/ProjetoContext';
+import { ToastProvider } from '@/hooks/ToastContext';
 import { useNavegacao } from '@/hooks/useNavegacao';
 import { TELAS, tituloDaView } from '@/views';
 
@@ -8,10 +9,12 @@ export default function App() {
   const { view, navegar } = useNavegacao();
   const Tela = TELAS[view];
   return (
-    <ProjetoProvider>
-      <AppLayout view={view} titulo={tituloDaView(view)} onNavegar={navegar}>
-        <Tela />
-      </AppLayout>
-    </ProjetoProvider>
+    <ToastProvider>
+      <ProjetoProvider>
+        <AppLayout view={view} titulo={tituloDaView(view)} onNavegar={navegar}>
+          <Tela />
+        </AppLayout>
+      </ProjetoProvider>
+    </ToastProvider>
   );
 }

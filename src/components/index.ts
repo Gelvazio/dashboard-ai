@@ -11,3 +11,5 @@ export { ThemeToggle } from './layout/ThemeToggle';
 export { EmConstrucao } from './EmConstrucao';
 export { Tooltip } from './ui/Tooltip';
 export * from './tasks';
+export { Modal } from './ui/Modal';
+export { Botao } from './ui/Botao';
