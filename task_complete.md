@@ -3309,3 +3309,16 @@
 - **Anotação:** Executada em 2026-10-12 por Claude Code (Opus 5.5) por orientação do usuário no chat ("continue a SUB-40 a partir da SUB-40.2"). `src/services/authService.ts`: `cadastrarUsuario({ nome, email, senha, redirectTo }, client = getSupabase())` chama `client.auth.signUp` com `email.trim()`, `options.data = { nome: nome.trim() }` e `emailRedirectTo`; lança `ServiceError(mensagemErroAuth(error), 'AUTH')` em erro e devolve `{ precisaConfirmar: !data.session }`. Interface `NovoUsuario` sem nenhum campo de papel ou permissão (o papel é decidido só pelo banco, SUB-40.1); a senha só é repassada ao Supabase. Já exportado por `src/services/index.ts` (`export * from './authService'`). Verificação: `npm run typecheck` verde; `npm test` com 300 testes passando e 30 pulados.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:25 — Claude Code (Opus 5.5): entrega verificada
 - **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [x] SUB-40.4: Componente `src/components/auth/CadastroForm.tsx`
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 18:26)
+- **Depende de:** SUB-40.3
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Novo formulário de cadastro no mesmo visual do `LoginForm` (classe `CAMPO`, `Botao`, `useId`, mostrar/ocultar senha com `Eye`/`EyeOff`, erros por campo com `aria-invalid`/`aria-describedby`): campos Nome, E-mail, Senha e Confirmar senha; valida com `validarCadastro` e chama `cadastrarUsuario` com `redirectTo = urlDeRetorno(window.location)`. Em sucesso com `precisaConfirmar`, mostra aviso (`role="status"`): "Usuário criado. Confira seu e-mail para confirmar o cadastro e depois entre." e limpa as senhas. Props: `onCadastrou?()` e `onVoltar?()` ("Já tenho conta — Entrar"). Exportar em `src/components/auth/index.ts`.
+- **Critérios de Aceitação:** `npm run typecheck`, `npm run lint` e `npm run build` verdes.
+- **Commit:** `a86f688`
+- **Anotação:** Executada em 2026-10-12 por Claude Code (Opus 5.5) por orientação do usuário no chat ("continue a SUB-40 a partir da SUB-40.2"). Novo `src/components/auth/CadastroForm.tsx` no visual do `LoginForm` (mesma classe `CAMPO`, `Botao`, `useId`, mostrar/ocultar senha com `Eye`/`EyeOff`): campos Nome, E-mail, Senha e Confirmar senha, cada um com rótulo e erro acessível (`aria-invalid`/`aria-describedby`) pelo subcomponente `CampoCadastro`; valida com `validarCadastro` e chama `cadastrarUsuario` com `redirectTo = urlDeRetorno(window.location)`. Em sucesso, limpa as senhas e mostra aviso `role="status"` ("Usuário criado. Confira seu e-mail para confirmar o cadastro e depois entre." quando `precisaConfirmar`). Props `onCadastrou?()` e `onVoltar?()` (botão "Já tenho conta — Entrar"). Exportado em `src/components/auth/index.ts`. Verificação: `npm run typecheck` e `npm run build` verdes. **Ressalva:** o critério cita `npm run lint`, mas o projeto não tem script nem configuração do ESLint (o `npx eslint` pede migração de configuração); lint não executado.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:27 — Claude Code (Opus 5.5): entrega verificada
+- **VERIFICADOR-CLAUDE:** PENDENTE

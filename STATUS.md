@@ -81,7 +81,7 @@ Plano: [`docs/login-cadastro-admin-inicial.md`](docs/login-cadastro-admin-inicia
 | 7.1 | SUB-40.1 SQL `database/08_admin_inicial.sql` | ✅ Concluído | 2026-10-12 18:15 | `e64524e`; leitura do SQL (sem Postgres local) |
 | 7.2 | SUB-40.2 `validarCadastro` e mensagens em `src/lib/auth.ts` | ✅ Concluído | 2026-10-12 18:24 | `b2a9289`; typecheck e testes verdes |
 | 7.3 | SUB-40.3 `cadastrarUsuario` em `src/services/authService.ts` | ✅ Concluído | 2026-10-12 18:25 | `a48672a`; typecheck e testes verdes |
-| 7.4 | SUB-40.4 `CadastroForm.tsx` | 🔄 Em progresso | — | — |
+| 7.4 | SUB-40.4 `CadastroForm.tsx` | ✅ Concluído | 2026-10-12 18:27 | `a86f688`; typecheck e build verdes; sem script de lint no projeto |
 | 7.5 | SUB-40.5 Entrar/Criar usuário na `LoginView` | ⬜ Pendente | — | — |
 | 7.6 | SUB-40.6 Documentação | ⬜ Pendente | — | — |
 | 7.7 | SUB-40.7 Aplicar SQL no Supabase (só com autorização) | ⬜ Pendente | — | — |
