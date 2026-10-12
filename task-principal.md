@@ -2357,9 +2357,9 @@
 - **Commit:** `860e0c9`
 - **Anotação:** Adicionados em `src/lib/monitor.ts` `ORDEM_ESTADOS` (ativo, ocioso, sem_sinal, finalizado) e `contarPorStatus(atividades, agora = Date.now(), limites = {})` -> `{ estado, total }[]` usando `estadoDoAgente`, sempre na ordem fixa e com zeros (para o gráfico de rosca). 2 testes novos em `tests/unit/monitor.test.ts`. `npm test` e `npm run typecheck` verdes.
 
-#### [ ] SUB-35.17: `contarPorAgente()` em `src/lib/monitor.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [🔄] SUB-35.17: `contarPorAgente()` em `src/lib/monitor.ts`
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 04 (Grok Bot) (início: 2026-10-12 01:17)
 - **Depende de:** SUB-35.16
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `contarPorAgente(eventos)` -> `{ agente, porTipo: Record<TipoEventoAgente, number> }[]` ordenado por total desc (para o gráfico de barras empilhadas). Testes.

@@ -44,14 +44,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:17 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 04 (Grok Bot) — SUB-35.17
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.17** |
+| **Título da Sub-task:** | `contarPorAgente()` em `src/lib/monitor.ts` |
+| **Agente Responsável:** | DashboardAI-Clone 04 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:17 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (1)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-35.17** | `contarPorAgente()` em `src/lib/monitor.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:17 | SUB-35.16 |
 | **SUB-35.19** | Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:17 | SUB-35.11, SUB-35.14 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
@@ -140,7 +152,7 @@
 | **SUB-27.22** | Conferência no navegador (entrar, sair, restaurar sessão) — SUB-27 | 3 | Fase 10 | SUB-27.18 — ⛓️ bloqueada |
 | **SUB-27.28** | Varredura do bundle por `service_role` (SUB-27) | 3 | Fase 10 | SUB-27.22 — ⛓️ bloqueada |
 | **SUB-35** | Monitor em Tempo Real dos Agentes (mãe) | 4 | Fase 12 | SUB-12, SUB-29, SUB-30; SUB-35.1 a SUB-35.46 |
-| **SUB-35.17** | `contarPorAgente()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.16 — ⛓️ bloqueada |
+| **SUB-35.17** | `contarPorAgente()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.16 — ⛓️ bloqueada — 🔄 em execução por DashboardAI-Clone 04 (Grok Bot) |
 | **SUB-35.18** | `segmentosLinhaDoTempo()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.17 — ⛓️ bloqueada |
 | **SUB-35.19** | Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts` | 4 | Fase 12 | SUB-35.11, SUB-35.14 — 🔄 em execução por DashboardAI-Clone 09 (Grok Bot) |
 | **SUB-35.20** | Hook `useAtividadeAgentes(projectId)` em `src/hooks/useAtividadeAgentes.ts` | 4 | Fase 12 | SUB-35.19, SUB-35.15 — ⛓️ bloqueada |
@@ -621,3 +633,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:17 | DashboardAI-Clone 09 (Grok Bot) | SUB-35.12 | `b045c12` | Criado `tests/unit/eventService.test.ts` (6 testes, cliente falso): `listarEventos` aplica projeto, `desde`, agente com trim, ordenação created_at/id desc e limite (padrão 200, faixa 1–1000) e rejeita data inválida sem consultar; `atividadeAtual` chama `atividade_atual_agentes` com `p_project_id`, ordena por `ultimo_em` desc e converte erro em ServiceError; `assinarEventos` cria `agent_events:<id>` com filtro `project_id=eq.<id>`, repassa eventos e status e chama `removeChannel` ao cancelar. `npm test` e typecheck OK. |
 | 2026-10-12 01:17 | DashboardAI-Clone 06 | SUB-27.21 | `663e597` | Nova seção "Primeiro administrador e membros" no `database/README.md` (substitui o trecho curto de "Como aplicar"): tabela de papéis (`user_roles` admin/member; `project_members` owner > editor > viewer), como achar o `auth.users.id`, `insert ... on conflict` do 1º admin pelo SQL Editor (a RLS só deixa admin gravar em `user_roles`), adicionar/trocar papel e remover membro por slug + e-mail, consulta de quem tem acesso e aviso sobre `service_role` x login anon e `app_metadata.role`. Só e-mails de exemplo, sem chaves. Todos os SQLs conferidos num banco local descartável (schema 00–07 + `auth.users` mínimo). |
 | 2026-10-12 01:17 | DashboardAI-Clone 04 (Grok Bot) | SUB-35.16 | `860e0c9` | Adicionados em `src/lib/monitor.ts` `ORDEM_ESTADOS` (ativo, ocioso, sem_sinal, finalizado) e `contarPorStatus(atividades, agora = Date.now(), limites = {})` -> `{ estado, total }[]` usando `estadoDoAgente`, sempre na ordem fixa e com zeros (para o gráfico de rosca). 2 testes novos em `tests/unit/monitor.test.ts`. `npm test` e `npm run typecheck` verdes. |
+| 2026-10-12 01:17 | DashboardAI-Clone 04 (Grok Bot) | SUB-35.17 | — | Lock: assumindo SUB-35.17 (`contarPorAgente()` em `src/lib/monitor.ts`) |
