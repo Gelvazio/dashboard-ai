@@ -9,9 +9,9 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 32
-- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-09`)
+- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
 - **Pendentes:** 16
-- **Concluídas:** 15
+- **Concluídas:** 16
 - **Canceladas:** 0
 
 ---
@@ -185,16 +185,16 @@
 
 ## ⚡ FASE 4: Serviços do Frontend (Data Layer)
 
-### [🔄] SUB-09: Serviço de Tarefas (`src/services/taskService.ts`)
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:06)
+### [x] SUB-09: Serviço de Tarefas (`src/services/taskService.ts`)
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:06, conclusão: 2026-10-11 23:07)
 - **Depende de:** SUB-03
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Implementar operações de `listarTasks`, `criarTask`, `atualizarTask`, `alternarExecucao` (ON/OFF), `cancelarTask`, `reabrirTask` e `excluirTaskLogico`.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Funções assíncronas com tratamento de erro e ordenação por prioridade, ordem e criação.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `8b6829c`
+- **Anotação:** src/services/taskService.ts: listarTasks(projectId, {status, busca em código/título/instrução com curingas escapados, incluirExcluidas, limite}) ordenado por prioridade, ordem, criação e id; obterTask; criarTask (pendente, origem ui, código gerado pelo banco, dependências sem duplicatas, validação de título/instrução/prioridade 1-5/tentativas 1-20/data); atualizarTask (só campos editáveis); alternarExecucao; cancelarTask; reabrirTask (pendente, tentativas 0, ligada); concluirTaskHumana; excluirTaskLogico/restaurarTask; contarTasksPorStatus. Recusas da RLS e da guarda da fila chegam como ServiceError em português. Validado com supabase-js real contra PostgREST local: 4 cenários (ordem da fila, busca, filtros, ciclo cancelar/reabrir/excluir/restaurar, task em execução bloqueada, só humano concluído pela interface, dependência inexistente, viewer só lê, isolamento entre projetos, contagem); build e typecheck OK.
 
 ### [ ] SUB-10: Serviço de Memória Semântica (`src/services/memoryService.ts`)
 - **Status:** pendente
