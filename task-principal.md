@@ -676,7 +676,7 @@
   - `SUB-19.7`: Painel `BuscaSemanticaPanel` (campo, grade e estados) (`pendente`)
   - `SUB-19.8`: Integrar a busca na `src/views/MemoriaView.tsx` (`pendente`)
   - `SUB-19.9`: `BuscaControles` (limiar, globais, modo) em `src/components/memoria/BuscaControles.tsx` (`pendente`)
-  - `SUB-19.10`: `classeSimilaridade` em `src/lib/similaridade.ts` (`pendente`)
+  - `SUB-19.10`: `classeSimilaridade` em `src/lib/similaridade.ts` (`em_execucao`)
 - **Descrição:** Criar componente de busca semântica onde o usuário insere uma consulta e o sistema busca memórias similares via RPC `match_memories`, exibindo a porcentagem de similaridade.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Campo de busca com debounce, exibição de cards de resultado com badge de similaridade (ex: 89%).
@@ -774,8 +774,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-19.10: `classeSimilaridade` em `src/lib/similaridade.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 00:51)
 - **Depende de:** SUB-19.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `classeSimilaridade(s: number): string` com classes Tailwind (>= 0.85 verde, >= 0.7 âmbar, senão cinza, com variantes `dark:`). Testes no mesmo arquivo de teste (limites 0.85 e 0.7).
