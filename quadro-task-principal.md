@@ -55,17 +55,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:55 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 05 (Grok Bot) — SUB-21.2
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-21.2** |
-| **Título da Sub-task:** | `filtrarMemoriasLocal` em `src/lib/memorias.ts` |
-| **Agente Responsável:** | DashboardAI-Clone 05 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 00:55 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.26
 
 | Propriedade | Valor Atual |
@@ -103,14 +92,13 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (5)
+### 🔄 EM EXECUÇÃO (4)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-19.2** | Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 00:56 | SUB-19.1 |
 | **SUB-08.10** | `variaveisDoExemplo(texto)` em `scripts/checar-env.mjs` + testes | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:56 | SUB-08.8 |
 | **SUB-27.26** | Hook `useAuth` em `src/hooks/useAuth.ts` | DashboardAI-Clone 01 | 2026-10-12 00:56 | SUB-27.9 |
-| **SUB-21.2** | `filtrarMemoriasLocal` em `src/lib/memorias.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 00:55 | SUB-21.13 |
 | **SUB-20.6** | Modal `MemoriaFormModal` em `src/components/memoria/` | DashboardAI-Clone 06 | 2026-10-12 00:55 | SUB-20.1, SUB-20.3, SUB-20.4, SUB-20.5, SUB-20.8, SUB-20.9 |
 | **SUB-23.6** | Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts` | DashboardAI-Clone 02 | 2026-10-12 00:54 | SUB-23.3, SUB-23.4 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
@@ -297,10 +285,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (60)
+### ✅ CONCLUÍDAS (61)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-21.2** | `filtrarMemoriasLocal` em `src/lib/memorias.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 00:55 | 2026-10-12 00:56 | `0849e15` |
 | **SUB-08.7** | Conferir `.gitignore` (`!.env.example`) | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 00:55 | 2026-10-12 00:56 | `4be4a20` |
 | **SUB-27.9** | `AuthProvider` em `src/hooks/AuthContext.tsx` | DashboardAI-Clone 01 | 2026-10-12 00:55 | 2026-10-12 00:55 | `333f8b9` |
 | **SUB-08.8** | `extrairVariaveis(texto)` em `scripts/checar-env.mjs` + testes | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:54 | 2026-10-12 00:55 | `fb7f8bf` |
@@ -536,3 +525,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:56 | DashboardAI-Clone 08 (Grok Bot) | SUB-08.10 | — | Lock: assumindo SUB-08.10 (`variaveisDoExemplo(texto)` em `scripts/checar-env.mjs` + testes) |
 | 2026-10-12 00:56 | DashboardAI-Clone 04 (Grok Bot) | SUB-19.2 | — | Lock: assumindo SUB-19.2 (Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts`) |
 | 2026-10-12 00:56 | DashboardAI-Clone 10 (Grok Bot) | SUB-23.11 | `5bce2d7` | Criado `src/components/tasks/PendentesResumo.tsx` (`{ pendentes: PendentesClassificadas, className? }`): grade responsiva com 5 contadores (Prontas, Bloqueadas por dependência, Desligadas, Agendadas, Sem tentativas) na ordem de `classificarPendentes`, cada um com ícone lucide colorido (claro/escuro), `Tooltip` explicando o grupo e `aria-label` com rótulo, total e dica (focável por teclado). Exportado em `src/components/tasks/index.ts`. `npm run typecheck`, `npm test` e `npm run build` OK. |
+| 2026-10-12 00:56 | DashboardAI-Clone 05 (Grok Bot) | SUB-21.2 | `0849e15` | Adicionado `filtrarMemoriasLocal(memorias, { busca?, tag?, escopo? })` em `src/lib/memorias.ts` (tipos `EscopoFiltroMemoria`/`FiltroMemoriasLocal` exportados): busca sem acento/maiúsculas em título, conteúdo e tags; tag exata sem diferenciar maiúsculas; escopo `todas`/`projeto`/`global` via `escopoMemoria`; preserva a ordem e o tipo da entrada. 4 testes novos em `tests/unit/memorias.test.ts`. `npm run typecheck` e `npm test` verdes. |

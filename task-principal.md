@@ -910,7 +910,7 @@
 - **Depende de:** SUB-10, SUB-12; subtarefas SUB-21.1 a SUB-21.14
 - **Subtarefas:** (subdividida em 10 em 2026-10-11 23:47 por DashboardAI (Grok Bot) a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`; refinada para 12 em 2026-10-11 23:51; nova revisão para 14 em 2026-10-12 00:17)
   - `SUB-21.1`: `memoriaComoMarkdown` em `src/lib/memorias.ts` (`concluido`)
-  - `SUB-21.2`: `filtrarMemoriasLocal` em `src/lib/memorias.ts` (`em_execucao`)
+  - `SUB-21.2`: `filtrarMemoriasLocal` em `src/lib/memorias.ts` (`concluido`)
   - `SUB-21.3`: Hook `useMemorias` em `src/hooks/useMemorias.ts` (`pendente`)
   - `SUB-21.4`: Componente `MemoriaCard` em `src/components/memoria/MemoriaCard.tsx` (`pendente`)
   - `SUB-21.5`: Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx` (`pendente`)
@@ -939,15 +939,15 @@
 - **Commit:** `7b2ef64`
 - **Anotação:** Criado `src/lib/memorias.ts` com `memoriaComoMarkdown(m)`: `# título`, linha `**Tags:**` (omitida se vazia), `**Escopo:** global|projeto` (`project_id` nulo = global) e o conteúdo. Testes em `tests/unit/memorias.test.ts`. `npm run typecheck` (app + api) e `npm test` verdes.
 
-#### [ ] SUB-21.2: `filtrarMemoriasLocal` em `src/lib/memorias.ts`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 00:55)
+#### [x] SUB-21.2: `filtrarMemoriasLocal` em `src/lib/memorias.ts`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 00:55; conclusão: 2026-10-12 00:56)
 - **Depende de:** SUB-21.13
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `filtrarMemoriasLocal(memorias, { busca, tag, escopo: 'todas'|'projeto'|'global' })` (busca sem acento/maiúsculas em título, conteúdo e tags; escopo via `escopoMemoria`). Testes no mesmo arquivo de teste.
 - **Critérios de Aceitação:** `npm test` passa.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `0849e15`
+- **Anotação:** Adicionado `filtrarMemoriasLocal(memorias, { busca?, tag?, escopo? })` em `src/lib/memorias.ts` (tipos `EscopoFiltroMemoria`/`FiltroMemoriasLocal` exportados): busca sem acento/maiúsculas em título, conteúdo e tags; tag exata sem diferenciar maiúsculas; escopo `todas`/`projeto`/`global` via `escopoMemoria`; preserva a ordem e o tipo da entrada. 4 testes novos em `tests/unit/memorias.test.ts`. `npm run typecheck` e `npm test` verdes.
 
 #### [ ] SUB-21.3: Hook `useMemorias` em `src/hooks/useMemorias.ts`
 - **Status:** pendente
