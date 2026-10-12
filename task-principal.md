@@ -60,17 +60,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:38 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.18
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-27.18** |
-| **Título da Sub-task:** | Validação automatizada da SUB-27 |
-| **Agente Responsável:** | DashboardAI-Clone 01 |
-| **Data e Hora de Início:** | 2026-10-12 01:38 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 03 (Grok Bot) — SUB-35.27
 
 | Propriedade | Valor Atual |
@@ -1737,15 +1726,15 @@
 - **Commit:** `1a25734`
 - **Anotação:** Seção "Autenticação (Supabase Auth)" no `src/README.md`: habilitar o provedor Email (confirmação de e-mail, cadastro aberto opcional já que o link mágico usa `shouldCreateUser: false`), Site URL e Redirect URLs (localhost 5173/4173, produção e previews da Vercel) usadas por `urlDeRetorno`, e persistência da sessão (`persistSession`/`autoRefreshToken`/`detectSessionInUrl`, `AuthProvider`, `useAuth`, `RotaProtegida`, `sair`). Sem chaves reais.
 
-#### [ ] SUB-27.18: Validação automatizada da SUB-27
-- **Status:** em_execucao
+#### [x] SUB-27.18: Validação automatizada da SUB-27
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.6, SUB-27.8, SUB-27.13, SUB-27.27, SUB-27.15, SUB-27.16, SUB-27.17, SUB-27.20, SUB-27.21
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Rodar `npm run typecheck`, `npm test`, `npm run build` e `npm run test:integration`; registrar o resultado na anotação da SUB-27.
 - **Critérios de Aceitação:** Tudo verde.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `(este commit)`
+- **Anotação:** Validação automatizada da SUB-27 na main `87ef5ca`: `npm run typecheck` OK; `npm test` 179 passed / 29 skipped (23 arquivos + 8 de integração pulados sem PostgREST); `npm run build` OK; `npm run test:integration` 29/29 (8 arquivos, PostgREST local; Node 20 da box com `NODE_OPTIONS=--experimental-websocket`, o projeto exige Node 22+). Tudo verde.
 
 #### [x] SUB-27.19: `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx`
 - **Status:** concluido
