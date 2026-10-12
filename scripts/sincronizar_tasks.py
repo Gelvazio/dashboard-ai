@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 """
 sincronizar_tasks.py — Sincroniza a fila de tasks do Supabase (`public.tasks`)
-com arquivos Markdown locais em `tasks/fila/`.
+de UM projeto com arquivos Markdown locais em `tasks/fila/`.
+
+O Dashboard AI é multi-projeto: cada projeto (tabela `public.projects`, pelo `slug`)
+tem sua fila. Escolha o projeto com --projeto <slug> ou DASHBOARD_AI_PROJECT
+(padrão: `default`). Códigos de task são únicos por projeto.
 
 Comandos:
   consulta   Lista as tasks do banco (filtros por status/código; --json).
@@ -11,12 +15,15 @@ Comandos:
 
 Configuração (variáveis de ambiente ou arquivo .env na raiz do repositório):
   SUPABASE_URL               (ou VITE_SUPABASE_URL)
-  SUPABASE_SERVICE_ROLE_KEY  (recomendado; ou VITE_SUPABASE_ANON_KEY)
+  SUPABASE_SERVICE_ROLE_KEY  (obrigatória: o RLS bloqueia a chave anon)
+  DASHBOARD_AI_PROJECT       (opcional; slug do projeto, padrão `default`)
 
 Formato do arquivo Markdown:
   ---
   codigo: TASK-0001
+  projeto: default        # informativo; o importar recusa arquivo de outro projeto
   titulo: Criar tela de login
+  tipo: ia                # ia (agente) | humano (aprovação/teste feito por pessoa)
   prioridade: 2
   ordem: 0
   dependencias: [TASK-0000]
@@ -51,13 +58,15 @@ PASTA_FILA_PADRAO = RAIZ / "tasks" / "fila"
 MARCADOR_RESULTADO = "<!-- RESULTADO (somente leitura, gerado pelo exportar) -->"
 
 # Campos que o arquivo local controla (enviados no importar e comparados no conferir)
-CAMPOS_EDITAVEIS = ["titulo", "instrucao", "prioridade", "ordem", "dependencias",
+CAMPOS_EDITAVEIS = ["titulo", "instrucao", "tipo", "prioridade", "ordem", "dependencias",
                     "executar", "executar_apos", "max_tentativas"]
 # Campos informativos escritos no cabeçalho pelo exportar
 CAMPOS_INFO = ["status", "tentativas", "trava_frente", "trava_em", "pr_url", "commit_sha", "updated_at"]
-ORDEM_CABECALHO = ["codigo", "titulo", "prioridade", "ordem", "dependencias", "executar",
+ORDEM_CABECALHO = ["codigo", "projeto", "titulo", "tipo", "prioridade", "ordem", "dependencias", "executar",
                    "executar_apos", "max_tentativas"] + CAMPOS_INFO
 STATUS_VALIDOS = {"pendente", "em_execucao", "concluida", "recusada", "erro", "cancelada"}
+TIPOS_VALIDOS = {"ia", "humano"}
+PROJETO_PADRAO = "default"
 
 
 class ErroSync(Exception):
@@ -85,10 +94,10 @@ def carregar_env(caminho: Path) -> None:
 
 def config_supabase() -> Tuple[str, str]:
     url = os.environ.get("SUPABASE_URL") or os.environ.get("VITE_SUPABASE_URL")
-    chave = os.environ.get("SUPABASE_SERVICE_ROLE_KEY") or os.environ.get("VITE_SUPABASE_ANON_KEY")
+    chave = os.environ.get("SUPABASE_SERVICE_ROLE_KEY")
     if not url or not chave:
-        raise ErroSync("Defina SUPABASE_URL e SUPABASE_SERVICE_ROLE_KEY (ou VITE_SUPABASE_URL / "
-                       "VITE_SUPABASE_ANON_KEY) no ambiente ou no arquivo .env.")
+        raise ErroSync("Defina SUPABASE_URL (ou VITE_SUPABASE_URL) e SUPABASE_SERVICE_ROLE_KEY no ambiente "
+                       "ou no arquivo .env (a chave anon não acessa a fila: RLS).")
     return url.rstrip("/"), chave
 
 
@@ -96,6 +105,9 @@ def config_supabase() -> Tuple[str, str]:
 # Cliente REST mínimo (PostgREST do Supabase)
 # --------------------------------------------------------------------------- #
 class ClienteSupabase:
+    project_id: Optional[int] = None
+    projeto: str = PROJETO_PADRAO
+
     def __init__(self, url: str, chave: str, base_rest: Optional[str] = None):
         # base_rest permite apontar direto para um PostgREST (testes locais)
         self.base = base_rest or os.environ.get("SUPABASE_REST_URL") or f"{url}/rest/v1"
@@ -126,9 +138,23 @@ class ClienteSupabase:
         except urllib.error.URLError as e:
             raise ErroSync(f"Falha de conexão com {self.base}: {e.reason}") from None
 
+    def usar_projeto(self, slug: str) -> None:
+        """Resolve o projeto pelo slug; todas as operações seguintes ficam restritas a ele."""
+        slug = (slug or PROJETO_PADRAO).strip().lower()
+        r = self._req("GET", "projects", {"select": "id,slug,excluido", "slug": f"eq.{slug}"}) or []
+        if not r or r[0].get("excluido"):
+            raise ErroSync(f"projeto {slug!r} não encontrado em public.projects")
+        self.project_id, self.projeto = int(r[0]["id"]), slug
+
+    def _escopo(self) -> Dict[str, str]:
+        if self.project_id is None:
+            raise ErroSync("projeto não definido (chame usar_projeto)")
+        return {"project_id": f"eq.{self.project_id}"}
+
     def listar_tasks(self, status: Optional[List[str]] = None,
                      codigos: Optional[List[str]] = None) -> List[Dict[str, Any]]:
-        params = {"select": "*", "excluido": "eq.false", "order": "prioridade.asc,ordem.asc,created_at.asc"}
+        params = {"select": "*", "excluido": "eq.false", "order": "prioridade.asc,ordem.asc,created_at.asc",
+                  **self._escopo()}
         if status:
             params["status"] = f"in.({','.join(status)})"
         if codigos:
@@ -136,11 +162,15 @@ class ClienteSupabase:
         return self._req("GET", "tasks", params) or []
 
     def inserir_task(self, dados: Dict[str, Any]) -> Dict[str, Any]:
-        r = self._req("POST", "tasks", corpo=dados, prefer="return=representation")
+        self._escopo()
+        corpo = dict(dados, project_id=self.project_id)
+        corpo.setdefault("origem", "repositorio")
+        r = self._req("POST", "tasks", corpo=corpo, prefer="return=representation")
         return r[0]
 
     def atualizar_task(self, codigo: str, dados: Dict[str, Any]) -> Optional[Dict[str, Any]]:
-        r = self._req("PATCH", "tasks", {"codigo": f"eq.{codigo}"}, corpo=dados, prefer="return=representation")
+        r = self._req("PATCH", "tasks", {"codigo": f"eq.{codigo}", **self._escopo()}, corpo=dados,
+                      prefer="return=representation")
         return r[0] if r else None
 
 
@@ -180,10 +210,13 @@ def _texto_para_valor(campo: str, texto: str) -> Any:
     return t
 
 
-def task_para_markdown(task: Dict[str, Any]) -> str:
+def task_para_markdown(task: Dict[str, Any], projeto: Optional[str] = None) -> str:
+    task = dict(task)
+    if projeto:
+        task["projeto"] = projeto
     linhas = ["---"]
     for campo in ORDEM_CABECALHO:
-        if campo in CAMPOS_INFO and task.get(campo) in (None, ""):
+        if campo in CAMPOS_INFO + ["projeto", "codigo"] and task.get(campo) in (None, ""):
             continue
         linhas.append(f"{campo}: {_valor_para_texto(task.get(campo))}".rstrip())
     linhas.append("---")
@@ -223,6 +256,8 @@ def markdown_para_task(texto: str, origem: str = "?") -> Dict[str, Any]:
         raise ErroSync(f"{origem}: a instrução (corpo do arquivo) está vazia")
     if task.get("prioridade") is not None and not 1 <= task["prioridade"] <= 5:
         raise ErroSync(f"{origem}: prioridade deve estar entre 1 e 5")
+    if task.get("tipo") is not None and task["tipo"] not in TIPOS_VALIDOS:
+        raise ErroSync(f"{origem}: tipo inválido {task['tipo']!r} (use ia ou humano)")
     if task.get("status") is not None and task["status"] not in STATUS_VALIDOS:
         raise ErroSync(f"{origem}: status inválido {task['status']!r}")
     return task
@@ -273,6 +308,14 @@ def diferencas(local: Dict[str, Any], remoto: Dict[str, Any]) -> List[str]:
 # --------------------------------------------------------------------------- #
 # Comandos
 # --------------------------------------------------------------------------- #
+def verificar_projeto(locais: List[Tuple[Path, Dict[str, Any]]], projeto: str) -> None:
+    """Recusa arquivos marcados com outro projeto (evita misturar filas)."""
+    for arq, t in locais:
+        if t.get("projeto") and str(t["projeto"]).strip().lower() != projeto:
+            raise ErroSync(f"{arq.name}: arquivo do projeto {t['projeto']!r}, mas a sincronização é do "
+                           f"projeto {projeto!r} (use --projeto ou outra --pasta)")
+
+
 def cmd_consulta(cli: ClienteSupabase, args) -> int:
     tasks = cli.listar_tasks(args.status, args.codigo)
     if args.json:
@@ -281,10 +324,13 @@ def cmd_consulta(cli: ClienteSupabase, args) -> int:
     if not tasks:
         print("Nenhuma task encontrada.")
         return 0
+    print(f"Projeto: {cli.projeto}")
     print(f"{'CÓDIGO':<12} {'P':>1} {'ORD':>4} {'ON':<3} {'STATUS':<12} {'TENT':<5} TÍTULO")
     for t in tasks:
         on = "on" if t.get("executar") else "off"
         tent = f"{t.get('tentativas', 0)}/{t.get('max_tentativas', '?')}"
+        if t.get("tipo") == "humano":
+            tent = "humano"
         trava = f"  [trava: {t['trava_frente']}]" if t.get("trava_frente") else ""
         print(f"{t['codigo']:<12} {t['prioridade']:>1} {t['ordem']:>4} {on:<3} {t['status']:<12} {tent:<5} "
               f"{t['titulo']}{trava}")
@@ -303,7 +349,7 @@ def cmd_exportar(cli: ClienteSupabase, args) -> int:
     novos = alterados = iguais = 0
     for t in tasks:
         destino = pasta / nome_arquivo(t["codigo"])
-        conteudo = task_para_markdown(t)
+        conteudo = task_para_markdown(t, cli.projeto)
         atual = destino.read_text(encoding="utf-8") if destino.exists() else None
         if atual == conteudo:
             iguais += 1
@@ -326,6 +372,7 @@ def cmd_importar(cli: ClienteSupabase, args) -> int:
     if not locais:
         print(f"Nenhum arquivo .md encontrado em {pasta}.")
         return 0
+    verificar_projeto(locais, cli.projeto)
     codigos = [t["codigo"] for _, t in locais if t.get("codigo")]
     remotos = {t["codigo"]: t for t in cli.listar_tasks(codigos=codigos)} if codigos else {}
     criadas = atualizadas = iguais = 0
@@ -354,7 +401,7 @@ def cmd_importar(cli: ClienteSupabase, args) -> int:
                 if not codigo:
                     # grava o código gerado pelo banco no arquivo e renomeia para <CODIGO>.md
                     destino = arq.with_name(nome_arquivo(nova["codigo"]))
-                    destino.write_text(task_para_markdown(nova), encoding="utf-8")
+                    destino.write_text(task_para_markdown(nova, cli.projeto), encoding="utf-8")
                     if destino != arq:
                         arq.unlink()
                     print(f"  -> código gerado: {nova['codigo']} ({destino.name})")
@@ -367,6 +414,7 @@ def cmd_importar(cli: ClienteSupabase, args) -> int:
 def cmd_conferir(cli: ClienteSupabase, args) -> int:
     pasta = Path(args.pasta)
     locais = ler_pasta(pasta)
+    verificar_projeto(locais, cli.projeto)
     remotos = {t["codigo"]: t for t in cli.listar_tasks()}
     vistos = set()
     problemas = 0
@@ -404,6 +452,7 @@ def montar_parser() -> argparse.ArgumentParser:
         description="Sincroniza a fila de tasks do Supabase com arquivos Markdown em tasks/fila/.")
     p.add_argument("--pasta", default=str(PASTA_FILA_PADRAO), help="pasta dos arquivos .md (padrão: tasks/fila)")
     p.add_argument("--env", default=str(RAIZ / ".env"), help="arquivo .env a carregar (padrão: .env na raiz)")
+    p.add_argument("--projeto", help="slug do projeto (padrão: $DASHBOARD_AI_PROJECT ou 'default')")
     sub = p.add_subparsers(dest="comando", required=True)
 
     def filtros(sp, status=True):
@@ -435,6 +484,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     carregar_env(Path(args.env))
     try:
         cli = ClienteSupabase(*config_supabase())
+        cli.usar_projeto(args.projeto or os.environ.get("DASHBOARD_AI_PROJECT") or PROJETO_PADRAO)
         return {"consulta": cmd_consulta, "exportar": cmd_exportar,
                 "importar": cmd_importar, "conferir": cmd_conferir}[args.comando](cli, args)
     except ErroSync as e:
