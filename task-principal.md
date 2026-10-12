@@ -256,7 +256,7 @@
 - **Critérios de Aceitação:** Documentação coerente com o código.
 - **Commit:** 18c8d9d
 - **Anotação:** Atualizado status para "Implementado na SUB-28" com lista de itens implementados (grafo, checkpointer, retomada, aprovação, auditoria, idempotência, classificação de falhas, integração com RPCs, segurança, allowlist, CLI, heartbeat). Adicionada seção 11 com desvios justificados (modelo simplificado, eventos via RPC, endpoint separado, checkpointer em schema separado, limites de espera) e cobertura de testes.
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ✅ OK — 2026-10-12 16:27 (DeepSeek Harness (deepseek-flash)): commit `18c8d9d` existe (`docs(SUB-28.18): Atualizar LangChain_LangGraph.md com status e desvios`); `LangChain_LangGraph.md` existe e traz, na linha 5, "**Status:** ✅ **Implementado na SUB-28** (2026-10-12)" e, na linha 9, a seção "## 11. Status de implementação e desvios (SUB-28)", com "### 11.2 Desvios justificados" na linha 26 — atende ao critério "documentação coerente com o código".
 
 #### [x] SUB-28.23: Retomada da aprovação (`Command({ resume })`) em `api/aprovacao.ts`
 - **Status:** concluido
@@ -268,7 +268,7 @@
 - **Critérios de Aceitação:** `typecheck:api` OK; teste de retomada com grafo falso.
 - **Commit:** fa99fe2
 - **Anotação:** Implementada retomada do grafo LangGraph com Command({ resume }) no thread_id da execução. Adicionadas: execucaoIdDaTask (lê o execucaoId mais recente dos logs), criarGrafoComCheckpointer (cria grafo com checkpointer Postgres), retomarGrafo (envia Command({ resume }) com decisão do usuário). Testes atualizados para cobrir os novos deps. typecheck:api OK, testes OK (9 passed).
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ✅ OK — 2026-10-12 16:27 (DeepSeek Harness (deepseek-flash)): commit `fa99fe2` existe (`feat(SUB-28.23): Retomada da aprovação em api/aprovacao.ts`); `api/aprovacao.ts` contém `execucaoIdDaTask`, `criarGrafoComCheckpointer` e `retomarGrafo` (linhas 32-34 e 126-133), com o `Command({ resume })` documentado no `thread_id` da execução; `npm run typecheck:api` exit 0 e `tests/unit/api-aprovacao.test.ts` tem o teste "editor autorizado: com grafo e execucaoId devolve 200" (grafo falso) — atende aos dois critérios.
 
 #### [x] SUB-28.25: Variáveis do worker no `api/README.md`
 - **Status:** concluido
@@ -280,7 +280,7 @@
 - **Critérios de Aceitação:** Documentação coerente com o código.
 - **Commit:** 3345ccd
 - **Anotação:** Adicionada seção "Worker LangGraph (SUB-28)" no api/README.md com: tabela de variáveis do worker (OPENAI_API_KEY, WORKER_MODELO, LANGGRAPH_DATABASE_URL, SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, MCP_DEFAULT_PROJECT), exemplos de execução (local, uma task, produção), endpoint de aprovação humana (POST /api/aprovacao com JWT) e monitoramento (heartbeats via emitir_event). typecheck:api OK.
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ✅ OK — 2026-10-12 16:27 (DeepSeek Harness (deepseek-flash)): commit `3345ccd` existe (`docs(SUB-28.25): Variáveis do worker no api/README.md`); `api/README.md` documenta `WORKER_MODELO` (linha 147) e `LANGGRAPH_DATABASE_URL` (linha 148) na tabela de variáveis do worker e o endpoint `POST /api/aprovacao` (linha 168) — atende ao critério "documentação coerente com o código".
 
 #### [x] SUB-28.32: Registro de auditoria da aprovação
 - **Status:** concluido
@@ -292,7 +292,7 @@
 - **Critérios de Aceitação:** `typecheck:api` OK; teste confere o registro sem credenciais.
 - **Commit:** ff049de
 - **Anotação:** Adicionada dependência atualizarMetadadosLog que registra auditoria da aprovação nos metadados da execução (aprovado, usuario_id, em, motivo) sem expor credenciais. Testes atualizados para verificar que metadados são chamados com os dados corretos. typecheck:api OK, testes OK (10 passed).
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ✅ OK — 2026-10-12 16:27 (DeepSeek Harness (deepseek-flash)): commit `ff049de` existe (`feat(SUB-28.32): Registro de auditoria da aprovação`); `api/aprovacao.ts` define `atualizarMetadadosLog` (linhas 36, 95 e 128) e grava `aprovacao_audit` com aprovado/usuario_id/em/motivo (linha 146), sem credenciais; `npm run typecheck:api` exit 0 e o teste "regista auditoria da aprovação nos metadados (SUB-28.32)" confere o conteúdo — atende aos dois critérios.
 
 ---
 
