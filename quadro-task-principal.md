@@ -26,24 +26,27 @@
 
 | Propriedade | Valor Atual |
 |---|---|
-| **Status da Trava:** | 🟢 **LIVRE** |
-| **Sub-task em Execução:** | nenhuma |
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-05** |
+| **Título da Sub-task:** | Consolidação das Funções RPC e Triggers no Banco |
 | **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Bloqueio para Outras IAs:** | DESATIVADO |
+| **Data e Hora de Início:** | 2026-10-11 22:20 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** (Nenhum outro agente pode assumir esta tarefa) |
 
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (1)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-01.1** | Inicialização do package.json, Vite, React e TypeScript | Antigravity AI | 2026-10-11 22:13 | Nenhuma |
+| **SUB-05** | Consolidação das Funções RPC e Triggers no Banco | DashboardAI (Grok Bot) | 2026-10-11 22:20 | SUB-04 |
 
 ---
 
-### ⏳ PENDENTES (26)
+### ⏳ PENDENTES (25)
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
@@ -51,7 +54,6 @@
 | **SUB-01.3** | Instalação de Lucide Icons e Utilitários Base | 1 (Alta) | Fase 1 | SUB-01.2 |
 | **SUB-02** | Estrutura Modular de Diretórios do Frontend | 1 (Alta) | Fase 1 | SUB-01 |
 | **SUB-03** | Configuração do Cliente Supabase e Tipagem TypeScript | 1 (Alta) | Fase 1 | SUB-02 |
-| **SUB-05** | Consolidação das Funções RPC e Triggers no Banco | 2 | Fase 2 | SUB-04 |
 | **SUB-06** | Estrutura do Endpoint Serverless Vercel MCP | 2 | Fase 3 | SUB-04, SUB-05 |
 | **SUB-07** | Implementação das Primitivas de Memória e Embeddings | 2 | Fase 3 | SUB-06 |
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` | 2 | Fase 3 | SUB-06 |
@@ -77,6 +79,7 @@
 ---
 
 ### ✅ CONCLUÍDAS (1)
+
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
 | **SUB-04** | Consolidação dos Schemas SQL na Pasta `database/` | DashboardAI (Grok Bot) | 2026-10-11 22:18 | 2026-10-11 22:20 | `f7d6e04` |

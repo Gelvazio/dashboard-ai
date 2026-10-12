@@ -8,8 +8,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 26
-- **Em Execução:** 1 (`SUB-01.1`)
-- **Pendentes:** 26
+- **Em Execução:** 2 (`SUB-01.1`, `SUB-05`)
+- **Pendentes:** 25
 - **Concluídas:** 1
 - **Canceladas:** 0
 
@@ -92,8 +92,8 @@
 - **Anotação:** Scripts idempotentes (create if not exists / create or replace / drop trigger if exists) com comentários. 01: tabela tasks (codigo TASK-NNNN automático, prioridade 1-5, ordem, dependencias, executar ON/OFF, status pendente/em_execucao/concluida/recusada/erro/cancelada, tentativas/max_tentativas, executar_apos, resultado, pr_url, commit_sha, trava_frente/trava_em, exclusão lógica) + índices da fila + triggers de updated_at e ciclo de vida (libera trava ao sair de em_execucao, registra iniciado_em/concluido_em/excluido_em). 02: agendamento_tarefa_logs (status concluida/recusada/erro/sem_tarefa, FK para tasks, índice por data_hora desc). 03: extensão vector + ai_memories (vector(1536), HNSW cosseno, GIN em tags, trigger updated_at). Validado aplicando 2x em PostgreSQL 17 + pgvector local e testando triggers/constraints. Corrigido `order in by` em AGENTS.md.
 
 ### [ ] SUB-05: Consolidação das Funções RPC e Triggers no Banco
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:20)
 - **Depende de:** SUB-04
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `database/04_rpc_functions.sql` contendo `pegar_proxima_task`, `finalizar_task`, `match_memories` e `eh_professor_administrador`.
