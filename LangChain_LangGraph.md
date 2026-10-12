@@ -2,7 +2,40 @@
 
 **Objetivo:** Definir como adicionar uma camada de agentes para planejar e executar tasks em várias etapas, preservando o Supabase como autoridade sobre a fila, os locks e os resultados.
 
-**Status:** Especificação para implementação futura na SUB-28. Este documento, por si só, não ativa um agente nem altera o runtime.
+**Status:** ✅ **Implementado na SUB-28** (2026-10-12). O worker LangGraph está funcional com nós, checkpointer, retomada, aprovação humana e integração com as RPCs do Supabase.
+
+---
+
+## 11. Status de implementação e desvios (SUB-28)
+
+### 11.1 Implementado
+
+- ✅ **Grafo StateGraph** com nós: `carregarContexto`, `planejar`, `politica`, `executar`, `revisar`, `finalizar`
+- ✅ **Checkpointer durável** via `@langchain/langgraph-checkpoint-postgres` (schema `langgraph`)
+- ✅ **Retomada com reconciliação**: status, trava, tentativa e validade da trava são conferidos antes de continuar
+- ✅ **Aprovação humana**: nó `politica` chama `interrupt()` para ações sensíveis; retomada via `api/aprovacao.ts` com `Command({ resume })`
+- ✅ **Registro de auditoria**: quem aprovou, quando e a ação são registrados nos metadados da execução (sem credenciais)
+- ✅ **Idempotência**: cada passo usa chave `${execucaoId}:passo-<i>`; passos com resultado no estado não são repetidos
+- ✅ **Classificação de falhas**: transitórias repetem com limite e espera progressiva; demais vão para erro
+- ✅ **Integração com RPCs**: `reivindicar` → `pegar_proxima_task`, `finalizar` → `finalizar_task`
+- ✅ **Segurança**: prompt delimita instrução e memórias como dados não confiáveis; segredos não são lidos do ambiente para o prompt
+- ✅ **Ferramentas allowlist**: só `brain_search`, `brain_store`, `task_list` são permitidas; schema zod derivado do MCP
+- ✅ **CLI do worker**: `npm run worker -- --projeto <slug> --agente <nome>`; opção `--uma-vez` para uma task só
+- ✅ **Heartbeat**: worker emite heartbeat para o monitor enquanto executa
+
+### 11.2 Desvios justificados
+
+- **Modelo de planejamento simplificado**: o nó `planejar` usa saída estruturada direta do modelo (`withStructuredOutput`) em vez de um agente de planejamento separado (reduz complexidade sem perder funcionalidade)
+- **Eventos do monitor**: registrados via `agent_events` RPC (SUB-35) e emitidos nos nós via `comEventos`; não há tracing externo por padrão (pode ser adicionado depois)
+- **Endpoint de aprovação separado**: retomada usa `api/aprovacao.ts` (endpoint HTTP autenticado) em vez de expor o grafo diretamente (mantém controle sobre quem pode aprovar)
+- **Checkpointer em schema separado**: usa schema `langgraph` para evitar conflito com tabelas da aplicação; exige `LANGGRAPH_DATABASE_URL` separada
+- **Limites de espera**: retentativas usam espera progressiva (dobrando a cada tentativa) com limite fixo de 3 por nó (pode ser ajustado por variável de ambiente no futuro)
+
+### 11.3 Testes
+
+- Unitários cobrem: estado, fila, ferramentas, falhas, plano, nós individuais, grafo, checkpointer, reconciliação, CLI
+- Testes de integração cobrem: fila, memória, logs e RLS (com banco temporário local)
+- Testes do grafo usam grafo falso nos unitários para depender só da lógica de roteamento
 
 **Referências do projeto:** [`database/04_rpc_functions.sql`](database/04_rpc_functions.sql), [`database/README.md`](database/README.md), [`api/mcp.ts`](api/mcp.ts), [`api/_lib/tools.ts`](api/_lib/tools.ts).
 
