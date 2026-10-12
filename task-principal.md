@@ -9,8 +9,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 31
-- **Em Execução:** 3 (`SUB-01.1`, `SUB-27`, `SUB-08`)
-- **Pendentes:** 24
+- **Em Execução:** 4 (`SUB-01.1`, `SUB-27`, `SUB-08`, `SUB-07`)
+- **Pendentes:** 23
 - **Concluídas:** 6
 - **Canceladas:** 0
 
@@ -150,9 +150,9 @@
 - **Commit:** `ce840a4`
 - **Anotação:** api/mcp.ts: handler default compatível com VercelRequest/VercelResponse; 405 para não-POST (Allow: POST, OPTIONS), 204 no preflight OPTIONS, CORS (MCP_CORS_ORIGIN), autenticação opcional via MCP_AUTH_TOKEN (401). Parse do corpo (objeto, string ou Buffer; -32700 para JSON inválido), validação JSON-RPC 2.0 (-32600), suporte a lote e notificações (HTTP 202 sem corpo). Métodos: initialize (negocia protocolVersion 2025-06-18/2025-03-26/2024-11-05, capabilities.tools, serverInfo), ping, notifications/initialized|cancelled, tools/list e tools/call (nome em params.name, argumentos em params.arguments; ferramenta desconhecida -32602; exceção do handler vira result com isError=true; método inexistente -32601). api/_lib/tools.ts: registro registerTool/listTools/getTool/textResult onde a SUB-07 vai plugar brain_store/brain_search/brain_delete. api/_lib/jsonrpc.ts: tipos, códigos de erro e helpers ok/fail/RpcError. api/tsconfig.json estrito (NodeNext). vercel.json: maxDuration 30s e rewrite /mcp -> /api/mcp. Sem dependências novas (tipos HTTP locais) para não conflitar com o package.json da SUB-01.1; para tsc local é preciso typescript + @types/node como devDependencies. Validado: tsc --noEmit sem erros e harness esbuild/node com 18 cenários. AGENTS.md seção 3 recebeu nota apontando para api/ e corrigindo tools/call + params.name, @supabase/supabase-js e https://api.openai.com/v1/embeddings.
 
-### [ ] SUB-07: Implementação das Primitivas de Memória e Embeddings
-- **Status:** pendente
-- **Executor:** nenhum
+### [🔄] SUB-07: Implementação das Primitivas de Memória e Embeddings
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:45)
 - **Depende de:** SUB-06, SUB-29
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Implementar no `api/mcp.ts` as ferramentas `brain_store`, `brain_search`, `brain_delete` e `tools/list` com geração de vetores de embedding, escopo por projeto (argumento `project`; memória global com `project_id` nulo).
