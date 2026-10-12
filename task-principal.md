@@ -93,6 +93,17 @@
 | **Data e Hora de Início:** | 2026-10-12 01:38 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 03 (Grok Bot) — SUB-35.24
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.24** |
+| **Título da Sub-task:** | x |
+| **Agente Responsável:** | DashboardAI-Clone 03 (Grok Bot) |
+| **Data e Hora de Início:** | done |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
@@ -2256,7 +2267,7 @@
   - `SUB-35.21`: Instalar `chart.js` e `react-chartjs-2` (`concluido`, `73d73ad`)
   - `SUB-35.22`: Registro do Chart.js e paleta em `src/lib/charts.ts` (`concluido`, `cabdbc0`)
   - `SUB-35.23`: Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx` (`pendente`)
-  - `SUB-35.24`: Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx` (`pendente`)
+  - `SUB-35.24`: Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx` (`concluido`, `4bc0b25`)
   - `SUB-35.25`: Gráfico `GraficoPorStatus` em `src/components/monitor/GraficoPorStatus.tsx` (`em_execucao`)
   - `SUB-35.26`: Gráfico `GraficoPorAgente` em `src/components/monitor/GraficoPorAgente.tsx` (`pendente`)
   - `SUB-35.27`: Linha do tempo `LinhaDoTempoAgentes` em `src/components/monitor/LinhaDoTempoAgentes.tsx` (`pendente`)
@@ -2515,7 +2526,7 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-35.24: Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx`
+#### [🔄] SUB-35.24: Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx`
 - **Status:** em_execucao
 - **Executor:** DashboardAI-Clone 07 (Grok Bot) (início: 2026-10-12 01:37)
 - **Depende de:** SUB-35.23
@@ -2546,8 +2557,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-35.27: Linha do tempo `LinhaDoTempoAgentes` em `src/components/monitor/LinhaDoTempoAgentes.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 03 (Grok Bot) (início: done)
 - **Depende de:** SUB-35.22, SUB-35.18
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Gantt simples (barras flutuantes `[inicio, fim]` por agente, eixo de tempo da última 1 h) com `segmentosLinhaDoTempo`; tooltip com etapa e status. Exportar no barrel.
