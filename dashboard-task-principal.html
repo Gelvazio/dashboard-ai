@@ -182,7 +182,7 @@
         <h1>Quadro de execução — Dashboard AI</h1>
         <p>
           Fonte ao vivo:
-          <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/quadro-task-principal.md" target="_blank" rel="noopener">quadro-task-principal.md</a>
+          <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/task-principal.md" target="_blank" rel="noopener">task-principal.md</a>
           no GitHub (<code>main</code>).
         </p>
       </div>
@@ -266,19 +266,19 @@
     </article>
 
     <footer>
-      Fonte: o arquivo <code>quadro-task-principal.md</code> da branch <code>main</code>
+      Fonte: o arquivo <code>task-principal.md</code> da branch <code>main</code>
       (mesmo conteúdo do
-      <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/quadro-task-principal.md" target="_blank" rel="noopener">blob no GitHub</a>).
+      <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/task-principal.md" target="_blank" rel="noopener">blob no GitHub</a>).
       O repositório é privado: sem token, a página lê o Markdown local. Com um PAT, lê a <code>main</code> remota.
       Abra via servidor HTTP na pasta do repo, por exemplo <code>npx --yes serve .</code>
     </footer>
   </div>
 
   <script>
-    const RAW_URL = "https://raw.githubusercontent.com/Gelvazio/dashboard-ai/main/quadro-task-principal.md";
-    const JSDELIVR_URL = "https://cdn.jsdelivr.net/gh/Gelvazio/dashboard-ai@main/quadro-task-principal.md";
-    const API_URL = "https://api.github.com/repos/Gelvazio/dashboard-ai/contents/quadro-task-principal.md?ref=main";
-    const LOCAL_URL = "./quadro-task-principal.md";
+    const RAW_URL = "https://raw.githubusercontent.com/Gelvazio/dashboard-ai/main/task-principal.md";
+    const JSDELIVR_URL = "https://cdn.jsdelivr.net/gh/Gelvazio/dashboard-ai@main/task-principal.md";
+    const API_URL = "https://api.github.com/repos/Gelvazio/dashboard-ai/contents/task-principal.md?ref=main";
+    const LOCAL_URL = "./task-principal.md";
     const POLL_MS = 20000;
 
     const PHASE_BY_CODE = {
@@ -520,7 +520,7 @@
       if (typeof vis === "undefined" || !vis.Network) { box.innerHTML = '<div class="empty">Biblioteca vis-network não carregou.</div>'; return; }
       const nodes = [], edges = [];
       nodes.push({ id: "hub", label: "Quadro\nprincipal", shape: "dot", size: 34, color: { background: "#6ea8ff", border: "#b9d3ff" },
-        font: { color: "#e8eef8", size: 15, face: "DM Sans", multi: false }, title: tipEl("<b>quadro-task-principal.md</b><br>Projeto central"), fixed: false, mass: 4 });
+        font: { color: "#e8eef8", size: 15, face: "DM Sans", multi: false }, title: tipEl("<b>task-principal.md</b><br>Projeto central"), fixed: false, mass: 4 });
       for (const a of model) {
         const aid = "ag:" + a.key;
         const color = a.idle ? { background: "#3a4660", border: "#8b9bb4" } : { background: "#f5a524", border: "#ffd166" };
@@ -720,7 +720,7 @@
           return { text, source: "GitHub API (main remota)" };
         } catch (e) { errors.push(e.message); }
       }
-      try { return { text: await fetchText(LOCAL_URL), source: "quadro-task-principal.md local" }; }
+      try { return { text: await fetchText(LOCAL_URL), source: "task-principal.md local" }; }
       catch (e) { errors.push(e.message); }
       try { return { text: await fetchText(RAW_URL), source: "raw.githubusercontent.com" }; }
       catch (e) { errors.push(e.message); }
