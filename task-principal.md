@@ -38,6 +38,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-28.1
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-28.1** |
+| **Título da Sub-task:** | Contrato: identificadores e estado mínimo em `docs/langgraph-contrato.md` |
+| **Agente Responsável:** | DashboardAI-Clone 01 |
+| **Data e Hora de Início:** | 2026-10-12 01:46 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
@@ -1850,8 +1861,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-28.1: Contrato: identificadores e estado mínimo em `docs/langgraph-contrato.md`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-01 a SUB-27, SUB-29 a SUB-34
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `docs/langgraph-contrato.md` com a primeira seção do contrato da seção 9.1 do `LangChain_LangGraph.md`: identificador da execução (`task_id` + tentativa) e estado mínimo persistido.
