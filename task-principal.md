@@ -1720,15 +1720,15 @@
 - **Commit:** `c696d9f`
 - **Anotação:** Adicionado `obterSessao(client = getSupabase())` em `src/services/authService.ts`: `auth.getSession()` -> sessão ou `null`; erro -> `ServiceError(mensagemErroAuth(error), 'AUTH')`. typecheck verde.
 
-#### [ ] SUB-27.24: `redefinirSenha()` em `src/services/authService.ts`
-- **Status:** em_execucao
+#### [x] SUB-27.24: `redefinirSenha()` em `src/services/authService.ts`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.5
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `redefinirSenha(email, redirectTo, client)` (`auth.resetPasswordForEmail` com `redirectTo`), com mensagens via `mensagemErroAuth`.
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `e5477d2`
+- **Anotação:** Adicionado `redefinirSenha(email, redirectTo, client = getSupabase())` em `src/services/authService.ts`: `auth.resetPasswordForEmail` com `redirectTo` (e-mail com trim); erro -> `ServiceError(mensagemErroAuth(error), 'AUTH')`. typecheck verde.
 
 #### [ ] SUB-27.25: `papelNoProjeto()` em `src/services/authService.ts`
 - **Status:** pendente
