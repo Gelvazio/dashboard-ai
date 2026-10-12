@@ -40,14 +40,25 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
+### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-35.37
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.37** |
+| **Título da Sub-task:** | `iniciarHeartbeat()` em `worker/heartbeat.ts` |
+| **Agente Responsável:** | Devin (Cognition AI) |
+| **Data e Hora de Início:** | 2026-10-12 13:41 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 203
-- **Em Execução:** 0
+- **Em Execução:** 1 (SUB-35.37, Devin (Cognition AI), desde 2026-10-12 13:41)
 - **Pendentes:** 4 principais (25, 26, 28, 35) + 18 subtarefas
-  - livres agora: 9 (SUB-26.5, SUB-28.2, SUB-28.16, SUB-28.17, SUB-28.24, SUB-35.32, SUB-25.4, SUB-25.7, SUB-35.37)
+  - livres agora: 8 (SUB-26.5, SUB-28.2, SUB-28.16, SUB-28.17, SUB-28.24, SUB-35.32, SUB-25.4, SUB-25.7)
   - bloqueadas por dependência: 9
   - reservadas: 0
 - **Concluídas:** 218 de 240 blocos (33 principais + 185 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
@@ -327,7 +338,7 @@
   - `SUB-35.34`: Testes de `emitirEvento` em `tests/unit/worker-eventos.test.ts` (`concluido`, `8e63d4c`)
   - `SUB-35.35`: `comEventos(nome, no)` em `worker/eventos.ts` (`concluido`, `bd6563e`)
   - `SUB-35.36`: Envolver os nós em `worker/grafo.ts` com `comEventos` (`concluido`, `469ce5c`)
-  - `SUB-35.37`: `iniciarHeartbeat()` em `worker/heartbeat.ts` (`pendente`)
+  - `SUB-35.37`: `iniciarHeartbeat()` em `worker/heartbeat.ts` (`em_execucao`)
   - `SUB-35.38`: Ligar o heartbeat no CLI `worker/index.ts` (`pendente`)
   - `SUB-35.39`: Teste do worker: eventos emitidos na ordem dos nós (`pendente`)
   - `SUB-35.40`: Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts` (`concluido`, `176aadb`)
@@ -356,8 +367,8 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-35.37: `iniciarHeartbeat()` em `worker/heartbeat.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:41)
 - **Depende de:** SUB-35.33
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `iniciarHeartbeat({ agente, projeto, intervaloMs = 30000, emitir = emitirEvento }): () => void` que emite `tipo = 'heartbeat'` (com `taskId`/`etapa` atuais via callback opcional) e devolve a função de parada. Teste com timers falsos (`vi.useFakeTimers`) em `tests/unit/worker-heartbeat.test.ts`.
