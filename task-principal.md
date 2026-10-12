@@ -9,9 +9,9 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 32
-- **Em Execução:** 3 (`SUB-01.1`, `SUB-27`, `SUB-08`)
+- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
 - **Pendentes:** 23
-- **Concluídas:** 8
+- **Concluídas:** 9
 - **Canceladas:** 0
 
 ---
@@ -31,15 +31,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [🔄] SUB-01.1: Inicialização do package.json, Vite, React e TypeScript
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:56)
+#### [x] SUB-01.1: Inicialização do package.json, Vite, React e TypeScript
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:56, conclusão: 2026-10-11 22:57)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Critérios de Aceitação:** `package.json`, `vite.config.ts`, `tsconfig.json` e `index.html` criados.
 - **Nota (follow-up):** ao criar o `package.json`, incluir `typescript` e `@types/node` como devDependencies (checagem de `api/`); a troca do cliente fetch de `api/_lib` por `@supabase/supabase-js` fica na SUB-32, liberada após esta sub-task.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `374dc99`
+- **Anotação:** package.json (type module, Node >= 20.19; scripts dev, build = tsc -b && vite build, preview, typecheck, typecheck:api), package-lock.json, vite.config.ts (plugin-react, dist com sourcemap), tsconfig.json com referências para tsconfig.app.json (só src/, moduleResolution bundler, strict) e tsconfig.node.json (vite.config.ts); api/ segue com api/tsconfig.json próprio (NodeNext) e não é incluída pelo tsconfig do frontend. devDependencies typescript ~5.9 (TS 7 nativo ainda novo para o ecossistema) e @types/node ^20 conforme a nota. index.html (pt-BR), public/favicon.svg, src/main.tsx e src/App.tsx (casca genérica). Validado: npm install sem vulnerabilidades, npm run build OK, npm run typecheck (frontend + api) OK, vite preview servindo o index.
 
 #### [ ] SUB-01.2: Configuração do Tailwind CSS, PostCSS e Estilos Globais
 - **Status:** pendente
