@@ -9,9 +9,9 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 32
-- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-32`)
+- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
 - **Pendentes:** 20
-- **Concluídas:** 11
+- **Concluídas:** 12
 - **Canceladas:** 0
 
 ---
@@ -138,15 +138,15 @@
 - **Anotação:** database/06_messages_rules.sql: agent_messages (remetente, destinatario nulo = todos, tipo recado/pergunta/resposta/alerta/handoff, task por id ou código do mesmo projeto, resposta_de, lido/arquivado) e ler_recados(projeto, agente, só não lidos, marcar lidos, desde, limite); project_rules (arquivo + seção únicos por projeto, md5 gerado do conteúdo, commit_sha, ativo) e conferir_regras(projeto, jsonb) -> igual/diverge/so_local/so_banco. RLS: viewer lê; editor cria recados e só altera lido/arquivado (sem DELETE); regras só owner/admin escrevem; criado_por forçado ao usuário logado; anon sem acesso. Validado: 00-06 aplicados 2x; 46 verificações novas (tests/test_recados_regras.sql) + 72 de SUB-29 + paralelo, todos OK.
 
 
-### [🔄] SUB-32: Trocar cliente fetch por `@supabase/supabase-js` em `api/_lib`
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:59)
+### [x] SUB-32: Trocar cliente fetch por `@supabase/supabase-js` em `api/_lib`
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:59, conclusão: 2026-10-11 23:00)
 - **Depende de:** SUB-01.1, SUB-30, SUB-07
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Depois que a SUB-01.1 criar o `package.json`, adicionar `@supabase/supabase-js` às dependências e substituir o cliente PostgREST com `fetch` de `api/_lib/supabase.ts` (usado por `queue-tools.ts` e `brain-tools.ts`) pelo `createClient` com a chave `service_role` (sem sessão persistida), mantendo as mesmas variáveis (`SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`) e o mesmo comportamento das ferramentas MCP. Atualizar a nota da seção 3 do `AGENTS.md` e o `api/README.md`.
 - **Critérios de Aceitação:** `tsc -p api/tsconfig.json` sem erros; ferramentas `task_*` e `brain_*` com o mesmo contrato e testadas novamente (mesmos cenários da SUB-30/SUB-07); nenhuma chave no código.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `f7c52c6`
+- **Anotação:** api/_lib/supabase.ts reescrito: db() com createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY) sem sessão, fetch com timeout de 20 s e redirecionamento opcional via SUPABASE_REST_URL (testes), unwrap() que converte PostgrestError em SupabaseError, rpc(). queue-tools, brain-tools e args usam o query builder (from/select/eq/in/order/limit, insert().select().single(), upsert onConflict project_id,title, delete().is/eq().select()). Contrato das ferramentas inalterado. Achado: supabase-js 2.117 exige WebSocket nativo e quebra no Node 20 (EOL desde 2026-04), então engines.node passou a >=22.12, .nvmrc 22 e @types/node ^22. Validado com Node 22.23: build e typecheck OK; e2e contra PostgREST local: 27 cenários da fila e 36 da memória, todos OK; AGENTS.md e api/README.md atualizados.
 ---
 
 ## 🧠 FASE 3: Módulo Backend / API Serverless de Memória (Jev-Mem MCP)

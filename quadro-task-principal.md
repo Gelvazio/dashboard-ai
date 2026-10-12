@@ -44,28 +44,16 @@
 | **Data e Hora de Início:** | 2026-10-11 22:41 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot)
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-32** |
-| **Título da Sub-task:** | Trocar cliente fetch por `@supabase/supabase-js` em `api/_lib` |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-11 22:59 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27** | Autenticação e Login com Supabase Auth | Codex (OpenAI) | 2026-10-11 22:27 | SUB-03, SUB-29 |
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` | xAI (Grok) | 2026-10-11 22:41 | SUB-06 |
-| **SUB-32** | Trocar cliente fetch por `@supabase/supabase-js` em `api/_lib` | DashboardAI (Grok Bot) | 2026-10-11 22:59 | SUB-01.1, SUB-30, SUB-07 |
 
 ---
 
@@ -96,7 +84,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (11)
+### ✅ CONCLUÍDAS (12)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -111,6 +99,7 @@
 | **SUB-01.1** | Inicialização do package.json, Vite, React e TypeScript | DashboardAI (Grok Bot) | 2026-10-11 22:56 | 2026-10-11 22:57 | `374dc99` |
 | **SUB-01.2** | Configuração do Tailwind CSS, PostCSS e Estilos Globais | DashboardAI (Grok Bot) | 2026-10-11 22:57 | 2026-10-11 22:58 | `97697e3` |
 | **SUB-01.3** | Instalação de Lucide Icons e Utilitários Base | DashboardAI (Grok Bot) | 2026-10-11 22:58 | 2026-10-11 22:59 | `25b9664` |
+| **SUB-32** | Trocar cliente fetch por `@supabase/supabase-js` em `api/_lib` | DashboardAI (Grok Bot) | 2026-10-11 22:59 | 2026-10-11 23:00 | `f7c52c6` |
 
 ---
 
@@ -140,3 +129,4 @@
 | 2026-10-11 22:58 | DashboardAI (Grok Bot) | SUB-01.2 | `97697e3` | Tailwind v4 via @tailwindcss/postcss, tailwind.config.js (@config), src/index.css com @theme, dark por classe e estilos base |
 | 2026-10-11 22:59 | DashboardAI (Grok Bot) | SUB-01.3 | `25b9664` | lucide-react, clsx, tailwind-merge + src/lib/utils.ts (cn); casca usa ícones |
 | 2026-10-11 22:59 | DashboardAI (Grok Bot) | SUB-01 | `25b9664` | SUB-01 concluída: subtarefas SUB-01.1 (`374dc99`), SUB-01.2 (`97697e3`) e SUB-01.3 (`25b9664`) entregues; build e typecheck OK |
+| 2026-10-11 23:00 | DashboardAI (Grok Bot) | SUB-32 | `f7c52c6` | api/_lib com @supabase/supabase-js (createClient service_role, sem sessão); Node 22+; 27+36 cenários MCP OK |
