@@ -8,9 +8,9 @@
 ---
 
 ## 📊 Resumo de Progresso
-- **Total de Tasks Principais:** 32
+- **Total de Tasks Principais:** 33
 - **Em Execução:** 2 (`SUB-27`, `SUB-08`)
-- **Pendentes:** 14
+- **Pendentes:** 15
 - **Concluídas:** 18
 - **Canceladas:** 0
 
@@ -147,6 +147,16 @@
 - **Critérios de Aceitação:** `tsc -p api/tsconfig.json` sem erros; ferramentas `task_*` e `brain_*` com o mesmo contrato e testadas novamente (mesmos cenários da SUB-30/SUB-07); nenhuma chave no código.
 - **Commit:** `f7c52c6`
 - **Anotação:** api/_lib/supabase.ts reescrito: db() com createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY) sem sessão, fetch com timeout de 20 s e redirecionamento opcional via SUPABASE_REST_URL (testes), unwrap() que converte PostgrestError em SupabaseError, rpc(). queue-tools, brain-tools e args usam o query builder (from/select/eq/in/order/limit, insert().select().single(), upsert onConflict project_id,title, delete().is/eq().select()). Contrato das ferramentas inalterado. Achado: supabase-js 2.117 exige WebSocket nativo e quebra no Node 20 (EOL desde 2026-04), então engines.node passou a >=22.12, .nvmrc 22 e @types/node ^22. Validado com Node 22.23: build e typecheck OK; e2e contra PostgREST local: 27 cenários da fila e 36 da memória, todos OK; AGENTS.md e api/README.md atualizados.
+
+### [ ] SUB-33: Endpoint de Embeddings para o Frontend (`api/embedding.ts`)
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-07, SUB-03
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar a função serverless `POST /api/embedding` que valida o JWT da sessão Supabase do usuário (`Authorization: Bearer <access_token>`, conferido no Supabase Auth com a URL e a chave do servidor) e devolve o embedding do texto enviado, usando `OPENAI_API_KEY`, `EMBEDDING_MODEL` e `EMBEDDING_API_URL` somente no servidor (reaproveitar `api/_lib/embeddings.ts`). No frontend, expor um `GeradorEmbedding` que chama esse endpoint para `buscarMemorias`/`salvarMemoria` (SUB-10).
+- **Critérios de Aceitação:** 401 sem sessão ou com JWT inválido; 405 para métodos diferentes de POST; limite de tamanho do texto; resposta com vetor de 1536 dimensões; nenhuma chave no navegador; `tsc` sem erros e testes cobrindo os casos.
+- **Commit:** pendente
+- **Anotação:** pendente
 ---
 
 ## 🧠 FASE 3: Módulo Backend / API Serverless de Memória (Jev-Mem MCP)
@@ -309,7 +319,7 @@
 ### [ ] SUB-19: Interface de Pesquisa Semântica Vetorial
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-10, SUB-12
+- **Depende de:** SUB-10, SUB-12, SUB-33
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar componente de busca semântica onde o usuário insere uma consulta e o sistema busca memórias similares via RPC `match_memories`, exibindo a porcentagem de similaridade.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
@@ -320,7 +330,7 @@
 ### [ ] SUB-20: Formulário de Nova Memória Canônica
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-10, SUB-12
+- **Depende de:** SUB-10, SUB-12, SUB-33
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Componente para adicionar nova memória: Título único, Conteúdo estruturado em Markdown e Tags de categorização.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).

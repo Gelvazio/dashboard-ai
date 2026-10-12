@@ -57,7 +57,7 @@
 
 ---
 
-### ⏳ PENDENTES (14)
+### ⏳ PENDENTES (15)
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
@@ -67,8 +67,9 @@
 | **SUB-16** | Modal de Cadastro e Edição de Task | 3 | Fase 6 | SUB-09, SUB-12 |
 | **SUB-17** | Modal de Visualização Detalhada da Task | 3 | Fase 6 | SUB-14 |
 | **SUB-18** | Controles de Ação Rápida na Linha da Tabela | 3 | Fase 6 | SUB-09, SUB-14 |
-| **SUB-19** | Interface de Pesquisa Semântica Vetorial | 4 | Fase 7 | SUB-10, SUB-12 |
-| **SUB-20** | Formulário de Nova Memória Canônica | 4 | Fase 7 | SUB-10, SUB-12 |
+| **SUB-19** | Interface de Pesquisa Semântica Vetorial | 4 | Fase 7 | SUB-10, SUB-12, SUB-33 |
+| **SUB-20** | Formulário de Nova Memória Canônica | 4 | Fase 7 | SUB-10, SUB-12, SUB-33 |
+| **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) | 4 | Fase 2B | SUB-07, SUB-03 |
 | **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias | 4 | Fase 7 | SUB-10, SUB-12 |
 | **SUB-22** | Visualizador de Logs de Execução da IA | 4 | Fase 8 | SUB-11, SUB-12 |
 | **SUB-23** | Diagnóstico de Travas e Saúde da Fila | 4 | Fase 8 | SUB-09, SUB-11, SUB-12 |
