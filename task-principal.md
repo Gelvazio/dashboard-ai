@@ -1490,15 +1490,15 @@
 - **Commit:** pendente
 - **Anotação:** Subdivisão (DashboardAI (Grok Bot), 2026-10-11 23:41, a pedido do usuário): até este momento não havia nenhum commit de código da SUB-27 na main, então nada foi marcado como concluído; a trava e a execução continuam com Codex (OpenAI). Original: Iniciado por solicitação do usuário; a dependência SUB-03 permanece pendente e a integração com o cliente Supabase depende da conclusão dela.
 
-#### [ ] SUB-27.1: `mensagemErroAuth(erro)` em `src/lib/auth.ts`
-- **Status:** em_execucao
+#### [x] SUB-27.1: `mensagemErroAuth(erro)` em `src/lib/auth.ts`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/lib/auth.ts` com `export function mensagemErroAuth(erro: { message?: string; code?: string; status?: number } | null): string` que traduz os erros do Supabase Auth para português (`invalid_credentials`/"Invalid login credentials" -> "E-mail ou senha inválidos.", `email_not_confirmed`, `over_request_rate_limit`/429, `user_banned`, falha de rede, genérico). Testes em `tests/unit/auth.test.ts`.
 - **Critérios de Aceitação:** `npm test` passa (um caso por código + genérico); `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `8ccaf5f`
+- **Anotação:** Criado `src/lib/auth.ts` com `mensagemErroAuth(erro)` (invalid_credentials, email_not_confirmed, rate limit/429, user_banned, rede, genérico; null -> ''). Testes em `tests/unit/auth.test.ts` (7). typecheck e vitest verdes.
 
 #### [ ] SUB-27.2: `validarLogin({ email, senha })` em `src/lib/auth.ts`
 - **Status:** pendente
