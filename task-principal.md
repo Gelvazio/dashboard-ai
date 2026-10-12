@@ -45,28 +45,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.12
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-28.12** |
-| **Título da Sub-task:** | Montagem do `StateGraph` em `worker/grafo.ts` |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 12:48 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202
-- **Em Execução:** 1 (SUB-28.12, Devin (Cognition AI), desde 2026-10-12 12:48)
+- **Em Execução:** 0
 - **Pendentes:** 4 principais (25, 26, 28, 35) + 28 subtarefas
   - livres agora: 6 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.13, SUB-35.32, SUB-35.33)
   - bloqueadas por dependência: 22
   - reservadas: 0
-- **Concluídas:** 206 de 239 blocos (33 principais + 173 subtarefas)
+- **Concluídas:** 207 de 239 blocos (33 principais + 174 subtarefas)
 - **Canceladas:** 0
 
 ---
@@ -1983,7 +1972,7 @@
   - `SUB-28.9`: Nó `executar` em `worker/nos/executar.ts` (`concluido`, `9cf0e2a`)
   - `SUB-28.10`: Nó `revisar` (roteamento) em `worker/nos/revisar.ts` (`concluido`, `b1c35a9`)
   - `SUB-28.11`: Nó `finalizar` em `worker/nos/finalizar.ts` (`concluido`, `9575b13`)
-  - `SUB-28.12`: Montagem do `StateGraph` em `worker/grafo.ts` (`em_execucao`)
+  - `SUB-28.12`: Montagem do `StateGraph` em `worker/grafo.ts` (`concluido`, `0d9c835`)
   - `SUB-28.13`: Checkpointer durável em `worker/checkpointer.ts` (`pendente`)
   - `SUB-28.14`: Reconciliação na retomada em `worker/reconciliar.ts` (`concluido`, `206ba39`)
   - `SUB-28.15`: CLI do worker em `worker/index.ts` (`pendente`)
@@ -2131,16 +2120,16 @@
 - **Anotação:** `finalizarNode(state, deps = { finalizar })` em `worker/nos/finalizar.ts`: chama `finalizar_task` com `recusada` (aprovação com `aprovado: false`), `erro` (`resultados.erro`, com `erroMensagem` e `passoFalho`) ou `concluida`; `resultado` é `resumoSeguro()` (só nomes dos passos, até 2000 caracteres, sem valores) e `execucaoId`/`chaves` vão nos metadados. Testes com adaptador falso em `tests/unit/worker-finalizar.test.ts` (concluída sem vazar valores, erro, recusada, limite do resumo). `npm test`, `npm run typecheck` e `npm run typecheck:worker` verdes.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:41 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
-#### [ ] SUB-28.12: Montagem do `StateGraph` em `worker/grafo.ts`
-- **Status:** em_execucao
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:48)
+#### [x] SUB-28.12: Montagem do `StateGraph` em `worker/grafo.ts`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:48, conclusão: 2026-10-12 12:49)
 - **Depende de:** SUB-28.6, SUB-28.7, SUB-28.8, SUB-28.9, SUB-28.10, SUB-28.11
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Conectar nós e rotas condicionais: contexto -> planejar -> politica -> executar -> revisar -> (executar | finalizar).
 - **Critérios de Aceitação:** `typecheck:worker` OK; teste de caminho feliz com fakes.
-- **Commit:** pendente (código parcial em `3fda622`)
-- **Anotação:** Reaberta na revisão de 2026-10-12 (Devin (revisão do quadro)): marcada como concluída em `310fab9`, mas placeholder: `criarGrafo()` devolve `null`.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (reaberta: critérios de aceitação não atendidos)
+- **Commit:** `0d9c835`
+- **Anotação:** `criarGrafo(deps)` em `worker/grafo.ts` monta o `StateGraph(EstadoExecucao)`: `carregarContexto -> planejar -> politica -> executar -> revisar -> (executar | finalizar)`, com `politica` indo direto para `finalizar` quando a aprovação é negada; `DepsGrafo` injeta modelo, checkpointer e as dependências de cada nó (padrão: implementações reais). Testes com fakes em `tests/unit/worker-grafo.test.ts`: caminho feliz executa os dois passos com chaves `exec-5:passo-0/1` e finaliza `concluida`; aprovação negada finaliza `recusada` sem executar. `npm run typecheck:worker`, `npm run typecheck`, `npm test` e `npm run build` verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:49 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
 #### [ ] SUB-28.13: Checkpointer durável em `worker/checkpointer.ts`
 - **Status:** pendente
