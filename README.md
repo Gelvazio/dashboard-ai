@@ -103,7 +103,7 @@ funções, papéis e RLS está no [`database/README.md`](database/README.md).
 
 ### 1. Aplicar os scripts
 
-Aplique **em ordem numérica** (`00` → `08`):
+Aplique **em ordem numérica** (`00` → `07`):
 
 | Arquivo | Conteúdo |
 |---|---|
@@ -115,7 +115,6 @@ Aplique **em ordem numérica** (`00` → `08`):
 | `05_rls_policies.sql` | RLS e permissões das tabelas e funções de 00–04 |
 | `06_messages_rules.sql` | Recados entre agentes e regras por projeto |
 | `07_agent_events.sql` | Eventos dos agentes para o monitor em tempo real |
-| `08_admin_inicial.sql` | Administrador inicial (`gelvazio@gmail.com`), criado pelo banco após a confirmação do e-mail |
 
 - **SQL Editor do Supabase:** abra cada arquivo, cole e execute, na ordem da tabela.
 - **psql** (use a *connection string* do painel do Supabase, em *Project Settings > Database*):
@@ -173,16 +172,13 @@ PSQL="psql -h localhost -U postgres" database/tests/run_tests.sh
 
 A tela de login tem o link **Não tem conta? Criar usuário**, que abre o formulário de cadastro
 (nome, e-mail, senha e confirmação) e usa o `signUp` do Supabase Auth. O usuário criado não ganha
-papel nenhum pelo frontend: o acesso vem dos `project_members` (ou do administrador inicial, abaixo).
-
-**Administrador inicial:** quem se cadastra com `gelvazio@gmail.com`, se esse e-mail ainda não
-existir, vira administrador global depois de confirmar o e-mail (script `08_admin_inicial.sql`;
-regras em [`database/README.md`](database/README.md#administrador-inicial-08)).
+papel nenhum: o acesso vem dos `project_members` (ou de `user_roles`, gravado por um administrador;
+o primeiro administrador é criado no SQL Editor, ver [`database/README.md`](database/README.md#primeiro-administrador-e-membros)).
 
 Configuração necessária no painel do Supabase:
 
 - **Authentication → Providers → Email:** cadastro de novos usuários **habilitado** e
-  **"Confirm email" ligado**. Sem a confirmação, o administrador inicial **não** é criado.
+  **"Confirm email" ligado** (recomendado, para só entrar quem tem acesso à caixa de entrada).
 - **Authentication → URL Configuration:** em *Site URL* e *Redirect URLs*, a URL do dashboard
   (local e de produção), para o link de confirmação voltar para a tela certa.
 

@@ -28,8 +28,8 @@ export interface NovoUsuario {
 }
 
 /**
- * Cria o usuário no Supabase Auth (`signUp`). O papel global é decidido só pelo banco
- * (`database/08_admin_inicial.sql`): nada de papel sai do frontend.
+ * Cria o usuário no Supabase Auth (`signUp`). Nada de papel sai do frontend: o acesso vem de
+ * `project_members`/`user_roles`, gravados por um administrador.
  * Devolve `precisaConfirmar: true` quando o Supabase enviou o e-mail de confirmação (sem sessão).
  * Lança `ServiceError(..., 'AUTH')` com mensagem em português.
  */

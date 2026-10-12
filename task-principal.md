@@ -99,7 +99,7 @@
 ---
 
 ## 📊 Resumo de Progresso
-- **Total de Tasks Principais:** 44
+- **Total de Tasks Principais:** 45
 - **Subtarefas atômicas (~3 min):** 251
 - **Em Execução:** 3 (SUB-38, SUB-41.1, SUB-25.4)
 - **Pendentes:** 8 principais (SUB-38, 25, 26, 28, 35, 41, 42, KIRO-DEV-CLONE) + 39 subtarefas
@@ -107,7 +107,7 @@
   - bloqueadas por dependência: 6 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41) e SUB-42 (depende da SUB-41)
   - em execução: 3 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI)); SUB-25.4 (Claude Code (Opus 5.5))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 244 de 295 blocos (36 principais + 208 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 245 de 296 blocos (37 principais + 208 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---

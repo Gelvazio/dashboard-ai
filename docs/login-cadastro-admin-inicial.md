@@ -39,3 +39,5 @@ e-mail cadastrado for `gelvazio@gmail.com` e ainda não existir, ele vira admini
 | 5 | SUB-40.5 Alternar Entrar/Criar usuário | `src/views/LoginView.tsx` | `npm run validar` | ✅ Concluído (`d7b0fba`) |
 | 6 | SUB-40.6 Documentação | `README.md`, `database/README.md` | `npm run validar` | ✅ Concluído (`7bc0f0e`) |
 | 7 | SUB-40.7 Aplicar SQL no Supabase | banco remoto | consultas só de leitura | ✅ Concluído (00 a 08 aplicados com autorização) |
+
+> **Revertido em 2026-10-12 18:48 (SUB-44):** a pedido do usuário, a trigger e as funções do administrador inicial foram removidas do banco e o `database/08_admin_inicial.sql` foi apagado. O papel `admin` de `gelvazio@gmail.com` (criado pela trigger) foi mantido.

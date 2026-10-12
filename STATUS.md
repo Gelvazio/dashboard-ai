@@ -110,6 +110,7 @@ Plano: [`docs/validacao-telas-producao.md`](docs/validacao-telas-producao.md). E
 ## Registro de decisões
 | Data | Decisão | Quem | Por quê |
 |------|---------|------|---------|
+| 2026-10-12 | Administrador inicial automático removido (trigger, funções e `08_admin_inicial.sql`), SUB-44; o papel `admin` de `gelvazio@gmail.com` fica | Gelvazio | "Não é mais preciso": o admin já foi criado |
 | 2026-10-12 | Regras novas só no `AGENTS.md` (vale para todas as IAs); `CLAUDE.md` do projeto só importa o `AGENTS.md`; tarefa concluída sempre movida para o `task_complete.md` | Gelvazio | Pedido no chat |
 | 2026-10-12 | Plano em `docs/` obrigatório para tarefas grandes vale para todas as IAs (seção 6 do `AGENTS.md`, `efc7719`) | Gelvazio | Pedido no chat: outras IAs devem fazer o mesmo que o Claude Code |
 | 2026-10-12 | Admin `gelvazio@gmail.com` criado só pelo banco (trigger em `auth.users`) e só após a confirmação do e-mail | Claude Code | Evitar que o frontend escolha papel e que alguém se registre com o e-mail sem acesso à caixa |
