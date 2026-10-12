@@ -9,8 +9,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 32
-- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
-- **Pendentes:** 22
+- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-01.3`)
+- **Pendentes:** 21
 - **Concluídas:** 10
 - **Canceladas:** 0
 
@@ -24,7 +24,7 @@
 - **Depende de:** Nenhuma
 - **Subtarefas:**
   - `SUB-01.1`: Inicialização do package.json, Vite, React e TypeScript (`concluido`, `374dc99`)
-  - `SUB-01.2`: Configuração do Tailwind CSS, PostCSS e estilos globais (`pendente`)
+  - `SUB-01.2`: Configuração do Tailwind CSS, PostCSS e estilos globais (`concluido`, `97697e3`)
   - `SUB-01.3`: Instalação e verificação de dependências base (Lucide Icons, clsx) (`pendente`)
 - **Descrição:** Inicializar a estrutura base do frontend moderno em `c:\fontes\dashboard-ai`.
 - **Critérios de Aceitação:** Aplicação compilando com Vite, React, TS e Tailwind.
@@ -50,9 +50,9 @@
 - **Commit:** `97697e3`
 - **Anotação:** postcss.config.js (@tailwindcss/postcss), tailwind.config.js (content, sombra card e animação fade-in, carregado por @config), src/index.css (@import tailwindcss; @theme com fontes, paleta brand neutra e cores de status da fila pendente/execucao/concluida/recusada/erro/cancelada; variante dark por classe .dark no html; base de body/foco/seleção; componente .card; prefers-reduced-motion). src/main.tsx importa o CSS e App.tsx usa as classes. Decisão: Tailwind v4 (atual) em vez da v3, mantendo os 3 arquivos pedidos. Validado: build OK (CSS gerado com utilitários do @theme e da config JS), typecheck OK.
 
-#### [ ] SUB-01.3: Instalação e Verificação de Ícones e Dependências Base
-- **Status:** pendente
-- **Executor:** nenhum
+#### [🔄] SUB-01.3: Instalação e Verificação de Ícones e Dependências Base
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:58)
 - **Depende de:** SUB-01.2
 - **Subtarefas:** Nenhuma (atômica)
 - **Critérios de Aceitação:** `lucide-react`, `clsx`, `tailwind-merge` prontos para importação.
