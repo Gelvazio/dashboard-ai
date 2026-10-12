@@ -7,3 +7,4 @@
 export * from './supabase';
 export * from './projectService';
 export * from './taskService';
+export * from './memoryService';
