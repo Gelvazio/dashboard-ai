@@ -2298,14 +2298,14 @@
 - **Anotação:** Adicionado `atividadeAtual(projectId, client?)` em `src/services/eventService.ts`: chama a RPC `atividade_atual_agentes` (`p_project_id`), trata erro com `resultado` (contexto "Atividade dos agentes") e devolve `AtividadeAgente[]` ordenado por `ultimo_em` desc (lista vazia se `null`). typecheck e `npm test` OK.
 
 #### [ ] SUB-35.11: `assinarEventos()` (Supabase Realtime) em `src/services/eventService.ts`
-- **Status:** em_execucao
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 09 (Grok Bot)
 - **Depende de:** SUB-35.10
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `assinarEventos(projectId, { onEvento, onStatus }, client?): () => void`: canal `agent_events:<projectId>` com `postgres_changes` (`INSERT`, filtro `project_id=eq.<id>`), repassa o status do canal (`SUBSCRIBED`, `CHANNEL_ERROR`, `TIMED_OUT`, `CLOSED`) e devolve a função que remove o canal. Sem polling.
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `c43ad04`
+- **Anotação:** Adicionado `assinarEventos(projectId, { onEvento, onStatus }, client?)` em `src/services/eventService.ts`: canal `agent_events:<projectId>` com `postgres_changes` (INSERT, `project_id=eq.<id>`), repassa o status do canal (`StatusCanalEventos`: SUBSCRIBED/CHANNEL_ERROR/TIMED_OUT/CLOSED, com erro opcional) e devolve a função que chama `removeChannel`. Sem polling. typecheck e `npm test` OK.
 
 #### [ ] SUB-35.12: Testes de `eventService` em `tests/unit/eventService.test.ts`
 - **Status:** pendente
