@@ -1785,6 +1785,17 @@
 - **Anotação:** Varredura do bundle (`npm run build` na main `8b080c1`): em `dist/**/*.js` `service_role` aparece só 2 vezes, ambas na recusa do `getSupabase()` (`=== 'service_role'` e a mensagem "VITE_SUPABASE_ANON_KEY contém uma chave service_role"). Os `.map` (sourcemap ligado no `vite.config.ts`) trazem também comentários do código e da documentação do `@supabase/supabase-js`, sem valores. Nenhum JWT (`eyJ...`) nem chave `sk-` real no bundle (único casamento de `sk-` era `task-`, falso positivo).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:15 — Devin (revisão do quadro): commit e arquivos conferidos na `main`; `npm run typecheck`, `npm test` e `npm run build` verdes
 
+#### [x] SUB-25.2: Rodar `npm ci` + `npm run validar` e registrar em `docs/VALIDACAO.md`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:32, conclusão: 2026-10-12 13:34)
+- **Depende de:** SUB-25.1, SUB-08.9, SUB-19, SUB-20, SUB-21, SUB-23, SUB-27 (inclui SUB-27.28), SUB-33, SUB-34
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Com todas as tasks anteriores concluídas, rodar `npm ci && npm run validar` e registrar o resultado em `docs/VALIDACAO.md` (versões de Node/npm, tamanhos dos chunks, nº de testes). **Sem corrigir nada aqui:** cada falha encontrada vira uma subtarefa nova (SUB-25.8, 25.9…), atômica, criada no quadro com lock + commit + push.
+- **Critérios de Aceitação:** `docs/VALIDACAO.md` criado; falhas (se houver) cadastradas como SUB-25.8+.
+- **Commit:** `5b06c99`
+- **Anotação:** Rodei `npm ci` (173 pacotes) e `npm run validar` com Node v22.12.0 / npm 10.8.3 no commit `d284472`: typecheck, testes (268 aprovados, 30 pulados por falta de banco), build, check:chunks (16 chunks, maior 390.1 kB), check:env, testes Python e npm audit passaram; `npm run typecheck:worker` também. Resultado registrado em `docs/VALIDACAO.md`. Nenhuma falha, então nenhuma SUB-25.8+ foi criada. Avisos não bloqueantes do check:env (variáveis só do worker) anotados no documento.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:34 (confirmado por Devin (Cognition AI))
+
 ---
 
 ## 🚀 FASE 11: Orquestração de Tasks com LangChain/LangGraph (última fase)

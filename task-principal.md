@@ -40,28 +40,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-25.2
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-25.2** |
-| **Título da Sub-task:** | Rodar `npm ci` + `npm run validar` e registrar em `docs/VALIDACAO.md` |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 13:32 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 203
-- **Em Execução:** 1 (SUB-25.2, Devin (Cognition AI), desde 2026-10-12 13:32)
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 25 subtarefas
-  - livres agora: 7 (SUB-26.5, SUB-28.2, SUB-28.16, SUB-28.17, SUB-28.24, SUB-35.32, SUB-35.33)
-  - bloqueadas por dependência: 17
+- **Em Execução:** 0
+- **Pendentes:** 4 principais (25, 26, 28, 35) + 24 subtarefas
+  - livres agora: 11 (SUB-26.5, SUB-28.2, SUB-28.16, SUB-28.17, SUB-28.24, SUB-35.32, SUB-35.33, SUB-25.3, SUB-25.4, SUB-25.6, SUB-25.7)
+  - bloqueadas por dependência: 13
   - reservadas: 0
-- **Concluídas:** 211 de 240 blocos (33 principais + 178 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 212 de 240 blocos (33 principais + 179 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -74,23 +63,13 @@
 - **Depende de:** SUB-01 a SUB-24; subtarefas SUB-25.1 a SUB-25.7
 - **Subtarefas:** (subdividida em 4 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 6 em 2026-10-11 23:51)
   - `SUB-25.1`: Script `scripts/validar.sh` + `npm run validar` (`concluido`, `2c9664c`)
-  - `SUB-25.2`: Rodar `npm ci` + `npm run validar` e registrar em `docs/VALIDACAO.md` (`em_execucao`)
+  - `SUB-25.2`: Rodar `npm ci` + `npm run validar` e registrar em `docs/VALIDACAO.md` (`concluido`, `5b06c99`)
   - `SUB-25.3`: Rodar `database/tests/run_tests.sh` (`pendente`)
   - `SUB-25.4`: Teste rápido local: telas Fila e Logs (`pendente`)
   - `SUB-25.6`: Rodar `npm run test:integration` (`pendente`)
   - `SUB-25.7`: Teste rápido local: telas Memória e Configurações (`pendente`)
 - **Descrição:** Rodar compilação de produção (`npm run build`), validar ausência de erros de tipagem TypeScript e verificar integridade de pacotes.
 - **Critérios de Aceitação:** Build gerado com sucesso na pasta `dist/` sem alertas impeditivos.
-- **Commit:** pendente
-- **Anotação:** pendente
-
-#### [ ] SUB-25.2: Rodar `npm ci` + `npm run validar` e registrar em `docs/VALIDACAO.md`
-- **Status:** em_execucao
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:32)
-- **Depende de:** SUB-25.1, SUB-08.9, SUB-19, SUB-20, SUB-21, SUB-23, SUB-27 (inclui SUB-27.28), SUB-33, SUB-34
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Com todas as tasks anteriores concluídas, rodar `npm ci && npm run validar` e registrar o resultado em `docs/VALIDACAO.md` (versões de Node/npm, tamanhos dos chunks, nº de testes). **Sem corrigir nada aqui:** cada falha encontrada vira uma subtarefa nova (SUB-25.8, 25.9…), atômica, criada no quadro com lock + commit + push.
-- **Critérios de Aceitação:** `docs/VALIDACAO.md` criado; falhas (se houver) cadastradas como SUB-25.8+.
 - **Commit:** pendente
 - **Anotação:** pendente
 
