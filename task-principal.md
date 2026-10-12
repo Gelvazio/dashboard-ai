@@ -10,9 +10,9 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
 - **Subtarefas atômicas (~3 min):** 153 (SUB-08.x, SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x; atualizado em 2026-10-12 00:17)
-- **Em Execução:** 0
+- **Em Execução:** 1 (SUB-33.13 — DashboardAI (Grok Bot))
 - **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 152 subtarefas
-  - livres agora: 27 (SUB-33.1, SUB-33.4, SUB-33.13, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.1, SUB-21.3, SUB-23.1, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
+  - livres agora: 26 (SUB-33.1, SUB-33.4, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.1, SUB-21.3, SUB-23.1, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
   - bloqueadas por dependência: 125
   - reservadas: 0
 - **Concluídas:** 26
@@ -169,7 +169,7 @@
   - `SUB-33.10`: Autenticação no handler `api/embedding.ts` (401) (`pendente`)
   - `SUB-33.11`: Corpo, geração do embedding e erros no handler (400/413/502/200) (`pendente`)
   - `SUB-33.12`: Testes do handler: 413, 502 e 200 (`pendente`)
-  - `SUB-33.13`: Classe `HttpError` em `api/_lib/http-error.ts` (`pendente`)
+  - `SUB-33.13`: Classe `HttpError` em `api/_lib/http-error.ts` (`em_execucao`)
 - **Descrição:** Criar a função serverless `POST /api/embedding` que valida o JWT da sessão Supabase do usuário (`Authorization: Bearer <access_token>`, conferido no Supabase Auth com a URL e a chave do servidor) e devolve o embedding do texto enviado, usando `OPENAI_API_KEY`, `EMBEDDING_MODEL` e `EMBEDDING_API_URL` somente no servidor (reaproveitar `api/_lib/embeddings.ts`). No frontend, expor um `GeradorEmbedding` que chama esse endpoint para `buscarMemorias`/`salvarMemoria` (SUB-10).
 - **Critérios de Aceitação:** 401 sem sessão ou com JWT inválido; 405 para métodos diferentes de POST; limite de tamanho do texto; resposta com vetor de 1536 dimensões; nenhuma chave no navegador; `tsc` sem erros e testes cobrindo os casos.
 - **Commit:** pendente
@@ -296,8 +296,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-33.13: Classe `HttpError` em `api/_lib/http-error.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (desde 2026-10-12 00:19)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `api/_lib/http-error.ts` com `export class HttpError extends Error { status: number }` (construtor `(status, mensagem)`, `name = 'HttpError'`). Teste curto em `tests/unit/api-http-error.test.ts`.

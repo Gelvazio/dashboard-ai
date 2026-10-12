@@ -33,20 +33,30 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhuma tarefa reservada para Codex |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — SUB-33.13
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-33.13** |
+| **Título da Sub-task:** | Classe `HttpError` em `api/_lib/http-error.ts` |
+| **Agente Responsável:** | DashboardAI (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 00:19 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém mais assume a SUB-33.13 |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (0)
+### 🔄 EM EXECUÇÃO (1)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
-
-*(Nenhuma tarefa em execução)*
+| **SUB-33.13** | Classe `HttpError` em `api/_lib/http-error.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:19 | Nenhuma |
 
 ---
 
-### ⏳ PENDENTES (163)
+### ⏳ PENDENTES (162)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -54,7 +64,7 @@
 
 > **SUB-27 liberada a pedido do usuário** (2026-10-11 23:55): mãe e 22 subtarefas estão disponíveis; cada agente deve respeitar as dependências indicadas. Nenhum código da SUB-27 havia sido enviado à main.
 
-**🟢 Livres agora (27):** SUB-33.1, SUB-33.4, SUB-33.13, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.1, SUB-21.3, SUB-23.1, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1
+**🟢 Livres agora (26):** SUB-33.1, SUB-33.4, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.1, SUB-21.3, SUB-23.1, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
@@ -191,7 +201,6 @@
 | **SUB-33.10** | Autenticação no handler `api/embedding.ts` (401) | 3 | Fase 2B | SUB-33.4, SUB-33.2 — ⛓️ bloqueada |
 | **SUB-33.11** | Corpo, geração do embedding e erros no handler (400/413/502/200) | 3 | Fase 2B | SUB-33.10, SUB-33.3 — ⛓️ bloqueada |
 | **SUB-33.12** | Testes do handler: 413, 502 e 200 | 3 | Fase 2B | SUB-33.11 — ⛓️ bloqueada |
-| **SUB-33.13** | Classe `HttpError` em `api/_lib/http-error.ts` | 3 | Fase 2B | Nenhuma — 🟢 livre |
 | **SUB-27** | Autenticação e Login com Supabase Auth (mãe; pendente, liberada) | 3 | Fase 10 | SUB-03, SUB-29; SUB-27.1 a SUB-27.28 — 🟢 livre |
 | **SUB-27.1** | `mensagemErroAuth(erro)` em `src/lib/auth.ts` | 3 | Fase 10 | Nenhuma — 🟢 livre |
 | **SUB-27.2** | `validarLogin({ email, senha })` em `src/lib/auth.ts` | 3 | Fase 10 | SUB-27.1 — ⛓️ bloqueada |
@@ -312,3 +321,4 @@
 | 2026-10-12 00:17 | DashboardAI (Grok Bot) | Nova revisão da subdivisão | (este commit) | Revisão rigorosa (~3 min = 1 função/componente/arquivo de teste/seção): 22 subtarefas divididas gerando 23 novas — 08.8->08.10, 08.9->08.11, 19.3->19.10, 20.3->20.10, 20.4->20.9, 21.1->21.13, 21.2->21.14, 23.1->23.13, 27.4->27.23, 27.5->27.24, 27.7->27.25, 27.9->27.26, 27.14->27.27, 27.22->27.28, 33.3->33.13, 34.2->34.6, 28.1->28.26/28.27, 28.2->28.28, 28.3->28.29, 28.4->28.30, 28.20->28.31, 28.23->28.32; 27.16 reduzida (só `urlDeRetorno`, depende de 27.1). Dependentes religados para a última parte (ex.: 27.12/14/15/20 e 28.16 -> 27.26; 27.18 -> 27.27; 25.2 cita 27.28; 28.5/6/20/21 -> 28.29; 34.5 -> 34.6). Travas de planejamento liberadas. Total 153; livres 22; reservadas 0; bloqueadas 131 |
 | 2026-10-12 00:19 | DashboardAI (Grok Bot) | SUB-08.1 | — | Lock: assumindo SUB-08.1 (Esqueleto do `.env.example`) |
 | 2026-10-12 00:19 | DashboardAI (Grok Bot) | SUB-08.1 | `5db1d43` | Criado `.env.example` na raiz: cabeçalho (copiar para `.env`/`.env.local`, nunca commitar valores reais, `VITE_*` vão para o navegador e segredos só no servidor) e seções vazias Frontend, Servidor Supabase, Embeddings, MCP e Scripts. `git check-ignore .env.example` não o ignora (`.env` e `.env.local` seguem ignorados); nenhum valor real. |
+| 2026-10-12 00:19 | DashboardAI (Grok Bot) | SUB-33.13 | — | Lock: assumindo SUB-33.13 (Classe `HttpError` em `api/_lib/http-error.ts`) |
