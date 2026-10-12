@@ -33,55 +33,19 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 09 (Grok Bot) — SUB-35.19
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.19** |
-| **Título da Sub-task:** | Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts` |
-| **Agente Responsável:** | DashboardAI-Clone 09 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:17 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 04 (Grok Bot) — SUB-35.17
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.17** |
-| **Título da Sub-task:** | `contarPorAgente()` em `src/lib/monitor.ts` |
-| **Agente Responsável:** | DashboardAI-Clone 04 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:17 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-35.23
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.23** |
-| **Título da Sub-task:** | Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx` |
-| **Agente Responsável:** | DashboardAI-Clone 01 |
-| **Data e Hora de Início:** | 2026-10-12 01:17 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (2)
+### 🔄 EM EXECUÇÃO (1)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
-| **SUB-35.23** | Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:17 | SUB-35.15 |
-| **SUB-35.17** | `contarPorAgente()` em `src/lib/monitor.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:17 | SUB-35.16 |
-| **SUB-35.19** | Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:17 | SUB-35.11, SUB-35.14 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
 
-### ⏳ PENDENTES (128)
+### ⏳ PENDENTES (127)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -164,11 +128,9 @@
 | **SUB-27.22** | Conferência no navegador (entrar, sair, restaurar sessão) — SUB-27 | 3 | Fase 10 | SUB-27.18 — ⛓️ bloqueada |
 | **SUB-27.28** | Varredura do bundle por `service_role` (SUB-27) | 3 | Fase 10 | SUB-27.22 — ⛓️ bloqueada |
 | **SUB-35** | Monitor em Tempo Real dos Agentes (mãe) | 4 | Fase 12 | SUB-12, SUB-29, SUB-30; SUB-35.1 a SUB-35.46 |
-| **SUB-35.17** | `contarPorAgente()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.16 — ⛓️ bloqueada — 🔄 em execução por DashboardAI-Clone 04 (Grok Bot) |
 | **SUB-35.18** | `segmentosLinhaDoTempo()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.17 — ⛓️ bloqueada |
-| **SUB-35.19** | Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts` | 4 | Fase 12 | SUB-35.11, SUB-35.14 — 🔄 em execução por DashboardAI-Clone 09 (Grok Bot) |
 | **SUB-35.20** | Hook `useAtividadeAgentes(projectId)` em `src/hooks/useAtividadeAgentes.ts` | 4 | Fase 12 | SUB-35.19, SUB-35.15 — ⛓️ bloqueada |
-| **SUB-35.23** | Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx` | 4 | Fase 12 | SUB-35.15 — ⛓️ bloqueada |
+| **SUB-35.23** | Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx` | 4 | Fase 12 | SUB-35.15 — 🟢 livre |
 | **SUB-35.24** | Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx` | 4 | Fase 12 | SUB-35.23 — ⛓️ bloqueada |
 | **SUB-35.25** | Gráfico `GraficoPorStatus` em `src/components/monitor/GraficoPorStatus.tsx` | 4 | Fase 12 | SUB-35.22, SUB-35.16 — ⛓️ bloqueada |
 | **SUB-35.26** | Gráfico `GraficoPorAgente` em `src/components/monitor/GraficoPorAgente.tsx` | 4 | Fase 12 | SUB-35.22, SUB-35.17 — ⛓️ bloqueada |
@@ -189,11 +151,13 @@
 
 ---
 
-### ✅ CONCLUÍDAS (112)
+### ✅ CONCLUÍDAS (114)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
 | **SUB-35.16** | `contarPorStatus()` em `src/lib/monitor.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:15 | 2026-10-12 01:17 | `860e0c9` |
+| **SUB-35.17** | `contarPorAgente()` em `src/lib/monitor.ts` | DashboardAI-Clone 04 + DashboardAI (Grok Bot) | 2026-10-12 01:17 | 2026-10-12 01:22 | `7d2181e` |
+| **SUB-35.19** | Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts` | DashboardAI-Clone 09 + DashboardAI (Grok Bot) | 2026-10-12 01:17 | 2026-10-12 01:22 | `7d2181e` |
 | **SUB-27.21** | Documentar primeiro administrador e membros em `database/README.md` | DashboardAI-Clone 06 | 2026-10-12 01:16 | 2026-10-12 01:17 | `663e597` |
 | **SUB-35.12** | Testes de `eventService` em `tests/unit/eventService.test.ts` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:16 | 2026-10-12 01:17 | `b045c12` |
 | **SUB-27.17** | Documentar configuração do Supabase Auth em `src/README.md` | DashboardAI-Clone 01 | 2026-10-12 01:16 | 2026-10-12 01:16 | `1a25734` |
@@ -647,3 +611,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:17 | DashboardAI-Clone 04 (Grok Bot) | SUB-35.16 | `860e0c9` | Adicionados em `src/lib/monitor.ts` `ORDEM_ESTADOS` (ativo, ocioso, sem_sinal, finalizado) e `contarPorStatus(atividades, agora = Date.now(), limites = {})` -> `{ estado, total }[]` usando `estadoDoAgente`, sempre na ordem fixa e com zeros (para o gráfico de rosca). 2 testes novos em `tests/unit/monitor.test.ts`. `npm test` e `npm run typecheck` verdes. |
 | 2026-10-12 01:17 | DashboardAI-Clone 04 (Grok Bot) | SUB-35.17 | — | Lock: assumindo SUB-35.17 (`contarPorAgente()` em `src/lib/monitor.ts`) |
 | 2026-10-12 01:17 | DashboardAI-Clone 01 | SUB-35.23 | — | Lock: assumindo SUB-35.23 (Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx`) |
+| 2026-10-12 01:22 | DashboardAI (Grok Bot) | SUB-35.17, SUB-35.19, SUB-35.23 | `7d2181e` | A pedido do usuário, após a parada geral: concluído o código que os Clones 04 (`contarPorAgente()` + 2 testes) e 09 (hook `useEventosAgentes` + export em `src/hooks/index.ts`) deixaram sem commit; typecheck, testes e build verdes. Trava da SUB-35.23 (Clone 01, sem código) liberada pelo usuário; volta a ficar livre. |

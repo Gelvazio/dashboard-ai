@@ -2161,9 +2161,9 @@
   - `SUB-35.14`: `mesclarEvento()` em `src/lib/monitor.ts` (`pendente`)
   - `SUB-35.15`: `estadoDoAgente()` em `src/lib/monitor.ts` (`pendente`)
   - `SUB-35.16`: `contarPorStatus()` em `src/lib/monitor.ts` (`pendente`)
-  - `SUB-35.17`: `contarPorAgente()` em `src/lib/monitor.ts` (`pendente`)
+  - `SUB-35.17`: `contarPorAgente()` em `src/lib/monitor.ts` (`concluido`)
   - `SUB-35.18`: `segmentosLinhaDoTempo()` em `src/lib/monitor.ts` (`pendente`)
-  - `SUB-35.19`: Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts` (`pendente`)
+  - `SUB-35.19`: Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts` (`concluido`)
   - `SUB-35.20`: Hook `useAtividadeAgentes(projectId)` em `src/hooks/useAtividadeAgentes.ts` (`pendente`)
   - `SUB-35.21`: Instalar `chart.js` e `react-chartjs-2` (`concluido`, `73d73ad`)
   - `SUB-35.22`: Registro do Chart.js e paleta em `src/lib/charts.ts` (`concluido`, `cabdbc0`)
@@ -2357,15 +2357,15 @@
 - **Commit:** `860e0c9`
 - **Anotação:** Adicionados em `src/lib/monitor.ts` `ORDEM_ESTADOS` (ativo, ocioso, sem_sinal, finalizado) e `contarPorStatus(atividades, agora = Date.now(), limites = {})` -> `{ estado, total }[]` usando `estadoDoAgente`, sempre na ordem fixa e com zeros (para o gráfico de rosca). 2 testes novos em `tests/unit/monitor.test.ts`. `npm test` e `npm run typecheck` verdes.
 
-#### [🔄] SUB-35.17: `contarPorAgente()` em `src/lib/monitor.ts`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 04 (Grok Bot) (início: 2026-10-12 01:17)
+#### [x] SUB-35.17: `contarPorAgente()` em `src/lib/monitor.ts`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 04 + DashboardAI (Grok Bot) (2026-10-12 01:17 → 2026-10-12 01:22)
 - **Depende de:** SUB-35.16
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `contarPorAgente(eventos)` -> `{ agente, porTipo: Record<TipoEventoAgente, number> }[]` ordenado por total desc (para o gráfico de barras empilhadas). Testes.
 - **Critérios de Aceitação:** `npm test` passa.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `7d2181e`
+- **Anotação:** `contarPorAgente(eventos)` -> `{ agente, porTipo, total }[]` com todos os tipos zerados, ordenado por total desc e nome; 2 testes.
 
 #### [ ] SUB-35.18: `segmentosLinhaDoTempo()` em `src/lib/monitor.ts`
 - **Status:** pendente
@@ -2377,15 +2377,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-35.19: Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 09 (Grok Bot)
+#### [x] SUB-35.19: Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 09 + DashboardAI (Grok Bot) (2026-10-12 01:17 → 2026-10-12 01:22)
 - **Depende de:** SUB-35.11, SUB-35.14
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Carrega `listarEventos` ao montar/trocar de projeto, assina `assinarEventos` e aplica `mesclarEvento` a cada INSERT; expõe `{ eventos, statusConexao: 'conectando' | 'ao_vivo' | 'erro', erro, recarregar }`; remove o canal no cleanup. Exportar em `src/hooks/index.ts`.
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `7d2181e`
+- **Anotação:** Hook carrega `listarEventos`, assina `assinarEventos` e mescla com `mesclarEvento`; expõe `eventos`, `statusConexao`, `erro`, `recarregar`; exportado em `src/hooks/index.ts`.
 
 #### [ ] SUB-35.20: Hook `useAtividadeAgentes(projectId)` em `src/hooks/useAtividadeAgentes.ts`
 - **Status:** pendente
@@ -2418,8 +2418,8 @@
 - **Anotação:** Criado `src/lib/charts.ts`: `Chart.register` só com `ArcElement`, `BarElement`, `CategoryScale`, `LinearScale`, `Tooltip` e `Legend` (linha do tempo usará `LinearScale` com ms, sem `TimeScale`/adaptador de datas), reexporta `Chart`; paletas `CORES_ESTADO` (ativo/ocioso/sem_sinal/finalizado) e `CORES_TIPO` (os 8 tipos do check de `agent_events`) com variantes `claro`/`escuro`, mais `CORES_EIXO` e `corDoTema(cor, escuro)`. `npm run typecheck`, `npm run build` e `npm test` OK.
 
 #### [ ] SUB-35.23: Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 01
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-35.15
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Cartão de um agente: nome, selo do estado (`estadoDoAgente`), task atual (`task_codigo`), etapa/nó, última mensagem e "há X s" (`tempoRelativo`). Criar `src/components/monitor/index.ts`.
