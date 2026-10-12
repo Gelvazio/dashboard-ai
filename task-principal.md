@@ -9,8 +9,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 31
-- **Em Execução:** 3 (`SUB-01.1`, `SUB-27`, `SUB-08`)
-- **Pendentes:** 23
+- **Em Execução:** 4 (`SUB-01.1`, `SUB-27`, `SUB-08`, `SUB-31`)
+- **Pendentes:** 22
 - **Concluídas:** 7
 - **Canceladas:** 0
 
@@ -126,9 +126,9 @@
 - **Commit:** `5d7c995`
 - **Anotação:** api/_lib/queue-tools.ts + api/_lib/supabase.ts (cliente fetch sem dependências). tsc strict OK; e2e com PostgREST local: 27 checagens (dependências, humano ignorado, dono da trava, erro volta à fila, log sem_tarefa, projeto padrão, allowlist, 401 sem token).
 
-### [ ] SUB-31: Recados entre Agentes e Regras por Projeto
-- **Status:** pendente
-- **Executor:** nenhum
+### [🔄] SUB-31: Recados entre Agentes e Regras por Projeto
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:47)
 - **Depende de:** SUB-29
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Tabelas genéricas `agent_messages` (recados entre agentes/frentes, por projeto e task) e `project_rules` (cópia por seção das regras do repositório de cada projeto, conferida por md5), com RLS por projeto.
