@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { mensagemErroAuth, MENSAGEM_GENERICA_AUTH, MENSAGEM_REDE_AUTH, validarLogin } from '@/lib/auth';
+import { mensagemErroAuth, MENSAGEM_GENERICA_AUTH, MENSAGEM_REDE_AUTH, validarLogin, urlDeRetorno } from '@/lib/auth';
 
 describe('mensagemErroAuth', () => {
   it('null devolve vazio', () => expect(mensagemErroAuth(null)).toBe(''));
@@ -22,4 +22,14 @@ describe('validarLogin', () => {
   it('campos vazios', () => expect(validarLogin({ email: ' ', senha: '' })).toEqual({ email: 'Informe o e-mail.', senha: 'Informe a senha.' }));
   it('e-mail inválido', () => expect(validarLogin({ email: 'a@b', senha: '123456' }).email).toBe('E-mail inválido.'));
   it('senha curta', () => expect(validarLogin({ email: 'a@b.com', senha: '12345' }).senha).toMatch(/6 caracteres/));
+});
+
+describe('urlDeRetorno', () => {
+  const o = 'https://app.exemplo.com';
+  it('mantém a tela do hash', () => expect(urlDeRetorno({ origin: o, pathname: '/', hash: '#/memoria' })).toBe(`${o}/#/memoria`));
+  it('descarta tokens no hash', () =>
+    expect(urlDeRetorno({ origin: o, pathname: '/', hash: '#access_token=abc&type=recovery' })).toBe(`${o}/`));
+  it('descarta parâmetros após a tela', () =>
+    expect(urlDeRetorno({ origin: o, pathname: '/app/', hash: '#/login?x=1&access_token=a' })).toBe(`${o}/app/#/login`));
+  it('sem hash e caminho vazio', () => expect(urlDeRetorno({ origin: o, pathname: '', hash: '' })).toBe(`${o}/`));
 });

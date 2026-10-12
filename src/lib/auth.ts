@@ -49,3 +49,13 @@ export function validarLogin(d: { email: string; senha: string }): Partial<Recor
   else if (senha.length < 6) erros.senha = 'A senha deve ter pelo menos 6 caracteres.';
   return erros;
 }
+
+/**
+ * URL de retorno (`redirectTo`) do link mágico e da redefinição de senha:
+ * origem + caminho + hash da tela (`#/rota`), descartando tokens/parâmetros anteriores
+ * (`#access_token=...`, `?x=`, `&type=`).
+ */
+export function urlDeRetorno(loc: Pick<Location, 'origin' | 'pathname' | 'hash'>): string {
+  const tela = /^#\/[^?&#=]*/.exec(loc.hash ?? '')?.[0] ?? '';
+  return `${loc.origin}${loc.pathname || '/'}${tela}`;
+}
