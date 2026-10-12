@@ -864,9 +864,9 @@
 - **Commit:** `62dea7a`
 - **Anotação:** Criado `src/components/memoria/MemoriaFormModal.tsx` (exportado no `index.ts`): `{ aberto, projeto, onFechar, onSalvo(memoria) }` com `Modal`/`Botao`; Título (até 200), Conteúdo com `MarkdownEditor`, Tags com `TagInput` + `TagSugestoes` alimentado por `sugerirTags(titulo, conteudo, 8)`, opção "Memória global" (`projectId = null`). Valida com `validarMemoria` (erro por campo, foco no 1º inválido), salva com `useSalvarMemoria`; o hook ganhou `erro`/`limparErro` para o erro do banco/RLS aparecer no modal (além do toast). Estado zerado ao abrir. `npm run typecheck`, `npm run build` e `npm test` OK; screenshots headless 1280x800 e 390x844 conferidos (harness temporário, não commitado).
 
-#### [ ] SUB-20.7: Botão "Nova memória" na `src/views/MemoriaView.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [🔄] SUB-20.7: Botão "Nova memória" na `src/views/MemoriaView.tsx`
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 04 (Grok Bot) (início: 2026-10-12 01:10)
 - **Depende de:** SUB-20.6, SUB-19.8, SUB-21.9
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar botão "Nova memória" no cabeçalho da `MemoriaView` que abre o `MemoriaFormModal` e recarrega a grade (`recarregar` do `useMemorias`, SUB-21.3/21.9) e a busca após salvar. Depende da SUB-19.8 para editar a view em sequência.

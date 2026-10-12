@@ -55,14 +55,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:09 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 04 (Grok Bot) — SUB-20.7
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-20.7** |
+| **Título da Sub-task:** | Botão "Nova memória" na `src/views/MemoriaView.tsx` |
+| **Agente Responsável:** | DashboardAI-Clone 04 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:10 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (1)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-20.7** | Botão "Nova memória" na `src/views/MemoriaView.tsx` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:10 | SUB-20.6, SUB-19.8, SUB-21.9 |
 | **SUB-37** | Ranking e prêmios dos agentes no `dashboard-task-principal.html` | DashboardAI (Grok Bot) | 2026-10-12 01:09 | Nenhuma |
 | **SUB-34.3** | Modais da fila sob demanda na `src/views/FilaView.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:08 | SUB-34.1 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
@@ -93,7 +105,7 @@
 | **SUB-19.3** | `formatarSimilaridade` em `src/lib/similaridade.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-19.9** | `BuscaControles` (limiar, globais, modo) em `src/components/memoria/BuscaControles.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-20** | Formulário de Nova Memória Canônica (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-20.1 a SUB-20.10 |
-| **SUB-20.7** | Botão "Nova memória" na `src/views/MemoriaView.tsx` | 4 | Fase 7 | SUB-20.6, SUB-19.8, SUB-21.9 — ⛓️ bloqueada |
+| **SUB-20.7** | Botão "Nova memória" na `src/views/MemoriaView.tsx` | 4 | Fase 7 | SUB-20.6, SUB-19.8, SUB-21.9 — ⛓️ bloqueada — 🔄 em execução por DashboardAI-Clone 04 (Grok Bot) |
 | **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-20.9** | Componente `TagSugestoes` em `src/components/ui/TagSugestoes.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias (mãe) | 4 | Fase 7 | SUB-10, SUB-12; SUB-21.1 a SUB-21.14 |
@@ -588,3 +600,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:09 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.6 | `e7a39cd` | Criado `tests/integration/agentEvents.integration.test.ts` (helpers de `tests/helpers/postgrest.ts`; cliente sem tipagem de tabela até a SUB-35.8 incluir `agent_events` no tipo `Database`): viewer lê só eventos do próprio projeto; viewer não inclui (RLS); editor inclui no próprio projeto com `agente` aparado e `criado_por` = ele; update recusado (permission denied, nada alterado); task de outro projeto recusada pelo trigger ("não pertence ao projeto do evento"). `npm run test:integration` (PostgREST + Postgres 17 locais, Node 22) verde: 6 arquivos, 23 testes; `npm test` verde (skipped sem PostgREST); `npm run typecheck` OK. Obs.: no box o Node padrão é 20 e o supabase-js exige Node 22+ para a integração. |
 | 2026-10-12 01:09 | DashboardAI (Grok Bot) | SUB-37 | — | Lock: assumindo SUB-37 (Ranking e prêmios dos agentes no `dashboard-task-principal.html`) — criada a pedido do usuário (prêmios para o agente que mais entrega) |
 | 2026-10-12 01:10 | DashboardAI-Clone 02 | SUB-35.43 | `e8917a3` | CLI em `scripts/espelhar_quadro_eventos.py`: lê `git log --reverse` (`--desde`, `--repo`), lista os eventos (dry-run por padrão) e com `--aplicar` envia em lotes a `agent_events` via `ClienteSupabase`/`.env` do `sincronizar_tasks.py` (service_role, `--projeto` ou `DASHBOARD_AI_PROJECT`) com `on_conflict=project_id,chave_idempotencia` e `Prefer: resolution=ignore-duplicates`. Teste unitário de `enviar_eventos` (5 testes OK). Validado ponta a ponta com Postgres + PostgREST locais: 216 eventos enviados 2x -> 216 linhas, sem duplicar. |
+| 2026-10-12 01:10 | DashboardAI-Clone 04 (Grok Bot) | SUB-20.7 | — | Lock: assumindo SUB-20.7 (Botão "Nova memória" na `src/views/MemoriaView.tsx`) |
