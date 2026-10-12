@@ -44,17 +44,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:53 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.25
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-27.25** |
-| **Título da Sub-task:** | `papelNoProjeto()` em `src/services/authService.ts` |
-| **Agente Responsável:** | DashboardAI-Clone 01 |
-| **Data e Hora de Início:** | 2026-10-12 00:53 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 06 — SUB-20.5
 
 | Propriedade | Valor Atual |
@@ -87,7 +76,6 @@
 |---|---|---|---|---|
 | **SUB-19.5** | Componente `ResultadoBuscaCard` em `src/components/memoria/` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:54 | SUB-19.4 |
 | **SUB-20.5** | Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts` | DashboardAI-Clone 06 | 2026-10-12 00:54 | SUB-33.7 |
-| **SUB-27.25** | `papelNoProjeto()` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:53 | SUB-27.7 |
 | **SUB-23.3** | `diagnosticarFila(tasks)` em `src/lib/saudeFila.ts` | DashboardAI-Clone 02 | 2026-10-12 00:53 | SUB-23.2 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
@@ -230,7 +218,6 @@
 | **SUB-27.20** | Limpar `ProjetoContext` ao sair | 3 | Fase 10 | SUB-27.26 — ⛓️ bloqueada |
 | **SUB-27.21** | Documentar primeiro administrador e membros em `database/README.md` | 3 | Fase 10 | SUB-27.13 — ⛓️ bloqueada |
 | **SUB-27.22** | Conferência no navegador (entrar, sair, restaurar sessão) — SUB-27 | 3 | Fase 10 | SUB-27.18 — ⛓️ bloqueada |
-| **SUB-27.25** | `papelNoProjeto()` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.7 — ⛓️ bloqueada |
 | **SUB-27.26** | Hook `useAuth` em `src/hooks/useAuth.ts` | 3 | Fase 10 | SUB-27.9 — ⛓️ bloqueada |
 | **SUB-27.27** | Incluir `UserMenu` no `src/components/layout/Header.tsx` | 3 | Fase 10 | SUB-27.14 — ⛓️ bloqueada |
 | **SUB-27.28** | Varredura do bundle por `service_role` (SUB-27) | 3 | Fase 10 | SUB-27.22 — ⛓️ bloqueada |
@@ -288,6 +275,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-27.25** | `papelNoProjeto()` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:53 | 2026-10-12 00:54 | `6223e85` |
 | **SUB-27.24** | `redefinirSenha()` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:53 | 2026-10-12 00:53 | `e5477d2` |
 | **SUB-27.23** | `obterSessao()` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:52 | 2026-10-12 00:53 | `c696d9f` |
 | **SUB-20.4** | Componente `TagInput` em `src/components/ui/TagInput.tsx` | DashboardAI-Clone 06 | 2026-10-12 00:52 | 2026-10-12 00:53 | `3d44cd1` |
@@ -494,3 +482,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:53 | DashboardAI-Clone 01 | SUB-27.25 | — | Lock: assumindo SUB-27.25 (`papelNoProjeto()` em `src/services/authService.ts`) |
 | 2026-10-12 00:54 | DashboardAI-Clone 06 | SUB-20.5 | — | Lock: assumindo SUB-20.5 (Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts`) |
 | 2026-10-12 00:54 | DashboardAI-Clone 10 (Grok Bot) | SUB-19.5 | — | Lock: assumindo SUB-19.5 (Componente `ResultadoBuscaCard` em `src/components/memoria/`) |
+| 2026-10-12 00:54 | DashboardAI-Clone 01 | SUB-27.25 | `6223e85` | Adicionado `papelNoProjeto(projectId, userId, client = getSupabase())` em `src/services/authService.ts`: admin global (`obterPapelGlobal`) -> `'admin'`; senão `project_members.role` (`maybeSingle`); não membro -> `null`; erro -> `ServiceError`. typecheck verde. |

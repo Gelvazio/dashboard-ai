@@ -1730,15 +1730,15 @@
 - **Commit:** `e5477d2`
 - **Anotação:** Adicionado `redefinirSenha(email, redirectTo, client = getSupabase())` em `src/services/authService.ts`: `auth.resetPasswordForEmail` com `redirectTo` (e-mail com trim); erro -> `ServiceError(mensagemErroAuth(error), 'AUTH')`. typecheck verde.
 
-#### [ ] SUB-27.25: `papelNoProjeto()` em `src/services/authService.ts`
-- **Status:** em_execucao
+#### [x] SUB-27.25: `papelNoProjeto()` em `src/services/authService.ts`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.7
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `papelNoProjeto(projectId, userId, client): Promise<ProjectRole | 'admin' | null>` (admin global via `obterPapelGlobal` tem acesso total; senão `project_members.role`; não membro -> `null`).
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `6223e85`
+- **Anotação:** Adicionado `papelNoProjeto(projectId, userId, client = getSupabase())` em `src/services/authService.ts`: admin global (`obterPapelGlobal`) -> `'admin'`; senão `project_members.role` (`maybeSingle`); não membro -> `null`; erro -> `ServiceError`. typecheck verde.
 
 #### [ ] SUB-27.26: Hook `useAuth` em `src/hooks/useAuth.ts`
 - **Status:** pendente
