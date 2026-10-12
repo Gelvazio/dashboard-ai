@@ -45,28 +45,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.13
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-28.13** |
-| **Título da Sub-task:** | Checkpointer durável em `worker/checkpointer.ts` |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 12:49 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202
-- **Em Execução:** 1 (SUB-28.13, Devin (Cognition AI), desde 2026-10-12 12:49)
+- **Em Execução:** 0
 - **Pendentes:** 4 principais (25, 26, 28, 35) + 27 subtarefas
-  - livres agora: 5 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-35.32, SUB-35.33)
-  - bloqueadas por dependência: 22
+  - livres agora: 6 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.22, SUB-35.32, SUB-35.33)
+  - bloqueadas por dependência: 21
   - reservadas: 0
-- **Concluídas:** 207 de 239 blocos (33 principais + 174 subtarefas)
+- **Concluídas:** 208 de 239 blocos (33 principais + 175 subtarefas)
 - **Canceladas:** 0
 
 ---
@@ -1984,7 +1973,7 @@
   - `SUB-28.10`: Nó `revisar` (roteamento) em `worker/nos/revisar.ts` (`concluido`, `b1c35a9`)
   - `SUB-28.11`: Nó `finalizar` em `worker/nos/finalizar.ts` (`concluido`, `9575b13`)
   - `SUB-28.12`: Montagem do `StateGraph` em `worker/grafo.ts` (`concluido`, `0d9c835`)
-  - `SUB-28.13`: Checkpointer durável em `worker/checkpointer.ts` (`em_execucao`)
+  - `SUB-28.13`: Checkpointer durável em `worker/checkpointer.ts` (`concluido`, `1bd4ca7`)
   - `SUB-28.14`: Reconciliação na retomada em `worker/reconciliar.ts` (`concluido`, `206ba39`)
   - `SUB-28.15`: CLI do worker em `worker/index.ts` (`pendente`)
   - `SUB-28.16`: Endpoint `api/aprovacao.ts`: autenticação e papel (401/403) (`pendente`)
@@ -2142,16 +2131,16 @@
 - **Anotação:** `criarGrafo(deps)` em `worker/grafo.ts` monta o `StateGraph(EstadoExecucao)`: `carregarContexto -> planejar -> politica -> executar -> revisar -> (executar | finalizar)`, com `politica` indo direto para `finalizar` quando a aprovação é negada; `DepsGrafo` injeta modelo, checkpointer e as dependências de cada nó (padrão: implementações reais). Testes com fakes em `tests/unit/worker-grafo.test.ts`: caminho feliz executa os dois passos com chaves `exec-5:passo-0/1` e finaliza `concluida`; aprovação negada finaliza `recusada` sem executar. `npm run typecheck:worker`, `npm run typecheck`, `npm test` e `npm run build` verdes.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:49 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
-#### [ ] SUB-28.13: Checkpointer durável em `worker/checkpointer.ts`
-- **Status:** em_execucao
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:49)
+#### [x] SUB-28.13: Checkpointer durável em `worker/checkpointer.ts`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:49, conclusão: 2026-10-12 12:50)
 - **Depende de:** SUB-28.28
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Configurar `PostgresSaver` em schema próprio (`langgraph`) com `LANGGRAPH_DATABASE_URL` no servidor; `setup()` idempotente.
 - **Critérios de Aceitação:** Teste contra Postgres local (ou skipped sem banco).
-- **Commit:** pendente (código parcial em `9ec08da`)
-- **Anotação:** Reaberta na revisão de 2026-10-12 (Devin (revisão do quadro)): marcada como concluída em `310fab9`, mas placeholder: `criarCheckpointer()` devolve `null`.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (reaberta: critérios de aceitação não atendidos)
+- **Commit:** `1bd4ca7`
+- **Anotação:** `criarCheckpointer(env)` em `worker/checkpointer.ts`: `PostgresSaver.fromConnString(LANGGRAPH_DATABASE_URL, { schema: 'langgraph' })` + `setup()` (idempotente); sem a variável lança erro. `LANGGRAPH_DATABASE_URL` documentada no `.env.example` (só servidor). `tests/unit/worker-checkpointer.test.ts`: exige a variável; com Postgres local (`describe.skipIf` sem banco) chama `setup()` duas vezes, grava e lê um checkpoint e confere as tabelas no schema `langgraph` — rodado e verde contra Postgres 16 em Docker. `npm test`, `npm run typecheck`, `npm run typecheck:worker`, `npm run build` e `npm run check:env` verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:50 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
 #### [x] SUB-28.14: Reconciliação na retomada em `worker/reconciliar.ts`
 - **Status:** concluido
