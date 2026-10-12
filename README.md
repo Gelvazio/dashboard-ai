@@ -88,11 +88,73 @@ O frontend consome as mesmas tabelas via chave anon + RLS, enquanto o MCP e os s
 
 ## Execução local
 
-> Seção provisória (detalhada na SUB-26.3).
+### Pré-requisitos
 
-Requer Node 22.12+. Copie `.env.example` para `.env.local`, preencha as variáveis do seu
-projeto Supabase e rode `npm ci` e `npm run dev`. `npm run check:env` confere se toda
-variável usada no código está documentada no `.env.example`.
+- **Node.js 22.12+** (o `package.json` exige `"engines": { "node": ">=22.12" }`). O
+  [`.nvmrc`](.nvmrc) fixa a versão 22: com o nvm, rode `nvm use` na raiz.
+- **npm** (vem com o Node). Use `npm ci`, que respeita o `package-lock.json`.
+- Opcional: **Python 3** para os scripts de [`scripts/`](scripts/) e os testes deles.
+- Opcional, só para os testes de integração: **PostgreSQL** com `pgvector` e **PostgREST**
+  locais (ver abaixo).
+
+### Passo a passo
+
+```bash
+nvm use                      # Node 22 (lê o .nvmrc)
+npm ci                       # instala as dependências exatas do package-lock.json
+cp .env.example .env.local   # frontend (Vite); use `.env` para api/ e scripts/
+npm run check:env            # confere se toda variável usada no código está no .env.example
+npm run dev                  # Vite em http://localhost:5173
+```
+
+Preencha no `.env.local` ao menos `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` (chave
+**anon**, nunca a `service_role`). As variáveis sem prefixo `VITE_` são do servidor
+(`api/` e `scripts/`) e ficam no `.env`; o [`.env.example`](.env.example) explica cada uma.
+Os dois arquivos estão no `.gitignore`.
+
+> O `npm run dev` sobe **só o frontend** (Vite). As funções de [`api/`](api/) (MCP e
+> embeddings) rodam na Vercel — veja [Deploy na Vercel](#deploy-na-vercel).
+
+### Scripts do `package.json`
+
+| Comando | O que faz |
+|---|---|
+| `npm run dev` | Servidor de desenvolvimento do Vite (porta 5173) |
+| `npm run build` | `tsc -b` + `vite build` (saída em `dist/`) |
+| `npm run preview` | Serve o `dist/` gerado pelo build |
+| `npm run typecheck` | Checagem de tipos do frontend e de `api/` |
+| `npm run typecheck:api` / `typecheck:worker` | Checagem só de `api/` ou só do `worker/` |
+| `npm test` | Testes unitários (`vitest run`), sem banco nem rede |
+| `npm run test:integration` | Testes de integração contra PostgreSQL + PostgREST locais |
+| `npm run check:env` | Variáveis usadas no código × `.env.example` |
+| `npm run check:chunks` | Tamanho dos chunks do build (limite `CHUNK_LIMITE_KB`, padrão 500) |
+| `npm run validar` | Validação completa (ver abaixo) |
+| `npm run worker` | Worker LangGraph (`tsx worker/index.ts`) |
+
+### Testes
+
+```bash
+npm test                     # unitários (vitest)
+npm run test:integration     # integração (precisa de banco local)
+```
+
+O `npm run test:integration` roda [`tests/integration/run.sh`](tests/integration/run.sh): recria
+o banco local `dashai_front_test` com os scripts de `database/`, sobe um PostgREST temporário e
+roda `vitest run tests/integration`. Precisa do `psql` (por padrão `sudo -n -u postgres psql`;
+troque com `PSQL=...`) e do binário do PostgREST (`POSTGREST_BIN=/caminho/postgrest`). Também
+aceita `DB` e `PORT`. ⚠️ **Nunca** rode contra o Supabase: o script apaga e recria o banco.
+
+### Validação completa
+
+```bash
+npm run validar
+```
+
+O [`scripts/validar.sh`](scripts/validar.sh) roda, **sem parar na primeira falha**: `typecheck`,
+`npm test`, `build`, `check:chunks`, `check:env`, os testes Python
+(`python3 -m unittest discover -s scripts`, pulados sem `python3`) e
+`npm audit --omit=dev --audit-level=high`. No fim mostra um resumo e sai com código 1 se
+alguma etapa falhou.
 
 ## Banco de dados
 
