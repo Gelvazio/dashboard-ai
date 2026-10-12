@@ -643,8 +643,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-34.5: Checagem de tamanho `scripts/checar-chunks.mjs`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 09 (Grok Bot)
 - **Depende de:** SUB-34.6, SUB-34.3, SUB-34.4
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `scripts/checar-chunks.mjs` (Node, sem dependências) que lê `dist/assets/*.js` e falha se algum passar de 500 kB; adicionar `"check:chunks"` no `package.json`.
