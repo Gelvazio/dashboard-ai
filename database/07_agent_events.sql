@@ -54,3 +54,58 @@ create index if not exists agent_events_projeto_recentes_idx
     on public.agent_events (project_id, created_at desc);
 create index if not exists agent_events_projeto_agente_idx
     on public.agent_events (project_id, agente, created_at desc);
+
+-- -----------------------------------------------------------------------------
+-- Validação (SUB-35.2): task do mesmo projeto, task_codigo preenchido a partir da
+-- task e eventos só-inclusão (update não muda project_id/agente/created_at).
+-- security invoker de propósito, como em agent_messages_preparar (06): current_user
+-- identifica a interface e a busca da task respeita a RLS.
+-- -----------------------------------------------------------------------------
+create or replace function public.validar_agent_event()
+returns trigger
+language plpgsql
+security invoker
+set search_path = public
+as $$
+declare
+  v_task record;
+begin
+  if tg_op = 'UPDATE' then
+    if new.project_id is distinct from old.project_id then
+      raise exception 'agent_events: project_id não pode ser alterado (eventos são só-inclusão).';
+    end if;
+    if new.agente is distinct from old.agente then
+      raise exception 'agent_events: agente não pode ser alterado (eventos são só-inclusão).';
+    end if;
+    if new.created_at is distinct from old.created_at then
+      raise exception 'agent_events: created_at não pode ser alterado (eventos são só-inclusão).';
+    end if;
+    if new.criado_por is distinct from old.criado_por then
+      new.criado_por := old.criado_por;
+    end if;
+  elsif current_user in ('anon', 'authenticated') then
+    new.criado_por := public.usuario_atual();       -- a interface não escolhe o autor
+  end if;
+
+  new.agente := btrim(new.agente);
+
+  if new.task_id is null and new.task_codigo is not null and tg_op = 'INSERT' then
+    select id into new.task_id from public.tasks
+     where project_id = new.project_id and codigo = new.task_codigo;
+    -- código sem task correspondente é aceito (ex.: subtarefa só no quadro Markdown)
+  end if;
+  if new.task_id is not null then
+    select id, project_id, codigo into v_task from public.tasks where id = new.task_id;
+    if not found or v_task.project_id is distinct from new.project_id then
+      raise exception 'agent_events: a task % não pertence ao projeto do evento.', new.task_id;
+    end if;
+    new.task_codigo := v_task.codigo;
+  end if;
+  return new;
+end;
+$$;
+
+drop trigger if exists validar_agent_event_trg on public.agent_events;
+create trigger validar_agent_event_trg
+    before insert or update on public.agent_events
+    for each row execute function public.validar_agent_event();
