@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
-import { AlertCircle, Brain } from 'lucide-react';
+import { AlertCircle, Brain, Sparkles } from 'lucide-react';
 import { EmConstrucao } from '@/components/EmConstrucao';
+import { BuscaSemanticaPanel } from '@/components/memoria/BuscaSemanticaPanel';
 import { MemoriaGrid } from '@/components/memoria/MemoriaGrid';
 import { MemoriaToolbar } from '@/components/memoria/MemoriaToolbar';
 import { MemoriaDetailModal } from '@/components/memoria/MemoriaDetailModal';
@@ -15,9 +16,9 @@ import type { Memoria } from '@/services/memoryService';
  * Cérebro de memória do projeto (SUB-21.9): toolbar com filtros locais e grade
  * de memórias (projeto + globais).
  *
- * Pontos de extensão: a busca semântica entra na área do topo (SUB-19.8), o
- * botão "Nova memória" no cabeçalho da grade (SUB-20.7). Detalhe e exclusão
- * (com confirmação e remoção otimista) ligados na SUB-21.11.
+ * Busca semântica no topo (SUB-19.8). Ponto de extensão: o botão "Nova memória"
+ * no cabeçalho da grade (SUB-20.7). Detalhe e exclusão (com confirmação e
+ * remoção otimista) ligados na SUB-21.11.
  */
 export function MemoriaView() {
   const { projeto } = useProjetoAtual();
@@ -54,7 +55,19 @@ export function MemoriaView() {
 
   return (
     <div className="flex flex-col gap-4 sm:gap-6">
-      {/* Área reservada para a busca semântica (SUB-19.8). */}
+      <section aria-labelledby="titulo-busca-semantica" className="flex flex-col gap-3">
+        <h2 id="titulo-busca-semantica" className="flex items-center gap-2 font-semibold">
+          <Sparkles className="size-4 text-brand-500" aria-hidden />
+          Busca semântica
+        </h2>
+        <BuscaSemanticaPanel
+          projeto={projeto}
+          onAbrir={(id) => {
+            const m = memorias.find((x) => x.id === id);
+            if (m) setDetalhe(m);
+          }}
+        />
+      </section>
 
       <section className="card overflow-hidden">
         <header className="flex flex-wrap items-center gap-2 border-b border-slate-200 px-4 py-3 dark:border-slate-800">
