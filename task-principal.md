@@ -9,13 +9,12 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
-- **Subtarefas atômicas (~3 min):** 87 — 69 criadas em 2026-10-11 23:38 (SUB-19.x, SUB-20.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-28.x, SUB-33.x, SUB-34.x) + 18 da SUB-27 em 2026-10-11 23:41 (a pedido do usuário)
-- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-33`)
-- **Pendentes:** 8 principais (7 aguardando subtarefas + SUB-21 atômica) + 87 subtarefas
-  - livres agora: 10 (SUB-21, SUB-19.1, SUB-19.3, SUB-20.1, SUB-23.1, SUB-23.4, SUB-34.1, SUB-34.4, SUB-25.1, SUB-26.1)
-  - reservadas sob a trava da SUB-33 (DashboardAI (Grok Bot)): 9
-  - reservadas sob a trava da SUB-27 (Codex (OpenAI)): 18 (SUB-27.1 a SUB-27.18)
-  - bloqueadas por dependência: 51
+- **Subtarefas atômicas (~3 min):** 100 (SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x; atualizado em 2026-10-11 23:47)
+- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
+- **Pendentes:** 9 principais aguardando subtarefas (SUB-19, 20, 21, 23, 25, 26, 28, 33, 34) + 100 subtarefas
+  - livres agora: 14 (SUB-33.1, SUB-33.3, SUB-33.4, SUB-34.1, SUB-34.4, SUB-19.1, SUB-19.3, SUB-20.1, SUB-21.1, SUB-21.3, SUB-23.1, SUB-23.4, SUB-25.1, SUB-26.1)
+  - reservadas sob a trava da SUB-27 (Codex (OpenAI)): 18
+  - bloqueadas por dependência: 68
 - **Concluídas:** 25
 - **Canceladas:** 0
 
@@ -154,27 +153,30 @@
 - **Anotação:** api/_lib/supabase.ts reescrito: db() com createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY) sem sessão, fetch com timeout de 20 s e redirecionamento opcional via SUPABASE_REST_URL (testes), unwrap() que converte PostgrestError em SupabaseError, rpc(). queue-tools, brain-tools e args usam o query builder (from/select/eq/in/order/limit, insert().select().single(), upsert onConflict project_id,title, delete().is/eq().select()). Contrato das ferramentas inalterado. Achado: supabase-js 2.117 exige WebSocket nativo e quebra no Node 20 (EOL desde 2026-04), então engines.node passou a >=22.12, .nvmrc 22 e @types/node ^22. Validado com Node 22.23: build e typecheck OK; e2e contra PostgREST local: 27 cenários da fila e 36 da memória, todos OK; AGENTS.md e api/README.md atualizados.
 
 ### [ ] SUB-33: Endpoint de Embeddings para o Frontend (`api/embedding.ts`)
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:34)
-- **Depende de:** SUB-07, SUB-03; subtarefas SUB-33.1 a SUB-33.9
-- **Subtarefas:** (subdividida em 9 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`)
+- **Status:** pendente (aguardando subtarefas)
+- **Executor:** nenhum
+- **Depende de:** SUB-07, SUB-03; subtarefas SUB-33.1 a SUB-33.12
+- **Subtarefas:** (subdividida em 2026-10-11 23:38 e refinada para 12 em 2026-10-11 23:47 por DashboardAI (Grok Bot); trava liberada a pedido do usuário, filhas livres conforme dependências; a mãe só é concluída quando todas estiverem `concluido`)
   - `SUB-33.1`: `bearerToken(req)` em `api/_lib/auth.ts` (`pendente`)
   - `SUB-33.2`: `verificarSessaoSupabase(token)` em `api/_lib/auth.ts` (`pendente`)
   - `SUB-33.3`: `lerTextoEmbedding(body)` em `api/_lib/embedding-input.ts` (`pendente`)
-  - `SUB-33.4`: Handler `api/embedding.ts` (POST /api/embedding) (`pendente`)
+  - `SUB-33.4`: Esqueleto do handler `api/embedding.ts` (CORS, OPTIONS, 405) (`pendente`)
   - `SUB-33.5`: Registrar `api/embedding.ts` no `vercel.json` (`pendente`)
-  - `SUB-33.6`: Testes do handler em `tests/unit/api-embedding.test.ts` (`pendente`)
+  - `SUB-33.6`: Testes do handler: OPTIONS, 405 e 401 (`pendente`)
   - `SUB-33.7`: `criarGeradorEmbedding()` em `src/services/embeddingService.ts` (`pendente`)
   - `SUB-33.8`: Testes de `embeddingService` em `tests/unit/embeddingService.test.ts` (`pendente`)
   - `SUB-33.9`: Documentar `/api/embedding` no `api/README.md` (`pendente`)
+  - `SUB-33.10`: Autenticação no handler `api/embedding.ts` (401) (`pendente`)
+  - `SUB-33.11`: Corpo, geração do embedding e erros no handler (400/413/502/200) (`pendente`)
+  - `SUB-33.12`: Testes do handler: 413, 502 e 200 (`pendente`)
 - **Descrição:** Criar a função serverless `POST /api/embedding` que valida o JWT da sessão Supabase do usuário (`Authorization: Bearer <access_token>`, conferido no Supabase Auth com a URL e a chave do servidor) e devolve o embedding do texto enviado, usando `OPENAI_API_KEY`, `EMBEDDING_MODEL` e `EMBEDDING_API_URL` somente no servidor (reaproveitar `api/_lib/embeddings.ts`). No frontend, expor um `GeradorEmbedding` que chama esse endpoint para `buscarMemorias`/`salvarMemoria` (SUB-10).
 - **Critérios de Aceitação:** 401 sem sessão ou com JWT inválido; 405 para métodos diferentes de POST; limite de tamanho do texto; resposta com vetor de 1536 dimensões; nenhuma chave no navegador; `tsc` sem erros e testes cobrindo os casos.
 - **Commit:** pendente
-- **Anotação:** Subtarefas SUB-33.1 a SUB-33.9 ficam **reservadas** sob a trava da SUB-33 (DashboardAI (Grok Bot)); outros agentes não devem assumi-las.
+- **Anotação:** Trava de DashboardAI (Grok Bot) (desde 2026-10-11 23:34) liberada em 2026-10-11 23:47 a pedido do usuário, sem código escrito; SUB-33.4 (endpoint) e SUB-33.6 (testes) refinadas em SUB-33.4/33.10/33.11 e SUB-33.6/33.12.
 
 #### [ ] SUB-33.1: `bearerToken(req)` em `api/_lib/auth.ts`
-- **Status:** pendente (reservada — trava da SUB-33)
-- **Executor:** DashboardAI (Grok Bot) (reserva desde 2026-10-11 23:34)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `api/_lib/auth.ts` com `export function bearerToken(headers: McpRequest['headers']): string | null` que lê `authorization` (string ou array), aceita só o esquema `Bearer` (case-insensitive) e devolve o token sem espaços; `null` se ausente/malformado. Teste em `tests/unit/api-auth.test.ts`.
@@ -183,8 +185,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-33.2: `verificarSessaoSupabase(token)` em `api/_lib/auth.ts`
-- **Status:** pendente (reservada — trava da SUB-33)
-- **Executor:** DashboardAI (Grok Bot) (reserva desde 2026-10-11 23:34)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-33.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `export async function verificarSessaoSupabase(token: string, env = process.env): Promise<{ userId: string } | null>` que chama `GET ${SUPABASE_URL}/auth/v1/user` com `Authorization: Bearer <token>` e `apikey` (`SUPABASE_ANON_KEY` ou `SUPABASE_SERVICE_ROLE_KEY`), timeout 10 s; 200 com `id` -> `{ userId }`, 401/403 -> `null`, outros erros lançam `AuthError`. Testes com `fetch` simulado (`vi.stubGlobal`) em `tests/unit/api-auth.test.ts`.
@@ -193,8 +195,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-33.3: `lerTextoEmbedding(body)` em `api/_lib/embedding-input.ts`
-- **Status:** pendente (reservada — trava da SUB-33)
-- **Executor:** DashboardAI (Grok Bot) (reserva desde 2026-10-11 23:34)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `api/_lib/embedding-input.ts` com `export class HttpError extends Error { status }` e `export function lerTextoEmbedding(body: unknown): string`: aceita objeto, string JSON ou Buffer; exige `texto` string não vazia (400), máximo 8.000 caracteres (413). Testes em `tests/unit/api-embedding-input.test.ts`.
@@ -202,19 +204,19 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-33.4: Handler `api/embedding.ts` (POST /api/embedding)
-- **Status:** pendente (reservada — trava da SUB-33)
-- **Executor:** DashboardAI (Grok Bot) (reserva desde 2026-10-11 23:34)
-- **Depende de:** SUB-33.2, SUB-33.3
+#### [ ] SUB-33.4: Esqueleto do handler `api/embedding.ts` (CORS, OPTIONS, 405)
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Criar `api/embedding.ts` (default export `handler(req: McpRequest, res: McpResponse)`): CORS igual ao `api/mcp.ts` (`MCP_CORS_ORIGIN`), `OPTIONS` -> 204, não-POST -> 405 com `Allow`, sem/JWT inválido -> 401 (`bearerToken` + `verificarSessaoSupabase`), `HttpError` -> status dela, `generateEmbedding` (`api/_lib/embeddings.ts`) -> 200 `{ embedding, dimensoes: 1536, modelo }`; `EmbeddingError` -> 502 com mensagem segura.
-- **Critérios de Aceitação:** `npm run typecheck:api` OK; nenhuma chave no corpo de resposta.
+- **Descrição:** Criar `api/embedding.ts` com default export `handler(req: McpRequest, res: McpResponse)` (tipos de `api/_lib/http.ts`): cabeçalhos CORS iguais ao `api/mcp.ts` (`MCP_CORS_ORIGIN`, métodos `POST, OPTIONS`, `Authorization`), `OPTIONS` -> 204, não-POST -> 405 com `Allow: POST, OPTIONS` e JSON `{ erro }`; POST responde 501 provisório (substituído na SUB-33.11).
+- **Critérios de Aceitação:** `npm run typecheck:api` OK.
 - **Commit:** pendente
 - **Anotação:** pendente
 
 #### [ ] SUB-33.5: Registrar `api/embedding.ts` no `vercel.json`
-- **Status:** pendente (reservada — trava da SUB-33)
-- **Executor:** DashboardAI (Grok Bot) (reserva desde 2026-10-11 23:34)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-33.4
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Em `vercel.json`, adicionar `"api/embedding.ts": { "maxDuration": 15 }` em `functions` (manter `api/mcp.ts` e o rewrite `/mcp`).
@@ -222,20 +224,20 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-33.6: Testes do handler em `tests/unit/api-embedding.test.ts`
-- **Status:** pendente (reservada — trava da SUB-33)
-- **Executor:** DashboardAI (Grok Bot) (reserva desde 2026-10-11 23:34)
-- **Depende de:** SUB-33.4
+#### [ ] SUB-33.6: Testes do handler: OPTIONS, 405 e 401
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-33.10
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Testar o handler com `req`/`res` falsos e `fetch` simulado (Auth e embeddings): 204 OPTIONS, 405 GET, 401 sem token, 401 JWT recusado, 413 texto longo, 502 erro da API, 200 com vetor de 1536.
-- **Critérios de Aceitação:** `npm test` passa com os 7 casos.
+- **Descrição:** Criar `tests/unit/api-embedding.test.ts` com `req`/`res` falsos e `fetch` simulado: 204 em OPTIONS (com CORS), 405 em GET (com `Allow`), 401 sem token e 401 com JWT recusado pelo Auth.
+- **Critérios de Aceitação:** `npm test` passa com os 4 casos.
 - **Commit:** pendente
 - **Anotação:** pendente
 
 #### [ ] SUB-33.7: `criarGeradorEmbedding()` em `src/services/embeddingService.ts`
-- **Status:** pendente (reservada — trava da SUB-33)
-- **Executor:** DashboardAI (Grok Bot) (reserva desde 2026-10-11 23:34)
-- **Depende de:** SUB-33.4
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-33.11
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/services/embeddingService.ts` com `export function criarGeradorEmbedding(opcoes?: { url?: string; client?: DashboardClient }): GeradorEmbedding` que obtém o `access_token` de `client.auth.getSession()`, faz `POST /api/embedding` com `{ texto }`, converte 401 em `ServiceError('Faça login para usar a busca semântica.')`, outros erros em `ServiceError` e valida 1536 números. Exportar no barrel `src/services/index.ts`.
 - **Critérios de Aceitação:** `npm run typecheck` OK; sem chave de embeddings no frontend.
@@ -243,8 +245,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-33.8: Testes de `embeddingService` em `tests/unit/embeddingService.test.ts`
-- **Status:** pendente (reservada — trava da SUB-33)
-- **Executor:** DashboardAI (Grok Bot) (reserva desde 2026-10-11 23:34)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-33.7
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Testes com `fetch` simulado e cliente falso (`auth.getSession`): sem sessão, 401, 500, vetor com tamanho errado, sucesso (envia `Authorization: Bearer`).
@@ -253,12 +255,42 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-33.9: Documentar `/api/embedding` no `api/README.md`
-- **Status:** pendente (reservada — trava da SUB-33)
-- **Executor:** DashboardAI (Grok Bot) (reserva desde 2026-10-11 23:34)
-- **Depende de:** SUB-33.4
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-33.11
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Seção no `api/README.md`: contrato (request/response, códigos 401/405/413/502), variáveis (`SUPABASE_URL`, `SUPABASE_ANON_KEY` ou service role, `OPENAI_API_KEY`, `EMBEDDING_MODEL`, `EMBEDDING_API_URL`) e exemplo `curl`. Anotar no detalhe da SUB-08 as variáveis novas (sem editar a SUB-08, que está com outro agente).
 - **Critérios de Aceitação:** README revisado; nenhuma chave real.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-33.10: Autenticação no handler `api/embedding.ts` (401)
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-33.4, SUB-33.2
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** No POST do handler, exigir `bearerToken` + `verificarSessaoSupabase`; ausente ou recusado -> 401 com `WWW-Authenticate: Bearer`; `AuthError` (Auth fora do ar) -> 503 com mensagem segura.
+- **Critérios de Aceitação:** `npm run typecheck:api` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-33.11: Corpo, geração do embedding e erros no handler (400/413/502/200)
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-33.10, SUB-33.3
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Após a autenticação: `lerTextoEmbedding(req.body)` (`HttpError` -> status dela), `generateEmbedding` de `api/_lib/embeddings.ts` -> 200 `{ embedding, dimensoes: 1536, modelo }`; `EmbeddingError` -> 502 com mensagem sem chave. Remove o 501 provisório da SUB-33.4.
+- **Critérios de Aceitação:** `npm run typecheck:api` OK; nenhuma chave no corpo de resposta.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-33.12: Testes do handler: 413, 502 e 200
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-33.11
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Em `tests/unit/api-embedding.test.ts`, adicionar: 413 com texto longo, 400 sem `texto`, 502 quando a API de embeddings falha (sem vazar a chave) e 200 com vetor de 1536 (Auth e embeddings simulados).
+- **Critérios de Aceitação:** `npm test` passa com os 4 casos novos.
 - **Commit:** pendente
 - **Anotação:** pendente
 
@@ -579,9 +611,9 @@
 #### [ ] SUB-19.8: Integrar a busca na `src/views/MemoriaView.tsx`
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-19.7, SUB-21
+- **Depende de:** SUB-19.7, SUB-21.9
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Adicionar a seção "Busca semântica" (`BuscaSemanticaPanel` com o projeto de `useProjetoAtual`) no topo da `MemoriaView`, acima da grade da SUB-21. Depende da SUB-21 para não conflitar com a mesma view.
+- **Descrição:** Adicionar a seção "Busca semântica" (`BuscaSemanticaPanel` com o projeto de `useProjetoAtual`) no topo da `MemoriaView`, acima da grade. Depende da SUB-21.9, que cria a tela (área reservada no topo).
 - **Critérios de Aceitação:** `npm run typecheck`, `npm run build` e `npm test` OK; navegação `#/memoria` funciona.
 - **Commit:** pendente
 - **Anotação:** pendente
@@ -667,23 +699,133 @@
 #### [ ] SUB-20.7: Botão "Nova memória" na `src/views/MemoriaView.tsx`
 - **Status:** pendente
 - **Executor:** nenhum
-- **Depende de:** SUB-20.6, SUB-19.8
+- **Depende de:** SUB-20.6, SUB-19.8, SUB-21.9
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Adicionar botão "Nova memória" no cabeçalho da `MemoriaView` que abre o `MemoriaFormModal` e recarrega a grade (SUB-21) e a busca após salvar. Depende da SUB-19.8 para editar a view em sequência.
+- **Descrição:** Adicionar botão "Nova memória" no cabeçalho da `MemoriaView` que abre o `MemoriaFormModal` e recarrega a grade (`recarregar` do `useMemorias`, SUB-21.3/21.9) e a busca após salvar. Depende da SUB-19.8 para editar a view em sequência.
 - **Critérios de Aceitação:** `npm run typecheck`, `npm run build` e `npm test` OK; memória criada aparece na grade (teste manual contra banco local).
 - **Commit:** pendente
 - **Anotação:** pendente
 
 ### [ ] SUB-21: Grid de Gerenciamento e Exclusão de Memórias
-- **Status:** em_planejamento (travada para subdivisão)
-- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:45)
-- **Depende de:** SUB-10, SUB-12
-- **Subtarefas:** Nenhuma (atômica)
+- **Status:** pendente (aguardando subtarefas)
+- **Executor:** nenhum
+- **Depende de:** SUB-10, SUB-12; subtarefas SUB-21.1 a SUB-21.10
+- **Subtarefas:** (subdividida em 10 em 2026-10-11 23:47 por DashboardAI (Grok Bot) a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`)
+  - `SUB-21.1`: `memoriaComoMarkdown` e `escopoMemoria` em `src/lib/memorias.ts` (`pendente`)
+  - `SUB-21.2`: `filtrarMemoriasLocal` e `tagsDisponiveis` em `src/lib/memorias.ts` (`pendente`)
+  - `SUB-21.3`: Hook `useMemorias` em `src/hooks/useMemorias.ts` (`pendente`)
+  - `SUB-21.4`: Componente `MemoriaCard` em `src/components/memoria/MemoriaCard.tsx` (`pendente`)
+  - `SUB-21.5`: Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx` (`pendente`)
+  - `SUB-21.6`: Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` (`pendente`)
+  - `SUB-21.7`: Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` (`pendente`)
+  - `SUB-21.8`: Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` (`pendente`)
+  - `SUB-21.9`: Montar a tela em `src/views/MemoriaView.tsx` (`pendente`)
+  - `SUB-21.10`: Validação visual e de exclusão da SUB-21 (`pendente`)
 - **Descrição:** Exibição em cartões de todas as memórias cadastradas, com botão para copiar conteúdo Markdown, visualizar detalhes e excluir memória.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Grid responsivo com paginação/scroll e feedback de exclusão.
 - **Commit:** pendente
 - **Anotação:** Reserva liberada a pedido do usuário antes do início da implementação; disponível para outro agente.
+
+#### [ ] SUB-21.1: `memoriaComoMarkdown` e `escopoMemoria` em `src/lib/memorias.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `src/lib/memorias.ts` com `memoriaComoMarkdown(m: Memoria): string` (`# título`, linha de tags, escopo, conteúdo) e `escopoMemoria(m): 'global' | 'projeto'` (`project_id` nulo = global). Testes em `tests/unit/memorias.test.ts`.
+- **Critérios de Aceitação:** `npm test` passa; `npm run typecheck` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-21.2: `filtrarMemoriasLocal` e `tagsDisponiveis` em `src/lib/memorias.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-21.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Adicionar `filtrarMemoriasLocal(memorias, { busca, tag, escopo: 'todas'|'projeto'|'global' })` (busca sem acento/maiúsculas em título, conteúdo e tags) e `tagsDisponiveis(memorias): { tag, total }[]` ordenado por total. Testes no mesmo arquivo.
+- **Critérios de Aceitação:** `npm test` passa.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-21.3: Hook `useMemorias` em `src/hooks/useMemorias.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `useMemorias(projectId, { porPagina = 30 })` -> `{ memorias, carregando, erro, temMais, carregarMais, recarregar, remover(id), reinserir(memoria) }` usando `listarMemorias` (SUB-10) com `limite` crescente (`temMais` = veio o limite cheio); ignora respostas de projeto antigo. Exportar em `src/hooks/index.ts`.
+- **Critérios de Aceitação:** `npm run typecheck` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-21.4: Componente `MemoriaCard` em `src/components/memoria/MemoriaCard.tsx`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-21.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Cartão com título, selo Global/Projeto, chips de tags, resumo do conteúdo (`resumo()` de `src/lib/tasks.ts`, 220 caracteres), atualização relativa (`tempoRelativo`) e botões Copiar (`CopyButton` com `memoriaComoMarkdown`), Ver e Excluir (callbacks `onVer`/`onExcluir`). Criar/atualizar `src/components/memoria/index.ts` sem remover exports de outras subtarefas (SUB-19.4).
+- **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-21.5: Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-21.4
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Grade responsiva (1/2/3 colunas) de `MemoriaCard`, esqueletos de carregamento, estado vazio (com texto diferente para filtro ativo) e botão "Carregar mais" quando `temMais`.
+- **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-21.6: Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-21.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Modal (`components/ui/Modal`) com conteúdo renderizado por `components/ui/Markdown` (abas Formatado/Texto), tags, escopo, datas de criação/atualização, autor (`criado_por`), botão Copiar tudo (`memoriaComoMarkdown`) e botão Excluir (`onExcluir`).
+- **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-21.7: Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-21.3
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Exclusão com remoção otimista: recebe `remover`/`reinserir` do `useMemorias`, chama `excluirMemoria` (SUB-10), reinsere e mostra toast de erro se a RLS recusar; toast de sucesso. Expõe `{ excluir(memoria), excluindo }`.
+- **Critérios de Aceitação:** `npm run typecheck` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-21.8: Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-21.2
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Busca instantânea, filtro por tag (`tagsDisponiveis`), escopo (todas/projeto/globais), contador filtradas/total e botão Recarregar.
+- **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-21.9: Montar a tela em `src/views/MemoriaView.tsx`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-21.3, SUB-21.5, SUB-21.6, SUB-21.7, SUB-21.8
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Substituir o `EmConstrucao` da `MemoriaView`: projeto de `useProjetoAtual`, `useMemorias`, `MemoriaToolbar` + `filtrarMemoriasLocal`, `MemoriaGrid`, `MemoriaDetailModal` e `ConfirmDialog` de exclusão (`useExcluirMemoria`). Deixar uma área no topo para a busca semântica (SUB-19.8) e um cabeçalho com espaço para o botão "Nova memória" (SUB-20.7). É a subtarefa que cria a tela usada por 19.8 e 20.7.
+- **Critérios de Aceitação:** `npm run typecheck`, `npm run build` e `npm test` OK; `#/memoria` mostra a grade.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-21.10: Validação visual e de exclusão da SUB-21
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-21.9
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Contra o banco local (`tests/integration/run.sh` + `vite`), conferir grade em 1280x800 e 390x844, copiar, detalhes, exclusão com sucesso (editor) e recusa (viewer) com reinserção; registrar na anotação da SUB-21.
+- **Critérios de Aceitação:** Checklist registrado; nenhum erro no console.
+- **Commit:** pendente
+- **Anotação:** pendente
 
 ---
 
