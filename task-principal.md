@@ -603,7 +603,7 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-34.1: Fallback `CarregandoTela` em `src/components/ui/CarregandoTela.tsx`
-- **Status:** pendente
+- **Status:** em_execucao
 - **Executor:** nenhum
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
