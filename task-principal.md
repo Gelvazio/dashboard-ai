@@ -100,14 +100,14 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 46
-- **Subtarefas atômicas (~3 min):** 269
+- **Subtarefas atômicas (~3 min):** 270
 - **Em Execução:** 3 (SUB-38, SUB-41.1, SUB-35.32)
-- **Pendentes:** 8 principais (SUB-38, 26, 28, 35, 41, 42, 45, KIRO-DEV-CLONE) + 54 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 2 — SUB-45.2 e SUB-26.3 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
-  - bloqueadas por dependência: 21 — SUB-26.9 (depende da SUB-26.3), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41) e SUB-42 (depende da SUB-41); SUB-45.3 a SUB-45.18 (cadeia da SUB-45)
+- **Pendentes:** 8 principais (SUB-38, 26, 28, 35, 41, 42, 45, KIRO-DEV-CLONE) + 55 subtarefas
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 2 — SUB-26.3 e SUB-45.19 (`MEDIA`; a SUB-45.19 só para o Claude Code local, regra 11). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - bloqueadas por dependência: 22 — SUB-26.9 (depende da SUB-26.3), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41) e SUB-42 (depende da SUB-41); SUB-45.2 a SUB-45.18 (cadeia da SUB-45; a 45.2 espera a revisão SUB-45.19)
   - em execução: 3 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI)); SUB-35.32 (Claude Code (Opus 5.5))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 249 de 315 blocos (38 principais + 211 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 249 de 316 blocos (38 principais + 211 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -405,7 +405,7 @@
 - **Status:** pendente (aguardando subtarefas)
 - **Prioridade:** MEDIA
 - **Executor:** nenhum
-- **Depende de:** subtarefas SUB-45.1 a SUB-45.18
+- **Depende de:** subtarefas SUB-45.1 a SUB-45.19
 - **Subtarefas:** (criada e subdividida em 18 em 2026-10-12 por Claude Code (Opus 5.5, sessão em nuvem) a pedido do usuário, cada uma com até ~3 min; a mãe só é concluída quando todas as filhas estiverem `concluido`)
   - `SUB-45.1`: Colunas `responsavel_id` e `data_prevista_fim` em `database/08_projects_campos.sql` (`concluido`, `a4c068f`)
   - `SUB-45.2`: Colunas `cor` e `icone` em `database/08_projects_campos.sql` (`pendente`)
@@ -425,6 +425,7 @@
   - `SUB-45.16`: Registrar a tela `projetos` (rota `#/projetos` e menu) (`pendente`)
   - `SUB-45.17`: Documentar projetos no `README.md` e no `database/README.md` (`pendente`)
   - `SUB-45.18`: Validação visual da tela Projetos (`pendente`)
+  - `SUB-45.19`: Revisar a SUB-45.1 (`database/08_projects_campos.sql`) com o MCP do Supabase — só Claude Code local (`pendente`)
 - **Descrição:** Pedido do usuário: "criar os projetos; cada task deve ser ligada a um projeto; tabela no banco com descrição do projeto, status (1-ATIVO, 0-INATIVO) e data de criação". **O que já existe (SUB-29, `database/00_projects_roles.sql`):** a tabela `public.projects` com `nome`, `slug`, `descricao`, `repositorio`, `branch_padrao`, `prefixo_codigo`, `ativo` (boolean), `excluido`, `criado_por`, `created_at` e `updated_at`; e `tasks.project_id` já é `not null` com chave estrangeira para `projects` (toda task já pertence a um projeto). A RLS já deixa só o administrador criar projeto e só o owner (ou admin) editar. **O que falta:** os campos novos escolhidos pelo usuário (responsável, prazo, cor, ícone, URL de produção, URL de documentação, prioridade e tags) e a tela para listar, criar, editar e ativar/inativar projetos (no frontend só existe `listarProjetos()`).
 - **Decisões do usuário (2026-10-12):** (1) o status **continua** sendo a coluna `ativo boolean` (as RPCs da fila já usam), exibido na tela como **1-ATIVO / 0-INATIVO**; (2) campos novos: `responsavel_id`, `data_prevista_fim`, `cor`, `icone`, `url_producao`, `url_documentacao`, `prioridade` e `tags`; (3) escopo: banco **e** tela de cadastro.
 - **Critérios de Aceitação:** Todas as filhas `concluido`; `database/08_projects_campos.sql` idempotente e aplicado (com autorização); tela `#/projetos` funcionando (admin cria; owner edita; ativar/inativar); `npm run validar` verde.
@@ -437,7 +438,7 @@
 - **Status:** pendente
 - **Prioridade:** MEDIA
 - **Executor:** nenhum
-- **Depende de:** SUB-45.1
+- **Depende de:** SUB-45.1, SUB-45.19
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** No mesmo arquivo: `cor text` com `check (cor is null or cor ~ '^#[0-9a-fA-F]{6}$')` e `icone text` (nome de ícone do lucide-react, ex.: `folder-kanban`) com `check (icone is null or icone ~ '^[a-z0-9-]{1,64}$')`. Constraints criadas de forma idempotente (bloco `do $$ ... if not exists (select 1 from pg_constraint ...)`). Comentários nas colunas. ⚠️ Tarefa de banco: pela regra 11 da seção 1.1 do `AGENTS.md`, só o Claude Code local executa (não em sessão na nuvem).
 - **Critérios de Aceitação:** Colunas e checks no arquivo, idempotentes.
@@ -649,6 +650,19 @@
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Com `npm run preview` contra o Supabase do Dashboard AI (já com o `08` aplicado), entrar como admin, criar, editar, inativar e reativar um projeto de teste, em 1280x800 e 390x844; conferir que o projeto aparece no seletor e que uma task nova fica ligada a ele. Registrar no `docs/VALIDACAO.md` (sem screenshots grandes). Apagar o projeto de teste só com autorização do usuário. ⚠️ Exige banco: pela regra 11 da seção 1.1 do `AGENTS.md`, só o Claude Code local executa (não em sessão na nuvem).
 - **Critérios de Aceitação:** Sem erros no console; checklist registrado.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-45.19: Revisar a SUB-45.1 (`database/08_projects_campos.sql`) com o MCP do Supabase — só Claude Code local
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-45.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Pedido do usuário (2026-10-12): a SUB-45.1 (`a4c068f`) foi feita por Claude Code (Opus 5.5, sessão em nuvem), antes da regra 11 da seção 1.1 do `AGENTS.md` proibir tarefas de banco em sessão na nuvem, e deve ser **revisada pelo Claude Code local usando o MCP do Supabase**. Revisar o bloco "Responsável e prazo (SUB-45.1)" de `database/08_projects_campos.sql`: (1) tipos e nomes das colunas `responsavel_id uuid` e `data_prevista_fim date` coerentes com o `00_projects_roles.sql`; (2) idempotência (`add column if not exists`, constraint só se não existir); (3) a FK condicional para `auth.users` (`to_regclass('auth.users')`, `on delete set null`) — confirmar com o MCP do Supabase, **só com consultas de leitura** (`information_schema`, `pg_constraint`, `to_regclass`), que o projeto do Dashboard AI tem `auth.users` e que nada conflita com colunas/constraints já existentes em `public.projects`; (4) comentários. Corrigir o arquivo se achar problema. **Não aplicar** o script nesta subtarefa (a aplicação é a SUB-45.6, com autorização do usuário). ⚠️ Tarefa de banco: pela regra 11 da seção 1.1 do `AGENTS.md`, só o Claude Code local executa (não em sessão na nuvem).
+- **Critérios de Aceitação:** Revisão registrada na anotação (o que foi conferido e as consultas de leitura usadas, sem chaves ou dados de usuários); arquivo corrigido, se preciso, com commit; `STATUS-TAREFA-CONFIRMADO-CONCLUIDO` da SUB-45.1 (no `task_complete.md`) atualizado com o resultado.
 - **Commit:** pendente
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
