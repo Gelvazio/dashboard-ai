@@ -102,7 +102,7 @@
   - `SUB-26.2`: Seção Arquitetura (`concluido`, `b3f4c36`)
   - `SUB-26.3`: Seção Execução local (`pendente`)
   - `SUB-26.4`: Seção Banco de dados (`concluido`, `62ea6c0`)
-  - `SUB-26.5`: Seção Deploy na Vercel (`concluido`, pendente)
+  - `SUB-26.5`: Seção Deploy na Vercel (`concluido`, a5c2a8a)
   - `SUB-26.6`: Seção Agentes de IA: configurar clientes MCP (`concluido`, `d7f05f6`)
   - `SUB-26.7`: Seção Memória via MCP (`concluido`, `7fa647b`)
   - `SUB-26.8`: Seção Segurança (`concluido`, `f48b2de`)
@@ -168,7 +168,7 @@
   - `SUB-28.22`: `executarUmaTask(deps)` em `worker/executar.ts` (`concluido`, `c18fcbd`)
   - `SUB-28.23`: Retomada da aprovação (`Command({ resume })`) em `api/aprovacao.ts` (`concluido`, fa99fe2)
   - `SUB-28.24`: Testes do worker: interrupção e retomada sem duplicar efeitos (`concluido`, `057b3a1`)
-  - `SUB-28.25`: Variáveis do worker no `api/README.md` (`pendente`)
+  - `SUB-28.25`: Variáveis do worker no `api/README.md` (`concluido`, 3345ccd)
   - `SUB-28.26`: Contrato: ferramentas permitidas e idempotência em `docs/langgraph-contrato.md` (`concluido`, `07b64cc`)
   - `SUB-28.27`: Contrato: mapeamento de erros para `finalizar_task` em `docs/langgraph-contrato.md` (`concluido`, `52df1e7`)
   - `SUB-28.28`: `worker/tsconfig.json` e `typecheck:worker` (`concluido`, `fbef4e8`)
@@ -215,16 +215,15 @@
 - **Commit:** fa99fe2
 - **Anotação:** Implementada retomada do grafo LangGraph com Command({ resume }) no thread_id da execução. Adicionadas: execucaoIdDaTask (lê o execucaoId mais recente dos logs), criarGrafoComCheckpointer (cria grafo com checkpointer Postgres), retomarGrafo (envia Command({ resume }) com decisão do usuário). Testes atualizados para cobrir os novos deps. typecheck:api OK, testes OK (9 passed).
 
-#### [ ] SUB-28.25: Variáveis do worker no `api/README.md`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [x] SUB-28.25: Variáveis do worker no `api/README.md`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:40, conclusão: 2026-10-12 14:42)
 - **Depende de:** SUB-28.15, SUB-28.32
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Documentar `LANGGRAPH_DATABASE_URL`, variáveis do modelo, endpoint de aprovação e operação do worker no `api/README.md`.
 - **Critérios de Aceitação:** Documentação coerente com o código.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **Commit:** 3345ccd
+- **Anotação:** Adicionada seção "Worker LangGraph (SUB-28)" no api/README.md com: tabela de variáveis do worker (OPENAI_API_KEY, WORKER_MODELO, LANGGRAPH_DATABASE_URL, SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, MCP_DEFAULT_PROJECT), exemplos de execução (local, uma task, produção), endpoint de aprovação humana (POST /api/aprovacao com JWT) e monitoramento (heartbeats via emitir_event). typecheck:api OK.
 
 #### [x] SUB-28.32: Registro de auditoria da aprovação
 - **Status:** concluido
