@@ -11,10 +11,12 @@
 Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) que chegar à fila de tarefas **DEVE SEGUIR RIGOROSAMENTE O FLUXO EM 3 PARTES ANTES DE MEXER NO CÓDIGO DA TAREFA**:
 
 **CHECKLIST OBRIGATÓRIO ANTES DE ASSUMIR QUALQUER TAREFA:**
-☐ [ ] Fiz `git pull origin main` **PRIMEIRO**?
+☐ [ ] Fiz `git pull --rebase origin main` **PRIMEIRO**?
 ☐ [ ] Li os arquivos ATUALIZADOS (quadro-task-principal.md e task-principal.md)?
 ☐ [ ] Verifiquei que a trava está LIVRE ou que minha task não conflita?
 ☐ [ ] Confirmei que todas as dependências estão `concluido`?
+☐ [ ] Não tenho nenhum outro item travado (máximo 1 subtarefa ou 1 tarefa atômica por agente)?
+☐ [ ] O item é uma subtarefa ou tarefa atômica (não uma tarefa-mãe com subtarefas)?
 ☐ [ ] Vou fazer commit + push do lock IMEDIATAMENTE antes de codificar?
 
 ⛔ **Se NÃO marcou todos os ☐ acima, NÃO assuma a tarefa.**
@@ -25,7 +27,7 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
 
 ⚠️ **ORDEM OBRIGATÓRIA DE EXECUÇÃO (NÃO PULAR PASSOS):**
 
-✅ **PASSO 1 (CRÍTICO — PRIMEIRO):** Executar `git pull origin main` para garantir o estado mais recente do repositório.
+✅ **PASSO 1 (CRÍTICO — PRIMEIRO):** Executar `git pull --rebase origin main` para garantir o estado mais recente do repositório.
    - ⛔ **NÃO** ler nenhum arquivo local antes deste comando
    - ⛔ **NÃO** assumir nenhuma tarefa sem garantir que está no estado mais recente
    - Se houver conflito de merge, resolver antes de prosseguir
@@ -75,10 +77,47 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
    - Registrar no histórico a data/hora, o nome do agente, o código da sub-task, o SHA do commit e a nota do que foi feito.
 4. **Executar COMMIT e PUSH da conclusão IMEDIATAMENTE:**
    ```bash
-   git add .
+   git add <arquivos da tarefa> quadro-task-principal.md task-principal.md
    git commit -m "feat(SUB-XX): descrição do que foi implementado"
    git push origin main
    ```
+
+---
+
+## ⚖️ 1.1 REGRAS COMPLEMENTARES DE CONCORRÊNCIA (OBRIGATÓRIAS)
+
+1. **Uma tarefa por agente, no máximo:**
+   - Cada agente pode ter **no máximo 1 item travado** por vez: **1 subtarefa** (ex: `SUB-19.3`) **ou 1 tarefa atômica** (tarefa sem subtarefas, `Subtarefas: Nenhuma (atômica)`).
+   - ⛔ É proibido travar uma tarefa-mãe que tenha subtarefas (status `pendente (aguardando subtarefas)`). Ela só é concluída quando todas as filhas estiverem `concluido`.
+   - Só depois de concluir e fazer push da entrega (ou liberar a trava) o agente pode pegar o próximo item.
+   - Exceção: o planejamento/subdivisão de tarefas pedido pelo usuário, que trava as tarefas-mãe apenas durante a edição do quadro e as libera no mesmo ciclo, sem escrever código.
+
+2. **Push da trava recusado (corrida entre agentes):**
+   - Se o `git push` do lock for recusado, executar `git pull --rebase origin main` e **reler o quadro**.
+   - Se outro agente travou o mesmo item, **desfazer o seu lock local** e escolher outro item livre. Nunca sobrescrever a trava de outro agente.
+   - ⛔ Nunca usar `git push --force`.
+
+3. **Travas em paralelo:**
+   - Vários agentes podem trabalhar ao mesmo tempo, **cada um em um item diferente**.
+   - Cada agente registra sua trava em um bloco próprio `### 🔒 TRAVA ADICIONAL — <Nome da IA> — <SUB-XX>` em `quadro-task-principal.md`, e nunca edita o bloco de outro agente.
+   - A proibição vale para o **mesmo item**: ninguém assume um item que já tem trava de outro agente.
+
+4. **Trava abandonada (prazo):**
+   - Uma trava sem nenhum commit/push do agente responsável há **mais de 30 minutos** é considerada abandonada.
+   - Ela só pode ser liberada pelo usuário ou por um agente com autorização do usuário, registrando no histórico: quem liberou, quando e o motivo.
+
+5. **Estados das subtarefas no quadro:**
+   - 🟢 **livre:** `pendente`, sem trava e com todas as dependências `concluido`; qualquer agente pode pegar.
+   - ⛓️ **bloqueada:** `pendente`, mas com alguma dependência ainda não concluída; ninguém pode pegar.
+   - 🔒 **reservada:** pertence a uma tarefa-mãe travada por um agente; só esse agente pode pegar.
+   - 🔄 **em execução:** travada por um agente.
+
+6. **Tamanho máximo (~3 minutos):**
+   - Cada subtarefa deve caber em cerca de **3 minutos** de trabalho de uma IA: 1 função, 1 método, 1 componente, 1 classe, 1 arquivo de teste ou 1 seção de documentação.
+   - Se o agente perceber que o item é maior, deve **subdividi-lo** (seção 2) antes de codificar, em vez de entregar parcialmente.
+
+7. **Commits limpos:**
+   - Usar sempre `git pull --rebase origin main` (nunca merge) e adicionar **só os arquivos da tarefa** + quadro (nunca `git add .`).
 
 ---
 
