@@ -1099,7 +1099,7 @@
   - `SUB-23.8`: Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` (`pendente`)
   - `SUB-23.9`: Alerta de trava presa na `src/views/FilaView.tsx` (`pendente`)
   - `SUB-23.10`: `TravaItem` em `src/components/tasks/TravaItem.tsx` (`pendente`)
-  - `SUB-23.11`: `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx` (`pendente`)
+  - `SUB-23.11`: `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx` (`em_execucao`)
   - `SUB-23.12`: Teste de integração de `liberarTrava`: viewer e outro projeto (`pendente`)
   - `SUB-23.13`: `travaExpirada` em `src/lib/saudeFila.ts` (`pendente`)
 - **Descrição:** Painel indicando se há lock ativo (task com `trava_frente` e `trava_em` dentro dos 90 minutos) e botão de liberação manual de trava caso expire.
@@ -1209,8 +1209,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-23.11: `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 00:55)
 - **Depende de:** SUB-23.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Contadores das pendentes por grupo (`classificarPendentes`: prontas, bloqueadas por dependência, desligadas, agendadas, sem tentativas) com ícones e tooltips.
