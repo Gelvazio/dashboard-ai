@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vis-network@9.1.9/standalone/umd/vis-network.min.js"></script>
   <style>
     :root {
       --bg: #080c14;
@@ -133,6 +134,14 @@
     @media (max-width: 700px) {
       .kpis, .kanban, .grid-2, .grid-3 { grid-template-columns: 1fr; }
     }
+    /* SUB-36: grafo cérebro */
+    #brainNet { height: 520px; background: radial-gradient(ellipse at center, #121a2b 0%, #080c14 75%); border-radius: 12px; border: 1px solid var(--line); }
+    @media (max-width: 720px) { #brainNet { height: 380px; } }
+    .brain-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; }
+    .brain-legend { display: flex; flex-wrap: wrap; gap: 12px; color: var(--muted); font-size: 0.8rem; margin: 6px 0 10px; }
+    .brain-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
+    .brain-tip { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font-size: 0.8rem; max-width: 320px; line-height: 1.4; }
+    div.vis-tooltip { background: transparent !important; border: 0 !important; padding: 0 !important; box-shadow: none !important; }
   </style>
 </head>
 <body>
@@ -179,6 +188,18 @@
       <article class="card"><h2 class="panel-title">Tarefas por fase</h2><canvas id="chartPhase"></canvas></article>
       <article class="card"><h2 class="panel-title">Carga por agente</h2><canvas id="chartAgent"></canvas></article>
     </section>
+
+    <article class="card" style="margin-bottom:16px">
+      <div class="brain-head"><h2 class="panel-title">Cérebro dos agentes (ao vivo)</h2><span class="meta" id="brainSummary">—</span></div>
+      <div class="brain-legend">
+        <span><i style="background:#6ea8ff"></i>Quadro</span>
+        <span><i style="background:#f5a524"></i>Agente trabalhando</span>
+        <span><i style="background:#3a4660;border:1px solid #8b9bb4"></i>Agente ocioso</span>
+        <span><i style="background:#ff6b6b;border-radius:2px"></i>Subtarefa travada agora (ligação pulsando)</span>
+        <span><i style="background:#3dd68c"></i>Entregas recentes (até 5 por agente)</span>
+      </div>
+      <div id="brainNet"></div>
+    </article>
 
     <div class="filters">
       <input id="q" type="search" placeholder="Filtrar por código, título, agente ou dependência…" />
@@ -396,6 +417,114 @@
 
       return { locks, running, pending, done, cancelled, history, raw: md };
     }
+
+    // ===== SUB-36: grafo em rede (cérebro) dos agentes =====
+    function agentKey(name) {
+      return String(name || "").replace(/\(.*?\)/g, "").replace(/\s+/g, " ").trim().toLowerCase();
+    }
+    function validAgent(name) {
+      const n = String(name || "").trim();
+      return n && n !== "—" && n !== "-" && !/^nenhum/i.test(n);
+    }
+    function buildBrainModel(board, maxRecent) {
+      maxRecent = maxRecent || 5;
+      const agents = new Map();
+      const get = (name) => {
+        const key = agentKey(name);
+        if (!agents.has(key)) agents.set(key, { key, name: String(name).trim(), locks: [], recent: [] });
+        const a = agents.get(key);
+        if (String(name).length > a.name.length) a.name = String(name).trim();
+        return a;
+      };
+      for (const l of board.locks || []) {
+        const code = String(l.code || "").replace(/\*/g, "").trim();
+        if (!validAgent(l.agent) || !/SUB-/i.test(code)) continue;
+        if (/livre/i.test(l.status)) continue;
+        const a = get(l.agent);
+        if (!a.locks.some((x) => x.code === code)) a.locks.push({ code, title: l.title, started: l.started });
+      }
+      for (const r of board.running || []) {
+        if (!validAgent(r.agent) || !r.code) continue;
+        const a = get(r.agent);
+        if (!a.locks.some((x) => x.code === r.code)) a.locks.push({ code: r.code, title: r.title, started: r.start });
+      }
+      const doneRows = (board.done || []).filter((d) => validAgent(d.agent) && d.code)
+        .slice().sort((x, y) => String(y.end || "").localeCompare(String(x.end || "")));
+      for (const d of doneRows) {
+        const a = get(d.agent);
+        if (a.recent.length < maxRecent && !a.recent.some((x) => x.code === d.code)) {
+          a.recent.push({ code: d.code, title: d.title, when: d.end, sha: String(d.sha || "").replace(/`/g, "") });
+        }
+      }
+      const list = [...agents.values()];
+      list.forEach((a) => { a.idle = a.locks.length === 0; });
+      list.sort((x, y) => (x.idle - y.idle) || x.name.localeCompare(y.name));
+      return list;
+    }
+    function escTip(s) { return String(s == null ? "" : s).replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c])); }
+    function tipEl(html) { const d = document.createElement("div"); d.className = "brain-tip"; d.innerHTML = html; return d; }
+    let brainNet = null, brainNodes = null, brainEdges = null, brainPulse = null;
+    function renderBrain(board) {
+      const box = document.getElementById("brainNet");
+      if (!box) return;
+      const model = buildBrainModel(board, 5);
+      const sumEl = document.getElementById("brainSummary");
+      const busy = model.filter((a) => !a.idle).length;
+      if (sumEl) sumEl.textContent = `${model.length} agentes · ${busy} trabalhando · ${model.length - busy} ociosos`;
+      if (typeof vis === "undefined" || !vis.Network) { box.innerHTML = '<div class="empty">Biblioteca vis-network não carregou.</div>'; return; }
+      const nodes = [], edges = [];
+      nodes.push({ id: "hub", label: "Quadro\nprincipal", shape: "dot", size: 34, color: { background: "#6ea8ff", border: "#b9d3ff" },
+        font: { color: "#e8eef8", size: 15, face: "DM Sans", multi: false }, title: tipEl("<b>quadro-task-principal.md</b><br>Projeto central"), fixed: false, mass: 4 });
+      for (const a of model) {
+        const aid = "ag:" + a.key;
+        const color = a.idle ? { background: "#3a4660", border: "#8b9bb4" } : { background: "#f5a524", border: "#ffd166" };
+        const tip = `<b>${escTip(a.name)}</b><br>${a.idle ? "ocioso (sem trava)" : "trabalhando em " + a.locks.map((l) => escTip(l.code)).join(", ")}` +
+          (a.recent.length ? "<br>últimas entregas: " + a.recent.map((r) => escTip(r.code)).join(", ") : "");
+        nodes.push({ id: aid, label: a.name.replace(/\s*\(.*?\)\s*/g, " ").trim(), shape: "dot", size: a.idle ? 16 : 24, color,
+          font: { color: a.idle ? "#8b9bb4" : "#e8eef8", size: 13 }, title: tipEl(tip), mass: 2 });
+        edges.push({ from: "hub", to: aid, color: { color: a.idle ? "#2a3550" : "#4b6aa8" }, width: a.idle ? 1 : 2, dashes: a.idle, length: 160 });
+        for (const l of a.locks) {
+          const lid = "lk:" + l.code;
+          if (!nodes.some((n) => n.id === lid)) {
+            nodes.push({ id: lid, label: l.code, shape: "box", margin: 6, color: { background: "#3b1d24", border: "#ff6b6b" },
+              font: { color: "#ffd0d0", face: "JetBrains Mono", size: 12 },
+              title: tipEl(`<b>${escTip(l.code)}</b> 🔒 em execução<br>${escTip(l.title)}<br>início: ${escTip(l.started || "—")}<br>agente: ${escTip(a.name)}`) });
+          }
+          edges.push({ from: aid, to: lid, color: { color: "#ff6b6b" }, width: 3, length: 90, live: true, arrows: { to: { enabled: true, scaleFactor: 0.6 } } });
+        }
+        for (const r of a.recent) {
+          const rid = "dn:" + r.code;
+          if (nodes.some((n) => n.id === rid)) continue;
+          nodes.push({ id: rid, label: r.code, shape: "dot", size: 7, color: { background: "#3dd68c", border: "#245c44" },
+            font: { color: "#8fe3b8", size: 10, face: "JetBrains Mono" },
+            title: tipEl(`<b>${escTip(r.code)}</b> ✅ concluída<br>${escTip(r.title)}<br>quando: ${escTip(r.when || "—")}<br>SHA: <code>${escTip(r.sha || "—")}</code><br>agente: ${escTip(a.name)}`) });
+          edges.push({ from: aid, to: rid, color: { color: "#245c44" }, width: 1, length: 60 });
+        }
+      }
+      edges.forEach((e, i) => { e.id = "e" + i; });
+      if (!brainNet) {
+        brainNodes = new vis.DataSet(nodes); brainEdges = new vis.DataSet(edges);
+        brainNet = new vis.Network(box, { nodes: brainNodes, edges: brainEdges }, {
+          autoResize: true,
+          interaction: { hover: true, tooltipDelay: 120, navigationButtons: false, zoomView: true },
+          physics: { solver: "forceAtlas2Based", forceAtlas2Based: { gravitationalConstant: -60, springLength: 90, avoidOverlap: 0.4 }, stabilization: { iterations: 150 } },
+          edges: { smooth: { type: "continuous" } }
+        });
+        brainNet.once("stabilizationIterationsDone", () => brainNet.fit({ animation: false }));
+        let phase = 0;
+        brainPulse = setInterval(() => {
+          phase = (phase + 1) % 2;
+          const upd = brainEdges.get({ filter: (e) => e.live }).map((e) => ({ id: e.id, width: phase ? 4 : 2, color: { color: phase ? "#ff6b6b" : "#ffb3b3" } }));
+          if (upd.length) brainEdges.update(upd);
+        }, 700);
+      } else {
+        const ids = new Set(nodes.map((n) => n.id));
+        brainNodes.remove(brainNodes.getIds().filter((id) => !ids.has(id)));
+        brainNodes.update(nodes);
+        brainEdges.clear(); brainEdges.add(edges);
+      }
+    }
+    // ===== fim SUB-36 =====
 
     async function fetchText(url, extraHeaders) {
       const bust = (url.includes("?") ? "&" : "?") + "t=" + Date.now();
@@ -671,6 +800,7 @@
       document.getElementById("progressFill").style.width = pct + "%";
       document.getElementById("progressLabel").textContent = `${board.done.length} de ${total} · ${pct}%`;
       renderCharts(board);
+      try { renderBrain(board); } catch (e) { console.error("brain", e); }
       renderKanban(board);
       renderHistory(board.history);
       applyViewFilter();
