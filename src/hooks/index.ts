@@ -15,3 +15,4 @@ export { useContagemAnimada } from './useContagemAnimada';
 export { useAcoesTask } from './useAcoesTask';
 export { useLogs } from './useLogs';
 export { useSalvarMemoria } from './useSalvarMemoria';
+export { useSaudeFila } from './useSaudeFila';
