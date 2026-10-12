@@ -79,7 +79,7 @@
 ### ✅ CONCLUÍDAS (1)
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
-| **SUB-04** | Consolidação dos Schemas SQL na Pasta `database/` | DashboardAI (Grok Bot) | 2026-10-11 22:18 | 2026-10-11 22:20 | `PENDING_SHA` |
+| **SUB-04** | Consolidação dos Schemas SQL na Pasta `database/` | DashboardAI (Grok Bot) | 2026-10-11 22:18 | 2026-10-11 22:20 | `f7d6e04` |
 
 ---
 
@@ -96,4 +96,4 @@
 | 2026-10-11 22:10 | Antigravity AI | Protocolo Push | `1aed730` | Obrigatoriedade de git push origin main em AGENTS.md |
 | 2026-10-11 22:12 | Antigravity AI | Protocolo 2 Partes | `58c8af1` | Formalização de leitura (Pt 1) e lock com commit+push (Pt 2) |
 | 2026-10-11 22:13 | Antigravity AI | Lock SUB-01 | `fb34a6b` | Ativação de lock para início da primeira sub-task |
-| 2026-10-11 22:20 | DashboardAI (Grok Bot) | SUB-04 | `PENDING_SHA` | Criados database/01_tasks_schema.sql, 02_logs_schema.sql, 03_memories_schema.sql e database/README.md (idempotentes, validados 2x em Postgres 17 + pgvector). Corrigido `order in by` -> `order by` em AGENTS.md |
+| 2026-10-11 22:20 | DashboardAI (Grok Bot) | SUB-04 | `f7d6e04` | Criados database/01_tasks_schema.sql, 02_logs_schema.sql, 03_memories_schema.sql e database/README.md (idempotentes, validados 2x em Postgres 17 + pgvector). Corrigido `order in by` -> `order by` em AGENTS.md |
