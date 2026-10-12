@@ -13,7 +13,7 @@ export function classificarFalha(err: unknown): ClasseFalha {
   }
 
   const mensagem = err.message.toLowerCase();
-  const erro = err as any;
+  const erro = err as Error & { status?: number; statusCode?: number; code?: string };
 
   // Código de status HTTP (se disponível)
   const status = erro.status ?? erro.statusCode;

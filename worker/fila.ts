@@ -7,6 +7,14 @@ export interface TaskReivindicada {
   instrucao: string;
 }
 
+/** Campos de `public.tasks` (setof devolvido por `pegar_proxima_task`) usados por `reivindicar`. */
+interface LinhaTaskReivindicada {
+  id: number;
+  codigo: string;
+  tentativas: number;
+  instrucao: string;
+}
+
 export interface FinalizarArgs {
   taskId: number;
   status: 'concluida' | 'erro' | 'recusada';
@@ -32,7 +40,7 @@ export async function reivindicar(
   lockMinutos = 90,
   exclusivo = false,
 ): Promise<TaskReivindicada | null> {
-  const data = await rpc<any>('pegar_proxima_task', {
+  const data = await rpc<LinhaTaskReivindicada[] | null>('pegar_proxima_task', {
     p_agente: agente,
     p_projeto: projeto,
     p_lock_minutos: lockMinutos,
