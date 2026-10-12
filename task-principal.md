@@ -45,14 +45,25 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
+### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.10
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-28.10** |
+| **Título da Sub-task:** | Nó `revisar` (roteamento) em `worker/nos/revisar.ts` |
+| **Agente Responsável:** | Devin (Cognition AI) |
+| **Data e Hora de Início:** | 2026-10-12 12:41 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202
-- **Em Execução:** 0
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 35 subtarefas
-  - livres agora: 12 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.6, SUB-28.7, SUB-28.8, SUB-28.9, SUB-28.10, SUB-28.13, SUB-28.14, SUB-35.32, SUB-35.33)
+- **Em Execução:** 1 (SUB-28.10, Devin (Cognition AI), desde 2026-10-12 12:41)
+- **Pendentes:** 4 principais (25, 26, 28, 35) + 34 subtarefas
+  - livres agora: 11 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.6, SUB-28.7, SUB-28.8, SUB-28.9, SUB-28.13, SUB-28.14, SUB-35.32, SUB-35.33)
   - bloqueadas por dependência: 23
   - reservadas: 0
 - **Concluídas:** 200 de 239 blocos (33 principais + 167 subtarefas)
@@ -1970,7 +1981,7 @@
   - `SUB-28.7`: Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts` (`pendente`)
   - `SUB-28.8`: Nó `politica` (aprovação humana) em `worker/nos/politica.ts` (`pendente`)
   - `SUB-28.9`: Nó `executar` em `worker/nos/executar.ts` (`pendente`)
-  - `SUB-28.10`: Nó `revisar` (roteamento) em `worker/nos/revisar.ts` (`pendente`)
+  - `SUB-28.10`: Nó `revisar` (roteamento) em `worker/nos/revisar.ts` (`em_execucao`)
   - `SUB-28.11`: Nó `finalizar` em `worker/nos/finalizar.ts` (`concluido`, `9575b13`)
   - `SUB-28.12`: Montagem do `StateGraph` em `worker/grafo.ts` (`pendente`)
   - `SUB-28.13`: Checkpointer durável em `worker/checkpointer.ts` (`pendente`)
@@ -2099,8 +2110,8 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (reaberta: critérios de aceitação não atendidos)
 
 #### [ ] SUB-28.10: Nó `revisar` (roteamento) em `worker/nos/revisar.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:41)
 - **Depende de:** SUB-28.21
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Usa `classificarFalha` (SUB-28.21) e decide repetir o passo (limite por nó, espera progressiva) ou seguir para finalizar.
