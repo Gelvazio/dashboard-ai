@@ -5,7 +5,7 @@
 import type { Session } from '@supabase/supabase-js';
 import { mensagemErroAuth } from '@/lib/auth';
 import { getSupabase, ServiceError, type DashboardClient } from './supabase';
-import type { UserRole } from '@/types/database';
+import type { ProjectRole, UserRole } from '@/types/database';
 
 /** Entra com e-mail e senha. Lança `ServiceError(..., 'AUTH')` com mensagem em português. */
 export async function entrarComSenha(
@@ -71,4 +71,24 @@ export async function redefinirSenha(
 ): Promise<void> {
   const { error } = await client.auth.resetPasswordForEmail(email.trim(), { redirectTo });
   if (error) throw new ServiceError(mensagemErroAuth(error), 'AUTH');
+}
+
+/**
+ * Papel do usuário no projeto: `'admin'` se for administrador global (acesso total),
+ * senão `project_members.role`; não membro -> `null`.
+ */
+export async function papelNoProjeto(
+  projectId: number,
+  userId: string,
+  client: DashboardClient = getSupabase(),
+): Promise<ProjectRole | 'admin' | null> {
+  if ((await obterPapelGlobal(userId, client)) === 'admin') return 'admin';
+  const { data, error } = await client
+    .from('project_members')
+    .select('role')
+    .eq('project_id', projectId)
+    .eq('user_id', userId)
+    .maybeSingle();
+  if (error) throw new ServiceError(`Não foi possível ler o papel no projeto: ${error.message}`, error.code);
+  return (data?.role as ProjectRole | undefined) ?? null;
 }
