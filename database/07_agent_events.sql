@@ -127,3 +127,21 @@ create policy agent_events_select on public.agent_events for select to authentic
 drop policy if exists agent_events_insert on public.agent_events;
 create policy agent_events_insert on public.agent_events for insert to authenticated
   with check (public.tem_acesso_projeto(project_id, 'editor'));
+
+-- -----------------------------------------------------------------------------
+-- Supabase Realtime (SUB-35.4): publica agent_events para o monitor receber
+-- inserções ao vivo. Só age se a publicação supabase_realtime existir (no
+-- Postgres local de testes ela não existe) e a tabela ainda não estiver nela,
+-- então reaplicar o arquivo não falha.
+-- -----------------------------------------------------------------------------
+do $$
+begin
+  if exists (select 1 from pg_publication where pubname = 'supabase_realtime')
+     and not exists (
+       select 1 from pg_publication_tables
+        where pubname = 'supabase_realtime' and schemaname = 'public' and tablename = 'agent_events'
+     ) then
+    alter publication supabase_realtime add table public.agent_events;
+  end if;
+end;
+$$;
