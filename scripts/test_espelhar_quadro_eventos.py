@@ -3,7 +3,7 @@ import sys
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from espelhar_quadro_eventos import AGENTE_DESCONHECIDO, commits_para_eventos  # noqa: E402
+from espelhar_quadro_eventos import AGENTE_DESCONHECIDO, commits_para_eventos, enviar_eventos  # noqa: E402
 
 D = "2026-10-12T01:08:08-03:00"
 
@@ -36,6 +36,25 @@ class CommitsParaEventosTest(unittest.TestCase):
                   f"ggg\t{D}\tlock: assumindo sub-task SUB-1 por X"]
         eventos = commits_para_eventos(linhas)
         self.assertEqual([e["chave_idempotencia"] for e in eventos], ["git:ggg"])
+
+
+class EnviarEventosTest(unittest.TestCase):
+    def test_envia_com_projeto_e_ignora_duplicados(self):
+        chamadas = []
+
+        class Cli:
+            project_id = 7
+
+            def _req(self, metodo, caminho, params=None, corpo=None, prefer=None):
+                chamadas.append((metodo, caminho, params, corpo, prefer))
+
+        eventos = commits_para_eventos([f"aaa\t{D}\tlock: assumindo sub-task SUB-1.1 por X"])
+        self.assertEqual(enviar_eventos(Cli(), eventos), 1)
+        ((metodo, caminho, params, corpo, prefer),) = chamadas
+        self.assertEqual((metodo, caminho), ("POST", "agent_events"))
+        self.assertEqual(params, {"on_conflict": "project_id,chave_idempotencia"})
+        self.assertIn("resolution=ignore-duplicates", prefer)
+        self.assertEqual(corpo[0]["project_id"], 7)
 
 
 if __name__ == "__main__":
