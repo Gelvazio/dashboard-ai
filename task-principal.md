@@ -71,6 +71,17 @@
 | **Data e Hora de Início:** | 2026-10-12 01:38 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 09 (Grok Bot) — SUB-35.26
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.26** |
+| **Título da Sub-task:** | Gráfico `GraficoPorAgente` em `src/components/monitor/GraficoPorAgente.tsx` |
+| **Agente Responsável:** | DashboardAI-Clone 09 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:38 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
@@ -2514,8 +2525,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-35.26: Gráfico `GraficoPorAgente` em `src/components/monitor/GraficoPorAgente.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 09 (Grok Bot)
 - **Depende de:** SUB-35.22, SUB-35.17
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Barras horizontais empilhadas por tipo de evento (`contarPorAgente`), cores de `CORES_TIPO`. Exportar no barrel.
