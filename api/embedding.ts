@@ -2,9 +2,10 @@
  * POST /api/embedding — gera o embedding de um texto no servidor, para o
  * navegador nunca precisar da chave do provedor (SUB-33).
  *
- * Esqueleto (SUB-33.4): CORS, OPTIONS e 405. A autenticação (SUB-33.10) e a
- * geração do embedding (SUB-33.11) substituem o 501 provisório abaixo.
+ * CORS, OPTIONS e 405 (SUB-33.4); autenticação com sessão do Supabase (SUB-33.10).
+ * A geração do embedding (SUB-33.11) substitui o 501 provisório abaixo.
  */
+import { AuthError, bearerToken, verificarSessaoSupabase } from './_lib/auth.js';
 import type { McpRequest, McpResponse } from './_lib/http.js';
 
 function setCors(res: McpResponse): void {
@@ -23,6 +24,24 @@ export default async function handler(req: McpRequest, res: McpResponse) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST, OPTIONS');
     return res.status(405).json({ erro: 'Apenas requisições POST são aceitas.' });
+  }
+
+  // Autenticação: só usuários com sessão válida do Supabase Auth (SUB-33.10).
+  const token = bearerToken(req.headers);
+  let sessao: { userId: string } | null = null;
+  if (token) {
+    try {
+      sessao = await verificarSessaoSupabase(token);
+    } catch (err) {
+      if (err instanceof AuthError) {
+        return res.status(503).json({ erro: 'Serviço de autenticação indisponível. Tente novamente.' });
+      }
+      throw err;
+    }
+  }
+  if (!sessao) {
+    res.setHeader('WWW-Authenticate', 'Bearer');
+    return res.status(401).json({ erro: 'Não autorizado: faça login novamente.' });
   }
 
   // Provisório até a SUB-33.11.
