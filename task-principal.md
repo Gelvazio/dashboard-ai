@@ -73,15 +73,15 @@
 ---
 
 ## 📊 Resumo de Progresso
-- **Total de Tasks Principais:** 41
+- **Total de Tasks Principais:** 43
 - **Subtarefas atômicas (~3 min):** 248
 - **Em Execução:** 1 (SUB-38)
-- **Pendentes:** 8 principais (SUB-38, 25, 26, 28, 35, 39, 40, KIRO-DEV-CLONE) + 44 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 6 — SUB-25.4, SUB-25.7, SUB-35.32, SUB-40.1 e SUB-40.2 (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
-  - bloqueadas por dependência: 8 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32) e SUB-40.3 a SUB-40.7 (cadeia da SUB-40)
+- **Pendentes:** 10 principais (SUB-38, 25, 26, 28, 35, 39, 40, 41, 42, KIRO-DEV-CLONE) + 44 subtarefas
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 7 — SUB-25.4, SUB-25.7, SUB-35.32, SUB-40.1, SUB-40.2 e SUB-41 (atômica) (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - bloqueadas por dependência: 9 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32), SUB-42 (depende da SUB-41) e SUB-40.3 a SUB-40.7 (cadeia da SUB-40)
   - em execução: 1 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 233 de 289 blocos (33 principais + 200 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 233 de 291 blocos (33 principais + 200 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -532,6 +532,41 @@
 - **Critérios de Aceitação:** Script aplicado sem erro e conferências registradas na anotação (sem e-mails de outros usuários, sem chaves ou tokens).
 - **Commit:** pendente
 - **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+---
+
+## 📚 FASE 15: Organização da Documentação
+
+### [ ] SUB-41: Tirar do `AGENTS.md` o plano "🧠 Cérebro de Memória Persistente" (o `AGENTS.md` fica só com regras)
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** **Regra do usuário (2026-10-12):** o `AGENTS.md` deve conter **apenas regras de como executar tarefas**, e **nenhuma tarefa em si**. Hoje, depois da seção "✅ 5. Regra de confirmação de status", o arquivo traz o plano de implementação `# 🧠 Plano de Implementação: Cérebro de Memória Persistente (Estilo Jev-Mem)` (linhas ~298-478), com as seções `## 1. Arquitetura do Banco de Dados (Supabase)` (SQL), `## 2. Estrutura do Servidor MCP (Vercel Serverless)` (nota da implementação real, estrutura de arquivos e exemplo ilustrativo de `api/mcp.ts`) e `## 3. Ativação no Terminal (Claude Code)`. Isso é tarefa/plano, não regra. Mover esse bloco inteiro, sem alterar o texto, para `docs/plano-cerebro-memoria-persistente.md` (com título e um parágrafo inicial dizendo que o plano já foi implementado: SQL em [`database/`](../database/README.md), servidor em [`api/mcp.ts`](../api/mcp.ts) e [`api/_lib/`](../api/_lib/), e que o exemplo de código é só ilustrativo), ajustando os links relativos do trecho movido (`api/...` → `../api/...`, `database/...` → `../database/...`). No `AGENTS.md`, apagar o bloco (incluindo o `---` que o antecede) **sem deixar resumo de tarefa**; se houver regra útil dentro dele (ex.: comando `claude mcp add` de ativação), avaliar se vira regra curta, com link para o novo arquivo. Conferir também o resto do `AGENTS.md` e listar na anotação qualquer outro trecho que seja tarefa e não regra.
+- **Critérios de Aceitação:** `docs/plano-cerebro-memoria-persistente.md` com o conteúdo completo das seções 1, 2 e 3; `AGENTS.md` sem o plano e só com regras de execução de tarefas; nenhum link relativo quebrado (inclusive links de outros arquivos que apontem para esse trecho do `AGENTS.md`); `npm run validar` verde.
+- **Commit:** pendente
+- **Anotação:** Criada a pedido do usuário em 2026-10-12 por Claude Code (Opus 5.5). Pedido original: "isso daqui *## 2. Estrutura do Servidor MCP (Vercel Serverless)* precisa estar numa tarefa separada"; ampliado na mesma conversa: "no agents.md, devem ficar apenas regras de como executar tarefas e nenhuma tarefa em si mesmo" — por isso a tarefa cobre o plano inteiro (seções 1, 2 e 3), não só a seção 2. O plano já está implementado (SUB-07 e seguintes); esta tarefa só reorganiza a documentação. Os outros trechos do `AGENTS.md` que citam tarefas específicas foram separados na SUB-42.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+### [ ] SUB-42: Tirar do `AGENTS.md` as referências a tarefas específicas (regras genéricas)
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-41 (mesmo arquivo; evita conflito de edição)
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Mesma regra do usuário da SUB-41 (o `AGENTS.md` só tem regras, nenhuma tarefa). Trechos encontrados em 2026-10-12 que tratam de tarefas específicas:
+  1. **Seção 1.1, item 3 (linha ~113)** — "⛔ **KIRO-DEV-CLONE**: esta tarefa está TRAVADA PARA TODAS AS IAS…": é o **estado** de uma tarefa, que já está registrado no quadro (bloco `### 🔒 TRAVA ESPECIAL: KIRO-DEV-CLONE` do `task-principal.md`). Trocar por regra genérica: "Tarefas com bloco `### 🔒 TRAVA ESPECIAL: <código>` no `task-principal.md` estão travadas para todas as IAs (inclusive as subtarefas); só o usuário cria ou remove essa trava; ela tem precedência sobre o protocolo normal e sobre a prioridade (seção 1.2)". Ajustar a regra 3 da seção 1.2 ("🔴 trava especial") se precisar.
+  2. **Seção 1.2, tabela (linha ~155)** — `MAXIMA` "(ex.: `SUB-38`, verificação geral)": tirar o exemplo da tarefa.
+  3. **Seção 4 (linhas ~239-267)** — "monitor em tempo real (SUB-35)", exemplos com `SUB-35.45` e "espelho … (SUB-35.42/35.43)": tirar os códigos de tarefa e usar `SUB-XX` nos exemplos (a regra e os nomes de arquivos ficam).
+  4. **Seção 5 (linha ~288 e a nota final)** — "o marcador `VERIFICADOR-CLAUDE` da `SUB-38`" e "⚠️ Esta regra foi adicionada em 2026-10-12 após a restauração do quadro…": tirar a referência à SUB-38 (dizer só "o marcador `VERIFICADOR-CLAUDE`, quando existir") e tirar a nota histórica (o Git guarda o histórico).
+  Não mudar o sentido de nenhuma regra; só tirar o que é tarefa ou histórico de tarefa.
+- **Critérios de Aceitação:** `grep -n "SUB-[0-9]\|KIRO-DEV-CLONE" AGENTS.md` sem resultados (os `SUB-XX`/`SUB-01.1` genéricos de exemplo podem ficar); a trava da `KIRO-DEV-CLONE` continua valendo pelo bloco do `task-principal.md`; `npm run validar` verde.
+- **Commit:** pendente
+- **Anotação:** Criada a pedido do usuário em 2026-10-12 por Claude Code (Opus 5.5) ("veja se tem mais alguma"), depois da SUB-41. Varredura feita com `grep` no `AGENTS.md`; os itens acima são todos os que citam tarefas concretas. As seções 1 a 5 são regras e ficam.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
