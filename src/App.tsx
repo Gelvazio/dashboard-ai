@@ -1,5 +1,6 @@
 import { Brain, ListTodo, ScrollText } from 'lucide-react';
-import { cn } from './lib/utils.ts';
+import { cn } from '@/lib/utils';
+import { VIEWS } from '@/views';
 
 /**
  * Casca inicial do Dashboard AI. O layout real (sidebar, header com seletor de
@@ -32,6 +33,7 @@ export default function App() {
             </li>
           ))}
         </ul>
+        <p className="mt-6 text-xs text-slate-500">Telas: {VIEWS.map((v) => v.titulo).join(' · ')}</p>
       </section>
     </main>
   );

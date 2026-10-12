@@ -1,6 +1,6 @@
 /* Estilos globais do Dashboard AI (Tailwind CSS v4). */
 @import 'tailwindcss';
-@config '../tailwind.config.js';
+@config '../../tailwind.config.js';
 
 /* Tema escuro por classe: <html class="dark"> (o toggle chega na SUB-12). */
 @custom-variant dark (&:where(.dark, .dark *));
