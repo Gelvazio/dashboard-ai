@@ -38,17 +38,6 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-28.27
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-28.27** |
-| **Título da Sub-task:** | Contrato: mapeamento de erros para `finalizar_task` em `docs/langgraph-contrato.md` |
-| **Agente Responsável:** | DashboardAI-Clone 08 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:48 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
@@ -1849,7 +1838,7 @@
   - `SUB-28.24`: Testes do worker: interrupção e retomada sem duplicar efeitos (`pendente`)
   - `SUB-28.25`: Variáveis do worker no `api/README.md` (`pendente`)
   - `SUB-28.26`: Contrato: ferramentas permitidas e idempotência em `docs/langgraph-contrato.md` (`pendente`)
-  - `SUB-28.27`: Contrato: mapeamento de erros para `finalizar_task` em `docs/langgraph-contrato.md` (`em_execucao`)
+  - `SUB-28.27`: Contrato: mapeamento de erros para `finalizar_task` em `docs/langgraph-contrato.md` (`concluido`, `52df1e7`)
   - `SUB-28.28`: `worker/tsconfig.json` e `typecheck:worker` (`pendente`)
   - `SUB-28.29`: Schema zod `EstadoSchema` em `worker/estado.ts` (`pendente`)
   - `SUB-28.30`: `finalizar(...)` em `worker/fila.ts` (`pendente`)
@@ -2120,15 +2109,15 @@
 - **Commit:** `07b64cc`
 - **Anotação:** Seção 2 em `docs/langgraph-contrato.md`: allowlist do grafo (`brain_search`, `task_list` leitura; `brain_store`, `agent_event` escrita; `task_create` e `brain_delete` sensíveis com pausa para aprovação), `task_next`/`task_finish` fora do grafo (só o worker chama as RPCs), regras (projetoId do estado, recusa vai para SUB-28.27); chaves de idempotência `<execucaoId>:<passoId>` (e `task-<taskId>:<passoId>` entre tentativas), gravadas no checkpoint, em `agent_events.chave_idempotencia` e em `p_metadados` de `finalizar_task`, com a ordem persistir→chamar→persistir. Coerente com as seções 3, 5, 6 e 7 do `LangChain_LangGraph.md`. Só documentação.
 
-#### [ ] SUB-28.27: Contrato: mapeamento de erros para `finalizar_task` em `docs/langgraph-contrato.md`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 01:48)
+#### [x] SUB-28.27: Contrato: mapeamento de erros para `finalizar_task` em `docs/langgraph-contrato.md`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 01:48 → 2026-10-12 01:49)
 - **Depende de:** SUB-28.26
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar a seção que mapeia cada tipo de falha (transitória, validação/permissão, permanente, recusa) para o status e os metadados de `finalizar_task`, e referenciar o documento no `LangChain_LangGraph.md`.
 - **Critérios de Aceitação:** Documento completo e referenciado no `LangChain_LangGraph.md`.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `52df1e7`
+- **Anotação:** Seção 3 em `docs/langgraph-contrato.md`: tabela transitória (repete o nó com espera progressiva, depois `erro`), validação/permissão e permanente (`erro`, nova tentativa decidida pela RPC), recusa (`recusada`, final), trava perdida (não chama a RPC) e sucesso (`concluida`); regras (sem status paralelo, classificar pelo tipo do erro, repetir só a chamada da RPC em falha transitória) e argumentos/`p_metadados` (`execucao_id`, `chaves`, `classe_falha`, `passo_falho`, `erro_mensagem`). Coerente com `finalizar_task` em `database/04_rpc_functions.sql`. Referenciado nas seções 7 e 9 do `LangChain_LangGraph.md`. Só documentação.
 
 #### [ ] SUB-28.28: `worker/tsconfig.json` e `typecheck:worker`
 - **Status:** pendente
