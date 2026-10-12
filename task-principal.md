@@ -1273,8 +1273,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-25.1: Script `scripts/validar.sh` + `npm run validar`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 00:59)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `scripts/validar.sh` (bash, `set -euo pipefail`) que roda em sequência: `npm run typecheck`, `npm test`, `npm run build`, `npm run check:chunks` (se existir), `python3 -m unittest discover -s scripts` e `npm audit --omit=dev --audit-level=high`, com resumo final. Adicionar `"validar"` no `package.json`.

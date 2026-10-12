@@ -55,21 +55,33 @@
 | **Data e Hora de Início:** | 2026-10-12 00:59 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-25.1
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-25.1** |
+| **Título da Sub-task:** | Script `scripts/validar.sh` + `npm run validar` |
+| **Agente Responsável:** | DashboardAI-Clone 08 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 00:59 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (4)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-25.1** | Script `scripts/validar.sh` + `npm run validar` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:59 | Nenhuma |
 | **SUB-21.8** | Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 00:59 | SUB-21.14 |
 | **SUB-20.6** | Modal `MemoriaFormModal` em `src/components/memoria/` | DashboardAI-Clone 06 | 2026-10-12 00:55 | SUB-20.1, SUB-20.3, SUB-20.4, SUB-20.5, SUB-20.8, SUB-20.9 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
 
-### ⏳ PENDENTES (170)
+### ⏳ PENDENTES (169)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -120,7 +132,6 @@
 | **SUB-34.5** | Checagem de tamanho `scripts/checar-chunks.mjs` | 4 | Fase 6 | SUB-34.6, SUB-34.3, SUB-34.4 — ⛓️ bloqueada |
 | **SUB-34.6** | `Suspense` com `CarregandoTela` no `src/App.tsx` | 4 | Fase 6 | SUB-34.1, SUB-34.2 — ⛓️ bloqueada |
 | **SUB-25** | Validação de Build e Execução Local (mãe) | 5 | Fase 10 | SUB-01 a SUB-24; SUB-25.1 a SUB-25.7 |
-| **SUB-25.1** | Script `scripts/validar.sh` + `npm run validar` | 5 | Fase 10 | Nenhuma — 🟢 livre |
 | **SUB-25.2** | Rodar `npm ci` + `npm run validar` e registrar em `docs/VALIDACAO.md` | 5 | Fase 10 | SUB-25.1, SUB-08.9, SUB-19, SUB-20, SUB-21, SUB-23, SUB-27 (inclui SUB-27.28), SUB-33, SUB-34 — ⛓️ bloqueada |
 | **SUB-25.3** | Rodar `database/tests/run_tests.sh` | 5 | Fase 10 | SUB-25.2 — ⛓️ bloqueada |
 | **SUB-25.4** | Teste rápido local: telas Fila e Logs | 5 | Fase 10 | SUB-25.2 — ⛓️ bloqueada |
@@ -509,3 +520,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:59 | DashboardAI-Clone 01 | SUB-27.26 | `9a947eb` | Criado `src/hooks/useAuth.ts` (`useAuth()` lê o `AuthContext` e lança erro fora do `AuthProvider`); `AuthProvider`, `AuthContext` e `useAuth` exportados em `src/hooks/index.ts` mantendo os exports existentes. typecheck OK. |
 | 2026-10-12 00:59 | DashboardAI-Clone 05 (Grok Bot) | SUB-21.8 | — | Lock: assumindo SUB-21.8 (Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx`) |
 | 2026-10-12 00:59 | DashboardAI-Clone 02 | SUB-23.7 | `e587121` | Criado `src/components/tasks/SaudeFilaPanel.tsx` (`{ diagnostico, liberando, onLiberar, className? }`, ligado ao `useSaudeFila`): título 'Saúde da fila' com selo 'Trava expirada' quando `alerta`, lista de `TravaItem` (contagem) ou 'Nenhuma trava ativa', e `PendentesResumo`. Exportado em `src/components/tasks/index.ts`. typecheck e build OK. |
+| 2026-10-12 00:59 | DashboardAI-Clone 08 (Grok Bot) | SUB-25.1 | — | Lock: assumindo SUB-25.1 (Script `scripts/validar.sh` + `npm run validar`) |
