@@ -88,14 +88,26 @@
 | **Data e Hora de Início:** | 2026-10-12 00:59 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-21.6
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-21.6** |
+| **Título da Sub-task:** | Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` |
+| **Agente Responsável:** | DashboardAI-Clone 10 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 00:59 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (4)
+### 🔄 EM EXECUÇÃO (5)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-21.6** | Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:59 | SUB-21.13 |
 | **SUB-23.8** | Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` | DashboardAI-Clone 02 | 2026-10-12 00:59 | SUB-23.7 |
 | **SUB-27.19** | `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx` | DashboardAI-Clone 01 | 2026-10-12 00:59 | SUB-27.24, SUB-27.16 |
 | **SUB-25.1** | Script `scripts/validar.sh` + `npm run validar` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:59 | Nenhuma |
@@ -142,7 +154,7 @@
 | **SUB-20.9** | Componente `TagSugestoes` em `src/components/ui/TagSugestoes.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias (mãe) | 4 | Fase 7 | SUB-10, SUB-12; SUB-21.1 a SUB-21.14 |
 | **SUB-21.3** | Hook `useMemorias` em `src/hooks/useMemorias.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
-| **SUB-21.6** | Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` | 4 | Fase 7 | SUB-21.13 — 🟢 livre |
+| **SUB-21.6** | Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` | 4 | Fase 7 | SUB-21.13 — 🔄 em execução por DashboardAI-Clone 10 (Grok Bot) |
 | **SUB-21.7** | Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` | 4 | Fase 7 | SUB-21.3 — ⛓️ bloqueada |
 | **SUB-21.9** | Montar a `MemoriaView` (toolbar + grade) | 4 | Fase 7 | SUB-21.3, SUB-21.5, SUB-21.8 — ⛓️ bloqueada |
 | **SUB-21.10** | Validação visual da SUB-21 (screenshots) | 4 | Fase 7 | SUB-21.11 — ⛓️ bloqueada |
@@ -547,3 +559,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:59 | DashboardAI-Clone 08 (Grok Bot) | SUB-25.1 | — | Lock: assumindo SUB-25.1 (Script `scripts/validar.sh` + `npm run validar`) |
 | 2026-10-12 00:59 | DashboardAI-Clone 01 | SUB-27.19 | — | Lock: assumindo SUB-27.19 (`RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx`) |
 | 2026-10-12 00:59 | DashboardAI-Clone 02 | SUB-23.8 | — | Lock: assumindo SUB-23.8 (Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx`) |
+| 2026-10-12 00:59 | DashboardAI-Clone 10 (Grok Bot) | SUB-21.6 | — | Lock: assumindo SUB-21.6 (Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx`) |

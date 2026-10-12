@@ -914,7 +914,7 @@
   - `SUB-21.3`: Hook `useMemorias` em `src/hooks/useMemorias.ts` (`pendente`)
   - `SUB-21.4`: Componente `MemoriaCard` em `src/components/memoria/MemoriaCard.tsx` (`concluido`, `c03ffa6`)
   - `SUB-21.5`: Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx` (`concluido`, `197eb97`)
-  - `SUB-21.6`: Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` (`pendente`)
+  - `SUB-21.6`: Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` (`em_execucao`)
   - `SUB-21.7`: Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` (`pendente`)
   - `SUB-21.8`: Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` (`em_execucao`)
   - `SUB-21.9`: Montar a `MemoriaView` (toolbar + grade) (`pendente`)
@@ -980,8 +980,8 @@
 - **Anotação:** Criado `src/components/memoria/MemoriaGrid.tsx` (`{ memorias, carregando?, filtroAtivo?, temMais?, carregandoMais?, onCarregarMais?, onVer?, onExcluir?, className? }`): grade 1/2/3 colunas (`sm`/`xl`) de `MemoriaCard`; 6 esqueletos `animate-pulse` (`role="status"`) na primeira carga; estado vazio com textos distintos para "sem memórias" e "nenhuma corresponde aos filtros"; botão "Carregar mais" (`Botao` com `carregando`) quando `temMais`. Exportado em `src/components/memoria/index.ts`. `npm run typecheck`, `npm test` e `npm run build` OK.
 
 #### [ ] SUB-21.6: Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 00:59)
 - **Depende de:** SUB-21.13
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Modal (`components/ui/Modal`) com conteúdo renderizado por `components/ui/Markdown` (abas Formatado/Texto), tags, escopo, datas de criação/atualização, autor (`criado_por`), botão Copiar tudo (`memoriaComoMarkdown`) e botão Excluir (`onExcluir`).
