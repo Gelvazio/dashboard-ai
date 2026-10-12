@@ -2378,8 +2378,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-35.19: Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 09 (Grok Bot)
 - **Depende de:** SUB-35.11, SUB-35.14
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Carrega `listarEventos` ao montar/trocar de projeto, assina `assinarEventos` e aplica `mesclarEvento` a cada INSERT; expõe `{ eventos, statusConexao: 'conectando' | 'ao_vivo' | 'erro', erro, recarregar }`; remove o canal no cleanup. Exportar em `src/hooks/index.ts`.
