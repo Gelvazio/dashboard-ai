@@ -88,14 +88,26 @@
 | **Data e Hora de Início:** | 2026-10-12 00:57 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-21.5
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-21.5** |
+| **Título da Sub-task:** | Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx` |
+| **Agente Responsável:** | DashboardAI-Clone 10 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 00:57 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (5)
+### 🔄 EM EXECUÇÃO (6)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-21.5** | Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:57 | SUB-21.4 |
 | **SUB-21.14** | `tagsDisponiveis` em `src/lib/memorias.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 00:57 | SUB-21.2 |
 | **SUB-08.11** | `listarArquivosFonte(dirs)` em `scripts/checar-env.mjs` + teste | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:57 | SUB-08.10 |
 | **SUB-19.2** | Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 00:56 | SUB-19.1 |
@@ -146,7 +158,7 @@
 | **SUB-20.9** | Componente `TagSugestoes` em `src/components/ui/TagSugestoes.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias (mãe) | 4 | Fase 7 | SUB-10, SUB-12; SUB-21.1 a SUB-21.14 |
 | **SUB-21.3** | Hook `useMemorias` em `src/hooks/useMemorias.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
-| **SUB-21.5** | Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx` | 4 | Fase 7 | SUB-21.4 — ⛓️ bloqueada |
+| **SUB-21.5** | Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx` | 4 | Fase 7 | SUB-21.4 — 🔄 em execução por DashboardAI-Clone 10 (Grok Bot) |
 | **SUB-21.6** | Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` | 4 | Fase 7 | SUB-21.13 — 🟢 livre |
 | **SUB-21.7** | Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` | 4 | Fase 7 | SUB-21.3 — ⛓️ bloqueada |
 | **SUB-21.8** | Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` | 4 | Fase 7 | SUB-21.14 — ⛓️ bloqueada |
@@ -531,3 +543,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:57 | DashboardAI-Clone 08 (Grok Bot) | SUB-08.11 | — | Lock: assumindo SUB-08.11 (`listarArquivosFonte(dirs)` em `scripts/checar-env.mjs` + teste) |
 | 2026-10-12 00:57 | DashboardAI-Clone 10 (Grok Bot) | SUB-21.4 | `c03ffa6` | Criado `src/components/memoria/MemoriaCard.tsx` (`{ memoria, onVer?, onExcluir?, className? }`): título truncado, selo Global/Projeto via `escopoMemoria` (ícones Globe/FolderKanban, com `title` explicativo), chips de tags, resumo via `resumo(content, 220)`, atualização relativa (`tempoRelativo`, `title` com `formatarDataHora`) e ações Copiar (`CopyButton` com `memoriaComoMarkdown`), Ver e Excluir (só renderizadas quando há callback; `aria-label` com o título). Exportado em `src/components/memoria/index.ts` mantendo os exports da SUB-19. `npm run typecheck`, `npm test` e `npm run build` OK. |
 | 2026-10-12 00:57 | DashboardAI-Clone 05 (Grok Bot) | SUB-21.14 | — | Lock: assumindo SUB-21.14 (`tagsDisponiveis` em `src/lib/memorias.ts`) |
+| 2026-10-12 00:57 | DashboardAI-Clone 10 (Grok Bot) | SUB-21.5 | — | Lock: assumindo SUB-21.5 (Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx`) |
