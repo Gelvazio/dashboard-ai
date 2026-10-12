@@ -44,17 +44,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:09 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 04 (Grok Bot) — SUB-20.7
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-20.7** |
-| **Título da Sub-task:** | Botão "Nova memória" na `src/views/MemoriaView.tsx` |
-| **Agente Responsável:** | DashboardAI-Clone 04 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:10 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 06 — SUB-27.27
 
 | Propriedade | Valor Atual |
@@ -136,7 +125,7 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (6)
+### 🔄 EM EXECUÇÃO (5)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
@@ -147,13 +136,12 @@
 | **SUB-34.5** | Checagem de tamanho `scripts/checar-chunks.mjs` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:11 | SUB-34.6, SUB-34.3, SUB-34.4 |
 | **SUB-21.10** | Validação visual da SUB-21 (screenshots) | DashboardAI-Clone 01 | 2026-10-12 01:10 | SUB-21.11 |
 | **SUB-27.27** | Incluir `UserMenu` no `src/components/layout/Header.tsx` | DashboardAI-Clone 06 | 2026-10-12 01:10 | SUB-27.14 |
-| **SUB-20.7** | Botão "Nova memória" na `src/views/MemoriaView.tsx` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:10 | SUB-20.6, SUB-19.8, SUB-21.9 |
 | **SUB-37** | Ranking e prêmios dos agentes no `dashboard-task-principal.html` | DashboardAI (Grok Bot) | 2026-10-12 01:09 | Nenhuma |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
 
-### ⏳ PENDENTES (142)
+### ⏳ PENDENTES (141)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -177,7 +165,6 @@
 | **SUB-19.3** | `formatarSimilaridade` em `src/lib/similaridade.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-19.9** | `BuscaControles` (limiar, globais, modo) em `src/components/memoria/BuscaControles.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-20** | Formulário de Nova Memória Canônica (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-20.1 a SUB-20.10 |
-| **SUB-20.7** | Botão "Nova memória" na `src/views/MemoriaView.tsx` | 4 | Fase 7 | SUB-20.6, SUB-19.8, SUB-21.9 — ⛓️ bloqueada — 🔄 em execução por DashboardAI-Clone 04 (Grok Bot) |
 | **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-20.9** | Componente `TagSugestoes` em `src/components/ui/TagSugestoes.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias (mãe) | 4 | Fase 7 | SUB-10, SUB-12; SUB-21.1 a SUB-21.14 |
@@ -279,10 +266,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (96)
+### ✅ CONCLUÍDAS (97)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-20.7** | Botão "Nova memória" na `src/views/MemoriaView.tsx` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:10 | 2026-10-12 01:12 | `adef71a` |
 | **SUB-35.8** | Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:10 | 2026-10-12 01:11 | `5a09109` |
 | **SUB-35.41** | Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:10 | 2026-10-12 01:11 | `0263ae9` |
 | **SUB-35.6** | Teste de integração de `agent_events` (RLS e trigger) | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:07 | 2026-10-12 01:09 | `e7a39cd` |
@@ -684,3 +672,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:11 | DashboardAI-Clone 08 (Grok Bot) | SUB-35.45 | — | Lock: assumindo SUB-35.45 (Seção "Reporte de progresso (opcional)" no `AGENTS.md`) |
 | 2026-10-12 01:12 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.9 | — | Lock: assumindo SUB-35.9 (`listarEventos()` em `src/services/eventService.ts`) |
 | 2026-10-12 01:12 | DashboardAI-Clone 02 | SUB-21.12 | — | Lock: assumindo SUB-21.12 (Conferir exclusão com editor e viewer) |
+| 2026-10-12 01:12 | DashboardAI-Clone 04 (Grok Bot) | SUB-20.7 | `adef71a` | Botão "Nova memória" (`Botao` primário com ícone `Plus`) no cabeçalho da grade da `src/views/MemoriaView.tsx` abre o `MemoriaFormModal` (SUB-20.6) com o projeto atual; ao salvar fecha o modal, chama `recarregar()` do `useMemorias` e refaz a busca semântica via nova opção `versao` (`useBuscaSemantica` inclui `versao` nas dependências; `BuscaSemanticaPanel` repassa a prop `versao`), sem perder o texto digitado. `npm run typecheck`, `npm test` e `npm run build` OK. Teste manual contra banco local NÃO executado (sem Supabase/PostgREST configurado no ambiente deste agente). |
