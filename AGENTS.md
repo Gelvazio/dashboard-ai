@@ -2,7 +2,7 @@
 
 > 📌 **Quadro único:** o antigo `quadro-task-principal.md` foi incorporado ao `task-principal.md`. Travas, status e tarefas ativas ficam só no `task-principal.md`; não recrie o arquivo antigo.
 
-> 🔄 **Sincronizar SEMPRE com `fetch` antes do `pull`:** rode `git fetch --all --prune` **antes** de qualquer `git pull --rebase origin main`. Sem o `fetch`, a referência `origin/main` é **local e envelhece**: um `git status` mostrando `## main...origin/main` (sem `ahead`/`behind`) **não** prova que você está atualizado. Já houve agente lendo o quadro "sincronizado" com o remoto vários commits à frente.
+> 🔄 **Sincronizar SEMPRE com `fetch` antes do `pull`:** rode `git fetch --all --prune` **antes** de qualquer `git pull --rebase origin main`. Sem o `fetch`, a referência `origin/main` é **local e envelhece**: um `git status` mostrando `## main...origin/main` (sem `ahead`/`behind`) **não** prova que você está atualizado. Já houve agente lendo o quadro "sincronizado" com o remoto vários commits à frente. **Com os hooks da seção 1.3 instalados, o Git passa a barrar o push atrasado sozinho** — instale uma vez por clone.
 
 > 📦 **Concluídas em arquivo separado:** os blocos `[x]` (tarefas e subtarefas `concluido`) ficam em [`task_complete.md`](task_complete.md). Para pegar tarefas, leia só o `task-principal.md`: a lista `Subtarefas:` das tarefas-mãe abertas já traz `(concluido, <sha>)`, e **dependência que não aparece como bloco no `task-principal.md` está `concluido` no `task_complete.md`**. Abra o `task_complete.md` só para consultar uma entrega ou reabrir uma tarefa (o bloco volta para o `task-principal.md` como `pendente`, com o motivo na anotação).
 >
@@ -21,6 +21,7 @@
 Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) que chegar à fila de tarefas **DEVE SEGUIR RIGOROSAMENTE O FLUXO EM 3 PARTES ANTES DE MEXER NO CÓDIGO DA TAREFA**:
 
 **CHECKLIST OBRIGATÓRIO ANTES DE ASSUMIR QUALQUER TAREFA:**
+☐ [ ] Instalei os hooks de sincronização (`git config core.hooksPath .githooks`, seção 1.3)?
 ☐ [ ] Fiz `git fetch --all --prune` para atualizar a referência `origin/main`?
 ☐ [ ] Fiz `git pull --rebase origin main` **PRIMEIRO** (depois do fetch)?
 ☐ [ ] Li o arquivo ATUALIZADO (task-principal.md)?
@@ -44,6 +45,7 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
    - ⛔ **NÃO** ler nenhum arquivo local antes destes comandos
    - ⛔ **NÃO** assumir nenhuma tarefa sem garantir que está no estado mais recente
    - Se o `fetch` indicar que `origin/main` andou, **releia o quadro** mesmo quando o pull for fast-forward
+   - Os hooks da seção 1.3 automatizam o `fetch` no push e na troca de branch, mas **não substituem** este PASSO 1
    - Se houver conflito no rebase, resolver antes de prosseguir
 
 ✅ **PASSO 2 (SÓ DEPOIS DO GIT PULL):** Ler obrigatoriamente o arquivo ATUALIZADO:
@@ -161,6 +163,40 @@ Todo bloco de tarefa ou subtarefa, no `task-principal.md` e no `task_complete.md
 3. **Prioridade não fura dependência nem trava:** item com dependência não `concluido`, travado por outro agente ou com 🔴 trava especial continua indisponível, qualquer que seja a prioridade.
 4. **Quem define:** a prioridade é definida pelo usuário. Ao criar ou subdividir uma tarefa, o agente usa a da tarefa-mãe (ou `MEDIA`, se não houver) e não muda a prioridade de itens existentes sem pedido do usuário.
 5. **Tarefas concluídas** mantêm o campo só como histórico; ele não tem efeito na fila.
+
+---
+
+## 🪝 1.3 HOOKS DE SINCRONIZAÇÃO (VERSIONADOS — INSTALAR 1x POR CLONE)
+
+Dois hooks em [`.githooks/`](.githooks/) transformam a regra do `fetch` de "boa intenção" em **impedimento mecânico**: o Git barra, em vez de depender de o agente lembrar.
+
+| Hook | Quando roda | O que faz |
+|---|---|---|
+| [`.githooks/pre-push`](.githooks/pre-push) | a cada `git push` | Roda `git fetch --all --prune` e **RECUSA** o push (exit 1) quando o remoto tem commits que você não tem — o caso que seria rejeitado depois e que empurraria para o `--force` (proibido) |
+| [`.githooks/post-checkout`](.githooks/post-checkout) | ao trocar de branch | Roda `git fetch --all --prune` e **avisa** (sem bloquear) quantos commits você está atrás do upstream. Não dispara durante rebase/merge/cherry-pick |
+
+### Instalação (obrigatória, uma vez por clone)
+
+```bash
+git config core.hooksPath .githooks
+```
+
+O `core.hooksPath` vive no `.git/config`, que **não** é versionado: cada clone/pasta de trabalho precisa rodar o comando uma vez. Confira com:
+
+```bash
+git config --get core.hooksPath     # deve imprimir: .githooks
+```
+
+### Detalhes que importam
+
+- **⛔ Não usar `--force`:** o hook também bloqueia force-push, porque o commit do remoto deixa de ser ancestral do seu. Se o hook bloqueou, o caminho é `git fetch --all --prune` → `git pull --rebase origin main` → **reler o quadro** → publicar de novo.
+- **Escape hatch:** `git push --no-verify` pula o hook. Só usar com motivo registrado na anotação do bloco da tarefa.
+- **Se o hook não rodar**, quase sempre é fim de linha: o [`.gitattributes`](.gitattributes) força `eol=lf` em `.githooks/*` porque, com CRLF, o shebang `#!/bin/sh` quebra no Git Bash. Verificação:
+  ```bash
+  git ls-files --eol .githooks    # esperado: i/lf  w/lf  attr/text eol=lf
+  ```
+- **Desativar:** `git config --unset core.hooksPath`.
+- **Nada disso substitui o PASSO 1:** o hook cobre o *push* e a *troca de branch*, mas não o momento de **pegar tarefa**. O `git fetch --all --prune` + `git pull --rebase origin main` antes de ler o quadro continua obrigatório.
 
 ---
 

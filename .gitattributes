@@ -1,0 +1,7 @@
+# Hooks do Git (AGENTS.md, seção 1.3).
+# OBRIGATÓRIO: estes arquivos precisam de LF no disco. Com core.autocrlf=true
+# (padrão no Windows) eles seriam materializados em CRLF e o shebang
+# "#!/bin/sh" quebraria no Git Bash de outros clones.
+.githooks/* text eol=lf
+# O próprio .gitattributes em LF: com CRLF a última regra poderia ser lida errado.
+.gitattributes text eol=lf

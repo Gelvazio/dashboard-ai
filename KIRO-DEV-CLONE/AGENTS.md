@@ -40,6 +40,7 @@ O [`AGENTS.md`](../AGENTS.md) da raiz é a **fonte única da verdade** do protoc
 > ⛔ **KIRO-DEV-CLONE ESTÁ TRAVADO PARA TODAS AS IAS:** a tarefa-mãe `KIRO-DEV-CLONE` e **todas** as tarefas desta pasta estão **reservadas para implementação manual pelo usuário**. Nenhuma IA pode assumi-las (nem criar subtarefas delas) sem **autorização explícita do usuário**. Só o usuário remove a trava, editando o `task-principal.md` da raiz. Ver seção **"🔒 TRAVA ESPECIAL: KIRO-DEV-CLONE"** no quadro.
 
 **CHECKLIST OBRIGATÓRIO ANTES DE ASSUMIR QUALQUER TAREFA:**
+☐ [ ] Instalei os hooks de sincronização (`git config core.hooksPath .githooks` — seção 1.3 da raiz)?
 ☐ [ ] Fiz `git fetch --all --prune` para atualizar a referência `origin/main`?
 ☐ [ ] Fiz `git pull --rebase origin main` **PRIMEIRO** (depois do fetch)?
 ☐ [ ] Li o arquivo ATUALIZADO (task-principal.md)?
@@ -60,6 +61,8 @@ O [`AGENTS.md`](../AGENTS.md) da raiz é a **fonte única da verdade** do protoc
 3. Ler `task-principal.md` ATUALIZADO
 4. Conferir se a trava está LIVRE (e se o item não é de outro agente)
 5. Localizar sub-task com status `pendente`, **de maior prioridade**, e dependências `concluido`
+
+> Os hooks da **seção 1.3 da raiz** automatizam o `fetch` no push e na troca de branch, mas **não substituem** este passo 1.
 
 **PARTE 2 — GRAVAR LOCK:**
 1. Mudar status da sub-task para `em_execucao` em `task-principal.md`
@@ -87,6 +90,24 @@ O [`AGENTS.md`](../AGENTS.md) da raiz é a **fonte única da verdade** do protoc
 - **⛔ Nunca** usar `git push --force`
 - **⛔ Nunca** usar `git pull --all` nem `git pull` sem `--rebase` (cria *merge*, proibido); para trazer tudo, use `git fetch --all` + `git pull --rebase origin main`
 - **Usar skill `proxima-task`** para o fluxo automatizado
+
+### 🪝 Hooks de Sincronização (seção 1.3 da raiz — obrigatório instalar)
+
+Os hooks versionados em [`.githooks/`](../.githooks/) valem também para quem trabalha nesta pasta. Instale **uma vez por clone**:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+| Hook | O que faz |
+|---|---|
+| [`pre-push`](../.githooks/pre-push) | Roda `git fetch --all --prune` e **RECUSA** o push atrasado (também bloqueia `--force`) |
+| [`post-checkout`](../.githooks/post-checkout) | Roda `git fetch --all --prune` ao trocar de branch e avisa quantos commits você está atrás |
+
+- Confira: `git config --get core.hooksPath` (deve imprimir `.githooks`).
+- Escape hatch: `git push --no-verify`, só com motivo registrado na anotação.
+- Desativar: `git config --unset core.hooksPath`.
+- Fim de linha: o [`.gitattributes`](../.gitattributes) força `eol=lf` em `.githooks/*`; com CRLF o shebang quebra. Verifique com `git ls-files --eol .githooks`.
 
 ---
 
@@ -481,6 +502,7 @@ Seguir as mesmas regras do [`AGENTS.md`](../AGENTS.md) principal:
 - Sincronizar **este arquivo** sempre que o `AGENTS.md` da raiz mudar (ver primeira seção)
 - Commits com formato padrão: `feat(SUB-XX): descrição` / `docs(SUB-XX): descrição` / `lock: assumindo sub-task SUB-XX por <agente>`
 - Antes de qualquer `git pull --rebase origin main`, rodar `git fetch --all --prune`
+- Instalar os hooks de sincronização: `git config core.hooksPath .githooks` (seção 1.3 da raiz)
 - Validação com `npm run typecheck`, `npm test` e `npm run build`
 - Não usar `git push --force` nem `git pull --all`
 - Usar skill `proxima-task` para fluxo automatizado de tarefas
