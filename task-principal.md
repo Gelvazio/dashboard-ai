@@ -68,19 +68,6 @@
 
 ---
 
-### 🔒 TRAVA ADICIONAL — Claude Code (Opus 5.5) — SUB-40.6
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-40.6** |
-| **Título da Sub-task:** | Documentar o cadastro e o administrador inicial (`README.md` e `database/README.md`) |
-| **Agente Responsável:** | Claude Code (Opus 5.5) |
-| **Data e Hora de Início:** | 2026-10-12 18:30 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-40.6 |
-
----
-
 ### 🔒 TRAVA ADICIONAL — Claude Code (Opus 5.5, sessão em nuvem) — SUB-25.4
 
 | Propriedade | Valor Atual |
@@ -114,13 +101,13 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 44
 - **Subtarefas atômicas (~3 min):** 251
-- **Em Execução:** 4 (SUB-38, SUB-41.1, SUB-40.6, SUB-25.4)
-- **Pendentes:** 11 principais (SUB-38, 25, 26, 28, 35, 39, 40, 41, 42, 43, KIRO-DEV-CLONE) + 42 subtarefas
+- **Em Execução:** 3 (SUB-38, SUB-41.1, SUB-25.4)
+- **Pendentes:** 11 principais (SUB-38, 25, 26, 28, 35, 39, 40, 41, 42, 43, KIRO-DEV-CLONE) + 41 subtarefas
   - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 5 — SUB-25.7, SUB-35.32, SUB-40.7 (só com autorização do usuário) e SUB-43 (atômica) (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
   - bloqueadas por dependência: 6 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41) e SUB-42 (depende da SUB-41)
-  - em execução: 4 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI)); SUB-40.6 (Claude Code (Opus 5.5)); SUB-25.4 (Claude Code (Opus 5.5, sessão em nuvem))
+  - em execução: 3 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI)); SUB-25.4 (Claude Code (Opus 5.5, sessão em nuvem))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 238 de 295 blocos (33 principais + 205 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 239 de 295 blocos (33 principais + 206 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -474,7 +461,7 @@
   - `SUB-40.3`: Serviço `cadastrarUsuario` em `src/services/authService.ts` (`concluido`, `a48672a`)
   - `SUB-40.4`: Componente `src/components/auth/CadastroForm.tsx` (`concluido`, `a86f688`)
   - `SUB-40.5`: Alternar "Entrar" / "Criar usuário" na `LoginView` (`concluido`, `d7b0fba`)
-  - `SUB-40.6`: Documentar o cadastro e o administrador inicial (`README.md` e `database/README.md`) (`em_execucao`, Claude Code (Opus 5.5))
+  - `SUB-40.6`: Documentar o cadastro e o administrador inicial (`README.md` e `database/README.md`) (`concluido`, `d5dfd55`)
   - `SUB-40.7`: Aplicar o `08_admin_inicial.sql` no Supabase do projeto (só com autorização do usuário) (`pendente`)
 - **Descrição:** Na tela de login, oferecer o link **"Criar usuário"**, que abre um **novo formulário** de cadastro (nome, e-mail, senha e confirmação) usando o Supabase Auth (`signUp`). Regra pedida pelo usuário: se o e-mail cadastrado for **`gelvazio@gmail.com`** e ele **ainda não existir** no banco, o usuário é criado como **administrador** (`user_roles.role = 'admin'`). **Segurança:** o papel de administrador é dado **só pelo banco** (função `security definer` + trigger em `auth.users`), nunca pelo frontend (o cliente não escolhe o próprio papel), e **só depois do e-mail confirmado** (`email_confirmed_at` preenchido), para que ninguém se registre com esse e-mail sem ter acesso à caixa de entrada. Os demais cadastros entram sem papel global (acesso só pelos `project_members`, como hoje).
 - **Critérios de Aceitação:** Todas as filhas `concluido`; `npm run validar` verde; cadastro com `gelvazio@gmail.com` (inexistente) gera `user_roles` admin após a confirmação do e-mail; cadastro com outro e-mail não ganha papel de administrador; se `gelvazio@gmail.com` já existir, nada muda.
@@ -488,18 +475,6 @@
 
 
 
-#### [ ] SUB-40.6: Documentar o cadastro e o administrador inicial (`README.md` e `database/README.md`)
-- **Status:** em_execucao
-- **Prioridade:** MEDIA
-- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 18:30)
-- **Depende de:** SUB-40.1, SUB-40.5
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** No `database/README.md`, incluir o `08_admin_inicial.sql` na ordem de aplicação e explicar a regra (e-mail `gelvazio@gmail.com`, admin só após confirmação, só se ainda não houver papel). No `README.md`, na parte de autenticação, descrever o link "Criar usuário" e a configuração necessária no Supabase: **Authentication → Providers → Email** com cadastro habilitado e **"Confirm email" ligado** (sem isso o administrador inicial não é criado), e a URL do site em **Authentication → URL Configuration** para o link de confirmação.
-- **Critérios de Aceitação:** `npm run validar` verde; links relativos funcionando.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
 
 #### [ ] SUB-40.7: Aplicar o `08_admin_inicial.sql` no Supabase do projeto (só com autorização do usuário)
 - **Status:** pendente

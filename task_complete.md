@@ -3335,3 +3335,16 @@
 - **Anotação:** Executada em 2026-10-12 por Claude Code (Opus 5.5) por orientação do usuário no chat ("continue a SUB-40 a partir da SUB-40.2"). `src/views/LoginView.tsx`: estado `modo: 'entrar' | 'cadastrar'`; no modo `entrar`, abaixo do `RecuperarAcesso`, o texto "Não tem conta?" com o botão-link **Criar usuário**; no modo `cadastrar`, a `section` (`aria-label="Criar usuário"`) mostra o `CadastroForm`, cujo `onVoltar` volta para `entrar`. O aviso de Supabase não configurado ficou fora da alternância, então aparece nos dois modos; o login continua igual. Verificação: `npm run validar` verde (typecheck, testes, build, chunks, env, python e audit). Sem teste no navegador (regra do usuário): o fluxo visual fica para o usuário conferir.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:29 — Claude Code (Opus 5.5): entrega verificada
 - **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [x] SUB-40.6: Documentar o cadastro e o administrador inicial (`README.md` e `database/README.md`)
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 18:30)
+- **Depende de:** SUB-40.1, SUB-40.5
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** No `database/README.md`, incluir o `08_admin_inicial.sql` na ordem de aplicação e explicar a regra (e-mail `gelvazio@gmail.com`, admin só após confirmação, só se ainda não houver papel). No `README.md`, na parte de autenticação, descrever o link "Criar usuário" e a configuração necessária no Supabase: **Authentication → Providers → Email** com cadastro habilitado e **"Confirm email" ligado** (sem isso o administrador inicial não é criado), e a URL do site em **Authentication → URL Configuration** para o link de confirmação.
+- **Critérios de Aceitação:** `npm run validar` verde; links relativos funcionando.
+- **Commit:** `d5dfd55`
+- **Anotação:** Executada em 2026-10-12 por Claude Code (Opus 5.5) por orientação do usuário no chat ("continue a SUB-40 a partir da SUB-40.2"). `database/README.md`: `08_admin_inicial.sql` na tabela de ordem de aplicação, "Como aplicar" passa a ir de 00 a 08 e nova seção **Administrador inicial (08)** (e-mail `gelvazio@gmail.com`; papel só pelo banco via trigger; só após `email_confirmed_at`; só se ainda não houver linha em `user_roles`; e-mail centralizado em `email_administrador_inicial()`; backfill; comportamento sem schema `auth`; consultas de conferência). `README.md`: autenticação na Arquitetura cita o cadastro; a tabela "Aplicar os scripts" vai de 00 a 08 (incluí também o `07_agent_events.sql`, que faltava); nova seção **4. Cadastro de usuários ("Criar usuário")** com o administrador inicial e a configuração do Supabase (**Authentication → Providers → Email** com cadastro habilitado e **Confirm email** ligado; **Authentication → URL Configuration** com a URL do site). Verificação: `npm run validar` verde; âncoras relativas (`#4-cadastro-de-usuários-criar-usuário`, `database/README.md#administrador-inicial-08`) conferidas pelo título.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:32 — Claude Code (Opus 5.5): entrega verificada
+- **VERIFICADOR-CLAUDE:** PENDENTE
