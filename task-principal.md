@@ -45,28 +45,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.9
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-28.9** |
-| **Título da Sub-task:** | Nó `executar` em `worker/nos/executar.ts` |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 12:45 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202
-- **Em Execução:** 1 (SUB-28.9, Devin (Cognition AI), desde 2026-10-12 12:45)
+- **Em Execução:** 0
 - **Pendentes:** 4 principais (25, 26, 28, 35) + 30 subtarefas
-  - livres agora: 7 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.13, SUB-28.14, SUB-35.32, SUB-35.33)
-  - bloqueadas por dependência: 23
+  - livres agora: 8 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.12, SUB-28.13, SUB-28.14, SUB-35.32, SUB-35.33)
+  - bloqueadas por dependência: 22
   - reservadas: 0
-- **Concluídas:** 204 de 239 blocos (33 principais + 171 subtarefas)
+- **Concluídas:** 205 de 239 blocos (33 principais + 172 subtarefas)
 - **Canceladas:** 0
 
 ---
@@ -1980,7 +1969,7 @@
   - `SUB-28.6`: Nó `carregarContexto` em `worker/nos/carregarContexto.ts` (`concluido`, `463b3d9`)
   - `SUB-28.7`: Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts` (`concluido`, `07ca06f`)
   - `SUB-28.8`: Nó `politica` (aprovação humana) em `worker/nos/politica.ts` (`concluido`, `6ebd647`)
-  - `SUB-28.9`: Nó `executar` em `worker/nos/executar.ts` (`em_execucao`)
+  - `SUB-28.9`: Nó `executar` em `worker/nos/executar.ts` (`concluido`, `9cf0e2a`)
   - `SUB-28.10`: Nó `revisar` (roteamento) em `worker/nos/revisar.ts` (`concluido`, `b1c35a9`)
   - `SUB-28.11`: Nó `finalizar` em `worker/nos/finalizar.ts` (`concluido`, `9575b13`)
   - `SUB-28.12`: Montagem do `StateGraph` em `worker/grafo.ts` (`pendente`)
@@ -2098,16 +2087,16 @@
 - **Anotação:** `politica(state, pedirAprovacao = interrupt)` em `worker/nos/politica.ts`: valida o plano com `PlanoSchema`, recusa ferramenta fora da allowlist (erro com `status: 403`, classificado como `permissao`) e, havendo passo sensível (flag do plano ou da `ALLOWLIST`), chama `interrupt()` do LangGraph com `PedidoAprovacao` (`tipo`, `taskCodigo`, passos sensíveis, motivo); a resposta do humano vai para `aprovacao`. Testes em `tests/unit/worker-politica.test.ts`: não sensível segue sem pedir aprovação, sensível pede e grava a resposta, fora da allowlist é permissão, e com `interrupt()` real num `StateGraph` com `MemorySaver` o grafo pausa em `politica`. `npm test`, `npm run typecheck`, `npm run typecheck:worker` e `npm run build` verdes.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:45 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
-#### [ ] SUB-28.9: Nó `executar` em `worker/nos/executar.ts`
-- **Status:** em_execucao
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:45)
+#### [x] SUB-28.9: Nó `executar` em `worker/nos/executar.ts`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:45, conclusão: 2026-10-12 12:46)
 - **Depende de:** SUB-28.19
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Executa o passo atual com chave de idempotência `${execucaoId}:${passo}`; se o resultado já existe no estado, não repete.
 - **Critérios de Aceitação:** Teste: retomada não duplica a chamada.
-- **Commit:** pendente (código parcial em `f3b2b98`)
-- **Anotação:** Reaberta na revisão de 2026-10-12 (Devin (revisão do quadro)): marcada como concluída em `310fab9`, mas placeholder: executa um plano fixo (`planoPlaceholder`) e o handler MCP só devolve texto; sem teste.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (reaberta: critérios de aceitação não atendidos)
+- **Commit:** `9cf0e2a`
+- **Anotação:** `executar(state, deps)` em `worker/nos/executar.ts`: lê o plano do estado (`PlanoSchema`), executa o primeiro passo sem `resultados["passo-<i>"]` via `criarFerramentaLangChain` (schema do `inputSchema` MCP) e passa a chave `${execucaoId}:passo-<i>` (`chaveDoPasso`) ao handler; passos já registrados (retomada) não são repetidos; plano completo devolve `final: true`; falha vai para `resultados.erro` para o nó `revisar`. Handler padrão: `getTool(nome).handler` do registro MCP. Testes com dependências falsas em `tests/unit/worker-executar.test.ts` (chave de idempotência, retomada não duplica a chamada, falha em `erro`). `npm test`, `npm run typecheck`, `npm run typecheck:worker` e `npm run build` verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:46 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
 #### [x] SUB-28.10: Nó `revisar` (roteamento) em `worker/nos/revisar.ts`
 - **Status:** concluido
