@@ -33,17 +33,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-27.12
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-27.12** |
-| **Título da Sub-task:** | Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` |
-| **Agente Responsável:** | DashboardAI-Clone 10 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:13 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-35.28
 
 | Propriedade | Valor Atual |
@@ -81,19 +70,18 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-35.15** | `estadoDoAgente()` em `src/lib/monitor.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:14 | SUB-35.14 |
 | **SUB-35.10** | `atividadeAtual()` em `src/services/eventService.ts` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:13 | SUB-35.9 |
 | **SUB-35.28** | Feed `FeedEventos` em `src/components/monitor/FeedEventos.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:13 | SUB-35.8 |
-| **SUB-27.12** | Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:13 | SUB-27.26, SUB-27.11 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
 
-### ⏳ PENDENTES (137)
+### ⏳ PENDENTES (136)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -172,7 +160,6 @@
 | **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) (mãe) | 3 | Fase 2B | SUB-07, SUB-03; SUB-33.1 a SUB-33.13 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | 3 | Fase 2B | SUB-33.11 — 🔄 em execução por Codex (OpenAI) |
 | **SUB-27** | Autenticação e Login com Supabase Auth (mãe; pendente, liberada) | 3 | Fase 10 | SUB-03, SUB-29; SUB-27.1 a SUB-27.28 — 🟢 livre |
-| **SUB-27.12** | Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` | 3 | Fase 10 | SUB-27.26, SUB-27.11 — 🔄 em execução por DashboardAI-Clone 10 (Grok Bot) |
 | **SUB-27.13** | Integrar autenticação no `src/App.tsx` | 3 | Fase 10 | SUB-27.12 — ⛓️ bloqueada |
 | **SUB-27.17** | Documentar configuração do Supabase Auth em `src/README.md` | 3 | Fase 10 | SUB-27.13 — ⛓️ bloqueada |
 | **SUB-27.18** | Validação automatizada da SUB-27 | 3 | Fase 10 | SUB-27.6, SUB-27.8, SUB-27.13, SUB-27.27, SUB-27.15, SUB-27.16, SUB-27.17, SUB-27.20, SUB-27.21 — ⛓️ bloqueada |
@@ -212,7 +199,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (103)
+### ✅ CONCLUÍDAS (104)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -332,6 +319,7 @@
 | **SUB-21.11** | Ligar detalhe e exclusão na `MemoriaView` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:06 | 2026-10-12 01:08 | `e4bacb0` |
 | **SUB-34.3** | Modais da fila sob demanda na `src/views/FilaView.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:08 | 2026-10-12 01:10 | `964764e` |
 | **SUB-27.11** | Tela `LoginView` em `src/views/LoginView.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:11 | 2026-10-12 01:12 | `213f237` |
+| **SUB-27.12** | Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:13 | 2026-10-12 01:14 | `e3157a1` |
 
 n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | Claude Code | 2026-10-12 00:50 | 2026-10-12 00:51 | `fc4c3ee` |
 || **SUB-20.1** | `validarMemoria(dados)` em `src/lib/memoriaForm.ts` | DashboardAI-Clone 06 | 2026-10-12 00:46 | 2026-10-12 00:47 | `5662f1a` |
@@ -641,3 +629,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:14 | DashboardAI-Clone 04 (Grok Bot) | SUB-35.14 | `7e268fb` | Criado `src/lib/monitor.ts` com `mesclarEvento(lista, novo, max = 200)`: `id` repetido devolve a mesma lista; insere na posição certa por `created_at` desc (evento atrasado do Realtime não vai para o topo; empate pelo `id` maior); corta em `max`; não altera a lista recebida. 6 testes em `tests/unit/monitor.test.ts`. `npm test` e `npm run typecheck` verdes. |
 | 2026-10-12 01:14 | DashboardAI-Clone 04 (Grok Bot) | SUB-35.15 | — | Lock: assumindo SUB-35.15 (`estadoDoAgente()` em `src/lib/monitor.ts`) |
 | 2026-10-12 01:14 | DashboardAI (Grok Bot) | SUB-37 | `d12bd32` | Cartão "Ranking e prêmios" no dashboard-task-principal.html: entregas por agente (histórico com SHA + CONCLUÍDAS, 1 por código, nomes normalizados), pódio 🥇🥈🥉 com troféu/coroa, tabela, medalhas 🔥 última hora / ⚡ última entrega / 🎯 marcos 10-25-50-100, destaque animado quando o líder muda. Cérebro dos agentes movido para o topo (altura até 680px; corrigido canvas limitado a 280px). Validado em Chrome headless sem erros de console; contagens conferidas manualmente |
+| 2026-10-12 01:14 | DashboardAI-Clone 10 (Grok Bot) | SUB-27.12 | `e3157a1` | Criado `src/components/auth/RotaProtegida.tsx` (`{ children }`) com `useAuth`: `carregando` -> `CarregandoTela` ("Verificando sessão..."); sem sessão -> `LoginView` (SUB-27.11); com sessão -> `children`. Preserva a rota pedida: guarda o hash de app (`#/...`, ignorando fragmentos do Supabase como `#access_token=`) inicial e os `hashchange` enquanto deslogado e, quando a sessão chega com o hash trocado (link mágico/redefinição), restaura via `history.replaceState` + evento `hashchange` (o `useNavegacao` reage). Exportado em `src/components/auth/index.ts`. Integração no `App` fica na SUB-27.13. `npm run typecheck`, `npm test` e `npm run build` OK. |
