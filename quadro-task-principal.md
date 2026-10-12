@@ -33,26 +33,16 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhuma tarefa reservada para Codex |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — SUB-33.7
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-33.7** |
-| **Título da Sub-task:** | `criarGeradorEmbedding()` em `src/services/embeddingService.ts` |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 00:29 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém mais assume a SUB-33.7 |
-
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (1)
+### 🔄 EM EXECUÇÃO (0)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
-| **SUB-33.7** | `criarGeradorEmbedding()` em `src/services/embeddingService.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:29 | SUB-33.11 |
+
+*(Nenhuma tarefa em execução)*
 
 ---
 
@@ -64,7 +54,7 @@
 
 > **SUB-27 liberada a pedido do usuário** (2026-10-11 23:55): mãe e 22 subtarefas estão disponíveis; cada agente deve respeitar as dependências indicadas. Nenhum código da SUB-27 havia sido enviado à main.
 
-**🟢 Livres agora (27):** SUB-33.5, SUB-33.9, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1
+**🟢 Livres agora (29):** SUB-33.5, SUB-33.8, SUB-33.9, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.5, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
@@ -109,7 +99,7 @@
 | **SUB-20.2** | `parseTags(texto)` em `src/lib/memoriaForm.ts` | 4 | Fase 7 | SUB-20.1 — ⛓️ bloqueada |
 | **SUB-20.3** | `sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts` | 4 | Fase 7 | SUB-20.1, SUB-20.10 — ⛓️ bloqueada |
 | **SUB-20.4** | Componente `TagInput` em `src/components/ui/TagInput.tsx` | 4 | Fase 7 | SUB-20.2 — ⛓️ bloqueada |
-| **SUB-20.5** | Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts` | 4 | Fase 7 | SUB-33.7 — ⛓️ bloqueada |
+| **SUB-20.5** | Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts` | 4 | Fase 7 | SUB-33.7 — 🟢 livre |
 | **SUB-20.6** | Modal `MemoriaFormModal` em `src/components/memoria/` | 4 | Fase 7 | SUB-20.1, SUB-20.3, SUB-20.4, SUB-20.5, SUB-20.8, SUB-20.9 — ⛓️ bloqueada |
 | **SUB-20.7** | Botão "Nova memória" na `src/views/MemoriaView.tsx` | 4 | Fase 7 | SUB-20.6, SUB-19.8, SUB-21.9 — ⛓️ bloqueada |
 | **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
@@ -188,7 +178,7 @@
 | **SUB-28.32** | Registro de auditoria da aprovação | 5 | Fase 11 (última) | SUB-28.23 — ⛓️ bloqueada |
 | **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) (mãe) | 3 | Fase 2B | SUB-07, SUB-03; SUB-33.1 a SUB-33.13 |
 | **SUB-33.5** | Registrar `api/embedding.ts` no `vercel.json` | 3 | Fase 2B | SUB-33.4 — 🟢 livre |
-| **SUB-33.8** | Testes de `embeddingService` em `tests/unit/embeddingService.test.ts` | 3 | Fase 2B | SUB-33.7 — ⛓️ bloqueada |
+| **SUB-33.8** | Testes de `embeddingService` em `tests/unit/embeddingService.test.ts` | 3 | Fase 2B | SUB-33.7 — 🟢 livre |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | 3 | Fase 2B | SUB-33.11 — 🟢 livre |
 | **SUB-27** | Autenticação e Login com Supabase Auth (mãe; pendente, liberada) | 3 | Fase 10 | SUB-03, SUB-29; SUB-27.1 a SUB-27.28 — 🟢 livre |
 | **SUB-27.1** | `mensagemErroAuth(erro)` em `src/lib/auth.ts` | 3 | Fase 10 | Nenhuma — 🟢 livre |
@@ -222,7 +212,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (37)
+### ✅ CONCLUÍDAS (38)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -263,6 +253,7 @@
 | **SUB-21.13** | `escopoMemoria` em `src/lib/memorias.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:26 | 2026-10-12 00:27 | `de3cc15` |
 | **SUB-33.6** | Testes do handler: OPTIONS, 405 e 401 | DashboardAI (Grok Bot) | 2026-10-12 00:27 | 2026-10-12 00:28 | `4ba6702` |
 | **SUB-33.12** | Testes do handler: 413, 502 e 200 | DashboardAI (Grok Bot) | 2026-10-12 00:28 | 2026-10-12 00:29 | `bf48093` |
+| **SUB-33.7** | `criarGeradorEmbedding()` em `src/services/embeddingService.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:29 | 2026-10-12 00:30 | `64aa288` |
 
 ---
 
@@ -344,3 +335,4 @@
 | 2026-10-12 00:28 | DashboardAI (Grok Bot) | SUB-33.12 | — | Lock: assumindo SUB-33.12 (Testes do handler: 413, 502 e 200) |
 | 2026-10-12 00:29 | DashboardAI (Grok Bot) | SUB-33.12 | `bf48093` | Em `tests/unit/api-embedding.test.ts`, bloco "POST autenticado" com Auth e API de embeddings simulados: 413 com 8.001 caracteres, 400 sem `texto`, 502 quando a API de embeddings recusa (corpo sem `sk-` e sem a chave anon) e 200 com vetor de 1536 (`dimensoes`, `modelo`, 2 chamadas a `fetch`). typecheck (app + api) e `npm test` verdes (57 passed). |
 | 2026-10-12 00:29 | DashboardAI (Grok Bot) | SUB-33.7 | — | Lock: assumindo SUB-33.7 (`criarGeradorEmbedding()` em `src/services/embeddingService.ts`) |
+| 2026-10-12 00:30 | DashboardAI (Grok Bot) | SUB-33.7 | `64aa288` | Criado `src/services/embeddingService.ts` com `criarGeradorEmbedding({ url?, client? }): GeradorEmbedding`: pega o `access_token` de `client.auth.getSession()` (sem sessão -> `ServiceError('Faça login para usar a busca semântica.')`), faz `POST /api/embedding` com `{ texto }` e `Authorization: Bearer`; 401 -> mesma mensagem de login, falha de rede/HTTP -> `ServiceError` (usa `erro` do servidor), valida 1536 números finitos. Exportado em `src/services/index.ts`. Nenhuma chave de embeddings no frontend. typecheck, `npm test` e `npm run build` OK. |
