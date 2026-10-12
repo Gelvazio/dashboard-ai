@@ -1097,7 +1097,7 @@
   - `SUB-23.6`: Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts` (`concluido`)
   - `SUB-23.7`: Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx` (`concluido`)
   - `SUB-23.8`: Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` (`concluido`)
-  - `SUB-23.9`: Alerta de trava presa na `src/views/FilaView.tsx` (`pendente`)
+  - `SUB-23.9`: Alerta de trava presa na `src/views/FilaView.tsx` (`em_execucao`)
   - `SUB-23.10`: `TravaItem` em `src/components/tasks/TravaItem.tsx` (`concluido`)
   - `SUB-23.11`: `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx` (`concluido`, `5bce2d7`)
   - `SUB-23.12`: Teste de integração de `liberarTrava`: viewer e outro projeto (`pendente`)
@@ -1188,9 +1188,9 @@
 - **Commit:** `6c409d3`
 - **Anotação:** Na `src/views/LogsView.tsx`: `useTasks(projeto?.id)` + `useSaudeFila` e `SaudeFilaPanel` exibido acima da linha do tempo de execuções. typecheck, build e `npm test` verdes (162 passed). Screenshot não gerado (sem Supabase configurado no ambiente do clone).
 
-#### [ ] SUB-23.9: Alerta de trava presa na `src/views/FilaView.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [🔄] SUB-23.9: Alerta de trava presa na `src/views/FilaView.tsx`
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-23.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Na `FilaView`, calcular `diagnosticarFila(tasks)` e, se `alerta`, mostrar faixa de aviso (role=alert) "N task(s) presa(s) há mais de 90 min" com link para `#/logs`.

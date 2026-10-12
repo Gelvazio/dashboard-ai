@@ -55,6 +55,17 @@
 | **Data e Hora de Início:** | 2026-10-12 01:03 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-23.9
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-23.9** |
+| **Título da Sub-task:** | Alerta de trava presa na `src/views/FilaView.tsx` |
+| **Agente Responsável:** | DashboardAI-Clone 02 |
+| **Data e Hora de Início:** | 2026-10-12 01:03 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -63,6 +74,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-23.9** | Alerta de trava presa na `src/views/FilaView.tsx` | DashboardAI-Clone 02 | 2026-10-12 01:03 | SUB-23.3 |
 | **SUB-34.6** | `Suspense` com `CarregandoTela` no `src/App.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:03 | SUB-34.1, SUB-34.2 |
 | **SUB-35.2** | Trigger `validar_agent_event` em `database/07_agent_events.sql` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:02 | SUB-35.1 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
@@ -88,7 +100,7 @@
 | **SUB-23.1** | `minutosDeTrava` em `src/lib/saudeFila.ts` | 4 | Fase 8 | Nenhuma — 🟢 livre |
 | **SUB-23.4** | `liberarTrava()` em `src/services/taskService.ts` | 4 | Fase 8 | Nenhuma — 🟢 livre |
 | **SUB-23.5** | Teste de integração de `liberarTrava`: expirada e forçada | 4 | Fase 8 | SUB-23.4 — 🟢 livre |
-| **SUB-23.9** | Alerta de trava presa na `src/views/FilaView.tsx` | 4 | Fase 8 | SUB-23.3 — ⛓️ bloqueada |
+| **SUB-23.9** | Alerta de trava presa na `src/views/FilaView.tsx` | 4 | Fase 8 | SUB-23.3 — 🔄 em execução por DashboardAI-Clone 02 |
 | **SUB-23.12** | Teste de integração de `liberarTrava`: viewer e outro projeto | 4 | Fase 8 | SUB-23.4 — 🟢 livre |
 | **SUB-23.13** | `travaExpirada` em `src/lib/saudeFila.ts` | 4 | Fase 8 | SUB-23.1 — ⛓️ bloqueada |
 | **SUB-19** | Interface de Pesquisa Semântica Vetorial (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-19.1 a SUB-19.10 |
@@ -535,3 +547,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:02 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.2 | — | Lock: assumindo SUB-35.2 (Trigger `validar_agent_event` em `database/07_agent_events.sql`) |
 | 2026-10-12 01:02 | DashboardAI (Grok Bot) | SUB-36 | `cdbf35b` | Grafo de força (vis-network) estilo cérebro no dashboard-task-principal.html: quadro central, agentes trabalhando/ociosos, sub travada com ligação pulsando e até 5 entregas recentes por agente, com tooltips (código, hora, SHA); atualiza no polling |
 | 2026-10-12 01:03 | DashboardAI-Clone 10 (Grok Bot) | SUB-34.6 | — | Lock: assumindo SUB-34.6 (`Suspense` com `CarregandoTela` no `src/App.tsx`) |
+| 2026-10-12 01:03 | DashboardAI-Clone 02 | SUB-23.9 | — | Lock: assumindo SUB-23.9 (Alerta de trava presa na `src/views/FilaView.tsx`) |
