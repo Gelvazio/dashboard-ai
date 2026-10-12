@@ -45,28 +45,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.31
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-28.31** |
-| **Título da Sub-task:** | `montarPromptPlano(estado)` em `worker/plano.ts` |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 12:36 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202
-- **Em Execução:** 1 (SUB-28.31, Devin (Cognition AI), desde 2026-10-12 12:36)
+- **Em Execução:** 0
 - **Pendentes:** 4 principais (25, 26, 28, 35) + 38 subtarefas
-  - livres agora: 10 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.5, SUB-28.10, SUB-28.11, SUB-28.13, SUB-28.14, SUB-35.32, SUB-35.33)
-  - bloqueadas por dependência: 28
+  - livres agora: 11 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.5, SUB-28.7, SUB-28.10, SUB-28.11, SUB-28.13, SUB-28.14, SUB-35.32, SUB-35.33)
+  - bloqueadas por dependência: 27
   - reservadas: 0
-- **Concluídas:** 196 de 239 blocos (33 principais + 163 subtarefas)
+- **Concluídas:** 197 de 239 blocos (33 principais + 164 subtarefas)
 - **Canceladas:** 0
 
 ---
@@ -2002,7 +1991,7 @@
   - `SUB-28.28`: `worker/tsconfig.json` e `typecheck:worker` (`concluido`, `fbef4e8`)
   - `SUB-28.29`: Schema zod `EstadoSchema` em `worker/estado.ts` (`concluido`, `0e7a40c`)
   - `SUB-28.30`: `finalizar(...)` em `worker/fila.ts` (`concluido`, `9b27e51`)
-  - `SUB-28.31`: `montarPromptPlano(estado)` em `worker/plano.ts` (`em_execucao`)
+  - `SUB-28.31`: `montarPromptPlano(estado)` em `worker/plano.ts` (`concluido`, `8a43f2b`)
   - `SUB-28.32`: Registro de auditoria da aprovação (`pendente`)
 - **Descrição:** Implementar a orquestração multi-etapas de execução descrita em `LangChain_LangGraph.md`, mantendo Supabase como autoridade sobre a fila, dependências, locks, tentativas e resultado. Integrar o worker LangGraph às RPCs existentes e às ferramentas MCP autorizadas, com checkpoint durável, retomada, tratamento de falhas e aprovação humana para ações sensíveis.
 - **Critérios de Aceitação:** A task só inicia após todas as dependências SUB-01 a SUB-27 concluídas; execução reivindicada por `pegar_proxima_task`; estado do grafo é retomável e não duplica efeitos; escrita ocorre por ferramentas autenticadas e autorizadas; ações sensíveis pausam para aprovação; conclusão/erro e liberação do lock passam por `finalizar_task`; documentação de operação e segurança atualizada conforme `LangChain_LangGraph.md`.
@@ -2340,16 +2329,16 @@
 - **Anotação:** `finalizar(args)` já existia em `worker/fila.ts` (`b132fd2`); adicionados 2 testes com cliente falso em `tests/unit/worker-fila.test.ts`: `finalizar_task` com `p_resultado` e `p_metadados` (`execucao_id`, `chaves`), e caso de erro com `p_erro_mensagem`, `classe_falha` e `passo_falho` (padrões `null`/`[]`). `npm test` verde, `npm run typecheck` e `npm run typecheck:worker` OK.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:35 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
-#### [ ] SUB-28.31: `montarPromptPlano(estado)` em `worker/plano.ts`
-- **Status:** em_execucao
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:36)
+#### [x] SUB-28.31: `montarPromptPlano(estado)` em `worker/plano.ts`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:36, conclusão: 2026-10-12 12:37)
 - **Depende de:** SUB-28.20
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar a função pura `montarPromptPlano(estado)` que trata instrução e memórias como dados não confiáveis (delimitadas) e descreve o formato do `PlanoSchema`.
 - **Critérios de Aceitação:** Testes do prompt (sem segredos; conteúdo não confiável delimitado).
-- **Commit:** pendente (código parcial em `24f6118`)
-- **Anotação:** Reaberta na revisão de 2026-10-12 (Devin (revisão do quadro)): marcada como concluída em `310fab9`, mas `montarPromptPlano()` não delimita as memórias como conteúdo não confiável e os testes não cobrem ausência de segredos.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (reaberta: critérios de aceitação não atendidos)
+- **Commit:** `8a43f2b`
+- **Anotação:** `montarPromptPlano(estado)` em `worker/plano.ts` agora envolve a instrução em `<instrucao>` e cada memória em `<memoria titulo="...">`, neutraliza marcas `<instrucao>`/`<memoria>` (abertura e fechamento) dentro do conteúdo e abre com uma seção de regras avisando que esse conteúdo é dado não confiável; a função não lê variáveis de ambiente. Testes em `tests/unit/worker-plano.test.ts`: delimitação, tentativa de fechar o delimitador e ausência de segredos do ambiente (`OPENAI_API_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `MCP_AUTH_TOKEN`). `npm test`, `npm run typecheck`, `npm run typecheck:worker` e `npm run build` verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:37 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
 #### [ ] SUB-28.32: Registro de auditoria da aprovação
 - **Status:** pendente
