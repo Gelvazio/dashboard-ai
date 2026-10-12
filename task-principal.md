@@ -1520,15 +1520,15 @@
 - **Commit:** `c80c6c6`
 - **Anotação:** Criado `src/services/authService.ts` com `entrarComSenha(email, senha, client = getSupabase())` via `signInWithPassword` (e-mail com trim); erro -> `ServiceError(mensagemErroAuth(error), 'AUTH')`; senha não guardada/logada. Exportado no barrel `src/services/index.ts`. typecheck e vitest verdes.
 
-#### [ ] SUB-27.4: `sair()` em `src/services/authService.ts`
-- **Status:** em_execucao
+#### [x] SUB-27.4: `sair()` em `src/services/authService.ts`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `sair(client)` (`auth.signOut()`, limpando também `localStorage['dashboard-ai:projeto']`; erro -> `ServiceError`).
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `7bc78da`
+- **Anotação:** Adicionado `sair(client = getSupabase())` em `src/services/authService.ts`: `auth.signOut()`, remove `localStorage['dashboard-ai:projeto']` (constante `CHAVE_PROJETO_LOCAL`, tolerante sem localStorage); erro -> `ServiceError(..., 'AUTH')`. typecheck e vitest verdes.
 
 #### [ ] SUB-27.5: `enviarLinkMagico()` em `src/services/authService.ts`
 - **Status:** pendente
