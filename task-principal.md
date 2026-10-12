@@ -2288,8 +2288,8 @@
 - **Anotação:** Criado `src/services/eventService.ts` com `listarEventos(projectId, { desde?, agente?, limite = 200 }, client = getSupabase())` -> `AgentEvent[]`: filtra por `project_id`, `created_at >= desde` (data inválida -> `ServiceError`) e agente exato (trim); ordena por `created_at` desc e `id` desc; limite entre 1 e 1000; erros via `resultado(res, 'Listar eventos')`. Exportado no barrel `src/services/index.ts` (demais exports mantidos). `npm run typecheck` e `npm test` OK.
 
 #### [ ] SUB-35.10: `atividadeAtual()` em `src/services/eventService.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 09 (Grok Bot)
 - **Depende de:** SUB-35.9
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `atividadeAtual(projectId, client?)`: chama a RPC `atividade_atual_agentes` e devolve `AtividadeAgente[]` ordenado por `ultimo_em` desc.
