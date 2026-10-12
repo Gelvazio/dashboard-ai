@@ -89,12 +89,12 @@
 - **Total de Tasks Principais:** 46
 - **Subtarefas atômicas (~3 min):** 269
 - **Em Execução:** 2 (SUB-38, SUB-41.1)
-- **Pendentes:** 9 principais (SUB-38, 25, 26, 28, 35, 41, 42, 45, KIRO-DEV-CLONE) + 54 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 2 — SUB-35.32 e SUB-45.2 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
-  - bloqueadas por dependência: 22 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41) e SUB-42 (depende da SUB-41); SUB-45.3 a SUB-45.18 (cadeia da SUB-45)
+- **Pendentes:** 8 principais (SUB-38, 26, 28, 35, 41, 42, 45, KIRO-DEV-CLONE) + 54 subtarefas
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 3 — SUB-35.32, SUB-45.2 e SUB-26.3 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - bloqueadas por dependência: 21 — SUB-26.9 (depende da SUB-26.3), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41) e SUB-42 (depende da SUB-41); SUB-45.3 a SUB-45.18 (cadeia da SUB-45)
   - em execução: 2 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 248 de 315 blocos (37 principais + 211 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 249 de 315 blocos (38 principais + 211 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -116,25 +116,6 @@
 ---
 
 ## 🚀 FASE 10: Build, Validação e Documentação
-
-### [ ] SUB-25: Validação de Build e Execução Local
-- **Status:** pendente (aguardando subtarefas)
-- **Prioridade:** ALTA
-- **Executor:** nenhum
-- **Depende de:** SUB-01 a SUB-24; subtarefas SUB-25.1 a SUB-25.8
-- **Subtarefas:** (subdividida em 4 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 6 em 2026-10-11 23:51; SUB-25.8 criada em 2026-10-12 15:15 por DeepSeek Harness (deepseek-flash) para desbloquear `typecheck` e `build`)
-  - `SUB-25.1`: Script `scripts/validar.sh` + `npm run validar` (`concluido`, `2c9664c`)
-  - `SUB-25.2`: Rodar `npm ci` + `npm run validar` e registrar em `docs/VALIDACAO.md` (`concluido`, `5b06c99`)
-  - `SUB-25.3`: Rodar `database/tests/run_tests.sh` (`concluido`, `cbf3c88`)
-  - `SUB-25.4`: Teste rápido local: telas Fila e Logs (`concluido`, `6f7bab1`)
-  - `SUB-25.6`: Rodar `npm run test:integration` (`concluido`, `7c9891f`)
-  - `SUB-25.7`: Teste rápido local: telas Memória e Configurações (`concluido`, `599dd39`)
-  - `SUB-25.8`: Corrigir erro de tipagem TS6133 em `tests/unit/api-aprovacao.test.ts` (`concluido`, `c933a99`)
-- **Descrição:** Rodar compilação de produção (`npm run build`), validar ausência de erros de tipagem TypeScript e verificar integridade de pacotes.
-- **Critérios de Aceitação:** Build gerado com sucesso na pasta `dist/` sem alertas impeditivos.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:25 (Claude Code): tarefa-mãe pendente: filhas 25.1, 25.2, 25.3 e 25.6 concluídas; 25.4, 25.7 (validação no navegador) e 25.8 (em execução) abertas. Critério ainda não atendido: `npm run build` falha no `tsc -b` (TS6133 em `tests/unit/api-aprovacao.test.ts:111`, corrigido pela SUB-25.8); `npx vite build` sozinho gera `dist/` e `check:chunks` passa (16 chunks ≤ 500 kB).
 
 ### [ ] SUB-26: Documentação Completa e Manual Operacional no `README.md`
 - **Status:** pendente (aguardando subtarefas)

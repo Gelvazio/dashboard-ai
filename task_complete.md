@@ -1581,6 +1581,27 @@
 
 > Subtarefas concluídas da SUB-25 (a tarefa-mãe continua aberta no `task-principal.md`).
 
+
+### [x] SUB-25: Validação de Build e Execução Local
+- **Status:** concluido
+- **Prioridade:** ALTA
+- **Executor:** nenhum
+- **Depende de:** SUB-01 a SUB-24; subtarefas SUB-25.1 a SUB-25.8
+- **Subtarefas:** (subdividida em 4 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 6 em 2026-10-11 23:51; SUB-25.8 criada em 2026-10-12 15:15 por DeepSeek Harness (deepseek-flash) para desbloquear `typecheck` e `build`)
+  - `SUB-25.1`: Script `scripts/validar.sh` + `npm run validar` (`concluido`, `2c9664c`)
+  - `SUB-25.2`: Rodar `npm ci` + `npm run validar` e registrar em `docs/VALIDACAO.md` (`concluido`, `5b06c99`)
+  - `SUB-25.3`: Rodar `database/tests/run_tests.sh` (`concluido`, `cbf3c88`)
+  - `SUB-25.4`: Teste rápido local: telas Fila e Logs (`concluido`, `6f7bab1`)
+  - `SUB-25.6`: Rodar `npm run test:integration` (`concluido`, `7c9891f`)
+  - `SUB-25.7`: Teste rápido local: telas Memória e Configurações (`concluido`, `599dd39`)
+  - `SUB-25.8`: Corrigir erro de tipagem TS6133 em `tests/unit/api-aprovacao.test.ts` (`concluido`, `c933a99`)
+- **Descrição:** Rodar compilação de produção (`npm run build`), validar ausência de erros de tipagem TypeScript e verificar integridade de pacotes.
+- **Critérios de Aceitação:** Build gerado com sucesso na pasta `dist/` sem alertas impeditivos.
+- **Commit:** filhas `2c9664c`, `5b06c99`, `cbf3c88`, `6f7bab1`, `7c9891f`, `599dd39`, `c933a99`
+- **Anotação:** **Concluída em 2026-10-12 18:57 por Claude Code (Opus 5.5):** todas as filhas `concluido` (as últimas, SUB-25.4 e SUB-25.7, validadas contra o Supabase de produção, com as telas logadas conferidas pelo usuário). Build, typecheck e testes verdes no `npm run validar` (registro em [`docs/VALIDACAO.md`](docs/VALIDACAO.md)). Libera as SUB-26.3 e SUB-26.9.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:57 — Claude Code (Opus 5.5): filhas conferidas
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:25 (Claude Code): tarefa-mãe pendente: filhas 25.1, 25.2, 25.3 e 25.6 concluídas; 25.4, 25.7 (validação no navegador) e 25.8 (em execução) abertas. Critério ainda não atendido: `npm run build` falha no `tsc -b` (TS6133 em `tests/unit/api-aprovacao.test.ts:111`, corrigido pela SUB-25.8); `npx vite build` sozinho gera `dist/` e `check:chunks` passa (16 chunks ≤ 500 kB).
+
 #### [x] SUB-25.1: Script `scripts/validar.sh` + `npm run validar`
 - **Status:** concluido
 - **Prioridade:** MEDIA
