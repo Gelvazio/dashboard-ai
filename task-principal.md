@@ -68,6 +68,19 @@
 
 ---
 
+### 🔒 TRAVA ADICIONAL — Claude Code (Opus 5.5) — SUB-25.7
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-25.7** |
+| **Título da Sub-task:** | Teste rápido local: telas Memória e Configurações |
+| **Agente Responsável:** | Claude Code (Opus 5.5) |
+| **Data e Hora de Início:** | 2026-10-12 18:54 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-25.7 |
+
+---
+
 ### 🔒 TRAVA ESPECIAL: KIRO-DEV-CLONE
 
 > **ATENÇÃO:** A tarefa `KIRO-DEV-CLONE` está **TRAVADA PARA TODAS AS IAS**.
@@ -88,11 +101,11 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 46
 - **Subtarefas atômicas (~3 min):** 269
-- **Em Execução:** 2 (SUB-38, SUB-41.1)
+- **Em Execução:** 3 (SUB-38, SUB-41.1, SUB-25.7)
 - **Pendentes:** 9 principais (SUB-38, 25, 26, 28, 35, 41, 42, 45, KIRO-DEV-CLONE) + 55 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 3 — SUB-25.7, SUB-35.32 e SUB-45.2 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 2 — SUB-35.32 e SUB-45.2 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
   - bloqueadas por dependência: 22 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41) e SUB-42 (depende da SUB-41); SUB-45.3 a SUB-45.18 (cadeia da SUB-45)
-  - em execução: 2 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI))
+  - em execução: 3 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI)); SUB-25.7 (Claude Code (Opus 5.5))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
 - **Concluídas:** 247 de 315 blocos (37 principais + 210 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
@@ -128,7 +141,7 @@
   - `SUB-25.3`: Rodar `database/tests/run_tests.sh` (`concluido`, `cbf3c88`)
   - `SUB-25.4`: Teste rápido local: telas Fila e Logs (`concluido`, `6f7bab1`)
   - `SUB-25.6`: Rodar `npm run test:integration` (`concluido`, `7c9891f`)
-  - `SUB-25.7`: Teste rápido local: telas Memória e Configurações (`pendente`)
+  - `SUB-25.7`: Teste rápido local: telas Memória e Configurações (`em_execucao`, Claude Code (Opus 5.5))
   - `SUB-25.8`: Corrigir erro de tipagem TS6133 em `tests/unit/api-aprovacao.test.ts` (`concluido`, `c933a99`)
 - **Descrição:** Rodar compilação de produção (`npm run build`), validar ausência de erros de tipagem TypeScript e verificar integridade de pacotes.
 - **Critérios de Aceitação:** Build gerado com sucesso na pasta `dist/` sem alertas impeditivos.
@@ -137,9 +150,9 @@
 - **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:25 (Claude Code): tarefa-mãe pendente: filhas 25.1, 25.2, 25.3 e 25.6 concluídas; 25.4, 25.7 (validação no navegador) e 25.8 (em execução) abertas. Critério ainda não atendido: `npm run build` falha no `tsc -b` (TS6133 em `tests/unit/api-aprovacao.test.ts:111`, corrigido pela SUB-25.8); `npx vite build` sozinho gera `dist/` e `check:chunks` passa (16 chunks ≤ 500 kB).
 
 #### [ ] SUB-25.7: Teste rápido local: telas Memória e Configurações
-- **Status:** pendente
+- **Status:** em_execucao
 - **Prioridade:** MEDIA
-- **Executor:** nenhum
+- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 18:54)
 - **Depende de:** SUB-25.2
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Com `npm run preview` contra o banco local, conferir as telas Memória e Configurações em 1280x800 e 390x844; registrar no `docs/VALIDACAO.md`.
