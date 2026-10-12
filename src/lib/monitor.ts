@@ -56,3 +56,23 @@ export function estadoDoAgente(
   if (idadeSeg <= ociosoAteSeg) return 'ocioso';
   return 'sem_sinal';
 }
+
+/** Ordem fixa dos estados no gráfico de rosca (SUB-35.16). */
+export const ORDEM_ESTADOS: readonly EstadoAgente[] = ['ativo', 'ocioso', 'sem_sinal', 'finalizado'];
+
+/**
+ * Conta os agentes por estado (`estadoDoAgente`) na ordem fixa de
+ * `ORDEM_ESTADOS`, incluindo estados com zero, para o gráfico de rosca (SUB-35.16).
+ */
+export function contarPorStatus(
+  atividades: readonly Pick<AtividadeAgente, 'tipo' | 'ultimo_em' | 'ultimo_heartbeat_em'>[],
+  agora: number = Date.now(),
+  limites: LimitesEstadoAgente = {},
+): { estado: EstadoAgente; total: number }[] {
+  const totais = new Map<EstadoAgente, number>(ORDEM_ESTADOS.map((e) => [e, 0]));
+  for (const a of atividades) {
+    const e = estadoDoAgente(a, agora, limites);
+    totais.set(e, (totais.get(e) ?? 0) + 1);
+  }
+  return ORDEM_ESTADOS.map((estado) => ({ estado, total: totais.get(estado) ?? 0 }));
+}

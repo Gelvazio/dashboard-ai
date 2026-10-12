@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { estadoDoAgente, mesclarEvento } from '@/lib/monitor';
+import { contarPorStatus, estadoDoAgente, mesclarEvento, ORDEM_ESTADOS } from '@/lib/monitor';
 import type { AgentEvent } from '@/types/database';
 
 function ev(id: number, minuto: number): AgentEvent {
@@ -87,5 +87,26 @@ describe('estadoDoAgente', () => {
 
   it('respeita limites personalizados', () => {
     expect(estadoDoAgente(at('progresso', haSeg(60)), agora, { ativoAteSeg: 30, ociosoAteSeg: 45 })).toBe('sem_sinal');
+  });
+});
+
+describe('contarPorStatus', () => {
+  const agora = Date.UTC(2026, 9, 12, 4, 0, 0);
+  const haSeg = (s: number) => new Date(agora - s * 1000).toISOString();
+  const at = (tipo: AgentEvent['tipo'], seg: number) => ({ tipo, ultimo_em: haSeg(seg), ultimo_heartbeat_em: null });
+
+  it('conta por estado na ordem fixa, incluindo zeros', () => {
+    const r = contarPorStatus([at('progresso', 10), at('inicio', 20), at('fim', 30), at('trava', 5000)], agora);
+    expect(r).toEqual([
+      { estado: 'ativo', total: 2 },
+      { estado: 'ocioso', total: 0 },
+      { estado: 'sem_sinal', total: 1 },
+      { estado: 'finalizado', total: 1 },
+    ]);
+  });
+
+  it('lista vazia devolve todos os estados com zero', () => {
+    expect(contarPorStatus([], agora).map((x) => x.estado)).toEqual([...ORDEM_ESTADOS]);
+    expect(contarPorStatus([], agora).every((x) => x.total === 0)).toBe(true);
   });
 });
