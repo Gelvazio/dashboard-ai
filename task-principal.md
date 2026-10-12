@@ -1483,7 +1483,7 @@
   - `SUB-27.24`: `redefinirSenha()` em `src/services/authService.ts` (`pendente`)
   - `SUB-27.25`: `papelNoProjeto()` em `src/services/authService.ts` (`pendente`)
   - `SUB-27.26`: Hook `useAuth` em `src/hooks/useAuth.ts` (`pendente`)
-  - `SUB-27.27`: Incluir `UserMenu` no `src/components/layout/Header.tsx` (`pendente`)
+  - `SUB-27.27`: Incluir `UserMenu` no `src/components/layout/Header.tsx` (`em_execucao`)
   - `SUB-27.28`: Varredura do bundle por `service_role` (SUB-27) (`pendente`)
 - **Descrição:** Implementar tela e fluxo de login do Dashboard usando Supabase Auth, mantendo a sessão do usuário, protegendo as áreas autenticadas e oferecendo logout.
 - **Critérios de Aceitação:** Login e logout funcionam via Supabase Auth; sessão é restaurada e páginas privadas redirecionam usuários não autenticados; chamadas ao banco usam o JWT do usuário e respeitam RLS; somente a chave pública anon pode estar no frontend, sem senha persistida nem chave service_role exposta.
@@ -1751,8 +1751,8 @@
 - **Anotação:** Criado `src/hooks/useAuth.ts` (`useAuth()` lê o `AuthContext` e lança erro fora do `AuthProvider`); `AuthProvider`, `AuthContext` e `useAuth` exportados em `src/hooks/index.ts` mantendo os exports existentes. typecheck OK.
 
 #### [ ] SUB-27.27: Incluir `UserMenu` no `src/components/layout/Header.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 01:10)
 - **Depende de:** SUB-27.14
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Renderizar `UserMenu` no `Header` ao lado do `ThemeToggle` (só com sessão), sem quebrar o layout em 390 px.

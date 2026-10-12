@@ -88,14 +88,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:10 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 06 — SUB-27.27
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-27.27** |
+| **Título da Sub-task:** | Incluir `UserMenu` no `src/components/layout/Header.tsx` |
+| **Agente Responsável:** | DashboardAI-Clone 06 |
+| **Data e Hora de Início:** | 2026-10-12 01:10 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (4)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-27.27** | Incluir `UserMenu` no `src/components/layout/Header.tsx` | DashboardAI-Clone 06 | 2026-10-12 01:10 | SUB-27.14 |
 | **SUB-35.8** | Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:10 | SUB-35.5 |
 | **SUB-35.7** | Seção "Eventos dos agentes (07)" no `database/README.md` | DashboardAI-Clone 02 | 2026-10-12 01:10 | SUB-35.4, SUB-35.5 |
 | **SUB-35.41** | Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:10 | SUB-35.40 |
@@ -195,7 +207,7 @@
 | **SUB-27.18** | Validação automatizada da SUB-27 | 3 | Fase 10 | SUB-27.6, SUB-27.8, SUB-27.13, SUB-27.27, SUB-27.15, SUB-27.16, SUB-27.17, SUB-27.20, SUB-27.21 — ⛓️ bloqueada |
 | **SUB-27.21** | Documentar primeiro administrador e membros em `database/README.md` | 3 | Fase 10 | SUB-27.13 — ⛓️ bloqueada |
 | **SUB-27.22** | Conferência no navegador (entrar, sair, restaurar sessão) — SUB-27 | 3 | Fase 10 | SUB-27.18 — ⛓️ bloqueada |
-| **SUB-27.27** | Incluir `UserMenu` no `src/components/layout/Header.tsx` | 3 | Fase 10 | SUB-27.14 — ⛓️ bloqueada |
+| **SUB-27.27** | Incluir `UserMenu` no `src/components/layout/Header.tsx` | 3 | Fase 10 | SUB-27.14 — 🔄 em execução por DashboardAI-Clone 06 |
 | **SUB-27.28** | Varredura do bundle por `service_role` (SUB-27) | 3 | Fase 10 | SUB-27.22 — ⛓️ bloqueada |
 | **SUB-35** | Monitor em Tempo Real dos Agentes (mãe) | 4 | Fase 12 | SUB-12, SUB-29, SUB-30; SUB-35.1 a SUB-35.46 |
 | **SUB-35.7** | Seção "Eventos dos agentes (07)" no `database/README.md` | 4 | Fase 12 | SUB-35.4, SUB-35.5 — 🔄 em execução por DashboardAI-Clone 02 |
@@ -627,3 +639,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:10 | DashboardAI-Clone 02 | SUB-35.7 | — | Lock: assumindo SUB-35.7 (Seção "Eventos dos agentes (07)" no `database/README.md`) |
 | 2026-10-12 01:10 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.8 | — | Lock: assumindo SUB-35.8 (Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts`) |
 | 2026-10-12 01:10 | DashboardAI-Clone 10 (Grok Bot) | SUB-34.3 | `964764e` | Na `src/views/FilaView.tsx`, `TaskFormModal` e `TaskDetailModal` passam a ser `React.lazy` com import direto do arquivo e só são montados quando abertos (`form.aberto` / task de detalhe encontrada), dentro de `<Suspense fallback={null}>`. Para o split ser efetivo, os dois saíram do barrel `src/components/tasks/index.ts` (o Rolldown acusava `INEFFECTIVE_DYNAMIC_IMPORT`; nenhum outro arquivo os importava pelo barrel). Resultado do build: chunks próprios `TaskFormModal` (8,6 kB) e `TaskDetailModal` (6,7 kB); `FilaView` caiu de 40,4 kB para 26,3 kB. `npm run typecheck`, `npm test` e `npm run build` OK. |
+| 2026-10-12 01:10 | DashboardAI-Clone 06 | SUB-27.27 | — | Lock: assumindo SUB-27.27 (Incluir `UserMenu` no `src/components/layout/Header.tsx`) |
