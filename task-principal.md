@@ -1019,15 +1019,15 @@
 - **Commit:** `4b8d62b`
 - **Anotação:** Substituído o `EmConstrucao` da `src/views/MemoriaView.tsx`: projeto de `useProjetoAtual` (sem projeto mantém o aviso "selecione um projeto"), dados de `useMemorias(projeto.id)`, cartão com cabeçalho "Memórias" + contador, `MemoriaToolbar` (filtro controlado, `tagsDisponiveis`, contador filtradas/total, recarregar com hora da última carga), aviso de erro (`role="alert"`) e `MemoriaGrid` com `filtrarMemoriasLocal`, estado vazio por filtro e "Carregar mais". Filtros zerados ao trocar de projeto. Pontos reservados por comentário: busca semântica no topo (SUB-19.8), botão "Nova memória" no cabeçalho (SUB-20.7); detalhe/exclusão ficam para a SUB-21.11. `npm run typecheck`, `npm test` e `npm run build` OK (conferência visual em `#/memoria` com Supabase real não feita neste ambiente).
 
-#### [ ] SUB-21.10: Validação visual da SUB-21 (screenshots)
-- **Status:** em_execucao
+#### [x] SUB-21.10: Validação visual da SUB-21 (screenshots)
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-21.11
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Contra o banco local (`tests/integration/run.sh` + `vite`), conferir a grade, copiar e detalhes em 1280x800 e 390x844; registrar na anotação da SUB-21.
 - **Critérios de Aceitação:** Screenshots conferidos; nenhum erro no console.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `(este commit)`
+- **Anotação:** Validação visual da SUB-21 contra banco local (Postgres + PostgREST com JWT de editor via proxy, harness não commitado em /tmp) e `vite`: `#/memoria` com 3 memórias do projeto + 1 global; grade (badges Projeto/Global, tags, filtros Todas/Projeto/Globais, contador 4), botão copiar (clipboard recebeu o Markdown `# título / **Tags:** / **Escopo:**`) e modal de detalhe (escopo, datas, tags, Formatado/Texto, Copiar tudo, Excluir/Fechar; folha inferior no celular) conferidos em 1280x800 e 390x844 via Chrome headless/CDP; nenhum erro/aviso no console. Observação: o resumo do cartão mostra Markdown cru (ex.: `**Supabase**`).
 
 #### [x] SUB-21.11: Ligar detalhe e exclusão na `MemoriaView`
 - **Status:** concluido

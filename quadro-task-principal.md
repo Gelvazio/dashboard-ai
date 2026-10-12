@@ -55,17 +55,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:10 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-21.10
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-21.10** |
-| **Título da Sub-task:** | Validação visual da SUB-21 (screenshots) |
-| **Agente Responsável:** | DashboardAI-Clone 01 |
-| **Data e Hora de Início:** | 2026-10-12 01:10 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 09 (Grok Bot) — SUB-34.5
 
 | Propriedade | Valor Atual |
@@ -122,7 +111,6 @@
 | **SUB-35.9** | `listarEventos()` em `src/services/eventService.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:12 | SUB-35.8 |
 | **SUB-35.45** | Seção "Reporte de progresso (opcional)" no `AGENTS.md` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:11 | SUB-35.41 |
 | **SUB-34.5** | Checagem de tamanho `scripts/checar-chunks.mjs` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:11 | SUB-34.6, SUB-34.3, SUB-34.4 |
-| **SUB-21.10** | Validação visual da SUB-21 (screenshots) | DashboardAI-Clone 01 | 2026-10-12 01:10 | SUB-21.11 |
 | **SUB-27.27** | Incluir `UserMenu` no `src/components/layout/Header.tsx` | DashboardAI-Clone 06 | 2026-10-12 01:10 | SUB-27.14 |
 | **SUB-37** | Ranking e prêmios dos agentes no `dashboard-task-principal.html` | DashboardAI (Grok Bot) | 2026-10-12 01:09 | Nenhuma |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
@@ -156,7 +144,6 @@
 | **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-20.9** | Componente `TagSugestoes` em `src/components/ui/TagSugestoes.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias (mãe) | 4 | Fase 7 | SUB-10, SUB-12; SUB-21.1 a SUB-21.14 |
-| **SUB-21.10** | Validação visual da SUB-21 (screenshots) | 4 | Fase 7 | SUB-21.11 — ⛓️ bloqueada |
 | **SUB-21.12** | Conferir exclusão com editor e viewer | 4 | Fase 7 | SUB-21.11 — 🔄 em execução por DashboardAI-Clone 02 |
 | **SUB-34** | Carregamento Sob Demanda de Telas e Modais (code splitting) (mãe) | 4 | Fase 6 | SUB-13, SUB-14, SUB-16, SUB-17, SUB-18; SUB-34.1 a SUB-34.6 |
 | **SUB-34.1** | Fallback `CarregandoTela` em `src/components/ui/CarregandoTela.tsx` | 4 | Fase 6 | Nenhuma — 🟢 livre |
@@ -257,6 +244,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-21.10** | Validação visual da SUB-21 (screenshots) | DashboardAI-Clone 01 | 2026-10-12 01:10 | 2026-10-12 01:13 | `(este commit)` |
 | **SUB-20.7** | Botão "Nova memória" na `src/views/MemoriaView.tsx` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:10 | 2026-10-12 01:12 | `adef71a` |
 | **SUB-35.8** | Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:10 | 2026-10-12 01:11 | `5a09109` |
 | **SUB-35.41** | Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:10 | 2026-10-12 01:11 | `0263ae9` |
@@ -662,3 +650,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:12 | DashboardAI-Clone 02 | SUB-21.12 | — | Lock: assumindo SUB-21.12 (Conferir exclusão com editor e viewer) |
 | 2026-10-12 01:12 | DashboardAI-Clone 04 (Grok Bot) | SUB-20.7 | `adef71a` | Botão "Nova memória" (`Botao` primário com ícone `Plus`) no cabeçalho da grade da `src/views/MemoriaView.tsx` abre o `MemoriaFormModal` (SUB-20.6) com o projeto atual; ao salvar fecha o modal, chama `recarregar()` do `useMemorias` e refaz a busca semântica via nova opção `versao` (`useBuscaSemantica` inclui `versao` nas dependências; `BuscaSemanticaPanel` repassa a prop `versao`), sem perder o texto digitado. `npm run typecheck`, `npm test` e `npm run build` OK. Teste manual contra banco local NÃO executado (sem Supabase/PostgREST configurado no ambiente deste agente). |
 | 2026-10-12 01:12 | DashboardAI-Clone 10 (Grok Bot) | SUB-27.11 | `213f237` | Criado `src/views/LoginView.tsx` (`{ onEntrou? }`): página cheia centralizada fora do `AppLayout` (`min-h-dvh`, fundo slate claro/escuro), marca "Dashboard AI" com descrição curta, `ThemeToggle` no canto, aviso `role="alert"` quando `supabaseConfigurado` é falso (cita `VITE_SUPABASE_URL`/`VITE_SUPABASE_ANON_KEY` e o `.env.example`), cartão com `LoginForm` (repassa `onEntrou` e o e-mail digitado) e `RecuperarAcesso` com esse e-mail. Ainda não está ligada ao `App` (SUB-27.12/27.13). `npm run typecheck`, `npm test` e `npm run build` OK; screenshots 1280x800 e 390x844 conferidos em Chrome headless via página de pré-visualização temporária (não commitada). |
+| 2026-10-12 01:13 | DashboardAI-Clone 01 | SUB-21.10 | `(este commit)` | Validação visual da SUB-21 contra banco local (Postgres + PostgREST com JWT de editor via proxy, harness não commitado em /tmp) e `vite`: `#/memoria` com 3 memórias do projeto + 1 global; grade (badges Projeto/Global, tags, filtros Todas/Projeto/Globais, contador 4), botão copiar (clipboard recebeu o Markdown `# título / **Tags:** / **Escopo:**`) e modal de detalhe (escopo, datas, tags, Formatado/Texto, Copiar tudo, Excluir/Fechar; folha inferior no celular) conferidos em 1280x800 e 390x844 via Chrome headless/CDP; nenhum erro/aviso no console. Observação: o resumo do cartão mostra Markdown cru (ex.: `**Supabase**`). |
