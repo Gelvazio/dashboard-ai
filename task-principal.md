@@ -60,17 +60,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:38 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 09 (Grok Bot) — SUB-35.26
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.26** |
-| **Título da Sub-task:** | Gráfico `GraficoPorAgente` em `src/components/monitor/GraficoPorAgente.tsx` |
-| **Agente Responsável:** | DashboardAI-Clone 09 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:38 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.18
 
 | Propriedade | Valor Atual |
@@ -2546,15 +2535,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-35.26: Gráfico `GraficoPorAgente` em `src/components/monitor/GraficoPorAgente.tsx`
-- **Status:** em_execucao
+#### [x] SUB-35.26: Gráfico `GraficoPorAgente` em `src/components/monitor/GraficoPorAgente.tsx`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 09 (Grok Bot)
 - **Depende de:** SUB-35.22, SUB-35.17
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Barras horizontais empilhadas por tipo de evento (`contarPorAgente`), cores de `CORES_TIPO`. Exportar no barrel.
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `6456092`
+- **Anotação:** Criado `src/components/monitor/GraficoPorAgente.tsx` (`{ eventos, className? }`): Chart.js de barras horizontais empilhadas (`indexAxis: y`, `stacked`), uma barra por agente via `contarPorAgente`, um dataset por tipo de `TIPOS_EVENTO_AGENTE` com cores de `CORES_TIPO`/`CORES_EIXO` no tema atual (observa a classe `dark`), altura proporcional ao nº de agentes, estado vazio, `aria-label` com totais, `destroy()` no cleanup. Exportado no barrel. typecheck, `npm test` e build OK.
 
 #### [ ] SUB-35.27: Linha do tempo `LinhaDoTempoAgentes` em `src/components/monitor/LinhaDoTempoAgentes.tsx`
 - **Status:** em_execucao
