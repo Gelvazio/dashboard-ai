@@ -45,14 +45,25 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
+### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.31
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-28.31** |
+| **Título da Sub-task:** | `montarPromptPlano(estado)` em `worker/plano.ts` |
+| **Agente Responsável:** | Devin (Cognition AI) |
+| **Data e Hora de Início:** | 2026-10-12 12:36 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202
-- **Em Execução:** 0
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 39 subtarefas
-  - livres agora: 11 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.5, SUB-28.10, SUB-28.11, SUB-28.13, SUB-28.14, SUB-28.31, SUB-35.32, SUB-35.33)
+- **Em Execução:** 1 (SUB-28.31, Devin (Cognition AI), desde 2026-10-12 12:36)
+- **Pendentes:** 4 principais (25, 26, 28, 35) + 38 subtarefas
+  - livres agora: 10 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.5, SUB-28.10, SUB-28.11, SUB-28.13, SUB-28.14, SUB-35.32, SUB-35.33)
   - bloqueadas por dependência: 28
   - reservadas: 0
 - **Concluídas:** 196 de 239 blocos (33 principais + 163 subtarefas)
@@ -1991,7 +2002,7 @@
   - `SUB-28.28`: `worker/tsconfig.json` e `typecheck:worker` (`concluido`, `fbef4e8`)
   - `SUB-28.29`: Schema zod `EstadoSchema` em `worker/estado.ts` (`concluido`, `0e7a40c`)
   - `SUB-28.30`: `finalizar(...)` em `worker/fila.ts` (`concluido`, `9b27e51`)
-  - `SUB-28.31`: `montarPromptPlano(estado)` em `worker/plano.ts` (`pendente`)
+  - `SUB-28.31`: `montarPromptPlano(estado)` em `worker/plano.ts` (`em_execucao`)
   - `SUB-28.32`: Registro de auditoria da aprovação (`pendente`)
 - **Descrição:** Implementar a orquestração multi-etapas de execução descrita em `LangChain_LangGraph.md`, mantendo Supabase como autoridade sobre a fila, dependências, locks, tentativas e resultado. Integrar o worker LangGraph às RPCs existentes e às ferramentas MCP autorizadas, com checkpoint durável, retomada, tratamento de falhas e aprovação humana para ações sensíveis.
 - **Critérios de Aceitação:** A task só inicia após todas as dependências SUB-01 a SUB-27 concluídas; execução reivindicada por `pegar_proxima_task`; estado do grafo é retomável e não duplica efeitos; escrita ocorre por ferramentas autenticadas e autorizadas; ações sensíveis pausam para aprovação; conclusão/erro e liberação do lock passam por `finalizar_task`; documentação de operação e segurança atualizada conforme `LangChain_LangGraph.md`.
@@ -2330,8 +2341,8 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:35 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
 #### [ ] SUB-28.31: `montarPromptPlano(estado)` em `worker/plano.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:36)
 - **Depende de:** SUB-28.20
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar a função pura `montarPromptPlano(estado)` que trata instrução e memórias como dados não confiáveis (delimitadas) e descreve o formato do `PlanoSchema`.
