@@ -66,6 +66,7 @@ web_modules/
 .yarn-integrity
 
 # dotenv environment variable files
+# Mantenha `!.env.example` DEPOIS de todas as regras de `.env` (a última regra que casa vence).
 .env
 .env.*
 !.env.example
@@ -153,8 +154,6 @@ __pycache__/
 graphify-output/cache/
 graphify-out/
 variaveis.js
-
-.env
 
 # Arquivos grandes (slides e PDFs) ficam so na pasta local, fora do Git
 *.pptx
