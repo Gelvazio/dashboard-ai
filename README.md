@@ -133,10 +133,76 @@ executar e finalizar tasks do projeto, sempre respeitando travas e dependências
 
 ## Memória via MCP
 
-> Seção provisória (detalhada na SUB-26.7).
+O servidor MCP (`/mcp`, código em [`api/_lib/brain-tools.ts`](api/_lib/brain-tools.ts)) oferece
+uma **memória persistente** compartilhada entre os agentes: decisões, regras e aprendizados em
+Markdown, gravados na tabela `ai_memories` com um embedding (1536 dimensões) e recuperados por
+similaridade de cosseno (RPC `match_memories`, pgvector). Como as ferramentas da fila, exigem
+`MCP_AUTH_TOKEN` no servidor (o cliente manda `Authorization: Bearer <token>`).
 
-As ferramentas `brain_store`, `brain_search` e `brain_delete` gravam e consultam memórias em
-Markdown por projeto (ou globais), com busca por similaridade de embeddings.
+### Escopo: projeto ou global
+
+- **Projeto:** argumento `project` (slug) → `MCP_DEFAULT_PROJECT` → `default`. O título é
+  **único por projeto**: gravar de novo o mesmo título atualiza a memória (upsert).
+- **Global** (`global: true`, `project_id` nulo): compartilhada por todos os projetos. Não pode
+  ser combinada com `project` e é **recusada** quando o servidor está restrito por
+  `MCP_ALLOWED_PROJECTS`.
+- A busca do projeto inclui as globais por padrão (`include_global: true`).
+
+### Ferramentas
+
+| Ferramenta | Argumentos | O que faz |
+|---|---|---|
+| `brain_store` | `title` (obrigatório, ≤ 200), `content` (obrigatório, Markdown, ≤ 100.000), `tags` (≤ 20, cada ≤ 60, salvas em minúsculas), `project` ou `global` | Grava ou atualiza a memória (embedding de `título + conteúdo`) |
+| `brain_search` | `query` (obrigatório, ≤ 8.000), `project`, `tags` (só memórias com **todas** as tags), `limit` (1–20, padrão 5), `threshold` (0 a < 1, padrão **0.5**), `include_global` (padrão `true`) | Busca semântica; cada resultado traz `title`, `scope` (`project`/`global`), `similarity` (3 casas), `tags`, `content` e `updated_at` |
+| `brain_delete` | `title` ou `id` (UUID), `project` ou `global` | Remove a memória do projeto (ou das globais) |
+
+**Limiar:** `threshold` é a similaridade mínima (1 − distância de cosseno). Sem resultados,
+a resposta sugere outra consulta ou um limiar menor (ex.: `0.3`); para respostas mais
+precisas, suba para `0.7`–`0.8`.
+
+### Exemplos
+
+Chamadas `tools/call` (JSON-RPC 2.0) ao endpoint `/mcp`:
+
+```json
+{ "jsonrpc": "2.0", "id": 1, "method": "tools/call",
+  "params": { "name": "brain_store", "arguments": {
+    "project": "meu-app",
+    "title": "Padrão de datas na API",
+    "content": "Toda data trafega em ISO 8601 UTC; a conversão para o fuso do usuário é só na interface.",
+    "tags": ["api", "datas"] } } }
+```
+
+```json
+{ "jsonrpc": "2.0", "id": 2, "method": "tools/call",
+  "params": { "name": "brain_search", "arguments": {
+    "project": "meu-app", "query": "como formatar datas no backend?",
+    "tags": ["api"], "limit": 3, "threshold": 0.6 } } }
+```
+
+```json
+{ "jsonrpc": "2.0", "id": 3, "method": "tools/call",
+  "params": { "name": "brain_store", "arguments": {
+    "global": true, "title": "Commits em português",
+    "content": "Mensagens de commit no imperativo, em pt-BR.", "tags": ["git"] } } }
+```
+
+```json
+{ "jsonrpc": "2.0", "id": 4, "method": "tools/call",
+  "params": { "name": "brain_delete", "arguments": { "project": "meu-app", "title": "Padrão de datas na API" } } }
+```
+
+Com `curl` (o servidor exige `MCP_AUTH_TOKEN`):
+
+```bash
+curl -s https://<seu-app>.vercel.app/mcp \
+  -H "Authorization: Bearer $MCP_AUTH_TOKEN" -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"brain_search","arguments":{"project":"meu-app","query":"datas"}}}'
+```
+
+Boas práticas para agentes: **buscar antes de gravar** (`brain_search`) para não duplicar,
+usar títulos descritivos e estáveis (o título é a chave), e apagar (`brain_delete`) memórias
+obsoletas em vez de deixá-las contradizer as novas.
 
 ## Segurança
 
