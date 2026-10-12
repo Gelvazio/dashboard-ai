@@ -49,17 +49,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 03 (Grok Bot) — SUB-35.29
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.29** |
-| **Título da Sub-task:** | Indicador `IndicadorAoVivo` em `src/components/monitor/IndicadorAoVivo.tsx` |
-| **Agente Responsável:** | DashboardAI-Clone 03 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:40 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 07 (Grok Bot) — SUB-35.24
 
 | Propriedade | Valor Atual |
@@ -2261,7 +2250,7 @@
   - `SUB-35.26`: Gráfico `GraficoPorAgente` em `src/components/monitor/GraficoPorAgente.tsx` (`pendente`)
   - `SUB-35.27`: Linha do tempo `LinhaDoTempoAgentes` em `src/components/monitor/LinhaDoTempoAgentes.tsx` (`pendente`)
   - `SUB-35.28`: Feed `FeedEventos` em `src/components/monitor/FeedEventos.tsx` (`pendente`)
-  - `SUB-35.29`: Indicador `IndicadorAoVivo` em `src/components/monitor/IndicadorAoVivo.tsx` (`em_execucao`)
+  - `SUB-35.29`: Indicador `IndicadorAoVivo` em `src/components/monitor/IndicadorAoVivo.tsx` (`concluido`)
   - `SUB-35.30`: Tela `MonitorView` em `src/views/MonitorView.tsx` (`pendente`)
   - `SUB-35.31`: Registrar a tela `monitor` (rota `#/monitor` e menu) (`pendente`)
   - `SUB-35.32`: Validação visual do monitor (SUB-35) (`pendente`)
@@ -2565,15 +2554,15 @@
 - **Commit:** `0d90464`
 - **Anotação:** Criado `src/components/monitor/FeedEventos.tsx` (`{ eventos, limite?=100, className? }`, eventos do mais novo ao mais antigo): linhas com hora, agente, selo do tipo (cor por `TipoEventoAgente`), task, etapa e mensagem; Pausar/Retomar congela a lista e mostra "+N novos" (`aria-pressed`, `aria-live` desligado quando pausado); eventos novos destacados por 2 s com `motion-safe:` (respeita `prefers-reduced-motion`). Exportado em `src/components/monitor/index.ts`. typecheck e build OK.
 
-#### [🔄] SUB-35.29: Indicador `IndicadorAoVivo` em `src/components/monitor/IndicadorAoVivo.tsx`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 03 (Grok Bot) (início: 2026-10-12 01:40)
+#### [x] SUB-35.29: Indicador `IndicadorAoVivo` em `src/components/monitor/IndicadorAoVivo.tsx`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 03 (Grok Bot) (2026-10-12 01:40 → 2026-10-12 01:42)
 - **Depende de:** SUB-35.19
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Pílula com o `statusConexao` do Realtime ("Ao vivo" pulsando, "Conectando…", "Sem conexão — recarregar") e botão que chama `recarregar`. Exportar no barrel.
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `9c2edf5`
+- **Anotação:** Criado `src/components/monitor/IndicadorAoVivo.tsx` (`statusConexao: StatusConexaoEventos`, `recarregar`): pílula "Ao vivo" com ponto pulsando, "Conectando…" ou "Sem conexão — recarregar" (`role=status`, `aria-live`) e botão "Recarregar" que chama `recarregar`. Exportado no barrel `src/components/monitor/index.ts`. typecheck, `npm test` e `npm run build` OK.
 
 #### [ ] SUB-35.30: Tela `MonitorView` em `src/views/MonitorView.tsx`
 - **Status:** pendente
