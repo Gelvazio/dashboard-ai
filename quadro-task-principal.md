@@ -88,14 +88,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:08 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 06 — SUB-35.22
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.22** |
+| **Título da Sub-task:** | Registro do Chart.js e paleta em `src/lib/charts.ts` |
+| **Agente Responsável:** | DashboardAI-Clone 06 |
+| **Data e Hora de Início:** | 2026-10-12 01:08 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (4)
+### 🔄 EM EXECUÇÃO (5)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-35.22** | Registro do Chart.js e paleta em `src/lib/charts.ts` | DashboardAI-Clone 06 | 2026-10-12 01:08 | SUB-35.21 |
 | **SUB-27.8** | Teste de integração dos papéis em `tests/integration/authService.integration.test.ts` | DashboardAI-Clone 01 | 2026-10-12 01:08 | SUB-27.25 |
 | **SUB-35.40** | Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:08 | SUB-35.2 |
 | **SUB-34.3** | Modais da fila sob demanda na `src/views/FilaView.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:08 | SUB-34.1 |
@@ -215,7 +227,7 @@
 | **SUB-35.18** | `segmentosLinhaDoTempo()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.17 — ⛓️ bloqueada |
 | **SUB-35.19** | Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts` | 4 | Fase 12 | SUB-35.11, SUB-35.14 — ⛓️ bloqueada |
 | **SUB-35.20** | Hook `useAtividadeAgentes(projectId)` em `src/hooks/useAtividadeAgentes.ts` | 4 | Fase 12 | SUB-35.19, SUB-35.15 — ⛓️ bloqueada |
-| **SUB-35.22** | Registro do Chart.js e paleta em `src/lib/charts.ts` | 4 | Fase 12 | SUB-35.21 — ⛓️ bloqueada |
+| **SUB-35.22** | Registro do Chart.js e paleta em `src/lib/charts.ts` | 4 | Fase 12 | SUB-35.21 — 🔄 em execução por DashboardAI-Clone 06 |
 | **SUB-35.23** | Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx` | 4 | Fase 12 | SUB-35.15 — ⛓️ bloqueada |
 | **SUB-35.24** | Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx` | 4 | Fase 12 | SUB-35.23 — ⛓️ bloqueada |
 | **SUB-35.25** | Gráfico `GraficoPorStatus` em `src/components/monitor/GraficoPorStatus.tsx` | 4 | Fase 12 | SUB-35.22, SUB-35.16 — ⛓️ bloqueada |
@@ -613,3 +625,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:08 | DashboardAI-Clone 02 | SUB-35.42 | `53a5c93` | Criado `scripts/espelhar_quadro_eventos.py` com a função pura `commits_para_eventos(linhas)` (entrada `git log --format='%H%x09%aI%x09%s'`): `lock: assumindo sub-task SUB-X por <agente>` -> `trava`; `feat(SUB-X): … — <agente>` -> `commit`; `docs(board): concluir SUB-X … de <agente>` -> `fim`; agente ausente vira 'desconhecido'; `chave_idempotencia = 'git:<sha>'`, `metadados.sha`, `created_at` = data do commit; linhas malformadas/outros commits ignorados. Testes em `scripts/test_espelhar_quadro_eventos.py` (4, unittest OK); conferido contra o `git log` real do repo. |
 | 2026-10-12 01:08 | DashboardAI-Clone 08 (Grok Bot) | SUB-35.40 | — | Lock: assumindo SUB-35.40 (Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts`) |
 | 2026-10-12 01:08 | DashboardAI-Clone 01 | SUB-27.8 | — | Lock: assumindo SUB-27.8 (Teste de integração dos papéis em `tests/integration/authService.integration.test.ts`) |
+| 2026-10-12 01:08 | DashboardAI-Clone 06 | SUB-35.22 | — | Lock: assumindo SUB-35.22 (Registro do Chart.js e paleta em `src/lib/charts.ts`) |

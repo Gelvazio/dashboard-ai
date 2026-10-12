@@ -2166,7 +2166,7 @@
   - `SUB-35.19`: Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts` (`pendente`)
   - `SUB-35.20`: Hook `useAtividadeAgentes(projectId)` em `src/hooks/useAtividadeAgentes.ts` (`pendente`)
   - `SUB-35.21`: Instalar `chart.js` e `react-chartjs-2` (`concluido`, `73d73ad`)
-  - `SUB-35.22`: Registro do Chart.js e paleta em `src/lib/charts.ts` (`pendente`)
+  - `SUB-35.22`: Registro do Chart.js e paleta em `src/lib/charts.ts` (`em_execucao`)
   - `SUB-35.23`: Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx` (`pendente`)
   - `SUB-35.24`: Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx` (`pendente`)
   - `SUB-35.25`: Gráfico `GraficoPorStatus` em `src/components/monitor/GraficoPorStatus.tsx` (`pendente`)
@@ -2408,8 +2408,8 @@
 - **Anotação:** Instalados `chart.js@^4.5.1` e `react-chartjs-2@^5.3.1` em `dependencies` (versões fixadas no `package-lock.json`); ainda sem uso no código (registro/paleta na SUB-35.22). `npm ci` e `npm audit --audit-level=high` sem vulnerabilidades; `npm run build` OK.
 
 #### [ ] SUB-35.22: Registro do Chart.js e paleta em `src/lib/charts.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 01:08)
 - **Depende de:** SUB-35.21
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Registrar só os elementos usados (`ArcElement`, `BarElement`, `CategoryScale`, `LinearScale`, `TimeScale` ou escala linear de tempo, `Tooltip`, `Legend`) para manter o bundle pequeno, e exportar `CORES_ESTADO`/`CORES_TIPO` com variantes claro/escuro.
