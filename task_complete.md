@@ -2567,4 +2567,15 @@
 - **Anotação:** Adicionei em `worker/eventos.ts` `comEventos(nome, no, deps?, agora?)`: emite `inicio` antes do nó, `fim` com `metadados.duracao_ms` depois e, em falha, `erro` com `mensagemSegura(erro)` (mascara JWT, chaves de API, Bearer/Basic, `token=`/`key=` e credencial em URL; até 500 caracteres) e relança o erro original. Os eventos levam `agente`, `taskId`, `taskCodigo`, `execucaoId` e `etapa = nome` do estado; falha ao emitir não interrompe o nó. 5 testes novos em `tests/unit/worker-eventos.test.ts` (11 no arquivo); `npm test` 279 aprovados / 30 pulados; `typecheck` e `typecheck:worker` OK.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:40 (confirmado por Devin (Cognition AI))
 
+#### [x] SUB-35.36: Envolver os nós em `worker/grafo.ts` com `comEventos`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:40, conclusão: 2026-10-12 13:41)
+- **Depende de:** SUB-35.35, SUB-28.12
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** No `StateGraph`, registrar cada nó (`carregarContexto`, `planejar`, `politica`, `executar`, `revisar`, `finalizar`) como `comEventos('<nome>', no)`, sem mudar o roteamento.
+- **Critérios de Aceitação:** `npm run typecheck:worker` OK; testes existentes do worker seguem verdes.
+- **Commit:** `469ce5c`
+- **Anotação:** Em `worker/grafo.ts`, os seis nós (`carregarContexto`, `planejar`, `politica`, `executar`, `revisar`, `finalizar`) passaram a ser registrados como `comEventos('<nome>', no, deps.eventos)`, sem mudar arestas nem roteamento. `DepsGrafo` ganhou `eventos?: EventosDeps` (omitido usa `db()`) para injetar o destino dos eventos. `npm run typecheck:worker` OK; os 17 arquivos de teste do worker seguem verdes (100 aprovados, 1 pulado); `npm test` 279 aprovados / 30 pulados; `typecheck` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:41 (confirmado por Devin (Cognition AI))
+
 ---
