@@ -67,11 +67,13 @@
 
 ---
 
-### ⏳ PENDENTES (77)
+### ⏳ PENDENTES (95; a linha da SUB-27 mãe, em execução por Codex, aparece só como referência)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
-**🟢 Livres agora (9):** SUB-19.1, SUB-19.3, SUB-20.1, SUB-23.1, SUB-23.4, SUB-34.1, SUB-34.4, SUB-25.1, SUB-26.1
+> **SUB-27 subdividida a pedido do usuário** (2026-10-11 23:41, DashboardAI (Grok Bot)): as 18 subtarefas abaixo ficam **reservadas para Codex (OpenAI)**, dono da trava da SUB-27 (iniciada 2026-10-11 22:27); outros agentes não devem assumi-las. Nenhum código da SUB-27 havia sido enviado à main.
+
+**🟢 Livres agora (10):** SUB-21, SUB-19.1, SUB-19.3, SUB-20.1, SUB-23.1, SUB-23.4, SUB-34.1, SUB-34.4, SUB-25.1, SUB-26.1
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
@@ -111,7 +113,7 @@
 | **SUB-34.5** | Checagem de tamanho `scripts/checar-chunks.mjs` | 4 | Fase 6 | SUB-34.2, SUB-34.3, SUB-34.4 — ⛓️ bloqueada |
 | **SUB-25** | Validação de Build e Execução Local (mãe) | 5 | Fase 10 | SUB-01 a SUB-24; SUB-25.1 a SUB-25.4 |
 | **SUB-25.1** | Script `scripts/validar.sh` + `npm run validar` | 5 | Fase 10 | Nenhuma — 🟢 livre |
-| **SUB-25.2** | Rodar a validação completa e corrigir erros de tipo | 5 | Fase 10 | SUB-25.1, SUB-08, SUB-19, SUB-20, SUB-21, SUB-23, SUB-27, SUB-33, SUB-34 — ⛓️ bloqueada |
+| **SUB-25.2** | Rodar a validação completa e corrigir erros de tipo | 5 | Fase 10 | SUB-25.1, SUB-08, SUB-19, SUB-20, SUB-21, SUB-23, SUB-27 (inclui SUB-27.18), SUB-33, SUB-34 — ⛓️ bloqueada |
 | **SUB-25.3** | Rodar integração do banco e do frontend | 5 | Fase 10 | SUB-25.2 — ⛓️ bloqueada |
 | **SUB-25.4** | Smoke test local com `vite preview` | 5 | Fase 10 | SUB-25.2 — ⛓️ bloqueada |
 | **SUB-26** | Documentação Completa e Manual Operacional no `README.md` (mãe) | 5 | Fase 10 | SUB-25; SUB-26.1 a SUB-26.9 |
@@ -122,7 +124,7 @@
 | **SUB-26.5** | Seção Deploy na Vercel | 5 | Fase 10 | SUB-26.1, SUB-08, SUB-33 — ⛓️ bloqueada |
 | **SUB-26.6** | Seção Agentes de IA: fila via MCP | 5 | Fase 10 | SUB-26.1 — ⛓️ bloqueada |
 | **SUB-26.7** | Seção Memória via MCP | 5 | Fase 10 | SUB-26.1 — ⛓️ bloqueada |
-| **SUB-26.8** | Seção Segurança | 5 | Fase 10 | SUB-26.1, SUB-27 — ⛓️ bloqueada |
+| **SUB-26.8** | Seção Segurança | 5 | Fase 10 | SUB-26.1, SUB-27.13, SUB-27.17 — ⛓️ bloqueada |
 | **SUB-26.9** | Revisão final do README | 5 | Fase 10 | SUB-26.2, SUB-26.3, SUB-26.4, SUB-26.5, SUB-26.6, SUB-26.7, SUB-26.8, SUB-25 — ⛓️ bloqueada |
 | **SUB-28** | Integração LangChain/LangGraph para Execução de Tasks (mãe) | 5 | Fase 11 (última) | SUB-01 a SUB-27, SUB-29, SUB-30; SUB-28.1 a SUB-28.18 |
 | **SUB-28.1** | Contrato worker ↔ RPC ↔ MCP em `docs/langgraph-contrato.md` | 5 | Fase 11 (última) | SUB-01 a SUB-27, SUB-29 a SUB-34 — ⛓️ bloqueada |
@@ -140,7 +142,7 @@
 | **SUB-28.13** | Checkpointer durável em `worker/checkpointer.ts` | 5 | Fase 11 (última) | SUB-28.2 — ⛓️ bloqueada |
 | **SUB-28.14** | Reconciliação na retomada em `worker/reconciliar.ts` | 5 | Fase 11 (última) | SUB-28.4 — ⛓️ bloqueada |
 | **SUB-28.15** | CLI do worker em `worker/index.ts` | 5 | Fase 11 (última) | SUB-28.12, SUB-28.13, SUB-28.14 — ⛓️ bloqueada |
-| **SUB-28.16** | Endpoint de aprovação `api/aprovacao.ts` | 5 | Fase 11 (última) | SUB-28.15, SUB-33.2 — ⛓️ bloqueada |
+| **SUB-28.16** | Endpoint de aprovação `api/aprovacao.ts` | 5 | Fase 11 (última) | SUB-28.15, SUB-33.2, SUB-27.9 — ⛓️ bloqueada |
 | **SUB-28.17** | Testes ponta a ponta do worker em `tests/unit/worker-grafo.test.ts` | 5 | Fase 11 (última) | SUB-28.15 — ⛓️ bloqueada |
 | **SUB-28.18** | Documentação de operação e segurança | 5 | Fase 11 (última) | SUB-28.15, SUB-28.16 — ⛓️ bloqueada |
 | **SUB-33.1** | `bearerToken(req)` em `api/_lib/auth.ts` | 3 | Fase 2B | Nenhuma — 🔒 reservada (trava SUB-33, DashboardAI (Grok Bot)) |
@@ -152,6 +154,25 @@
 | **SUB-33.7** | `criarGeradorEmbedding()` em `src/services/embeddingService.ts` | 3 | Fase 2B | SUB-33.4 — 🔒 reservada (trava SUB-33, DashboardAI (Grok Bot)) |
 | **SUB-33.8** | Testes de `embeddingService` em `tests/unit/embeddingService.test.ts` | 3 | Fase 2B | SUB-33.7 — 🔒 reservada (trava SUB-33, DashboardAI (Grok Bot)) |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | 3 | Fase 2B | SUB-33.4 — 🔒 reservada (trava SUB-33, DashboardAI (Grok Bot)) |
+| **SUB-27** | Autenticação e Login com Supabase Auth (mãe; em execução por Codex (OpenAI)) | 3 | Fase 10 | SUB-03, SUB-29; SUB-27.1 a SUB-27.18 — 🔒 travada por Codex (OpenAI) |
+| **SUB-27.1** | `mensagemErroAuth(erro)` em `src/lib/auth.ts` | 3 | Fase 10 | Nenhuma — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.2** | `validarLogin({ email, senha })` em `src/lib/auth.ts` | 3 | Fase 10 | SUB-27.1 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.3** | `entrarComSenha(email, senha)` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.1 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.4** | `sair()` e `obterSessao()` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.3 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.5** | `enviarLinkMagico()` e `redefinirSenha()` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.3 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.6** | Testes unitários de `authService` em `tests/unit/authService.test.ts` | 3 | Fase 10 | SUB-27.4, SUB-27.5 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.7** | `obterPapelGlobal()` e `papelNoProjeto()` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.3 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.8** | Teste de integração dos papéis em `tests/integration/authService.integration.test.ts` | 3 | Fase 10 | SUB-27.7 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.9** | `AuthProvider` e `useAuth` em `src/hooks/AuthContext.tsx` / `src/hooks/useAuth.ts` | 3 | Fase 10 | SUB-27.4, SUB-27.7 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.10** | Formulário `LoginForm` em `src/components/auth/LoginForm.tsx` | 3 | Fase 10 | SUB-27.2, SUB-27.3, SUB-27.5 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.11** | Tela `LoginView` em `src/views/LoginView.tsx` | 3 | Fase 10 | SUB-27.10 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.12** | Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` | 3 | Fase 10 | SUB-27.9, SUB-27.11 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.13** | Integrar autenticação no `src/App.tsx` | 3 | Fase 10 | SUB-27.12 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.14** | Menu do usuário `UserMenu` no header | 3 | Fase 10 | SUB-27.9 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.15** | Reagir ao login/logout em `useConexao` e `ProjetoContext` | 3 | Fase 10 | SUB-27.9 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.16** | `urlDeRetorno()` para link mágico e redefinição de senha | 3 | Fase 10 | SUB-27.5 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.17** | Documentar autenticação e primeiro administrador | 3 | Fase 10 | SUB-27.13 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
+| **SUB-27.18** | Validação final da SUB-27 | 3 | Fase 10 | SUB-27.6, SUB-27.8, SUB-27.13, SUB-27.14, SUB-27.15, SUB-27.16, SUB-27.17 — 🔒 reservada para Codex (OpenAI) — SUB-27 travada |
 
 ---
 
@@ -229,3 +250,4 @@
 | 2026-10-11 23:27 | DashboardAI (Grok Bot) | SUB-22 | `a88f12d` | Tela Logs com linha do tempo agrupada por dia (mais recente primeiro): hora, badge de status (concluida/recusada/erro/sem_tarefa), rotina, task, agente, tempo de execução, link de PR e SHA; detalhes/erro expansíveis. Filtro por status com contadores, busca em detalhes/erro/task, recarregar e Carregar mais (paginação do logService). Validado: typecheck, build, vitest (unit+integração) e screenshot. |
 | 2026-10-11 23:36 | DashboardAI (Grok Bot) | Lock planejamento | — | Trava de planejamento em SUB-23, SUB-19, SUB-20, SUB-34, SUB-25, SUB-26 e SUB-28 para subdividir em subtarefas de ~3 min (pedido do usuário); SUB-33 segue travada por DashboardAI (Grok Bot) |
 | 2026-10-11 23:38 | DashboardAI (Grok Bot) | Subdivisão | (este commit) | Tarefas livres subdivididas em 69 subtarefas atômicas (~3 min): SUB-19.1–19.8, SUB-20.1–20.7, SUB-23.1–23.9, SUB-25.1–25.4, SUB-26.1–26.9, SUB-28.1–28.18, SUB-33.1–33.9 (reservadas sob a trava da SUB-33), SUB-34.1–34.5. Trava de planejamento liberada; 9 livres, 51 bloqueadas por dependência. Sem código implementado. SUB-08, SUB-21 e SUB-27 (outros agentes) não foram tocadas |
+| 2026-10-11 23:41 | DashboardAI (Grok Bot) | Subdivisão SUB-27 | (este commit) | A pedido do usuário, SUB-27 subdividida em 18 subtarefas (SUB-27.1–27.18: lib/auth, authService, papéis, AuthProvider, LoginForm, LoginView, RotaProtegida, App, UserMenu, conexão/projeto, link de retorno, docs, validação), todas reservadas para Codex (OpenAI); trava e status em_execucao da SUB-27 mantidos. Nenhum código de SUB-27 existia na main. Dependentes atualizados: SUB-26.8 -> SUB-27.13/27.17, SUB-28.16 -> +SUB-27.9, SUB-25.2 cita SUB-27.18. Lista de livres inclui SUB-21 (liberada pelo usuário em 9fedf35) |
