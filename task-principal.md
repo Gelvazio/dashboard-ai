@@ -356,7 +356,7 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:45 (Devin): tarefa-mãe pendente: 45 de 46 subtarefas concluídas (SUB-35.1 a SUB-35.45) com commits verificados (9f5692f, 54cdea9, 2d714d4, 95f12ff, d9d9a6c, e7a39cd, b518611, 5a09109, 89c6a43, 47fb521, c43ad04, b045c12, 8628ec3, 7e268fb, c47df6b, 860e0c9, 7d2181e, 6391c1b, 7d2181e, a7beb5a, 73d73ad, cabdbc0, da9ff65, 4bc0b25, a2d2ed9, 6456092, 173fc36, 0d90464, 9c2edf5, 2d1cd0a, 8dff43b, 2750ba4, 8e63d4c, bd6563e, 469ce5c, 64c0b11, 34bf1c1, 4a1156d, 176aadb, 0263ae9, 53a5c93, e8917a3, 9b785dc, dcdbc96). Arquivos do monitor presentes (src/components/monitor/, src/hooks/, src/lib/monitor.ts, src/views/MonitorView.tsx, database/07_agent_events.sql). Restam: SUB-35.32 (validação visual) e SUB-35.46 (validação automatizada).
 
 #### [ ] SUB-35.32: Validação visual do monitor (SUB-35)
 - **Status:** pendente
