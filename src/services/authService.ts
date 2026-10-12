@@ -17,3 +17,17 @@ export async function entrarComSenha(
   if (!data.session) throw new ServiceError(mensagemErroAuth({}), 'AUTH');
   return data.session;
 }
+
+/** Chave do projeto selecionado no `localStorage` (ver `ProjetoContext`). */
+export const CHAVE_PROJETO_LOCAL = 'dashboard-ai:projeto';
+
+/** Sai da sessão e esquece o projeto selecionado. Lança `ServiceError(..., 'AUTH')` em erro. */
+export async function sair(client: DashboardClient = getSupabase()): Promise<void> {
+  const { error } = await client.auth.signOut();
+  try {
+    globalThis.localStorage?.removeItem(CHAVE_PROJETO_LOCAL);
+  } catch {
+    // localStorage indisponível (modo privado/SSR): nada a limpar.
+  }
+  if (error) throw new ServiceError(mensagemErroAuth(error), 'AUTH');
+}
