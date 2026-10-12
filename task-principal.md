@@ -45,28 +45,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.7
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-28.7** |
-| **Título da Sub-task:** | Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts` |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 12:43 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202
-- **Em Execução:** 1 (SUB-28.7, Devin (Cognition AI), desde 2026-10-12 12:43)
+- **Em Execução:** 0
 - **Pendentes:** 4 principais (25, 26, 28, 35) + 32 subtarefas
   - livres agora: 9 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.8, SUB-28.9, SUB-28.13, SUB-28.14, SUB-35.32, SUB-35.33)
   - bloqueadas por dependência: 23
   - reservadas: 0
-- **Concluídas:** 202 de 239 blocos (33 principais + 169 subtarefas)
+- **Concluídas:** 203 de 239 blocos (33 principais + 170 subtarefas)
 - **Canceladas:** 0
 
 ---
@@ -1978,7 +1967,7 @@
   - `SUB-28.4`: `reivindicar(agente, projeto)` em `worker/fila.ts` (`concluido`, `06e7e4b`)
   - `SUB-28.5`: Allowlist e `obterFerramenta(nome)` em `worker/ferramentas.ts` (`concluido`, `999d1e0`)
   - `SUB-28.6`: Nó `carregarContexto` em `worker/nos/carregarContexto.ts` (`concluido`, `463b3d9`)
-  - `SUB-28.7`: Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts` (`em_execucao`)
+  - `SUB-28.7`: Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts` (`concluido`, `07ca06f`)
   - `SUB-28.8`: Nó `politica` (aprovação humana) em `worker/nos/politica.ts` (`pendente`)
   - `SUB-28.9`: Nó `executar` em `worker/nos/executar.ts` (`pendente`)
   - `SUB-28.10`: Nó `revisar` (roteamento) em `worker/nos/revisar.ts` (`concluido`, `b1c35a9`)
@@ -2076,16 +2065,16 @@
 - **Anotação:** `carregarContexto(state, deps = { buscar })` em `worker/nos/carregarContexto.ts`: chama `brain_search` (padrão: `getTool('brain_search').handler` do registro MCP) com a instrução e o projeto, e guarda em `resultados.brain_search` as memórias com `naoConfiavel: true` (o prompt da SUB-28.31 as delimita); falha ou resposta de erro segue sem contexto; instrução vazia não chama a ferramenta. Testes com ferramenta falsa em `tests/unit/worker-carregarContexto.test.ts`. `npm test`, `npm run typecheck` e `npm run typecheck:worker` verdes.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:42 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
-#### [ ] SUB-28.7: Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts`
-- **Status:** em_execucao
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:43)
+#### [x] SUB-28.7: Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:43, conclusão: 2026-10-12 12:43)
 - **Depende de:** SUB-28.31
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Chama o modelo injetável (LangChain `BaseChatModel`, saída estruturada com `PlanoSchema` da SUB-28.20) com o prompt de `montarPromptPlano` e grava o plano no estado.
 - **Critérios de Aceitação:** Teste com modelo falso; plano inválido vira erro de validação.
-- **Commit:** pendente (código parcial em `e6d07ab`)
-- **Anotação:** Reaberta na revisão de 2026-10-12 (Devin (revisão do quadro)): marcada como concluída em `310fab9`, mas placeholder: plano fixo com `brain_search`, sem chamada ao modelo; sem teste.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (reaberta: critérios de aceitação não atendidos)
+- **Commit:** `07ca06f`
+- **Anotação:** `planejar(state, modelo)` em `worker/nos/planejar.ts`: chama `modelo.withStructuredOutput(PlanoSchema).invoke(montarPromptPlano(state))` (`ModeloPlano = Pick<BaseChatModel, 'withStructuredOutput'>`), revalida com `PlanoSchema.safeParse` e grava `plano` (JSON) no estado; resposta fora do schema lança `ErroValidacaoPlano` (classificada como `validacao` por `classificarFalha`). `criarNoPlanejar(modelo)` adapta o nó para o grafo. Testes com modelo falso em `tests/unit/worker-planejar.test.ts`. `npm test`, `npm run typecheck`, `npm run typecheck:worker` e `npm run build` verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:43 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
 #### [ ] SUB-28.8: Nó `politica` (aprovação humana) em `worker/nos/politica.ts`
 - **Status:** pendente
