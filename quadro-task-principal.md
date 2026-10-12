@@ -45,15 +45,17 @@
 
 ---
 
-### ⏳ PENDENTES (144)
+### ⏳ PENDENTES (192)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
+
+> **SUB-35 criada a pedido do usuário** (2026-10-12 00:39): monitor em tempo real dos agentes (tabela `agent_events` + Supabase Realtime + eventos do worker LangGraph e da ferramenta MCP `agent_event`), subdividida em 46 partes de ~3 min.
 
 > **SUB-08 liberada pelo usuário** (2026-10-12 00:08; trava de xAI (Grok) desde 22:41 sem commits) e subdividida em SUB-08.1–08.9 por DashboardAI (Grok Bot).
 
 > **SUB-27 liberada a pedido do usuário** (2026-10-11 23:55): mãe e 22 subtarefas estão disponíveis; cada agente deve respeitar as dependências indicadas. Nenhum código da SUB-27 havia sido enviado à main.
 
-**🟢 Livres agora (24):** SUB-33.9, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.5, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.2, SUB-23.5, SUB-23.12, SUB-25.1, SUB-26.1, SUB-27.1
+**🟢 Livres agora (26):** SUB-33.9, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.5, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.2, SUB-23.5, SUB-23.12, SUB-25.1, SUB-26.1, SUB-27.1, SUB-35.1, SUB-35.21
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
@@ -202,6 +204,53 @@
 | **SUB-27.26** | Hook `useAuth` em `src/hooks/useAuth.ts` | 3 | Fase 10 | SUB-27.9 — ⛓️ bloqueada |
 | **SUB-27.27** | Incluir `UserMenu` no `src/components/layout/Header.tsx` | 3 | Fase 10 | SUB-27.14 — ⛓️ bloqueada |
 | **SUB-27.28** | Varredura do bundle por `service_role` (SUB-27) | 3 | Fase 10 | SUB-27.22 — ⛓️ bloqueada |
+| **SUB-35** | Monitor em Tempo Real dos Agentes (mãe) | 4 | Fase 12 | SUB-12, SUB-29, SUB-30; SUB-35.1 a SUB-35.46 |
+| **SUB-35.1** | Tabela `agent_events` em `database/07_agent_events.sql` | 4 | Fase 12 | SUB-29 — 🟢 livre |
+| **SUB-35.2** | Trigger `validar_agent_event` em `database/07_agent_events.sql` | 4 | Fase 12 | SUB-35.1 — ⛓️ bloqueada |
+| **SUB-35.3** | RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql` | 4 | Fase 12 | SUB-35.1 — ⛓️ bloqueada |
+| **SUB-35.4** | Publicar `agent_events` no Supabase Realtime | 4 | Fase 12 | SUB-35.1 — ⛓️ bloqueada |
+| **SUB-35.5** | Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` | 4 | Fase 12 | SUB-35.3 — ⛓️ bloqueada |
+| **SUB-35.6** | Teste de integração de `agent_events` (RLS e trigger) | 4 | Fase 12 | SUB-35.2, SUB-35.3 — ⛓️ bloqueada |
+| **SUB-35.7** | Seção "Eventos dos agentes (07)" no `database/README.md` | 4 | Fase 12 | SUB-35.4, SUB-35.5 — ⛓️ bloqueada |
+| **SUB-35.8** | Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` | 4 | Fase 12 | SUB-35.5 — ⛓️ bloqueada |
+| **SUB-35.9** | `listarEventos()` em `src/services/eventService.ts` | 4 | Fase 12 | SUB-35.8 — ⛓️ bloqueada |
+| **SUB-35.10** | `atividadeAtual()` em `src/services/eventService.ts` | 4 | Fase 12 | SUB-35.9 — ⛓️ bloqueada |
+| **SUB-35.11** | `assinarEventos()` (Supabase Realtime) em `src/services/eventService.ts` | 4 | Fase 12 | SUB-35.10 — ⛓️ bloqueada |
+| **SUB-35.12** | Testes de `eventService` em `tests/unit/eventService.test.ts` | 4 | Fase 12 | SUB-35.11 — ⛓️ bloqueada |
+| **SUB-35.13** | Teste de integração de `listarEventos`/`atividadeAtual` | 4 | Fase 12 | SUB-35.10, SUB-35.6 — ⛓️ bloqueada |
+| **SUB-35.14** | `mesclarEvento()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.8 — ⛓️ bloqueada |
+| **SUB-35.15** | `estadoDoAgente()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.14 — ⛓️ bloqueada |
+| **SUB-35.16** | `contarPorStatus()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.15 — ⛓️ bloqueada |
+| **SUB-35.17** | `contarPorAgente()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.16 — ⛓️ bloqueada |
+| **SUB-35.18** | `segmentosLinhaDoTempo()` em `src/lib/monitor.ts` | 4 | Fase 12 | SUB-35.17 — ⛓️ bloqueada |
+| **SUB-35.19** | Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts` | 4 | Fase 12 | SUB-35.11, SUB-35.14 — ⛓️ bloqueada |
+| **SUB-35.20** | Hook `useAtividadeAgentes(projectId)` em `src/hooks/useAtividadeAgentes.ts` | 4 | Fase 12 | SUB-35.19, SUB-35.15 — ⛓️ bloqueada |
+| **SUB-35.21** | Instalar `chart.js` e `react-chartjs-2` | 4 | Fase 12 | Nenhuma — 🟢 livre |
+| **SUB-35.22** | Registro do Chart.js e paleta em `src/lib/charts.ts` | 4 | Fase 12 | SUB-35.21 — ⛓️ bloqueada |
+| **SUB-35.23** | Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx` | 4 | Fase 12 | SUB-35.15 — ⛓️ bloqueada |
+| **SUB-35.24** | Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx` | 4 | Fase 12 | SUB-35.23 — ⛓️ bloqueada |
+| **SUB-35.25** | Gráfico `GraficoPorStatus` em `src/components/monitor/GraficoPorStatus.tsx` | 4 | Fase 12 | SUB-35.22, SUB-35.16 — ⛓️ bloqueada |
+| **SUB-35.26** | Gráfico `GraficoPorAgente` em `src/components/monitor/GraficoPorAgente.tsx` | 4 | Fase 12 | SUB-35.22, SUB-35.17 — ⛓️ bloqueada |
+| **SUB-35.27** | Linha do tempo `LinhaDoTempoAgentes` em `src/components/monitor/LinhaDoTempoAgentes.tsx` | 4 | Fase 12 | SUB-35.22, SUB-35.18 — ⛓️ bloqueada |
+| **SUB-35.28** | Feed `FeedEventos` em `src/components/monitor/FeedEventos.tsx` | 4 | Fase 12 | SUB-35.8 — ⛓️ bloqueada |
+| **SUB-35.29** | Indicador `IndicadorAoVivo` em `src/components/monitor/IndicadorAoVivo.tsx` | 4 | Fase 12 | SUB-35.19 — ⛓️ bloqueada |
+| **SUB-35.30** | Tela `MonitorView` em `src/views/MonitorView.tsx` | 4 | Fase 12 | SUB-35.20, SUB-35.24, SUB-35.25, SUB-35.26, SUB-35.27, SUB-35.28, SUB-35.29 — ⛓️ bloqueada |
+| **SUB-35.31** | Registrar a tela `monitor` (rota `#/monitor` e menu) | 4 | Fase 12 | SUB-35.30, SUB-34.2 — ⛓️ bloqueada |
+| **SUB-35.32** | Validação visual do monitor (SUB-35) | 4 | Fase 12 | SUB-35.31 — ⛓️ bloqueada |
+| **SUB-35.33** | `emitirEvento()` em `worker/eventos.ts` | 4 | Fase 12 | SUB-35.1, SUB-28.28 — ⛓️ bloqueada |
+| **SUB-35.34** | Testes de `emitirEvento` em `tests/unit/worker-eventos.test.ts` | 4 | Fase 12 | SUB-35.33 — ⛓️ bloqueada |
+| **SUB-35.35** | `comEventos(nome, no)` em `worker/eventos.ts` | 4 | Fase 12 | SUB-35.33, SUB-28.3 — ⛓️ bloqueada |
+| **SUB-35.36** | Envolver os nós em `worker/grafo.ts` com `comEventos` | 4 | Fase 12 | SUB-35.35, SUB-28.12 — ⛓️ bloqueada |
+| **SUB-35.37** | `iniciarHeartbeat()` em `worker/heartbeat.ts` | 4 | Fase 12 | SUB-35.33 — ⛓️ bloqueada |
+| **SUB-35.38** | Ligar o heartbeat no CLI `worker/index.ts` | 4 | Fase 12 | SUB-35.37, SUB-28.15 — ⛓️ bloqueada |
+| **SUB-35.39** | Teste do worker: eventos emitidos na ordem dos nós | 4 | Fase 12 | SUB-35.36, SUB-28.17 — ⛓️ bloqueada |
+| **SUB-35.40** | Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts` | 4 | Fase 12 | SUB-35.2 — ⛓️ bloqueada |
+| **SUB-35.41** | Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts` | 4 | Fase 12 | SUB-35.40 — ⛓️ bloqueada |
+| **SUB-35.42** | `commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py` | 4 | Fase 12 | SUB-35.1 — ⛓️ bloqueada |
+| **SUB-35.43** | CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`) | 4 | Fase 12 | SUB-35.42 — ⛓️ bloqueada |
+| **SUB-35.44** | Seção "Monitor em tempo real" no `README.md` | 4 | Fase 12 | SUB-35.31, SUB-35.40, SUB-35.43 — ⛓️ bloqueada |
+| **SUB-35.45** | Seção "Reporte de progresso (opcional)" no `AGENTS.md` | 4 | Fase 12 | SUB-35.41 — ⛓️ bloqueada |
+| **SUB-35.46** | Validação automatizada da SUB-35 | 4 | Fase 12 | SUB-35.7, SUB-35.12, SUB-35.13, SUB-35.32, SUB-35.34, SUB-35.38, SUB-35.39, SUB-35.41, SUB-35.43, SUB-35.44, SUB-35.45 — ⛓️ bloqueada |
 
 ---
 
@@ -348,3 +397,4 @@
 | 2026-10-12 00:35 | DashboardAI (Grok Bot) | SUB-08.5 | `212cc43` | Preenchida a seção MCP do `.env.example` com `MCP_AUTH_TOKEN` (exigido no `/mcp`; sem ele as ferramentas de dados ficam desativadas; gerar com `openssl rand -hex 32`), `MCP_CORS_ORIGIN` (padrão `*`, restringir em produção; também usada pelo `/api/embedding`), `MCP_DEFAULT_PROJECT` e `MCP_ALLOWED_PROJECTS` (lista por vírgula; quando preenchida recusa memória global), conforme `api/mcp.ts`, `api/_lib/args.ts` e `api/_lib/brain-tools.ts`. Valores vazios. |
 | 2026-10-12 00:35 | DashboardAI (Grok Bot) | SUB-08.6 | — | Lock: assumindo SUB-08.6 (Seção Scripts: `DASHBOARD_AI_PROJECT`) |
 | 2026-10-12 00:35 | DashboardAI (Grok Bot) | SUB-08.6 | `86e701c` | Preenchida a seção Scripts do `.env.example` com `DASHBOARD_AI_PROJECT` (slug padrão do `scripts/sincronizar_tasks.py`, equivale a `--projeto`, padrão `default`), lembrando que o script lê o `.env` da raiz sem sobrescrever o ambiente e usa `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`. Nenhum valor real no arquivo. |
+| 2026-10-12 00:39 | DashboardAI (Grok Bot) | Nova tarefa SUB-35 | (este commit) | A pedido do usuário, criada a SUB-35 (Monitor em Tempo Real dos Agentes, Fase 12) e subdividida em 46 subtarefas de ~3 min: SQL (35.1–35.7: tabela `agent_events`, trigger, RLS, publicação Realtime, `atividade_atual_agentes`, teste de integração, README do banco), dados no frontend (35.8–35.13), funções puras (35.14–35.18), hooks (35.19–35.20), gráficos com Chart.js + `react-chartjs-2` (35.21–35.27), feed/indicador/tela/rota/validação visual (35.28–35.32), eventos do worker LangGraph (35.33–35.39), ferramenta MCP `agent_event` (35.40–35.41), espelho do quadro via `git log` (35.42–35.43), documentação e validação (35.44–35.46). Sem código; nenhuma trava de outro agente alterada. |

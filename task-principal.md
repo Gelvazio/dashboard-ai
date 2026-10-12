@@ -8,12 +8,12 @@
 ---
 
 ## 📊 Resumo de Progresso
-- **Total de Tasks Principais:** 34
-- **Subtarefas atômicas (~3 min):** 153 (SUB-08.x, SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x; atualizado em 2026-10-12 00:17)
+- **Total de Tasks Principais:** 35
+- **Subtarefas atômicas (~3 min):** 199 (SUB-08.x, SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x, SUB-35.x; atualizado em 2026-10-12 00:39)
 - **Em Execução:** 1 (SUB-33.5 — Codex (OpenAI))
-- **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 131 subtarefas
-  - livres agora: 24 (SUB-33.9, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.5, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.2, SUB-23.5, SUB-23.12, SUB-25.1, SUB-26.1, SUB-27.1)
-  - bloqueadas por dependência: 106
+- **Pendentes:** 12 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34, 35) + 177 subtarefas
+  - livres agora: 26 (SUB-33.9, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.5, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.2, SUB-23.5, SUB-23.12, SUB-25.1, SUB-26.1, SUB-27.1, SUB-35.1, SUB-35.21)
+  - bloqueadas por dependência: 150
   - reservadas: 0
 - **Concluídas:** 44
 - **Canceladas:** 0
@@ -2133,5 +2133,526 @@
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Após a retomada em `api/aprovacao.ts`, registrar quem aprovou, quando, a task e a ação (sem credenciais) nos metadados da execução/log. Teste com grafo falso.
 - **Critérios de Aceitação:** `typecheck:api` OK; teste confere o registro sem credenciais.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+---
+
+## 📡 FASE 12: Monitor em Tempo Real dos Agentes
+
+### [ ] SUB-35: Monitor em Tempo Real dos Agentes
+- **Status:** pendente (aguardando subtarefas)
+- **Executor:** nenhum
+- **Depende de:** SUB-12, SUB-29, SUB-30; subtarefas SUB-35.1 a SUB-35.46 (as partes do worker dependem de SUB-28.x)
+- **Subtarefas:** (criada e subdividida em 46 em 2026-10-12 00:39 por DashboardAI (Grok Bot) a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`)
+  - `SUB-35.1`: Tabela `agent_events` em `database/07_agent_events.sql` (`pendente`)
+  - `SUB-35.2`: Trigger `validar_agent_event` em `database/07_agent_events.sql` (`pendente`)
+  - `SUB-35.3`: RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql` (`pendente`)
+  - `SUB-35.4`: Publicar `agent_events` no Supabase Realtime (`pendente`)
+  - `SUB-35.5`: Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` (`pendente`)
+  - `SUB-35.6`: Teste de integração de `agent_events` (RLS e trigger) (`pendente`)
+  - `SUB-35.7`: Seção "Eventos dos agentes (07)" no `database/README.md` (`pendente`)
+  - `SUB-35.8`: Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` (`pendente`)
+  - `SUB-35.9`: `listarEventos()` em `src/services/eventService.ts` (`pendente`)
+  - `SUB-35.10`: `atividadeAtual()` em `src/services/eventService.ts` (`pendente`)
+  - `SUB-35.11`: `assinarEventos()` (Supabase Realtime) em `src/services/eventService.ts` (`pendente`)
+  - `SUB-35.12`: Testes de `eventService` em `tests/unit/eventService.test.ts` (`pendente`)
+  - `SUB-35.13`: Teste de integração de `listarEventos`/`atividadeAtual` (`pendente`)
+  - `SUB-35.14`: `mesclarEvento()` em `src/lib/monitor.ts` (`pendente`)
+  - `SUB-35.15`: `estadoDoAgente()` em `src/lib/monitor.ts` (`pendente`)
+  - `SUB-35.16`: `contarPorStatus()` em `src/lib/monitor.ts` (`pendente`)
+  - `SUB-35.17`: `contarPorAgente()` em `src/lib/monitor.ts` (`pendente`)
+  - `SUB-35.18`: `segmentosLinhaDoTempo()` em `src/lib/monitor.ts` (`pendente`)
+  - `SUB-35.19`: Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts` (`pendente`)
+  - `SUB-35.20`: Hook `useAtividadeAgentes(projectId)` em `src/hooks/useAtividadeAgentes.ts` (`pendente`)
+  - `SUB-35.21`: Instalar `chart.js` e `react-chartjs-2` (`pendente`)
+  - `SUB-35.22`: Registro do Chart.js e paleta em `src/lib/charts.ts` (`pendente`)
+  - `SUB-35.23`: Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx` (`pendente`)
+  - `SUB-35.24`: Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx` (`pendente`)
+  - `SUB-35.25`: Gráfico `GraficoPorStatus` em `src/components/monitor/GraficoPorStatus.tsx` (`pendente`)
+  - `SUB-35.26`: Gráfico `GraficoPorAgente` em `src/components/monitor/GraficoPorAgente.tsx` (`pendente`)
+  - `SUB-35.27`: Linha do tempo `LinhaDoTempoAgentes` em `src/components/monitor/LinhaDoTempoAgentes.tsx` (`pendente`)
+  - `SUB-35.28`: Feed `FeedEventos` em `src/components/monitor/FeedEventos.tsx` (`pendente`)
+  - `SUB-35.29`: Indicador `IndicadorAoVivo` em `src/components/monitor/IndicadorAoVivo.tsx` (`pendente`)
+  - `SUB-35.30`: Tela `MonitorView` em `src/views/MonitorView.tsx` (`pendente`)
+  - `SUB-35.31`: Registrar a tela `monitor` (rota `#/monitor` e menu) (`pendente`)
+  - `SUB-35.32`: Validação visual do monitor (SUB-35) (`pendente`)
+  - `SUB-35.33`: `emitirEvento()` em `worker/eventos.ts` (`pendente`)
+  - `SUB-35.34`: Testes de `emitirEvento` em `tests/unit/worker-eventos.test.ts` (`pendente`)
+  - `SUB-35.35`: `comEventos(nome, no)` em `worker/eventos.ts` (`pendente`)
+  - `SUB-35.36`: Envolver os nós em `worker/grafo.ts` com `comEventos` (`pendente`)
+  - `SUB-35.37`: `iniciarHeartbeat()` em `worker/heartbeat.ts` (`pendente`)
+  - `SUB-35.38`: Ligar o heartbeat no CLI `worker/index.ts` (`pendente`)
+  - `SUB-35.39`: Teste do worker: eventos emitidos na ordem dos nós (`pendente`)
+  - `SUB-35.40`: Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts` (`pendente`)
+  - `SUB-35.41`: Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts` (`pendente`)
+  - `SUB-35.42`: `commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py` (`pendente`)
+  - `SUB-35.43`: CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`) (`pendente`)
+  - `SUB-35.44`: Seção "Monitor em tempo real" no `README.md` (`pendente`)
+  - `SUB-35.45`: Seção "Reporte de progresso (opcional)" no `AGENTS.md` (`pendente`)
+  - `SUB-35.46`: Validação automatizada da SUB-35 (`pendente`)
+- **Descrição:** Tela `#/monitor` que mostra, ao vivo, o que cada agente de IA está fazendo agora — versão do `dashboard-task-principal.html` (que lê o quadro em Markdown do GitHub a cada `POLL_MS` e desenha gráficos Chart.js por status, fase e agente) apoiada no **banco**: nova tabela `agent_events` (por projeto, com RLS e publicação no Supabase Realtime), assinatura Realtime no frontend (sem polling), cartões de atividade atual por agente (heartbeat), gráficos por estado e por agente, linha do tempo das etapas e feed de eventos. Os eventos vêm do worker LangGraph (SUB-28, cada nó emite `inicio`/`fim`/`erro` + heartbeat), da ferramenta MCP `agent_event` (agentes como Claude Code e Codex) e, opcionalmente, de um espelho dos commits de lock/entrega do quadro. Biblioteca de gráficos: Chart.js via `react-chartjs-2` (mesma do HTML atual, registro só dos elementos usados, canvas leve para atualização contínua). **Só exibição:** não há regra de expiração de trava; travas continuam sendo liberadas só pelo usuário.
+- **Escopo por projeto:** eventos, atividade e assinatura filtrados pelo projeto selecionado (`project_id`, ver SUB-29); genérico para qualquer projeto.
+- **Critérios de Aceitação:** Com dois agentes emitindo eventos, a tela atualiza em segundos sem recarregar; viewer de outro projeto não vê os eventos; build sem chunk acima de 500 kB (gráficos em chunk da tela).
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.1: Tabela `agent_events` em `database/07_agent_events.sql`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-29
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `database/07_agent_events.sql` só com a tabela `public.agent_events`: `id` identity, `project_id` (FK `projects`, cascade), `task_id` (FK `tasks`, set null), `task_codigo`, `agente` (texto não vazio, ≤120), `execucao_id` (thread do LangGraph, ≤200), `etapa` (nó/passo, ≤120), `tipo` (check: `inicio`, `progresso`, `fim`, `erro`, `heartbeat`, `trava`, `liberacao`, `commit`), `status`, `mensagem` (≤2000), `metadados` jsonb objeto, `chave_idempotencia` (unique com `project_id`), `criado_por` (`usuario_atual()`), `created_at`. Índices `(project_id, created_at desc)` e `(project_id, agente, created_at desc)`; comentário da tabela. Sem RLS aqui.
+- **Critérios de Aceitação:** Arquivo aplica em banco limpo após 00–06 (`tests/integration/run.sh` ou `psql -f`); reaplicar não falha (`if not exists`).
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.2: Trigger `validar_agent_event` em `database/07_agent_events.sql`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Adicionar função + trigger `before insert or update`: task (se informada) precisa ser do mesmo projeto, preenche `task_codigo` a partir da task, e em update recusa mudar `project_id`/`agente`/`created_at` (eventos são só-inclusão). Mesmo padrão do trigger de `agent_messages` (06).
+- **Critérios de Aceitação:** Aplicação limpa; inserir evento com task de outro projeto falha com mensagem clara.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.3: RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Habilitar RLS e criar as policies: `select` para quem tem `tem_acesso_projeto(project_id, 'viewer')`; `insert` para `tem_acesso_projeto(project_id, 'editor')`; sem policies de `update`/`delete` (só o service_role/administração apaga). `grant select, insert` para `authenticated`.
+- **Critérios de Aceitação:** Aplicação limpa; `\dp agent_events` mostra RLS ativa.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.4: Publicar `agent_events` no Supabase Realtime
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Em `database/07_agent_events.sql`, bloco `do $$` que executa `alter publication supabase_realtime add table public.agent_events` só se a publicação existir e a tabela ainda não estiver nela (no Postgres local de testes a publicação não existe e o bloco não falha).
+- **Critérios de Aceitação:** Reaplicar o arquivo não falha; no Supabase a tabela aparece em `pg_publication_tables`.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.5: Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.3
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Função SQL `stable`, `security invoker` (respeita a RLS), que devolve o último evento de cada agente do projeto (`distinct on (agente) ... order by agente, created_at desc`): `agente`, `task_codigo`, `etapa`, `tipo`, `status`, `mensagem`, `execucao_id`, `ultimo_em`, mais `ultimo_heartbeat_em` (último `tipo = 'heartbeat'`). `grant execute` para `authenticated`. Só exibe atividade; não altera travas.
+- **Critérios de Aceitação:** Aplicação limpa; `select * from atividade_atual_agentes(<id>)` devolve uma linha por agente.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.6: Teste de integração de `agent_events` (RLS e trigger)
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.2, SUB-35.3
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `tests/integration/agentEvents.integration.test.ts` (helpers de `tests/helpers/postgrest.ts`): viewer lê eventos do próprio projeto e não os de outro; viewer não inclui; editor inclui; `update` é recusado; task de outro projeto é recusada.
+- **Critérios de Aceitação:** `npm run test:integration` passa (skipped sem PostgREST; `npm test` segue verde).
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.7: Seção "Eventos dos agentes (07)" no `database/README.md`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.4, SUB-35.5
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Documentar colunas, tipos de evento, RLS, publicação Realtime, `atividade_atual_agentes` e a `chave_idempotencia`; incluir `07_agent_events.sql` na ordem de aplicação.
+- **Critérios de Aceitação:** README revisado e coerente com o SQL.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.8: Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.5
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Adicionar `AgentEvent`, `AgentEventInsert`, `TipoEventoAgente` e `AtividadeAgente`, e registrar a tabela `agent_events` e a função `atividade_atual_agentes` no tipo `Database`.
+- **Critérios de Aceitação:** `npm run typecheck` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.9: `listarEventos()` em `src/services/eventService.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.8
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `src/services/eventService.ts` com `listarEventos(projectId, { desde?, agente?, limite = 200 }, client?)` (mais recentes primeiro, erros via `resultado`/`ServiceError`). Exportar no barrel `src/services/index.ts` sem remover exports.
+- **Critérios de Aceitação:** `npm run typecheck` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.10: `atividadeAtual()` em `src/services/eventService.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.9
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Adicionar `atividadeAtual(projectId, client?)`: chama a RPC `atividade_atual_agentes` e devolve `AtividadeAgente[]` ordenado por `ultimo_em` desc.
+- **Critérios de Aceitação:** `npm run typecheck` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.11: `assinarEventos()` (Supabase Realtime) em `src/services/eventService.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.10
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Adicionar `assinarEventos(projectId, { onEvento, onStatus }, client?): () => void`: canal `agent_events:<projectId>` com `postgres_changes` (`INSERT`, filtro `project_id=eq.<id>`), repassa o status do canal (`SUBSCRIBED`, `CHANNEL_ERROR`, `TIMED_OUT`, `CLOSED`) e devolve a função que remove o canal. Sem polling.
+- **Critérios de Aceitação:** `npm run typecheck` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.12: Testes de `eventService` em `tests/unit/eventService.test.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.11
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Com cliente falso: `listarEventos` aplica filtros e limite; `atividadeAtual` chama a RPC e ordena; `assinarEventos` cria o canal com o filtro do projeto, repassa eventos e status e remove o canal ao cancelar.
+- **Critérios de Aceitação:** `npm test` passa.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.13: Teste de integração de `listarEventos`/`atividadeAtual`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.10, SUB-35.6
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `tests/integration/eventService.integration.test.ts`: com eventos de dois agentes, `atividadeAtual` devolve um por agente com o último evento e `ultimo_heartbeat_em`; `listarEventos` respeita `agente` e `limite`; outro projeto não aparece.
+- **Critérios de Aceitação:** `npm run test:integration` passa (skipped sem PostgREST).
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.14: `mesclarEvento()` em `src/lib/monitor.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.8
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `src/lib/monitor.ts` com `mesclarEvento(lista, novo, max = 200)`: ignora `id` repetido, mantém ordem por `created_at` desc e corta em `max`. Testes em `tests/unit/monitor.test.ts`.
+- **Critérios de Aceitação:** `npm test` passa.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.15: `estadoDoAgente()` em `src/lib/monitor.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.14
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Adicionar `estadoDoAgente(atividade, agora = Date.now(), { ativoAteSeg = 120, ociosoAteSeg = 900 })` -> `'ativo' | 'ocioso' | 'sem_sinal' | 'finalizado'` a partir de `ultimo_em`/`ultimo_heartbeat_em` e do último `tipo`. **Só exibição:** não sugere nem libera travas. Testes no mesmo arquivo.
+- **Critérios de Aceitação:** `npm test` passa (um caso por estado).
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.16: `contarPorStatus()` em `src/lib/monitor.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.15
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Adicionar `contarPorStatus(atividades, agora)` -> `{ estado, total }[]` usando `estadoDoAgente`, em ordem fixa (para o gráfico de rosca). Testes.
+- **Critérios de Aceitação:** `npm test` passa.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.17: `contarPorAgente()` em `src/lib/monitor.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.16
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Adicionar `contarPorAgente(eventos)` -> `{ agente, porTipo: Record<TipoEventoAgente, number> }[]` ordenado por total desc (para o gráfico de barras empilhadas). Testes.
+- **Critérios de Aceitação:** `npm test` passa.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.18: `segmentosLinhaDoTempo()` em `src/lib/monitor.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.17
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Adicionar `segmentosLinhaDoTempo(eventos, agora)` -> `{ agente, etapa, inicio, fim, status }[]`: une `inicio` e `fim`/`erro` da mesma `execucao_id` + `etapa`; etapa ainda aberta termina em `agora`. Testes (abrir/fechar, erro, aberta).
+- **Critérios de Aceitação:** `npm test` passa.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.19: Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.11, SUB-35.14
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Carrega `listarEventos` ao montar/trocar de projeto, assina `assinarEventos` e aplica `mesclarEvento` a cada INSERT; expõe `{ eventos, statusConexao: 'conectando' | 'ao_vivo' | 'erro', erro, recarregar }`; remove o canal no cleanup. Exportar em `src/hooks/index.ts`.
+- **Critérios de Aceitação:** `npm run typecheck` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.20: Hook `useAtividadeAgentes(projectId)` em `src/hooks/useAtividadeAgentes.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.19, SUB-35.15
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Carrega `atividadeAtual`, recarrega (com debounce de 1 s) quando `useEventosAgentes` recebe evento novo e atualiza um relógio a cada 15 s para recalcular `estadoDoAgente`; expõe `{ atividades, agora, carregando, erro }`. Exportar em `src/hooks/index.ts`.
+- **Critérios de Aceitação:** `npm run typecheck` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.21: Instalar `chart.js` e `react-chartjs-2`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** `npm install chart.js react-chartjs-2` (versões fixadas no lockfile). Sem uso no código ainda.
+- **Critérios de Aceitação:** `npm ci` sem vulnerabilidades altas; `npm run build` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.22: Registro do Chart.js e paleta em `src/lib/charts.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.21
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Registrar só os elementos usados (`ArcElement`, `BarElement`, `CategoryScale`, `LinearScale`, `TimeScale` ou escala linear de tempo, `Tooltip`, `Legend`) para manter o bundle pequeno, e exportar `CORES_ESTADO`/`CORES_TIPO` com variantes claro/escuro.
+- **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.23: Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.15
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Cartão de um agente: nome, selo do estado (`estadoDoAgente`), task atual (`task_codigo`), etapa/nó, última mensagem e "há X s" (`tempoRelativo`). Criar `src/components/monitor/index.ts`.
+- **Critérios de Aceitação:** `npm run typecheck` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.24: Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.23
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Grade responsiva de `AgenteCard` (ordem: ativos primeiro) com estado vazio "Nenhum agente reportou atividade". Exportar no barrel sem remover exports.
+- **Critérios de Aceitação:** `npm run typecheck` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.25: Gráfico `GraficoPorStatus` em `src/components/monitor/GraficoPorStatus.tsx`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.22, SUB-35.16
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Rosca (`Doughnut` do `react-chartjs-2`) com `contarPorStatus`, cores de `CORES_ESTADO`, legenda e texto alternativo acessível. Exportar no barrel.
+- **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.26: Gráfico `GraficoPorAgente` em `src/components/monitor/GraficoPorAgente.tsx`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.22, SUB-35.17
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Barras horizontais empilhadas por tipo de evento (`contarPorAgente`), cores de `CORES_TIPO`. Exportar no barrel.
+- **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.27: Linha do tempo `LinhaDoTempoAgentes` em `src/components/monitor/LinhaDoTempoAgentes.tsx`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.22, SUB-35.18
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Gantt simples (barras flutuantes `[inicio, fim]` por agente, eixo de tempo da última 1 h) com `segmentosLinhaDoTempo`; tooltip com etapa e status. Exportar no barrel.
+- **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.28: Feed `FeedEventos` em `src/components/monitor/FeedEventos.tsx`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.8
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Lista ao vivo dos eventos (hora, agente, tipo, task, etapa, mensagem) com botão Pausar/Retomar a rolagem e destaque curto no evento novo; respeita `prefers-reduced-motion`. Exportar no barrel.
+- **Critérios de Aceitação:** `npm run typecheck` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.29: Indicador `IndicadorAoVivo` em `src/components/monitor/IndicadorAoVivo.tsx`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.19
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Pílula com o `statusConexao` do Realtime ("Ao vivo" pulsando, "Conectando…", "Sem conexão — recarregar") e botão que chama `recarregar`. Exportar no barrel.
+- **Critérios de Aceitação:** `npm run typecheck` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.30: Tela `MonitorView` em `src/views/MonitorView.tsx`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.20, SUB-35.24, SUB-35.25, SUB-35.26, SUB-35.27, SUB-35.28, SUB-35.29
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Compor a tela: projeto de `useProjetoAtual`, `useEventosAgentes` + `useAtividadeAgentes`, cabeçalho com `IndicadorAoVivo`, `AtividadeAgentesGrid`, os três gráficos e o `FeedEventos`; estados carregando/erro/sem projeto.
+- **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.31: Registrar a tela `monitor` (rota `#/monitor` e menu)
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.30, SUB-34.2
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Mudança única de registro (o `Record<ViewId, …>` obriga a fazer junto): `'monitor'` em `ViewId` (`src/types/index.ts`), `VIEW_IDS` (`src/lib/navegacao.ts`), `VIEWS` (`src/views/meta.ts`, título "Monitor dos Agentes"), `TELAS` com `lazy` (`src/views/index.ts`) e ícone `Activity` no `ICONES` do `Sidebar`. Atualizar `tests/unit/navegacao.test.ts`.
+- **Critérios de Aceitação:** `npm run typecheck`, `npm test` e `npm run build` OK; `#/monitor` abre a tela em chunk próprio.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.32: Validação visual do monitor (SUB-35)
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.31
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Contra o banco local, inserir eventos (SQL ou MCP `agent_event`) e conferir que cards, gráficos e feed atualizam sem recarregar; screenshots 1280x800 e 390x844, tema claro e escuro; registrar na anotação da SUB-35.
+- **Critérios de Aceitação:** Screenshots conferidos; nenhum erro no console.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.33: `emitirEvento()` em `worker/eventos.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.1, SUB-28.28
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `worker/eventos.ts` com `emitirEvento(evento, deps = { db })`: insere em `agent_events` (service_role, reutilizando `db()` de `api/_lib/supabase.ts`), corta `mensagem` em 2000 caracteres, só aceita `metadados` objeto e **nunca lança** (falha vira aviso no log sem segredos), para não derrubar a execução.
+- **Critérios de Aceitação:** `npm run typecheck:worker` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.34: Testes de `emitirEvento` em `tests/unit/worker-eventos.test.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.33
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Com `db` falso: payload correto (projeto, agente, execução, etapa, tipo), mensagem cortada, falha do banco não lança.
+- **Critérios de Aceitação:** `npm test` passa.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.35: `comEventos(nome, no)` em `worker/eventos.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.33, SUB-28.3
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Função de ordem superior que envolve um nó do LangGraph: emite `inicio` antes, `fim` com duração depois e `erro` (mensagem segura, relançando o erro) com `agente`, `taskId`, `execucaoId` e `etapa = nome` do estado. Testes no mesmo arquivo de teste da SUB-35.34.
+- **Critérios de Aceitação:** `npm test` passa.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.36: Envolver os nós em `worker/grafo.ts` com `comEventos`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.35, SUB-28.12
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** No `StateGraph`, registrar cada nó (`carregarContexto`, `planejar`, `politica`, `executar`, `revisar`, `finalizar`) como `comEventos('<nome>', no)`, sem mudar o roteamento.
+- **Critérios de Aceitação:** `npm run typecheck:worker` OK; testes existentes do worker seguem verdes.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.37: `iniciarHeartbeat()` em `worker/heartbeat.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.33
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `iniciarHeartbeat({ agente, projeto, intervaloMs = 30000, emitir = emitirEvento }): () => void` que emite `tipo = 'heartbeat'` (com `taskId`/`etapa` atuais via callback opcional) e devolve a função de parada. Teste com timers falsos (`vi.useFakeTimers`) em `tests/unit/worker-heartbeat.test.ts`.
+- **Critérios de Aceitação:** `npm test` passa.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.38: Ligar o heartbeat no CLI `worker/index.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.37, SUB-28.15
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Iniciar o heartbeat ao subir o worker e pará-lo em `SIGINT`/`SIGTERM` e no fim do loop.
+- **Critérios de Aceitação:** `npm run typecheck:worker` OK.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.39: Teste do worker: eventos emitidos na ordem dos nós
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.36, SUB-28.17
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Em `tests/unit/worker-grafo-eventos.test.ts`, rodar o grafo com modelo/fila falsos e emissor espião: sequência `inicio`/`fim` por nó na ordem esperada e `erro` no nó que falha.
+- **Critérios de Aceitação:** `npm test` passa.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.40: Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.2
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Registrar `agent_event` (`registerTool`) para agentes fora do LangGraph (Claude Code, Codex…): args `project?`, `agente`, `tipo`, `task_codigo?`, `etapa?`, `status?`, `mensagem?`, `chave_idempotencia?`; exige `MCP_AUTH_TOKEN` (`requireAuth`), resolve o projeto (`resolveProject`) e insere em `agent_events`. Importar em `api/mcp.ts` junto das outras ferramentas.
+- **Critérios de Aceitação:** `npm run typecheck:api` OK; aparece em `tools/list`.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.41: Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.40
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Com `db` falso: argumentos inválidos (tipo fora da lista, agente vazio) viram erro de ferramenta; projeto fora de `MCP_ALLOWED_PROJECTS` é recusado; caso ok insere o payload esperado.
+- **Critérios de Aceitação:** `npm test` passa.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.42: `commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Função pura que recebe linhas de `git log --format='%H%x09%aI%x09%s'` e devolve eventos: `lock: assumindo sub-task SUB-X por <agente>` -> `trava`; `feat(SUB-X): …` -> `commit`; `docs(board): concluir SUB-X …` -> `fim`; `chave_idempotencia = 'git:<sha>'`. Testes em `scripts/test_espelhar_quadro_eventos.py` (unittest).
+- **Critérios de Aceitação:** `python3 -m unittest scripts/test_espelhar_quadro_eventos.py` passa.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.43: CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`)
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.42
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Ler `git log` (`--desde`, `--projeto`), por padrão só listar; com `--aplicar` enviar ao PostgREST com a service_role do `.env` e `Prefer: resolution=ignore-duplicates` em `on_conflict=project_id,chave_idempotencia` (reexecutar não duplica). Para agentes que só usam o quadro em Markdown.
+- **Critérios de Aceitação:** Dry-run lista os eventos do repositório; teste da função segue verde; nenhuma chave impressa.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.44: Seção "Monitor em tempo real" no `README.md`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.31, SUB-35.40, SUB-35.43
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Explicar o fluxo (worker LangGraph -> `agent_events` -> Realtime -> `#/monitor`), como outros agentes reportam via MCP `agent_event`, o espelho do quadro e o significado dos estados (só exibição; travas só o usuário libera).
+- **Critérios de Aceitação:** README revisado.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.45: Seção "Reporte de progresso (opcional)" no `AGENTS.md`
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.41
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Orientar os agentes a emitir `agent_event` (`inicio`/`progresso`/`fim`/`erro` e `heartbeat`) ao trabalhar numa subtarefa, sem substituir o protocolo de lock do quadro.
+- **Critérios de Aceitação:** Seção revisada; protocolo de lock inalterado.
+- **Commit:** pendente
+- **Anotação:** pendente
+
+#### [ ] SUB-35.46: Validação automatizada da SUB-35
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-35.7, SUB-35.12, SUB-35.13, SUB-35.32, SUB-35.34, SUB-35.38, SUB-35.39, SUB-35.41, SUB-35.43, SUB-35.44, SUB-35.45
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Rodar `npm run typecheck`, `npm test`, `npm run build`, `npm run test:integration` e os testes Python; registrar o resultado na anotação da SUB-35.
+- **Critérios de Aceitação:** Tudo verde.
 - **Commit:** pendente
 - **Anotação:** pendente
