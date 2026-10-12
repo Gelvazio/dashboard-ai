@@ -35,3 +35,17 @@ export function mensagemErroAuth(erro: ErroAuth | null): string {
   }
   return MENSAGEM_GENERICA_AUTH;
 }
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+/** Valida o formulário de login. Devolve um objeto vazio quando está tudo certo. */
+export function validarLogin(d: { email: string; senha: string }): Partial<Record<'email' | 'senha', string>> {
+  const erros: Partial<Record<'email' | 'senha', string>> = {};
+  const email = (d.email ?? '').trim();
+  if (!email) erros.email = 'Informe o e-mail.';
+  else if (!EMAIL_RE.test(email)) erros.email = 'E-mail inválido.';
+  const senha = d.senha ?? '';
+  if (!senha) erros.senha = 'Informe a senha.';
+  else if (senha.length < 6) erros.senha = 'A senha deve ter pelo menos 6 caracteres.';
+  return erros;
+}
