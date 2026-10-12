@@ -55,19 +55,6 @@
 
 ---
 
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-41.1
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-41.1** |
-| **Título da Sub-task:** Criar `docs/plano-cerebro-memoria-persistente.md` e mover a seção "1. Arquitetura do Banco de Dados (Supabase)" |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 18:40 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-41.1 |
-
----
-
 ### 🔒 TRAVA ESPECIAL: KIRO-DEV-CLONE
 
 > **ATENÇÃO:** A tarefa `KIRO-DEV-CLONE` está **TRAVADA PARA TODAS AS IAS**.
@@ -85,14 +72,27 @@
 
 ---
 
+### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-26.9
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-26.9** |
+| **Título da Sub-task:** Revisão final do README |
+| **Agente Responsável:** | Devin (Cognition AI) |
+| **Data e Hora de Início:** | 2026-10-12 22:05 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-26.9 |
+
+---
+
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 46
 - **Subtarefas atômicas (~3 min):** 270
-- **Em Execução:** 2 (SUB-38, SUB-41.1)
+- **Em Execução:** 1 (SUB-26.9)
 - **Pendentes:** 8 principais (SUB-38, 26, 28, 35, 41, 42, 45, KIRO-DEV-CLONE) + 53 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 3 — SUB-26.9, SUB-45.19 e SUB-35.46 (`MEDIA`; a SUB-45.19 só para o Claude Code local, regra 11). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
-  - bloqueadas por dependência: 20 — SUB-41.2 e SUB-41.3 (cadeia da SUB-41) e SUB-42 (depende da SUB-41); SUB-45.2 a SUB-45.18 (cadeia da SUB-45; a 45.2 espera a revisão SUB-45.19)
-  - em execução: 2 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI))
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 1 — SUB-35.46 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - bloqueadas por dependência: 21 — SUB-45.2 a SUB-45.19 (cadeia da SUB-45; tarefas de banco só Claude Code local; frontend depende de banco) e SUB-41.2, SUB-41.3, SUB-42 (cadeia da SUB-41)
+  - em execução: 1 — SUB-26.9 (Devin (Cognition AI))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
 - **Concluídas:** 251 de 316 blocos (38 principais + 213 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
