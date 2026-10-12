@@ -10,9 +10,9 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
 - **Subtarefas atômicas (~3 min):** 153 (SUB-08.x, SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x; atualizado em 2026-10-12 00:17)
-- **Em Execução:** 1 (SUB-23.1)
+- **Em Execução:** 2 (SUB-33.6, SUB-23.1)
 - **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 143 subtarefas
-  - livres agora: 30 (SUB-33.5, SUB-33.6, SUB-33.7, SUB-33.9, SUB-33.12, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
+  - livres agora: 29 (SUB-33.5, SUB-33.7, SUB-33.9, SUB-33.12, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
   - bloqueadas por dependência: 112
   - reservadas: 0
 - **Concluídas:** 35
@@ -162,7 +162,7 @@
   - `SUB-33.3`: `lerTextoEmbedding(body)` em `api/_lib/embedding-input.ts` (`concluido`)
   - `SUB-33.4`: Esqueleto do handler `api/embedding.ts` (CORS, OPTIONS, 405) (`concluido`)
   - `SUB-33.5`: Registrar `api/embedding.ts` no `vercel.json` (`pendente`)
-  - `SUB-33.6`: Testes do handler: OPTIONS, 405 e 401 (`pendente`)
+  - `SUB-33.6`: Testes do handler: OPTIONS, 405 e 401 (`em_execucao`)
   - `SUB-33.7`: `criarGeradorEmbedding()` em `src/services/embeddingService.ts` (`pendente`)
   - `SUB-33.8`: Testes de `embeddingService` em `tests/unit/embeddingService.test.ts` (`pendente`)
   - `SUB-33.9`: Documentar `/api/embedding` no `api/README.md` (`pendente`)
@@ -226,8 +226,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-33.6: Testes do handler: OPTIONS, 405 e 401
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (desde 2026-10-12 00:27)
 - **Depende de:** SUB-33.10
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `tests/unit/api-embedding.test.ts` com `req`/`res` falsos e `fetch` simulado: 204 em OPTIONS (com CORS), 405 em GET (com `Allow`), 401 sem token e 401 com JWT recusado pelo Auth.
