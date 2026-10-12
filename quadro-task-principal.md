@@ -44,17 +44,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:59 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-25.1
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-25.1** |
-| **Título da Sub-task:** | Script `scripts/validar.sh` + `npm run validar` |
-| **Agente Responsável:** | DashboardAI-Clone 08 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 00:59 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-23.8
 
 | Propriedade | Valor Atual |
@@ -92,14 +81,13 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (5)
+### 🔄 EM EXECUÇÃO (4)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-21.3** | Hook `useMemorias` em `src/hooks/useMemorias.ts` | DashboardAI-Clone 06 | 2026-10-12 01:00 | Nenhuma |
 | **SUB-21.6** | Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:59 | SUB-21.13 |
 | **SUB-23.8** | Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` | DashboardAI-Clone 02 | 2026-10-12 00:59 | SUB-23.7 |
-| **SUB-25.1** | Script `scripts/validar.sh` + `npm run validar` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:59 | Nenhuma |
 | **SUB-21.8** | Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 00:59 | SUB-21.14 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
@@ -271,10 +259,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (69)
+### ✅ CONCLUÍDAS (70)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-25.1** | Script `scripts/validar.sh` + `npm run validar` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:59 | 2026-10-12 01:00 | `2c9664c` |
 | **SUB-27.19** | `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx` | DashboardAI-Clone 01 | 2026-10-12 00:59 | 2026-10-12 01:00 | `c81668e` |
 | **SUB-20.6** | Modal `MemoriaFormModal` em `src/components/memoria/` | DashboardAI-Clone 06 | 2026-10-12 00:55 | 2026-10-12 01:00 | `62dea7a` |
 | **SUB-27.26** | Hook `useAuth` em `src/hooks/useAuth.ts` | DashboardAI-Clone 01 | 2026-10-12 00:56 | 2026-10-12 00:59 | `9a947eb` |
@@ -551,3 +540,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:00 | DashboardAI-Clone 06 | SUB-20.6 | `62dea7a` | Criado `src/components/memoria/MemoriaFormModal.tsx` (exportado no `index.ts`): `{ aberto, projeto, onFechar, onSalvo(memoria) }` com `Modal`/`Botao`; Título (até 200), Conteúdo com `MarkdownEditor`, Tags com `TagInput` + `TagSugestoes` alimentado por `sugerirTags(titulo, conteudo, 8)`, opção "Memória global" (`projectId = null`). Valida com `validarMemoria` (erro por campo, foco no 1º inválido), salva com `useSalvarMemoria`; o hook ganhou `erro`/`limparErro` para o erro do banco/RLS aparecer no modal (além do toast). Estado zerado ao abrir. `npm run typecheck`, `npm run build` e `npm test` OK; screenshots headless 1280x800 e 390x844 conferidos (harness temporário, não commitado). |
 | 2026-10-12 01:00 | DashboardAI-Clone 01 | SUB-27.19 | `c81668e` | Criado `src/components/auth/RecuperarAcesso.tsx` (props `{ email }`): botões "Entrar com link por e-mail" (`enviarLinkMagico`) e "Esqueci a senha" (`redefinirSenha`) com `urlDeRetorno(window.location)`, carregando por ação e aviso de confirmação/erro (role status/alert); e-mail vazio pede preenchimento. typecheck OK. |
 | 2026-10-12 01:00 | DashboardAI-Clone 06 | SUB-21.3 | — | Lock: assumindo SUB-21.3 (Hook `useMemorias` em `src/hooks/useMemorias.ts`) |
+| 2026-10-12 01:00 | DashboardAI-Clone 08 (Grok Bot) | SUB-25.1 | `2c9664c` | Criado `scripts/validar.sh` (bash, `set -euo pipefail`) e `"validar": "bash scripts/validar.sh"` no `package.json`: roda typecheck, `npm test`, build, `check:chunks` (pulada se o script não existir), `check:env` (se existir), `python3 -m unittest discover -s scripts` e `npm audit --omit=dev --audit-level=high` sem parar na primeira falha; resumo final com OK/FALHOU/PULADA e duração; sai 1 se alguma etapa falhar. `npm run validar` no estado atual: todas OK (chunks pulada, SUB-34.5 pendente). |

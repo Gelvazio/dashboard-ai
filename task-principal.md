@@ -1272,15 +1272,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-25.1: Script `scripts/validar.sh` + `npm run validar`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 00:59)
+#### [x] SUB-25.1: Script `scripts/validar.sh` + `npm run validar`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 00:59 → 2026-10-12 01:00)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `scripts/validar.sh` (bash, `set -euo pipefail`) que roda em sequência: `npm run typecheck`, `npm test`, `npm run build`, `npm run check:chunks` (se existir), `python3 -m unittest discover -s scripts` e `npm audit --omit=dev --audit-level=high`, com resumo final. Adicionar `"validar"` no `package.json`.
 - **Critérios de Aceitação:** `npm run validar` executa no estado atual e mostra o resumo (falhas pendentes de outras tasks são relatadas, não escondidas).
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `2c9664c`
+- **Anotação:** Criado `scripts/validar.sh` (bash, `set -euo pipefail`) e `"validar": "bash scripts/validar.sh"` no `package.json`: roda typecheck, `npm test`, build, `check:chunks` (pulada se o script não existir), `check:env` (se existir), `python3 -m unittest discover -s scripts` e `npm audit --omit=dev --audit-level=high` sem parar na primeira falha; resumo final com OK/FALHOU/PULADA e duração; sai 1 se alguma etapa falhar. `npm run validar` no estado atual: todas OK (chunks pulada, SUB-34.5 pendente).
 
 #### [ ] SUB-25.2: Rodar `npm ci` + `npm run validar` e registrar em `docs/VALIDACAO.md`
 - **Status:** pendente
