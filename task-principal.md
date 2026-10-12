@@ -18,9 +18,9 @@
 
 ## 🧩 FASE 1: Preparação do Ambiente e Infraestrutura Básica
 
-### [ ] SUB-01: Setup do Projeto Frontend
+### [🔄] SUB-01: Setup do Projeto Frontend
 - **Status:** em_execucao
-- **Executor:** Gemini (Antigravity) (início: 2026-10-11 22:13)
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:56; assumida após liberação, pelo usuário, da trava de Gemini (Antigravity) de 2026-10-11 22:13)
 - **Depende de:** Nenhuma
 - **Subtarefas:**
   - `SUB-01.1`: Inicialização do package.json, Vite, React e TypeScript (`em_execucao`)
@@ -31,9 +31,9 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-01.1: Inicialização do package.json, Vite, React e TypeScript
+#### [🔄] SUB-01.1: Inicialização do package.json, Vite, React e TypeScript
 - **Status:** em_execucao
-- **Executor:** Gemini (Antigravity)
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:56)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Critérios de Aceitação:** `package.json`, `vite.config.ts`, `tsconfig.json` e `index.html` criados.
