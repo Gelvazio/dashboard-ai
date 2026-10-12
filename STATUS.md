@@ -92,7 +92,7 @@ Plano: [`docs/validacao-telas-producao.md`](docs/validacao-telas-producao.md). E
 | Item | Descrição | Status | Concluído em | Verificação |
 |------|-----------|--------|--------------|-------------|
 | 8.1 | SUB-25.4 Telas Fila e Logs | ✅ Concluído | 2026-10-12 18:54 | `6f7bab1`; banco e login pela IA, telas logadas pelo usuário (ressalva) |
-| 8.2 | SUB-25.7 Telas Memória e Configurações | 🔄 Em progresso | — | — |
+| 8.2 | SUB-25.7 Telas Memória e Configurações | ✅ Concluído | 2026-10-12 18:56 | `599dd39`; banco pela IA, telas logadas pelo usuário (ressalva) |
 | 8.3 | SUB-35.32 Monitor em tempo real | ⬜ Pendente | — | — |
 | 8.4 | Aceite do usuário | ⬜ Pendente | — | — |
 

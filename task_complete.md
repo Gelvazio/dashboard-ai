@@ -2157,6 +2157,19 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:54 — Claude Code (Opus 5.5): banco e tela de login conferidos; telas logadas conferidas pelo usuário
 - **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:48 (Devin): pendente, sem executor. Não há registro das telas Fila e Logs no `docs/VALIDACAO.md`; depende de navegador (não usado nesta verificação).
 
+#### [x] SUB-25.7: Teste rápido local: telas Memória e Configurações
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 18:54)
+- **Depende de:** SUB-25.2
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Com `npm run preview` contra o banco local, conferir as telas Memória e Configurações em 1280x800 e 390x844; registrar no `docs/VALIDACAO.md`.
+- **Critérios de Aceitação:** Sem erros no console; checklist registrado.
+- **Commit:** `599dd39`
+- **Anotação:** **Executada por Claude Code (Opus 5.5) (2026-10-12 18:56)** por orientação do usuário ("assuma todas [de banco] e faça 1 por vez"), contra o **Supabase de produção**. Telas **Memória** e **Configurações** logadas conferidas **pelo usuário** no navegador dele (relato no chat: "eu já validei isso"); tamanhos e console não informados (**ressalva**). Pelo MCP do Supabase (transações desfeitas, só leitura), com RLS: admin `gelvazio@gmail.com` vê 0 memórias do projeto e 0 globais, 1 projeto (`default`) e 0 membros; usuário logado sem projeto vê 0; `anon` sem leitura em `ai_memories` e sem execução de `match_memories` (que `authenticated` executa). Registro em [`docs/VALIDACAO.md`](docs/VALIDACAO.md). Plano em [`docs/validacao-telas-producao.md`](docs/validacao-telas-producao.md).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:56 — Claude Code (Opus 5.5): banco conferido; telas logadas conferidas pelo usuário
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:49 (Devin): pendente, sem executor. Não há registro das telas Memória e Configurações no `docs/VALIDACAO.md`; depende de navegador (não usado nesta verificação).
+
 ---
 
 ## 🚀 FASE 11: Orquestração de Tasks com LangChain/LangGraph (última fase)
