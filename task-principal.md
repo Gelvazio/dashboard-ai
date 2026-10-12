@@ -733,9 +733,9 @@
 - **Commit:** `c92d3f9`
 - **Anotação:** Criado `src/components/memoria/ResultadoBuscaCard.tsx` (`{ titulo, conteudo, tags, similaridade?, global, atualizadoEm, onClick?, className? }`): título truncado com `title`, resumo do conteúdo via `resumo(conteudo, 200)` de `src/lib/tasks.ts`, chips de tags, selo "Global" (ícone Globe) quando `global`, `SimilaridadeBadge` só quando há similaridade e data relativa (`tempoRelativo`, `title` com `formatarDataHora`); vira `<button>` acessível quando recebe `onClick`, senão `<article>`. Exportado em `src/components/memoria/index.ts`. `npm run typecheck`, `npm test` e `npm run build` OK.
 
-#### [ ] SUB-19.6: Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [🔄] SUB-19.6: Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts`
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 04 (Grok Bot) (início: 2026-10-12 01:01)
 - **Depende de:** SUB-19.2, SUB-33.7
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/hooks/useBuscaSemantica.ts`: `useBuscaSemantica(projeto, consulta, { limiar, incluirGlobais })` -> `{ resultado: ResultadoBusca | null, carregando, erro }`, usando `useDebounce(consulta, 400)`, `buscarMemorias` (SUB-10) com `gerador: criarGeradorEmbedding()`, ignorando respostas antigas (contador de requisição) e sem buscar com texto vazio.

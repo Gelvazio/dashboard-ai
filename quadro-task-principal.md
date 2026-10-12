@@ -88,14 +88,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:00 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 04 (Grok Bot) — SUB-19.6
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-19.6** |
+| **Título da Sub-task:** | Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts` |
+| **Agente Responsável:** | DashboardAI-Clone 04 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:01 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (4)
+### 🔄 EM EXECUÇÃO (5)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-19.6** | Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:01 | SUB-19.2, SUB-33.7 |
 | **SUB-26.1** | Esqueleto do `README.md` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:00 | Nenhuma |
 | **SUB-27.10** | Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:00 | SUB-27.2, SUB-27.3 |
 | **SUB-21.3** | Hook `useMemorias` em `src/hooks/useMemorias.ts` | DashboardAI-Clone 06 | 2026-10-12 01:00 | Nenhuma |
@@ -131,7 +143,7 @@
 | **SUB-19** | Interface de Pesquisa Semântica Vetorial (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-19.1 a SUB-19.10 |
 | **SUB-19.1** | `debounce(fn, ms)` em `src/lib/debounce.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-19.3** | `formatarSimilaridade` em `src/lib/similaridade.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
-| **SUB-19.6** | Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts` | 4 | Fase 7 | SUB-19.2, SUB-33.7 — ⛓️ bloqueada |
+| **SUB-19.6** | Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts` | 4 | Fase 7 | SUB-19.2, SUB-33.7 — ⛓️ bloqueada — 🔄 em execução por DashboardAI-Clone 04 (Grok Bot) |
 | **SUB-19.7** | Painel `BuscaSemanticaPanel` (campo, grade e estados) | 4 | Fase 7 | SUB-19.5, SUB-19.6, SUB-19.9 — ⛓️ bloqueada |
 | **SUB-19.8** | Integrar a busca na `src/views/MemoriaView.tsx` | 4 | Fase 7 | SUB-19.7, SUB-21.9 — ⛓️ bloqueada |
 | **SUB-19.9** | `BuscaControles` (limiar, globais, modo) em `src/components/memoria/BuscaControles.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
@@ -556,3 +568,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:00 | DashboardAI-Clone 05 (Grok Bot) | SUB-21.8 | `3217841` | Criado `src/components/memoria/MemoriaToolbar.tsx` (`{ filtro, onFiltro, tags, filtradas, total, carregando, onRecarregar, atualizadoEm? }`, controlado com `FiltroMemoriasLocal`): busca instantânea com botão limpar, seletor de tag com contagem (`tagsDisponiveis`; mantém a tag escolhida mesmo se sumir da lista), escopo Todas/Projeto/Globais (radiogroup acessível), contador `filtradas de total` quando há filtro (`aria-live`) e Recarregar com ícone girando e hora da última atualização no `title`; mesmo visual da `TaskToolbar`. Exportado em `src/components/memoria/index.ts`. `npm run typecheck` e `npm run build` OK. |
 | 2026-10-12 01:00 | DashboardAI-Clone 01 | SUB-27.10 | — | Lock: assumindo SUB-27.10 (Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx`) |
 | 2026-10-12 01:00 | DashboardAI-Clone 08 (Grok Bot) | SUB-26.1 | — | Lock: assumindo SUB-26.1 (Esqueleto do `README.md`) |
+| 2026-10-12 01:01 | DashboardAI-Clone 04 (Grok Bot) | SUB-19.6 | — | Lock: assumindo SUB-19.6 (Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts`) |
