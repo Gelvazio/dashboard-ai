@@ -44,20 +44,32 @@
 | **Data e Hora de Início:** | 2026-10-11 22:41 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot)
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-32** |
+| **Título da Sub-task:** | Trocar cliente fetch por `@supabase/supabase-js` em `api/_lib` |
+| **Agente Responsável:** | DashboardAI (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-11 22:59 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (2)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27** | Autenticação e Login com Supabase Auth | Codex (OpenAI) | 2026-10-11 22:27 | SUB-03, SUB-29 |
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` | xAI (Grok) | 2026-10-11 22:41 | SUB-06 |
+| **SUB-32** | Trocar cliente fetch por `@supabase/supabase-js` em `api/_lib` | DashboardAI (Grok Bot) | 2026-10-11 22:59 | SUB-01.1, SUB-30, SUB-07 |
 
 ---
 
-### ⏳ PENDENTES (21)
+### ⏳ PENDENTES (20)
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
@@ -81,7 +93,6 @@
 | **SUB-25** | Validação de Build e Execução Local | 5 | Fase 10 | SUB-01 a SUB-24 |
 | **SUB-26** | Documentação Completa e Manual Operacional no `README.md` | 5 | Fase 10 | SUB-25 |
 | **SUB-28** | Integração LangChain/LangGraph para Execução de Tasks | 5 | Fase 11 (última) | SUB-01 a SUB-27, SUB-29, SUB-30 |
-| **SUB-32** | Trocar cliente fetch por `@supabase/supabase-js` em `api/_lib` | 3 | Fase 2B | SUB-01.1, SUB-30, SUB-07 |
 
 ---
 

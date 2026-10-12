@@ -9,8 +9,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 32
-- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
-- **Pendentes:** 21
+- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-32`)
+- **Pendentes:** 20
 - **Concluídas:** 11
 - **Canceladas:** 0
 
@@ -138,9 +138,9 @@
 - **Anotação:** database/06_messages_rules.sql: agent_messages (remetente, destinatario nulo = todos, tipo recado/pergunta/resposta/alerta/handoff, task por id ou código do mesmo projeto, resposta_de, lido/arquivado) e ler_recados(projeto, agente, só não lidos, marcar lidos, desde, limite); project_rules (arquivo + seção únicos por projeto, md5 gerado do conteúdo, commit_sha, ativo) e conferir_regras(projeto, jsonb) -> igual/diverge/so_local/so_banco. RLS: viewer lê; editor cria recados e só altera lido/arquivado (sem DELETE); regras só owner/admin escrevem; criado_por forçado ao usuário logado; anon sem acesso. Validado: 00-06 aplicados 2x; 46 verificações novas (tests/test_recados_regras.sql) + 72 de SUB-29 + paralelo, todos OK.
 
 
-### [ ] SUB-32: Trocar cliente fetch por `@supabase/supabase-js` em `api/_lib`
-- **Status:** pendente
-- **Executor:** nenhum
+### [🔄] SUB-32: Trocar cliente fetch por `@supabase/supabase-js` em `api/_lib`
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:59)
 - **Depende de:** SUB-01.1, SUB-30, SUB-07
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Depois que a SUB-01.1 criar o `package.json`, adicionar `@supabase/supabase-js` às dependências e substituir o cliente PostgREST com `fetch` de `api/_lib/supabase.ts` (usado por `queue-tools.ts` e `brain-tools.ts`) pelo `createClient` com a chave `service_role` (sem sessão persistida), mantendo as mesmas variáveis (`SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`) e o mesmo comportamento das ferramentas MCP. Atualizar a nota da seção 3 do `AGENTS.md` e o `api/README.md`.
