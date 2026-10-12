@@ -3,3 +3,4 @@ export { IndicadorAoVivo } from './IndicadorAoVivo';
 export { AtividadeAgentesGrid } from './AtividadeAgentesGrid';
 export { GraficoPorAgente } from './GraficoPorAgente';
 export { GraficoPorStatus, type GraficoPorStatusProps } from './GraficoPorStatus';
+export { LinhaDoTempoAgentes } from './LinhaDoTempoAgentes';
