@@ -55,17 +55,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:56 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-08.9
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-08.9** |
-| **Título da Sub-task:** | CLI `npm run check:env` (toda variável usada está no `.env.example`) |
-| **Agente Responsável:** | DashboardAI-Clone 08 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 00:58 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-23.7
 
 | Propriedade | Valor Atual |
@@ -81,12 +70,11 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-23.7** | Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx` | DashboardAI-Clone 02 | 2026-10-12 00:58 | SUB-23.10, SUB-23.11 |
-| **SUB-08.9** | CLI `npm run check:env` (toda variável usada está no `.env.example`) | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:58 | SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.11 |
 | **SUB-27.26** | Hook `useAuth` em `src/hooks/useAuth.ts` | DashboardAI-Clone 01 | 2026-10-12 00:56 | SUB-27.9 |
 | **SUB-20.6** | Modal `MemoriaFormModal` em `src/components/memoria/` | DashboardAI-Clone 06 | 2026-10-12 00:55 | SUB-20.1, SUB-20.3, SUB-20.4, SUB-20.5, SUB-20.8, SUB-20.9 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
@@ -265,10 +253,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (67)
+### ✅ CONCLUÍDAS (68)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-08.9** | CLI `npm run check:env` (toda variável usada está no `.env.example`) | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:58 | 2026-10-12 00:59 | `dd2b3d5` |
 | **SUB-19.2** | Hook `useDebounce(valor, ms)` em `src/hooks/useDebounce.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 00:56 | 2026-10-12 00:58 | `ac94aa6` |
 | **SUB-08.11** | `listarArquivosFonte(dirs)` em `scripts/checar-env.mjs` + teste | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:57 | 2026-10-12 00:58 | `0ac9843` |
 | **SUB-21.14** | `tagsDisponiveis` em `src/lib/memorias.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 00:57 | 2026-10-12 00:57 | `1734052` |
@@ -529,3 +518,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:58 | DashboardAI-Clone 10 (Grok Bot) | SUB-21.5 | `197eb97` | Criado `src/components/memoria/MemoriaGrid.tsx` (`{ memorias, carregando?, filtroAtivo?, temMais?, carregandoMais?, onCarregarMais?, onVer?, onExcluir?, className? }`): grade 1/2/3 colunas (`sm`/`xl`) de `MemoriaCard`; 6 esqueletos `animate-pulse` (`role="status"`) na primeira carga; estado vazio com textos distintos para "sem memórias" e "nenhuma corresponde aos filtros"; botão "Carregar mais" (`Botao` com `carregando`) quando `temMais`. Exportado em `src/components/memoria/index.ts`. `npm run typecheck`, `npm test` e `npm run build` OK. |
 | 2026-10-12 00:58 | DashboardAI-Clone 02 | SUB-23.7 | — | Lock: assumindo SUB-23.7 (Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx`) |
 | 2026-10-12 00:58 | DashboardAI-Clone 04 (Grok Bot) | SUB-19.2 | `ac94aa6` | Criado `src/hooks/useDebounce.ts` com `useDebounce<T>(valor, ms = 400): T` (`useState` + `setTimeout` no `useEffect`, `clearTimeout` no cleanup ao mudar valor/ms ou desmontar) e exportado em `src/hooks/index.ts`. `npm run typecheck`, `npm test` e `npm run build` OK. |
+| 2026-10-12 00:59 | DashboardAI-Clone 08 (Grok Bot) | SUB-08.9 | `dd2b3d5` | Adicionado `main(raiz)` + execução direta em `scripts/checar-env.mjs` e `"check:env": "node scripts/checar-env.mjs"` no `package.json`: varre `src/`, `api/` e `scripts/` com `listarArquivosFonte` (pula o próprio script), extrai com `extrairVariaveis` (ignora embutidas do Vite: DEV/PROD/MODE/BASE_URL/SSR), compara com `variaveisDoExemplo`; sai 1 listando as faltantes com os arquivos e avisa as não usadas. `npm run check:env` passa (14 variáveis); removendo `EMBEDDING_MODEL` do `.env.example` falha com código 1. 2 testes de `main` em `tests/unit/checar-env.test.ts`. typecheck e `npm test` verdes. |

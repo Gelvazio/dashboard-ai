@@ -430,15 +430,15 @@
 - **Commit:** `fb7f8bf`
 - **Anotação:** Criado `scripts/checar-env.mjs` (Node, sem dependências) exportando `extrairVariaveis(texto)`: reconhece `process.env.X`, `import.meta.env.X`, `env.X` (só maiúsculas), `env['X']`, `os.environ.get('X')`, `os.environ['X']` e `os.getenv('X')`; sem repetidos, ordenada. 8 testes em `tests/unit/checar-env.test.ts`. `npm run typecheck` e `npm test` verdes.
 
-#### [ ] SUB-08.9: CLI `npm run check:env` (toda variável usada está no `.env.example`)
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 00:58)
+#### [x] SUB-08.9: CLI `npm run check:env` (toda variável usada está no `.env.example`)
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 00:58 → 2026-10-12 00:59)
 - **Depende de:** SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.11
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar ao `scripts/checar-env.mjs` só o bloco de execução direta (`main()`): usar `listarArquivosFonte` (SUB-08.11), `extrairVariaveis` e `variaveisDoExemplo`, sair com código 1 listando as variáveis que faltam no `.env.example` (e avisar as listadas que não são usadas). Adicionar `"check:env"` no `package.json`.
 - **Critérios de Aceitação:** `npm run check:env` passa no repositório; remover uma variável do `.env.example` faz falhar.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `dd2b3d5`
+- **Anotação:** Adicionado `main(raiz)` + execução direta em `scripts/checar-env.mjs` e `"check:env": "node scripts/checar-env.mjs"` no `package.json`: varre `src/`, `api/` e `scripts/` com `listarArquivosFonte` (pula o próprio script), extrai com `extrairVariaveis` (ignora embutidas do Vite: DEV/PROD/MODE/BASE_URL/SSR), compara com `variaveisDoExemplo`; sai 1 listando as faltantes com os arquivos e avisa as não usadas. `npm run check:env` passa (14 variáveis); removendo `EMBEDDING_MODEL` do `.env.example` falha com código 1. 2 testes de `main` em `tests/unit/checar-env.test.ts`. typecheck e `npm test` verdes.
 
 #### [x] SUB-08.10: `variaveisDoExemplo(texto)` em `scripts/checar-env.mjs` + testes
 - **Status:** concluido
