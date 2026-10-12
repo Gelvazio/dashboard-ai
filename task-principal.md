@@ -9,9 +9,9 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 33
-- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-17`)
+- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
 - **Pendentes:** 10
-- **Concluídas:** 22
+- **Concluídas:** 23
 - **Canceladas:** 0
 
 ---
@@ -290,16 +290,16 @@
 - **Commit:** `b8486f1`
 - **Anotação:** Arquivos: src/lib/taskForm.ts, src/components/ui/{Modal,Botao}.tsx, src/hooks/{ToastContext.tsx,useToast.ts}, src/components/tasks/TaskFormModal.tsx, FilaView, App (ToastProvider), tests/unit/taskForm.test.ts. Ajuste de larguras da tabela (SUB-14) para caber em 1280px.
 
-### [🔄] SUB-17: Modal de Visualização Detalhada da Task
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:21)
+### [x] SUB-17: Modal de Visualização Detalhada da Task
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:21, conclusão: 2026-10-11 23:23)
 - **Depende de:** SUB-14
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Modal de visualização completa contendo instrução formatada, relatório de resultado gravado pela IA, link do PR no GitHub e SHA do commit.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Renderização rica dos metadados e botão para copiar dados com um clique.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `231b665`
+- **Anotação:** Arquivos: src/lib/{markdown,clipboard}.ts, src/components/ui/{Markdown,CopyButton}.tsx, src/components/tasks/TaskDetailModal.tsx, lib/tasks.taskComoMarkdown, TaskTable (código clicável), FilaView, tests/unit/markdown.test.ts.
 
 ### [x] SUB-18: Controles de Ação Rápida na Linha da Tabela
 - **Status:** concluido
