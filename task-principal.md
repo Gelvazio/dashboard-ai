@@ -45,14 +45,25 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
+### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.13
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-28.13** |
+| **Título da Sub-task:** | Checkpointer durável em `worker/checkpointer.ts` |
+| **Agente Responsável:** | Devin (Cognition AI) |
+| **Data e Hora de Início:** | 2026-10-12 12:49 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202
-- **Em Execução:** 0
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 28 subtarefas
-  - livres agora: 6 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.13, SUB-35.32, SUB-35.33)
+- **Em Execução:** 1 (SUB-28.13, Devin (Cognition AI), desde 2026-10-12 12:49)
+- **Pendentes:** 4 principais (25, 26, 28, 35) + 27 subtarefas
+  - livres agora: 5 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-35.32, SUB-35.33)
   - bloqueadas por dependência: 22
   - reservadas: 0
 - **Concluídas:** 207 de 239 blocos (33 principais + 174 subtarefas)
@@ -1973,7 +1984,7 @@
   - `SUB-28.10`: Nó `revisar` (roteamento) em `worker/nos/revisar.ts` (`concluido`, `b1c35a9`)
   - `SUB-28.11`: Nó `finalizar` em `worker/nos/finalizar.ts` (`concluido`, `9575b13`)
   - `SUB-28.12`: Montagem do `StateGraph` em `worker/grafo.ts` (`concluido`, `0d9c835`)
-  - `SUB-28.13`: Checkpointer durável em `worker/checkpointer.ts` (`pendente`)
+  - `SUB-28.13`: Checkpointer durável em `worker/checkpointer.ts` (`em_execucao`)
   - `SUB-28.14`: Reconciliação na retomada em `worker/reconciliar.ts` (`concluido`, `206ba39`)
   - `SUB-28.15`: CLI do worker em `worker/index.ts` (`pendente`)
   - `SUB-28.16`: Endpoint `api/aprovacao.ts`: autenticação e papel (401/403) (`pendente`)
@@ -2132,8 +2143,8 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:49 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
 #### [ ] SUB-28.13: Checkpointer durável em `worker/checkpointer.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:49)
 - **Depende de:** SUB-28.28
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Configurar `PostgresSaver` em schema próprio (`langgraph`) com `LANGGRAPH_DATABASE_URL` no servidor; `setup()` idempotente.
