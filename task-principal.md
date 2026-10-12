@@ -10,12 +10,12 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 35
 - **Subtarefas atômicas (~3 min):** 199 (SUB-08.x, SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x, SUB-35.x; atualizado em 2026-10-12 00:39)
-- **Em Execução:** 1 (SUB-33.5 — Codex (OpenAI))
-- **Pendentes:** 12 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34, 35) + 177 subtarefas
+- **Em Execução:** 0
+- **Pendentes:** 12 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34, 35) + 176 subtarefas
   - livres agora: 26 (SUB-33.9, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.5, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.2, SUB-23.5, SUB-23.12, SUB-25.1, SUB-26.1, SUB-27.1, SUB-35.1, SUB-35.21)
   - bloqueadas por dependência: 150
   - reservadas: 0
-- **Concluídas:** 44
+- **Concluídas:** 45
 - **Canceladas:** 0
 
 ---
@@ -161,7 +161,7 @@
   - `SUB-33.2`: `verificarSessaoSupabase(token)` em `api/_lib/auth.ts` (`concluido`)
   - `SUB-33.3`: `lerTextoEmbedding(body)` em `api/_lib/embedding-input.ts` (`concluido`)
   - `SUB-33.4`: Esqueleto do handler `api/embedding.ts` (CORS, OPTIONS, 405) (`concluido`)
-  - `SUB-33.5`: Registrar `api/embedding.ts` no `vercel.json` (`pendente`)
+  - `SUB-33.5`: Registrar `api/embedding.ts` no `vercel.json` (`concluido`)
   - `SUB-33.6`: Testes do handler: OPTIONS, 405 e 401 (`concluido`)
   - `SUB-33.7`: `criarGeradorEmbedding()` em `src/services/embeddingService.ts` (`concluido`)
   - `SUB-33.8`: Testes de `embeddingService` em `tests/unit/embeddingService.test.ts` (`concluido`)
@@ -215,15 +215,15 @@
 - **Commit:** `8660199`
 - **Anotação:** Criado `api/embedding.ts` (default export `handler(req: McpRequest, res: McpResponse)`): CORS como o `api/mcp.ts` (`MCP_CORS_ORIGIN`, métodos `POST, OPTIONS`, cabeçalhos `Content-Type, Authorization`), `OPTIONS` -> 204, não-POST -> 405 com `Allow: POST, OPTIONS` e `{ erro }`; POST -> 501 provisório (substituído na SUB-33.11). `npm run typecheck` (app + api) e `npm test` verdes.
 
-#### [🔄] SUB-33.5: Registrar `api/embedding.ts` no `vercel.json`
-- **Status:** em_execucao
-- **Executor:** Codex (OpenAI) (início: 2026-10-12 00:35)
+#### [x] SUB-33.5: Registrar `api/embedding.ts` no `vercel.json`
+- **Status:** concluido
+- **Executor:** Codex (OpenAI) (início: 2026-10-12 00:35, conclusão: 2026-10-12 00:41)
 - **Depende de:** SUB-33.4
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Em `vercel.json`, adicionar `"api/embedding.ts": { "maxDuration": 15 }` em `functions` (manter `api/mcp.ts` e o rewrite `/mcp`).
 - **Critérios de Aceitação:** JSON válido (`node -e "JSON.parse(require('fs').readFileSync('vercel.json'))"`); build OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `1d68ea6`
+- **Anotação:** Registrado `api/embedding.ts` em `functions` no `vercel.json` com `maxDuration: 15`, mantendo `api/mcp.ts` com duração de 30 segundos e o rewrite `/mcp`. Publicado em `origin/main`. Testes não executados conforme AGENTS.md.
 
 #### [x] SUB-33.6: Testes do handler: OPTIONS, 405 e 401
 - **Status:** concluido
