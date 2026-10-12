@@ -1383,8 +1383,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-26.4: Seção Banco de dados
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 01:02)
 - **Depende de:** SUB-26.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Como aplicar `database/00`–`06` no Supabase (SQL editor ou `psql`), criar projeto e membros (`projects`, `project_members`, `user_roles`), e rodar `database/tests/run_tests.sh`. Referenciar `database/README.md`.

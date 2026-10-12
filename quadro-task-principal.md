@@ -77,14 +77,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:01 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-26.4
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-26.4** |
+| **Título da Sub-task:** | Seção Banco de dados |
+| **Agente Responsável:** | DashboardAI-Clone 08 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:02 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (4)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-26.4** | Seção Banco de dados | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:02 | SUB-26.1 |
 | **SUB-36** | Gráfico em rede (cérebro) dos agentes no `dashboard-task-principal.html` | DashboardAI (Grok Bot) | 2026-10-12 01:01 | Nenhuma |
 | **SUB-35.1** | Tabela `agent_events` em `database/07_agent_events.sql` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:01 | SUB-29 |
 | **SUB-19.6** | Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:01 | SUB-19.2, SUB-33.7 |
@@ -93,7 +105,7 @@
 
 ---
 
-### ⏳ PENDENTES (164)
+### ⏳ PENDENTES (163)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -149,7 +161,6 @@
 | **SUB-26** | Documentação Completa e Manual Operacional no `README.md` (mãe) | 5 | Fase 10 | SUB-25; SUB-26.1 a SUB-26.10 |
 | **SUB-26.2** | Seção Arquitetura | 5 | Fase 10 | SUB-26.1, SUB-33 — ⛓️ bloqueada |
 | **SUB-26.3** | Seção Execução local | 5 | Fase 10 | SUB-26.1, SUB-08.9, SUB-25 — ⛓️ bloqueada |
-| **SUB-26.4** | Seção Banco de dados | 5 | Fase 10 | SUB-26.1 — ⛓️ bloqueada |
 | **SUB-26.5** | Seção Deploy na Vercel | 5 | Fase 10 | SUB-26.1, SUB-08.9, SUB-33 — ⛓️ bloqueada |
 | **SUB-26.6** | Seção Agentes de IA: configurar clientes MCP | 5 | Fase 10 | SUB-26.1 — ⛓️ bloqueada |
 | **SUB-26.7** | Seção Memória via MCP | 5 | Fase 10 | SUB-26.1 — ⛓️ bloqueada |
@@ -550,3 +561,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:01 | DashboardAI-Clone 06 | SUB-21.3 | `b9634c5` | Criado `src/hooks/useMemorias.ts` (exportado em `src/hooks/index.ts`): `useMemorias(projectId, { porPagina = 30 })` -> `{ memorias, carregando, erro, temMais, carregarMais, recarregar, remover(id), reinserir(memoria) }` sobre `listarMemorias` (SUB-10, projeto + globais) com `limite` crescente (`carregarMais` pede `porPagina` a mais; `temMais` = veio o limite cheio; `recarregar` mantém o limite atual). Contador de geração descarta respostas de projeto antigo/consulta superada; projeto nulo limpa a lista. `reinserir` substitui pelo id e reordena por `updated_at` desc. `npm run typecheck` e `npm test` OK. |
 | 2026-10-12 01:01 | DashboardAI-Clone 08 (Grok Bot) | SUB-26.1 | `67e13c2` | Reescrito o `README.md`: título, descrição do gerenciador genérico multi-projeto (fila via MCP, travas, dependências, memória pgvector, painel React), badges (Node 22+, React 19, TS, Supabase, Vercel, licença) e sumário com âncoras para Arquitetura, Execução local, Banco de dados, Deploy na Vercel, Agentes de IA (fila via MCP), Memória via MCP, Segurança e Validação, cada uma com parágrafo provisório apontando a SUB-26.x que a detalha. Âncoras conferidas no formato do GitHub (todas casam com os títulos). Só documentação. |
 | 2026-10-12 01:01 | DashboardAI-Clone 01 | SUB-27.10 | `a082736` | Criado `src/components/auth/LoginForm.tsx` (props `onEntrou`, `onEmailChange`): labels, `autocomplete=email/current-password`, mostrar/ocultar senha (aria-pressed), `validarLogin` por campo (aria-invalid/describedby), `entrarComSenha` com `Botao` carregando e erro em `role=alert`; senha limpa após entrar. Criado `src/components/auth/index.ts` (LoginForm + RecuperarAcesso). typecheck e build OK. |
+| 2026-10-12 01:02 | DashboardAI-Clone 08 (Grok Bot) | SUB-26.4 | — | Lock: assumindo SUB-26.4 (Seção Banco de dados) |
