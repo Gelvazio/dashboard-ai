@@ -9,9 +9,9 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
-- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-22`)
+- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
 - **Pendentes:** 9
-- **Concluídas:** 24
+- **Concluídas:** 25
 - **Canceladas:** 0
 
 ---
@@ -364,16 +364,16 @@
 
 ## ⏱️ FASE 8: Interface do Usuário - Monitor do Agendador e Telemetria
 
-### [🔄] SUB-22: Visualizador de Logs de Execução da IA
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:26)
+### [x] SUB-22: Visualizador de Logs de Execução da IA
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:26, conclusão: 2026-10-11 23:27)
 - **Depende de:** SUB-11, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Aba com linha do tempo de execuções lidas de `agendamento_tarefa_logs`, mostrando data/hora, status (`concluida`, `recusada`, `erro`, `sem_tarefa`), nome da rotina e detalhes.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Lista visual cronológica com badges de status e tempo de execução.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `a88f12d`
+- **Anotação:** Arquivos: src/lib/logs.ts (+testes), src/hooks/useLogs.ts, src/views/LogsView.tsx.
 
 ### [ ] SUB-23: Diagnóstico de Travas e Saúde da Fila
 - **Status:** pendente

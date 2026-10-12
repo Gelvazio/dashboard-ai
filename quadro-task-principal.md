@@ -44,28 +44,16 @@
 | **Data e Hora de Início:** | 2026-10-11 22:41 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot)
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-22** |
-| **Título da Sub-task:** | Visualizador de Logs de Execução da IA |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-11 23:26 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27** | Autenticação e Login com Supabase Auth | Codex (OpenAI) | 2026-10-11 22:27 | SUB-03, SUB-29 |
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` | xAI (Grok) | 2026-10-11 22:41 | SUB-06 |
-| **SUB-22** | Visualizador de Logs de Execução da IA | DashboardAI (Grok Bot) | 2026-10-11 23:26 | SUB-11, SUB-12 |
 
 ---
 
@@ -85,7 +73,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (24)
+### ✅ CONCLUÍDAS (25)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -113,6 +101,7 @@
 | **SUB-18** | Controles de Ação Rápida na Linha da Tabela | DashboardAI (Grok Bot) | 2026-10-11 23:19 | 2026-10-11 23:21 | `1e8c3a7` |
 | **SUB-17** | Modal de Visualização Detalhada da Task | DashboardAI (Grok Bot) | 2026-10-11 23:21 | 2026-10-11 23:23 | `231b665` |
 | **SUB-15** | Barra de Ferramentas e Filtros em Tempo Real | DashboardAI (Grok Bot) | 2026-10-11 23:24 | 2026-10-11 23:26 | `1f94252` |
+| **SUB-22** | Visualizador de Logs de Execução da IA | DashboardAI (Grok Bot) | 2026-10-11 23:26 | 2026-10-11 23:27 | `a88f12d` |
 
 ---
 
@@ -155,3 +144,4 @@
 | 2026-10-11 23:21 | DashboardAI (Grok Bot) | SUB-18 | `1e8c3a7` | Switch ON/OFF na coluna da tabela com atualização otimista (reverte em erro); botões Reabrir (erro/recusada/cancelada, zera tentativas), Cancelar, Concluir (só tasks humanas pendentes), Editar e Excluir (confirmação em diálogo; exclusão lógica com Desfazer no aviso). Ações exibidas conforme acoesDisponiveis(), que espelha a trigger do banco (task em execução fica bloqueada). Indicadores recarregam após cada ação. Validado: typecheck, build, vitest (unit+integração), persistência conferida no banco local e screenshots 1280x800/390x844. |
 | 2026-10-11 23:23 | DashboardAI (Grok Bot) | SUB-17 | `231b665` | Clique na linha (ou no código, acessível por teclado) abre a visualização completa: instrução formatada (abas Formatado/Texto), relatório da IA destacado por status, link do PR, SHA do commit, tentativas, dependências, datas, origem e arquivo; aviso de trava quando em execução. Botões de copiar (instrução, relatório, PR, SHA) e Copiar tudo em Markdown. Renderizador Markdown próprio sem HTML cru (sem XSS; só links http/https/mailto), testado. Validado: typecheck, build, vitest (unit+integração) e screenshots 1280x800/390x844. |
 | 2026-10-11 23:26 | DashboardAI (Grok Bot) | SUB-15 | `1f94252` | Busca instantânea no cliente (código, título e instrução; sem acento/maiúsculas), filtro por status com contagem, contador filtradas/total, botão Recarregar (tabela + indicadores, com hora da última atualização) e mensagem de vazio por filtro. Dependências seguem resolvidas pela lista completa. Validado: typecheck, build, vitest (unit+integração) e screenshot. |
+| 2026-10-11 23:27 | DashboardAI (Grok Bot) | SUB-22 | `a88f12d` | Tela Logs com linha do tempo agrupada por dia (mais recente primeiro): hora, badge de status (concluida/recusada/erro/sem_tarefa), rotina, task, agente, tempo de execução, link de PR e SHA; detalhes/erro expansíveis. Filtro por status com contadores, busca em detalhes/erro/task, recarregar e Carregar mais (paginação do logService). Validado: typecheck, build, vitest (unit+integração) e screenshot. |
