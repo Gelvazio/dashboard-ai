@@ -1550,15 +1550,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-27.7: `obterPapelGlobal()` em `src/services/authService.ts`
-- **Status:** em_execucao
+#### [x] SUB-27.7: `obterPapelGlobal()` em `src/services/authService.ts`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `obterPapelGlobal(userId, client): Promise<UserRole | null>` (lê a própria linha em `user_roles`, permitido pela policy `user_roles_select`; sem linha -> `null`).
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `5ebbd19`
+- **Anotação:** Adicionado `obterPapelGlobal(userId, client = getSupabase())` em `src/services/authService.ts`: lê `role` da própria linha em `user_roles` (`maybeSingle`, policy `user_roles_select`); sem linha -> `null`; erro -> `ServiceError`. typecheck e vitest verdes.
 
 #### [ ] SUB-27.8: Teste de integração dos papéis em `tests/integration/authService.integration.test.ts`
 - **Status:** pendente
