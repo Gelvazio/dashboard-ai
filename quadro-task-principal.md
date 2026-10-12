@@ -66,17 +66,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:10 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-35.7
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.7** |
-| **Título da Sub-task:** | Seção "Eventos dos agentes (07)" no `database/README.md` |
-| **Agente Responsável:** | DashboardAI-Clone 02 |
-| **Data e Hora de Início:** | 2026-10-12 01:10 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 05 (Grok Bot) — SUB-35.8
 
 | Propriedade | Valor Atual |
@@ -121,7 +110,6 @@
 | **SUB-21.10** | Validação visual da SUB-21 (screenshots) | DashboardAI-Clone 01 | 2026-10-12 01:10 | SUB-21.11 |
 | **SUB-27.27** | Incluir `UserMenu` no `src/components/layout/Header.tsx` | DashboardAI-Clone 06 | 2026-10-12 01:10 | SUB-27.14 |
 | **SUB-35.8** | Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:10 | SUB-35.5 |
-| **SUB-35.7** | Seção "Eventos dos agentes (07)" no `database/README.md` | DashboardAI-Clone 02 | 2026-10-12 01:10 | SUB-35.4, SUB-35.5 |
 | **SUB-35.41** | Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:10 | SUB-35.40 |
 | **SUB-20.7** | Botão "Nova memória" na `src/views/MemoriaView.tsx` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:10 | SUB-20.6, SUB-19.8, SUB-21.9 |
 | **SUB-37** | Ranking e prêmios dos agentes no `dashboard-task-principal.html` | DashboardAI (Grok Bot) | 2026-10-12 01:09 | Nenhuma |
@@ -222,7 +210,6 @@
 | **SUB-27.27** | Incluir `UserMenu` no `src/components/layout/Header.tsx` | 3 | Fase 10 | SUB-27.14 — 🔄 em execução por DashboardAI-Clone 06 |
 | **SUB-27.28** | Varredura do bundle por `service_role` (SUB-27) | 3 | Fase 10 | SUB-27.22 — ⛓️ bloqueada |
 | **SUB-35** | Monitor em Tempo Real dos Agentes (mãe) | 4 | Fase 12 | SUB-12, SUB-29, SUB-30; SUB-35.1 a SUB-35.46 |
-| **SUB-35.7** | Seção "Eventos dos agentes (07)" no `database/README.md` | 4 | Fase 12 | SUB-35.4, SUB-35.5 — 🔄 em execução por DashboardAI-Clone 02 |
 | **SUB-35.9** | `listarEventos()` em `src/services/eventService.ts` | 4 | Fase 12 | SUB-35.8 — ⛓️ bloqueada |
 | **SUB-35.10** | `atividadeAtual()` em `src/services/eventService.ts` | 4 | Fase 12 | SUB-35.9 — ⛓️ bloqueada |
 | **SUB-35.11** | `assinarEventos()` (Supabase Realtime) em `src/services/eventService.ts` | 4 | Fase 12 | SUB-35.10 — ⛓️ bloqueada |
@@ -390,6 +377,7 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | **SUB-35.5** | Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` | DashboardAI-Clone 02 | 2026-10-12 01:08 | 2026-10-12 01:07 | `d9d9a6c` |
 | **SUB-35.42** | `commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py` | DashboardAI-Clone 02 | 2026-10-12 01:08 | 2026-10-12 01:08 | `53a5c93` |
 | **SUB-35.43** | CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`) | DashboardAI-Clone 02 | 2026-10-12 01:09 | 2026-10-12 01:10 | `e8917a3` |
+| **SUB-35.7** | Seção "Eventos dos agentes (07)" no `database/README.md` | DashboardAI-Clone 02 | 2026-10-12 01:10 | 2026-10-12 01:11 | `b518611` |
 ---
 
 ### ⛔ CANCELADAS (0)
@@ -653,3 +641,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:10 | DashboardAI-Clone 10 (Grok Bot) | SUB-34.3 | `964764e` | Na `src/views/FilaView.tsx`, `TaskFormModal` e `TaskDetailModal` passam a ser `React.lazy` com import direto do arquivo e só são montados quando abertos (`form.aberto` / task de detalhe encontrada), dentro de `<Suspense fallback={null}>`. Para o split ser efetivo, os dois saíram do barrel `src/components/tasks/index.ts` (o Rolldown acusava `INEFFECTIVE_DYNAMIC_IMPORT`; nenhum outro arquivo os importava pelo barrel). Resultado do build: chunks próprios `TaskFormModal` (8,6 kB) e `TaskDetailModal` (6,7 kB); `FilaView` caiu de 40,4 kB para 26,3 kB. `npm run typecheck`, `npm test` e `npm run build` OK. |
 | 2026-10-12 01:10 | DashboardAI-Clone 06 | SUB-27.27 | — | Lock: assumindo SUB-27.27 (Incluir `UserMenu` no `src/components/layout/Header.tsx`) |
 | 2026-10-12 01:10 | DashboardAI-Clone 01 | SUB-21.10 | — | Lock: assumindo SUB-21.10 (Validação visual da SUB-21 (screenshots)) |
+| 2026-10-12 01:11 | DashboardAI-Clone 02 | SUB-35.7 | `b518611` | No `database/README.md`: `07_agent_events.sql` na tabela de ordem de aplicação (e 'Como aplicar' 00 → 07) e nova seção 'Eventos dos agentes (07)' com colunas, tipos de evento, `chave_idempotencia` (única por projeto; exemplo `git:<sha>` do espelho do quadro), trigger `validar_agent_event`, RLS (viewer lê, editor inclui, sem UPDATE/DELETE), publicação Realtime condicional e `atividade_atual_agentes`. Conferido contra o SQL. |

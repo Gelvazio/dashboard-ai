@@ -2151,7 +2151,7 @@
   - `SUB-35.4`: Publicar `agent_events` no Supabase Realtime (`concluido`)
   - `SUB-35.5`: Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` (`concluido`)
   - `SUB-35.6`: Teste de integração de `agent_events` (RLS e trigger) (`concluido`)
-  - `SUB-35.7`: Seção "Eventos dos agentes (07)" no `database/README.md` (`em_execucao`)
+  - `SUB-35.7`: Seção "Eventos dos agentes (07)" no `database/README.md` (`concluido`)
   - `SUB-35.8`: Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` (`em_execucao`)
   - `SUB-35.9`: `listarEventos()` em `src/services/eventService.ts` (`pendente`)
   - `SUB-35.10`: `atividadeAtual()` em `src/services/eventService.ts` (`pendente`)
@@ -2257,15 +2257,15 @@
 - **Commit:** `e7a39cd`
 - **Anotação:** Criado `tests/integration/agentEvents.integration.test.ts` (helpers de `tests/helpers/postgrest.ts`; cliente sem tipagem de tabela até a SUB-35.8 incluir `agent_events` no tipo `Database`): viewer lê só eventos do próprio projeto; viewer não inclui (RLS); editor inclui no próprio projeto com `agente` aparado e `criado_por` = ele; update recusado (permission denied, nada alterado); task de outro projeto recusada pelo trigger ("não pertence ao projeto do evento"). `npm run test:integration` (PostgREST + Postgres 17 locais, Node 22) verde: 6 arquivos, 23 testes; `npm test` verde (skipped sem PostgREST); `npm run typecheck` OK. Obs.: no box o Node padrão é 20 e o supabase-js exige Node 22+ para a integração.
 
-#### [🔄] SUB-35.7: Seção "Eventos dos agentes (07)" no `database/README.md`
-- **Status:** em_execucao
+#### [x] SUB-35.7: Seção "Eventos dos agentes (07)" no `database/README.md`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-35.4, SUB-35.5
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Documentar colunas, tipos de evento, RLS, publicação Realtime, `atividade_atual_agentes` e a `chave_idempotencia`; incluir `07_agent_events.sql` na ordem de aplicação.
 - **Critérios de Aceitação:** README revisado e coerente com o SQL.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `b518611`
+- **Anotação:** No `database/README.md`: `07_agent_events.sql` na tabela de ordem de aplicação (e 'Como aplicar' 00 → 07) e nova seção 'Eventos dos agentes (07)' com colunas, tipos de evento, `chave_idempotencia` (única por projeto; exemplo `git:<sha>` do espelho do quadro), trigger `validar_agent_event`, RLS (viewer lê, editor inclui, sem UPDATE/DELETE), publicação Realtime condicional e `atividade_atual_agentes`. Conferido contra o SQL.
 
 #### [ ] SUB-35.8: Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts`
 - **Status:** em_execucao
