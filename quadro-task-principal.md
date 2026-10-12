@@ -88,14 +88,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:06 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-21.11
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-21.11** |
+| **Título da Sub-task:** | Ligar detalhe e exclusão na `MemoriaView` |
+| **Agente Responsável:** | DashboardAI-Clone 10 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:06 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (4)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-21.11** | Ligar detalhe e exclusão na `MemoriaView` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:06 | SUB-21.9, SUB-21.6, SUB-21.7 |
 | **SUB-35.4** | Publicar `agent_events` no Supabase Realtime | DashboardAI-Clone 02 | 2026-10-12 01:06 | SUB-35.1 |
 | **SUB-27.14** | Componente `UserMenu` em `src/components/layout/UserMenu.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:06 | SUB-27.26 |
 | **SUB-35.21** | Instalar `chart.js` e `react-chartjs-2` | DashboardAI-Clone 06 | 2026-10-12 01:06 | Nenhuma |
@@ -136,7 +148,7 @@
 | **SUB-20.9** | Componente `TagSugestoes` em `src/components/ui/TagSugestoes.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias (mãe) | 4 | Fase 7 | SUB-10, SUB-12; SUB-21.1 a SUB-21.14 |
 | **SUB-21.10** | Validação visual da SUB-21 (screenshots) | 4 | Fase 7 | SUB-21.11 — ⛓️ bloqueada |
-| **SUB-21.11** | Ligar detalhe e exclusão na `MemoriaView` | 4 | Fase 7 | SUB-21.9, SUB-21.6, SUB-21.7 — ⛓️ bloqueada |
+| **SUB-21.11** | Ligar detalhe e exclusão na `MemoriaView` | 4 | Fase 7 | SUB-21.9, SUB-21.6, SUB-21.7 — 🔄 em execução por DashboardAI-Clone 10 (Grok Bot) |
 | **SUB-21.12** | Conferir exclusão com editor e viewer | 4 | Fase 7 | SUB-21.11 — ⛓️ bloqueada |
 | **SUB-34** | Carregamento Sob Demanda de Telas e Modais (code splitting) (mãe) | 4 | Fase 6 | SUB-13, SUB-14, SUB-16, SUB-17, SUB-18; SUB-34.1 a SUB-34.6 |
 | **SUB-34.1** | Fallback `CarregandoTela` em `src/components/ui/CarregandoTela.tsx` | 4 | Fase 6 | Nenhuma — 🟢 livre |
@@ -596,3 +608,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:06 | DashboardAI-Clone 01 | SUB-27.20 | `74588f7` | Em `src/hooks/ProjetoContext.tsx`, lê a sessão do `AuthContext` (equivalente a `useAuth`, porém tolerante fora do `AuthProvider` até a SUB-27.13 integrar o provider no App): sem sessão limpa `projetos` e `erro` mantendo o slug salvo; ao logar recarrega. typecheck, vitest e build OK. |
 | 2026-10-12 01:06 | DashboardAI-Clone 01 | SUB-27.14 | — | Lock: assumindo SUB-27.14 (Componente `UserMenu` em `src/components/layout/UserMenu.tsx`) |
 | 2026-10-12 01:06 | DashboardAI-Clone 02 | SUB-35.4 | — | Lock: assumindo SUB-35.4 (Publicar `agent_events` no Supabase Realtime) |
+| 2026-10-12 01:06 | DashboardAI-Clone 10 (Grok Bot) | SUB-21.11 | — | Lock: assumindo SUB-21.11 (Ligar detalhe e exclusão na `MemoriaView`) |

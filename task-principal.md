@@ -919,7 +919,7 @@
   - `SUB-21.8`: Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` (`concluido`)
   - `SUB-21.9`: Montar a `MemoriaView` (toolbar + grade) (`concluido`, `4b8d62b`)
   - `SUB-21.10`: Validação visual da SUB-21 (screenshots) (`pendente`)
-  - `SUB-21.11`: Ligar detalhe e exclusão na `MemoriaView` (`pendente`)
+  - `SUB-21.11`: Ligar detalhe e exclusão na `MemoriaView` (`em_execucao`)
   - `SUB-21.12`: Conferir exclusão com editor e viewer (`pendente`)
   - `SUB-21.13`: `escopoMemoria` em `src/lib/memorias.ts` (`concluido`)
   - `SUB-21.14`: `tagsDisponiveis` em `src/lib/memorias.ts` (`concluido`)
@@ -1030,8 +1030,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-21.11: Ligar detalhe e exclusão na `MemoriaView`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:06)
 - **Depende de:** SUB-21.9, SUB-21.6, SUB-21.7
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Na `src/views/MemoriaView.tsx`: `onVer` abre `MemoriaDetailModal`; `onExcluir` (cartão ou modal) abre `ConfirmDialog` e chama `useExcluirMemoria`.
