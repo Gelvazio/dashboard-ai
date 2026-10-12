@@ -334,11 +334,40 @@ obsoletas em vez de deixá-las contradizer as novas.
 
 ## Segurança
 
-> Seção provisória (detalhada na SUB-26.8).
+### Chaves: o que vai para o navegador e o que fica no servidor
 
-Todo acesso do navegador passa pela RLS do Supabase com o login do usuário; a chave
-`service_role`, a chave de embeddings e o token do MCP ficam só no servidor. Nenhum segredo
-vai para o Git: só o `.env.example`, com valores vazios.
+| Chave / variável | Onde | Observação |
+|---|---|---|
+| `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` | Navegador (bundle) | Públicas por definição. `getSupabase()` recusa uma chave cujo JWT tenha `role = service_role`. |
+| `SUPABASE_SERVICE_ROLE_KEY` | Só servidor (`api/`, scripts) | Ignora a RLS. Nunca com prefixo `VITE_`, nunca no Git. |
+| `OPENAI_API_KEY` (embeddings) | Só servidor (`api/embedding.ts`, MCP) | O frontend chama `/api/embedding` com o JWT do usuário; erros do provedor não são devolvidos (podem ecoar a chave). |
+| `MCP_AUTH_TOKEN` | Só servidor + clientes MCP | Obrigatório: sem ele as ferramentas de dados do `/mcp` ficam desativadas. Gere com `openssl rand -hex 32`. |
+
+Nenhum segredo vai para o Git: só o `.env.example`, com valores vazios (`.env` e `.env.local` estão no `.gitignore`).
+
+### RLS por projeto e papéis (`database/05_rls_policies.sql`)
+
+- **`anon`**: nenhum acesso a tabelas ou funções. Sem login, a interface não lê nada.
+- **`authenticated`**: só os projetos em que é membro (`project_members`), ou todos se for administrador global (`user_roles.role = 'admin'`, função `eh_administrador()`):
+  - `viewer` lê projeto, tasks, logs e memórias do projeto;
+  - `editor` também cria e altera tasks e cria, altera e exclui memórias do projeto (sem `DELETE` em tasks: exclusão lógica; o trigger de guarda impede mexer em execução/trava);
+  - `owner` também altera o projeto e gerencia `project_members`;
+  - memória global (`project_id` nulo): qualquer autenticado lê, só administrador escreve;
+  - logs: só leitura; quem grava é o backend.
+- **`service_role`**: backend/agentes (MCP, scripts, worker). Ignora a RLS e é o único que executa as funções da fila (`pegar_proxima_task`, `finalizar_task`, `liberar_trava_task`, ...) e `match_memories`.
+
+### Login
+
+- O dashboard exige sessão do Supabase Auth: sem sessão a `RotaProtegida` mostra o login (SUB-27.13). Configuração do provedor e das URLs de retorno em [`src/README.md`](src/README.md#autenticação-supabase-auth) (SUB-27.17).
+- O link mágico usa `shouldCreateUser: false`: só entra quem já foi cadastrado. O primeiro administrador e os membros são criados como descrito em [`database/README.md`](database/README.md) (SUB-27.21).
+- `sair()` encerra a sessão e esquece o projeto selecionado no navegador.
+
+### Rotação de chaves
+
+1. **`MCP_AUTH_TOKEN`**: gere um novo, atualize na Vercel (*Settings → Environment Variables*), faça *redeploy* e troque nos clientes MCP. O token antigo deixa de valer no deploy.
+2. **`SUPABASE_SERVICE_ROLE_KEY` / anon**: no Supabase, *Project Settings → API* (ou *API Keys*), gere novas chaves/rotacione o JWT secret; atualize Vercel (`SUPABASE_*` e `VITE_SUPABASE_ANON_KEY`), scripts locais (`.env`) e faça *redeploy*. Rotacionar o JWT secret encerra todas as sessões.
+3. **`OPENAI_API_KEY`**: crie uma nova no provedor, atualize na Vercel, *redeploy* e revogue a antiga.
+4. Se uma chave vazou no Git, rotacione primeiro; reescrever o histórico não basta.
 
 ## Validação
 
