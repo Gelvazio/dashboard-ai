@@ -1,4 +1,6 @@
+import { Suspense } from 'react';
 import { AppLayout } from '@/components/layout/AppLayout';
+import { CarregandoTela } from '@/components/ui/CarregandoTela';
 import { ProjetoProvider } from '@/hooks/ProjetoContext';
 import { ToastProvider } from '@/hooks/ToastContext';
 import { useNavegacao } from '@/hooks/useNavegacao';
@@ -12,7 +14,10 @@ export default function App() {
     <ToastProvider>
       <ProjetoProvider>
         <AppLayout view={view} titulo={tituloDaView(view)} onNavegar={navegar}>
-          <Tela />
+          {/* Telas são lazy (SUB-34.2): o fallback aparece enquanto o chunk da tela carrega (SUB-34.6). */}
+          <Suspense fallback={<CarregandoTela mensagem="Carregando tela..." />}>
+            <Tela />
+          </Suspense>
         </AppLayout>
       </ProjetoProvider>
     </ToastProvider>
