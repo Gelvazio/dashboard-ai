@@ -76,12 +76,12 @@
 - **Total de Tasks Principais:** 41
 - **Subtarefas atômicas (~3 min):** 248
 - **Em Execução:** 1 (SUB-38)
-- **Pendentes:** 8 principais (SUB-38, 25, 26, 28, 35, 39, 40, KIRO-DEV-CLONE) + 45 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 4 — SUB-25.4, SUB-25.7 e SUB-35.32 (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+- **Pendentes:** 8 principais (SUB-38, 25, 26, 28, 35, 39, 40, KIRO-DEV-CLONE) + 44 subtarefas
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 6 — SUB-25.4, SUB-25.7, SUB-35.32, SUB-40.1 e SUB-40.2 (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
   - bloqueadas por dependência: 8 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32) e SUB-40.3 a SUB-40.7 (cadeia da SUB-40)
   - em execução: 1 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 232 de 289 blocos (33 principais + 199 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 233 de 289 blocos (33 principais + 200 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---

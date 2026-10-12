@@ -62,6 +62,13 @@ Legenda: ⬜ Pendente · 🔄 Em progresso · ✅ Concluído · ⛔ Bloqueado
 | 5.2 | Execução das SUB-40.x por algum agente (fila do quadro) | ⬜ Pendente | — | — |
 | 5.3 | Aceite do usuário | ⬜ Pendente | — | — |
 
+## Etapa 5 — Executar SUB-39.5 e SUB-39.6 (pedida em 2026-10-12)
+| Item | Descrição | Status | Concluído em | Verificação |
+|------|-----------|--------|--------------|-------------|
+| 5.1 | SUB-39.5: `api/aprovacao.ts` usa a fábrica do worker | ✅ Concluído | 2026-10-12 | `2ce9adf`; typecheck e testes verdes |
+| 5.2 | SUB-39.6: teste `sem_config` independente do `.env` local | ✅ Concluído | 2026-10-12 | `3c18f1f`; `npm test` verde com e sem `.env` |
+| 5.3 | Aceite do usuário | ⬜ Pendente | — | — |
+
 ## Riscos
 | Risco | Chance | Impacto | Plano B | Situação |
 |-------|--------|---------|---------|----------|
@@ -92,3 +99,4 @@ Legenda: ⬜ Pendente · 🔄 Em progresso · ✅ Concluído · ⛔ Bloqueado
 ## Lições aprendidas
 | Data | O que aconteceu | Lição / nova regra |
 |------|-----------------|--------------------|
+| 2026-10-12 | Ao concluir a SUB-39.6, o resumo do quadro foi reescrito com uma lista fixa de "livres" e apagou SUB-40.1/40.2, criadas por outro agente no meio do trabalho | Editar o resumo só por trechos (adicionar/remover o próprio item), nunca reescrever a linha inteira; reler o quadro após o `pull` antes de cada edição |
