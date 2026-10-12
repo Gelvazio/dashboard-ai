@@ -83,7 +83,7 @@ Plano: [`docs/login-cadastro-admin-inicial.md`](docs/login-cadastro-admin-inicia
 | 7.3 | SUB-40.3 `cadastrarUsuario` em `src/services/authService.ts` | ✅ Concluído | 2026-10-12 18:25 | `a48672a`; typecheck e testes verdes |
 | 7.4 | SUB-40.4 `CadastroForm.tsx` | ✅ Concluído | 2026-10-12 18:27 | `a86f688`; typecheck e build verdes; sem script de lint no projeto |
 | 7.5 | SUB-40.5 Entrar/Criar usuário na `LoginView` | ✅ Concluído | 2026-10-12 18:29 | `d7b0fba`; npm run validar verde |
-| 7.6 | SUB-40.6 Documentação | ✅ Concluído | 2026-10-12 18:32 | `d5dfd55`; npm run validar verde |
+| 7.6 | SUB-40.6 Documentação | ✅ Concluído | 2026-10-12 18:32 | `7bc0f0e`; npm run validar verde |
 | 7.7 | SUB-40.7 Aplicar SQL no Supabase (só com autorização) | ⬜ Pendente | — | — |
 | 7.8 | Aceite do usuário | ⬜ Pendente | — | — |
 

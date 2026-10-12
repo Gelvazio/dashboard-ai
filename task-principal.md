@@ -461,7 +461,7 @@
   - `SUB-40.3`: Serviço `cadastrarUsuario` em `src/services/authService.ts` (`concluido`, `a48672a`)
   - `SUB-40.4`: Componente `src/components/auth/CadastroForm.tsx` (`concluido`, `a86f688`)
   - `SUB-40.5`: Alternar "Entrar" / "Criar usuário" na `LoginView` (`concluido`, `d7b0fba`)
-  - `SUB-40.6`: Documentar o cadastro e o administrador inicial (`README.md` e `database/README.md`) (`concluido`, `d5dfd55`)
+  - `SUB-40.6`: Documentar o cadastro e o administrador inicial (`README.md` e `database/README.md`) (`concluido`, `7bc0f0e`)
   - `SUB-40.7`: Aplicar o `08_admin_inicial.sql` no Supabase do projeto (só com autorização do usuário) (`pendente`)
 - **Descrição:** Na tela de login, oferecer o link **"Criar usuário"**, que abre um **novo formulário** de cadastro (nome, e-mail, senha e confirmação) usando o Supabase Auth (`signUp`). Regra pedida pelo usuário: se o e-mail cadastrado for **`gelvazio@gmail.com`** e ele **ainda não existir** no banco, o usuário é criado como **administrador** (`user_roles.role = 'admin'`). **Segurança:** o papel de administrador é dado **só pelo banco** (função `security definer` + trigger em `auth.users`), nunca pelo frontend (o cliente não escolhe o próprio papel), e **só depois do e-mail confirmado** (`email_confirmed_at` preenchido), para que ninguém se registre com esse e-mail sem ter acesso à caixa de entrada. Os demais cadastros entram sem papel global (acesso só pelos `project_members`, como hoje).
 - **Critérios de Aceitação:** Todas as filhas `concluido`; `npm run validar` verde; cadastro com `gelvazio@gmail.com` (inexistente) gera `user_roles` admin após a confirmação do e-mail; cadastro com outro e-mail não ganha papel de administrador; se `gelvazio@gmail.com` já existir, nada muda.

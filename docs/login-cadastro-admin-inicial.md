@@ -37,5 +37,5 @@ e-mail cadastrado for `gelvazio@gmail.com` e ainda não existir, ele vira admini
 | 3 | SUB-40.3 Serviço `cadastrarUsuario` | `src/services/authService.ts` | `npm run typecheck`, `npm test` | ✅ Concluído (`a48672a`) |
 | 4 | SUB-40.4 Formulário de cadastro | `src/components/auth/CadastroForm.tsx`, `index.ts` | `npm run typecheck`, `lint`, `build` | ✅ Concluído (`a86f688`) |
 | 5 | SUB-40.5 Alternar Entrar/Criar usuário | `src/views/LoginView.tsx` | `npm run validar` | ✅ Concluído (`d7b0fba`) |
-| 6 | SUB-40.6 Documentação | `README.md`, `database/README.md` | `npm run validar` | ✅ Concluído (`d5dfd55`) |
+| 6 | SUB-40.6 Documentação | `README.md`, `database/README.md` | `npm run validar` | ✅ Concluído (`7bc0f0e`) |
 | 7 | SUB-40.7 Aplicar SQL no Supabase | banco remoto | consultas só de leitura | ⬜ Pendente (precisa de autorização) |
