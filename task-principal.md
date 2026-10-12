@@ -410,15 +410,15 @@
 - **Commit:** `86e701c`
 - **Anotação:** Preenchida a seção Scripts do `.env.example` com `DASHBOARD_AI_PROJECT` (slug padrão do `scripts/sincronizar_tasks.py`, equivale a `--projeto`, padrão `default`), lembrando que o script lê o `.env` da raiz sem sobrescrever o ambiente e usa `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`. Nenhum valor real no arquivo.
 
-#### [🔄] SUB-08.7: Conferir `.gitignore` (`!.env.example`)
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 04 (Grok Bot) (início: 2026-10-12 00:55)
+#### [x] SUB-08.7: Conferir `.gitignore` (`!.env.example`)
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 04 (Grok Bot) (2026-10-12 00:55 → 2026-10-12 00:56)
 - **Depende de:** SUB-08.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Garantir no `.gitignore` que `.env` e `.env.*` continuam ignorados e que `!.env.example` vem depois de **todas** as regras de `.env` (hoje há uma segunda linha `.env` no fim do arquivo). Conferir com `git check-ignore -v .env.example .env .env.local`.
 - **Critérios de Aceitação:** `.env.example` não ignorado; `.env` e `.env.local` ignorados.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `4be4a20`
+- **Anotação:** Removida a segunda linha `.env` no fim do `.gitignore` (redundante e posterior ao `!.env.example`) e comentado que `!.env.example` deve ficar depois de todas as regras de `.env`. `git check-ignore -v --no-index`: `.env.example` não ignorado (`!.env.example`), `.env` e `.env.local` ignorados (`.env` / `.env.*`).
 
 #### [x] SUB-08.8: `extrairVariaveis(texto)` em `scripts/checar-env.mjs` + testes
 - **Status:** concluido
