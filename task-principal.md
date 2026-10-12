@@ -764,7 +764,7 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-19.9: `BuscaControles` (limiar, globais, modo) em `src/components/memoria/BuscaControles.tsx`
-- **Status:** em_execucao
+- **Status:** concluido
 - **Executor:** nenhum
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
