@@ -10,9 +10,9 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
 - **Subtarefas atômicas (~3 min):** 153 (SUB-08.x, SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x; atualizado em 2026-10-12 00:17)
-- **Em Execução:** 1 (SUB-23.1)
+- **Em Execução:** 2 (SUB-33.7, SUB-23.1)
 - **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 141 subtarefas
-  - livres agora: 28 (SUB-33.5, SUB-33.7, SUB-33.9, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
+  - livres agora: 27 (SUB-33.5, SUB-33.9, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
   - bloqueadas por dependência: 112
   - reservadas: 0
 - **Concluídas:** 37
@@ -163,7 +163,7 @@
   - `SUB-33.4`: Esqueleto do handler `api/embedding.ts` (CORS, OPTIONS, 405) (`concluido`)
   - `SUB-33.5`: Registrar `api/embedding.ts` no `vercel.json` (`pendente`)
   - `SUB-33.6`: Testes do handler: OPTIONS, 405 e 401 (`concluido`)
-  - `SUB-33.7`: `criarGeradorEmbedding()` em `src/services/embeddingService.ts` (`pendente`)
+  - `SUB-33.7`: `criarGeradorEmbedding()` em `src/services/embeddingService.ts` (`em_execucao`)
   - `SUB-33.8`: Testes de `embeddingService` em `tests/unit/embeddingService.test.ts` (`pendente`)
   - `SUB-33.9`: Documentar `/api/embedding` no `api/README.md` (`pendente`)
   - `SUB-33.10`: Autenticação no handler `api/embedding.ts` (401) (`concluido`)
@@ -236,8 +236,8 @@
 - **Anotação:** Criado `tests/unit/api-embedding.test.ts` com `req`/`res` falsos, `fetch` simulado e env de teste restaurado após cada caso: OPTIONS -> 204 com CORS; GET -> 405 com `Allow: POST, OPTIONS`; POST sem token -> 401 com `WWW-Authenticate` sem chamar o Auth; JWT recusado pelo Auth -> 401. typecheck (app + api) e `npm test` verdes (53 passed).
 
 #### [ ] SUB-33.7: `criarGeradorEmbedding()` em `src/services/embeddingService.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (desde 2026-10-12 00:29)
 - **Depende de:** SUB-33.11
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/services/embeddingService.ts` com `export function criarGeradorEmbedding(opcoes?: { url?: string; client?: DashboardClient }): GeradorEmbedding` que obtém o `access_token` de `client.auth.getSession()`, faz `POST /api/embedding` com `{ texto }`, converte 401 em `ServiceError('Faça login para usar a busca semântica.')`, outros erros em `ServiceError` e valida 1536 números. Exportar no barrel `src/services/index.ts`.
