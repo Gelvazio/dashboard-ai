@@ -81,6 +81,7 @@ curl -sS -X POST "https://<seu-projeto>.vercel.app/api/embedding" \
 | `OPENAI_API_KEY` | Chave do provedor de embeddings; obrigatória e somente no servidor |
 | `EMBEDDING_MODEL` | Opcional; modelo usado (padrão `text-embedding-3-small`), que deve retornar 1536 dimensões |
 | `EMBEDDING_API_URL` | Opcional; endpoint compatível com OpenAI (padrão `https://api.openai.com/v1/embeddings`) |
+| `MCP_CORS_ORIGIN` | Opcional; origem liberada no CORS deste endpoint (padrão `*`); em produção, use a URL do frontend |
 
 ## Ferramentas da fila (multi-projeto)
 
