@@ -1109,7 +1109,7 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-23.1: `minutosDeTrava` em `src/lib/saudeFila.ts`
-- **Status:** pendente
+- **Status:** em_execucao
 - **Executor:** nenhum
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
