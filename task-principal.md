@@ -45,14 +45,25 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
+### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.15
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-28.15** |
+| **Título da Sub-task:** | CLI do worker em `worker/index.ts` |
+| **Agente Responsável:** | Devin (Cognition AI) |
+| **Data e Hora de Início:** | 2026-10-12 12:54 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202
-- **Em Execução:** 0
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 26 subtarefas
-  - livres agora: 6 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.15, SUB-35.32, SUB-35.33)
+- **Em Execução:** 1 (SUB-28.15, Devin (Cognition AI), desde 2026-10-12 12:54)
+- **Pendentes:** 4 principais (25, 26, 28, 35) + 25 subtarefas
+  - livres agora: 5 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-35.32, SUB-35.33)
   - bloqueadas por dependência: 20
   - reservadas: 0
 - **Concluídas:** 209 de 239 blocos (33 principais + 176 subtarefas)
@@ -1975,7 +1986,7 @@
   - `SUB-28.12`: Montagem do `StateGraph` em `worker/grafo.ts` (`concluido`, `0d9c835`)
   - `SUB-28.13`: Checkpointer durável em `worker/checkpointer.ts` (`concluido`, `1bd4ca7`)
   - `SUB-28.14`: Reconciliação na retomada em `worker/reconciliar.ts` (`concluido`, `206ba39`)
-  - `SUB-28.15`: CLI do worker em `worker/index.ts` (`pendente`)
+  - `SUB-28.15`: CLI do worker em `worker/index.ts` (`em_execucao`)
   - `SUB-28.16`: Endpoint `api/aprovacao.ts`: autenticação e papel (401/403) (`pendente`)
   - `SUB-28.17`: Testes do worker: caminho feliz e erro (`pendente`)
   - `SUB-28.18`: Atualizar `LangChain_LangGraph.md` (status e desvios) (`pendente`)
@@ -2154,8 +2165,8 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:47 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
 #### [ ] SUB-28.15: CLI do worker em `worker/index.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:54)
 - **Depende de:** SUB-28.22
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Opções `--projeto`, `--agente`, `--uma-vez`; loop chamando `executarUmaTask` (SUB-28.22) até não haver task; `"worker"` no `package.json`.
