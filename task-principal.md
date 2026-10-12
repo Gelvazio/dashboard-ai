@@ -9,8 +9,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
-- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
-- **Pendentes:** 11
+- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-15`)
+- **Pendentes:** 10
 - **Concluídas:** 23
 - **Canceladas:** 0
 
@@ -268,9 +268,9 @@
 - **Commit:** `830979e`
 - **Anotação:** Arquivos: src/lib/tasks.ts, src/hooks/useTasks.ts, src/components/ui/Tooltip.tsx, src/components/tasks/*, src/views/FilaView.tsx, tests/unit/tasks.test.ts.
 
-### [ ] SUB-15: Barra de Ferramentas e Filtros em Tempo Real
-- **Status:** pendente
-- **Executor:** nenhum
+### [🔄] SUB-15: Barra de Ferramentas e Filtros em Tempo Real
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:24)
 - **Depende de:** SUB-14
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar barra de filtros com busca textual (por código, título e instrução), filtro dropdown por status e botão de recarregamento manual.
