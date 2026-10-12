@@ -6,34 +6,46 @@
 
 ---
 
-## 🔒 1. PROTOCOLO OBRIGATÓRIO DE TRAVA (LOCK) E CONCORRÊNCIA
+## 🔒 1. PROTOCOLO OBRIGATÓRIO DE CAPTURA DE TAREFA (LOCK EM 2 PARTES) E CONCORRÊNCIA
 
-1. **Leitura Obrigatória Inicial:**
-   - Antes de qualquer ação, leia os arquivos:
-     - 📄 [`quadro-task-principal.md`](file:///c:/fontes/dashboard-ai/quadro-task-principal.md)
-     - 📄 [`task-principal.md`](file:///c:/fontes/dashboard-ai/task-principal.md)
+Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) que chegar à fila de tarefas **DEVE SEGUIR RIGOROSAMENTE O FLUXO EM 2 PARTES ANTES DE MEXER NO CÓDIGO DA TAREFA**:
 
-2. **Verificação de Trava Ativa:**
-   - Verifique a seção **"🔒 TRAVA ATIVA NO MOMENTO"** em `quadro-task-principal.md`.
-   - ⛔ **PROIBIÇÃO DE CONFLITO:** Se já existir uma sub-task com status `EM EXECUÇÃO` associada a outro agente, **NENHUMA OUTRA IA PODE ASSUMIR AQUELA MESMA TAREFA**. O agente deve aguardar ou escolher a próxima sub-task pendente sem dependências não atendidas.
+### 🔹 PARTE 1 — LER O QUADRO E IDENTIFICAR A TAREFA PENDENTE
+1. Executar `git pull origin main` para garantir o estado mais recente.
+2. Ler obrigatoriamente:
+   - 📄 [`quadro-task-principal.md`](file:///c:/fontes/dashboard-ai/quadro-task-principal.md)
+   - 📄 [`task-principal.md`](file:///c:/fontes/dashboard-ai/task-principal.md)
+3. Conferir a seção **"🔒 TRAVA ATIVA NO MOMENTO"** em `quadro-task-principal.md`:
+   - ⛔ **PROIBIÇÃO TOTAL DE CONFLITO:** Se já existir uma task com trava ativa ou status `EM EXECUÇÃO` associada a outro agente, **NENHUMA OUTRA IA PODE ASSUMIR AQUELA MESMA TAREFA**.
+4. Localizar a próxima sub-task com status `pendente`.
 
-3. **Bloqueio Antes de Iniciar:**
-   - Para assumir uma sub-task com status `pendente`:
-     - Atualize o `quadro-task-principal.md`: marque a trava como `OCUPADO`, informe o nome do seu agente, a data/hora de início e o código da sub-task.
-     - Atualize o status da sub-task para `em_execucao` em `task-principal.md`.
+### 🔹 PARTE 2 — GRAVAR O BLOQUEIO NO QUADRO, FAZER COMMIT E PUSH IMEDIATOS
+1. Gravar a tarefa como bloqueada no quadro para que nenhuma outra IA a pegue:
+   - Em `quadro-task-principal.md`: marcar a trava como `OCUPADO`, preencher o código da sub-task, nome do agente e data/hora de início. Mover a sub-task para a seção `🔄 EM EXECUÇÃO`.
+   - Em `task-principal.md`: mudar o status da sub-task para `em_execucao` e registrar o executor.
+2. **Executar COMMIT e PUSH do bloqueio IMEDIATAMENTE (antes de criar código da tarefa):**
+   ```bash
+   git add quadro-task-principal.md task-principal.md
+   git commit -m "lock: assumindo sub-task SUB-XX por [Nome do Agente]"
+   git push origin main
+   ```
+   *Dessa forma, a main remota no GitHub é atualizada na hora, impedindo colisões de outros agentes.*
 
-4. **Status Oficiais Permitidos:**
-   - `pendente`: Aguardando execução.
-   - `em_execucao`: Bloqueada pelo agente ativo (trava ativa).
-   - `concluido`: Entregue com sucesso e validada.
-   - `cancelado`: Descontinuada ou substituída.
+---
 
-5. **Commit, Push e Anotação Imediatos Pós-Finalização:**
-   - Toda e qualquer mini-task concluída **DEVE OBRIGATORIAMENTE** gerar:
-     - Atualização do status em `task-principal.md` para `concluido` com a anotação detalhada do que foi feito.
-     - Atualização em `quadro-task-principal.md`: liberação da trava (`LIVRE`), inserção da linha no histórico com o hash do commit (`Commit SHA`), agente responsável e nota técnica.
-     - Execução imediata do comando `git commit` registrando o código da sub-task na mensagem.
-     - Execução imediata do comando `git push origin main` para que todos os demais agentes e sessões de IA tenham a branch `main` sempre atualizada.
+### 🔹 PARTE 3 — EXECUÇÃO, FINALIZAÇÃO, COMMIT E PUSH DA ENTREGA
+1. Executar e validar o código da mini-task com qualidade.
+2. Atualizar `task-principal.md`: alterar status para `concluido` e registrar a anotação técnica detalhada.
+3. Atualizar `quadro-task-principal.md`:
+   - Liberar a trava para `LIVRE`.
+   - Mover a sub-task para a seção `✅ CONCLUÍDAS`.
+   - Registrar no histórico a data/hora, o nome do agente, o código da sub-task, o SHA do commit e a nota do que foi feito.
+4. **Executar COMMIT e PUSH da conclusão IMEDIATAMENTE:**
+   ```bash
+   git add .
+   git commit -m "feat(SUB-XX): descrição do que foi implementado"
+   git push origin main
+   ```
 
 ---
 
