@@ -2145,7 +2145,7 @@
 - **Executor:** nenhum
 - **Depende de:** SUB-12, SUB-29, SUB-30; subtarefas SUB-35.1 a SUB-35.46 (as partes do worker dependem de SUB-28.x)
 - **Subtarefas:** (criada e subdividida em 46 em 2026-10-12 00:39 por DashboardAI (Grok Bot) a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`)
-  - `SUB-35.1`: Tabela `agent_events` em `database/07_agent_events.sql` (`pendente`)
+  - `SUB-35.1`: Tabela `agent_events` em `database/07_agent_events.sql` (`em_execucao`)
   - `SUB-35.2`: Trigger `validar_agent_event` em `database/07_agent_events.sql` (`pendente`)
   - `SUB-35.3`: RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql` (`pendente`)
   - `SUB-35.4`: Publicar `agent_events` no Supabase Realtime (`pendente`)
@@ -2198,8 +2198,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-35.1: Tabela `agent_events` em `database/07_agent_events.sql`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 01:01)
 - **Depende de:** SUB-29
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `database/07_agent_events.sql` só com a tabela `public.agent_events`: `id` identity, `project_id` (FK `projects`, cascade), `task_id` (FK `tasks`, set null), `task_codigo`, `agente` (texto não vazio, ≤120), `execucao_id` (thread do LangGraph, ≤200), `etapa` (nó/passo, ≤120), `tipo` (check: `inicio`, `progresso`, `fim`, `erro`, `heartbeat`, `trava`, `liberacao`, `commit`), `status`, `mensagem` (≤2000), `metadados` jsonb objeto, `chave_idempotencia` (unique com `project_id`), `criado_por` (`usuario_atual()`), `created_at`. Índices `(project_id, created_at desc)` e `(project_id, agente, created_at desc)`; comentário da tabela. Sem RLS aqui.

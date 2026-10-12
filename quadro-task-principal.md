@@ -88,14 +88,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:01 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 05 (Grok Bot) — SUB-35.1
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.1** |
+| **Título da Sub-task:** | Tabela `agent_events` em `database/07_agent_events.sql` |
+| **Agente Responsável:** | DashboardAI-Clone 05 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:01 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (4)
+### 🔄 EM EXECUÇÃO (5)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-35.1** | Tabela `agent_events` em `database/07_agent_events.sql` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:01 | SUB-29 |
 | **SUB-19.6** | Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:01 | SUB-19.2, SUB-33.7 |
 | **SUB-26.1** | Esqueleto do `README.md` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:00 | Nenhuma |
 | **SUB-27.10** | Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:00 | SUB-27.2, SUB-27.3 |
@@ -105,7 +117,7 @@
 
 ---
 
-### ⏳ PENDENTES (166)
+### ⏳ PENDENTES (165)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -220,7 +232,6 @@
 | **SUB-27.27** | Incluir `UserMenu` no `src/components/layout/Header.tsx` | 3 | Fase 10 | SUB-27.14 — ⛓️ bloqueada |
 | **SUB-27.28** | Varredura do bundle por `service_role` (SUB-27) | 3 | Fase 10 | SUB-27.22 — ⛓️ bloqueada |
 | **SUB-35** | Monitor em Tempo Real dos Agentes (mãe) | 4 | Fase 12 | SUB-12, SUB-29, SUB-30; SUB-35.1 a SUB-35.46 |
-| **SUB-35.1** | Tabela `agent_events` em `database/07_agent_events.sql` | 4 | Fase 12 | SUB-29 — 🟢 livre |
 | **SUB-35.2** | Trigger `validar_agent_event` em `database/07_agent_events.sql` | 4 | Fase 12 | SUB-35.1 — ⛓️ bloqueada |
 | **SUB-35.3** | RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql` | 4 | Fase 12 | SUB-35.1 — ⛓️ bloqueada |
 | **SUB-35.4** | Publicar `agent_events` no Supabase Realtime | 4 | Fase 12 | SUB-35.1 — ⛓️ bloqueada |
@@ -558,3 +569,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:00 | DashboardAI-Clone 08 (Grok Bot) | SUB-26.1 | — | Lock: assumindo SUB-26.1 (Esqueleto do `README.md`) |
 | 2026-10-12 01:01 | DashboardAI-Clone 04 (Grok Bot) | SUB-19.6 | — | Lock: assumindo SUB-19.6 (Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts`) |
 | 2026-10-12 01:01 | DashboardAI-Clone 10 (Grok Bot) | SUB-21.6 | `4cab033` | Criado `src/components/memoria/MemoriaDetailModal.tsx` (`{ memoria: Memoria | null, onFechar, onExcluir? }`; `null` = fechado) sobre `components/ui/Modal` (xl): metadados Escopo (Global/Projeto via `escopoMemoria`), Autor (`criado_por`), Criada em e Atualizada em (`formatarDataHora`, `title` relativo), tags, conteúdo com abas Formatado (`components/ui/Markdown`, sem HTML cru) / Texto (`pre`) e botão copiar conteúdo; rodapé com "Copiar tudo em Markdown" (`memoriaComoMarkdown`), Excluir (`Botao` perigo, só com `onExcluir`) e Fechar. Exportado em `src/components/memoria/index.ts` (mantidos os exports de MemoriaFormModal/MemoriaToolbar). `npm run typecheck`, `npm test` e `npm run build` OK. |
+| 2026-10-12 01:01 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.1 | — | Lock: assumindo SUB-35.1 (Tabela `agent_events` em `database/07_agent_events.sql`) |
