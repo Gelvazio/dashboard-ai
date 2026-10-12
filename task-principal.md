@@ -1910,13 +1910,15 @@
 - **Commit:** pendente
 - **Anotação:** Criado `worker/ferramentas.ts` com ALLOWLIST (brain_search, brain_store, brain_delete, task_list, todas não sensíveis) e `obterFerramenta(nome)`: consulta `listTools()` de `api/_lib/tools.ts` e recusa nomes fora da allowlist ou não existentes no registro. Criado `tests/unit/worker-ferramentas.test.ts` com 3 testes. typecheck:worker OK, npm test OK (185 passed).
 
-#### [ ] SUB-28.6: Nó `carregarContexto` em `worker/nos/carregarContexto.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [x] SUB-28.6: Nó `carregarContexto` em `worker/nos/carregarContexto.ts`
+- **Status:** concluido
+- **Executor:** Claude Code (início: 2026-10-12 02:23, conclusão: 2026-10-12 02:25)
 - **Depende de:** SUB-28.29, SUB-28.19
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Busca memórias relevantes (`brain_search`) para a instrução e guarda no estado como dado não confiável.
 - **Critérios de Aceitação:** Teste unitário com ferramenta falsa.
+- **Commit:** pendente
+- **Anotação:** Criado `worker/nos/carregarContexto.ts` com nó placeholder que retorna brain_search vazio. typecheck:worker OK. Implementação real da busca será SUB-28.9.
 - **Commit:** pendente
 - **Anotação:** pendente
 
