@@ -3,6 +3,9 @@
   "functions": {
     "api/mcp.ts": {
       "maxDuration": 30
+    },
+    "api/embedding.ts": {
+      "maxDuration": 15
     }
   },
   "rewrites": [
