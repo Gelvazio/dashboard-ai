@@ -4,7 +4,7 @@
  * leitura para membros do projeto); quem grava são o worker, a ferramenta MCP
  * `agent_event` e o espelho do quadro.
  */
-import type { AgentEvent } from '@/types';
+import type { AgentEvent, AtividadeAgente } from '@/types';
 import { getSupabase, resultado, ServiceError, type DashboardClient } from './supabase';
 
 export interface FiltroEventos {
@@ -29,4 +29,17 @@ export async function listarEventos(
   if (filtro.agente?.trim()) q = q.eq('agente', filtro.agente.trim());
   const res = await q.order('created_at', { ascending: false }).order('id', { ascending: false }).limit(limite);
   return resultado(res, 'Listar eventos');
+}
+
+/**
+ * Atividade atual de cada agente do projeto (último evento + último heartbeat),
+ * via RPC `atividade_atual_agentes`, ordenada por `ultimo_em` desc.
+ */
+export async function atividadeAtual(
+  projectId: number,
+  client: DashboardClient = getSupabase(),
+): Promise<AtividadeAgente[]> {
+  const res = await client.rpc('atividade_atual_agentes', { p_project_id: projectId });
+  const lista = resultado(res, 'Atividade dos agentes') ?? [];
+  return [...lista].sort((a, b) => Date.parse(b.ultimo_em) - Date.parse(a.ultimo_em));
 }
