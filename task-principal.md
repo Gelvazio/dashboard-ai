@@ -45,12 +45,23 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
+### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.20
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-28.20** |
+| **Título da Sub-task:** | `PlanoSchema` em `worker/plano.ts` |
+| **Agente Responsável:** | Devin (Cognition AI) |
+| **Data e Hora de Início:** | 2026-10-12 12:33 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202 (atualizado em 2026-10-12 na revisão do quadro por Devin)
-- **Em Execução:** 0
+- **Em Execução:** 1 (SUB-28.20, Devin (Cognition AI), desde 2026-10-12 12:33)
 - **Pendentes:** 4 principais (25, 26, 28, 35) + 42 subtarefas
   - livres agora: 10 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.4, SUB-28.5, SUB-28.10, SUB-28.13, SUB-28.20, SUB-35.32, SUB-35.33)
   - bloqueadas por dependência: 32
@@ -1980,7 +1991,7 @@
   - `SUB-28.17`: Testes do worker: caminho feliz e erro (`pendente`)
   - `SUB-28.18`: Atualizar `LangChain_LangGraph.md` (status e desvios) (`pendente`)
   - `SUB-28.19`: Adaptar ferramentas para `tool()` do LangChain em `worker/ferramentas.ts` (`pendente`)
-  - `SUB-28.20`: `PlanoSchema` em `worker/plano.ts` (`pendente`)
+  - `SUB-28.20`: `PlanoSchema` em `worker/plano.ts` (`em_execucao`)
   - `SUB-28.21`: `classificarFalha(err)` em `worker/falhas.ts` (`concluido`, `04c0f02`)
   - `SUB-28.22`: `executarUmaTask(deps)` em `worker/executar.ts` (`pendente`)
   - `SUB-28.23`: Retomada da aprovação (`Command({ resume })`) em `api/aprovacao.ts` (`pendente`)
@@ -2209,8 +2220,8 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (reaberta: critérios de aceitação não atendidos)
 
 #### [ ] SUB-28.20: `PlanoSchema` em `worker/plano.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:33)
 - **Depende de:** SUB-28.29
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `worker/plano.ts` com o schema zod `PlanoSchema` (passos com ferramenta, argumentos, `sensivel`, critério). O prompt fica na SUB-28.31.
