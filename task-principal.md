@@ -9,8 +9,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 31
-- **Em Execução:** 2 (`SUB-01.1`, `SUB-27`)
-- **Pendentes:** 27
+- **Em Execução:** 3 (`SUB-01.1`, `SUB-27`, `SUB-29`)
+- **Pendentes:** 26
 - **Concluídas:** 4
 - **Canceladas:** 0
 
@@ -106,9 +106,9 @@
 
 ## 🌐 FASE 2B: Gerenciador Genérico Multi-projeto (fila, papéis, RLS e MCP)
 
-### [ ] SUB-29: Multi-projeto, Papéis e RLS no Banco
-- **Status:** pendente
-- **Executor:** nenhum
+### [🔄] SUB-29: Multi-projeto, Papéis e RLS no Banco
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:37)
 - **Depende de:** SUB-04, SUB-05
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Tornar o banco genérico para qualquer projeto: tabela `projects` (com seed `default` e backfill), `project_id` em `tasks`, `ai_memories` e `agendamento_tarefa_logs` (código da task único por projeto; memória com `project_id` nulo = global), papéis `user_roles`/`project_members` com `eh_administrador()` e `tem_acesso_projeto()`, removendo `professores_administradores`/`eh_professor_administrador`. `pegar_proxima_task(p_agente, p_projeto, p_lock_minutos, p_exclusivo false)` paralela via `SKIP LOCKED`; RPCs da fila `security definer`, `search_path` fixo, `revoke` de public/anon/authenticated e `grant` a `service_role`; trigger de guarda da interface (só o backend põe/tira de `em_execucao`); trigger de validação de dependências; RLS em todas as tabelas; colunas úteis do motor original (`origem`, `tipo` ia/humano, `arquivo_md`, `md5_md`, `sincronizado_em`, `log_id`, `criado_por`/`atualizado_por`); logs genéricos expandidos; `match_memories` com `p_project_id`. Inclui `--projeto` no `scripts/sincronizar_tasks.py`.

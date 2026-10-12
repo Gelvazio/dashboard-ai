@@ -33,20 +33,32 @@
 | **Data e Hora de Início:** | 2026-10-11 22:27 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot)
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-29** |
+| **Título da Sub-task:** | Multi-projeto, Papéis e RLS no Banco |
+| **Agente Responsável:** | DashboardAI (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-11 22:37 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (2)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-01.1** | Inicialização do package.json, Vite, React e TypeScript | Gemini (Antigravity) | 2026-10-11 22:13 | Nenhuma |
 | **SUB-27** | Autenticação e Login com Supabase Auth | Codex (OpenAI) | 2026-10-11 22:27 | SUB-03, SUB-29 |
+| **SUB-29** | Multi-projeto, Papéis e RLS no Banco | DashboardAI (Grok Bot) | 2026-10-11 22:37 | SUB-04, SUB-05 |
 
 ---
 
-### ⏳ PENDENTES (27)
+### ⏳ PENDENTES (26)
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
@@ -54,7 +66,6 @@
 | **SUB-01.3** | Instalação de Lucide Icons e Utilitários Base | 1 (Alta) | Fase 1 | SUB-01.2 |
 | **SUB-02** | Estrutura Modular de Diretórios do Frontend | 1 (Alta) | Fase 1 | SUB-01 |
 | **SUB-03** | Configuração do Cliente Supabase e Tipagem TypeScript | 1 (Alta) | Fase 1 | SUB-02 |
-| **SUB-29** | Multi-projeto, Papéis e RLS no Banco | 1 (Alta) | Fase 2B | SUB-04, SUB-05 |
 | **SUB-30** | Ferramentas da Fila no MCP | 2 | Fase 2B | SUB-06, SUB-29 |
 | **SUB-31** | Recados entre Agentes e Regras por Projeto | 3 | Fase 2B | SUB-29 |
 | **SUB-07** | Implementação das Primitivas de Memória e Embeddings | 2 | Fase 3 | SUB-06, SUB-29 |
