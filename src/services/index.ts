@@ -9,3 +9,4 @@ export * from './projectService';
 export * from './taskService';
 export * from './memoryService';
 export * from './logService';
+export * from './embeddingService';
