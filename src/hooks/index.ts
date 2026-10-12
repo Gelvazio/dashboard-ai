@@ -14,3 +14,4 @@ export { useIndicadores } from './useIndicadores';
 export { useContagemAnimada } from './useContagemAnimada';
 export { useAcoesTask } from './useAcoesTask';
 export { useLogs } from './useLogs';
+export { useSalvarMemoria } from './useSalvarMemoria';
