@@ -733,15 +733,15 @@
 - **Commit:** `c92d3f9`
 - **Anotação:** Criado `src/components/memoria/ResultadoBuscaCard.tsx` (`{ titulo, conteudo, tags, similaridade?, global, atualizadoEm, onClick?, className? }`): título truncado com `title`, resumo do conteúdo via `resumo(conteudo, 200)` de `src/lib/tasks.ts`, chips de tags, selo "Global" (ícone Globe) quando `global`, `SimilaridadeBadge` só quando há similaridade e data relativa (`tempoRelativo`, `title` com `formatarDataHora`); vira `<button>` acessível quando recebe `onClick`, senão `<article>`. Exportado em `src/components/memoria/index.ts`. `npm run typecheck`, `npm test` e `npm run build` OK.
 
-#### [🔄] SUB-19.6: Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 04 (Grok Bot) (início: 2026-10-12 01:01)
+#### [x] SUB-19.6: Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 04 (Grok Bot) (2026-10-12 01:01 → 2026-10-12 01:02)
 - **Depende de:** SUB-19.2, SUB-33.7
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/hooks/useBuscaSemantica.ts`: `useBuscaSemantica(projeto, consulta, { limiar, incluirGlobais })` -> `{ resultado: ResultadoBusca | null, carregando, erro }`, usando `useDebounce(consulta, 400)`, `buscarMemorias` (SUB-10) com `gerador: criarGeradorEmbedding()`, ignorando respostas antigas (contador de requisição) e sem buscar com texto vazio.
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `f145aab`
+- **Anotação:** Criado `src/hooks/useBuscaSemantica.ts` (exportado em `src/hooks/index.ts`): `useBuscaSemantica(projeto | null, consulta, { limiar, incluirGlobais })` -> `{ resultado: ResultadoBusca | null, carregando, erro }`. Usa `useDebounce(consulta.trim(), 400)` (SUB-19.2), `buscarMemorias` (SUB-10) com `gerador` de `criarGeradorEmbedding()` (SUB-33.7, memoizado); texto vazio ou sem projeto não busca e limpa o resultado; respostas antigas descartadas por contador de requisição (também invalidado ao desmontar). `npm run typecheck`, `npm test` e `npm run build` OK.
 
 #### [ ] SUB-19.7: Painel `BuscaSemanticaPanel` (campo, grade e estados)
 - **Status:** pendente
