@@ -22,17 +22,6 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo no quadro principal |
 
-### 🔒 TRAVA ADICIONAL — Claude Code — SUB-34.1
-
-|| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-34.1** |
-| **Título da Sub-task:** | Fallback `CarregandoTela` em `src/components/ui/CarregandoTela.tsx` |
-| **Agente Responsável:** | Claude Code |
-| **Data e Hora de Início:** | 2026-10-12 00:37 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — Codex (OpenAI)
 
 | Propriedade | Valor Atual |
@@ -265,7 +254,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (44)
+### ✅ CONCLUÍDAS (45)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -309,7 +298,7 @@
 | **SUB-33.7** | `criarGeradorEmbedding()` em `src/services/embeddingService.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:29 | 2026-10-12 00:30 | `64aa288` |
 | **SUB-08.3** | Seção Servidor Supabase: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `SUPABASE_REST_URL` | DashboardAI (Grok Bot) | 2026-10-12 00:30 | 2026-10-12 00:30 | `35aff13` |
 
-|| **SUB-23.4** | `liberarTrava()` em `src/services/taskService.ts` | Claude Code | 2026-10-12 00:25 | 2026-10-12 00:27 | `7d9b57d` |
+n|| **SUB-34.1** | Fallback `CarregandoTela` em `src/components/ui/CarregandoTela.tsx` | Claude Code | 2026-10-12 00:37 | 2026-10-12 00:38 | `0d7cbd9` |
 ---
 
 ### ⛔ CANCELADAS (0)
