@@ -99,6 +99,17 @@
 | **Data e Hora de Início:** | 2026-10-12 00:57 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-23.10
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-23.10** |
+| **Título da Sub-task:** | `TravaItem` em `src/components/tasks/TravaItem.tsx` |
+| **Agente Responsável:** | DashboardAI-Clone 02 |
+| **Data e Hora de Início:** | 2026-10-12 00:57 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -107,6 +118,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-23.10** | `TravaItem` em `src/components/tasks/TravaItem.tsx` | DashboardAI-Clone 02 | 2026-10-12 00:57 | SUB-23.6 |
 | **SUB-21.5** | Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:57 | SUB-21.4 |
 | **SUB-21.14** | `tagsDisponiveis` em `src/lib/memorias.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 00:57 | SUB-21.2 |
 | **SUB-08.11** | `listarArquivosFonte(dirs)` em `scripts/checar-env.mjs` + teste | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:57 | SUB-08.10 |
@@ -140,7 +152,7 @@
 | **SUB-23.7** | Painel `SaudeFilaPanel` (composição) em `src/components/tasks/SaudeFilaPanel.tsx` | 4 | Fase 8 | SUB-23.10, SUB-23.11 — ⛓️ bloqueada |
 | **SUB-23.8** | Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` | 4 | Fase 8 | SUB-23.7 — ⛓️ bloqueada |
 | **SUB-23.9** | Alerta de trava presa na `src/views/FilaView.tsx` | 4 | Fase 8 | SUB-23.3 — ⛓️ bloqueada |
-| **SUB-23.10** | `TravaItem` em `src/components/tasks/TravaItem.tsx` | 4 | Fase 8 | SUB-23.6 — ⛓️ bloqueada |
+| **SUB-23.10** | `TravaItem` em `src/components/tasks/TravaItem.tsx` | 4 | Fase 8 | SUB-23.6 — 🔄 em execução por DashboardAI-Clone 02 |
 | **SUB-23.12** | Teste de integração de `liberarTrava`: viewer e outro projeto | 4 | Fase 8 | SUB-23.4 — 🟢 livre |
 | **SUB-23.13** | `travaExpirada` em `src/lib/saudeFila.ts` | 4 | Fase 8 | SUB-23.1 — ⛓️ bloqueada |
 | **SUB-19** | Interface de Pesquisa Semântica Vetorial (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-19.1 a SUB-19.10 |
@@ -544,3 +556,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:57 | DashboardAI-Clone 10 (Grok Bot) | SUB-21.4 | `c03ffa6` | Criado `src/components/memoria/MemoriaCard.tsx` (`{ memoria, onVer?, onExcluir?, className? }`): título truncado, selo Global/Projeto via `escopoMemoria` (ícones Globe/FolderKanban, com `title` explicativo), chips de tags, resumo via `resumo(content, 220)`, atualização relativa (`tempoRelativo`, `title` com `formatarDataHora`) e ações Copiar (`CopyButton` com `memoriaComoMarkdown`), Ver e Excluir (só renderizadas quando há callback; `aria-label` com o título). Exportado em `src/components/memoria/index.ts` mantendo os exports da SUB-19. `npm run typecheck`, `npm test` e `npm run build` OK. |
 | 2026-10-12 00:57 | DashboardAI-Clone 05 (Grok Bot) | SUB-21.14 | — | Lock: assumindo SUB-21.14 (`tagsDisponiveis` em `src/lib/memorias.ts`) |
 | 2026-10-12 00:57 | DashboardAI-Clone 10 (Grok Bot) | SUB-21.5 | — | Lock: assumindo SUB-21.5 (Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx`) |
+| 2026-10-12 00:57 | DashboardAI-Clone 02 | SUB-23.10 | — | Lock: assumindo SUB-23.10 (`TravaItem` em `src/components/tasks/TravaItem.tsx`) |
