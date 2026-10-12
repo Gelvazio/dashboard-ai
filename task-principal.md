@@ -68,18 +68,6 @@
 
 ---
 
-### 🔒 TRAVA ADICIONAL — Claude Code (Opus 5.5, sessão em nuvem) — SUB-25.4
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-25.4** |
-| **Título da Sub-task:** | Teste rápido local: telas Fila e Logs |
-| **Agente Responsável:** | Claude Code (Opus 5.5, sessão em nuvem) |
-| **Data e Hora de Início:** | 2026-10-12 21:32 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-25.4 |
-
----
 
 ### 🔒 TRAVA ADICIONAL — Claude Code (Opus 5.5) — SUB-40.7
 
@@ -91,6 +79,19 @@
 | **Agente Responsável:** | Claude Code (Opus 5.5) |
 | **Data e Hora de Início:** | 2026-10-12 18:37 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-40.7 |
+
+---
+
+### 🔒 TRAVA ADICIONAL — Claude Code (Opus 5.5, sessão em nuvem) — SUB-43
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-43** |
+| **Título da Sub-task:** | ATUALIZADOR DE TASKS COMPLETAS |
+| **Agente Responsável:** | Claude Code (Opus 5.5, sessão em nuvem) |
+| **Data e Hora de Início:** | 2026-10-12 21:38 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-43 |
 
 ---
 
@@ -114,11 +115,11 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 44
 - **Subtarefas atômicas (~3 min):** 251
-- **Em Execução:** 4 (SUB-38, SUB-41.1, SUB-25.4, SUB-40.7)
+- **Em Execução:** 4 (SUB-38, SUB-41.1, SUB-40.7, SUB-43)
 - **Pendentes:** 11 principais (SUB-38, 25, 26, 28, 35, 39, 40, 41, 42, 43, KIRO-DEV-CLONE) + 41 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 4 — SUB-25.7, SUB-35.32 e SUB-43 (atômica) (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 4 — SUB-25.4, SUB-25.7 e SUB-35.32 (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
   - bloqueadas por dependência: 6 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41) e SUB-42 (depende da SUB-41)
-  - em execução: 4 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI)); SUB-25.4 (Claude Code (Opus 5.5, sessão em nuvem)); SUB-40.7 (Claude Code (Opus 5.5))
+  - em execução: 4 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI)); SUB-40.7 (Claude Code (Opus 5.5)); SUB-43 (Claude Code (Opus 5.5, sessão em nuvem))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
 - **Concluídas:** 239 de 295 blocos (33 principais + 206 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
@@ -152,7 +153,7 @@
   - `SUB-25.1`: Script `scripts/validar.sh` + `npm run validar` (`concluido`, `2c9664c`)
   - `SUB-25.2`: Rodar `npm ci` + `npm run validar` e registrar em `docs/VALIDACAO.md` (`concluido`, `5b06c99`)
   - `SUB-25.3`: Rodar `database/tests/run_tests.sh` (`concluido`, `cbf3c88`)
-  - `SUB-25.4`: Teste rápido local: telas Fila e Logs (`em_execucao`)
+  - `SUB-25.4`: Teste rápido local: telas Fila e Logs (`pendente`)
   - `SUB-25.6`: Rodar `npm run test:integration` (`concluido`, `7c9891f`)
   - `SUB-25.7`: Teste rápido local: telas Memória e Configurações (`pendente`)
   - `SUB-25.8`: Corrigir erro de tipagem TS6133 em `tests/unit/api-aprovacao.test.ts` (`concluido`, `c933a99`)
@@ -163,15 +164,15 @@
 - **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:25 (Claude Code): tarefa-mãe pendente: filhas 25.1, 25.2, 25.3 e 25.6 concluídas; 25.4, 25.7 (validação no navegador) e 25.8 (em execução) abertas. Critério ainda não atendido: `npm run build` falha no `tsc -b` (TS6133 em `tests/unit/api-aprovacao.test.ts:111`, corrigido pela SUB-25.8); `npx vite build` sozinho gera `dist/` e `check:chunks` passa (16 chunks ≤ 500 kB).
 
 #### [ ] SUB-25.4: Teste rápido local: telas Fila e Logs
-- **Status:** em_execucao
+- **Status:** pendente
 - **Prioridade:** MEDIA
-- **Executor:** Claude Code (Opus 5.5, sessão em nuvem) (início: 2026-10-12 21:32)
+- **Executor:** nenhum
 - **Depende de:** SUB-25.2
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Subir `npm run preview` contra o banco local e conferir as telas Fila e Logs em 1280x800 e 390x844; registrar no `docs/VALIDACAO.md` (sem commitar screenshots grandes).
 - **Critérios de Aceitação:** Sem erros no console; checklist registrado.
 - **Commit:** pendente
-- **Anotação:** pendente
+- **Anotação:** Trava de Claude Code (Opus 5.5, sessão em nuvem) (desde 2026-10-12 21:32, commit `02d0111`) liberada em 2026-10-12 21:38 a pedido do usuário, sem entrega. Motivo: a validação precisa de um banco com o schema do Dashboard AI e de um usuário com login; os dois projetos que o MCP do Supabase enxerga (AULAS SENAI e Canil Doce Lar) não têm esse schema, e o usuário está ajustando o banco com outra IA. Na mesma conversa o usuário mudou o alvo de "banco local" para "banco de produção". Pela regra 11 da seção 1.1 do `AGENTS.md`, só o Claude Code executa esta tarefa (exige banco).
 - **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:48 (Devin): pendente, sem executor. Não há registro das telas Fila e Logs no `docs/VALIDACAO.md`; depende de navegador (não usado nesta verificação).
 
 #### [ ] SUB-25.7: Teste rápido local: telas Memória e Configurações
@@ -581,9 +582,9 @@
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
 ### [ ] SUB-43: ATUALIZADOR DE TASKS COMPLETAS
-- **Status:** pendente
+- **Status:** em_execucao
 - **Prioridade:** MEDIA
-- **Executor:** nenhum
+- **Executor:** Claude Code (Opus 5.5, sessão em nuvem) (início: 2026-10-12 21:38)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Ler o `task-principal.md` **inteiro** e mover para o `task_complete.md` **todo bloco concluído** que ainda estiver no quadro ativo, seguindo a regra 10 da seção 1.1 do [`AGENTS.md`](AGENTS.md). Bloco concluído = cabeçalho `[x]` **ou** `Status: concluido` (tarefa-mãe ou subtarefa). Para cada um:
