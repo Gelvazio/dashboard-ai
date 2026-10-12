@@ -8,8 +8,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 26
-- **Em Execução:** 1 (`SUB-01.1`)
-- **Pendentes:** 28
+- **Em Execução:** 2 (`SUB-01.1`, `SUB-04`)
+- **Pendentes:** 26
 - **Concluídas:** 0
 - **Canceladas:** 0
 
@@ -82,8 +82,8 @@
 ## 🗄️ FASE 2: Arquitetura de Banco de Dados e Scripts SQL
 
 ### [ ] SUB-04: Consolidação dos Schemas SQL na Pasta `database/`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:18)
 - **Depende de:** Nenhuma (independente de código frontend)
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Organizar na raiz os scripts SQL consolidados: `database/01_tasks_schema.sql` (tabela tasks, restrições e triggers), `database/02_logs_schema.sql` (tabela de logs) e `database/03_memories_schema.sql` (tabela ai_memories com pgvector).
