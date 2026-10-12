@@ -119,3 +119,22 @@ apontando para o Supabase de produção (`fcmntkzpjoetdabllabn`).
 
 Ressalva: como na SUB-25.4, as telas logadas foram conferidas só pelo usuário (a sessão não abriu no
 painel do navegador do app), no estado vazio do banco.
+
+## Monitor em tempo real contra o Supabase de produção (SUB-35.32)
+
+Em 2026-10-12, por Claude Code (Opus 5.5), com o `vite preview` (`http://localhost:4173`) apontando para
+o Supabase de produção (`fcmntkzpjoetdabllabn`). Eventos de teste inseridos e apagados pelo MCP do
+Supabase com autorização do usuário; tela **Monitor** observada pelo usuário no navegador dele, logado.
+
+| Passo | Resultado |
+|---|---|
+| 5 eventos (`inicio`, `progresso`, `heartbeat`, `erro`, `fim`) do agente "Teste SUB-35.32", 21:58:33–21:59:01 UTC | Gravados; `atividade_atual_agentes()` mostra o agente com o último evento `fim` |
+| Console da tela Monitor | **Falha encontrada:** `Uncaught Error: "bar" is not a registered controller` (Chart.js) |
+| Causa | `src/lib/charts.ts` registrava o `BarElement`, mas não o `BarController`, usado por `GraficoPorAgente` e `LinhaDoTempoAgentes` (`new Chart({ type: 'bar' })`); o erro só aparece quando há eventos |
+| Correção (`4f4e90f`) | `BarController` registrado; teste de regressão `tests/unit/charts.test.ts` (falhava antes, passa depois); `npm run validar` verde |
+| Recarregar a tela com a correção | OK segundo o usuário: gráficos exibidos, sem o erro |
+| 2 eventos novos (`progresso`, `fim`) de outro agente, "Teste SUB-35.32 (tempo real)", 22:01:55–22:01:58 UTC, com a tela aberta | OK segundo o usuário: cards, feed e gráficos atualizaram **sem recarregar** |
+| Limpeza | 7 eventos de teste apagados (`chave_idempotencia like 'teste-sub-35.32:%'`); `agent_events` com 0 linhas |
+
+Ressalva: screenshots não foram tirados (as telas logadas foram vistas só pelo usuário); temas claro e
+escuro e o tamanho 390x844 não foram informados.
