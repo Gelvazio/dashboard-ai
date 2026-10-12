@@ -61,14 +61,14 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 39
-- **Subtarefas atômicas (~3 min):** 205
+- **Subtarefas atômicas (~3 min):** 235
 - **Em Execução:** 0
-- **Pendentes:** 6 principais (SUB-38, 25, 26, 28, 35, KIRO-DEV-CLONE) + 6 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 3 — SUB-25.4, SUB-25.7 e SUB-35.32 (`MEDIA`). A atômica KIRO-DEV-CLONE (`BAIXA`) está 🔴 travada para todas as IAs
+- **Pendentes:** 6 principais (SUB-38, 25, 26, 28, 35, KIRO-DEV-CLONE) + 36 subtarefas
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 3 — SUB-25.4, SUB-25.7 e SUB-35.32 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
   - bloqueadas por dependência: 3 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente) e SUB-35.46 (depende da SUB-35.32)
   - em execução: 0
-  - reservadas: 0
-- **Concluídas:** 228 de 243 blocos (33 principais + 195 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+  - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
+- **Concluídas:** 228 de 273 blocos (33 principais + 195 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -364,14 +364,434 @@
 ## 📋 FASE 11: Clone do Kiro.dev
 
 ### [ ] KIRO-DEV-CLONE: Clone do Kiro.dev
+- **Status:** pendente (aguardando subtarefas)
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma; subtarefas `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`
+- **Subtarefas:** (subdividida em 30 em 2026-10-12 16:11 por DeepSeek Harness (deepseek-flash) a pedido do usuário; a mãe só é concluída quando todas as filhas estiverem `concluido`)
+  - `KIRO-DEV-CLONE.1`: Link "KIRO DEV CLONE" no menu (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.2`: Rota `/kiro-dev-clone` (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.3`: Componente base `KiroDevClone` (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.4`: Componente de Specs (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.5`: Botão "Criar Spec" (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.6`: Endpoint para salvar specs (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.7`: Componente de Chat (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.8`: Conectar chat com LLM (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.9`: Componente de Steering (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.10`: Validação de steering (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.11`: Sistema de hooks (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.12`: Hook de file change (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.13`: Integrar MCP existente (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.14`: Ferramentas MCP específicas (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.15`: Componente de Permissions (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.16`: Controle de acesso (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.17`: Sistema de custom agents (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.18`: UI para custom agents (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.19`: Sistema de Skills (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.20`: UI para Skills (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.21`: Usar memória existente (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.22`: Integrar memória com chat (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.23`: Sistema de checkpoints (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.24`: UI para checkpoints (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.25`: Arquivo `.kiroignore` (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.26`: Leitura do `.kiroignore` (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.27`: Sistema de workflows (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.28`: UI para workflows (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.29`: `KIRO-DEV-CLONE/STATUS.md` (`pendente`, 🔒 reservada)
+  - `KIRO-DEV-CLONE.30`: Pasta `KIRO-DEV-CLONE/docs/` (`pendente`, 🔒 reservada)
+- **Descrição:** Detalhes na pasta [`KIRO-DEV-CLONE/`](KIRO-DEV-CLONE/AGENTS.md): as 30 subtarefas abaixo espelham, uma a uma, as tarefas descritas nesse arquivo.
+- **Critérios de Aceitação:** A ser definido pelo usuário na pasta `KIRO-DEV-CLONE/`.
+- **Commit:** pendente
+- **Anotação:** ⛔ **TRAVADO PARA TODAS AS IAS** (2026-10-12 15:10): tarefa reservada para implementação manual pelo usuário; nenhuma IA pode assumir as filhas sem autorização explícita — ver a **🔒 TRAVA ESPECIAL** no início do quadro. **Subdivisão (2026-10-12 16:11, DeepSeek Harness (deepseek-flash), a pedido do usuário):** a mãe, antes atômica, passou a declarar as 30 filhas `KIRO-DEV-CLONE.1` a `.30`, espelhando [`KIRO-DEV-CLONE/AGENTS.md`](KIRO-DEV-CLONE/AGENTS.md), com `Prioridade: BAIXA` (herdada da mãe — regra 1.2.4) e as dependências de lá. A **🔒 trava especial permanece ativa**: as filhas ficam **reservadas** e só o usuário libera. Corrigido também o caminho da pasta, que estava em minúsculas (`kiro-dev-clone/`) enquanto a pasta real é `KIRO-DEV-CLONE/`.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.1: Link "KIRO DEV CLONE" no menu
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** KIRO-DEV-CLONE.2
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Adicionar item no menu principal com o nome exato "KIRO DEV CLONE", apontando para a rota `/kiro-dev-clone` e mantendo a consistência visual (Tarefa 1.1 de [`KIRO-DEV-CLONE/AGENTS.md`](KIRO-DEV-CLONE/AGENTS.md)).
+- **Critérios de Aceitação:** Item visível no menu com o nome exato; clique leva à rota; `npm run typecheck` e `npm test` verdes.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.2: Rota `/kiro-dev-clone`
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** KIRO-DEV-CLONE.3
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Adicionar a rota `/kiro-dev-clone` no React Router (`src/App.tsx` ou arquivo de rotas), renderizando o componente base da v2 (Tarefa 1.2).
+- **Critérios de Aceitação:** Acessar a rota e ver o componente renderizado, sem erro no console.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.3: Componente base `KiroDevClone`
 - **Status:** pendente
 - **Prioridade:** BAIXA
 - **Executor:** nenhum
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Detalhes na pasta `kiro-dev-clone/`. O usuário preencherá os detalhes nesta pasta.
-- **Critérios de Aceitação:** A ser definido pelo usuário na pasta `kiro-dev-clone/`.
+- **Descrição:** Criar `src/views/KiroDevClone.tsx` com layout básico: cabeçalho, área de conteúdo e rodapé (Tarefa 1.3).
+- **Critérios de Aceitação:** Componente renderiza sem erros; `npm run typecheck` verde.
 - **Commit:** pendente
-- **Anotação:** ⛔ **TRAVADO PARA TODAS AS IAS** (2026-10-12 15:10): Tarefa reservada para implementação manual pelo usuário. Nenhuma IA pode assumir subtarefas sem autorização explícita. Ver trava especial no início do quadro.
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.4: Componente de Specs
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `src/components/kiro/Specs.tsx` para planejamento de features, com os campos requirements, design e tasks (Tarefa 2.1).
+- **Critérios de Aceitação:** Componente renderiza e o formulário funciona.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.5: Botão "Criar Spec"
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** KIRO-DEV-CLONE.4
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Adicionar botão que abre modal/formulário para criar um novo spec no componente Specs (Tarefa 2.2).
+- **Critérios de Aceitação:** Botão abre o formulário de criação.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.6: Endpoint para salvar specs
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** KIRO-DEV-CLONE.4
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar RPC ou endpoint (em `database/` ou `api/`) que salve specs com title, requirements, design e tasks (Tarefa 2.3).
+- **Critérios de Aceitação:** Endpoint salva a spec sem erros; teste cobrindo o caminho feliz.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.7: Componente de Chat
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `src/components/kiro/Chat.tsx` com lista de mensagens, campo de texto e botão enviar (Tarefa 3.1).
+- **Critérios de Aceitação:** Chat renderiza e permite enviar mensagem.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.8: Conectar chat com LLM
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** KIRO-DEV-CLONE.7
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Integrar o chat com a API do modelo LLM (`src/components/kiro/Chat.tsx` + `api/`) — Tarefa 3.2.
+- **Critérios de Aceitação:** Chat envia a mensagem e exibe a resposta do modelo; a chave do provedor fica só no servidor.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.9: Componente de Steering
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `src/components/kiro/Steering.tsx` para exibir as regras/padrões do projeto (Tarefa 4.1).
+- **Critérios de Aceitação:** Componente exibe a lista de regras.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.10: Validação de steering
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** KIRO-DEV-CLONE.9
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Validar código contra as regras de steering em `src/lib/kiro/steering.ts` (Tarefa 4.2).
+- **Critérios de Aceitação:** A validação identifica desvios das regras definidas; teste unitário cobrindo.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.11: Sistema de hooks
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar em `src/lib/kiro/hooks.ts` o sistema que executa ações em eventos (file changes, tool use, task completion) — Tarefa 5.1.
+- **Critérios de Aceitação:** Hooks registram os eventos; teste unitário cobrindo o registro.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera. Atenção: não confundir com os hooks de Git da seção 1.3 do `AGENTS.md` — são coisas diferentes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.12: Hook de file change
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** KIRO-DEV-CLONE.11
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Adicionar hook que detecta mudanças em arquivos e dispara a ação configurada (Tarefa 5.2).
+- **Critérios de Aceitação:** Hook detecta a mudança de arquivo.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.13: Integrar MCP existente
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Disponibilizar na v2 o MCP já implementado no projeto principal (`api/mcp.ts`) — Tarefa 6.1.
+- **Critérios de Aceitação:** MCP responde na v2 (`tools/list` funciona).
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.14: Ferramentas MCP específicas
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** KIRO-DEV-CLONE.13
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Registrar em `api/_lib/tools.ts` as ferramentas MCP específicas da v2 (Tarefa 6.2).
+- **Critérios de Aceitação:** Ferramentas registradas respondem corretamente; testes atualizados.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.15: Componente de Permissions
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `src/components/kiro/Permissions.tsx` com a UI para configurar permissões do agente (Tarefa 7.1).
+- **Critérios de Aceitação:** Componente renderiza e permite configurar as permissões.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.16: Controle de acesso
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** KIRO-DEV-CLONE.15
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Implementar a validação de permissões em `src/lib/kiro/permissions.ts` (Tarefa 7.2).
+- **Critérios de Aceitação:** O agente acessa apenas os recursos permitidos; teste unitário cobrindo a negação.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.17: Sistema de custom agents
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar em `src/lib/kiro/agents.ts` o sistema de agentes especializados com instruções próprias (Tarefa 8.1).
+- **Critérios de Aceitação:** O sistema permite definir agentes com instruções específicas.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.18: UI para custom agents
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** KIRO-DEV-CLONE.17
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `src/components/kiro/CustomAgents.tsx` com formulário para definir as instruções do agente (Tarefa 8.2).
+- **Critérios de Aceitação:** A UI cria e edita custom agents.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.19: Sistema de Skills
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar em `src/lib/kiro/skills.ts` o sistema de pacotes de instruções reutilizáveis (Tarefa 9.1).
+- **Critérios de Aceitação:** O sistema permite definir skills reutilizáveis.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.20: UI para Skills
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** KIRO-DEV-CLONE.19
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `src/components/kiro/Skills.tsx` para listar e criar skills (Tarefa 9.2).
+- **Critérios de Aceitação:** A UI lista e cria skills.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.21: Usar memória existente
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Expor na v2 o sistema de memória já implementado (`src/lib/memoria/`) — Tarefa 10.1.
+- **Critérios de Aceitação:** A memória funciona na v2.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.22: Integrar memória com chat
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** KIRO-DEV-CLONE.21, KIRO-DEV-CLONE.7
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Permitir salvar e carregar memórias a partir do chat (`src/components/kiro/Chat.tsx`) — Tarefa 10.2.
+- **Critérios de Aceitação:** O chat salva e carrega memórias.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.23: Sistema de checkpoints
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar em `src/lib/kiro/checkpoints.ts` o sistema de salvar/restaurar estado (Tarefa 11.1).
+- **Critérios de Aceitação:** Checkpoint é salvo e restaurado corretamente.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.24: UI para checkpoints
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** KIRO-DEV-CLONE.23
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `src/components/kiro/Checkpoints.tsx` para listar, criar e restaurar checkpoints (Tarefa 11.2).
+- **Critérios de Aceitação:** A UI executa as três operações.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.25: Arquivo `.kiroignore`
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar o `.kiroignore` na raiz com padrões de ignore, no estilo do `.gitignore` (Tarefa 12.1).
+- **Critérios de Aceitação:** Arquivo criado com os padrões definidos.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.26: Leitura do `.kiroignore`
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** KIRO-DEV-CLONE.25
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Ler o `.kiroignore` e filtrar arquivos em `src/lib/kiro/ignore.ts` (Tarefa 12.2).
+- **Critérios de Aceitação:** A filtragem ignora os arquivos listados; teste unitário cobrindo.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.27: Sistema de workflows
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar em `src/lib/kiro/workflows.ts` o sistema de workflows automatizados com passos (Tarefa 13.1).
+- **Critérios de Aceitação:** O sistema permite definir workflows com passos.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.28: UI para workflows
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** KIRO-DEV-CLONE.27
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `src/components/kiro/Workflows.tsx` para listar e executar workflows (Tarefa 13.2).
+- **Critérios de Aceitação:** A UI lista e executa workflows.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.29: `KIRO-DEV-CLONE/STATUS.md`
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `KIRO-DEV-CLONE/STATUS.md` com o modelo de status da implementação (Tarefa 14.1).
+- **Critérios de Aceitação:** Arquivo criado com o modelo de status.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] KIRO-DEV-CLONE.30: Pasta `KIRO-DEV-CLONE/docs/`
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar a pasta de documentação específica `KIRO-DEV-CLONE/docs/` (Tarefa 14.2).
+- **Critérios de Aceitação:** Pasta existe no repositório.
+- **Commit:** pendente
+- **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
