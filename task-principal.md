@@ -792,7 +792,7 @@
   - `SUB-20.2`: `parseTags(texto)` em `src/lib/memoriaForm.ts` (`concluido`, `78a1e70`)
   - `SUB-20.3`: `sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts` (`concluido`, `e5e67e5`)
   - `SUB-20.4`: Componente `TagInput` em `src/components/ui/TagInput.tsx` (`concluido`, `3d44cd1`)
-  - `SUB-20.5`: Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts` (`pendente`)
+  - `SUB-20.5`: Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts` (`em_execucao`)
   - `SUB-20.6`: Modal `MemoriaFormModal` em `src/components/memoria/` (`pendente`)
   - `SUB-20.7`: Botão "Nova memória" na `src/views/MemoriaView.tsx` (`pendente`)
   - `SUB-20.8`: `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` (`pendente`)
@@ -845,8 +845,8 @@
 - **Anotação:** Criado `src/components/ui/TagInput.tsx` (`{ valor, onChange, erro?, rotulo?, placeholder?, desabilitado? }`): chips `#tag` com botão de remover (aria-label), Enter/vírgula adicionam o texto via `parseTags` (ignora tags já presentes), Backspace com campo vazio remove a última, colar texto com separadores adiciona várias, perder o foco confirma o texto pendente; erro com `aria-invalid`/`aria-describedby` e borda vermelha; modo escuro. Sugestões ficam no `TagSugestoes` (SUB-20.9). `npm run typecheck`, `npm run build` e `npm test` OK.
 
 #### [ ] SUB-20.5: Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 00:54)
 - **Depende de:** SUB-33.7
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/hooks/useSalvarMemoria.ts`: `{ salvar(projectId | null, dados): Promise<Memoria | null>, salvando }` chamando `salvarMemoria` (SUB-10) com `gerador: criarGeradorEmbedding()`, toast de sucesso/erro (`useToast`). Se o gerador falhar, salva sem vetor e avisa.
