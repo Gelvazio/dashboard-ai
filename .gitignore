@@ -147,3 +147,17 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+
+__pycache__/
+graphify-output/cache/
+graphify-out/
+variaveis.js
+
+.env
+
+# Arquivos grandes (slides e PDFs) ficam so na pasta local, fora do Git
+*.pptx
+*.PPTX
+*.pdf
+*.PDF
