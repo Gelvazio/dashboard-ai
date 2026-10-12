@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { escopoMemoria, filtrarMemoriasLocal, memoriaComoMarkdown } from '@/lib/memorias';
+import { escopoMemoria, filtrarMemoriasLocal, memoriaComoMarkdown, tagsDisponiveis } from '@/lib/memorias';
 
 describe('lib/memorias — memoriaComoMarkdown', () => {
   it('gera título, tags, escopo do projeto e conteúdo', () => {
@@ -51,5 +51,27 @@ describe('lib/memorias — filtrarMemoriasLocal', () => {
     expect(filtrarMemoriasLocal(memorias, { escopo: 'projeto' })).toHaveLength(2);
     expect(filtrarMemoriasLocal(memorias, { escopo: 'projeto', tag: 'deploy', busca: 'banco' }).map((m) => m.title)).toEqual(['Banco']);
     expect(filtrarMemoriasLocal(memorias, { escopo: 'global', tag: 'deploy' })).toEqual([]);
+  });
+});
+
+describe('lib/memorias — tagsDisponiveis', () => {
+  it('conta memórias por tag, ordena por total desc e depois por nome', () => {
+    const tags = tagsDisponiveis([
+      { tags: ['deploy', 'vercel'] },
+      { tags: ['sql', 'deploy'] },
+      { tags: ['ci', 'vercel', 'deploy'] },
+      { tags: [] },
+    ]);
+    expect(tags).toEqual([
+      { tag: 'deploy', total: 3 },
+      { tag: 'vercel', total: 2 },
+      { tag: 'ci', total: 1 },
+      { tag: 'sql', total: 1 },
+    ]);
+  });
+
+  it('normaliza espaços/maiúsculas, ignora vazias e conta cada memória uma vez por tag', () => {
+    expect(tagsDisponiveis([{ tags: [' Deploy ', 'deploy', ''] }, { tags: ['DEPLOY'] }])).toEqual([{ tag: 'deploy', total: 2 }]);
+    expect(tagsDisponiveis([])).toEqual([]);
   });
 });

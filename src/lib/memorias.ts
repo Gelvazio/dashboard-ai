@@ -56,3 +56,25 @@ export function filtrarMemoriasLocal<M extends Pick<Memoria, 'title' | 'content'
     return true;
   });
 }
+
+/** Tag com a quantidade de memórias que a usam (para o filtro por tag). */
+export interface TagDisponivel {
+  tag: string;
+  total: number;
+}
+
+/**
+ * Lista as tags das memórias com a contagem de memórias por tag, ordenada por
+ * total (desc) e depois por nome (pt-BR). Tags são comparadas sem espaços nas
+ * pontas e em minúsculas; cada memória conta no máximo uma vez por tag.
+ */
+export function tagsDisponiveis(memorias: readonly Pick<Memoria, 'tags'>[]): TagDisponivel[] {
+  const contagem = new Map<string, number>();
+  for (const m of memorias) {
+    const unicas = new Set((m.tags ?? []).map((t) => t.trim().toLowerCase()).filter(Boolean));
+    for (const t of unicas) contagem.set(t, (contagem.get(t) ?? 0) + 1);
+  }
+  return [...contagem]
+    .map(([tag, total]) => ({ tag, total }))
+    .sort((a, b) => b.total - a.total || a.tag.localeCompare(b.tag, 'pt-BR'));
+}
