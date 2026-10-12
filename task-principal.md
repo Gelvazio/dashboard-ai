@@ -2149,7 +2149,7 @@
   - `SUB-35.2`: Trigger `validar_agent_event` em `database/07_agent_events.sql` (`concluido`)
   - `SUB-35.3`: RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql` (`concluido`)
   - `SUB-35.4`: Publicar `agent_events` no Supabase Realtime (`concluido`)
-  - `SUB-35.5`: Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` (`pendente`)
+  - `SUB-35.5`: Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` (`em_execucao`)
   - `SUB-35.6`: Teste de integração de `agent_events` (RLS e trigger) (`pendente`)
   - `SUB-35.7`: Seção "Eventos dos agentes (07)" no `database/README.md` (`pendente`)
   - `SUB-35.8`: Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` (`pendente`)
@@ -2237,9 +2237,9 @@
 - **Commit:** `95f12ff`
 - **Anotação:** Em `database/07_agent_events.sql`, bloco `do $$` que faz `alter publication supabase_realtime add table public.agent_events` só se a publicação existir e a tabela ainda não estiver nela. Validado em Postgres local (banco temporário): 00–07 aplicados 2x sem a publicação (não falha); com `create publication supabase_realtime`, 07 reaplicado 2x e `pg_publication_tables` mostra `agent_events`.
 
-#### [ ] SUB-35.5: Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [🔄] SUB-35.5: Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql`
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-35.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Função SQL `stable`, `security invoker` (respeita a RLS), que devolve o último evento de cada agente do projeto (`distinct on (agente) ... order by agente, created_at desc`): `agente`, `task_codigo`, `etapa`, `tipo`, `status`, `mensagem`, `execucao_id`, `ultimo_em`, mais `ultimo_heartbeat_em` (último `tipo = 'heartbeat'`). `grant execute` para `authenticated`. Só exibe atividade; não altera travas.
