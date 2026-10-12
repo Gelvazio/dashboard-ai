@@ -33,17 +33,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 05 (Grok Bot) — SUB-35.6
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.6** |
-| **Título da Sub-task:** | Teste de integração de `agent_events` (RLS e trigger) |
-| **Agente Responsável:** | DashboardAI-Clone 05 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:07 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-34.3
 
 | Propriedade | Valor Atual |
@@ -70,13 +59,12 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (2)
+### 🔄 EM EXECUÇÃO (1)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-35.43** | CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`) | DashboardAI-Clone 02 | 2026-10-12 01:08 | SUB-35.42 |
 | **SUB-34.3** | Modais da fila sob demanda na `src/views/FilaView.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:08 | SUB-34.1 |
-| **SUB-35.6** | Teste de integração de `agent_events` (RLS e trigger) | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:07 | SUB-35.2, SUB-35.3 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
@@ -214,10 +202,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (92)
+### ✅ CONCLUÍDAS (93)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-35.6** | Teste de integração de `agent_events` (RLS e trigger) | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:07 | 2026-10-12 01:09 | `e7a39cd` |
 | **SUB-19.8** | Integrar a busca na `src/views/MemoriaView.tsx` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:07 | 2026-10-12 01:09 | `37df2a9` |
 | **SUB-27.8** | Teste de integração dos papéis em `tests/integration/authService.integration.test.ts` | DashboardAI-Clone 01 | 2026-10-12 01:08 | 2026-10-12 01:09 | `ca52028` |
 | **SUB-35.22** | Registro do Chart.js e paleta em `src/lib/charts.ts` | DashboardAI-Clone 06 | 2026-10-12 01:08 | 2026-10-12 01:09 | `cabdbc0` |
@@ -596,3 +585,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:09 | DashboardAI-Clone 06 | SUB-35.22 | `cabdbc0` | Criado `src/lib/charts.ts`: `Chart.register` só com `ArcElement`, `BarElement`, `CategoryScale`, `LinearScale`, `Tooltip` e `Legend` (linha do tempo usará `LinearScale` com ms, sem `TimeScale`/adaptador de datas), reexporta `Chart`; paletas `CORES_ESTADO` (ativo/ocioso/sem_sinal/finalizado) e `CORES_TIPO` (os 8 tipos do check de `agent_events`) com variantes `claro`/`escuro`, mais `CORES_EIXO` e `corDoTema(cor, escuro)`. `npm run typecheck`, `npm run build` e `npm test` OK. |
 | 2026-10-12 01:09 | DashboardAI-Clone 01 | SUB-27.8 | `ca52028` | Criado `tests/integration/authService.integration.test.ts` (PostgREST local, JWT `authenticated`): usuário vê o próprio papel global e não o de outro; admin global -> `admin` em qualquer projeto; editor/viewer -> papel do projeto; não membro -> `null`. `npm run test:integration` 21/21 (Node 20 da box precisou de `NODE_OPTIONS=--experimental-websocket`; o projeto exige Node 22+); `npm test` verde (skipped sem PostgREST). |
 | 2026-10-12 01:09 | DashboardAI-Clone 04 (Grok Bot) | SUB-19.8 | `37df2a9` | Na `src/views/MemoriaView.tsx`, a área reservada do topo virou a seção "Busca semântica" (título com ícone `Sparkles`, `aria-labelledby`) com `BuscaSemanticaPanel` (SUB-19.7) recebendo o projeto de `useProjetoAtual`, acima da grade; clicar num resultado abre o `MemoriaDetailModal` (SUB-21.11) quando a memória está na lista carregada. Conflito de comentário com a SUB-21.11 resolvido. `npm run typecheck`, `npm test` e `npm run build` OK; `#/memoria` conferido no navegador (sem Supabase local mostra o aviso de configuração). |
+| 2026-10-12 01:09 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.6 | `e7a39cd` | Criado `tests/integration/agentEvents.integration.test.ts` (helpers de `tests/helpers/postgrest.ts`; cliente sem tipagem de tabela até a SUB-35.8 incluir `agent_events` no tipo `Database`): viewer lê só eventos do próprio projeto; viewer não inclui (RLS); editor inclui no próprio projeto com `agente` aparado e `criado_por` = ele; update recusado (permission denied, nada alterado); task de outro projeto recusada pelo trigger ("não pertence ao projeto do evento"). `npm run test:integration` (PostgREST + Postgres 17 locais, Node 22) verde: 6 arquivos, 23 testes; `npm test` verde (skipped sem PostgREST); `npm run typecheck` OK. Obs.: no box o Node padrão é 20 e o supabase-js exige Node 22+ para a integração. |

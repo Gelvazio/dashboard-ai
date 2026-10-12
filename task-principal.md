@@ -2150,7 +2150,7 @@
   - `SUB-35.3`: RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql` (`concluido`)
   - `SUB-35.4`: Publicar `agent_events` no Supabase Realtime (`concluido`)
   - `SUB-35.5`: Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` (`concluido`)
-  - `SUB-35.6`: Teste de integração de `agent_events` (RLS e trigger) (`em_execucao`)
+  - `SUB-35.6`: Teste de integração de `agent_events` (RLS e trigger) (`concluido`)
   - `SUB-35.7`: Seção "Eventos dos agentes (07)" no `database/README.md` (`pendente`)
   - `SUB-35.8`: Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` (`pendente`)
   - `SUB-35.9`: `listarEventos()` em `src/services/eventService.ts` (`pendente`)
@@ -2247,15 +2247,15 @@
 - **Commit:** `d9d9a6c`
 - **Anotação:** Adicionada `atividade_atual_agentes(p_project_id bigint)` em `database/07_agent_events.sql`: SQL `stable`, `security invoker` (respeita a RLS), `distinct on (agente)` ordenado por `created_at desc` -> agente, task_codigo, etapa, tipo, status, mensagem, execucao_id, ultimo_em e ultimo_heartbeat_em (máximo dos `tipo = 'heartbeat'`). `drop function if exists` + create (reaplicável); execute só para `authenticated`/`service_role`. Validado em Postgres local: 00–07 aplicados 2x; com eventos de 2 agentes devolve 1 linha por agente com o último evento e heartbeat correto.
 
-#### [ ] SUB-35.6: Teste de integração de `agent_events` (RLS e trigger)
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 01:07)
+#### [x] SUB-35.6: Teste de integração de `agent_events` (RLS e trigger)
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 01:07; conclusão: 2026-10-12 01:09)
 - **Depende de:** SUB-35.2, SUB-35.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `tests/integration/agentEvents.integration.test.ts` (helpers de `tests/helpers/postgrest.ts`): viewer lê eventos do próprio projeto e não os de outro; viewer não inclui; editor inclui; `update` é recusado; task de outro projeto é recusada.
 - **Critérios de Aceitação:** `npm run test:integration` passa (skipped sem PostgREST; `npm test` segue verde).
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `e7a39cd`
+- **Anotação:** Criado `tests/integration/agentEvents.integration.test.ts` (helpers de `tests/helpers/postgrest.ts`; cliente sem tipagem de tabela até a SUB-35.8 incluir `agent_events` no tipo `Database`): viewer lê só eventos do próprio projeto; viewer não inclui (RLS); editor inclui no próprio projeto com `agente` aparado e `criado_por` = ele; update recusado (permission denied, nada alterado); task de outro projeto recusada pelo trigger ("não pertence ao projeto do evento"). `npm run test:integration` (PostgREST + Postgres 17 locais, Node 22) verde: 6 arquivos, 23 testes; `npm test` verde (skipped sem PostgREST); `npm run typecheck` OK. Obs.: no box o Node padrão é 20 e o supabase-js exige Node 22+ para a integração.
 
 #### [ ] SUB-35.7: Seção "Eventos dos agentes (07)" no `database/README.md`
 - **Status:** pendente
