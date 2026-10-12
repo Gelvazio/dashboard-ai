@@ -33,20 +33,30 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhuma tarefa reservada para Codex |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — SUB-08.6
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-08.6** |
+| **Título da Sub-task:** | Seção Scripts: `DASHBOARD_AI_PROJECT` |
+| **Agente Responsável:** | DashboardAI (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 00:35 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém mais assume a SUB-08.6 |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (0)
+### 🔄 EM EXECUÇÃO (1)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
-
-*(Nenhuma tarefa em execução)*
+| **SUB-08.6** | Seção Scripts: `DASHBOARD_AI_PROJECT` | DashboardAI (Grok Bot) | 2026-10-12 00:35 | SUB-08.1 |
 
 ---
 
-### ⏳ PENDENTES (146)
+### ⏳ PENDENTES (145)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -54,12 +64,11 @@
 
 > **SUB-27 liberada a pedido do usuário** (2026-10-11 23:55): mãe e 22 subtarefas estão disponíveis; cada agente deve respeitar as dependências indicadas. Nenhum código da SUB-27 havia sido enviado à main.
 
-**🟢 Livres agora (26):** SUB-33.5, SUB-33.9, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.5, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.2, SUB-23.5, SUB-23.12, SUB-25.1, SUB-26.1, SUB-27.1
+**🟢 Livres agora (25):** SUB-33.5, SUB-33.9, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.5, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.2, SUB-23.5, SUB-23.12, SUB-25.1, SUB-26.1, SUB-27.1
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` (mãe) | 3 | Fase 3 | SUB-06; SUB-08.1 a SUB-08.11 |
-| **SUB-08.6** | Seção Scripts: `DASHBOARD_AI_PROJECT` | 3 | Fase 3 | SUB-08.1 — 🟢 livre |
 | **SUB-08.7** | Conferir `.gitignore` (`!.env.example`) | 3 | Fase 3 | SUB-08.1 — 🟢 livre |
 | **SUB-08.8** | `extrairVariaveis(texto)` em `scripts/checar-env.mjs` + testes | 3 | Fase 3 | Nenhuma — 🟢 livre |
 | **SUB-08.9** | CLI `npm run check:env` (toda variável usada está no `.env.example`) | 3 | Fase 3 | SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.11 — ⛓️ bloqueada |
@@ -347,3 +356,4 @@
 | 2026-10-12 00:34 | DashboardAI (Grok Bot) | SUB-08.4 | `ac47ab6` | Preenchida a seção Embeddings do `.env.example` com `OPENAI_API_KEY` (só servidor), `EMBEDDING_API_URL` (padrão `https://api.openai.com/v1/embeddings`, aceita API compatível) e `EMBEDDING_MODEL` (padrão `text-embedding-3-small`; vetor de 1536 dimensões), iguais aos padrões de `api/_lib/embeddings.ts`. Valores vazios. |
 | 2026-10-12 00:34 | DashboardAI (Grok Bot) | SUB-08.5 | — | Lock: assumindo SUB-08.5 (Seção MCP: `MCP_AUTH_TOKEN`, `MCP_CORS_ORIGIN`, `MCP_DEFAULT_PROJECT`, `MCP_ALLOWED_PROJECTS`) |
 | 2026-10-12 00:35 | DashboardAI (Grok Bot) | SUB-08.5 | `212cc43` | Preenchida a seção MCP do `.env.example` com `MCP_AUTH_TOKEN` (exigido no `/mcp`; sem ele as ferramentas de dados ficam desativadas; gerar com `openssl rand -hex 32`), `MCP_CORS_ORIGIN` (padrão `*`, restringir em produção; também usada pelo `/api/embedding`), `MCP_DEFAULT_PROJECT` e `MCP_ALLOWED_PROJECTS` (lista por vírgula; quando preenchida recusa memória global), conforme `api/mcp.ts`, `api/_lib/args.ts` e `api/_lib/brain-tools.ts`. Valores vazios. |
+| 2026-10-12 00:35 | DashboardAI (Grok Bot) | SUB-08.6 | — | Lock: assumindo SUB-08.6 (Seção Scripts: `DASHBOARD_AI_PROJECT`) |
