@@ -9,9 +9,9 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 33
-- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-16`)
+- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
 - **Pendentes:** 13
-- **Concluídas:** 19
+- **Concluídas:** 20
 - **Canceladas:** 0
 
 ---
@@ -279,16 +279,16 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-### [🔄] SUB-16: Modal de Cadastro e Edição de Task
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:13)
+### [x] SUB-16: Modal de Cadastro e Edição de Task
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:13, conclusão: 2026-10-11 23:16)
 - **Depende de:** SUB-09, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar modal com campos: Título, Instrução (editor Markdown/textarea responsivo), Prioridade (1 a 5), Ordem, Executar Após (datetime), e Máximo de Tentativas.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Validação de campos obrigatórios, salvamento no Supabase e feedback visual de sucesso/erro.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `b8486f1`
+- **Anotação:** Arquivos: src/lib/taskForm.ts, src/components/ui/{Modal,Botao}.tsx, src/hooks/{ToastContext.tsx,useToast.ts}, src/components/tasks/TaskFormModal.tsx, FilaView, App (ToastProvider), tests/unit/taskForm.test.ts. Ajuste de larguras da tabela (SUB-14) para caber em 1280px.
 
 ### [ ] SUB-17: Modal de Visualização Detalhada da Task
 - **Status:** pendente

@@ -44,28 +44,16 @@
 | **Data e Hora de Início:** | 2026-10-11 22:41 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot)
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-16** |
-| **Título da Sub-task:** | Modal de Cadastro e Edição de Task |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-11 23:13 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27** | Autenticação e Login com Supabase Auth | Codex (OpenAI) | 2026-10-11 22:27 | SUB-03, SUB-29 |
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` | xAI (Grok) | 2026-10-11 22:41 | SUB-06 |
-| **SUB-16** | Modal de Cadastro e Edição de Task | DashboardAI (Grok Bot) | 2026-10-11 23:13 | SUB-09, SUB-12 |
 
 ---
 
@@ -89,7 +77,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (19)
+### ✅ CONCLUÍDAS (20)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -112,6 +100,7 @@
 | **SUB-10** | Serviço de Memória Semântica (`src/services/memoryService.ts`) | DashboardAI (Grok Bot) | 2026-10-11 23:07 | 2026-10-11 23:08 | `086689f` |
 | **SUB-11** | Serviço de Logs do Agendador (`src/services/logService.ts`) | DashboardAI (Grok Bot) | 2026-10-11 23:08 | 2026-10-11 23:09 | `c8879bb` |
 | **SUB-14** | Tabela Avançada da Fila de Tasks | DashboardAI (Grok Bot) | 2026-10-11 23:11 | 2026-10-11 23:13 | `830979e` |
+| **SUB-16** | Modal de Cadastro e Edição de Task | DashboardAI (Grok Bot) | 2026-10-11 23:13 | 2026-10-11 23:16 | `b8486f1` |
 
 ---
 
@@ -149,3 +138,4 @@
 | 2026-10-11 23:08 | DashboardAI (Grok Bot) | SUB-10 | `086689f` | memoryService: listarMemorias, buscarMemoriasSimilares (match_memories), buscarMemorias (semântica com gerador ou textual), salvarMemoria (upsert), excluirMemoria |
 | 2026-10-11 23:09 | DashboardAI (Grok Bot) | SUB-11 | `c8879bb` | logService: listarLogs (data_hora desc, filtros, paginação com total), contarLogsPorStatus, ultimaExecucao, opcoesDeFiltro |
 | 2026-10-11 23:13 | DashboardAI (Grok Bot) | SUB-14 | `830979e` | Tabela da fila escopada pelo projeto selecionado: Código, Título, Prioridade (badges 1-5), Ordem, Dependências (chips coloridos pela situação), ON/OFF, Status (spinner em execução com agente da trava), Tentativas (barra), Resultado (PR/commit/resumo) e coluna Ações (render prop para SUB-18); tooltips acessíveis em portal; barra de progresso da fila; cartões no celular; esqueleto de carregamento. Validado: typecheck, build, vitest (unit+integração) e screenshots 1280x800/390x844. |
+| 2026-10-11 23:16 | DashboardAI (Grok Bot) | SUB-16 | `b8486f1` | Modal acessível (Esc, foco preso, tela cheia no celular) para criar/editar tasks do projeto selecionado: Título, Instrução (textarea Markdown com contador), Prioridade 1-5 (seletor colorido), Ordem, Executar após (datetime-local convertido para ISO), Máximo de tentativas, Depende de, Executor IA/Humano e ON/OFF. Validação por campo (lib/taskForm puro + testes), erros do banco/RLS exibidos no modal e em toast; botão Nova task e ação Editar na tabela. Validado: typecheck, build, vitest (unit+integração), criação real via PostgREST e screenshots 1280x800/390x844. |
