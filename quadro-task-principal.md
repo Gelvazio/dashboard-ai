@@ -44,6 +44,17 @@
 | **Data e Hora de Início:** | 2026-10-12 00:49 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.3
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-27.3** |
+| **Título da Sub-task:** | `entrarComSenha(email, senha)` em `src/services/authService.ts` |
+| **Agente Responsável:** | DashboardAI-Clone 01 |
+| **Data e Hora de Início:** | 2026-10-12 00:50 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -52,6 +63,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-27.3** | `entrarComSenha(email, senha)` em `src/services/authService.ts` | DashboardAI-Clone 01 | 2026-10-12 00:50 | SUB-27.1 |
 | **SUB-20.3** | `sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts` | DashboardAI-Clone 06 | 2026-10-12 00:49 | SUB-20.1, SUB-20.10 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
@@ -428,3 +440,4 @@ n|| **SUB-19.9** | `BuscaControles` (limiar, globais, modo) em `src/components/m
 | 2026-10-12 00:49 | DashboardAI-Clone 01 | SUB-27.16 | — | Lock: assumindo SUB-27.16 (`urlDeRetorno()` para link mágico e redefinição de senha) |
 | 2026-10-12 00:49 | DashboardAI-Clone 06 | SUB-20.3 | — | Lock: assumindo SUB-20.3 (`sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts`) |
 | 2026-10-12 00:49 | DashboardAI-Clone 01 | SUB-27.16 | `1e3240c` | Adicionado `urlDeRetorno(loc)` em `src/lib/auth.ts`: origem + caminho + tela do hash (`#/rota`), descartando tokens/parâmetros anteriores. 4 testes em `tests/unit/auth.test.ts`; vitest e typecheck verdes. |
+| 2026-10-12 00:50 | DashboardAI-Clone 01 | SUB-27.3 | — | Lock: assumindo SUB-27.3 (`entrarComSenha(email, senha)` em `src/services/authService.ts`) |

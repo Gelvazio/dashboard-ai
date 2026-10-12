@@ -1511,8 +1511,8 @@
 - **Anotação:** Adicionado `validarLogin` em `src/lib/auth.ts` (e-mail obrigatório/formato após trim; senha obrigatória, mín. 6). 4 testes em `tests/unit/auth.test.ts`; vitest e typecheck verdes.
 
 #### [ ] SUB-27.3: `entrarComSenha(email, senha)` em `src/services/authService.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/services/authService.ts` com `export async function entrarComSenha(email: string, senha: string, client = getSupabase()): Promise<Session>` usando `client.auth.signInWithPassword`; erro vira `ServiceError(mensagemErroAuth(error), 'AUTH')`. A senha nunca é guardada nem logada. Exportar no barrel `src/services/index.ts`.
