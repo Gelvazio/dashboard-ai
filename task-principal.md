@@ -10,12 +10,12 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
 - **Subtarefas atômicas (~3 min):** 153 (SUB-08.x, SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x; atualizado em 2026-10-12 00:17)
-- **Em Execução:** 2 (SUB-33.11, SUB-23.1)
-- **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 145 subtarefas
-  - livres agora: 25 (SUB-33.5, SUB-33.6, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.3, SUB-21.13, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
-  - bloqueadas por dependência: 118
+- **Em Execução:** 1 (SUB-23.1)
+- **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 144 subtarefas
+  - livres agora: 28 (SUB-33.5, SUB-33.6, SUB-33.7, SUB-33.9, SUB-33.12, SUB-08.2, SUB-08.3, SUB-08.4, SUB-08.5, SUB-08.6, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.3, SUB-21.13, SUB-23.4, SUB-25.1, SUB-26.1, SUB-27.1)
+  - bloqueadas por dependência: 115
   - reservadas: 0
-- **Concluídas:** 33
+- **Concluídas:** 34
 - **Canceladas:** 0
 
 ---
@@ -167,7 +167,7 @@
   - `SUB-33.8`: Testes de `embeddingService` em `tests/unit/embeddingService.test.ts` (`pendente`)
   - `SUB-33.9`: Documentar `/api/embedding` no `api/README.md` (`pendente`)
   - `SUB-33.10`: Autenticação no handler `api/embedding.ts` (401) (`concluido`)
-  - `SUB-33.11`: Corpo, geração do embedding e erros no handler (400/413/502/200) (`em_execucao`)
+  - `SUB-33.11`: Corpo, geração do embedding e erros no handler (400/413/502/200) (`concluido`)
   - `SUB-33.12`: Testes do handler: 413, 502 e 200 (`pendente`)
   - `SUB-33.13`: Classe `HttpError` em `api/_lib/http-error.ts` (`concluido`)
 - **Descrição:** Criar a função serverless `POST /api/embedding` que valida o JWT da sessão Supabase do usuário (`Authorization: Bearer <access_token>`, conferido no Supabase Auth com a URL e a chave do servidor) e devolve o embedding do texto enviado, usando `OPENAI_API_KEY`, `EMBEDDING_MODEL` e `EMBEDDING_API_URL` somente no servidor (reaproveitar `api/_lib/embeddings.ts`). No frontend, expor um `GeradorEmbedding` que chama esse endpoint para `buscarMemorias`/`salvarMemoria` (SUB-10).
@@ -275,15 +275,15 @@
 - **Commit:** `e060ae6`
 - **Anotação:** No POST de `api/embedding.ts`: `bearerToken` + `verificarSessaoSupabase`; token ausente ou sessão recusada -> 401 com `WWW-Authenticate: Bearer`; `AuthError` (Auth indisponível/config ausente) -> 503 com mensagem segura; sessão válida segue para o 501 provisório (SUB-33.11). typecheck (app + api) e `npm test` verdes; smoke local (não commitado) conferiu 401/401/503/501/405.
 
-#### [ ] SUB-33.11: Corpo, geração do embedding e erros no handler (400/413/502/200)
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (desde 2026-10-12 00:26)
+#### [x] SUB-33.11: Corpo, geração do embedding e erros no handler (400/413/502/200)
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:26 → 2026-10-12 00:26)
 - **Depende de:** SUB-33.10, SUB-33.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Após a autenticação: `lerTextoEmbedding(req.body)` (`HttpError` -> status dela), `generateEmbedding` de `api/_lib/embeddings.ts` -> 200 `{ embedding, dimensoes: 1536, modelo }`; `EmbeddingError` -> 502 com mensagem sem chave. Remove o 501 provisório da SUB-33.4.
 - **Critérios de Aceitação:** `npm run typecheck:api` OK; nenhuma chave no corpo de resposta.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `0dca17d`
+- **Anotação:** No `api/embedding.ts`, após a autenticação: `lerTextoEmbedding(req.body)` (`HttpError` -> status dela, 400/413), `generateEmbedding` -> 200 `{ embedding, dimensoes: 1536, modelo }`; `EmbeddingError` -> 502 com mensagem genérica (a mensagem do provedor pode ecoar parte da chave, então não é devolvida). 501 provisório removido. typecheck (app + api) e `npm test` verdes; smoke local (não commitado) conferiu 200/400/413/502 sem `sk-` no corpo.
 
 #### [ ] SUB-33.12: Testes do handler: 413, 502 e 200
 - **Status:** pendente
