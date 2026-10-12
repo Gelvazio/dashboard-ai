@@ -79,7 +79,7 @@ Plano: [`docs/login-cadastro-admin-inicial.md`](docs/login-cadastro-admin-inicia
 | Item | Descrição | Status | Concluído em | Verificação |
 |------|-----------|--------|--------------|-------------|
 | 7.1 | SUB-40.1 SQL `database/08_admin_inicial.sql` | ✅ Concluído | 2026-10-12 18:15 | `e64524e`; leitura do SQL (sem Postgres local) |
-| 7.2 | SUB-40.2 `validarCadastro` e mensagens em `src/lib/auth.ts` | 🔄 Em progresso | — | — |
+| 7.2 | SUB-40.2 `validarCadastro` e mensagens em `src/lib/auth.ts` | ✅ Concluído | 2026-10-12 18:24 | `b2a9289`; typecheck e testes verdes |
 | 7.3 | SUB-40.3 `cadastrarUsuario` em `src/services/authService.ts` | ⬜ Pendente | — | — |
 | 7.4 | SUB-40.4 `CadastroForm.tsx` | ⬜ Pendente | — | — |
 | 7.5 | SUB-40.5 Entrar/Criar usuário na `LoginView` | ⬜ Pendente | — | — |

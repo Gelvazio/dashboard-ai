@@ -3283,3 +3283,16 @@
 - **Anotação:** Executada em 2026-10-12 por Claude Code (Opus 5.5) por orientação explícita do usuário no chat ("PEGUE A TAREFA DE LOGIN E EXECUTE A SUB-40"), na frente de outros itens `MEDIA` anteriores no quadro. Plano em [`docs/login-cadastro-admin-inicial.md`](docs/login-cadastro-admin-inicial.md). `database/08_admin_inicial.sql`: `email_administrador_inicial()` (único lugar com o e-mail), `garantir_admin_inicial()` `security definer` com `search_path = public` (admin só se e-mail igual **e** `email_confirmed_at` preenchido; `on conflict (user_id) do nothing` preserva papel existente), trigger `garantir_admin_inicial_trg` `after insert or update of email_confirmed_at on auth.users` criada só se `to_regclass('auth.users')` existir, e backfill com a mesma regra. `revoke execute` de `public`, `anon` e `authenticated` (os dois últimos só se o papel existir, para rodar em PostgreSQL puro). Verificação: leitura do SQL (sem Postgres local nesta máquina); o `database/tests/run_tests.sh` aplica `0*.sql` sobre o stub sem schema `auth`, caso coberto pelo `raise notice`. Aplicação no Supabase fica na SUB-40.7.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:15 — Claude Code (Opus 5.5): entrega verificada
 - **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [x] SUB-40.2: Validação e mensagens do cadastro em `src/lib/auth.ts`
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 18:23)
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Adicionar `validarCadastro({ nome, email, senha, confirmacao })`, no mesmo estilo de `validarLogin` (devolve objeto vazio quando está tudo certo): nome obrigatório (mín. 2 caracteres), e-mail válido (reusar `EMAIL_RE`), senha com pelo menos 6 caracteres e confirmação igual à senha ("As senhas não conferem."). Incluir no mapa `MENSAGENS` os códigos do `signUp`: `user_already_exists` / `email_exists` ("Já existe um usuário com este e-mail. Use Entrar ou Esqueci a senha."), `weak_password` ("Senha fraca. Use pelo menos 6 caracteres, com letras e números.") e `signup_disabled` ("O cadastro de novos usuários está desativado. Fale com o administrador.").
+- **Critérios de Aceitação:** `npm run typecheck` e `npm test` verdes; mensagens em português.
+- **Commit:** `b2a9289`
+- **Anotação:** Executada em 2026-10-12 por Claude Code (Opus 5.5) por orientação do usuário no chat ("continue a SUB-40 a partir da SUB-40.2"). `src/lib/auth.ts`: `validarCadastro({ nome, email, senha, confirmacao })` no estilo de `validarLogin` (nome obrigatório com mínimo de 2 caracteres, e-mail pelo `EMAIL_RE`, senha com mínimo de 6, confirmação igual à senha: "As senhas não conferem."), interface `DadosCadastro` e constantes `TAMANHO_MINIMO_NOME`/`TAMANHO_MINIMO_SENHA`. `MENSAGENS` ganhou `user_already_exists`/`email_exists`, `weak_password` e `signup_disabled`; `mensagemErroAuth` também reconhece as mensagens "already registered" e "signups not allowed" quando o código não vem. Verificação: `npm run typecheck` verde; `npm test` com 300 testes passando e 30 pulados. Sem testes novos (regra do usuário). Plano em [`docs/login-cadastro-admin-inicial.md`](docs/login-cadastro-admin-inicial.md).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:24 — Claude Code (Opus 5.5): entrega verificada
+- **VERIFICADOR-CLAUDE:** PENDENTE
