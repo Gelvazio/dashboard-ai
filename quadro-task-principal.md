@@ -44,17 +44,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:59 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.10
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-27.10** |
-| **Título da Sub-task:** | Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx` |
-| **Agente Responsável:** | DashboardAI-Clone 01 |
-| **Data e Hora de Início:** | 2026-10-12 01:00 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 04 (Grok Bot) — SUB-19.6
 
 | Propriedade | Valor Atual |
@@ -99,7 +88,6 @@
 | **SUB-36** | Gráfico em rede (cérebro) dos agentes no `dashboard-task-principal.html` | DashboardAI (Grok Bot) | 2026-10-12 01:01 | Nenhuma |
 | **SUB-35.1** | Tabela `agent_events` em `database/07_agent_events.sql` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:01 | SUB-29 |
 | **SUB-19.6** | Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:01 | SUB-19.2, SUB-33.7 |
-| **SUB-27.10** | Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:00 | SUB-27.2, SUB-27.3 |
 | **SUB-23.8** | Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` | DashboardAI-Clone 02 | 2026-10-12 00:59 | SUB-23.7 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
@@ -205,7 +193,6 @@
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | 3 | Fase 2B | SUB-33.11 — 🔄 em execução por Codex (OpenAI) |
 | **SUB-27** | Autenticação e Login com Supabase Auth (mãe; pendente, liberada) | 3 | Fase 10 | SUB-03, SUB-29; SUB-27.1 a SUB-27.28 — 🟢 livre |
 | **SUB-27.8** | Teste de integração dos papéis em `tests/integration/authService.integration.test.ts` | 3 | Fase 10 | SUB-27.25 — ⛓️ bloqueada |
-| **SUB-27.10** | Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx` | 3 | Fase 10 | SUB-27.2, SUB-27.3 — ⛓️ bloqueada |
 | **SUB-27.11** | Tela `LoginView` em `src/views/LoginView.tsx` | 3 | Fase 10 | SUB-27.10, SUB-27.19 — ⛓️ bloqueada |
 | **SUB-27.12** | Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` | 3 | Fase 10 | SUB-27.26, SUB-27.11 — ⛓️ bloqueada |
 | **SUB-27.13** | Integrar autenticação no `src/App.tsx` | 3 | Fase 10 | SUB-27.12 — ⛓️ bloqueada |
@@ -271,6 +258,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-27.10** | Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:00 | 2026-10-12 01:01 | `a082736` |
 | **SUB-26.1** | Esqueleto do `README.md` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:00 | 2026-10-12 01:01 | `67e13c2` |
 | **SUB-21.3** | Hook `useMemorias` em `src/hooks/useMemorias.ts` | DashboardAI-Clone 06 | 2026-10-12 01:00 | 2026-10-12 01:01 | `b9634c5` |
 | **SUB-21.8** | Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 00:59 | 2026-10-12 01:00 | `3217841` |
@@ -561,3 +549,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:01 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.1 | — | Lock: assumindo SUB-35.1 (Tabela `agent_events` em `database/07_agent_events.sql`) |
 | 2026-10-12 01:01 | DashboardAI-Clone 06 | SUB-21.3 | `b9634c5` | Criado `src/hooks/useMemorias.ts` (exportado em `src/hooks/index.ts`): `useMemorias(projectId, { porPagina = 30 })` -> `{ memorias, carregando, erro, temMais, carregarMais, recarregar, remover(id), reinserir(memoria) }` sobre `listarMemorias` (SUB-10, projeto + globais) com `limite` crescente (`carregarMais` pede `porPagina` a mais; `temMais` = veio o limite cheio; `recarregar` mantém o limite atual). Contador de geração descarta respostas de projeto antigo/consulta superada; projeto nulo limpa a lista. `reinserir` substitui pelo id e reordena por `updated_at` desc. `npm run typecheck` e `npm test` OK. |
 | 2026-10-12 01:01 | DashboardAI-Clone 08 (Grok Bot) | SUB-26.1 | `67e13c2` | Reescrito o `README.md`: título, descrição do gerenciador genérico multi-projeto (fila via MCP, travas, dependências, memória pgvector, painel React), badges (Node 22+, React 19, TS, Supabase, Vercel, licença) e sumário com âncoras para Arquitetura, Execução local, Banco de dados, Deploy na Vercel, Agentes de IA (fila via MCP), Memória via MCP, Segurança e Validação, cada uma com parágrafo provisório apontando a SUB-26.x que a detalha. Âncoras conferidas no formato do GitHub (todas casam com os títulos). Só documentação. |
+| 2026-10-12 01:01 | DashboardAI-Clone 01 | SUB-27.10 | `a082736` | Criado `src/components/auth/LoginForm.tsx` (props `onEntrou`, `onEmailChange`): labels, `autocomplete=email/current-password`, mostrar/ocultar senha (aria-pressed), `validarLogin` por campo (aria-invalid/describedby), `entrarComSenha` com `Botao` carregando e erro em `role=alert`; senha limpa após entrar. Criado `src/components/auth/index.ts` (LoginForm + RecuperarAcesso). typecheck e build OK. |
