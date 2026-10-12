@@ -44,17 +44,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:54 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.9
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-27.9** |
-| **Título da Sub-task:** | `AuthProvider` em `src/hooks/AuthContext.tsx` |
-| **Agente Responsável:** | DashboardAI-Clone 01 |
-| **Data e Hora de Início:** | 2026-10-12 00:55 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-23.11
 
 | Propriedade | Valor Atual |
@@ -111,7 +100,6 @@
 | **SUB-08.7** | Conferir `.gitignore` (`!.env.example`) | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 00:55 | SUB-08.1 |
 | **SUB-20.6** | Modal `MemoriaFormModal` em `src/components/memoria/` | DashboardAI-Clone 06 | 2026-10-12 00:55 | SUB-20.1, SUB-20.3, SUB-20.4, SUB-20.5, SUB-20.8, SUB-20.9 |
 | **SUB-23.11** | `PendentesResumo` em `src/components/tasks/PendentesResumo.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:55 | SUB-23.3 |
-| **SUB-27.9** | `AuthProvider` em `src/hooks/AuthContext.tsx` | DashboardAI-Clone 01 | 2026-10-12 00:55 | SUB-27.23, SUB-27.25 |
 | **SUB-23.6** | Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts` | DashboardAI-Clone 02 | 2026-10-12 00:54 | SUB-23.3, SUB-23.4 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
@@ -235,7 +223,6 @@
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | 3 | Fase 2B | SUB-33.11 — 🔄 em execução por Codex (OpenAI) |
 | **SUB-27** | Autenticação e Login com Supabase Auth (mãe; pendente, liberada) | 3 | Fase 10 | SUB-03, SUB-29; SUB-27.1 a SUB-27.28 — 🟢 livre |
 | **SUB-27.8** | Teste de integração dos papéis em `tests/integration/authService.integration.test.ts` | 3 | Fase 10 | SUB-27.25 — ⛓️ bloqueada |
-| **SUB-27.9** | `AuthProvider` em `src/hooks/AuthContext.tsx` | 3 | Fase 10 | SUB-27.23, SUB-27.25 — ⛓️ bloqueada |
 | **SUB-27.10** | Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx` | 3 | Fase 10 | SUB-27.2, SUB-27.3 — ⛓️ bloqueada |
 | **SUB-27.11** | Tela `LoginView` em `src/views/LoginView.tsx` | 3 | Fase 10 | SUB-27.10, SUB-27.19 — ⛓️ bloqueada |
 | **SUB-27.12** | Guarda `RotaProtegida` em `src/components/auth/RotaProtegida.tsx` | 3 | Fase 10 | SUB-27.26, SUB-27.11 — ⛓️ bloqueada |
@@ -305,6 +292,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-27.9** | `AuthProvider` em `src/hooks/AuthContext.tsx` | DashboardAI-Clone 01 | 2026-10-12 00:55 | 2026-10-12 00:55 | `333f8b9` |
 | **SUB-08.8** | `extrairVariaveis(texto)` em `scripts/checar-env.mjs` + testes | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:54 | 2026-10-12 00:55 | `fb7f8bf` |
 | **SUB-27.6** | Testes unitários de `authService` em `tests/unit/authService.test.ts` | DashboardAI-Clone 01 | 2026-10-12 00:54 | 2026-10-12 00:55 | `f830757` |
 | **SUB-20.5** | Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts` | DashboardAI-Clone 06 | 2026-10-12 00:54 | 2026-10-12 00:54 | `3208e66` |
@@ -531,3 +519,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:55 | DashboardAI-Clone 08 (Grok Bot) | SUB-08.8 | `fb7f8bf` | Criado `scripts/checar-env.mjs` (Node, sem dependências) exportando `extrairVariaveis(texto)`: reconhece `process.env.X`, `import.meta.env.X`, `env.X` (só maiúsculas), `env['X']`, `os.environ.get('X')`, `os.environ['X']` e `os.getenv('X')`; sem repetidos, ordenada. 8 testes em `tests/unit/checar-env.test.ts`. `npm run typecheck` e `npm test` verdes. |
 | 2026-10-12 00:55 | DashboardAI-Clone 04 (Grok Bot) | SUB-08.7 | — | Lock: assumindo SUB-08.7 (Conferir `.gitignore` (`!.env.example`)) |
 | 2026-10-12 00:55 | DashboardAI-Clone 05 (Grok Bot) | SUB-21.2 | — | Lock: assumindo SUB-21.2 (`filtrarMemoriasLocal` em `src/lib/memorias.ts`) |
+| 2026-10-12 00:55 | DashboardAI-Clone 01 | SUB-27.9 | `333f8b9` | Criado `src/hooks/AuthContext.tsx` com `AuthContext`/`AuthProvider` (`sessao, usuario, papelGlobal, carregando, sair`): `obterSessao()` ao montar, `onAuthStateChange` com unsubscribe no cleanup, `papelGlobal` recarregado quando o usuário muda; sem Supabase configurado: `carregando=false`, `sessao=null`. typecheck e vitest verdes. |

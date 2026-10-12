@@ -1570,15 +1570,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-27.9: `AuthProvider` em `src/hooks/AuthContext.tsx`
-- **Status:** em_execucao
+#### [x] SUB-27.9: `AuthProvider` em `src/hooks/AuthContext.tsx`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.23, SUB-27.25
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `AuthContext` e `AuthProvider` com `{ sessao, usuario, papelGlobal, carregando, sair }`: lê `obterSessao()` ao montar, assina `auth.onAuthStateChange` (cancelando no cleanup), recarrega `papelGlobal` quando o usuário muda; sem Supabase configurado fica `carregando=false`, `sessao=null`. O hook `useAuth` fica na SUB-27.26.
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `333f8b9`
+- **Anotação:** Criado `src/hooks/AuthContext.tsx` com `AuthContext`/`AuthProvider` (`sessao, usuario, papelGlobal, carregando, sair`): `obterSessao()` ao montar, `onAuthStateChange` com unsubscribe no cleanup, `papelGlobal` recarregado quando o usuário muda; sem Supabase configurado: `carregando=false`, `sessao=null`. typecheck e vitest verdes.
 
 #### [ ] SUB-27.10: Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx`
 - **Status:** pendente
