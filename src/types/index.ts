@@ -1,8 +1,8 @@
 /**
- * Tipos compartilhados do frontend. Os tipos das tabelas do banco
- * (`Task`, `AiMemory`, `AgendamentoLog`, `Project`, `ProjectMember`) ficam em
- * `database.ts` (SUB-03) e são reexportados aqui.
+ * Tipos compartilhados do frontend. Os tipos das tabelas do banco ficam em
+ * `database.ts` e são reexportados aqui.
  */
+export * from './database';
 
 /** Telas principais do Dashboard (navegação da SUB-12). */
 export type ViewId = 'fila' | 'memoria' | 'logs' | 'configuracoes';
