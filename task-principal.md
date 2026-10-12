@@ -73,15 +73,15 @@
 ---
 
 ## 📊 Resumo de Progresso
-- **Total de Tasks Principais:** 39
-- **Subtarefas atômicas (~3 min):** 235
+- **Total de Tasks Principais:** 40
+- **Subtarefas atômicas (~3 min):** 240
 - **Em Execução:** 1 (SUB-38)
-- **Pendentes:** 6 principais (SUB-38, 25, 26, 28, 35, KIRO-DEV-CLONE) + 36 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 3 — SUB-25.4, SUB-25.7 e SUB-35.32 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
-  - bloqueadas por dependência: 3 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente) e SUB-35.46 (depende da SUB-35.32)
+- **Pendentes:** 7 principais (SUB-38, 25, 26, 28, 35, 39, KIRO-DEV-CLONE) + 41 subtarefas
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 7 — SUB-25.4, SUB-25.7, SUB-35.32, SUB-39.2, SUB-39.3 e SUB-39.4 (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - bloqueadas por dependência: 4 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32) e SUB-39.5 (depende da SUB-39.4)
   - em execução: 1 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 228 de 274 blocos (33 principais + 195 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 228 de 280 blocos (33 principais + 195 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -383,6 +383,93 @@
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente`; a dependência SUB-35.32 continua `pendente` (marcador `⬜ NÃO IMPLEMENTADA`, Devin, 15:50), então a validação automatizada da SUB-35 não foi executada.
+
+---
+
+## 🛠️ FASE 13: Ajustes Técnicos e Alinhamento (sugeridas)
+
+### [ ] SUB-39: Ajustes técnicos e alinhamento entre documentação e código
+- **Status:** pendente (aguardando subtarefas)
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** subtarefas SUB-39.1 a SUB-39.5
+- **Subtarefas:** (criadas em 2026-10-12 por Claude Code a partir do `TASKS-SUGERIDAS.md`, investigação só-leitura feita em outro clone; números trocados de SUB-36.x para SUB-39.x porque a SUB-36 já existe)
+  - `SUB-39.1`: Alinhar `maxDuration` do `README.md` ao `vercel.json` (`pendente`)
+  - `SUB-39.2`: Alinhar a allowlist do contrato (`docs/langgraph-contrato.md`) ao `worker/ferramentas.ts` (`pendente`)
+  - `SUB-39.3`: Remover `as any` de `worker/fila.ts` e `worker/falhas.ts` (`pendente`)
+  - `SUB-39.4`: Fábrica `criarGrafoComCheckpointer` em `worker/grafoFabrica.ts` usada pelo `worker/index.ts` (`pendente`)
+  - `SUB-39.5`: Usar a fábrica da SUB-39.4 em `api/aprovacao.ts` (`pendente`)
+- **Descrição:** Corrigir divergências entre documentação e código e reduzir castings inseguros e duplicação no worker LangGraph e na API de aprovação.
+- **Critérios de Aceitação:** Todas as filhas `concluido`; `npm run validar` e `npm run typecheck:worker` verdes.
+- **Commit:** pendente
+- **Anotação:** Duas sugestões do `TASKS-SUGERIDAS.md` **não viraram tarefa** porque já estavam resolvidas na `main`: (1) "Corrigir referências de caminho no AGENTS.md" — os links `file:///c:/fontes/dashboard-ai/...` já foram trocados por links relativos em `4a615a1` (a correção sugerida, apontar para `dashboard-ai-kiro-dev`, também estaria errada: não é a pasta deste clone); (2) "Mitigar vulnerabilidade alta de langsmith" — feita na SUB-28.2 (`3642a8d`, `overrides` com `langsmith ^0.6.0`); `npm audit` em 2026-10-12 mostra 0 altas (restam 7 moderadas). Ajustes feitos nas sugeridas, conferidos no código: na SUB-39.2, o contrato **já tem** `brain_search` (a divergência real são `agent_event`, `task_create` e `brain_delete`); na SUB-39.3, o cast fica em `worker/fila.ts:35` (não 24) e a RPC devolve `id` numérico, `codigo`, `tentativas` e `instrucao` (a interface sugerida, com `id: string`, `titulo` e `tentativa`, estava errada); a antiga SUB-36.5 foi dividida em 2 (39.4 e 39.5) para caber em ~3 min e passa a incluir o `as unknown as any` de `api/aprovacao.ts:92`.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-39.1: Alinhar `maxDuration` do `README.md` ao `vercel.json`
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** A seção "Deploy na Vercel → 3. Limits e timeouts" do `README.md` (linhas ~201-218) mostra um `vercel.json` de exemplo com `"maxDuration": 60` e diz "padrão 60s". O `vercel.json` real usa `30` para `api/mcp.ts` e `15` para `api/embedding.ts`. Atualizar o exemplo e o texto para os valores reais, mantendo a nota de limites por plano da Vercel (conferir os limites atuais na documentação da Vercel antes de manter os números de Hobby/Pro).
+- **Critérios de Aceitação:** Exemplo e texto do `README.md` iguais ao `vercel.json`; `npm run validar` verde.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-39.2: Alinhar a allowlist do contrato (`docs/langgraph-contrato.md`) ao `worker/ferramentas.ts`
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** A tabela 2.1 do contrato lista `brain_search`, `task_list`, `brain_store`, `agent_event`, `task_create` (sensível) e `brain_delete` (sensível), mas o `ALLOWLIST` de `worker/ferramentas.ts` só tem `brain_search`, `brain_store` e `task_list`. Atualizar **só o contrato** para a v1 real: (1) `task_create` e `brain_delete` ficam fora da v1 (podem entrar numa v2, sempre como sensíveis e com aprovação); (2) `agent_event` não é ferramenta do modelo: é emitido pelo próprio worker (`worker/eventos.ts`, `comEventos`); (3) ajustar as menções a essas ferramentas nas seções 2.2 e 3 se ficarem incoerentes. Não mudar o código.
+- **Critérios de Aceitação:** Tabela 2.1 igual ao `ALLOWLIST` do código, com as exclusões justificadas; `npm run typecheck:worker` verde.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-39.3: Remover `as any` de `worker/fila.ts` e `worker/falhas.ts`
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-28.4, SUB-28.21
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** (1) `worker/fila.ts:35` — trocar `rpc<any>('pegar_proxima_task', ...)` por um tipo com os campos que `reivindicar()` usa: `id: number`, `codigo: string`, `tentativas: number`, `instrucao: string | null` (de preferência reaproveitando o tipo `Task` de `src/types/database.ts` com `Pick`, se o `worker/tsconfig.json` permitir; senão, interface local). (2) `worker/falhas.ts:16` — trocar `err as any` por um tipo seguro, ex.: `err as Error & { status?: number; statusCode?: number; code?: string }`.
+- **Critérios de Aceitação:** Nenhum `as any`/`<any>` nos dois arquivos; `npm run typecheck:worker` e `npm test` verdes.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-39.4: Fábrica `criarGrafoComCheckpointer` em `worker/grafoFabrica.ts` usada pelo `worker/index.ts`
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-28.13, SUB-28.15
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** `worker/index.ts` (`criarGrafoReal`, linhas ~41-47) e `api/aprovacao.ts` (`criarGrafoComCheckpointerPadrao`, linhas ~84-93) repetem a mesma montagem: `ChatOpenAI` (`WORKER_MODELO` ou `gpt-4o-mini`, `temperature: 0`), `criarCheckpointer()` e `criarGrafo()`, com o cast do checkpointer em cada um. Criar `worker/grafoFabrica.ts` com `criarGrafoComCheckpointer(env = process.env)`, que valida `OPENAI_API_KEY`, monta modelo e checkpointer, isola o cast `as unknown as BaseCheckpointSaver` num único ponto e devolve `GrafoExecucao`. Trocar `criarGrafoReal` do `worker/index.ts` por ela. O `api/aprovacao.ts` fica para a SUB-39.5.
+- **Critérios de Aceitação:** `worker/index.ts` usa a fábrica; `npm run typecheck:worker`, `npm run typecheck` e `npm test` verdes.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-39.5: Usar a fábrica da SUB-39.4 em `api/aprovacao.ts`
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-39.4, SUB-28.23
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Substituir `criarGrafoComCheckpointerPadrao` (com o `as unknown as any` da linha ~92) pela `criarGrafoComCheckpointer` de `worker/grafoFabrica.ts`, mantendo a injeção por `DepsAprovacao` (os testes de `tests/unit/api-aprovacao.test.ts` continuam usando o grafo falso). Remover os imports que ficarem sem uso (`ChatOpenAI`, `criarCheckpointer`, `criarGrafo`).
+- **Critérios de Aceitação:** Sem `as unknown as any` em `api/aprovacao.ts`; `npm run typecheck`, `npm run typecheck:worker` e `npm test` verdes; `npm run test:integration` verde quando houver banco local.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
 
 ---
 
