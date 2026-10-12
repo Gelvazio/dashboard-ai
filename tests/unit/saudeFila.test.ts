@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { LIMITE_TRAVA_MIN, minutosDeTrava, travaExpirada } from '@/lib/saudeFila';
+import { LIMITE_TRAVA_MIN, classificarPendentes, minutosDeTrava, travaExpirada } from '@/lib/saudeFila';
+import type { Task } from '@/types';
 
 describe('minutosDeTrava', () => {
   it('retorna null se não houver trava', () => {
@@ -65,5 +66,35 @@ describe('travaExpirada', () => {
     const cinquentaMinutosAtras = new Date(agora - 50 * 60 * 1000).toISOString();
     expect(travaExpirada({ trava_em: cinquentaMinutosAtras }, agora, 60)).toBe(false);
     expect(travaExpirada({ trava_em: cinquentaMinutosAtras }, agora, 30)).toBe(true);
+  });
+});
+
+describe('classificarPendentes', () => {
+  const agora = Date.parse('2026-10-12T12:00:00Z');
+  const t = (codigo: string, extra: Partial<Task> = {}): Task =>
+    ({
+      codigo, status: 'pendente', executar: true, tentativas: 0, max_tentativas: 3,
+      executar_apos: null, dependencias: [], excluido: false, ...extra,
+    }) as Task;
+
+  it('coloca cada pendente em um único grupo', () => {
+    const tasks = [
+      t('A'),
+      t('B', { dependencias: ['C'] }),
+      t('C', { executar: false }),
+      t('D', { executar_apos: '2026-10-13T00:00:00Z' }),
+      t('E', { tentativas: 3 }),
+      t('F', { dependencias: ['G'] }),
+      t('G', { status: 'concluida' }),
+      t('H', { executar_apos: '2026-10-11T00:00:00Z' }),
+      t('X', { excluido: true }),
+    ];
+    const g = classificarPendentes(tasks, agora);
+    const cod = (l: Task[]) => l.map((x) => x.codigo);
+    expect(cod(g.prontas)).toEqual(['A', 'F', 'H']);
+    expect(cod(g.bloqueadas_dependencia)).toEqual(['B']);
+    expect(cod(g.desligadas)).toEqual(['C']);
+    expect(cod(g.agendadas)).toEqual(['D']);
+    expect(cod(g.sem_tentativas)).toEqual(['E']);
   });
 });

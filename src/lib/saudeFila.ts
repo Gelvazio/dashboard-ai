@@ -5,6 +5,7 @@
  * fornece métricas para o painel de diagnóstico.
  */
 import type { Task } from '@/types';
+import { bloqueadaPorDependencia, dependenciasDa } from '@/lib/tasks';
 
 /** Tempo limite em minutos antes de considerar uma trava expirada. */
 export const LIMITE_TRAVA_MIN = 90;
@@ -40,4 +41,42 @@ export function travaExpirada(
   const minutos = minutosDeTrava(task, agora);
   if (minutos === null) return false;
   return minutos >= limite;
+}
+
+/** Tasks pendentes agrupadas pelo motivo de (não) estarem prontas para execução. */
+export interface PendentesClassificadas {
+  prontas: Task[];
+  bloqueadas_dependencia: Task[];
+  desligadas: Task[];
+  agendadas: Task[];
+  sem_tentativas: Task[];
+}
+
+/**
+ * Classifica as tasks `pendente` não excluídas em um único grupo cada, nesta
+ * ordem de precedência: desligada (`executar=false`), sem tentativas
+ * (`tentativas >= max_tentativas`), agendada (`executar_apos` no futuro),
+ * bloqueada por dependência e, por fim, pronta.
+ *
+ * @param tasks - Lista completa do projeto (usada também para resolver dependências)
+ * @param agora - Timestamp atual em ms (padrão: Date.now())
+ */
+export function classificarPendentes(tasks: readonly Task[], agora: number = Date.now()): PendentesClassificadas {
+  const grupos: PendentesClassificadas = {
+    prontas: [],
+    bloqueadas_dependencia: [],
+    desligadas: [],
+    agendadas: [],
+    sem_tentativas: [],
+  };
+  const porCodigo = new Map(tasks.filter((t) => !t.excluido).map((t) => [t.codigo, t] as const));
+  for (const t of tasks) {
+    if (t.excluido || t.status !== 'pendente') continue;
+    if (!t.executar) grupos.desligadas.push(t);
+    else if (t.tentativas >= t.max_tentativas) grupos.sem_tentativas.push(t);
+    else if (t.executar_apos && Date.parse(t.executar_apos) > agora) grupos.agendadas.push(t);
+    else if (bloqueadaPorDependencia(dependenciasDa(t, porCodigo))) grupos.bloqueadas_dependencia.push(t);
+    else grupos.prontas.push(t);
+  }
+  return grupos;
 }
