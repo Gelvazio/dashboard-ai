@@ -45,28 +45,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.33
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-28.33** |
-| **Título da Sub-task:** | Corrigir `finalizar()` para a assinatura real de `finalizar_task` |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 12:58 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 203
-- **Em Execução:** 1 (SUB-28.33, Devin (Cognition AI), desde 2026-10-12 12:58)
+- **Em Execução:** 0
 - **Pendentes:** 4 principais (25, 26, 28, 35) + 25 subtarefas
   - livres agora: 8 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.16, SUB-28.17, SUB-28.24, SUB-35.32, SUB-35.33)
   - bloqueadas por dependência: 17
   - reservadas: 0
-- **Concluídas:** 210 de 240 blocos (33 principais + 177 subtarefas)
+- **Concluídas:** 211 de 240 blocos (33 principais + 178 subtarefas)
 - **Canceladas:** 0
 
 ---
@@ -2004,7 +1993,7 @@
   - `SUB-28.30`: `finalizar(...)` em `worker/fila.ts` (`concluido`, `9b27e51`)
   - `SUB-28.31`: `montarPromptPlano(estado)` em `worker/plano.ts` (`concluido`, `8a43f2b`)
   - `SUB-28.32`: Registro de auditoria da aprovação (`pendente`)
-  - `SUB-28.33`: Corrigir `finalizar()` para a assinatura real de `finalizar_task` (`em_execucao`)
+  - `SUB-28.33`: Corrigir `finalizar()` para a assinatura real de `finalizar_task` (`concluido`, `76f243e`)
 - **Descrição:** Implementar a orquestração multi-etapas de execução descrita em `LangChain_LangGraph.md`, mantendo Supabase como autoridade sobre a fila, dependências, locks, tentativas e resultado. Integrar o worker LangGraph às RPCs existentes e às ferramentas MCP autorizadas, com checkpoint durável, retomada, tratamento de falhas e aprovação humana para ações sensíveis.
 - **Critérios de Aceitação:** A task só inicia após todas as dependências SUB-01 a SUB-27 concluídas; execução reivindicada por `pegar_proxima_task`; estado do grafo é retomável e não duplica efeitos; escrita ocorre por ferramentas autenticadas e autorizadas; ações sensíveis pausam para aprovação; conclusão/erro e liberação do lock passam por `finalizar_task`; documentação de operação e segurança atualizada conforme `LangChain_LangGraph.md`.
 - **Commit:** pendente
@@ -2363,16 +2352,16 @@
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
-#### [ ] SUB-28.33: Corrigir `finalizar()` para a assinatura real de `finalizar_task`
-- **Status:** em_execucao
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:58)
+#### [x] SUB-28.33: Corrigir `finalizar()` para a assinatura real de `finalizar_task`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:58, conclusão: 2026-10-12 12:59)
 - **Depende de:** SUB-28.30
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** `finalizar()` em `worker/fila.ts` envia `p_erro_mensagem`, que não existe em `finalizar_task` (`database/04_rpc_functions.sql`: `p_task_id, p_status, p_resultado, p_pr_url, p_commit_sha, p_agente, p_rotina, p_metadados`). Enviar só parâmetros reais: mensagem de erro em `p_metadados.erro_mensagem` e `p_agente` para validar a trava.
 - **Critérios de Aceitação:** Teste de `finalizar()` com a assinatura real; `npm run worker -- --uma-vez` finaliza a task com `erro` contra banco local.
-- **Commit:** pendente
-- **Anotação:** Criada em 2026-10-12 por Devin (Cognition AI) a partir do achado da SUB-28.15 (worker rodando contra banco local).
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **Commit:** `76f243e`
+- **Anotação:** `finalizar()` em `worker/fila.ts` deixou de enviar `p_erro_mensagem` (inexistente na RPC): a mensagem vai em `p_metadados.erro_mensagem`, que `finalizar_task` grava em `agendamento_tarefa_logs.erro_mensagem`. Novo campo opcional `agente` → `p_agente`, para a RPC validar a trava; `executarUmaTask` e `finalizarNode` passam o agente. Teste em `tests/unit/worker-fila.test.ts` confere que só são enviados parâmetros que existem em `finalizar_task` (`database/04_rpc_functions.sql`). Rodado contra banco local (Postgres 16 + PostgREST em Docker), sem `OPENAI_API_KEY`: `npm run worker -- --uma-vez` reivindicou a task, finalizou com `erro` (`OPENAI_API_KEY não definida`), a task voltou a `pendente` (tentativa 1 de 3) sem trava e o log registrou a mensagem. `npm test` (268 ok, 30 pulados), `npm run typecheck`, `npm run typecheck:worker`, `npm run build`, `npm run check:chunks` e `npm run check:env` verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:59 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
 ---
 
