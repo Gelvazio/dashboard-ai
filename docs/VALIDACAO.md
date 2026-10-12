@@ -29,8 +29,8 @@ Fora do `validar`, `npm run typecheck:worker` também passou.
 - **Arquivos:** 39 aprovados, 8 pulados (47)
 - **Testes:** 268 aprovados, 30 pulados (298), 0 falhas
 - Os pulados dependem de banco e são pulados por `describe.skipIf` quando não há configuração:
-  - 7 arquivos em `tests/integration/*.integration.test.ts` (rodam com `npm run test:integration`, SUB-25.6);
-  - `tests/unit/worker-checkpointer.test.ts` (bloco contra Postgres, exige `LANGGRAPH_DATABASE_URL`).
+  - os 8 arquivos `tests/integration/*.integration.test.ts` (rodam com `npm run test:integration`, SUB-25.6);
+  - o bloco contra Postgres de `tests/unit/worker-checkpointer.test.ts` (exige `LANGGRAPH_DATABASE_URL`; o restante do arquivo roda).
 
 ### Chunks do build (`check:chunks`, limite 500 kB)
 
@@ -73,3 +73,15 @@ PSQL="docker exec -i -w /repo/database pg-dash psql -U postgres" bash database/t
 | `tests/test_paralelo.sh`: `p_exclusivo=true` com 10 chamadas simultâneas | OK, 1 task entregue |
 
 Saída: exit 0. Nenhuma falha, então nenhuma SUB-25.8+ foi criada.
+
+## Integração do frontend (SUB-25.6)
+
+`npm run test:integration` (`tests/integration/run.sh`) em 2026-10-12 13:40 UTC, commit `70481d6`, contra PostgreSQL 16.15 + pgvector (Docker `pgvector/pgvector:pg16`, porta 5432, banco descartável `dashai_front_test`) e PostgREST 12.2.3 (binário estático oficial) com segredo JWT aleatório:
+
+```bash
+PSQL="docker exec -i -w /repo pg-dash psql -U postgres" POSTGREST_BIN=/caminho/postgrest npm run test:integration
+```
+
+- **Arquivos:** 8 aprovados (8): `agentEvents`, `authService`, `eventService`, `logService`, `memoryService`, `projectService`, `supabase`, `taskService` (`*.integration.test.ts`)
+- **Testes:** 29 aprovados (29), 0 falhas
+- Saída: exit 0. Nenhuma falha, então nenhuma SUB-25.8+ foi criada.
