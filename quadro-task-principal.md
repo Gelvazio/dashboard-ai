@@ -44,17 +44,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:59 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 05 (Grok Bot) — SUB-35.1
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.1** |
-| **Título da Sub-task:** | Tabela `agent_events` em `database/07_agent_events.sql` |
-| **Agente Responsável:** | DashboardAI-Clone 05 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:01 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — SUB-36
 
 | Propriedade | Valor Atual |
@@ -81,13 +70,12 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-26.4** | Seção Banco de dados | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:02 | SUB-26.1 |
 | **SUB-36** | Gráfico em rede (cérebro) dos agentes no `dashboard-task-principal.html` | DashboardAI (Grok Bot) | 2026-10-12 01:01 | Nenhuma |
-| **SUB-35.1** | Tabela `agent_events` em `database/07_agent_events.sql` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:01 | SUB-29 |
 | **SUB-23.8** | Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` | DashboardAI-Clone 02 | 2026-10-12 00:59 | SUB-23.7 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
@@ -252,10 +240,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (75)
+### ✅ CONCLUÍDAS (76)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-35.1** | Tabela `agent_events` em `database/07_agent_events.sql` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:01 | 2026-10-12 01:02 | `9f5692f` |
 | **SUB-19.6** | Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:01 | 2026-10-12 01:02 | `f145aab` |
 | **SUB-27.10** | Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:00 | 2026-10-12 01:01 | `a082736` |
 | **SUB-26.1** | Esqueleto do `README.md` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:00 | 2026-10-12 01:01 | `67e13c2` |
@@ -551,3 +540,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:01 | DashboardAI-Clone 01 | SUB-27.10 | `a082736` | Criado `src/components/auth/LoginForm.tsx` (props `onEntrou`, `onEmailChange`): labels, `autocomplete=email/current-password`, mostrar/ocultar senha (aria-pressed), `validarLogin` por campo (aria-invalid/describedby), `entrarComSenha` com `Botao` carregando e erro em `role=alert`; senha limpa após entrar. Criado `src/components/auth/index.ts` (LoginForm + RecuperarAcesso). typecheck e build OK. |
 | 2026-10-12 01:02 | DashboardAI-Clone 08 (Grok Bot) | SUB-26.4 | — | Lock: assumindo SUB-26.4 (Seção Banco de dados) |
 | 2026-10-12 01:02 | DashboardAI-Clone 04 (Grok Bot) | SUB-19.6 | `f145aab` | Criado `src/hooks/useBuscaSemantica.ts` (exportado em `src/hooks/index.ts`): `useBuscaSemantica(projeto | null, consulta, { limiar, incluirGlobais })` -> `{ resultado: ResultadoBusca | null, carregando, erro }`. Usa `useDebounce(consulta.trim(), 400)` (SUB-19.2), `buscarMemorias` (SUB-10) com `gerador` de `criarGeradorEmbedding()` (SUB-33.7, memoizado); texto vazio ou sem projeto não busca e limpa o resultado; respostas antigas descartadas por contador de requisição (também invalidado ao desmontar). `npm run typecheck`, `npm test` e `npm run build` OK. |
+| 2026-10-12 01:02 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.1 | `9f5692f` | Criado `database/07_agent_events.sql` (cabeçalho com as partes 35.1–35.5) com `public.agent_events`: `id` identity, `project_id` (FK projects, cascade), `task_id` (FK tasks, set null), `task_codigo`, `agente` (não vazio, ≤120), `execucao_id` (≤200), `etapa` (≤120), `tipo` (check inicio/progresso/fim/erro/heartbeat/trava/liberacao/commit), `status`, `mensagem` (≤2000), `metadados` jsonb objeto, `chave_idempotencia` (unique com `project_id`), `criado_por` (`usuario_atual()`), `created_at`; índices `(project_id, created_at desc)` e `(project_id, agente, created_at desc)`; comentário da tabela; sem RLS (SUB-35.3). Validado em Postgres 17 local: aplicado após 00–06 em banco limpo e reaplicado sem erro; checks de agente vazio, tipo inválido, metadados não objeto e chave de idempotência duplicada recusam como esperado. |
