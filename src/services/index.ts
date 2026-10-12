@@ -5,3 +5,4 @@
  * Funções assíncronas que lançam ServiceError tratável pela interface.
  */
 export * from './supabase';
+export * from './projectService';

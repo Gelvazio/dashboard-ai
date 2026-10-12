@@ -1,6 +1,9 @@
 /**
  * Hooks React que ligam os serviços à interface (estado, carregamento, erro,
- * recarregamento) — ex.: `useTasks(projectId)`, `useProjetoAtual()`.
- * Nome sempre começando por `use`, um hook por arquivo.
+ * recarregamento). Nome sempre começando por `use`, um hook por arquivo.
  */
-export {};
+export { ProjetoProvider } from './ProjetoContext';
+export { useProjetoAtual } from './useProjetoAtual';
+export { useNavegacao } from './useNavegacao';
+export { useTema } from './useTema';
+export { useConexao } from './useConexao';
