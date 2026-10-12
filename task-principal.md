@@ -382,7 +382,7 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente`; a dependência SUB-35.32 continua `pendente` (marcador `⬜ NÃO IMPLEMENTADA`, Devin, 15:50), então a validação automatizada da SUB-35 não foi executada.
 
 ---
 
@@ -429,7 +429,7 @@
 - **Commit:** pendente
 - **Anotação:** ⛔ **TRAVADO PARA TODAS AS IAS** (2026-10-12 15:10): tarefa reservada para implementação manual pelo usuário; nenhuma IA pode assumir as filhas sem autorização explícita — ver a **🔒 TRAVA ESPECIAL** no início do quadro. **Subdivisão (2026-10-12 16:11, DeepSeek Harness (deepseek-flash), a pedido do usuário):** a mãe, antes atômica, passou a declarar as 30 filhas `KIRO-DEV-CLONE.1` a `.30`, espelhando [`kiro-dev-clone/AGENTS.md`](kiro-dev-clone/AGENTS.md), com `Prioridade: BAIXA` (herdada da mãe — regra 1.2.4) e as dependências de lá. A **🔒 trava especial permanece ativa**: as filhas ficam **reservadas** e só o usuário libera. **Pasta renomeada (2026-10-12 16:18, DeepSeek Harness (deepseek-flash), a pedido do usuário):** `KIRO-DEV-CLONE/` → `kiro-dev-clone/`, alinhando à convenção de minúsculas do repositório. O **código da tarefa-mãe** no quadro continua `KIRO-DEV-CLONE` (é identificador, não caminho).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): tarefa-mãe `pendente (aguardando subtarefas)` e 🔒 travada para todas as IAs; as 30 filhas continuam `pendente` e **nada** do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.1: Link "KIRO DEV CLONE" no menu
 - **Status:** pendente
@@ -442,7 +442,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.2: Rota `/kiro-dev-clone`
 - **Status:** pendente
@@ -455,7 +455,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.3: Componente base `KiroDevClone`
 - **Status:** pendente
@@ -468,7 +468,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.4: Componente de Specs
 - **Status:** pendente
@@ -481,7 +481,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.5: Botão "Criar Spec"
 - **Status:** pendente
@@ -494,7 +494,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.6: Endpoint para salvar specs
 - **Status:** pendente
@@ -507,7 +507,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.7: Componente de Chat
 - **Status:** pendente
@@ -520,7 +520,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.8: Conectar chat com LLM
 - **Status:** pendente
@@ -533,7 +533,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.9: Componente de Steering
 - **Status:** pendente
@@ -546,7 +546,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.10: Validação de steering
 - **Status:** pendente
@@ -559,7 +559,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.11: Sistema de hooks
 - **Status:** pendente
@@ -572,7 +572,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera. Atenção: não confundir com os hooks de Git da seção 1.3 do `AGENTS.md` — são coisas diferentes.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.12: Hook de file change
 - **Status:** pendente
@@ -585,7 +585,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.13: Integrar MCP existente
 - **Status:** pendente
@@ -598,7 +598,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.14: Ferramentas MCP específicas
 - **Status:** pendente
@@ -611,7 +611,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.15: Componente de Permissions
 - **Status:** pendente
@@ -624,7 +624,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.16: Controle de acesso
 - **Status:** pendente
@@ -637,7 +637,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.17: Sistema de custom agents
 - **Status:** pendente
@@ -650,7 +650,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.18: UI para custom agents
 - **Status:** pendente
@@ -663,7 +663,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.19: Sistema de Skills
 - **Status:** pendente
@@ -676,7 +676,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.20: UI para Skills
 - **Status:** pendente
@@ -689,7 +689,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.21: Usar memória existente
 - **Status:** pendente
@@ -702,7 +702,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.22: Integrar memória com chat
 - **Status:** pendente
@@ -715,7 +715,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.23: Sistema de checkpoints
 - **Status:** pendente
@@ -728,7 +728,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.24: UI para checkpoints
 - **Status:** pendente
@@ -741,7 +741,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.25: Arquivo `.kiroignore`
 - **Status:** pendente
@@ -754,7 +754,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.26: Leitura do `.kiroignore`
 - **Status:** pendente
@@ -767,7 +767,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.27: Sistema de workflows
 - **Status:** pendente
@@ -780,7 +780,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.28: UI para workflows
 - **Status:** pendente
@@ -793,7 +793,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.29: `kiro-dev-clone/STATUS.md`
 - **Status:** pendente
@@ -806,7 +806,7 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
 #### [ ] KIRO-DEV-CLONE.30: Pasta `kiro-dev-clone/docs/`
 - **Status:** pendente
@@ -819,4 +819,4 @@
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
