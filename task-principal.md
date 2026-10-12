@@ -2418,8 +2418,8 @@
 - **Anotação:** Criado `src/lib/charts.ts`: `Chart.register` só com `ArcElement`, `BarElement`, `CategoryScale`, `LinearScale`, `Tooltip` e `Legend` (linha do tempo usará `LinearScale` com ms, sem `TimeScale`/adaptador de datas), reexporta `Chart`; paletas `CORES_ESTADO` (ativo/ocioso/sem_sinal/finalizado) e `CORES_TIPO` (os 8 tipos do check de `agent_events`) com variantes `claro`/`escuro`, mais `CORES_EIXO` e `corDoTema(cor, escuro)`. `npm run typecheck`, `npm run build` e `npm test` OK.
 
 #### [ ] SUB-35.23: Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-35.15
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Cartão de um agente: nome, selo do estado (`estadoDoAgente`), task atual (`task_codigo`), etapa/nó, última mensagem e "há X s" (`tempoRelativo`). Criar `src/components/monitor/index.ts`.

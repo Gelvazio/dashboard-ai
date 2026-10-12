@@ -55,6 +55,17 @@
 | **Data e Hora de Início:** | 2026-10-12 01:17 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-35.23
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.23** |
+| **Título da Sub-task:** | Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx` |
+| **Agente Responsável:** | DashboardAI-Clone 01 |
+| **Data e Hora de Início:** | 2026-10-12 01:17 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -63,6 +74,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-35.23** | Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:17 | SUB-35.15 |
 | **SUB-35.17** | `contarPorAgente()` em `src/lib/monitor.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:17 | SUB-35.16 |
 | **SUB-35.19** | Hook `useEventosAgentes(projectId)` em `src/hooks/useEventosAgentes.ts` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:17 | SUB-35.11, SUB-35.14 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
@@ -634,3 +646,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:17 | DashboardAI-Clone 06 | SUB-27.21 | `663e597` | Nova seção "Primeiro administrador e membros" no `database/README.md` (substitui o trecho curto de "Como aplicar"): tabela de papéis (`user_roles` admin/member; `project_members` owner > editor > viewer), como achar o `auth.users.id`, `insert ... on conflict` do 1º admin pelo SQL Editor (a RLS só deixa admin gravar em `user_roles`), adicionar/trocar papel e remover membro por slug + e-mail, consulta de quem tem acesso e aviso sobre `service_role` x login anon e `app_metadata.role`. Só e-mails de exemplo, sem chaves. Todos os SQLs conferidos num banco local descartável (schema 00–07 + `auth.users` mínimo). |
 | 2026-10-12 01:17 | DashboardAI-Clone 04 (Grok Bot) | SUB-35.16 | `860e0c9` | Adicionados em `src/lib/monitor.ts` `ORDEM_ESTADOS` (ativo, ocioso, sem_sinal, finalizado) e `contarPorStatus(atividades, agora = Date.now(), limites = {})` -> `{ estado, total }[]` usando `estadoDoAgente`, sempre na ordem fixa e com zeros (para o gráfico de rosca). 2 testes novos em `tests/unit/monitor.test.ts`. `npm test` e `npm run typecheck` verdes. |
 | 2026-10-12 01:17 | DashboardAI-Clone 04 (Grok Bot) | SUB-35.17 | — | Lock: assumindo SUB-35.17 (`contarPorAgente()` em `src/lib/monitor.ts`) |
+| 2026-10-12 01:17 | DashboardAI-Clone 01 | SUB-35.23 | — | Lock: assumindo SUB-35.23 (Componente `AgenteCard` em `src/components/monitor/AgenteCard.tsx`) |
