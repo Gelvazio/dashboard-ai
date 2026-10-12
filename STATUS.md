@@ -91,7 +91,7 @@ Plano: [`docs/login-cadastro-admin-inicial.md`](docs/login-cadastro-admin-inicia
 Plano: [`docs/validacao-telas-producao.md`](docs/validacao-telas-producao.md). Exceção à regra "nunca abrir navegador" liberada pelo usuário só para estas tarefas.
 | Item | Descrição | Status | Concluído em | Verificação |
 |------|-----------|--------|--------------|-------------|
-| 8.1 | SUB-25.4 Telas Fila e Logs | 🔄 Em progresso | — | — |
+| 8.1 | SUB-25.4 Telas Fila e Logs | ✅ Concluído | 2026-10-12 18:54 | `6f7bab1`; banco e login pela IA, telas logadas pelo usuário (ressalva) |
 | 8.2 | SUB-25.7 Telas Memória e Configurações | ⬜ Pendente | — | — |
 | 8.3 | SUB-35.32 Monitor em tempo real | ⬜ Pendente | — | — |
 | 8.4 | Aceite do usuário | ⬜ Pendente | — | — |

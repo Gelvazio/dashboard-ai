@@ -32,6 +32,6 @@ Supabase de produção (`fcmntkzpjoetdabllabn`, scripts `00` a `08` aplicados), 
 
 | # | Subtarefa | Verificação | Status |
 |---|---|---|---|
-| 1 | SUB-25.4 Telas Fila e Logs | console sem erros; checklist no `docs/VALIDACAO.md` | 🔄 Em progresso |
+| 1 | SUB-25.4 Telas Fila e Logs | console sem erros; checklist no `docs/VALIDACAO.md` | ✅ Concluído (`6f7bab1`, telas logadas conferidas pelo usuário) |
 | 2 | SUB-25.7 Telas Memória e Configurações | console sem erros; checklist no `docs/VALIDACAO.md` | ⬜ Pendente |
 | 3 | SUB-35.32 Monitor em tempo real | eventos inseridos (com autorização) aparecem sem recarregar | ⬜ Pendente |

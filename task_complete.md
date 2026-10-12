@@ -2144,6 +2144,19 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 15:28 (confirmado por DeepSeek Harness (deepseek-flash))
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
+#### [x] SUB-25.4: Teste rápido local: telas Fila e Logs
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 18:41)
+- **Depende de:** SUB-25.2
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Subir `npm run preview` contra o banco local e conferir as telas Fila e Logs em 1280x800 e 390x844; registrar no `docs/VALIDACAO.md` (sem commitar screenshots grandes).
+- **Critérios de Aceitação:** Sem erros no console; checklist registrado.
+- **Commit:** `6f7bab1`
+- **Anotação:** Trava de Claude Code (Opus 5.5, sessão em nuvem) (desde 2026-10-12 21:32, commit `02d0111`) liberada em 2026-10-12 21:38 a pedido do usuário, sem entrega. Motivo: a validação precisa de um banco com o schema do Dashboard AI e de um usuário com login; os dois projetos que o MCP do Supabase enxerga (AULAS SENAI e Canil Doce Lar) não têm esse schema, e o usuário está ajustando o banco com outra IA. Na mesma conversa o usuário mudou o alvo de "banco local" para "banco de produção". Pela regra 11 da seção 1.1 do `AGENTS.md`, só o Claude Code executa esta tarefa (exige banco). **Executada por Claude Code (Opus 5.5) (2026-10-12 18:54)** por orientação do usuário ("pesquisa demais tarefas pendentes que houver de banco de dados e assuma todas e faça 1 por vez"), contra o **Supabase de produção** e com a exceção à regra "nunca abrir navegador" liberada pelo usuário só para esta validação. `npm run build` + `vite preview` em `localhost:4173`: tela de login conferida em 1280x800 e 390x844 (sem rolagem horizontal, console sem mensagens). Telas **Fila** e **Logs** logadas conferidas **pelo usuário** no navegador dele (relato no chat: "eu já validei isso"); a sessão não abriu no painel do navegador do app, então a IA não viu essas telas, e tamanhos/console delas não foram informados (**ressalva**). Pelo MCP do Supabase (transações desfeitas, só leitura), as consultas das telas com RLS: admin `gelvazio@gmail.com` vê o projeto `default` (0 tasks e 0 logs, banco novo); usuário logado sem projeto vê 0; `anon` sem permissão. Registro em [`docs/VALIDACAO.md`](docs/VALIDACAO.md#telas-fila-e-logs-contra-o-supabase-de-produção-sub-254). Plano em [`docs/validacao-telas-producao.md`](docs/validacao-telas-producao.md).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:54 — Claude Code (Opus 5.5): banco e tela de login conferidos; telas logadas conferidas pelo usuário
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:48 (Devin): pendente, sem executor. Não há registro das telas Fila e Logs no `docs/VALIDACAO.md`; depende de navegador (não usado nesta verificação).
+
 ---
 
 ## 🚀 FASE 11: Orquestração de Tasks com LangChain/LangGraph (última fase)
