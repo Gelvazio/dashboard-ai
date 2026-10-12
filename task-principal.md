@@ -9,9 +9,9 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 32
-- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-01.2`)
+- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
 - **Pendentes:** 22
-- **Concluídas:** 9
+- **Concluídas:** 10
 - **Canceladas:** 0
 
 ---
@@ -41,14 +41,14 @@
 - **Commit:** `374dc99`
 - **Anotação:** package.json (type module, Node >= 20.19; scripts dev, build = tsc -b && vite build, preview, typecheck, typecheck:api), package-lock.json, vite.config.ts (plugin-react, dist com sourcemap), tsconfig.json com referências para tsconfig.app.json (só src/, moduleResolution bundler, strict) e tsconfig.node.json (vite.config.ts); api/ segue com api/tsconfig.json próprio (NodeNext) e não é incluída pelo tsconfig do frontend. devDependencies typescript ~5.9 (TS 7 nativo ainda novo para o ecossistema) e @types/node ^20 conforme a nota. index.html (pt-BR), public/favicon.svg, src/main.tsx e src/App.tsx (casca genérica). Validado: npm install sem vulnerabilidades, npm run build OK, npm run typecheck (frontend + api) OK, vite preview servindo o index.
 
-#### [🔄] SUB-01.2: Configuração do Tailwind CSS, PostCSS e Estilos Globais
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:57)
+#### [x] SUB-01.2: Configuração do Tailwind CSS, PostCSS e Estilos Globais
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:57, conclusão: 2026-10-11 22:58)
 - **Depende de:** SUB-01.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Critérios de Aceitação:** `tailwind.config.js`, `postcss.config.js` e `src/index.css` configurados.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `97697e3`
+- **Anotação:** postcss.config.js (@tailwindcss/postcss), tailwind.config.js (content, sombra card e animação fade-in, carregado por @config), src/index.css (@import tailwindcss; @theme com fontes, paleta brand neutra e cores de status da fila pendente/execucao/concluida/recusada/erro/cancelada; variante dark por classe .dark no html; base de body/foco/seleção; componente .card; prefers-reduced-motion). src/main.tsx importa o CSS e App.tsx usa as classes. Decisão: Tailwind v4 (atual) em vez da v3, mantendo os 3 arquivos pedidos. Validado: build OK (CSS gerado com utilitários do @theme e da config JS), typecheck OK.
 
 #### [ ] SUB-01.3: Instalação e Verificação de Ícones e Dependências Base
 - **Status:** pendente
