@@ -10,12 +10,12 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
 - **Subtarefas atômicas (~3 min):** 153 (SUB-08.x, SUB-19.x, SUB-20.x, SUB-21.x, SUB-23.x, SUB-25.x, SUB-26.x, SUB-27.x, SUB-28.x, SUB-33.x, SUB-34.x; atualizado em 2026-10-12 00:17)
-- **Em Execução:** 1 (SUB-08.6)
-- **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 132 subtarefas
+- **Em Execução:** 0
+- **Pendentes:** 11 principais aguardando subtarefas (SUB-08, 19, 20, 21, 23, 25, 26, 27, 28, 33, 34) + 131 subtarefas
   - livres agora: 25 (SUB-33.5, SUB-33.9, SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.5, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.2, SUB-23.5, SUB-23.12, SUB-25.1, SUB-26.1, SUB-27.1)
   - bloqueadas por dependência: 106
   - reservadas: 0
-- **Concluídas:** 43
+- **Concluídas:** 44
 - **Canceladas:** 0
 
 ---
@@ -339,7 +339,7 @@
   - `SUB-08.3`: Seção Servidor Supabase: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `SUPABASE_REST_URL` (`concluido`)
   - `SUB-08.4`: Seção Embeddings: `OPENAI_API_KEY`, `EMBEDDING_API_URL`, `EMBEDDING_MODEL` (`concluido`)
   - `SUB-08.5`: Seção MCP: `MCP_AUTH_TOKEN`, `MCP_CORS_ORIGIN`, `MCP_DEFAULT_PROJECT`, `MCP_ALLOWED_PROJECTS` (`concluido`)
-  - `SUB-08.6`: Seção Scripts: `DASHBOARD_AI_PROJECT` (`em_execucao`)
+  - `SUB-08.6`: Seção Scripts: `DASHBOARD_AI_PROJECT` (`concluido`)
   - `SUB-08.7`: Conferir `.gitignore` (`!.env.example`) (`pendente`)
   - `SUB-08.8`: `extrairVariaveis(texto)` em `scripts/checar-env.mjs` + testes (`pendente`)
   - `SUB-08.9`: CLI `npm run check:env` (toda variável usada está no `.env.example`) (`pendente`)
@@ -400,15 +400,15 @@
 - **Commit:** `212cc43`
 - **Anotação:** Preenchida a seção MCP do `.env.example` com `MCP_AUTH_TOKEN` (exigido no `/mcp`; sem ele as ferramentas de dados ficam desativadas; gerar com `openssl rand -hex 32`), `MCP_CORS_ORIGIN` (padrão `*`, restringir em produção; também usada pelo `/api/embedding`), `MCP_DEFAULT_PROJECT` e `MCP_ALLOWED_PROJECTS` (lista por vírgula; quando preenchida recusa memória global), conforme `api/mcp.ts`, `api/_lib/args.ts` e `api/_lib/brain-tools.ts`. Valores vazios.
 
-#### [ ] SUB-08.6: Seção Scripts: `DASHBOARD_AI_PROJECT`
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (desde 2026-10-12 00:35)
+#### [x] SUB-08.6: Seção Scripts: `DASHBOARD_AI_PROJECT`
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:35 → 2026-10-12 00:35)
 - **Depende de:** SUB-08.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Preencher a seção Scripts com `DASHBOARD_AI_PROJECT` (projeto padrão do `scripts/sincronizar_tasks.py`, equivalente a `--projeto`), lembrando que o script lê o `.env` da raiz e usa as variáveis do servidor Supabase.
 - **Critérios de Aceitação:** Seção preenchida.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `86e701c`
+- **Anotação:** Preenchida a seção Scripts do `.env.example` com `DASHBOARD_AI_PROJECT` (slug padrão do `scripts/sincronizar_tasks.py`, equivale a `--projeto`, padrão `default`), lembrando que o script lê o `.env` da raiz sem sobrescrever o ambiente e usa `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`. Nenhum valor real no arquivo.
 
 #### [ ] SUB-08.7: Conferir `.gitignore` (`!.env.example`)
 - **Status:** pendente

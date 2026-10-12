@@ -33,26 +33,16 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhuma tarefa reservada para Codex |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — SUB-08.6
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-08.6** |
-| **Título da Sub-task:** | Seção Scripts: `DASHBOARD_AI_PROJECT` |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 00:35 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém mais assume a SUB-08.6 |
-
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (1)
+### 🔄 EM EXECUÇÃO (0)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
-| **SUB-08.6** | Seção Scripts: `DASHBOARD_AI_PROJECT` | DashboardAI (Grok Bot) | 2026-10-12 00:35 | SUB-08.1 |
+
+*(Nenhuma tarefa em execução)*
 
 ---
 
@@ -216,7 +206,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (43)
+### ✅ CONCLUÍDAS (44)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -269,6 +259,7 @@
 | **SUB-08.2** | Seção Frontend: `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` | DashboardAI (Grok Bot) | 2026-10-12 00:33 | 2026-10-12 00:33 | `cf3d955` |
 | **SUB-08.4** | Seção Embeddings: `OPENAI_API_KEY`, `EMBEDDING_API_URL`, `EMBEDDING_MODEL` | DashboardAI (Grok Bot) | 2026-10-12 00:34 | 2026-10-12 00:34 | `ac47ab6` |
 | **SUB-08.5** | Seção MCP: `MCP_AUTH_TOKEN`, `MCP_CORS_ORIGIN`, `MCP_DEFAULT_PROJECT`, `MCP_ALLOWED_PROJECTS` | DashboardAI (Grok Bot) | 2026-10-12 00:34 | 2026-10-12 00:35 | `212cc43` |
+| **SUB-08.6** | Seção Scripts: `DASHBOARD_AI_PROJECT` | DashboardAI (Grok Bot) | 2026-10-12 00:35 | 2026-10-12 00:35 | `86e701c` |
 
 ---
 
@@ -357,3 +348,4 @@
 | 2026-10-12 00:34 | DashboardAI (Grok Bot) | SUB-08.5 | — | Lock: assumindo SUB-08.5 (Seção MCP: `MCP_AUTH_TOKEN`, `MCP_CORS_ORIGIN`, `MCP_DEFAULT_PROJECT`, `MCP_ALLOWED_PROJECTS`) |
 | 2026-10-12 00:35 | DashboardAI (Grok Bot) | SUB-08.5 | `212cc43` | Preenchida a seção MCP do `.env.example` com `MCP_AUTH_TOKEN` (exigido no `/mcp`; sem ele as ferramentas de dados ficam desativadas; gerar com `openssl rand -hex 32`), `MCP_CORS_ORIGIN` (padrão `*`, restringir em produção; também usada pelo `/api/embedding`), `MCP_DEFAULT_PROJECT` e `MCP_ALLOWED_PROJECTS` (lista por vírgula; quando preenchida recusa memória global), conforme `api/mcp.ts`, `api/_lib/args.ts` e `api/_lib/brain-tools.ts`. Valores vazios. |
 | 2026-10-12 00:35 | DashboardAI (Grok Bot) | SUB-08.6 | — | Lock: assumindo SUB-08.6 (Seção Scripts: `DASHBOARD_AI_PROJECT`) |
+| 2026-10-12 00:35 | DashboardAI (Grok Bot) | SUB-08.6 | `86e701c` | Preenchida a seção Scripts do `.env.example` com `DASHBOARD_AI_PROJECT` (slug padrão do `scripts/sincronizar_tasks.py`, equivale a `--projeto`, padrão `default`), lembrando que o script lê o `.env` da raiz sem sobrescrever o ambiente e usa `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`. Nenhum valor real no arquivo. |
