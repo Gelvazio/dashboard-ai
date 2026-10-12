@@ -45,28 +45,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.10
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-28.10** |
-| **Título da Sub-task:** | Nó `revisar` (roteamento) em `worker/nos/revisar.ts` |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 12:41 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202
-- **Em Execução:** 1 (SUB-28.10, Devin (Cognition AI), desde 2026-10-12 12:41)
+- **Em Execução:** 0
 - **Pendentes:** 4 principais (25, 26, 28, 35) + 34 subtarefas
   - livres agora: 11 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.6, SUB-28.7, SUB-28.8, SUB-28.9, SUB-28.13, SUB-28.14, SUB-35.32, SUB-35.33)
   - bloqueadas por dependência: 23
   - reservadas: 0
-- **Concluídas:** 200 de 239 blocos (33 principais + 167 subtarefas)
+- **Concluídas:** 201 de 239 blocos (33 principais + 168 subtarefas)
 - **Canceladas:** 0
 
 ---
@@ -1981,7 +1970,7 @@
   - `SUB-28.7`: Nó `planejar` (chamada ao modelo) em `worker/nos/planejar.ts` (`pendente`)
   - `SUB-28.8`: Nó `politica` (aprovação humana) em `worker/nos/politica.ts` (`pendente`)
   - `SUB-28.9`: Nó `executar` em `worker/nos/executar.ts` (`pendente`)
-  - `SUB-28.10`: Nó `revisar` (roteamento) em `worker/nos/revisar.ts` (`em_execucao`)
+  - `SUB-28.10`: Nó `revisar` (roteamento) em `worker/nos/revisar.ts` (`concluido`, `b1c35a9`)
   - `SUB-28.11`: Nó `finalizar` em `worker/nos/finalizar.ts` (`concluido`, `9575b13`)
   - `SUB-28.12`: Montagem do `StateGraph` em `worker/grafo.ts` (`pendente`)
   - `SUB-28.13`: Checkpointer durável em `worker/checkpointer.ts` (`pendente`)
@@ -2109,16 +2098,16 @@
 - **Anotação:** Reaberta na revisão de 2026-10-12 (Devin (revisão do quadro)): marcada como concluída em `310fab9`, mas placeholder: executa um plano fixo (`planoPlaceholder`) e o handler MCP só devolve texto; sem teste.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (reaberta: critérios de aceitação não atendidos)
 
-#### [ ] SUB-28.10: Nó `revisar` (roteamento) em `worker/nos/revisar.ts`
-- **Status:** em_execucao
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:41)
+#### [x] SUB-28.10: Nó `revisar` (roteamento) em `worker/nos/revisar.ts`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:41, conclusão: 2026-10-12 12:42)
 - **Depende de:** SUB-28.21
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Usa `classificarFalha` (SUB-28.21) e decide repetir o passo (limite por nó, espera progressiva) ou seguir para finalizar.
 - **Critérios de Aceitação:** Teste: transitória repete até o limite; permanente finaliza.
-- **Commit:** pendente (código parcial em `e76ff6e`)
-- **Anotação:** Reaberta na revisão de 2026-10-12 (Devin (revisão do quadro)): marcada como concluída em `310fab9`, mas placeholder: `temMaisPassos` fixo em `false`; sem teste.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (reaberta: critérios de aceitação não atendidos)
+- **Commit:** `b1c35a9`
+- **Anotação:** `worker/nos/revisar.ts`: `decidirRevisao(erro, tentativas, opcoes)` usa `classificarFalha` (SUB-28.21) — só falha transitória repete, até `limitePorNo` (padrão 3), com espera `esperaBaseMs * 2^(tentativa-1)`; demais falhas (ou limite atingido) finalizam com `classe_falha`. `revisar(state, opcoes, esperar)` lê `resultados.erro`, conta as tentativas em `resultados["tentativas:<passo>"]`, limpa o erro ao repetir e segue enquanto houver passo atual. Testes em `tests/unit/worker-revisar.test.ts`: transitória repete até o limite (100 ms, 200 ms, depois finaliza), permanente finaliza, sem erro segue. `npm test`, `npm run typecheck` e `npm run typecheck:worker` verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:42 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
 #### [x] SUB-28.11: Nó `finalizar` em `worker/nos/finalizar.ts`
 - **Status:** concluido
