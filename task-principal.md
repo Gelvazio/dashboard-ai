@@ -45,28 +45,17 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.15
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-28.15** |
-| **Título da Sub-task:** | CLI do worker em `worker/index.ts` |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 12:54 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202
-- **Em Execução:** 1 (SUB-28.15, Devin (Cognition AI), desde 2026-10-12 12:54)
+- **Em Execução:** 0
 - **Pendentes:** 4 principais (25, 26, 28, 35) + 25 subtarefas
-  - livres agora: 5 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-35.32, SUB-35.33)
-  - bloqueadas por dependência: 20
+  - livres agora: 8 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.16, SUB-28.17, SUB-28.24, SUB-35.32, SUB-35.33)
+  - bloqueadas por dependência: 17
   - reservadas: 0
-- **Concluídas:** 209 de 239 blocos (33 principais + 176 subtarefas)
+- **Concluídas:** 210 de 239 blocos (33 principais + 177 subtarefas)
 - **Canceladas:** 0
 
 ---
@@ -1986,7 +1975,7 @@
   - `SUB-28.12`: Montagem do `StateGraph` em `worker/grafo.ts` (`concluido`, `0d9c835`)
   - `SUB-28.13`: Checkpointer durável em `worker/checkpointer.ts` (`concluido`, `1bd4ca7`)
   - `SUB-28.14`: Reconciliação na retomada em `worker/reconciliar.ts` (`concluido`, `206ba39`)
-  - `SUB-28.15`: CLI do worker em `worker/index.ts` (`em_execucao`)
+  - `SUB-28.15`: CLI do worker em `worker/index.ts` (`concluido`, `ba04cc1`)
   - `SUB-28.16`: Endpoint `api/aprovacao.ts`: autenticação e papel (401/403) (`pendente`)
   - `SUB-28.17`: Testes do worker: caminho feliz e erro (`pendente`)
   - `SUB-28.18`: Atualizar `LangChain_LangGraph.md` (status e desvios) (`pendente`)
@@ -2164,16 +2153,16 @@
 - **Anotação:** `reconciliar(esperado, deps)` em `worker/reconciliar.ts`: relê a task no Supabase (`status, trava_frente, trava_em, tentativas`) e só devolve `{ valido: true }` se continua `em_execucao`, com `trava_frente` = agente, trava dentro de 90 min (`trava_em`) e a mesma tentativa; caso contrário devolve `{ valido: false, motivo }` para o worker abortar sem efeitos. Testes com estados divergentes em `tests/unit/worker-reconciliar.test.ts` (task removida, concluída, outro agente, trava expirada ou sem data, nova tentativa). `npm test`, `npm run typecheck`, `npm run typecheck:worker` e `npm run build` verdes.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:47 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
-#### [ ] SUB-28.15: CLI do worker em `worker/index.ts`
-- **Status:** em_execucao
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:54)
+#### [x] SUB-28.15: CLI do worker em `worker/index.ts`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:54, conclusão: 2026-10-12 12:57)
 - **Depende de:** SUB-28.22
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Opções `--projeto`, `--agente`, `--uma-vez`; loop chamando `executarUmaTask` (SUB-28.22) até não haver task; `"worker"` no `package.json`.
 - **Critérios de Aceitação:** `npm run worker -- --uma-vez` roda contra banco local.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **Commit:** `ba04cc1`
+- **Anotação:** `worker/index.ts`: `lerOpcoes(argv)` (`--projeto` padrão `default`, `--agente` padrão `Worker LangGraph`, `--uma-vez`, opção desconhecida é recusada) e `rodarWorker(opcoes)`, que chama `executarUmaTask` até não haver task (ou uma vez com `--uma-vez`). O grafo real (`ChatOpenAI` com `OPENAI_API_KEY`/`WORKER_MODELO`, padrão `gpt-4o-mini`, + `criarCheckpointer`) só é criado na primeira task (`grafoSobDemanda`). Script `"worker": "tsx worker/index.ts"`; `tsx@^4.23.15` e `@langchain/openai@^0.4.9` entraram em devDependencies, junto dos outros pacotes LangChain (`npm audit --omit=dev` segue sem vulnerabilidades). `WORKER_MODELO` adicionada ao `.env.example`. Testes em `tests/unit/worker-cli.test.ts`. Rodado contra banco local (Postgres 16 + pgvector com `database/0*.sql` + PostgREST em Docker): com a fila vazia, `npm run worker -- --uma-vez` responde "nenhuma task disponível" e sai com 0; com uma task, ela foi reivindicada (`em_execucao`, trava `Worker Local`). Achado: `finalizar()` em `worker/fila.ts` chama `finalizar_task` com `p_erro_mensagem`, que não existe na RPC real (`database/04_rpc_functions.sql`); a correção virou a SUB-28.33. Desvio: `PostgresSaver` usa `langgraph-checkpoint@0.1.3` e o `langgraph` usa `0.0.18`, por isso há um cast para `BaseCheckpointSaver` em `criarGrafoReal`. `npm test`, `npm run typecheck`, `npm run typecheck:worker`, `npm run build`, `npm run check:chunks` e `npm run check:env` verdes.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:57 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
 #### [ ] SUB-28.16: Endpoint `api/aprovacao.ts`: autenticação e papel (401/403)
 - **Status:** pendente
