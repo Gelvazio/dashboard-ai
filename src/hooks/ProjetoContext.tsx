@@ -2,7 +2,8 @@
  * Projeto selecionado (contexto global). Todas as telas e serviços leem o projeto
  * daqui; a escolha fica salva no navegador por slug.
  */
-import { createContext, useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
+import { AuthContext } from './AuthContext';
 import { listarProjetos } from '@/services/projectService';
 import { supabaseConfigurado } from '@/services/supabase';
 import type { Project } from '@/types';
@@ -40,9 +41,21 @@ export function ProjetoProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
+  // Sessão do Supabase Auth (equivalente a `useAuth`, mas tolerante fora do AuthProvider:
+  // sem provider, `logado` fica indefinido e o comportamento anterior é mantido).
+  const auth = useContext(AuthContext);
+  const logado = auth && !auth.carregando ? Boolean(auth.sessao) : undefined;
+
   useEffect(() => {
+    if (logado === false) {
+      // Sem sessão: esquece a lista e o erro (a RLS bloquearia), mas mantém o slug salvo.
+      setProjetos([]);
+      setErro(null);
+      setCarregando(false);
+      return;
+    }
     void recarregar();
-  }, [recarregar]);
+  }, [recarregar, logado]);
 
   const projeto = useMemo(
     () => projetos.find((p) => p.slug === slug) ?? projetos[0] ?? null,
