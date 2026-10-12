@@ -3,7 +3,7 @@
 **Objetivo:** gerenciador genérico de tasks de IA multi-projeto (fila, memória persistente e monitor dos agentes).
 **Partes interessadas:** Gelvazio (decide, aprova e usa) · agentes de IA (executam pelo quadro)
 **Links:** [Regras](AGENTS.md) · [Planos](docs/) · [Quadro](task-principal.md) · [Concluídas](task_complete.md)
-**Próximo passo:** aceite do usuário da Etapa 2 (prioridades e revisão do `AGENTS.md`). A verificação geral ficou para depois como `SUB-38` (prioridade `MAXIMA`), a partir do bloco SUB-28
+**Próximo passo:** Etapa 7 — executar SUB-40.1 a 40.6 em sequência (uma trava por vez) e pedir autorização para a 40.7. Pendentes também: aceite da Etapa 2 e a verificação geral `SUB-38` (`MAXIMA`), a partir do bloco SUB-28
 
 Legenda: ⬜ Pendente · 🔄 Em progresso · ✅ Concluído · ⛔ Bloqueado
 
@@ -73,6 +73,19 @@ Legenda: ⬜ Pendente · 🔄 Em progresso · ✅ Concluído · ⛔ Bloqueado
 | Item | Descrição | Status | Concluído em | Verificação |
 |------|-----------|--------|--------------|-------------|
 | 6.1 | Regra 9 da seção 1.1 do `AGENTS.md`: no resumo, editar só o próprio item | ✅ Concluído | 2026-10-12 | `26e949b`; texto genérico, sem citar tarefas |
+
+## Etapa 7 — Executar a SUB-40 (login com cadastro e admin inicial) (pedida em 2026-10-12)
+Plano: [`docs/login-cadastro-admin-inicial.md`](docs/login-cadastro-admin-inicial.md)
+| Item | Descrição | Status | Concluído em | Verificação |
+|------|-----------|--------|--------------|-------------|
+| 7.1 | SUB-40.1 SQL `database/08_admin_inicial.sql` | 🔄 Em progresso | — | — |
+| 7.2 | SUB-40.2 `validarCadastro` e mensagens em `src/lib/auth.ts` | ⬜ Pendente | — | — |
+| 7.3 | SUB-40.3 `cadastrarUsuario` em `src/services/authService.ts` | ⬜ Pendente | — | — |
+| 7.4 | SUB-40.4 `CadastroForm.tsx` | ⬜ Pendente | — | — |
+| 7.5 | SUB-40.5 Entrar/Criar usuário na `LoginView` | ⬜ Pendente | — | — |
+| 7.6 | SUB-40.6 Documentação | ⬜ Pendente | — | — |
+| 7.7 | SUB-40.7 Aplicar SQL no Supabase (só com autorização) | ⬜ Pendente | — | — |
+| 7.8 | Aceite do usuário | ⬜ Pendente | — | — |
 
 ## Riscos
 | Risco | Chance | Impacto | Plano B | Situação |
