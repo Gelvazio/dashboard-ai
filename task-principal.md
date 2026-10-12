@@ -2308,8 +2308,8 @@
 - **Anotação:** Adicionado `assinarEventos(projectId, { onEvento, onStatus }, client?)` em `src/services/eventService.ts`: canal `agent_events:<projectId>` com `postgres_changes` (INSERT, `project_id=eq.<id>`), repassa o status do canal (`StatusCanalEventos`: SUBSCRIBED/CHANNEL_ERROR/TIMED_OUT/CLOSED, com erro opcional) e devolve a função que chama `removeChannel`. Sem polling. typecheck e `npm test` OK.
 
 #### [ ] SUB-35.12: Testes de `eventService` em `tests/unit/eventService.test.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 09 (Grok Bot)
 - **Depende de:** SUB-35.11
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Com cliente falso: `listarEventos` aplica filtros e limite; `atividadeAtual` chama a RPC e ordena; `assinarEventos` cria o canal com o filtro do projeto, repassa eventos e status e remove o canal ao cancelar.
