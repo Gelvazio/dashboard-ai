@@ -10,7 +10,7 @@
 --   * service_role   -> backend/agentes (MCP, scripts, rotinas): ignora RLS e é o
 --                       único que executa as funções da fila.
 --
--- Idempotente. Depende de 00 a 04. Aplicar por último.
+-- Idempotente. Depende de 00 a 04 (06_messages_rules.sql traz a RLS das próprias tabelas).
 -- =============================================================================
 
 -- Fora do Supabase, cria os papéis para o script poder ser aplicado (sem login).

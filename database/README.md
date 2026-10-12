@@ -17,7 +17,8 @@ atualizam instalações da versão anterior (sem `project_id`).
 | `02_logs_schema.sql` | `public.agendamento_tarefa_logs` por projeto (agente, status antes/depois, instrução recebida, repositório, branch, commit, PR, sessão, arquivos alterados, duração) |
 | `03_memories_schema.sql` | Extensão `vector` + `public.ai_memories` por projeto (`project_id` nulo = memória global), título único por projeto, índice HNSW de cosseno |
 | `04_rpc_functions.sql` | `pegar_proxima_task`, `finalizar_task`, `registrar_execucao_sem_tarefa`, `liberar_trava_task`, `match_memories` |
-| `05_rls_policies.sql` | RLS em todas as tabelas, permissões de tabelas e funções (aplicar por último) |
+| `05_rls_policies.sql` | RLS e permissões das tabelas e funções de 00–04 |
+| `06_messages_rules.sql` | `agent_messages` (recados entre agentes, por projeto/task) e `project_rules` (regras do repositório por seção, com `md5`), `ler_recados()`, `conferir_regras()` e a RLS dessas tabelas |
 
 ## Modelo de acesso
 
@@ -30,6 +31,22 @@ atualizam instalações da versão anterior (sem `project_id`).
 Guarda da interface (trigger): usuários da API nunca colocam ou tiram uma task de `em_execucao`,
 não mexem na trava nem nas tentativas (exceto zerar ao reabrir) e só concluem tasks do tipo
 `humano`. `project_id` de uma task não muda depois de criada.
+
+## Recados e regras (06)
+
+- **`agent_messages`**: recado de um agente/frente (`remetente`) para outro (`destinatario`, nulo = todos),
+  com `tipo` (`recado`, `pergunta`, `resposta`, `alerta`, `handoff`), task opcional (`task_id` ou
+  `task_codigo`, sempre do mesmo projeto) e `resposta_de` para conversas.
+  `ler_recados(p_projeto, p_agente, p_somente_nao_lidos, p_marcar_lidos, p_desde, p_limite)` devolve a
+  caixa de entrada do agente (dirigidos a ele + para todos, sem os próprios e os arquivados) e marca
+  como lidos os dirigidos a ele. Recados para todos não são marcados: use `p_desde`.
+  Interface: viewer lê; editor cria e só altera `lido_em`, `lido_por` e `arquivado` (sem DELETE);
+  `criado_por` é sempre o usuário logado.
+- **`project_rules`**: cópia das regras do repositório do projeto por (`arquivo`, `secao`), com `md5`
+  gerado do `conteudo`. `conferir_regras(p_projeto, '[{"arquivo","secao","md5"}]')` compara o que está
+  no repositório com o banco: `igual`, `diverge`, `so_local`, `so_banco` (regras com `ativo = false`
+  são ignoradas). Regras viram instrução para agentes, por isso só o **owner** do projeto (ou
+  administrador) escreve; viewer lê.
 
 ## Fila
 
@@ -48,7 +65,7 @@ não mexem na trava nem nas tentativas (exceto zerar ao reabrir) e só concluem 
 
 ## Como aplicar
 
-**Supabase:** abra *SQL Editor* e execute os arquivos na ordem acima (00 → 05).
+**Supabase:** abra *SQL Editor* e execute os arquivos na ordem acima (00 → 06).
 
 **psql:**
 ```bash
@@ -85,6 +102,6 @@ const { data } = await supabase.rpc('match_memories', {
 ## Testes locais
 
 `database/tests/run_tests.sh` cria o banco `dashai_test` num PostgreSQL local com pgvector, simula
-os papéis do Supabase (`tests/supabase_stub.sql`, só para testes), aplica 00–05 duas vezes e roda
-as verificações de RLS, fila, memória (`tests/test_multi_projeto.sql`) e captura paralela entre
-projetos (`tests/test_paralelo.sh`). Nunca rode os testes contra o Supabase.
+os papéis do Supabase (`tests/supabase_stub.sql`, só para testes), aplica 00–06 duas vezes e roda
+as verificações de RLS, fila, memória (`tests/test_multi_projeto.sql`), recados e regras
+(`tests/test_recados_regras.sql`) e captura paralela entre projetos (`tests/test_paralelo.sh`). Nunca rode os testes contra o Supabase.

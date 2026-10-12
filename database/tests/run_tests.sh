@@ -15,10 +15,14 @@ run -f tests/supabase_stub.sql >/dev/null 2>&1
 for i in 1 2; do  # idempotência: aplica tudo duas vezes
   for f in 0*.sql; do run -f "$f" 2>&1 >/dev/null | { grep -v "NOTICE:" || true; }; done
 done
-echo "OK: schema 00-05 aplicado 2x sem erro"
+echo "OK: schema 00-06 aplicado 2x sem erro"
 
 saida=$(run -f tests/test_multi_projeto.sql 2>&1) || { echo "$saida" | grep -E 'FALHOU|ERROR' ; exit 1; }
 echo "$saida" | grep -c 'NOTICE:  ok:' | xargs -I{} echo "OK: {} verificações de RLS/fila/memória"
+echo "$saida" | grep -q TODOS_OS_TESTES_PASSARAM || { echo "$saida"; exit 1; }
+
+saida=$(run -f tests/test_recados_regras.sql 2>&1) || { echo "$saida" | grep -E 'FALHOU|ERROR' ; exit 1; }
+echo "$saida" | grep -c 'NOTICE:  ok:' | xargs -I{} echo "OK: {} verificações de recados/regras (SUB-31)"
 echo "$saida" | grep -q TODOS_OS_TESTES_PASSARAM || { echo "$saida"; exit 1; }
 
 DB=$DB bash tests/test_paralelo.sh
