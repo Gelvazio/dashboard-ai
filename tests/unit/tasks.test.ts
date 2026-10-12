@@ -1,0 +1,51 @@
+import { describe, expect, it } from 'vitest';
+import {
+  bloqueadaPorDependencia, dependenciasDa, formatarDataHora, infoPrioridade, progressoTentativas, resumo, STATUS_INFO, tempoRelativo,
+} from '@/lib/tasks';
+import { TASK_STATUS, type Task } from '@/types';
+
+describe('lib/tasks', () => {
+  it('tem rótulo e cor para todos os status', () => {
+    for (const s of TASK_STATUS) expect(STATUS_INFO[s].rotulo).toBeTruthy();
+  });
+
+  it('prioridade limita a 1..5', () => {
+    expect(infoPrioridade(1).rotulo).toBe('Crítica');
+    expect(infoPrioridade(9).rotulo).toBe('Mínima');
+    expect(infoPrioridade(0).rotulo).toBe('Crítica');
+  });
+
+  it('progresso das tentativas', () => {
+    expect(progressoTentativas({ tentativas: 1, max_tentativas: 4 })).toBe(0.25);
+    expect(progressoTentativas({ tentativas: 5, max_tentativas: 3 })).toBe(1);
+    expect(progressoTentativas({ tentativas: 0, max_tentativas: 0 })).toBe(0);
+  });
+
+  it('resolve dependências pelo código', () => {
+    const mapa = new Map<string, Pick<Task, 'status'>>([['A-1', { status: 'concluida' }], ['A-2', { status: 'erro' }]]);
+    const deps = dependenciasDa({ dependencias: ['A-1', 'A-2', 'X-9'] }, mapa);
+    expect(deps.map((d) => d.estado)).toEqual(['concluida', 'pendente', 'desconhecida']);
+    expect(bloqueadaPorDependencia(deps)).toBe(true);
+    expect(bloqueadaPorDependencia(deps.slice(0, 1))).toBe(false);
+    expect(bloqueadaPorDependencia([{ codigo: 'X', estado: 'desconhecida' }])).toBe(false);
+  });
+
+  it('tempo relativo e datas', () => {
+    const agora = Date.parse('2026-10-11T12:00:00Z');
+    expect(tempoRelativo('2026-10-11T11:55:00Z', agora)).toBe('há 5 min');
+    expect(tempoRelativo('2026-10-11T09:00:00Z', agora)).toBe('há 3 h');
+    expect(tempoRelativo('2026-10-08T12:00:00Z', agora)).toBe('há 3 dias');
+    expect(tempoRelativo('2026-10-11T14:00:00Z', agora)).toBe('em 2 h');
+    expect(tempoRelativo('2026-10-11T12:00:03Z', agora)).toBe('agora');
+    expect(tempoRelativo(null)).toBe('—');
+    expect(formatarDataHora(null)).toBe('—');
+    expect(formatarDataHora('lixo')).toBe('—');
+    expect(formatarDataHora('2026-10-11T12:00:00Z')).toMatch(/2026/);
+  });
+
+  it('resumo usa a primeira linha não vazia e corta', () => {
+    expect(resumo('\n  Olá mundo\nsegunda')).toBe('Olá mundo');
+    expect(resumo('x'.repeat(100), 10)).toBe(`${'x'.repeat(9)}…`);
+    expect(resumo(null)).toBe('');
+  });
+});

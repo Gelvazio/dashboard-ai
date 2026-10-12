@@ -7,3 +7,4 @@ export { useProjetoAtual } from './useProjetoAtual';
 export { useNavegacao } from './useNavegacao';
 export { useTema } from './useTema';
 export { useConexao } from './useConexao';
+export { useTasks } from './useTasks';

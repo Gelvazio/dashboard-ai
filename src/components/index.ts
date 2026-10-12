@@ -9,3 +9,5 @@ export { ProjectSelector } from './layout/ProjectSelector';
 export { ConnectionStatus } from './layout/ConnectionStatus';
 export { ThemeToggle } from './layout/ThemeToggle';
 export { EmConstrucao } from './EmConstrucao';
+export { Tooltip } from './ui/Tooltip';
+export * from './tasks';
