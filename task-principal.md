@@ -49,17 +49,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 03 (Grok Bot) — SUB-35.27
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.27** |
-| **Título da Sub-task:** | Linha do tempo `LinhaDoTempoAgentes` em `src/components/monitor/LinhaDoTempoAgentes.tsx` |
-| **Agente Responsável:** | DashboardAI-Clone 03 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:46 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.22
 
 | Propriedade | Valor Atual |
@@ -2237,7 +2226,7 @@
   - `SUB-35.24`: Componente `AtividadeAgentesGrid` em `src/components/monitor/AtividadeAgentesGrid.tsx` (`concluido`, `4bc0b25`)
   - `SUB-35.25`: Gráfico `GraficoPorStatus` em `src/components/monitor/GraficoPorStatus.tsx` (`concluido`)
   - `SUB-35.26`: Gráfico `GraficoPorAgente` em `src/components/monitor/GraficoPorAgente.tsx` (`pendente`)
-  - `SUB-35.27`: Linha do tempo `LinhaDoTempoAgentes` em `src/components/monitor/LinhaDoTempoAgentes.tsx` (`em_execucao`)
+  - `SUB-35.27`: Linha do tempo `LinhaDoTempoAgentes` em `src/components/monitor/LinhaDoTempoAgentes.tsx` (`concluido`)
   - `SUB-35.28`: Feed `FeedEventos` em `src/components/monitor/FeedEventos.tsx` (`pendente`)
   - `SUB-35.29`: Indicador `IndicadorAoVivo` em `src/components/monitor/IndicadorAoVivo.tsx` (`concluido`)
   - `SUB-35.30`: Tela `MonitorView` em `src/views/MonitorView.tsx` (`pendente`)
@@ -2523,15 +2512,15 @@
 - **Commit:** `6456092`
 - **Anotação:** Criado `src/components/monitor/GraficoPorAgente.tsx` (`{ eventos, className? }`): Chart.js de barras horizontais empilhadas (`indexAxis: y`, `stacked`), uma barra por agente via `contarPorAgente`, um dataset por tipo de `TIPOS_EVENTO_AGENTE` com cores de `CORES_TIPO`/`CORES_EIXO` no tema atual (observa a classe `dark`), altura proporcional ao nº de agentes, estado vazio, `aria-label` com totais, `destroy()` no cleanup. Exportado no barrel. typecheck, `npm test` e build OK.
 
-#### [🔄] SUB-35.27: Linha do tempo `LinhaDoTempoAgentes` em `src/components/monitor/LinhaDoTempoAgentes.tsx`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 03 (Grok Bot) (início: 2026-10-12 01:46)
+#### [x] SUB-35.27: Linha do tempo `LinhaDoTempoAgentes` em `src/components/monitor/LinhaDoTempoAgentes.tsx`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 03 (Grok Bot) (2026-10-12 01:46 → 2026-10-12 01:52)
 - **Depende de:** SUB-35.22, SUB-35.18
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Gantt simples (barras flutuantes `[inicio, fim]` por agente, eixo de tempo da última 1 h) com `segmentosLinhaDoTempo`; tooltip com etapa e status. Exportar no barrel.
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `173fc36`
+- **Anotação:** Criado `src/components/monitor/LinhaDoTempoAgentes.tsx` (`eventos`, `agora?`, `janelaMs?` = 1 h): Gantt com barras flutuantes `[inicio, fim]` por agente via `segmentosLinhaDoTempo` (recorta à janela; `execucao_id` nulo agrupa por agente), eixo X linear em ms com rótulos HH:MM, cores por status (`CORES_TIPO` progresso/fim/erro no tema atual), tooltip com etapa, status e horário. Exportado no barrel. typecheck, `npm test` e `npm run build` OK.
 
 #### [x] SUB-35.28: Feed `FeedEventos` em `src/components/monitor/FeedEventos.tsx`
 - **Status:** concluido
