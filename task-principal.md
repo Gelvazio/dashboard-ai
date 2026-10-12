@@ -1443,8 +1443,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-26.10: Seção Agentes de IA: exemplos do ciclo da fila
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 01:05)
 - **Depende de:** SUB-26.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Exemplos JSON-RPC de `task_next` -> trabalho -> `task_finish` (concluida/recusada/erro) e de `task_list`/`task_create`.

@@ -77,14 +77,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:05 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-26.10
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-26.10** |
+| **Título da Sub-task:** | Seção Agentes de IA: exemplos do ciclo da fila |
+| **Agente Responsável:** | DashboardAI-Clone 08 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:05 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (2)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-26.10** | Seção Agentes de IA: exemplos do ciclo da fila | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:05 | SUB-26.1 |
 | **SUB-23.12** | Teste de integração de `liberarTrava`: viewer e outro projeto | DashboardAI-Clone 02 | 2026-10-12 01:05 | SUB-23.4 |
 | **SUB-27.20** | Limpar `ProjetoContext` ao sair | DashboardAI-Clone 01 | 2026-10-12 01:05 | SUB-27.26 |
 | **SUB-19.7** | Painel `BuscaSemanticaPanel` (campo, grade e estados) | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:04 | SUB-19.5, SUB-19.6, SUB-19.9 |
@@ -93,7 +105,7 @@
 
 ---
 
-### ⏳ PENDENTES (157)
+### ⏳ PENDENTES (156)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -147,7 +159,6 @@
 | **SUB-26.6** | Seção Agentes de IA: configurar clientes MCP | 5 | Fase 10 | SUB-26.1 — ⛓️ bloqueada |
 | **SUB-26.8** | Seção Segurança | 5 | Fase 10 | SUB-26.1, SUB-27.13, SUB-27.17, SUB-27.21 — ⛓️ bloqueada |
 | **SUB-26.9** | Revisão final do README | 5 | Fase 10 | SUB-26.2, SUB-26.3, SUB-26.4, SUB-26.5, SUB-26.6, SUB-26.7, SUB-26.8, SUB-26.10, SUB-25 — ⛓️ bloqueada |
-| **SUB-26.10** | Seção Agentes de IA: exemplos do ciclo da fila | 5 | Fase 10 | SUB-26.1 — ⛓️ bloqueada |
 | **SUB-28** | Integração LangChain/LangGraph para Execução de Tasks (mãe) | 5 | Fase 11 (última) | SUB-01 a SUB-27, SUB-29, SUB-30; SUB-28.1 a SUB-28.32 |
 | **SUB-28.1** | Contrato: identificadores e estado mínimo em `docs/langgraph-contrato.md` | 5 | Fase 11 (última) | SUB-01 a SUB-27, SUB-29 a SUB-34 — ⛓️ bloqueada |
 | **SUB-28.2** | Dependências do worker no `package.json` | 5 | Fase 11 (última) | SUB-28.27 — ⛓️ bloqueada |
@@ -578,3 +589,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:05 | DashboardAI-Clone 01 | SUB-27.20 | — | Lock: assumindo SUB-27.20 (Limpar `ProjetoContext` ao sair) |
 | 2026-10-12 01:05 | DashboardAI-Clone 02 | SUB-23.12 | — | Lock: assumindo SUB-23.12 (Teste de integração de `liberarTrava`: viewer e outro projeto) |
 | 2026-10-12 01:05 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.3 | `2d714d4` | Em `database/07_agent_events.sql`: RLS habilitada em `agent_events`; `revoke all` de anon/authenticated, `grant select, insert` para `authenticated` e `all` para `service_role`; policies `agent_events_select` (`tem_acesso_projeto(project_id, 'viewer')`) e `agent_events_insert` (`tem_acesso_projeto(project_id, 'editor')`); sem policies/grants de update/delete (eventos só-inclusão). Validado em Postgres 17 local (00–07 + 07 reaplicado; `\\dp agent_events` mostra as policies e `relrowsecurity = t`); smoke com `test_multi_projeto.sql`: viewer só lê o próprio projeto e não inclui; editor inclui no próprio projeto (`criado_por` = ele), é recusado em outro projeto e não tem update/delete; anon sem acesso. |
+| 2026-10-12 01:05 | DashboardAI-Clone 08 (Grok Bot) | SUB-26.10 | — | Lock: assumindo SUB-26.10 (Seção Agentes de IA: exemplos do ciclo da fila) |
