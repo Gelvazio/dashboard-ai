@@ -430,7 +430,7 @@
 - **Executor:** nenhum
 - **Depende de:** subtarefas SUB-40.1 a SUB-40.7
 - **Subtarefas:** (criada e subdividida em 7 em 2026-10-12 por Claude Code (Opus 5.5) a pedido do usuário; a mãe só é concluída quando todas as filhas estiverem `concluido`)
-  - `SUB-40.1`: SQL do administrador inicial (`database/08_admin_inicial.sql`) (`concluido`, `21a5863`)
+  - `SUB-40.1`: SQL do administrador inicial (`database/08_admin_inicial.sql`) (`concluido`, `e64524e`)
   - `SUB-40.2`: Validação e mensagens do cadastro em `src/lib/auth.ts` (`pendente`)
   - `SUB-40.3`: Serviço `cadastrarUsuario` em `src/services/authService.ts` (`pendente`)
   - `SUB-40.4`: Componente `src/components/auth/CadastroForm.tsx` (`pendente`)

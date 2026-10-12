@@ -78,7 +78,7 @@ Legenda: ⬜ Pendente · 🔄 Em progresso · ✅ Concluído · ⛔ Bloqueado
 Plano: [`docs/login-cadastro-admin-inicial.md`](docs/login-cadastro-admin-inicial.md)
 | Item | Descrição | Status | Concluído em | Verificação |
 |------|-----------|--------|--------------|-------------|
-| 7.1 | SUB-40.1 SQL `database/08_admin_inicial.sql` | ✅ Concluído | 2026-10-12 18:15 | `21a5863`; leitura do SQL (sem Postgres local) |
+| 7.1 | SUB-40.1 SQL `database/08_admin_inicial.sql` | ✅ Concluído | 2026-10-12 18:15 | `e64524e`; leitura do SQL (sem Postgres local) |
 | 7.2 | SUB-40.2 `validarCadastro` e mensagens em `src/lib/auth.ts` | ⬜ Pendente | — | — |
 | 7.3 | SUB-40.3 `cadastrarUsuario` em `src/services/authService.ts` | ⬜ Pendente | — | — |
 | 7.4 | SUB-40.4 `CadastroForm.tsx` | ⬜ Pendente | — | — |
