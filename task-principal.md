@@ -33,25 +33,12 @@
 
 | Propriedade | Valor Atual |
 |---|---|
-| **Status da Trava:** | 🔒 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-38** |
-| **Título da Sub-task:** | Verificação geral de todas as tarefas (marcador `VERIFICADOR-CLAUDE`) |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 15:35 |
+| **Status da Trava:** | ✅ **LIVRE** |
+| **Sub-task em Execução:** | **—** |
+| **Título da Sub-task:** | — |
+| **Agente Responsável:** | — |
+| **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhuma outra IA pode assumir a SUB-38 (a 🔒 TRAVA ESPECIAL do KIRO-DEV-CLONE continua ativa logo abaixo) |
-
----
-
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-38
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-38** |
-| **Título da Sub-task:** | Verificação geral de todas as tarefas (marcador `VERIFICADOR-CLAUDE`) |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 15:35 |
-| **Bloqueio para Outras IAs:** | Nenhuma outra IA pode assumir a SUB-38 |
 
 ---
 
@@ -75,30 +62,18 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 39
 - **Subtarefas atômicas (~3 min):** 205
-- **Em Execução:** 1 (SUB-38)
+- **Em Execução:** 0
 - **Pendentes:** 6 principais (SUB-38, 25, 26, 28, 35, KIRO-DEV-CLONE) + 6 subtarefas
   - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 3 — SUB-25.4, SUB-25.7 e SUB-35.32 (`MEDIA`). A atômica KIRO-DEV-CLONE (`BAIXA`) está 🔴 travada para todas as IAs
   - bloqueadas por dependência: 3 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente) e SUB-35.46 (depende da SUB-35.32)
-  - em execução: 1 — SUB-38 (Devin)
+  - em execução: 0
   - reservadas: 0
-- **Concluídas:** 227 de 243 blocos (33 principais + 194 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 228 de 243 blocos (33 principais + 195 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
 
 ## ⭐ PRIORIDADE MÁXIMA
-
-### [ ] SUB-38: Verificação geral de todas as tarefas (marcador `VERIFICADOR-CLAUDE`)
-- **Status:** em_execucao
-- **Prioridade:** MAXIMA
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 15:35)
-- **Depende de:** Nenhuma
-- **Subtarefas:** Nenhuma (atômica; mantida como 1 tarefa por decisão do usuário em 2026-10-12, apesar de passar de ~3 min)
-- **Descrição:** Ler todos os blocos do `task-principal.md` e do `task_complete.md` e conferir, um por vez, se a entrega está correta (commits citados existem, arquivos e funções existem e atendem aos critérios, testes e validação). O resultado vai no marcador `- **VERIFICADOR-CLAUDE:**` de cada bloco (já inserido como `PENDENTE`). Valores: `✅ OK`, `⚠️ RESSALVA`, `❌ FALHA` ou `⬜ NÃO IMPLEMENTADA`, sempre com data, hora, agente e evidência. Só leitura: problemas achados viram subtarefas novas, não são corrigidos aqui. Commit e push a cada bloco verificado (`docs(verificador): SUB-XX verificada (<resultado>) por <agente>`). Plano e critérios: [`docs/verificador-claude.md`](docs/verificador-claude.md).
-- **Critérios de Aceitação:** Nenhum marcador `VERIFICADOR-CLAUDE: PENDENTE` nos dois quadros; relatório final com a lista de ressalvas e falhas.
-- **Commit:** pendente
-- **Anotação:** Iniciada por Claude Code em 2026-10-12 15:20 e adiada a pedido do usuário. Feito até agora: marcador inserido em 246 blocos (`5fb92f7`); validação geral registrada em `docs/verificador-claude.md` (`npm run typecheck`/`build` falhavam com TS6133, tratado na SUB-25.8); 6 blocos já verificados: SUB-25, SUB-25.4, SUB-25.7, SUB-26, SUB-26.3 e SUB-26.9 (`⬜ NÃO IMPLEMENTADA`). Próximo bloco: SUB-28. A SUB-25.8 (travada por DeepSeek Harness no momento) ainda não tem os campos `Prioridade` (`ALTA`) e `VERIFICADOR-CLAUDE`: incluir quando a trava for liberada.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 ---
 
