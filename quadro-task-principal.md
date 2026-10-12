@@ -22,17 +22,6 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo no quadro principal |
 
-### 🔒 TRAVA ADICIONAL — Claude Code — SUB-20.9
-
-|| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-20.9** |
-| **Título da Sub-task:** | Componente `TagSugestoes` em `src/components/ui/TagSugestoes.tsx` |
-| **Agente Responsável:** | Claude Code |
-| **Data e Hora de Início:** | 2026-10-12 00:52 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — Codex (OpenAI)
 
 | Propriedade | Valor Atual |
@@ -345,10 +334,11 @@
 | **SUB-08.3** | Seção Servidor Supabase: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `SUPABASE_REST_URL` | DashboardAI (Grok Bot) | 2026-10-12 00:30 | 2026-10-12 00:30 | `35aff13` |
 | **SUB-33.5** | Registrar `api/embedding.ts` no `vercel.json` | Codex (OpenAI) | 2026-10-12 00:35 | 2026-10-12 00:41 | `1d68ea6` |
 
-n|| **SUB-20.1** | `validarMemoria(dados)` em `src/lib/memoriaForm.ts` | DashboardAI-Clone 06 | 2026-10-12 00:46 | 2026-10-12 00:47 | `5662f1a` |
+n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | Claude Code | 2026-10-12 00:50 | 2026-10-12 00:51 | `fc4c3ee` |
+|| **SUB-20.1** | `validarMemoria(dados)` em `src/lib/memoriaForm.ts` | DashboardAI-Clone 06 | 2026-10-12 00:46 | 2026-10-12 00:47 | `5662f1a` |
 || **SUB-19.3** | `formatarSimilaridade` em `src/lib/similaridade.ts` | Claude Code | 2026-10-12 00:45 | 2026-10-12 00:45 | `21d035c` |
 || **SUB-19.1** | `debounce(fn, ms)` em `src/lib/debounce.ts` | Claude Code | 2026-10-12 00:44 | 2026-10-12 00:44 | `b07cfb8` |
-n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | Claude Code | 2026-10-12 00:50 | 2026-10-12 00:51 | `595a1bb` |
+|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | Claude Code | 2026-10-12 00:50 | 2026-10-12 00:51 | `595a1bb` |
 || **SUB-19.9** | `BuscaControles` (limiar, globais, modo) em `src/components/memoria/BuscaControles.tsx` | Claude Code | 2026-10-12 00:46 | 2026-10-12 00:47 | `2bac1b6` |
 || **SUB-34.1** | Fallback `CarregandoTela` em `src/components/ui/CarregandoTela.tsx` | Claude Code | 2026-10-12 00:37 | 2026-10-12 00:38 | `0d7cbd9` |
 || **SUB-34.2** | Telas com `React.lazy` em `src/views/index.ts` | Claude Code | 2026-10-12 00:39 | 2026-10-12 00:40 | `662348b` |
