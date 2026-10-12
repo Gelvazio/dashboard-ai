@@ -421,8 +421,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-08.8: `extrairVariaveis(texto)` em `scripts/checar-env.mjs` + testes
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 00:54)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `scripts/checar-env.mjs` (Node, sem dependências) exportando só `extrairVariaveis(texto): string[]` (reconhece `process.env.X`, `import.meta.env.X`, `env.X` em maiúsculas e `os.environ.get("X")`/`os.environ["X"]`; sem repetidos, ordenada). Testes em `tests/unit/checar-env.test.ts`.
