@@ -44,17 +44,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:03 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-26.7
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-26.7** |
-| **Título da Sub-task:** | Seção Memória via MCP |
-| **Agente Responsável:** | DashboardAI-Clone 08 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:03 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-21.9
 
 | Propriedade | Valor Atual |
@@ -92,14 +81,13 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (4)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-19.7** | Painel `BuscaSemanticaPanel` (campo, grade e estados) | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:04 | SUB-19.5, SUB-19.6, SUB-19.9 |
 | **SUB-27.15** | Rechecar conexão no login/logout em `src/hooks/useConexao.ts` | DashboardAI-Clone 01 | 2026-10-12 01:04 | SUB-27.26 |
 | **SUB-21.9** | Montar a `MemoriaView` (toolbar + grade) | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:04 | SUB-21.3, SUB-21.5, SUB-21.8 |
-| **SUB-26.7** | Seção Memória via MCP | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:03 | SUB-26.1 |
 | **SUB-21.7** | Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` | DashboardAI-Clone 06 | 2026-10-12 01:03 | SUB-21.3 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
@@ -258,10 +246,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (80)
+### ✅ CONCLUÍDAS (81)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-26.7** | Seção Memória via MCP | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:03 | 2026-10-12 01:04 | `7fa647b` |
 | **SUB-35.2** | Trigger `validar_agent_event` em `database/07_agent_events.sql` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:02 | 2026-10-12 01:03 | `54cdea9` |
 | **SUB-36** | Gráfico em rede (cérebro) dos agentes no `dashboard-task-principal.html` | DashboardAI (Grok Bot) | 2026-10-12 01:01 | 2026-10-12 01:02 | `cdbf35b` |
 | **SUB-26.4** | Seção Banco de dados | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:02 | 2026-10-12 01:02 | `62ea6c0` |
@@ -582,3 +571,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:04 | DashboardAI-Clone 01 | SUB-27.15 | — | Lock: assumindo SUB-27.15 (Rechecar conexão no login/logout em `src/hooks/useConexao.ts`) |
 | 2026-10-12 01:04 | DashboardAI-Clone 04 (Grok Bot) | SUB-19.7 | — | Lock: assumindo SUB-19.7 (Painel `BuscaSemanticaPanel` (campo, grade e estados)) |
 | 2026-10-12 01:04 | DashboardAI-Clone 02 | SUB-23.5 | `af0214b` | Em `tests/integration/taskService.integration.test.ts`, bloco 'liberarTrava: expirada e forçada' (projeto LIB, editor): trava de 100 min (via `servico()`) é liberada sem forçar (status `pendente`, resultado com 'liberada manualmente'); trava de 5 min é recusada sem `forcar` (continua `em_execucao`) e liberada com `forcar`. Sem PostgREST no ambiente do clone o bloco fica skipped; `npm test` verde (162 passed, 16 skipped). |
+| 2026-10-12 01:04 | DashboardAI-Clone 08 (Grok Bot) | SUB-26.7 | `7fa647b` | Seção Memória via MCP do `README.md`: visão geral (`ai_memories`, embedding 1536, `match_memories`, exige `MCP_AUTH_TOKEN`), escopo projeto (`project` → `MCP_DEFAULT_PROJECT` → `default`, título único por projeto/upsert) x global (`global: true`, não combina com `project`, recusada com `MCP_ALLOWED_PROJECTS`, busca inclui globais por padrão), tabela de argumentos e limites de `brain_store`/`brain_search`/`brain_delete`, explicação do limiar (padrão 0.5) e das tags (todas precisam casar), exemplos JSON-RPC `tools/call` (store por projeto, search com tags/limit/threshold, store global, delete) e `curl`, e boas práticas. Tudo conferido com `api/_lib/brain-tools.ts`, `api/_lib/args.ts`, `api/mcp.ts` e `database/04_rpc_functions.sql`; JSONs validados. Só documentação. |

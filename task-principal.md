@@ -1412,15 +1412,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-26.7: Seção Memória via MCP
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 01:03)
+#### [x] SUB-26.7: Seção Memória via MCP
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 01:03 → 2026-10-12 01:04)
 - **Depende de:** SUB-26.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** `brain_store`, `brain_search`, `brain_delete`, memórias globais vs. por projeto, limiar e tags; exemplos.
 - **Critérios de Aceitação:** Exemplos conferidos com `api/_lib/brain-tools.ts`.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `7fa647b`
+- **Anotação:** Seção Memória via MCP do `README.md`: visão geral (`ai_memories`, embedding 1536, `match_memories`, exige `MCP_AUTH_TOKEN`), escopo projeto (`project` → `MCP_DEFAULT_PROJECT` → `default`, título único por projeto/upsert) x global (`global: true`, não combina com `project`, recusada com `MCP_ALLOWED_PROJECTS`, busca inclui globais por padrão), tabela de argumentos e limites de `brain_store`/`brain_search`/`brain_delete`, explicação do limiar (padrão 0.5) e das tags (todas precisam casar), exemplos JSON-RPC `tools/call` (store por projeto, search com tags/limit/threshold, store global, delete) e `curl`, e boas práticas. Tudo conferido com `api/_lib/brain-tools.ts`, `api/_lib/args.ts`, `api/mcp.ts` e `database/04_rpc_functions.sql`; JSONs validados. Só documentação.
 
 #### [ ] SUB-26.8: Seção Segurança
 - **Status:** pendente
