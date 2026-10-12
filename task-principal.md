@@ -2153,7 +2153,7 @@
   - `SUB-35.6`: Teste de integração de `agent_events` (RLS e trigger) (`concluido`)
   - `SUB-35.7`: Seção "Eventos dos agentes (07)" no `database/README.md` (`concluido`)
   - `SUB-35.8`: Tipos `AgentEvent` e `AtividadeAgente` em `src/types/database.ts` (`concluido`)
-  - `SUB-35.9`: `listarEventos()` em `src/services/eventService.ts` (`em_execucao`)
+  - `SUB-35.9`: `listarEventos()` em `src/services/eventService.ts` (`concluido`)
   - `SUB-35.10`: `atividadeAtual()` em `src/services/eventService.ts` (`pendente`)
   - `SUB-35.11`: `assinarEventos()` (Supabase Realtime) em `src/services/eventService.ts` (`pendente`)
   - `SUB-35.12`: Testes de `eventService` em `tests/unit/eventService.test.ts` (`pendente`)
@@ -2277,15 +2277,15 @@
 - **Commit:** `5a09109`
 - **Anotação:** Em `src/types/database.ts`: `TIPOS_EVENTO_AGENTE` (const) + `TipoEventoAgente`, `AgentEvent` (colunas de `agent_events`, SUB-35.1), `AtividadeAgente` (retorno de `atividade_atual_agentes`, SUB-35.5, incl. `ultimo_heartbeat_em`) e `AgentEventInsert` (opcionais: id, task, execução, etapa, status, mensagem, metadados, chave, autor, data); `Database` registra `agent_events` (`Update: never`, só-inclusão) e a função `atividade_atual_agentes({ p_project_id })`. Reexportados por `src/types/index.ts`. Comentário do teste de integração da SUB-35.6 atualizado (segue sem tipagem para tentar o update proibido). `npm run typecheck` e `npm test` verdes.
 
-#### [ ] SUB-35.9: `listarEventos()` em `src/services/eventService.ts`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 01:12)
+#### [x] SUB-35.9: `listarEventos()` em `src/services/eventService.ts`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 01:12; conclusão: 2026-10-12 01:13)
 - **Depende de:** SUB-35.8
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/services/eventService.ts` com `listarEventos(projectId, { desde?, agente?, limite = 200 }, client?)` (mais recentes primeiro, erros via `resultado`/`ServiceError`). Exportar no barrel `src/services/index.ts` sem remover exports.
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `89c6a43`
+- **Anotação:** Criado `src/services/eventService.ts` com `listarEventos(projectId, { desde?, agente?, limite = 200 }, client = getSupabase())` -> `AgentEvent[]`: filtra por `project_id`, `created_at >= desde` (data inválida -> `ServiceError`) e agente exato (trim); ordena por `created_at` desc e `id` desc; limite entre 1 e 1000; erros via `resultado(res, 'Listar eventos')`. Exportado no barrel `src/services/index.ts` (demais exports mantidos). `npm run typecheck` e `npm test` OK.
 
 #### [ ] SUB-35.10: `atividadeAtual()` em `src/services/eventService.ts`
 - **Status:** pendente

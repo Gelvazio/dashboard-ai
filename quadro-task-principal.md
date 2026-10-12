@@ -66,17 +66,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:11 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 05 (Grok Bot) — SUB-35.9
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.9** |
-| **Título da Sub-task:** | `listarEventos()` em `src/services/eventService.ts` |
-| **Agente Responsável:** | DashboardAI-Clone 05 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:12 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-21.12
 
 | Propriedade | Valor Atual |
@@ -92,12 +81,11 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-21.12** | Conferir exclusão com editor e viewer | DashboardAI-Clone 02 | 2026-10-12 01:12 | SUB-21.11 |
-| **SUB-35.9** | `listarEventos()` em `src/services/eventService.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:12 | SUB-35.8 |
 | **SUB-35.45** | Seção "Reporte de progresso (opcional)" no `AGENTS.md` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:11 | SUB-35.41 |
 | **SUB-34.5** | Checagem de tamanho `scripts/checar-chunks.mjs` | DashboardAI-Clone 09 (Grok Bot) | 2026-10-12 01:11 | SUB-34.6, SUB-34.3, SUB-34.4 |
 | **SUB-37** | Ranking e prêmios dos agentes no `dashboard-task-principal.html` | DashboardAI (Grok Bot) | 2026-10-12 01:09 | Nenhuma |
@@ -227,10 +215,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (99)
+### ✅ CONCLUÍDAS (100)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-35.9** | `listarEventos()` em `src/services/eventService.ts` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:12 | 2026-10-12 01:13 | `89c6a43` |
 | **SUB-27.27** | Incluir `UserMenu` no `src/components/layout/Header.tsx` | DashboardAI-Clone 06 | 2026-10-12 01:10 | 2026-10-12 01:13 | `a7817f8` |
 | **SUB-21.10** | Validação visual da SUB-21 (screenshots) | DashboardAI-Clone 01 | 2026-10-12 01:10 | 2026-10-12 01:13 | `(este commit)` |
 | **SUB-20.7** | Botão "Nova memória" na `src/views/MemoriaView.tsx` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:10 | 2026-10-12 01:12 | `adef71a` |
@@ -640,3 +629,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:12 | DashboardAI-Clone 10 (Grok Bot) | SUB-27.11 | `213f237` | Criado `src/views/LoginView.tsx` (`{ onEntrou? }`): página cheia centralizada fora do `AppLayout` (`min-h-dvh`, fundo slate claro/escuro), marca "Dashboard AI" com descrição curta, `ThemeToggle` no canto, aviso `role="alert"` quando `supabaseConfigurado` é falso (cita `VITE_SUPABASE_URL`/`VITE_SUPABASE_ANON_KEY` e o `.env.example`), cartão com `LoginForm` (repassa `onEntrou` e o e-mail digitado) e `RecuperarAcesso` com esse e-mail. Ainda não está ligada ao `App` (SUB-27.12/27.13). `npm run typecheck`, `npm test` e `npm run build` OK; screenshots 1280x800 e 390x844 conferidos em Chrome headless via página de pré-visualização temporária (não commitada). |
 | 2026-10-12 01:13 | DashboardAI-Clone 01 | SUB-21.10 | `(este commit)` | Validação visual da SUB-21 contra banco local (Postgres + PostgREST com JWT de editor via proxy, harness não commitado em /tmp) e `vite`: `#/memoria` com 3 memórias do projeto + 1 global; grade (badges Projeto/Global, tags, filtros Todas/Projeto/Globais, contador 4), botão copiar (clipboard recebeu o Markdown `# título / **Tags:** / **Escopo:**`) e modal de detalhe (escopo, datas, tags, Formatado/Texto, Copiar tudo, Excluir/Fechar; folha inferior no celular) conferidos em 1280x800 e 390x844 via Chrome headless/CDP; nenhum erro/aviso no console. Observação: o resumo do cartão mostra Markdown cru (ex.: `**Supabase**`). |
 | 2026-10-12 01:13 | DashboardAI-Clone 06 | SUB-27.27 | `a7817f8` | O `Header` renderiza o `UserMenu` (SUB-27.14) depois do `ThemeToggle`, separado por uma borda, só quando há usuário logado; lê o `AuthContext` com `useContext` (tolerante fora do `AuthProvider`, como o `ProjetoContext`), então nada quebra até a SUB-27.13 montar o provider no `App`. Para caber em 390 px, o ícone de usuário e o selo Admin do `UserMenu` ficam só a partir de `sm` (no celular sobra só o botão Sair com ícone). `npm run typecheck`, `npm run build` e `npm test` OK; screenshots headless do header em 1280 e 390 px conferidos com sessão simulada (harness temporário, não commitado). |
+| 2026-10-12 01:13 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.9 | `89c6a43` | Criado `src/services/eventService.ts` com `listarEventos(projectId, { desde?, agente?, limite = 200 }, client = getSupabase())` -> `AgentEvent[]`: filtra por `project_id`, `created_at >= desde` (data inválida -> `ServiceError`) e agente exato (trim); ordena por `created_at` desc e `id` desc; limite entre 1 e 1000; erros via `resultado(res, 'Listar eventos')`. Exportado no barrel `src/services/index.ts` (demais exports mantidos). `npm run typecheck` e `npm test` OK. |
