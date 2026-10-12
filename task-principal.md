@@ -1477,7 +1477,7 @@
   - `SUB-27.18`: Validação automatizada da SUB-27 (`pendente`)
   - `SUB-27.19`: `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx` (`pendente`)
   - `SUB-27.20`: Limpar `ProjetoContext` ao sair (`pendente`)
-  - `SUB-27.21`: Documentar primeiro administrador e membros em `database/README.md` (`pendente`)
+  - `SUB-27.21`: Documentar primeiro administrador e membros em `database/README.md` (`em_execucao`)
   - `SUB-27.22`: Conferência no navegador (entrar, sair, restaurar sessão) — SUB-27 (`pendente`)
   - `SUB-27.23`: `obterSessao()` em `src/services/authService.ts` (`pendente`)
   - `SUB-27.24`: `redefinirSenha()` em `src/services/authService.ts` (`pendente`)
@@ -1691,8 +1691,8 @@
 - **Anotação:** Em `src/hooks/ProjetoContext.tsx`, lê a sessão do `AuthContext` (equivalente a `useAuth`, porém tolerante fora do `AuthProvider` até a SUB-27.13 integrar o provider no App): sem sessão limpa `projetos` e `erro` mantendo o slug salvo; ao logar recarrega. typecheck, vitest e build OK.
 
 #### [ ] SUB-27.21: Documentar primeiro administrador e membros em `database/README.md`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 01:16)
 - **Depende de:** SUB-27.13
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Como criar o primeiro admin (`insert into user_roles (user_id, role) values (..., 'admin')` no SQL editor) e adicionar membros em `project_members` (owner/editor/viewer). Sem chaves reais.
