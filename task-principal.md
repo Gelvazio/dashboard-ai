@@ -9,9 +9,9 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 32
-- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-10`)
+- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
 - **Pendentes:** 15
-- **Concluídas:** 16
+- **Concluídas:** 17
 - **Canceladas:** 0
 
 ---
@@ -196,16 +196,16 @@
 - **Commit:** `8b6829c`
 - **Anotação:** src/services/taskService.ts: listarTasks(projectId, {status, busca em código/título/instrução com curingas escapados, incluirExcluidas, limite}) ordenado por prioridade, ordem, criação e id; obterTask; criarTask (pendente, origem ui, código gerado pelo banco, dependências sem duplicatas, validação de título/instrução/prioridade 1-5/tentativas 1-20/data); atualizarTask (só campos editáveis); alternarExecucao; cancelarTask; reabrirTask (pendente, tentativas 0, ligada); concluirTaskHumana; excluirTaskLogico/restaurarTask; contarTasksPorStatus. Recusas da RLS e da guarda da fila chegam como ServiceError em português. Validado com supabase-js real contra PostgREST local: 4 cenários (ordem da fila, busca, filtros, ciclo cancelar/reabrir/excluir/restaurar, task em execução bloqueada, só humano concluído pela interface, dependência inexistente, viewer só lê, isolamento entre projetos, contagem); build e typecheck OK.
 
-### [🔄] SUB-10: Serviço de Memória Semântica (`src/services/memoryService.ts`)
-- **Status:** em_execucao
-- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:07)
+### [x] SUB-10: Serviço de Memória Semântica (`src/services/memoryService.ts`)
+- **Status:** concluido
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:07, conclusão: 2026-10-11 23:08)
 - **Depende de:** SUB-03
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Implementar `buscarMemoriasSimilares`, `listarMemorias`, `salvarMemoria` e `excluirMemoria`.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Integração com RPC `match_memories` e tabela `ai_memories`.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `086689f`
+- **Anotação:** src/services/memoryService.ts: listarMemorias(projectId, {incluirGlobais, tags, busca, limite}) sem trafegar o vetor; buscarMemoriasSimilares(slug, embedding 1536, {limiar, limite, tags, incluirGlobais}) via RPC match_memories; buscarMemorias(projeto, consulta, {gerador}) semântica quando há GeradorEmbedding, senão busca textual em título/conteúdo; salvarMemoria(projectId | null para global, {title, content, tags}) com upsert por project_id+title, tags normalizadas e embedding opcional; excluirMemoria(id) com erro claro quando a RLS não deixa. Decisão: o navegador não tem chave de embeddings; a busca semântica recebe um gerador injetável (endpoint de servidor a criar) e sem ele cai para busca textual. Validado contra PostgREST local com gerador determinístico: 3 cenários (upsert, globais, filtros, busca semântica e textual, isolamento entre projetos, viewer não grava, não-admin não grava/exclui global, editor exclui); build e typecheck OK.
 
 ### [ ] SUB-11: Serviço de Logs do Agendador (`src/services/logService.ts`)
 - **Status:** pendente
