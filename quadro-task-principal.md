@@ -44,17 +44,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:59 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 06 — SUB-21.3
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-21.3** |
-| **Título da Sub-task:** | Hook `useMemorias` em `src/hooks/useMemorias.ts` |
-| **Agente Responsável:** | DashboardAI-Clone 06 |
-| **Data e Hora de Início:** | 2026-10-12 01:00 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.10
 
 | Propriedade | Valor Atual |
@@ -103,7 +92,7 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (5)
+### 🔄 EM EXECUÇÃO (4)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
@@ -111,13 +100,12 @@
 | **SUB-19.6** | Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:01 | SUB-19.2, SUB-33.7 |
 | **SUB-26.1** | Esqueleto do `README.md` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:00 | Nenhuma |
 | **SUB-27.10** | Formulário `LoginForm` (e-mail, senha, Entrar) em `src/components/auth/LoginForm.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:00 | SUB-27.2, SUB-27.3 |
-| **SUB-21.3** | Hook `useMemorias` em `src/hooks/useMemorias.ts` | DashboardAI-Clone 06 | 2026-10-12 01:00 | Nenhuma |
 | **SUB-23.8** | Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` | DashboardAI-Clone 02 | 2026-10-12 00:59 | SUB-23.7 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
 
-### ⏳ PENDENTES (165)
+### ⏳ PENDENTES (164)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -152,7 +140,6 @@
 | **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-20.9** | Componente `TagSugestoes` em `src/components/ui/TagSugestoes.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias (mãe) | 4 | Fase 7 | SUB-10, SUB-12; SUB-21.1 a SUB-21.14 |
-| **SUB-21.3** | Hook `useMemorias` em `src/hooks/useMemorias.ts` | 4 | Fase 7 | Nenhuma — 🔄 em execução por DashboardAI-Clone 06 |
 | **SUB-21.7** | Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` | 4 | Fase 7 | SUB-21.3 — ⛓️ bloqueada |
 | **SUB-21.9** | Montar a `MemoriaView` (toolbar + grade) | 4 | Fase 7 | SUB-21.3, SUB-21.5, SUB-21.8 — ⛓️ bloqueada |
 | **SUB-21.10** | Validação visual da SUB-21 (screenshots) | 4 | Fase 7 | SUB-21.11 — ⛓️ bloqueada |
@@ -280,10 +267,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (72)
+### ✅ CONCLUÍDAS (73)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-21.3** | Hook `useMemorias` em `src/hooks/useMemorias.ts` | DashboardAI-Clone 06 | 2026-10-12 01:00 | 2026-10-12 01:01 | `b9634c5` |
 | **SUB-21.8** | Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 00:59 | 2026-10-12 01:00 | `3217841` |
 | **SUB-25.1** | Script `scripts/validar.sh` + `npm run validar` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:59 | 2026-10-12 01:00 | `2c9664c` |
 | **SUB-27.19** | `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx` | DashboardAI-Clone 01 | 2026-10-12 00:59 | 2026-10-12 01:00 | `c81668e` |
@@ -570,3 +558,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:01 | DashboardAI-Clone 04 (Grok Bot) | SUB-19.6 | — | Lock: assumindo SUB-19.6 (Hook `useBuscaSemantica` em `src/hooks/useBuscaSemantica.ts`) |
 | 2026-10-12 01:01 | DashboardAI-Clone 10 (Grok Bot) | SUB-21.6 | `4cab033` | Criado `src/components/memoria/MemoriaDetailModal.tsx` (`{ memoria: Memoria | null, onFechar, onExcluir? }`; `null` = fechado) sobre `components/ui/Modal` (xl): metadados Escopo (Global/Projeto via `escopoMemoria`), Autor (`criado_por`), Criada em e Atualizada em (`formatarDataHora`, `title` relativo), tags, conteúdo com abas Formatado (`components/ui/Markdown`, sem HTML cru) / Texto (`pre`) e botão copiar conteúdo; rodapé com "Copiar tudo em Markdown" (`memoriaComoMarkdown`), Excluir (`Botao` perigo, só com `onExcluir`) e Fechar. Exportado em `src/components/memoria/index.ts` (mantidos os exports de MemoriaFormModal/MemoriaToolbar). `npm run typecheck`, `npm test` e `npm run build` OK. |
 | 2026-10-12 01:01 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.1 | — | Lock: assumindo SUB-35.1 (Tabela `agent_events` em `database/07_agent_events.sql`) |
+| 2026-10-12 01:01 | DashboardAI-Clone 06 | SUB-21.3 | `b9634c5` | Criado `src/hooks/useMemorias.ts` (exportado em `src/hooks/index.ts`): `useMemorias(projectId, { porPagina = 30 })` -> `{ memorias, carregando, erro, temMais, carregarMais, recarregar, remover(id), reinserir(memoria) }` sobre `listarMemorias` (SUB-10, projeto + globais) com `limite` crescente (`carregarMais` pede `porPagina` a mais; `temMais` = veio o limite cheio; `recarregar` mantém o limite atual). Contador de geração descarta respostas de projeto antigo/consulta superada; projeto nulo limpa a lista. `reinserir` substitui pelo id e reordena por `updated_at` desc. `npm run typecheck` e `npm test` OK. |

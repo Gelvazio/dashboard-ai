@@ -911,7 +911,7 @@
 - **Subtarefas:** (subdividida em 10 em 2026-10-11 23:47 por DashboardAI (Grok Bot) a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`; refinada para 12 em 2026-10-11 23:51; nova revisão para 14 em 2026-10-12 00:17)
   - `SUB-21.1`: `memoriaComoMarkdown` em `src/lib/memorias.ts` (`concluido`)
   - `SUB-21.2`: `filtrarMemoriasLocal` em `src/lib/memorias.ts` (`concluido`)
-  - `SUB-21.3`: Hook `useMemorias` em `src/hooks/useMemorias.ts` (`em_execucao`)
+  - `SUB-21.3`: Hook `useMemorias` em `src/hooks/useMemorias.ts` (`concluido`, `b9634c5`)
   - `SUB-21.4`: Componente `MemoriaCard` em `src/components/memoria/MemoriaCard.tsx` (`concluido`, `c03ffa6`)
   - `SUB-21.5`: Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx` (`concluido`, `197eb97`)
   - `SUB-21.6`: Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` (`concluido`, `4cab033`)
@@ -949,15 +949,15 @@
 - **Commit:** `0849e15`
 - **Anotação:** Adicionado `filtrarMemoriasLocal(memorias, { busca?, tag?, escopo? })` em `src/lib/memorias.ts` (tipos `EscopoFiltroMemoria`/`FiltroMemoriasLocal` exportados): busca sem acento/maiúsculas em título, conteúdo e tags; tag exata sem diferenciar maiúsculas; escopo `todas`/`projeto`/`global` via `escopoMemoria`; preserva a ordem e o tipo da entrada. 4 testes novos em `tests/unit/memorias.test.ts`. `npm run typecheck` e `npm test` verdes.
 
-#### [ ] SUB-21.3: Hook `useMemorias` em `src/hooks/useMemorias.ts`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 01:00)
+#### [x] SUB-21.3: Hook `useMemorias` em `src/hooks/useMemorias.ts`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 01:00; conclusão: 2026-10-12 01:01)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `useMemorias(projectId, { porPagina = 30 })` -> `{ memorias, carregando, erro, temMais, carregarMais, recarregar, remover(id), reinserir(memoria) }` usando `listarMemorias` (SUB-10) com `limite` crescente (`temMais` = veio o limite cheio); ignora respostas de projeto antigo. Exportar em `src/hooks/index.ts`.
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `b9634c5`
+- **Anotação:** Criado `src/hooks/useMemorias.ts` (exportado em `src/hooks/index.ts`): `useMemorias(projectId, { porPagina = 30 })` -> `{ memorias, carregando, erro, temMais, carregarMais, recarregar, remover(id), reinserir(memoria) }` sobre `listarMemorias` (SUB-10, projeto + globais) com `limite` crescente (`carregarMais` pede `porPagina` a mais; `temMais` = veio o limite cheio; `recarregar` mantém o limite atual). Contador de geração descarta respostas de projeto antigo/consulta superada; projeto nulo limpa a lista. `reinserir` substitui pelo id e reordena por `updated_at` desc. `npm run typecheck` e `npm test` OK.
 
 #### [x] SUB-21.4: Componente `MemoriaCard` em `src/components/memoria/MemoriaCard.tsx`
 - **Status:** concluido
