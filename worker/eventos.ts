@@ -78,3 +78,73 @@ export async function emitirEvento(evento: EventoWorker, deps: EventosDeps = { d
     return false;
   }
 }
+
+/** Campos do estado do grafo usados nos eventos de etapa. */
+export interface EstadoComEventos {
+  projeto: string;
+  agente: string;
+  taskId: number;
+  taskCodigo?: string;
+  execucaoId: string;
+}
+
+const PADROES_SEGREDO: RegExp[] = [
+  /\beyJ[\w-]+\.[\w-]+\.[\w-]+/g, // JWT
+  /\b(?:sk|pk|rk|ghp|gho|ghs|github_pat|xox[abpr])[-_][\w-]{8,}/gi, // chaves de API
+  /\b(Bearer|Basic)\s+[\w.~+/=-]+/gi,
+  /\b(senha|password|token|secret|apikey|api_key|key)=([^\s&"']+)/gi,
+  /\/\/[^/\s:@]+:[^@\s]+@/g, // credencial em URL
+];
+
+/** Mensagem de erro sem segredos aparentes, limitada a 500 caracteres. */
+export function mensagemSegura(erro: unknown): string {
+  let texto = erro instanceof Error ? `${erro.name}: ${erro.message}` : String(erro);
+  for (const padrao of PADROES_SEGREDO) {
+    texto = texto.replace(padrao, (trecho: string, g1: unknown) => {
+      if (trecho.startsWith('//')) return '//***@';
+      if (typeof g1 !== 'string') return '***';
+      return /^(Bearer|Basic)$/i.test(g1) ? `${g1} ***` : `${g1}=***`;
+    });
+  }
+  return texto.slice(0, 500);
+}
+
+/**
+ * Envolve um nó do LangGraph (SUB-35.35): emite `inicio` antes, `fim` com a duração
+ * depois e, se o nó falhar, `erro` com mensagem segura e relança o erro original.
+ */
+export function comEventos<S extends EstadoComEventos, A extends unknown[], R>(
+  nome: string,
+  no: (state: S, ...resto: A) => R | Promise<R>,
+  deps?: EventosDeps,
+  agora: () => number = Date.now,
+): (state: S, ...resto: A) => Promise<R> {
+  return async (state, ...resto) => {
+    const base = {
+      projeto: state.projeto,
+      agente: state.agente,
+      taskId: state.taskId,
+      taskCodigo: state.taskCodigo,
+      execucaoId: state.execucaoId,
+      etapa: nome,
+    };
+    const inicio = agora();
+    await emitirEvento({ ...base, tipo: 'inicio', status: 'em_execucao' }, deps);
+    try {
+      const resultado = await no(state, ...resto);
+      const duracaoMs = agora() - inicio;
+      await emitirEvento(
+        { ...base, tipo: 'fim', status: 'ok', mensagem: `${nome} em ${duracaoMs} ms`, metadados: { duracao_ms: duracaoMs } },
+        deps,
+      );
+      return resultado;
+    } catch (erro) {
+      const duracaoMs = agora() - inicio;
+      await emitirEvento(
+        { ...base, tipo: 'erro', status: 'erro', mensagem: mensagemSegura(erro), metadados: { duracao_ms: duracaoMs } },
+        deps,
+      );
+      throw erro;
+    }
+  };
+}
