@@ -109,3 +109,21 @@ drop trigger if exists validar_agent_event_trg on public.agent_events;
 create trigger validar_agent_event_trg
     before insert or update on public.agent_events
     for each row execute function public.validar_agent_event();
+
+-- -----------------------------------------------------------------------------
+-- RLS e permissões (SUB-35.3): viewer lê, editor inclui; sem UPDATE/DELETE pela
+-- interface (eventos são só-inclusão; só service_role/administração apaga).
+-- -----------------------------------------------------------------------------
+alter table public.agent_events enable row level security;
+
+revoke all on public.agent_events from anon, authenticated;
+grant select, insert on public.agent_events to authenticated;
+grant all on public.agent_events to service_role;
+
+drop policy if exists agent_events_select on public.agent_events;
+create policy agent_events_select on public.agent_events for select to authenticated
+  using (public.tem_acesso_projeto(project_id, 'viewer'));
+
+drop policy if exists agent_events_insert on public.agent_events;
+create policy agent_events_insert on public.agent_events for insert to authenticated
+  with check (public.tem_acesso_projeto(project_id, 'editor'));
