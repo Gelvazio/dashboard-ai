@@ -26,24 +26,27 @@
 
 | Propriedade | Valor Atual |
 |---|---|
-| **Status da Trava:** | 🟢 **LIVRE** |
-| **Sub-task em Execução:** | nenhuma |
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-24** |
+| **Título da Sub-task:** | Script de Sincronização de Tasks (`scripts/sincronizar_tasks.py`) |
 | **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Bloqueio para Outras IAs:** | DESATIVADO |
+| **Data e Hora de Início:** | 2026-10-11 22:21 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** (Nenhum outro agente pode assumir esta tarefa) |
 
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (1)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-01.1** | Inicialização do package.json, Vite, React e TypeScript | Antigravity AI | 2026-10-11 22:13 | Nenhuma |
+| **SUB-24** | Script de Sincronização de Tasks (`scripts/sincronizar_tasks.py`) | DashboardAI (Grok Bot) | 2026-10-11 22:21 | SUB-04, SUB-05 |
 
 ---
 
-### ⏳ PENDENTES (25)
+### ⏳ PENDENTES (24)
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
@@ -69,7 +72,6 @@
 | **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias | 4 | Fase 7 | SUB-10, SUB-12 |
 | **SUB-22** | Visualizador de Logs de Execução da IA | 4 | Fase 8 | SUB-11, SUB-12 |
 | **SUB-23** | Diagnóstico de Travas e Saúde da Fila | 4 | Fase 8 | SUB-09, SUB-11, SUB-12 |
-| **SUB-24** | Script de Sincronização de Tasks (`scripts/sincronizar_tasks.py`) | 5 | Fase 9 | SUB-04, SUB-05 |
 | **SUB-25** | Validação de Build e Execução Local | 5 | Fase 10 | SUB-01 a SUB-24 |
 | **SUB-26** | Documentação Completa e Manual Operacional no `README.md` | 5 | Fase 10 | SUB-25 |
 

@@ -8,8 +8,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 26
-- **Em Execução:** 1 (`SUB-01.1`)
-- **Pendentes:** 25
+- **Em Execução:** 2 (`SUB-01.1`, `SUB-24`)
+- **Pendentes:** 24
 - **Concluídas:** 2
 - **Canceladas:** 0
 
@@ -310,8 +310,8 @@
 ## 🔄 FASE 9: Sincronização e Utilitários
 
 ### [ ] SUB-24: Script de Sincronização de Tasks (`scripts/sincronizar_tasks.py`)
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 22:21)
 - **Depende de:** SUB-04, SUB-05
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adaptar e consolidar o script Python para sincronizar tasks entre o banco Supabase e arquivos markdown locais em `tasks/fila/`.
