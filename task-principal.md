@@ -916,7 +916,7 @@
   - `SUB-21.5`: Componente `MemoriaGrid` em `src/components/memoria/MemoriaGrid.tsx` (`concluido`, `197eb97`)
   - `SUB-21.6`: Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` (`em_execucao`)
   - `SUB-21.7`: Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` (`pendente`)
-  - `SUB-21.8`: Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` (`em_execucao`)
+  - `SUB-21.8`: Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` (`concluido`)
   - `SUB-21.9`: Montar a `MemoriaView` (toolbar + grade) (`pendente`)
   - `SUB-21.10`: Validação visual da SUB-21 (screenshots) (`pendente`)
   - `SUB-21.11`: Ligar detalhe e exclusão na `MemoriaView` (`pendente`)
@@ -999,15 +999,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-21.8: Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 00:59)
+#### [x] SUB-21.8: Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 00:59; conclusão: 2026-10-12 01:00)
 - **Depende de:** SUB-21.14
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Busca instantânea, filtro por tag (`tagsDisponiveis`), escopo (todas/projeto/globais), contador filtradas/total e botão Recarregar.
 - **Critérios de Aceitação:** `npm run typecheck` e `npm run build` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `3217841`
+- **Anotação:** Criado `src/components/memoria/MemoriaToolbar.tsx` (`{ filtro, onFiltro, tags, filtradas, total, carregando, onRecarregar, atualizadoEm? }`, controlado com `FiltroMemoriasLocal`): busca instantânea com botão limpar, seletor de tag com contagem (`tagsDisponiveis`; mantém a tag escolhida mesmo se sumir da lista), escopo Todas/Projeto/Globais (radiogroup acessível), contador `filtradas de total` quando há filtro (`aria-live`) e Recarregar com ícone girando e hora da última atualização no `title`; mesmo visual da `TaskToolbar`. Exportado em `src/components/memoria/index.ts`. `npm run typecheck` e `npm run build` OK.
 
 #### [ ] SUB-21.9: Montar a `MemoriaView` (toolbar + grade)
 - **Status:** pendente

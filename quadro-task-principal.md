@@ -33,17 +33,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 05 (Grok Bot) — SUB-21.8
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-21.8** |
-| **Título da Sub-task:** | Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` |
-| **Agente Responsável:** | DashboardAI-Clone 05 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 00:59 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-23.8
 
 | Propriedade | Valor Atual |
@@ -81,14 +70,13 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (4)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-21.3** | Hook `useMemorias` em `src/hooks/useMemorias.ts` | DashboardAI-Clone 06 | 2026-10-12 01:00 | Nenhuma |
 | **SUB-21.6** | Modal `MemoriaDetailModal` em `src/components/memoria/MemoriaDetailModal.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:59 | SUB-21.13 |
 | **SUB-23.8** | Integrar `SaudeFilaPanel` na `src/views/LogsView.tsx` | DashboardAI-Clone 02 | 2026-10-12 00:59 | SUB-23.7 |
-| **SUB-21.8** | Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 00:59 | SUB-21.14 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
@@ -259,10 +247,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (70)
+### ✅ CONCLUÍDAS (71)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-21.8** | Barra `MemoriaToolbar` em `src/components/memoria/MemoriaToolbar.tsx` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 00:59 | 2026-10-12 01:00 | `3217841` |
 | **SUB-25.1** | Script `scripts/validar.sh` + `npm run validar` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:59 | 2026-10-12 01:00 | `2c9664c` |
 | **SUB-27.19** | `RecuperarAcesso` (link mágico e esqueci a senha) em `src/components/auth/RecuperarAcesso.tsx` | DashboardAI-Clone 01 | 2026-10-12 00:59 | 2026-10-12 01:00 | `c81668e` |
 | **SUB-20.6** | Modal `MemoriaFormModal` em `src/components/memoria/` | DashboardAI-Clone 06 | 2026-10-12 00:55 | 2026-10-12 01:00 | `62dea7a` |
@@ -541,3 +530,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:00 | DashboardAI-Clone 01 | SUB-27.19 | `c81668e` | Criado `src/components/auth/RecuperarAcesso.tsx` (props `{ email }`): botões "Entrar com link por e-mail" (`enviarLinkMagico`) e "Esqueci a senha" (`redefinirSenha`) com `urlDeRetorno(window.location)`, carregando por ação e aviso de confirmação/erro (role status/alert); e-mail vazio pede preenchimento. typecheck OK. |
 | 2026-10-12 01:00 | DashboardAI-Clone 06 | SUB-21.3 | — | Lock: assumindo SUB-21.3 (Hook `useMemorias` em `src/hooks/useMemorias.ts`) |
 | 2026-10-12 01:00 | DashboardAI-Clone 08 (Grok Bot) | SUB-25.1 | `2c9664c` | Criado `scripts/validar.sh` (bash, `set -euo pipefail`) e `"validar": "bash scripts/validar.sh"` no `package.json`: roda typecheck, `npm test`, build, `check:chunks` (pulada se o script não existir), `check:env` (se existir), `python3 -m unittest discover -s scripts` e `npm audit --omit=dev --audit-level=high` sem parar na primeira falha; resumo final com OK/FALHOU/PULADA e duração; sai 1 se alguma etapa falhar. `npm run validar` no estado atual: todas OK (chunks pulada, SUB-34.5 pendente). |
+| 2026-10-12 01:00 | DashboardAI-Clone 05 (Grok Bot) | SUB-21.8 | `3217841` | Criado `src/components/memoria/MemoriaToolbar.tsx` (`{ filtro, onFiltro, tags, filtradas, total, carregando, onRecarregar, atualizadoEm? }`, controlado com `FiltroMemoriasLocal`): busca instantânea com botão limpar, seletor de tag com contagem (`tagsDisponiveis`; mantém a tag escolhida mesmo se sumir da lista), escopo Todas/Projeto/Globais (radiogroup acessível), contador `filtradas de total` quando há filtro (`aria-live`) e Recarregar com ícone girando e hora da última atualização no `title`; mesmo visual da `TaskToolbar`. Exportado em `src/components/memoria/index.ts`. `npm run typecheck` e `npm run build` OK. |
