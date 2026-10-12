@@ -1796,6 +1796,17 @@
 - **Anotação:** Rodei `npm ci` (173 pacotes) e `npm run validar` com Node v22.12.0 / npm 10.8.3 no commit `d284472`: typecheck, testes (268 aprovados, 30 pulados por falta de banco), build, check:chunks (16 chunks, maior 390.1 kB), check:env, testes Python e npm audit passaram; `npm run typecheck:worker` também. Resultado registrado em `docs/VALIDACAO.md`. Nenhuma falha, então nenhuma SUB-25.8+ foi criada. Avisos não bloqueantes do check:env (variáveis só do worker) anotados no documento.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:34 (confirmado por Devin (Cognition AI))
 
+#### [x] SUB-25.3: Rodar `database/tests/run_tests.sh`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:34, conclusão: 2026-10-12 13:35)
+- **Depende de:** SUB-25.2
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Rodar a suíte do banco (`database/tests/run_tests.sh`: PostgreSQL + pgvector local) e anexar o resultado ao `docs/VALIDACAO.md`.
+- **Critérios de Aceitação:** Suíte do banco verde; resultado registrado.
+- **Commit:** `cbf3c88`
+- **Anotação:** Rodei `database/tests/run_tests.sh` contra PostgreSQL 16.15 + pgvector (Docker `pgvector/pgvector:pg16`, banco descartável `dashai_test`, via `PSQL="docker exec -i -w /repo/database pg-dash psql -U postgres"`): schema 00-06 aplicado 2x sem erro, 72 verificações de RLS/fila/memória, 46 de recados/regras, 12 agentes paralelos sem duplicidade (60 tasks) e `p_exclusivo` entregando 1 task. Exit 0. Resultado anexado ao `docs/VALIDACAO.md`.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:35 (confirmado por Devin (Cognition AI))
+
 ---
 
 ## 🚀 FASE 11: Orquestração de Tasks com LangChain/LangGraph (última fase)
