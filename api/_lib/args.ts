@@ -4,7 +4,7 @@
  * MCP_ALLOWED_PROJECTS) e a exigência de MCP_AUTH_TOKEN (o servidor usa a service_role).
  */
 import { textResult, type CallToolResult } from './tools.js';
-import { rest } from './supabase.js';
+import { db, unwrap } from './supabase.js';
 
 const SLUG_RE = /^[a-z0-9][a-z0-9_-]{0,62}$/;
 
@@ -90,9 +90,9 @@ export function requireAuthToken(env: NodeJS.ProcessEnv = process.env) {
 }
 
 export async function projectId(slug: string): Promise<number> {
-  const rows = await rest<{ id: number }[]>('GET', 'projects', {
-    query: { select: 'id', slug: `eq.${slug}`, excluido: 'eq.false' },
-  });
+  const rows = unwrap<{ id: number }[]>(
+    await db().from('projects').select('id').eq('slug', slug).eq('excluido', false),
+  );
   if (!rows.length) throw new ToolInputError(`Projeto "${slug}" não encontrado.`);
   return rows[0].id;
 }

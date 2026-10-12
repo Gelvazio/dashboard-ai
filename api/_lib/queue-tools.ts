@@ -14,7 +14,7 @@
  * (o servidor usa a chave service_role).
  */
 import { registerTool, type CallToolResult } from './tools.js';
-import { rest, rpc } from './supabase.js';
+import { db, rpc, unwrap } from './supabase.js';
 import {
   PROJECT_PROP, ToolInputError, bool, guard, int, json, oneOf, projectId, resolveProject, str, strList,
 } from './args.js';
@@ -122,16 +122,19 @@ export async function taskList(args: Record<string, unknown>): Promise<CallToolR
     'updated_at', 'projects(slug)',
   ];
   if (includeInstruction) cols.push('instrucao', 'resultado');
-  const query: Record<string, string> = {
-    select: cols.join(','),
-    excluido: 'eq.false',
-    order: 'prioridade.asc,ordem.asc,created_at.asc,id.asc',
-    limit: String(limit),
-  };
-  if (project) query.project_id = `eq.${await projectId(project)}`;
-  if (statuses?.length) query.status = `in.(${statuses.join(',')})`;
+  let query = db()
+    .from('tasks')
+    .select(cols.join(','))
+    .eq('excluido', false)
+    .order('prioridade')
+    .order('ordem')
+    .order('created_at')
+    .order('id')
+    .limit(limit);
+  if (project) query = query.eq('project_id', await projectId(project));
+  if (statuses?.length) query = query.in('status', statuses);
 
-  const rows = await rest<TaskRow[]>('GET', 'tasks', { query });
+  const rows = unwrap<TaskRow[]>(await query.returns<TaskRow[]>());
   const tasks = rows.map(({ projects, ...t }) => ({ project: projects?.slug ?? null, ...t }));
   return json({ project: project ?? null, count: tasks.length, tasks });
 }
@@ -165,8 +168,7 @@ export async function taskCreate(args: Record<string, unknown>): Promise<CallToo
   if (maxAttempts !== undefined) body.max_tentativas = maxAttempts;
   if (project) body.project_id = await projectId(project);
 
-  const rows = await rest<TaskRow[]>('POST', 'tasks', { body, prefer: 'return=representation' });
-  const t = rows[0];
+  const t = unwrap<TaskRow>(await db().from('tasks').insert(body).select().single());
   return json({
     task: { id: t.id, codigo: t.codigo, titulo: t.titulo, tipo: t.tipo, status: t.status, prioridade: t.prioridade },
     project: project ?? 'default',

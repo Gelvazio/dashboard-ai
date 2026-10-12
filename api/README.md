@@ -9,7 +9,7 @@
 | `_lib/embeddings.ts` | Geração de embeddings (API compatível com OpenAI, 1536 dimensões) |
 | `_lib/args.ts` | Validação de argumentos, resolução do projeto e exigência de `MCP_AUTH_TOKEN` |
 | `_lib/queue-tools.ts` | Ferramentas da fila multi-projeto: `task_next`, `task_finish`, `task_list`, `task_create` (SUB-30) |
-| `_lib/supabase.ts` | Cliente PostgREST mínimo (fetch nativo, sem dependências) usando a `service_role` — só no servidor |
+| `_lib/supabase.ts` | Cliente `@supabase/supabase-js` com a `service_role` (sem sessão; timeout de 20 s) — só no servidor |
 | `_lib/http.ts` | Tipos mínimos compatíveis com `VercelRequest`/`VercelResponse` |
 | `tsconfig.json` | Configuração TypeScript estrita das funções (`tsc -p api/tsconfig.json`) |
 
@@ -66,7 +66,7 @@ enquanto `MCP_AUTH_TOKEN` não estiver definido** e podem ser restritas a alguns
 | `MCP_CORS_ORIGIN` | Opcional. Origem liberada no CORS (padrão `*`) |
 | `SUPABASE_URL` (ou `VITE_SUPABASE_URL`) | URL do projeto Supabase (a API REST é `<url>/rest/v1`) |
 | `SUPABASE_SERVICE_ROLE_KEY` | Chave `service_role` — só nas variáveis da Vercel, nunca no frontend nem no repositório |
-| `SUPABASE_REST_URL` | Opcional. URL REST explícita (ex.: PostgREST local em testes) |
+| `SUPABASE_REST_URL` | Opcional. Redireciona a API REST para um PostgREST (ex.: testes locais) |
 | `MCP_DEFAULT_PROJECT` | Opcional. Slug usado quando a chamada não informa `project` (padrão `default`) |
 | `MCP_ALLOWED_PROJECTS` | Opcional. Lista de slugs separados por vírgula que este servidor pode acessar |
 | `OPENAI_API_KEY` | Chave da API de embeddings (obrigatória para `brain_store`/`brain_search`) |
@@ -82,3 +82,6 @@ claude mcp add --transport http dashboard-ai-brain https://<seu-projeto>.vercel.
 
 > Checagem de tipos local: `npm install` e `npm run typecheck:api` (ou `npm run typecheck`, que
 > também verifica o frontend). `typescript` e `@types/node` estão nas devDependencies da raiz.
+
+> Runtime: **Node.js 22+** (`engines` no `package.json`, `.nvmrc`). O `@supabase/supabase-js` atual
+> exige WebSocket nativo e falha no Node 20 (já sem suporte desde abril de 2026).

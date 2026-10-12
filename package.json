@@ -5,7 +5,7 @@
   "description": "Gerenciador genérico de tasks de IA multi-projeto: fila, memória persistente e monitor do agendador.",
   "type": "module",
   "engines": {
-    "node": ">=20.19"
+    "node": ">=22.12"
   },
   "scripts": {
     "dev": "vite",
@@ -15,6 +15,7 @@
     "typecheck:api": "tsc -p api/tsconfig.json"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.117.3",
     "clsx": "^2.1.1",
     "lucide-react": "^1.55.0",
     "react": "^19.3.0",
@@ -23,7 +24,7 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
-    "@types/node": "^20.19.43",
+    "@types/node": "^22.20.5",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",

@@ -11,7 +11,7 @@
  * MCP_ALLOWED_PROJECTS. Como as demais ferramentas de dados, exige MCP_AUTH_TOKEN.
  */
 import { registerTool, type CallToolResult } from './tools.js';
-import { rest, rpc } from './supabase.js';
+import { db, rpc, unwrap } from './supabase.js';
 import { generateEmbedding, toPgVector } from './embeddings.js';
 import { PROJECT_PROP, ToolInputError, bool, guard, int, json, projectId, resolveProject, str, strList } from './args.js';
 
@@ -58,12 +58,16 @@ export async function brainStore(args: Record<string, unknown>): Promise<CallToo
   const scope = await writeScope(args);
   const embedding = await generateEmbedding(`${title}\n\n${content}`);
 
-  const rows = await rest<MemoryRow[]>('POST', 'ai_memories', {
-    query: { on_conflict: 'project_id,title', select: 'id,project_id,title,tags,updated_at' },
-    body: { project_id: scope.id, title, content, tags, embedding: toPgVector(embedding) },
-    prefer: 'resolution=merge-duplicates,return=representation',
-  });
-  const m = rows[0];
+  const m = unwrap<MemoryRow>(
+    await db()
+      .from('ai_memories')
+      .upsert(
+        { project_id: scope.id, title, content, tags, embedding: toPgVector(embedding) },
+        { onConflict: 'project_id,title' },
+      )
+      .select('id,project_id,title,tags,updated_at')
+      .single(),
+  );
   return json({
     memory: { id: m.id, title: m.title, tags: m.tags, updated_at: m.updated_at },
     project: scope.slug,
@@ -119,13 +123,11 @@ export async function brainDelete(args: Record<string, unknown>): Promise<CallTo
   if (id && !UUID_RE.test(id)) throw new ToolInputError('"id" deve ser um UUID.');
   const scope = await writeScope(args);
 
-  const query: Record<string, string> = {
-    project_id: scope.id === null ? 'is.null' : `eq.${scope.id}`,
-    select: 'id,title',
-  };
-  if (title) query.title = `eq.${title}`;
-  if (id) query.id = `eq.${id}`;
-  const rows = await rest<MemoryRow[]>('DELETE', 'ai_memories', { query, prefer: 'return=representation' });
+  let query = db().from('ai_memories').delete();
+  query = scope.id === null ? query.is('project_id', null) : query.eq('project_id', scope.id);
+  if (title) query = query.eq('title', title);
+  if (id) query = query.eq('id', id);
+  const rows = unwrap<MemoryRow[]>(await query.select('id,title'));
   const where = scope.slug ? `no projeto ${scope.slug}` : 'nas memórias globais';
   return json({
     deleted: rows.length,
