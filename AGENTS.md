@@ -2,6 +2,8 @@
 
 > 📌 **Quadro único:** o antigo `quadro-task-principal.md` foi incorporado ao `task-principal.md`. Travas, status e tarefas ativas ficam só no `task-principal.md`; não recrie o arquivo antigo.
 
+> 🔄 **Sincronizar SEMPRE com `fetch` antes do `pull`:** rode `git fetch --all --prune` **antes** de qualquer `git pull --rebase origin main`. Sem o `fetch`, a referência `origin/main` é **local e envelhece**: um `git status` mostrando `## main...origin/main` (sem `ahead`/`behind`) **não** prova que você está atualizado. Já houve agente lendo o quadro "sincronizado" com o remoto vários commits à frente.
+
 > 📦 **Concluídas em arquivo separado:** os blocos `[x]` (tarefas e subtarefas `concluido`) ficam em [`task_complete.md`](task_complete.md). Para pegar tarefas, leia só o `task-principal.md`: a lista `Subtarefas:` das tarefas-mãe abertas já traz `(concluido, <sha>)`, e **dependência que não aparece como bloco no `task-principal.md` está `concluido` no `task_complete.md`**. Abra o `task_complete.md` só para consultar uma entrega ou reabrir uma tarefa (o bloco volta para o `task-principal.md` como `pendente`, com o motivo na anotação).
 >
 > 🗂️ **Scripts temporários:** cada agente guarda scripts auxiliares dentro da própria pasta de trabalho, nunca em `/tmp` ou outra pasta compartilhada (outro agente pode sobrescrevê-los).
@@ -19,7 +21,8 @@
 Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) que chegar à fila de tarefas **DEVE SEGUIR RIGOROSAMENTE O FLUXO EM 3 PARTES ANTES DE MEXER NO CÓDIGO DA TAREFA**:
 
 **CHECKLIST OBRIGATÓRIO ANTES DE ASSUMIR QUALQUER TAREFA:**
-☐ [ ] Fiz `git pull --rebase origin main` **PRIMEIRO**?
+☐ [ ] Fiz `git fetch --all --prune` para atualizar a referência `origin/main`?
+☐ [ ] Fiz `git pull --rebase origin main` **PRIMEIRO** (depois do fetch)?
 ☐ [ ] Li o arquivo ATUALIZADO (task-principal.md)?
 ☐ [ ] Verifiquei que a trava está LIVRE ou que minha task não conflita?
 ☐ [ ] Confirmei que todas as dependências estão `concluido`?
@@ -36,9 +39,11 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
 
 ⚠️ **ORDEM OBRIGATÓRIA DE EXECUÇÃO (NÃO PULAR PASSOS):**
 
-✅ **PASSO 1 (CRÍTICO — PRIMEIRO):** Executar `git pull --rebase origin main` para garantir o estado mais recente do repositório.
-   - ⛔ **NÃO** ler nenhum arquivo local antes deste comando
+✅ **PASSO 1 (CRÍTICO — PRIMEIRO):** Executar `git fetch --all --prune` e, **só depois**, `git pull --rebase origin main`, para garantir o estado mais recente do repositório.
+   - ⛔ **NUNCA** confie em `git status` / `git log` antes do `fetch`: eles comparam com a referência **local** `origin/main`, que envelhece. Um `## main...origin/main` sem `ahead`/`behind` **não** significa "estou atualizado".
+   - ⛔ **NÃO** ler nenhum arquivo local antes destes comandos
    - ⛔ **NÃO** assumir nenhuma tarefa sem garantir que está no estado mais recente
+   - Se o `fetch` indicar que `origin/main` andou, **releia o quadro** mesmo quando o pull for fast-forward
    - Se houver conflito no rebase, resolver antes de prosseguir
 
 ✅ **PASSO 2 (SÓ DEPOIS DO GIT PULL):** Ler obrigatoriamente o arquivo ATUALIZADO:
@@ -56,7 +61,8 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
 
 ### ⚠️ ERROS COMUNS A EVITAR (CAUSAM CONFLITOS)
 
-❌ **LER ARQUIVOS LOCAIS ANTES DE GIT PULL:** Os arquivos podem estar desatualizados. Sempre fazer `git pull` primeiro.
+❌ **CONFIAR NO `git status` SEM `git fetch`:** a referência `origin/main` é local e envelhece; sem o fetch você pode jurar que está sincronizado com um remoto vários commits à frente.
+❌ **LER ARQUIVOS LOCAIS ANTES DE GIT PULL:** Os arquivos podem estar desatualizados. Sempre fazer `git fetch --all` e `git pull` primeiro.
 ❌ **ASSUMIR TAREFA SEM VERIFICAR TRAVAS:** Pode resultar em múltiplos agentes trabalhando na mesma tarefa.
 ❌ **IGNORAR DEPENDÊNCIAS:** Uma tarefa só pode ser assumida se todas as suas dependências estiverem `concluido`.
 ❌ **NÃO FAZER COMMIT/PUSH DO LOCK:** O lock não é válido até ser commitado e pushed para o remoto.
@@ -97,7 +103,7 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
    - Exceção: o planejamento/subdivisão de tarefas pedido pelo usuário, que trava as tarefas-mãe apenas durante a edição do quadro e as libera no mesmo ciclo, sem escrever código.
 
 2. **Push da trava recusado (corrida entre agentes):**
-   - Se o `git push` do lock for recusado, executar `git pull --rebase origin main` e **reler o quadro**.
+   - Se o `git push` do lock for recusado, executar `git fetch --all --prune`, depois `git pull --rebase origin main` e **reler o quadro**.
    - Se outro agente travou o mesmo item, **desfazer o seu lock local** e escolher outro item livre. Nunca sobrescrever a trava de outro agente.
    - ⛔ Nunca usar `git push --force`.
 
@@ -127,7 +133,9 @@ Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) 
    - Se o agente perceber que o item é maior, deve **subdividi-lo** (seção 2) antes de codificar, em vez de entregar parcialmente.
 
 8. **Commits limpos:**
+   - Rodar `git fetch --all --prune` antes de qualquer `git pull --rebase origin main` — e repetir o fetch imediatamente antes de publicar, para conferir se o remoto andou durante o seu trabalho.
    - Usar sempre `git pull --rebase origin main` (nunca merge) e adicionar **só os arquivos da tarefa** + quadro (nunca `git add .`).
+   - ⛔ **Não** usar `git pull --all` nem `git pull` sem `--rebase`: sem o `--rebase` o comando cria um **merge**, proibido por esta seção. Para "pegar tudo de todos os remotos", a forma correta é `git fetch --all` seguido de `git pull --rebase origin main`.
 
 ---
 
