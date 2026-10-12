@@ -45,25 +45,14 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 07 (Grok Bot) — SUB-35.32
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.32** |
-| **Título da Sub-task:** | Validação visual do monitor (SUB-35) — subdivisão |
-| **Agente Responsável:** | DashboardAI-Clone 07 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:49 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202 (atualizado em 2026-10-12 na revisão do quadro por Devin)
-- **Em Execução:** 1 (SUB-35.32, DashboardAI-Clone 07 (Grok Bot), desde 2026-10-12 01:49)
-- **Pendentes:** 4 principais (25, 26, 28, 35) + 41 subtarefas
-  - livres agora: 9 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.4, SUB-28.5, SUB-28.10, SUB-28.13, SUB-28.20, SUB-35.33)
+- **Em Execução:** 0
+- **Pendentes:** 4 principais (25, 26, 28, 35) + 42 subtarefas
+  - livres agora: 10 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.4, SUB-28.5, SUB-28.10, SUB-28.13, SUB-28.20, SUB-35.32, SUB-35.33)
   - bloqueadas por dependência: 32
   - reservadas: 0
 - **Concluídas:** 193 de 239 blocos (33 principais + 160 subtarefas)
@@ -2402,7 +2391,7 @@
   - `SUB-35.29`: Indicador `IndicadorAoVivo` em `src/components/monitor/IndicadorAoVivo.tsx` (`concluido`, `9c2edf5`)
   - `SUB-35.30`: Tela `MonitorView` em `src/views/MonitorView.tsx` (`concluido`, `2d1cd0a`)
   - `SUB-35.31`: Registrar a tela `monitor` (rota `#/monitor` e menu) (`concluido`, `8dff43b`)
-  - `SUB-35.32`: Validação visual do monitor (SUB-35) (`em_execucao`)
+  - `SUB-35.32`: Validação visual do monitor (SUB-35) (`pendente`)
   - `SUB-35.33`: `emitirEvento()` em `worker/eventos.ts` (`pendente`)
   - `SUB-35.34`: Testes de `emitirEvento` em `tests/unit/worker-eventos.test.ts` (`pendente`)
   - `SUB-35.35`: `comEventos(nome, no)` em `worker/eventos.ts` (`pendente`)
@@ -2766,14 +2755,14 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:15 — Devin (revisão do quadro): commit e arquivos conferidos na `main`; `npm run typecheck`, `npm test` e `npm run build` verdes
 
 #### [ ] SUB-35.32: Validação visual do monitor (SUB-35)
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 07 (Grok Bot) (início: 2026-10-12 01:49)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-35.31
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Contra o banco local, inserir eventos (SQL ou MCP `agent_event`) e conferir que cards, gráficos e feed atualizam sem recarregar; screenshots 1280x800 e 390x844, tema claro e escuro; registrar na anotação da SUB-35.
 - **Critérios de Aceitação:** Screenshots conferidos; nenhum erro no console.
 - **Commit:** pendente
-- **Anotação:** pendente
+- **Anotação:** Trava de DashboardAI-Clone 07 (Grok Bot) (desde 2026-10-12 01:49, commit `8d700c5`) liberada em 2026-10-12 a pedido do usuário, sem entrega registrada; tarefa volta a ficar livre.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-35.33: `emitirEvento()` em `worker/eventos.ts`
