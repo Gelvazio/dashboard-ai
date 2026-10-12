@@ -9,8 +9,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 32
-- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
-- **Pendentes:** 18
+- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-12`)
+- **Pendentes:** 17
 - **Concluídas:** 14
 - **Canceladas:** 0
 
@@ -222,9 +222,9 @@
 
 ## 🎨 FASE 5: Interface do Usuário - Componentes Base e Layout
 
-### [ ] SUB-12: Layout Principal Responsivo (Sidebar + Header + Navegação)
-- **Status:** pendente
-- **Executor:** nenhum
+### [🔄] SUB-12: Layout Principal Responsivo (Sidebar + Header + Navegação)
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:04)
 - **Depende de:** SUB-01, SUB-02
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Construir o shell do Dashboard com barra lateral de navegação (Fila de Tarefas, Cérebro de Memória, Logs do Agendador, Configurações), Header com seletor de projeto, status da conexão Supabase e toggle de tema.
