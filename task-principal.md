@@ -743,9 +743,9 @@
 - **Commit:** `f145aab`
 - **Anotação:** Criado `src/hooks/useBuscaSemantica.ts` (exportado em `src/hooks/index.ts`): `useBuscaSemantica(projeto | null, consulta, { limiar, incluirGlobais })` -> `{ resultado: ResultadoBusca | null, carregando, erro }`. Usa `useDebounce(consulta.trim(), 400)` (SUB-19.2), `buscarMemorias` (SUB-10) com `gerador` de `criarGeradorEmbedding()` (SUB-33.7, memoizado); texto vazio ou sem projeto não busca e limpa o resultado; respostas antigas descartadas por contador de requisição (também invalidado ao desmontar). `npm run typecheck`, `npm test` e `npm run build` OK.
 
-#### [ ] SUB-19.7: Painel `BuscaSemanticaPanel` (campo, grade e estados)
-- **Status:** pendente
-- **Executor:** nenhum
+#### [🔄] SUB-19.7: Painel `BuscaSemanticaPanel` (campo, grade e estados)
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 04 (Grok Bot) (início: 2026-10-12 01:04)
 - **Depende de:** SUB-19.5, SUB-19.6, SUB-19.9
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/components/memoria/BuscaSemanticaPanel.tsx` que só compõe: campo de busca, `BuscaControles` (SUB-19.9), grade responsiva de `ResultadoBuscaCard` e estados carregando/vazio/erro, usando `useBuscaSemantica`.
