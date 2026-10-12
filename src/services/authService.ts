@@ -55,3 +55,10 @@ export async function obterPapelGlobal(
   if (error) throw new ServiceError(`Não foi possível ler o papel do usuário: ${error.message}`, error.code);
   return (data?.role as UserRole | undefined) ?? null;
 }
+
+/** Sessão atual (restaurada do armazenamento do Supabase) ou `null`. */
+export async function obterSessao(client: DashboardClient = getSupabase()): Promise<Session | null> {
+  const { data, error } = await client.auth.getSession();
+  if (error) throw new ServiceError(mensagemErroAuth(error), 'AUTH');
+  return data.session ?? null;
+}
