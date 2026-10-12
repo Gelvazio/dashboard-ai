@@ -88,14 +88,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:07 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 04 (Grok Bot) — SUB-19.8
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-19.8** |
+| **Título da Sub-task:** | Integrar a busca na `src/views/MemoriaView.tsx` |
+| **Agente Responsável:** | DashboardAI-Clone 04 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:07 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (4)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-19.8** | Integrar a busca na `src/views/MemoriaView.tsx` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:07 | SUB-19.7, SUB-21.9 |
 | **SUB-35.5** | Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` | DashboardAI-Clone 02 | 2026-10-12 01:07 | SUB-35.3 |
 | **SUB-26.6** | Seção Agentes de IA: configurar clientes MCP | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:06 | SUB-26.1 |
 | **SUB-21.11** | Ligar detalhe e exclusão na `MemoriaView` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:06 | SUB-21.9, SUB-21.6, SUB-21.7 |
@@ -127,7 +139,7 @@
 | **SUB-19** | Interface de Pesquisa Semântica Vetorial (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-19.1 a SUB-19.10 |
 | **SUB-19.1** | `debounce(fn, ms)` em `src/lib/debounce.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-19.3** | `formatarSimilaridade` em `src/lib/similaridade.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
-| **SUB-19.8** | Integrar a busca na `src/views/MemoriaView.tsx` | 4 | Fase 7 | SUB-19.7, SUB-21.9 — ⛓️ bloqueada |
+| **SUB-19.8** | Integrar a busca na `src/views/MemoriaView.tsx` | 4 | Fase 7 | SUB-19.7, SUB-21.9 — ⛓️ bloqueada — 🔄 em execução por DashboardAI-Clone 04 (Grok Bot) |
 | **SUB-19.9** | `BuscaControles` (limiar, globais, modo) em `src/components/memoria/BuscaControles.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-20** | Formulário de Nova Memória Canônica (mãe) | 4 | Fase 7 | SUB-10, SUB-12, SUB-33; SUB-20.1 a SUB-20.10 |
 | **SUB-20.7** | Botão "Nova memória" na `src/views/MemoriaView.tsx` | 4 | Fase 7 | SUB-20.6, SUB-19.8, SUB-21.9 — ⛓️ bloqueada |
@@ -602,3 +614,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:07 | DashboardAI-Clone 04 (Grok Bot) | SUB-19.7 | `3187754` | Criado `src/components/memoria/BuscaSemanticaPanel.tsx` (`{ projeto | null, onAbrir?(id) }`, exportado em `src/components/memoria/index.ts`), só composição: campo de busca com ícone e spinner (desativado sem projeto), `BuscaControles` (limiar padrão 70%, globais, selo do modo), grade responsiva 1/2/3 colunas (`grid-cols-1` + `min-w-0` para não estourar no celular) de `ResultadoBuscaCard` (similaridade só na busca semântica, Global quando `project_id` nulo) e estados: dica inicial, esqueleto carregando, vazio e erro (`role=alert`), dados de `useBuscaSemantica` (SUB-19.6). `npm run typecheck`, `npm test` e `npm run build` OK; screenshots 1280x800 e 390x844 conferidos com serviços simulados num harness local não commitado. |
 | 2026-10-12 01:07 | DashboardAI-Clone 02 | SUB-35.4 | `95f12ff` | Em `database/07_agent_events.sql`, bloco `do $$` que faz `alter publication supabase_realtime add table public.agent_events` só se a publicação existir e a tabela ainda não estiver nela. Validado em Postgres local (banco temporário): 00–07 aplicados 2x sem a publicação (não falha); com `create publication supabase_realtime`, 07 reaplicado 2x e `pg_publication_tables` mostra `agent_events`. |
 | 2026-10-12 01:07 | DashboardAI-Clone 02 | SUB-35.5 | — | Lock: assumindo SUB-35.5 (Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql`) |
+| 2026-10-12 01:07 | DashboardAI-Clone 04 (Grok Bot) | SUB-19.8 | — | Lock: assumindo SUB-19.8 (Integrar a busca na `src/views/MemoriaView.tsx`) |

@@ -753,9 +753,9 @@
 - **Commit:** `3187754`
 - **Anotação:** Criado `src/components/memoria/BuscaSemanticaPanel.tsx` (`{ projeto | null, onAbrir?(id) }`, exportado em `src/components/memoria/index.ts`), só composição: campo de busca com ícone e spinner (desativado sem projeto), `BuscaControles` (limiar padrão 70%, globais, selo do modo), grade responsiva 1/2/3 colunas (`grid-cols-1` + `min-w-0` para não estourar no celular) de `ResultadoBuscaCard` (similaridade só na busca semântica, Global quando `project_id` nulo) e estados: dica inicial, esqueleto carregando, vazio e erro (`role=alert`), dados de `useBuscaSemantica` (SUB-19.6). `npm run typecheck`, `npm test` e `npm run build` OK; screenshots 1280x800 e 390x844 conferidos com serviços simulados num harness local não commitado.
 
-#### [ ] SUB-19.8: Integrar a busca na `src/views/MemoriaView.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [🔄] SUB-19.8: Integrar a busca na `src/views/MemoriaView.tsx`
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 04 (Grok Bot) (início: 2026-10-12 01:07)
 - **Depende de:** SUB-19.7, SUB-21.9
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar a seção "Busca semântica" (`BuscaSemanticaPanel` com o projeto de `useProjetoAtual`) no topo da `MemoriaView`, acima da grade. Depende da SUB-21.9, que cria a tela (área reservada no topo).
