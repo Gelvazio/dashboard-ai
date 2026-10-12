@@ -1413,8 +1413,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-26.7: Seção Memória via MCP
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 01:03)
 - **Depende de:** SUB-26.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** `brain_store`, `brain_search`, `brain_delete`, memórias globais vs. por projeto, limiar e tags; exemplos.

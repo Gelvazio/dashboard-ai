@@ -77,14 +77,26 @@
 | **Data e Hora de Início:** | 2026-10-12 01:03 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 08 (Grok Bot) — SUB-26.7
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-26.7** |
+| **Título da Sub-task:** | Seção Memória via MCP |
+| **Agente Responsável:** | DashboardAI-Clone 08 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:03 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (4)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-26.7** | Seção Memória via MCP | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:03 | SUB-26.1 |
 | **SUB-21.7** | Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` | DashboardAI-Clone 06 | 2026-10-12 01:03 | SUB-21.3 |
 | **SUB-23.9** | Alerta de trava presa na `src/views/FilaView.tsx` | DashboardAI-Clone 02 | 2026-10-12 01:03 | SUB-23.3 |
 | **SUB-34.6** | `Suspense` com `CarregandoTela` no `src/App.tsx` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 01:03 | SUB-34.1, SUB-34.2 |
@@ -93,7 +105,7 @@
 
 ---
 
-### ⏳ PENDENTES (161)
+### ⏳ PENDENTES (160)
 
 > Legenda: 🟢 livre = dependências concluídas, qualquer agente pode assumir (com lock + commit + push); ⛓️ bloqueada = aguarda dependências; 🔒 reservada = sob trava de outro agente. Subtarefas são atômicas (~3 min: um método, componente, arquivo de teste ou seção). A tarefa-mãe só fecha quando todas as filhas estiverem concluídas.
 
@@ -149,7 +161,6 @@
 | **SUB-26.3** | Seção Execução local | 5 | Fase 10 | SUB-26.1, SUB-08.9, SUB-25 — ⛓️ bloqueada |
 | **SUB-26.5** | Seção Deploy na Vercel | 5 | Fase 10 | SUB-26.1, SUB-08.9, SUB-33 — ⛓️ bloqueada |
 | **SUB-26.6** | Seção Agentes de IA: configurar clientes MCP | 5 | Fase 10 | SUB-26.1 — ⛓️ bloqueada |
-| **SUB-26.7** | Seção Memória via MCP | 5 | Fase 10 | SUB-26.1 — ⛓️ bloqueada |
 | **SUB-26.8** | Seção Segurança | 5 | Fase 10 | SUB-26.1, SUB-27.13, SUB-27.17, SUB-27.21 — ⛓️ bloqueada |
 | **SUB-26.9** | Revisão final do README | 5 | Fase 10 | SUB-26.2, SUB-26.3, SUB-26.4, SUB-26.5, SUB-26.6, SUB-26.7, SUB-26.8, SUB-26.10, SUB-25 — ⛓️ bloqueada |
 | **SUB-26.10** | Seção Agentes de IA: exemplos do ciclo da fila | 5 | Fase 10 | SUB-26.1 — ⛓️ bloqueada |
@@ -561,3 +572,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:03 | DashboardAI-Clone 10 (Grok Bot) | SUB-34.6 | — | Lock: assumindo SUB-34.6 (`Suspense` com `CarregandoTela` no `src/App.tsx`) |
 | 2026-10-12 01:03 | DashboardAI-Clone 02 | SUB-23.9 | — | Lock: assumindo SUB-23.9 (Alerta de trava presa na `src/views/FilaView.tsx`) |
 | 2026-10-12 01:03 | DashboardAI-Clone 06 | SUB-21.7 | — | Lock: assumindo SUB-21.7 (Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts`) |
+| 2026-10-12 01:03 | DashboardAI-Clone 08 (Grok Bot) | SUB-26.7 | — | Lock: assumindo SUB-26.7 (Seção Memória via MCP) |
