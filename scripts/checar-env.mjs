@@ -2,8 +2,9 @@
 // está documentada no `.env.example` (Node, sem dependências).
 // SUB-08.8: extração das variáveis citadas no código-fonte.
 
-import { existsSync, readdirSync } from 'node:fs';
-import { extname, join } from 'node:path';
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { extname, join, relative, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 /** Nome de variável de ambiente: maiúsculas, dígitos e `_`, começando por letra ou `_`. */
 const NOME = '[A-Z_][A-Z0-9_]*';
@@ -80,4 +81,54 @@ export function listarArquivosFonte(dirs) {
     if (existsSync(dir)) visitar(dir);
   }
   return [...arquivos].sort();
+}
+
+/** Variáveis embutidas do Vite (`import.meta.env.DEV` etc.): não vão no `.env.example`. */
+export const VARIAVEIS_EMBUTIDAS = ['BASE_URL', 'DEV', 'MODE', 'PROD', 'SSR'];
+
+/** Pastas varridas pelo `npm run check:env`. */
+export const PASTAS_FONTE = ['src', 'api', 'scripts'];
+
+/**
+ * Execução direta (`npm run check:env`): sai com código 1 se alguma variável usada
+ * no código não estiver no `.env.example`; avisa (sem falhar) as que estão no
+ * exemplo mas não são usadas. Este próprio arquivo não é varrido (os comentários
+ * citam nomes de exemplo).
+ * @param {string} raiz raiz do repositório
+ * @returns {number} código de saída
+ */
+export function main(raiz = resolve(fileURLToPath(import.meta.url), '..', '..')) {
+  const esteArquivo = resolve(fileURLToPath(import.meta.url));
+  const usadas = new Map();
+  for (const arquivo of listarArquivosFonte(PASTAS_FONTE.map((d) => join(raiz, d)))) {
+    if (resolve(arquivo) === esteArquivo) continue;
+    for (const nome of extrairVariaveis(readFileSync(arquivo, 'utf8'))) {
+      if (VARIAVEIS_EMBUTIDAS.includes(nome)) continue;
+      if (!usadas.has(nome)) usadas.set(nome, []);
+      usadas.get(nome).push(relative(raiz, arquivo));
+    }
+  }
+  const caminhoExemplo = join(raiz, '.env.example');
+  if (!existsSync(caminhoExemplo)) {
+    console.error('check:env: `.env.example` não encontrado na raiz do repositório.');
+    return 1;
+  }
+  const doExemplo = new Set(variaveisDoExemplo(readFileSync(caminhoExemplo, 'utf8')));
+  const faltando = [...usadas.keys()].filter((n) => !doExemplo.has(n)).sort();
+  const naoUsadas = [...doExemplo].filter((n) => !usadas.has(n)).sort();
+
+  for (const nome of naoUsadas) {
+    console.warn(`aviso: ${nome} está no .env.example mas não é usada em ${PASTAS_FONTE.join('/, ')}/`);
+  }
+  if (faltando.length > 0) {
+    console.error('check:env: variáveis usadas no código e ausentes do .env.example:');
+    for (const nome of faltando) console.error(`  - ${nome} (${usadas.get(nome).join(', ')})`);
+    return 1;
+  }
+  console.log(`check:env: OK (${usadas.size} variáveis usadas, todas no .env.example).`);
+  return 0;
+}
+
+if (process.argv[1] && resolve(process.argv[1]) === resolve(fileURLToPath(import.meta.url))) {
+  process.exitCode = main();
 }

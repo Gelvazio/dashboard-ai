@@ -1,9 +1,9 @@
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 // @ts-expect-error script .mjs sem declaração de tipos
-import { extrairVariaveis, listarArquivosFonte, variaveisDoExemplo } from '../../scripts/checar-env.mjs';
+import { extrairVariaveis, listarArquivosFonte, main, variaveisDoExemplo } from '../../scripts/checar-env.mjs';
 
 describe('extrairVariaveis', () => {
   it('reconhece process.env.X', () => {
@@ -81,5 +81,35 @@ describe('listarArquivosFonte', () => {
     expect(listarArquivosFonte(dirs)).toEqual(
       ['api/d.mjs', 'scripts/e.py', 'src/a.ts', 'src/c.js', 'src/ui/b.tsx'].map((r) => join(raiz, r)),
     );
+  });
+});
+
+describe('main (check:env)', () => {
+  let raiz = '';
+  afterEach(() => {
+    vi.restoreAllMocks();
+    if (raiz) rmSync(raiz, { recursive: true, force: true });
+  });
+
+  const montar = (exemplo: string) => {
+    raiz = mkdtempSync(join(tmpdir(), 'checar-env-main-'));
+    mkdirSync(join(raiz, 'api'), { recursive: true });
+    writeFileSync(join(raiz, 'api', 'a.ts'), 'process.env.FOO_URL; import.meta.env.DEV;');
+    writeFileSync(join(raiz, '.env.example'), exemplo);
+  };
+
+  it('passa quando toda variável usada está no .env.example (ignora DEV do Vite)', () => {
+    vi.spyOn(console, 'log').mockImplementation(() => {});
+    const aviso = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    montar('FOO_URL=\nSOBRANDO=\n');
+    expect(main(raiz)).toBe(0);
+    expect(aviso).toHaveBeenCalledWith(expect.stringContaining('SOBRANDO'));
+  });
+
+  it('falha quando falta uma variável no .env.example', () => {
+    const erro = vi.spyOn(console, 'error').mockImplementation(() => {});
+    montar('# vazio\n');
+    expect(main(raiz)).toBe(1);
+    expect(erro.mock.calls.flat().join('\n')).toContain('FOO_URL');
   });
 });
