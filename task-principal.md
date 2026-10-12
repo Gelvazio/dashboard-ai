@@ -49,17 +49,6 @@
 | **Data e Hora de Início:** | 2026-10-12 01:46 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 04 (Grok Bot) — SUB-28.26
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-28.26** |
-| **Título da Sub-task:** | Contrato: ferramentas permitidas e idempotência em `docs/langgraph-contrato.md` |
-| **Agente Responsável:** | DashboardAI-Clone 04 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:46 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
@@ -2121,15 +2110,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [🔄] SUB-28.26: Contrato: ferramentas permitidas e idempotência em `docs/langgraph-contrato.md`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 04 (Grok Bot) (início: 2026-10-12 01:46)
+#### [x] SUB-28.26: Contrato: ferramentas permitidas e idempotência em `docs/langgraph-contrato.md`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 04 (Grok Bot) (2026-10-12 01:46 → 2026-10-12 01:47)
 - **Depende de:** SUB-28.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar a seção de ferramentas permitidas (allowlist e quais são sensíveis) e chaves de idempotência (formato e onde são gravadas).
 - **Critérios de Aceitação:** Seção escrita e coerente com o `LangChain_LangGraph.md`.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `07b64cc`
+- **Anotação:** Seção 2 em `docs/langgraph-contrato.md`: allowlist do grafo (`brain_search`, `task_list` leitura; `brain_store`, `agent_event` escrita; `task_create` e `brain_delete` sensíveis com pausa para aprovação), `task_next`/`task_finish` fora do grafo (só o worker chama as RPCs), regras (projetoId do estado, recusa vai para SUB-28.27); chaves de idempotência `<execucaoId>:<passoId>` (e `task-<taskId>:<passoId>` entre tentativas), gravadas no checkpoint, em `agent_events.chave_idempotencia` e em `p_metadados` de `finalizar_task`, com a ordem persistir→chamar→persistir. Coerente com as seções 3, 5, 6 e 7 do `LangChain_LangGraph.md`. Só documentação.
 
 #### [ ] SUB-28.27: Contrato: mapeamento de erros para `finalizar_task` em `docs/langgraph-contrato.md`
 - **Status:** pendente
