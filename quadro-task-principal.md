@@ -33,17 +33,6 @@
 | **Data e Hora de Início:** | 2026-10-11 22:27 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot)
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-29** |
-| **Título da Sub-task:** | Multi-projeto, Papéis e RLS no Banco |
-| **Agente Responsável:** | DashboardAI (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-11 22:37 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — xAI (Grok)
 
 | Propriedade | Valor Atual |
@@ -59,13 +48,12 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (4)
+### 🔄 EM EXECUÇÃO (3)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-01.1** | Inicialização do package.json, Vite, React e TypeScript | Gemini (Antigravity) | 2026-10-11 22:13 | Nenhuma |
 | **SUB-27** | Autenticação e Login com Supabase Auth | Codex (OpenAI) | 2026-10-11 22:27 | SUB-03, SUB-29 |
-| **SUB-29** | Multi-projeto, Papéis e RLS no Banco | DashboardAI (Grok Bot) | 2026-10-11 22:37 | SUB-04, SUB-05 |
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` | xAI (Grok) | 2026-10-11 22:41 | SUB-06 |
 
 ---
@@ -102,7 +90,7 @@
 
 ---
 
-### ✅ CONCLUÍDAS (4)
+### ✅ CONCLUÍDAS (5)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
@@ -110,6 +98,7 @@
 | **SUB-05** | Consolidação das Funções RPC e Triggers no Banco | DashboardAI (Grok Bot) | 2026-10-11 22:20 | 2026-10-11 22:21 | `ceb04a9` |
 | **SUB-24** | Script de Sincronização de Tasks (`scripts/sincronizar_tasks.py`) | DashboardAI (Grok Bot) | 2026-10-11 22:21 | 2026-10-11 22:23 | `7132c1b` |
 | **SUB-06** | Estrutura do Endpoint Serverless Vercel MCP | DashboardAI (Grok Bot) | 2026-10-11 22:23 | 2026-10-11 22:24 | `ce840a4` |
+| **SUB-29** | Multi-projeto, Papéis e RLS no Banco | DashboardAI (Grok Bot) | 2026-10-11 22:37 | 2026-10-11 22:43 | `30fe077` |
 
 ---
 
@@ -130,3 +119,4 @@
 | 2026-10-11 22:21 | DashboardAI (Grok Bot) | SUB-05 | `ceb04a9` | Criado database/04_rpc_functions.sql: pegar_proxima_task (lock 90 min, atômica), finalizar_task, liberar_trava_task, match_memories (order by corrigido, filtro de tags) e eh_professor_administrador (+ tabela professores_administradores). Validado em Postgres 17 + pgvector, incl. concorrência |
 | 2026-10-11 22:23 | DashboardAI (Grok Bot) | SUB-24 | `7132c1b` | Criado scripts/sincronizar_tasks.py (stdlib, REST do Supabase) com consulta/exportar/importar/conferir + testes unitários e tasks/fila/README.md. Validado ponta a ponta contra PostgREST + Postgres 17 local |
 | 2026-10-11 22:24 | DashboardAI (Grok Bot) | SUB-06 | `ce840a4` | Criados api/mcp.ts (roteador JSON-RPC 2.0/MCP: POST-only, CORS, token opcional, initialize/ping/tools/list/tools/call por params.name, lotes, notificações 202), api/_lib/{jsonrpc,tools,http}.ts, api/tsconfig.json, api/README.md e vercel.json. tsc estrito OK + 18 cenários de runtime testados |
+| 2026-10-11 22:43 | DashboardAI (Grok Bot) | SUB-29 | `30fe077` | Banco multi-projeto: projects, user_roles/project_members, eh_administrador/tem_acesso_projeto (removido professores_administradores), project_id + código por projeto, tipo ia/humano, guarda da interface, validação de dependências, logs genéricos, memórias por projeto/globais, pegar_proxima_task paralela com p_projeto, RPCs security definer só para service_role, RLS em tudo; --projeto no sincronizar_tasks.py. Testes: 00-05 aplicados 2x, upgrade da versão anterior, 72 verificações RLS/fila, 12 agentes paralelos sem duplicidade, PostgREST e2e |
