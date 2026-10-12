@@ -2534,4 +2534,15 @@
 - **Anotação:** Concluída em 2026-10-12 01:14; validado com servidor local + Chrome headless: cérebro no topo (648px de altura, canvas sem o limite de 280px), ranking logo abaixo, gráficos intactos, sem erros de console, troca de líder simulada dispara o destaque; contagens conferidas com script independente.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:15 — Devin (revisão do quadro): commit e arquivos conferidos na `main`; `npm run typecheck`, `npm test` e `npm run build` verdes
 
+#### [x] SUB-35.33: `emitirEvento()` em `worker/eventos.ts`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:36, conclusão: 2026-10-12 13:37)
+- **Depende de:** SUB-35.1, SUB-28.28
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `worker/eventos.ts` com `emitirEvento(evento, deps = { db })`: insere em `agent_events` (service_role, reutilizando `db()` de `api/_lib/supabase.ts`), corta `mensagem` em 2000 caracteres, só aceita `metadados` objeto e **nunca lança** (falha vira aviso no log sem segredos), para não derrubar a execução.
+- **Critérios de Aceitação:** `npm run typecheck:worker` OK.
+- **Commit:** `2750ba4`
+- **Anotação:** Criei `worker/eventos.ts` com `emitirEvento(evento, deps = { db })` e `montarLinhaEvento()`: resolve `project_id` pelo slug (`projects`, não excluído), insere em `agent_events` com a service_role de `db()` (com `chave_idempotencia` usa upsert ignorando duplicatas, como a ferramenta MCP), corta `mensagem` em 2000 caracteres e só aceita `metadados` objeto (senão `{}`). Nunca lança: devolve `false` e avisa no log só o tipo do evento e a mensagem do erro (até 200 caracteres), sem payload nem chaves. `npm run typecheck:worker`, `typecheck`, `npm test` (268) e `build` OK; checagem manual com cliente falso confirmou o corte e o não-lançamento.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 13:37 (confirmado por Devin (Cognition AI))
+
 ---
