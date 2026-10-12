@@ -790,7 +790,7 @@
 - **Subtarefas:** (subdividida em 7 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 8 em 2026-10-11 23:51; nova revisão para 10 em 2026-10-12 00:17)
   - `SUB-20.1`: `validarMemoria(dados)` em `src/lib/memoriaForm.ts` (`concluido`, `5662f1a`)
   - `SUB-20.2`: `parseTags(texto)` em `src/lib/memoriaForm.ts` (`pendente`)
-  - `SUB-20.3`: `sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts` (`pendente`)
+  - `SUB-20.3`: `sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts` (`em_execucao`)
   - `SUB-20.4`: Componente `TagInput` em `src/components/ui/TagInput.tsx` (`pendente`)
   - `SUB-20.5`: Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts` (`pendente`)
   - `SUB-20.6`: Modal `MemoriaFormModal` em `src/components/memoria/` (`pendente`)
@@ -825,8 +825,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-20.3: `sugerirTags(titulo, conteudo)` em `src/lib/memoriaForm.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 00:49)
 - **Depende de:** SUB-20.1, SUB-20.10
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `export function sugerirTags(titulo: string, conteudo: string, max = 5): string[]` em `src/lib/memoriaForm.ts`: usa `palavrasDe` (SUB-20.10) no título e no conteúdo, conta frequência (título vale 2x), desempata por ordem alfabética e devolve as `max` primeiras. É a "geração de tags dinâmicas". Testes.
