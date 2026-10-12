@@ -3240,3 +3240,16 @@
 - **Anotação:** Novo `worker/grafoFabrica.ts` com `criarGrafoComCheckpointer(env = process.env)`: valida `OPENAI_API_KEY`, cria `ChatOpenAI` (`WORKER_MODELO` ou `gpt-4o-mini`, `temperature: 0`), `criarCheckpointer(env)` (que exige `LANGGRAPH_DATABASE_URL`) e `criarGrafo`, com o cast `as unknown as BaseCheckpointSaver` num único ponto; documentada com JSDoc. `worker/index.ts`: `criarGrafoReal` removida e `rodarWorker` usa `grafoSobDemanda(() => criarGrafoComCheckpointer())`; imports sem uso (`ChatOpenAI`, `BaseCheckpointSaver`, `criarCheckpointer`, `criarGrafo`) retirados. Comportamento igual. `api/aprovacao.ts` continua com a cópia própria até a SUB-39.5 (agora livre). Validação: `npm run typecheck`, `npm run typecheck:worker` e `npm test` (300 passam/30 pulados, com as variáveis Supabase vazias por causa da SUB-39.6) verdes.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:02 — Claude Code (Opus 5.5): entrega verificada (`worker/index.ts` usa a fábrica; `typecheck`, `typecheck:worker` e `npm test` verdes)
 - **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [x] SUB-39.5: Usar a fábrica da SUB-39.4 em `api/aprovacao.ts`
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** Claude Code (Opus 5.5) (início: 2026-10-12 18:03, conclusão: 2026-10-12 18:04)
+- **Depende de:** SUB-39.4, SUB-28.23
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Substituir `criarGrafoComCheckpointerPadrao` (com o `as unknown as any` da linha ~92) pela `criarGrafoComCheckpointer` de `worker/grafoFabrica.ts`, mantendo a injeção por `DepsAprovacao` (os testes de `tests/unit/api-aprovacao.test.ts` continuam usando o grafo falso). Remover os imports que ficarem sem uso (`ChatOpenAI`, `criarCheckpointer`, `criarGrafo`).
+- **Critérios de Aceitação:** Sem `as unknown as any` em `api/aprovacao.ts`; `npm run typecheck`, `npm run typecheck:worker` e `npm test` verdes; `npm run test:integration` verde quando houver banco local.
+- **Commit:** `2ce9adf`
+- **Anotação:** `api/aprovacao.ts`: removida `criarGrafoComCheckpointerPadrao` (cópia da montagem do grafo com o cast `as unknown as any` na linha ~92) e os imports `ChatOpenAI`, `criarCheckpointer` e `criarGrafo`; o `DEPS_PADRAO` usa `() => criarGrafoComCheckpointer()` de `worker/grafoFabrica.ts` (SUB-39.4). A injeção por `DepsAprovacao` não mudou, então `tests/unit/api-aprovacao.test.ts` segue com o grafo falso. Agora a montagem do grafo real existe num único lugar. Validação: `npm run typecheck`, `npm run typecheck:worker` e `npm test` (300 passam/30 pulados) verdes. `npm run test:integration` **não executado**: sem Docker/Postgres local nesta máquina (o critério pede só "quando houver banco local").
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 18:04 — Claude Code (Opus 5.5): entrega verificada (sem `as unknown as any` em `api/aprovacao.ts`; `typecheck`, `typecheck:worker` e `npm test` verdes; integração não executada por falta de banco local)
+- **VERIFICADOR-CLAUDE:** PENDENTE
