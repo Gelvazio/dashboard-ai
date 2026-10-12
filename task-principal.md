@@ -68,20 +68,6 @@
 
 ---
 
-
-### 🔒 TRAVA ADICIONAL — Claude Code (Opus 5.5, sessão em nuvem) — SUB-43
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-43** |
-| **Título da Sub-task:** | ATUALIZADOR DE TASKS COMPLETAS |
-| **Agente Responsável:** | Claude Code (Opus 5.5, sessão em nuvem) |
-| **Data e Hora de Início:** | 2026-10-12 21:38 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-43 |
-
----
-
 ### 🔒 TRAVA ESPECIAL: KIRO-DEV-CLONE
 
 > **ATENÇÃO:** A tarefa `KIRO-DEV-CLONE` está **TRAVADA PARA TODAS AS IAS**.
@@ -102,13 +88,13 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 44
 - **Subtarefas atômicas (~3 min):** 251
-- **Em Execução:** 3 (SUB-38, SUB-41.1, SUB-43)
-- **Pendentes:** 10 principais (SUB-38, 25, 26, 28, 35, 39, 41, 42, 43, KIRO-DEV-CLONE) + 40 subtarefas
+- **Em Execução:** 2 (SUB-38, SUB-41.1)
+- **Pendentes:** 9 principais (SUB-38, 25, 26, 28, 35, 39, 41, 42, KIRO-DEV-CLONE) + 40 subtarefas
   - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 4 — SUB-25.4, SUB-25.7 e SUB-35.32 (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
   - bloqueadas por dependência: 6 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41) e SUB-42 (depende da SUB-41)
-  - em execução: 3 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI)); SUB-43 (Claude Code (Opus 5.5, sessão em nuvem))
+  - em execução: 2 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 241 de 295 blocos (34 principais + 207 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 242 de 295 blocos (35 principais + 207 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -474,24 +460,6 @@
 - **Critérios de Aceitação:** `grep -n "SUB-[0-9]\|KIRO-DEV-CLONE" AGENTS.md` sem resultados (os `SUB-XX`/`SUB-01.1` genéricos de exemplo podem ficar); a trava da `KIRO-DEV-CLONE` continua valendo pelo bloco do `task-principal.md`; `npm run validar` verde.
 - **Commit:** pendente
 - **Anotação:** Criada a pedido do usuário em 2026-10-12 por Claude Code (Opus 5.5) ("veja se tem mais alguma"), depois da SUB-41. Varredura feita com `grep` no `AGENTS.md`; os itens acima são todos os que citam tarefas concretas. As seções 1 a 5 são regras e ficam. **Releitura completa (2026-10-12, Claude Code (Opus 5.5), a pedido do usuário):** o `AGENTS.md` (483 linhas, já com a regra 9 da seção 1.1, `26e949b`) foi lido do início ao fim. A única **tarefa** é o plano "🧠 Cérebro de Memória Persistente" (linhas ~345-525 depois das seções 6 e da regra 10, SUB-41); as referências a tarefas concretas e os relatos de histórico são os itens 1 a 5 acima. Os números de linha foram atualizados (+5 por causa da regra 9) e o item 5 foi acrescentado.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-### [ ] SUB-43: ATUALIZADOR DE TASKS COMPLETAS
-- **Status:** em_execucao
-- **Prioridade:** MEDIA
-- **Executor:** Claude Code (Opus 5.5, sessão em nuvem) (início: 2026-10-12 21:38)
-- **Depende de:** Nenhuma
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Ler o `task-principal.md` **inteiro** e mover para o `task_complete.md` **todo bloco concluído** que ainda estiver no quadro ativo, seguindo a regra 10 da seção 1.1 do [`AGENTS.md`](AGENTS.md). Bloco concluído = cabeçalho `[x]` **ou** `Status: concluido` (tarefa-mãe ou subtarefa). Para cada um:
-  1. mover o bloco **inteiro**, sem alterar o texto (status, commit, anotação, `STATUS-TAREFA-CONFIRMADO-CONCLUIDO` e `VERIFICADOR-CLAUDE`), para o **fim da fase correspondente** no `task_complete.md`, com o mesmo título de fase (`## <emoji> FASE N: …`); se a fase ainda não existir lá, criar o cabeçalho dela;
-  2. na lista `Subtarefas:` da tarefa-mãe que continua no quadro, deixar só a referência `(concluido, <sha>)`;
-  3. **não mover**: bloco com trava ativa (`em_execucao`), tarefa-mãe com alguma filha não `concluido` e qualquer bloco sob 🔒 TRAVA ESPECIAL;
-  4. no `📊 Resumo de Progresso`, as contagens não mudam (o bloco já contava como concluído); só corrigir o texto se ele citar o bloco movido como se estivesse no quadro.
-  Na varredura de 2026-10-12 estavam no quadro ativo, já concluídas: `SUB-28.18`, `SUB-28.23`, `SUB-28.25` e `SUB-28.32` (fase 11, LangChain/LangGraph). Refazer a varredura na hora de executar, porque outros agentes podem ter concluído ou movido blocos.
-- **Critérios de Aceitação:** `grep -n "^#\{3,4\} \[x\]\|Status:\*\* concluido" task-principal.md` sem resultados (fora os casos do item 3, citados na anotação); cada bloco movido aparece uma única vez, no `task_complete.md`, na fase certa; nenhum bloco perdido (contagem de blocos `### `/`#### ` dos dois arquivos somada antes = depois); commit `docs(board): mover concluídas para task_complete.md (SUB-43) por <agente>`.
-- **Commit:** pendente
-- **Anotação:** Criada a pedido do usuário em 2026-10-12 por Claude Code (Opus 5.5): "crie mais 1 tarefa de nome ATUALIZADOR DE TASKS COMPLETAS, onde deve ler o arquivo task-principal.md inteiro e toda tarefa que estiver concluída deve ser movida para task_complete.md". A regra permanente (qualquer agente que encontrar bloco concluído no quadro ativo deve movê-lo) foi registrada no `AGENTS.md` (regra 10 da seção 1.1).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
