@@ -797,7 +797,7 @@
   - `SUB-20.7`: Botão "Nova memória" na `src/views/MemoriaView.tsx` (`pendente`)
   - `SUB-20.8`: `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` (`pendente`)
   - `SUB-20.9`: Componente `TagSugestoes` em `src/components/ui/TagSugestoes.tsx` (`pendente`)
-  - `SUB-20.10`: `palavrasDe(texto)` em `src/lib/texto.ts` (`pendente`)
+  - `SUB-20.10`: `palavrasDe(texto)` em `src/lib/texto.ts` (`em_execucao`)
 - **Descrição:** Componente para adicionar nova memória: Título único, Conteúdo estruturado em Markdown e Tags de categorização.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Criação persistida no banco Supabase com geração de tags dinâmicas.
@@ -895,8 +895,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-20.10: `palavrasDe(texto)` em `src/lib/texto.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 06 (início: 2026-10-12 00:46)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `src/lib/texto.ts` com `palavrasDe(texto: string): string[]`: remove Markdown (código, links, `#`, `*`, `_`), passa para minúsculas, separa em palavras e descarta as com menos de 4 letras e as stopwords pt/en (constante `STOPWORDS` no mesmo arquivo). Testes em `tests/unit/texto.test.ts`.

@@ -33,14 +33,26 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 06 — SUB-20.10
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-20.10** |
+| **Título da Sub-task:** | `palavrasDe(texto)` em `src/lib/texto.ts` |
+| **Agente Responsável:** | DashboardAI-Clone 06 |
+| **Data e Hora de Início:** | 2026-10-12 00:46 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (1)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-20.10** | `palavrasDe(texto)` em `src/lib/texto.ts` | DashboardAI-Clone 06 | 2026-10-12 00:46 | Nenhuma |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
@@ -55,7 +67,7 @@
 
 > **SUB-27 liberada a pedido do usuário** (2026-10-11 23:55): mãe e 22 subtarefas estão disponíveis; cada agente deve respeitar as dependências indicadas. Nenhum código da SUB-27 havia sido enviado à main.
 
-**🟢 Livres agora (25):** SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.5, SUB-20.8, SUB-20.9, SUB-20.10, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.2, SUB-23.5, SUB-23.12, SUB-25.1, SUB-26.1, SUB-27.1, SUB-35.1, SUB-35.21
+**🟢 Livres agora (24):** SUB-08.7, SUB-08.8, SUB-34.1, SUB-34.2, SUB-34.4, SUB-19.1, SUB-19.3, SUB-19.9, SUB-20.1, SUB-20.5, SUB-20.8, SUB-20.9, SUB-21.2, SUB-21.3, SUB-21.4, SUB-21.6, SUB-23.2, SUB-23.5, SUB-23.12, SUB-25.1, SUB-26.1, SUB-27.1, SUB-35.1, SUB-35.21
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
@@ -100,7 +112,7 @@
 | **SUB-20.7** | Botão "Nova memória" na `src/views/MemoriaView.tsx` | 4 | Fase 7 | SUB-20.6, SUB-19.8, SUB-21.9 — ⛓️ bloqueada |
 | **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
 | **SUB-20.9** | Componente `TagSugestoes` em `src/components/ui/TagSugestoes.tsx` | 4 | Fase 7 | Nenhuma — 🟢 livre |
-| **SUB-20.10** | `palavrasDe(texto)` em `src/lib/texto.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
+| **SUB-20.10** | `palavrasDe(texto)` em `src/lib/texto.ts` | 4 | Fase 7 | Nenhuma — 🔄 em execução por DashboardAI-Clone 06 |
 | **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias (mãe) | 4 | Fase 7 | SUB-10, SUB-12; SUB-21.1 a SUB-21.14 |
 | **SUB-21.2** | `filtrarMemoriasLocal` em `src/lib/memorias.ts` | 4 | Fase 7 | SUB-21.13 — 🟢 livre |
 | **SUB-21.3** | Hook `useMemorias` em `src/hooks/useMemorias.ts` | 4 | Fase 7 | Nenhuma — 🟢 livre |
@@ -403,3 +415,4 @@ n|| **SUB-19.1** | `debounce(fn, ms)` em `src/lib/debounce.ts` | Claude Code | 2
 | 2026-10-12 00:39 | DashboardAI (Grok Bot) | Nova tarefa SUB-35 | (este commit) | A pedido do usuário, criada a SUB-35 (Monitor em Tempo Real dos Agentes, Fase 12) e subdividida em 46 subtarefas de ~3 min: SQL (35.1–35.7: tabela `agent_events`, trigger, RLS, publicação Realtime, `atividade_atual_agentes`, teste de integração, README do banco), dados no frontend (35.8–35.13), funções puras (35.14–35.18), hooks (35.19–35.20), gráficos com Chart.js + `react-chartjs-2` (35.21–35.27), feed/indicador/tela/rota/validação visual (35.28–35.32), eventos do worker LangGraph (35.33–35.39), ferramenta MCP `agent_event` (35.40–35.41), espelho do quadro via `git log` (35.42–35.43), documentação e validação (35.44–35.46). Sem código; nenhuma trava de outro agente alterada. |
 | 2026-10-12 00:41 | Codex (OpenAI) | SUB-33.5 | `1d68ea6` | Em `vercel.json`, registrado `api/embedding.ts` com `maxDuration: 15`, preservando a função MCP e o rewrite `/mcp`; alteração publicada em `origin/main`. Testes não executados conforme AGENTS.md. |
 | 2026-10-12 00:43 | Codex (OpenAI) | SUB-33.9 | — | Lock: assumindo SUB-33.9 (Documentar `/api/embedding` no `api/README.md`) |
+| 2026-10-12 00:46 | DashboardAI-Clone 06 | SUB-20.10 | — | Lock: assumindo SUB-20.10 (`palavrasDe(texto)` em `src/lib/texto.ts`) |
