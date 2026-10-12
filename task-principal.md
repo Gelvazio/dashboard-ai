@@ -367,7 +367,7 @@
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Preencher a seção Frontend do `.env.example` com `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` (valores de exemplo vazios), avisando que só a chave **anon** é permitida (o `getSupabase()` recusa `service_role`).
 - **Critérios de Aceitação:** Seção preenchida; nenhum valor real.
-- **Commit:** `1134084`
+- **Commit:** `cf3d955`
 - **Anotação:** Preenchida a seção Frontend do `.env.example` com `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` (valores vazios), avisando que são públicas (embutidas no bundle) e que só a chave anon é permitida (`getSupabase()` recusa service_role). São as únicas `VITE_*` usadas em `src/`.
 
 #### [x] SUB-08.3: Seção Servidor Supabase: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `SUPABASE_REST_URL`
