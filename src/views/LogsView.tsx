@@ -5,6 +5,9 @@ import { agruparPorDia, duracaoDoLog, formatarDuracao, LOG_INFO } from '@/lib/lo
 import { tempoRelativo } from '@/lib/tasks';
 import { useProjetoAtual } from '@/hooks/useProjetoAtual';
 import { useLogs } from '@/hooks/useLogs';
+import { useTasks } from '@/hooks/useTasks';
+import { useSaudeFila } from '@/hooks/useSaudeFila';
+import { SaudeFilaPanel } from '@/components/tasks/SaudeFilaPanel';
 import { EmConstrucao } from '@/components/EmConstrucao';
 import { Botao } from '@/components/ui/Botao';
 import { LOG_STATUS, type AgendamentoLog, type LogStatus } from '@/types';
@@ -46,11 +49,14 @@ export function LogsView() {
   const [busca, setBusca] = useState('');
   const [termo, setTermo] = useState('');
   const { logs, total, contadores, carregando, erro, temMais, carregarMais, recarregar } = useLogs(projeto?.id, { status: status ?? undefined, busca: termo });
+  const fila = useTasks(projeto?.id);
+  const saude = useSaudeFila({ projectId: projeto?.id, tasks: fila.tasks, recarregar: fila.recarregar });
 
   if (!projeto) return <EmConstrucao titulo="Logs do Agendador" tarefa="selecione um projeto" />;
 
   return (
     <div className="flex flex-col gap-4 sm:gap-6">
+      <SaudeFilaPanel diagnostico={saude.diagnostico} liberando={saude.liberando} onLiberar={saude.liberar} />
       <section className="card overflow-hidden">
         <header className="flex flex-wrap items-center gap-2 border-b border-slate-200 px-4 py-3 dark:border-slate-800">
           <h2 className="mr-auto flex items-center gap-2 font-semibold"><History className="size-4 text-brand-500" aria-hidden />Execuções<span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">{total}</span></h2>
