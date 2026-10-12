@@ -7,9 +7,9 @@
 ---
 
 ## 📊 Resumo de Progresso
-- **Total de Tasks Principais:** 27
+- **Total de Tasks Principais:** 28
 - **Em Execução:** 2 (`SUB-01.1`, `SUB-27`)
-- **Pendentes:** 23
+- **Pendentes:** 24
 - **Concluídas:** 4
 - **Canceladas:** 0
 
@@ -352,3 +352,17 @@
 - **Critérios de Aceitação:** Login e logout funcionam via Supabase Auth; sessão é restaurada e páginas privadas redirecionam usuários não autenticados; chamadas ao banco usam o JWT do usuário e respeitam RLS; somente a chave pública anon pode estar no frontend, sem senha persistida nem chave service_role exposta.
 - **Commit:** pendente
 - **Anotação:** Iniciado por solicitação do usuário; a dependência SUB-03 permanece pendente e a integração com o cliente Supabase depende da conclusão dela.
+
+---
+
+## 🚀 FASE 11: Orquestração de Tasks com LangChain/LangGraph (última fase)
+
+### [ ] SUB-28: Integração LangChain/LangGraph para Execução de Tasks
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-01 a SUB-27 (todas as tasks anteriores concluídas)
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Implementar a orquestração multi-etapas de execução descrita em `LangChain_LangGraph.md`, mantendo Supabase como autoridade sobre a fila, dependências, locks, tentativas e resultado. Integrar o worker LangGraph às RPCs existentes e às ferramentas MCP autorizadas, com checkpoint durável, retomada, tratamento de falhas e aprovação humana para ações sensíveis.
+- **Critérios de Aceitação:** A task só inicia após todas as dependências SUB-01 a SUB-27 concluídas; execução reivindicada por `pegar_proxima_task`; estado do grafo é retomável e não duplica efeitos; escrita ocorre por ferramentas autenticadas e autorizadas; ações sensíveis pausam para aprovação; conclusão/erro e liberação do lock passam por `finalizar_task`; documentação de operação e segurança atualizada conforme `LangChain_LangGraph.md`.
+- **Commit:** pendente
+- **Anotação:** pendente

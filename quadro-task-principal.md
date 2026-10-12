@@ -46,7 +46,7 @@
 
 ---
 
-### ⏳ PENDENTES (23)
+### ⏳ PENDENTES (24)
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
@@ -73,6 +73,7 @@
 | **SUB-23** | Diagnóstico de Travas e Saúde da Fila | 4 | Fase 8 | SUB-09, SUB-11, SUB-12 |
 | **SUB-25** | Validação de Build e Execução Local | 5 | Fase 10 | SUB-01 a SUB-24 |
 | **SUB-26** | Documentação Completa e Manual Operacional no `README.md` | 5 | Fase 10 | SUB-25 |
+| **SUB-28** | Integração LangChain/LangGraph para Execução de Tasks | 5 | Fase 11 (última) | SUB-01 a SUB-27 |
 
 ---
 
