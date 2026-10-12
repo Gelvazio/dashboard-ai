@@ -1500,15 +1500,15 @@
 - **Commit:** `8ccaf5f`
 - **Anotação:** Criado `src/lib/auth.ts` com `mensagemErroAuth(erro)` (invalid_credentials, email_not_confirmed, rate limit/429, user_banned, rede, genérico; null -> ''). Testes em `tests/unit/auth.test.ts` (7). typecheck e vitest verdes.
 
-#### [ ] SUB-27.2: `validarLogin({ email, senha })` em `src/lib/auth.ts`
-- **Status:** em_execucao
+#### [x] SUB-27.2: `validarLogin({ email, senha })` em `src/lib/auth.ts`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `export function validarLogin(d: { email: string; senha: string }): Partial<Record<'email'|'senha', string>>` (e-mail obrigatório e com formato válido após `trim`, senha obrigatória com no mínimo 6 caracteres). Testes no mesmo arquivo de teste.
 - **Critérios de Aceitação:** `npm test` passa.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `07a914b`
+- **Anotação:** Adicionado `validarLogin` em `src/lib/auth.ts` (e-mail obrigatório/formato após trim; senha obrigatória, mín. 6). 4 testes em `tests/unit/auth.test.ts`; vitest e typecheck verdes.
 
 #### [ ] SUB-27.3: `entrarComSenha(email, senha)` em `src/services/authService.ts`
 - **Status:** pendente

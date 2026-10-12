@@ -33,17 +33,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.2
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-27.2** |
-| **Título da Sub-task:** | `validarLogin({ email, senha })` em `src/lib/auth.ts` |
-| **Agente Responsável:** | DashboardAI-Clone 01 |
-| **Data e Hora de Início:** | 2026-10-12 00:48 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -52,7 +41,6 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
-| **SUB-27.2** | `validarLogin({ email, senha })` em `src/lib/auth.ts` | DashboardAI-Clone 01 | 2026-10-12 00:48 | SUB-27.1 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
@@ -185,7 +173,6 @@
 | **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) (mãe) | 3 | Fase 2B | SUB-07, SUB-03; SUB-33.1 a SUB-33.13 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | 3 | Fase 2B | SUB-33.11 — 🔄 em execução por Codex (OpenAI) |
 | **SUB-27** | Autenticação e Login com Supabase Auth (mãe; pendente, liberada) | 3 | Fase 10 | SUB-03, SUB-29; SUB-27.1 a SUB-27.28 — 🟢 livre |
-| **SUB-27.2** | `validarLogin({ email, senha })` em `src/lib/auth.ts` | 3 | Fase 10 | SUB-27.1 — ⛓️ bloqueada |
 | **SUB-27.3** | `entrarComSenha(email, senha)` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.1 — ⛓️ bloqueada |
 | **SUB-27.4** | `sair()` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.3 — ⛓️ bloqueada |
 | **SUB-27.5** | `enviarLinkMagico()` em `src/services/authService.ts` | 3 | Fase 10 | SUB-27.3 — ⛓️ bloqueada |
@@ -266,6 +253,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-27.2** | `validarLogin({ email, senha })` em `src/lib/auth.ts` | DashboardAI-Clone 01 | 2026-10-12 00:48 | 2026-10-12 00:49 | `07a914b` |
 | **SUB-20.1** | `validarMemoria(dados)` em `src/lib/memoriaForm.ts` | DashboardAI-Clone 06 | 2026-10-12 00:48 | 2026-10-12 00:48 | `5662f1a` |
 | **SUB-27.1** | `mensagemErroAuth(erro)` em `src/lib/auth.ts` | DashboardAI-Clone 01 | 2026-10-12 00:48 | 2026-10-12 00:48 | `8ccaf5f` |
 | **SUB-20.10** | `palavrasDe(texto)` em `src/lib/texto.ts` | DashboardAI-Clone 06 | 2026-10-12 00:46 | 2026-10-12 00:47 | `8090709` |
@@ -424,3 +412,4 @@ n|| **SUB-19.9** | `BuscaControles` (limiar, globais, modo) em `src/components/m
 | 2026-10-12 00:48 | DashboardAI-Clone 01 | SUB-27.1 | `8ccaf5f` | Criado `src/lib/auth.ts` com `mensagemErroAuth(erro)` (invalid_credentials, email_not_confirmed, rate limit/429, user_banned, rede, genérico; null -> ''). Testes em `tests/unit/auth.test.ts` (7). typecheck e vitest verdes. |
 | 2026-10-12 00:48 | DashboardAI-Clone 01 | SUB-27.2 | — | Lock: assumindo SUB-27.2 (`validarLogin({ email, senha })` em `src/lib/auth.ts`) |
 | 2026-10-12 00:48 | DashboardAI-Clone 06 | SUB-20.1 | `5662f1a` | Criado `src/lib/memoriaForm.ts` com `validarMemoria({ titulo, conteudo, tags })` -> `Partial<Record<"titulo"|"conteudo"|"tags", string>>` (objeto vazio = válido): título obrigatório até 200 caracteres, conteúdo obrigatório (espaços nas pontas não contam), até 20 tags, sem tags vazias, cada uma até 40 caracteres; constantes `MAX_TITULO_MEMORIA`, `MAX_TAGS_MEMORIA`, `MAX_TAMANHO_TAG` e tipos `DadosMemoriaForm`/`ErrosMemoria` exportados. Testes em `tests/unit/memoriaForm.test.ts` (6). `npm run typecheck` e `npm test` verdes. |
+| 2026-10-12 00:49 | DashboardAI-Clone 01 | SUB-27.2 | `07a914b` | Adicionado `validarLogin` em `src/lib/auth.ts` (e-mail obrigatório/formato após trim; senha obrigatória, mín. 6). 4 testes em `tests/unit/auth.test.ts`; vitest e typecheck verdes. |
