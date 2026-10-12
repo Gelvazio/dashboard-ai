@@ -1571,8 +1571,8 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-27.9: `AuthProvider` em `src/hooks/AuthContext.tsx`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.23, SUB-27.25
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `AuthContext` e `AuthProvider` com `{ sessao, usuario, papelGlobal, carregando, sair }`: lê `obterSessao()` ao montar, assina `auth.onAuthStateChange` (cancelando no cleanup), recarrega `papelGlobal` quando o usuário muda; sem Supabase configurado fica `carregando=false`, `sessao=null`. O hook `useAuth` fica na SUB-27.26.

@@ -55,6 +55,17 @@
 | **Data e Hora de Início:** | 2026-10-12 00:54 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 01 — SUB-27.9
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-27.9** |
+| **Título da Sub-task:** | `AuthProvider` em `src/hooks/AuthContext.tsx` |
+| **Agente Responsável:** | DashboardAI-Clone 01 |
+| **Data e Hora de Início:** | 2026-10-12 00:55 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -63,6 +74,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-27.9** | `AuthProvider` em `src/hooks/AuthContext.tsx` | DashboardAI-Clone 01 | 2026-10-12 00:55 | SUB-27.23, SUB-27.25 |
 | **SUB-23.6** | Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts` | DashboardAI-Clone 02 | 2026-10-12 00:54 | SUB-23.3, SUB-23.4 |
 | **SUB-08.8** | `extrairVariaveis(texto)` em `scripts/checar-env.mjs` + testes | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 00:54 | Nenhuma |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
@@ -477,3 +489,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:54 | DashboardAI-Clone 06 | SUB-20.5 | `3208e66` | Criado `src/hooks/useSalvarMemoria.ts` (exportado em `src/hooks/index.ts`): `{ salvar(projectId | null, dados): Promise<Memoria | null>, salvando }` chamando `salvarMemoria` (SUB-10) com o gerador de `criarGeradorEmbedding()` (SUB-33.7, memoizado). Se o gerador falhar (marcado com erro próprio para não confundir com erro do banco), salva de novo sem vetor e avisa em toast (`info`) que a memória não aparece na busca semântica; sucesso -> `toast.sucesso`; erro do banco/RLS -> `toast.erro` e devolve `null`. Ignora cliques repetidos enquanto salva. `npm run typecheck`, `npm test` e `npm run build` OK. |
 | 2026-10-12 00:54 | DashboardAI-Clone 10 (Grok Bot) | SUB-19.5 | `c92d3f9` | Criado `src/components/memoria/ResultadoBuscaCard.tsx` (`{ titulo, conteudo, tags, similaridade?, global, atualizadoEm, onClick?, className? }`): título truncado com `title`, resumo do conteúdo via `resumo(conteudo, 200)` de `src/lib/tasks.ts`, chips de tags, selo "Global" (ícone Globe) quando `global`, `SimilaridadeBadge` só quando há similaridade e data relativa (`tempoRelativo`, `title` com `formatarDataHora`); vira `<button>` acessível quando recebe `onClick`, senão `<article>`. Exportado em `src/components/memoria/index.ts`. `npm run typecheck`, `npm test` e `npm run build` OK. |
 | 2026-10-12 00:55 | DashboardAI-Clone 01 | SUB-27.6 | `f830757` | Criado `tests/unit/authService.test.ts` com cliente falso: entrar (sucesso/trim e credenciais inválidas -> ServiceError 'AUTH' traduzido), `sair` limpa o projeto salvo (stub de localStorage), `obterSessao` (sessão/null), link mágico com `shouldCreateUser: false` e `redefinirSenha` (redirectTo + 429). 6 testes verdes; typecheck OK. |
+| 2026-10-12 00:55 | DashboardAI-Clone 01 | SUB-27.9 | — | Lock: assumindo SUB-27.9 (`AuthProvider` em `src/hooks/AuthContext.tsx`) |
