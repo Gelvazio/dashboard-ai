@@ -57,7 +57,7 @@
 
 ---
 
-### ⏳ PENDENTES (10)
+### ⏳ PENDENTES (11)
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
@@ -65,6 +65,7 @@
 | **SUB-19** | Interface de Pesquisa Semântica Vetorial | 4 | Fase 7 | SUB-10, SUB-12, SUB-33 |
 | **SUB-20** | Formulário de Nova Memória Canônica | 4 | Fase 7 | SUB-10, SUB-12, SUB-33 |
 | **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) | 4 | Fase 2B | SUB-07, SUB-03 |
+| **SUB-34** | Carregamento Sob Demanda de Telas e Modais (code splitting) | 4 | Fase 6 | SUB-13, SUB-14, SUB-16, SUB-17, SUB-18 |
 | **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias | 4 | Fase 7 | SUB-10, SUB-12 |
 | **SUB-22** | Visualizador de Logs de Execução da IA | 4 | Fase 8 | SUB-11, SUB-12 |
 | **SUB-23** | Diagnóstico de Travas e Saúde da Fila | 4 | Fase 8 | SUB-09, SUB-11, SUB-12 |

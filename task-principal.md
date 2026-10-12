@@ -8,9 +8,9 @@
 ---
 
 ## 📊 Resumo de Progresso
-- **Total de Tasks Principais:** 33
+- **Total de Tasks Principais:** 34
 - **Em Execução:** 2 (`SUB-27`, `SUB-08`)
-- **Pendentes:** 10
+- **Pendentes:** 11
 - **Concluídas:** 23
 - **Canceladas:** 0
 
@@ -315,6 +315,17 @@
 ---
 
 ## 🧠 FASE 7: Interface do Usuário - Painel de Memória Persistente (Jev-Mem)
+
+### [ ] SUB-34: Carregamento Sob Demanda de Telas e Modais (code splitting)
+- **Status:** pendente
+- **Executor:** nenhum
+- **Depende de:** SUB-13, SUB-14, SUB-16, SUB-17, SUB-18
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Carregar as telas (Fila, Memória, Logs, Configurações) e os modais pesados com `React.lazy` + `Suspense` (fallback leve), e separar dependências grandes (ex.: supabase-js) em chunks próprios, eliminando o aviso de bundle > 500 kB do Vite.
+- **Escopo por projeto:** não altera dados; apenas o empacotamento do frontend.
+- **Critérios de Aceitação:** `npm run build` sem o aviso de chunk > 500 kB; navegação e modais continuam funcionando; typecheck e testes verdes.
+- **Commit:** pendente
+- **Anotação:** pendente
 
 ### [ ] SUB-19: Interface de Pesquisa Semântica Vetorial
 - **Status:** pendente
