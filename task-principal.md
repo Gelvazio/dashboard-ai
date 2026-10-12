@@ -1388,7 +1388,7 @@
 - **Depende de:** SUB-25; subtarefas SUB-26.1 a SUB-26.10
 - **Subtarefas:** (subdividida em 9 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 10 em 2026-10-11 23:51)
   - `SUB-26.1`: Esqueleto do `README.md` (`pendente`)
-  - `SUB-26.2`: Seção Arquitetura (`pendente`)
+  - `SUB-26.2`: Seção Arquitetura (`concluido`, `b3f4c36`)
   - `SUB-26.3`: Seção Execução local (`pendente`)
   - `SUB-26.4`: Seção Banco de dados (`pendente`)
   - `SUB-26.5`: Seção Deploy na Vercel (`pendente`)
@@ -1412,15 +1412,15 @@
 - **Commit:** `67e13c2`
 - **Anotação:** Reescrito o `README.md`: título, descrição do gerenciador genérico multi-projeto (fila via MCP, travas, dependências, memória pgvector, painel React), badges (Node 22+, React 19, TS, Supabase, Vercel, licença) e sumário com âncoras para Arquitetura, Execução local, Banco de dados, Deploy na Vercel, Agentes de IA (fila via MCP), Memória via MCP, Segurança e Validação, cada uma com parágrafo provisório apontando a SUB-26.x que a detalha. Âncoras conferidas no formato do GitHub (todas casam com os títulos). Só documentação.
 
-#### [ ] SUB-26.2: Seção Arquitetura
-- **Status:** pendente
-- **Executor:** nenhum
+#### [x] SUB-26.2: Seção Arquitetura
+- **Status:** concluido
+- **Executor:** Grok (xAI) (2026-10-12 05:35 → 2026-10-12 05:40)
 - **Depende de:** SUB-26.1, SUB-33
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Descrever SPA Vite/React (`src/`), funções Vercel (`api/mcp.ts`, `api/embedding.ts`), Supabase (Postgres + pgvector + RLS) e scripts; diagrama em texto/Mermaid do fluxo agente -> MCP -> RPCs.
 - **Critérios de Aceitação:** Seção completa, sem placeholders.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** b3f4c36
+- **Anotação:** Seção Arquitetura completa no README.md (Frontend, Backend serverless, Banco, Scripts, fluxo Mermaid). Critérios atendidos.
 
 #### [ ] SUB-26.3: Seção Execução local
 - **Status:** pendente
