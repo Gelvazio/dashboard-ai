@@ -1091,7 +1091,7 @@
 - **Subtarefas:** (subdividida em 9 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 12 em 2026-10-11 23:51; nova revisão para 13 em 2026-10-12 00:17)
   - `SUB-23.1`: `minutosDeTrava` em `src/lib/saudeFila.ts` (`pendente`)
   - `SUB-23.2`: `classificarPendentes(tasks)` em `src/lib/saudeFila.ts` (`concluido`)
-  - `SUB-23.3`: `diagnosticarFila(tasks)` em `src/lib/saudeFila.ts` (`em_execucao`)
+  - `SUB-23.3`: `diagnosticarFila(tasks)` em `src/lib/saudeFila.ts` (`concluido`)
   - `SUB-23.4`: `liberarTrava()` em `src/services/taskService.ts` (`pendente`)
   - `SUB-23.5`: Teste de integração de `liberarTrava`: expirada e forçada (`pendente`)
   - `SUB-23.6`: Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts` (`pendente`)
@@ -1128,15 +1128,15 @@
 - **Commit:** `84011c8`
 - **Anotação:** Adicionado `classificarPendentes(tasks, agora)` em `src/lib/saudeFila.ts`: agrupa pendentes não excluídas em prontas/bloqueadas_dependencia/desligadas/agendadas/sem_tentativas (um grupo por task; precedência desligada > sem tentativas > agendada > dependência) usando `dependenciasDa`/`bloqueadaPorDependencia`. Teste com um caso de cada grupo em `tests/unit/saudeFila.test.ts`. typecheck e `npm test` verdes.
 
-#### [🔄] SUB-23.3: `diagnosticarFila(tasks)` em `src/lib/saudeFila.ts`
-- **Status:** em_execucao
+#### [x] SUB-23.3: `diagnosticarFila(tasks)` em `src/lib/saudeFila.ts`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 02
 - **Depende de:** SUB-23.2
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `diagnosticarFila(tasks, agora, limite = 90)` -> `{ travas: { task, minutos, expirada }[], pendentes: ReturnType<classificarPendentes>, alerta: boolean }` (travas = tasks `em_execucao`, ordenadas pela mais antiga; `alerta` = alguma expirada). Testes.
 - **Critérios de Aceitação:** `npm test` passa.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `40fa920`
+- **Anotação:** Adicionado `diagnosticarFila(tasks, agora, limite = 90)` em `src/lib/saudeFila.ts` -> `{ travas: { task, minutos, expirada }[], pendentes, alerta }` (travas = `em_execucao` não excluídas, da mais antiga; pendentes via `classificarPendentes`; `alerta` se alguma expirada). Tipos `TravaDiagnostico`/`DiagnosticoFila` exportados. Testes em `tests/unit/saudeFila.test.ts`. typecheck e `npm test` verdes.
 
 #### [ ] SUB-23.4: `liberarTrava()` em `src/services/taskService.ts`
 - **Status:** concluido

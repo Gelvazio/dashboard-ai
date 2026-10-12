@@ -33,17 +33,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-23.3
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-23.3** |
-| **Título da Sub-task:** | `diagnosticarFila(tasks)` em `src/lib/saudeFila.ts` |
-| **Agente Responsável:** | DashboardAI-Clone 02 |
-| **Data e Hora de Início:** | 2026-10-12 00:53 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 06 — SUB-20.5
 
 | Propriedade | Valor Atual |
@@ -76,7 +65,6 @@
 |---|---|---|---|---|
 | **SUB-19.5** | Componente `ResultadoBuscaCard` em `src/components/memoria/` | DashboardAI-Clone 10 (Grok Bot) | 2026-10-12 00:54 | SUB-19.4 |
 | **SUB-20.5** | Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts` | DashboardAI-Clone 06 | 2026-10-12 00:54 | SUB-33.7 |
-| **SUB-23.3** | `diagnosticarFila(tasks)` em `src/lib/saudeFila.ts` | DashboardAI-Clone 02 | 2026-10-12 00:53 | SUB-23.2 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
@@ -103,7 +91,6 @@
 | **SUB-08.11** | `listarArquivosFonte(dirs)` em `scripts/checar-env.mjs` + teste | 3 | Fase 3 | SUB-08.10 — ⛓️ bloqueada |
 | **SUB-23** | Diagnóstico de Travas e Saúde da Fila (mãe) | 4 | Fase 8 | SUB-09, SUB-11, SUB-12; SUB-23.1 a SUB-23.13 |
 | **SUB-23.1** | `minutosDeTrava` em `src/lib/saudeFila.ts` | 4 | Fase 8 | Nenhuma — 🟢 livre |
-| **SUB-23.3** | `diagnosticarFila(tasks)` em `src/lib/saudeFila.ts` | 4 | Fase 8 | SUB-23.2 — 🔄 em execução por DashboardAI-Clone 02 |
 | **SUB-23.4** | `liberarTrava()` em `src/services/taskService.ts` | 4 | Fase 8 | Nenhuma — 🟢 livre |
 | **SUB-23.5** | Teste de integração de `liberarTrava`: expirada e forçada | 4 | Fase 8 | SUB-23.4 — 🟢 livre |
 | **SUB-23.6** | Hook `useSaudeFila` em `src/hooks/useSaudeFila.ts` | 4 | Fase 8 | SUB-23.3, SUB-23.4 — ⛓️ bloqueada |
@@ -343,6 +330,7 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 || **SUB-34.2** | Telas com `React.lazy` em `src/views/index.ts` | Claude Code | 2026-10-12 00:39 | 2026-10-12 00:40 | `662348b` |
 || **SUB-34.4** | Separar dependências grandes no `vite.config.ts` | Claude Code | 2026-10-12 00:41 | 2026-10-12 00:42 | `6abd3f4` |
 | **SUB-23.2** | `classificarPendentes(tasks)` em `src/lib/saudeFila.ts` | DashboardAI-Clone 02 | 2026-10-12 00:52 | 2026-10-12 00:53 | `84011c8` |
+| **SUB-23.3** | `diagnosticarFila(tasks)` em `src/lib/saudeFila.ts` | DashboardAI-Clone 02 | 2026-10-12 00:53 | 2026-10-12 00:54 | `40fa920` |
 ---
 
 ### ⛔ CANCELADAS (0)
@@ -483,3 +471,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 00:54 | DashboardAI-Clone 06 | SUB-20.5 | — | Lock: assumindo SUB-20.5 (Hook `useSalvarMemoria` em `src/hooks/useSalvarMemoria.ts`) |
 | 2026-10-12 00:54 | DashboardAI-Clone 10 (Grok Bot) | SUB-19.5 | — | Lock: assumindo SUB-19.5 (Componente `ResultadoBuscaCard` em `src/components/memoria/`) |
 | 2026-10-12 00:54 | DashboardAI-Clone 01 | SUB-27.25 | `6223e85` | Adicionado `papelNoProjeto(projectId, userId, client = getSupabase())` em `src/services/authService.ts`: admin global (`obterPapelGlobal`) -> `'admin'`; senão `project_members.role` (`maybeSingle`); não membro -> `null`; erro -> `ServiceError`. typecheck verde. |
+| 2026-10-12 00:54 | DashboardAI-Clone 02 | SUB-23.3 | `40fa920` | Adicionado `diagnosticarFila(tasks, agora, limite = 90)` em `src/lib/saudeFila.ts` -> `{ travas: { task, minutos, expirada }[], pendentes, alerta }` (travas = `em_execucao` não excluídas, da mais antiga; pendentes via `classificarPendentes`; `alerta` se alguma expirada). Tipos `TravaDiagnostico`/`DiagnosticoFila` exportados. Testes em `tests/unit/saudeFila.test.ts`. typecheck e `npm test` verdes. |
