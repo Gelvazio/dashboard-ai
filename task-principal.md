@@ -410,9 +410,9 @@
 - **Commit:** `86e701c`
 - **Anotação:** Preenchida a seção Scripts do `.env.example` com `DASHBOARD_AI_PROJECT` (slug padrão do `scripts/sincronizar_tasks.py`, equivale a `--projeto`, padrão `default`), lembrando que o script lê o `.env` da raiz sem sobrescrever o ambiente e usa `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY`. Nenhum valor real no arquivo.
 
-#### [ ] SUB-08.7: Conferir `.gitignore` (`!.env.example`)
-- **Status:** pendente
-- **Executor:** nenhum
+#### [🔄] SUB-08.7: Conferir `.gitignore` (`!.env.example`)
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 04 (Grok Bot) (início: 2026-10-12 00:55)
 - **Depende de:** SUB-08.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Garantir no `.gitignore` que `.env` e `.env.*` continuam ignorados e que `!.env.example` vem depois de **todas** as regras de `.env` (hoje há uma segunda linha `.env` no fim do arquivo). Conferir com `git check-ignore -v .env.example .env .env.local`.
