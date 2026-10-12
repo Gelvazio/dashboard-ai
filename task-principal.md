@@ -2050,15 +2050,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-28.20: `PlanoSchema` em `worker/plano.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [x] SUB-28.20: `PlanoSchema` em `worker/plano.ts`
+- **Status:** concluido
+- **Executor:** Claude Code (início: 2026-10-12 02:16, conclusão: 2026-10-12 02:17)
 - **Depende de:** SUB-28.29
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `worker/plano.ts` com o schema zod `PlanoSchema` (passos com ferramenta, argumentos, `sensivel`, critério). O prompt fica na SUB-28.31.
 - **Critérios de Aceitação:** Testes do schema (válido e inválido).
 - **Commit:** pendente
-- **Anotação:** pendente
+- **Anotação:** Criado `worker/plano.ts` com `PlanoSchema` (zod): passos com ferramenta, argumentos, sensivel, criterio. Criado `tests/unit/worker-plano.test.ts` com 4 testes. typecheck:worker OK, npm test OK (198 passed).
 
 #### [x] SUB-28.21: `classificarFalha(err)` em `worker/falhas.ts`
 - **Status:** concluido
@@ -2163,12 +2163,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-28.31: `montarPromptPlano(estado)` em `worker/plano.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [x] SUB-28.31: `montarPromptPlano(estado)` em `worker/plano.ts`
+- **Status:** concluido
+- **Executor:** Claude Code (início: 2026-10-12 02:14, conclusão: 2026-10-12 02:17)
 - **Depende de:** SUB-28.20
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar a função pura `montarPromptPlano(estado)` que trata instrução e memórias como dados não confiáveis (delimitadas) e descreve o formato do `PlanoSchema`.
+- **Critérios de Aceitação:** `typecheck:worker` OK; teste passa.
+- **Commit:** pendente
+- **Anotação:** Criado `worker/plano.ts` com `montarPromptPlano(estado)`: inclui instrucao, contexto de memorias (se brain_search em resultados) e formato JSON de passos. Criado `tests/unit/worker-plano.test.ts` com 4 testes. typecheck:worker OK, npm test OK (198 passed).
 - **Critérios de Aceitação:** Testes do prompt (sem segredos; conteúdo não confiável delimitado).
 - **Commit:** pendente
 - **Anotação:** pendente
