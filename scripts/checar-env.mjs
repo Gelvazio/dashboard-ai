@@ -30,3 +30,20 @@ export function extrairVariaveis(texto) {
   }
   return [...nomes].sort();
 }
+
+/**
+ * Lista os nomes das variáveis declaradas num `.env.example` (linhas `NOME=` ou
+ * `export NOME=`), ignorando comentários (`#`) e linhas vazias.
+ * @param {string} texto conteúdo do `.env.example`
+ * @returns {string[]} nomes sem repetição, em ordem alfabética
+ */
+export function variaveisDoExemplo(texto) {
+  const nomes = new Set();
+  for (const linha of String(texto ?? '').split(/\r?\n/)) {
+    const limpa = linha.trim();
+    if (!limpa || limpa.startsWith('#')) continue;
+    const m = limpa.match(new RegExp(`^(?:export\\s+)?(${NOME})\\s*=`));
+    if (m) nomes.add(m[1]);
+  }
+  return [...nomes].sort();
+}

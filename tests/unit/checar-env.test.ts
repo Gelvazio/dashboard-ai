@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 // @ts-expect-error script .mjs sem declaração de tipos
-import { extrairVariaveis } from '../../scripts/checar-env.mjs';
+import { extrairVariaveis, variaveisDoExemplo } from '../../scripts/checar-env.mjs';
 
 describe('extrairVariaveis', () => {
   it('reconhece process.env.X', () => {
@@ -35,5 +35,25 @@ describe('extrairVariaveis', () => {
   it('ignora textos sem variáveis e nomes parecidos', () => {
     expect(extrairVariaveis('myenv.FOO; environment.BAR; const x = 1')).toEqual([]);
     expect(extrairVariaveis('')).toEqual([]);
+  });
+});
+
+describe('variaveisDoExemplo', () => {
+  it('lê os nomes das linhas NOME=, ignorando comentários e linhas vazias', () => {
+    const texto = [
+      '# comentário com FOO=1',
+      '',
+      'VITE_SUPABASE_URL=',
+      '  # OUTRA=2',
+      'OPENAI_API_KEY=sk-exemplo',
+      'export MCP_AUTH_TOKEN=',
+      'linha solta sem igual',
+    ].join('\n');
+    expect(variaveisDoExemplo(texto)).toEqual(['MCP_AUTH_TOKEN', 'OPENAI_API_KEY', 'VITE_SUPABASE_URL']);
+  });
+
+  it('remove repetidos, aceita CRLF e texto vazio', () => {
+    expect(variaveisDoExemplo('B=\r\nA=\r\nB=x\r\n')).toEqual(['A', 'B']);
+    expect(variaveisDoExemplo('')).toEqual([]);
   });
 });
