@@ -2060,15 +2060,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-28.21: `classificarFalha(err)` em `worker/falhas.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+#### [x] SUB-28.21: `classificarFalha(err)` em `worker/falhas.ts`
+- **Status:** concluido
+- **Executor:** Claude Code (início: 2026-10-12 02:10, conclusão: 2026-10-12 02:11)
 - **Depende de:** SUB-28.29
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Função pura que classifica erros em `transitoria` (rede, 429, timeout), `validacao`/`permissao` e `permanente`. Testes.
 - **Critérios de Aceitação:** `npm test` passa.
 - **Commit:** pendente
-- **Anotação:** pendente
+- **Anotação:** Criado `worker/falhas.ts` com `classificarFalha(err)`: classifica em transitoria (rede, timeout, 429, 503, 504), validacao (400, zod), permissao (403), recusa (mensagem), permanente (padrão). Criado `tests/unit/worker-falhas.test.ts` com 9 testes. typecheck:worker OK, npm test OK (194 passed).
 
 #### [ ] SUB-28.22: `executarUmaTask(deps)` em `worker/executar.ts`
 - **Status:** pendente
