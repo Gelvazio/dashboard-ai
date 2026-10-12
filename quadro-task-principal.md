@@ -16,11 +16,11 @@
 | Propriedade | Valor Atual |
 |---|---|
 | **Status da Trava:** | � **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-23.4** |
-| **Título da Sub-task:** | `liberarTrava()` em `src/services/taskService.ts` |
-| **Agente Responsável:** | Claude Code |
-| **Data e Hora de Início:** | 2026-10-12 00:25 |
-| **Bloqueio para Outras IAs:** | **ATIVADO**; SUB-23.4 depende de Nenhuma |
+| **Sub-task em Execução:** | **—** |
+| **Título da Sub-task:** | — |
+| **Agente Responsável:** | — |
+| **Data e Hora de Início:** | — |
+| **Bloqueio para Outras IAs:** | Nenhum lock ativo no quadro principal |
 
 ### 🔒 TRAVA ADICIONAL — Codex (OpenAI)
 
@@ -255,6 +255,7 @@
 | **SUB-33.7** | `criarGeradorEmbedding()` em `src/services/embeddingService.ts` | DashboardAI (Grok Bot) | 2026-10-12 00:29 | 2026-10-12 00:30 | `64aa288` |
 | **SUB-08.3** | Seção Servidor Supabase: `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_ANON_KEY`, `SUPABASE_REST_URL` | DashboardAI (Grok Bot) | 2026-10-12 00:30 | 2026-10-12 00:30 | `35aff13` |
 
+|| **SUB-23.4** | `liberarTrava()` em `src/services/taskService.ts` | Claude Code | 2026-10-12 00:25 | 2026-10-12 00:27 | `7d9b57d` |
 ---
 
 ### ⛔ CANCELADAS (0)

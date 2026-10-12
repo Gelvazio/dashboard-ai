@@ -1139,7 +1139,7 @@
 - **Anotação:** pendente
 
 #### [ ] SUB-23.4: `liberarTrava()` em `src/services/taskService.ts`
-- **Status:** em_execucao
+- **Status:** concluido
 - **Executor:** nenhum
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)

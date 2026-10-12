@@ -147,6 +147,23 @@ export async function restaurarTask(projectId: number, id: number, client: Dashb
   return alterar(projectId, id, { excluido: false }, 'Restaurar task', client);
 }
 
+/** Libera manualmente a trava de uma task (expirada ou forçada). */
+export async function liberarTrava(
+  projectId: number,
+  id: number,
+  forcar: boolean = false,
+  client: DashboardClient = getSupabase(),
+): Promise<Task> {
+  // Confere que a task pertence ao projeto
+  await obterTask(projectId, id, client);
+  // Chama a RPC liberar_trava_task (definida em database/04_rpc_functions.sql)
+  const dados = resultado(
+    await client.rpc('liberar_trava_task', { p_task_id: id, p_forcar: forcar }),
+    'Liberar trava',
+  );
+  return dados as Task;
+}
+
 /** Contagem de tasks (não excluídas) por status, para indicadores. */
 export async function contarTasksPorStatus(projectId: number, client: DashboardClient = getSupabase()): Promise<Record<TaskStatus, number>> {
   const linhas = resultado(
