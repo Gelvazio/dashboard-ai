@@ -1,12 +1,11 @@
 # CLAUDE.md — Dashboard AI
 
-As regras deste projeto ficam no [`AGENTS.md`](AGENTS.md), que vale para **todas as IAs**.
+**Única função deste arquivo:** mandar para o [`AGENTS.md`](AGENTS.md), que guarda as regras de
+**todas as IAs**.
 
-- **Ler o `AGENTS.md` sempre**, no início de cada conversa e antes de qualquer tarefa. Ele é carregado
-  abaixo pela importação `@AGENTS.md`.
-- **Regra nova pedida pelo usuário vai para o `AGENTS.md`**, nunca para este arquivo. Este arquivo
-  só aponta para o `AGENTS.md`.
-- Tarefas ficam no [`task-principal.md`](task-principal.md). Toda tarefa concluída é movida para o
-  [`task_complete.md`](task_complete.md) no mesmo commit da conclusão.
+- **"Salvar no `CLAUDE.md`" = salvar no `AGENTS.md`.** Sempre que o usuário pedir para salvar,
+  criar ou atualizar uma regra no `CLAUDE.md`, a regra vai para o `AGENTS.md`. Este arquivo não
+  recebe regras.
+- O `AGENTS.md` é lido sempre e vem carregado abaixo pela importação `@AGENTS.md`.
 
 @AGENTS.md
