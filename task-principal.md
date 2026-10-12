@@ -68,6 +68,19 @@
 
 ---
 
+### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-41.1
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-41.1** |
+| **Título da Sub-task:** Criar `docs/plano-cerebro-memoria-persistente.md` e mover a seção "1. Arquitetura do Banco de Dados (Supabase)" |
+| **Agente Responsável:** | Devin (Cognition AI) |
+| **Data e Hora de Início:** | 2026-10-12 18:40 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-41.1 |
+
+---
+
 ### 🔒 TRAVA ESPECIAL: KIRO-DEV-CLONE
 
 > **ATENÇÃO:** A tarefa `KIRO-DEV-CLONE` está **TRAVADA PARA TODAS AS IAS**.
@@ -88,11 +101,11 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 44
 - **Subtarefas atômicas (~3 min):** 251
-- **Em Execução:** 2 (SUB-38, SUB-40.5)
+- **Em Execução:** 3 (SUB-38, SUB-40.5, SUB-41.1)
 - **Pendentes:** 11 principais (SUB-38, 25, 26, 28, 35, 39, 40, 41, 42, 43, KIRO-DEV-CLONE) + 43 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 7 — SUB-25.4, SUB-25.7, SUB-35.32, SUB-40.7 (só com autorização do usuário), SUB-41.1 e SUB-43 (atômica) (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 6 — SUB-25.4, SUB-25.7, SUB-35.32, SUB-40.7 (só com autorização do usuário) e SUB-43 (atômica) (`MEDIA`); SUB-39.1 (`BAIXA`, só com orientação do usuário). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
   - bloqueadas por dependência: 7 — SUB-26.3 e SUB-26.9 (dependem da mãe SUB-25, ainda pendente), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41), SUB-42 (depende da SUB-41) e SUB-40.6 (depende da SUB-40.5)
-  - em execução: 2 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-40.5 (Claude Code (Opus 5.5))
+  - em execução: 3 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-40.5 (Claude Code (Opus 5.5)); SUB-41.1 (Devin (Cognition AI))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
 - **Concluídas:** 237 de 295 blocos (33 principais + 204 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
@@ -510,7 +523,7 @@
 - **Executor:** nenhum
 - **Depende de:** subtarefas SUB-41.1 a SUB-41.3
 - **Subtarefas:** (subdividida em 3 em 2026-10-12 por Claude Code (Opus 5.5) a pedido do usuário, uma por seção do plano; as três editam os mesmos arquivos, por isso ficam em cadeia)
-  - `SUB-41.1`: Criar `docs/plano-cerebro-memoria-persistente.md` e mover a seção "1. Arquitetura do Banco de Dados (Supabase)" (`pendente`)
+  - `SUB-41.1`: Criar `docs/plano-cerebro-memoria-persistente.md` e mover a seção "1. Arquitetura do Banco de Dados (Supabase)" (`em_execucao`, Devin (Cognition AI))
   - `SUB-41.2`: Mover a seção "2. Estrutura do Servidor MCP (Vercel Serverless)" (`pendente`)
   - `SUB-41.3`: Mover a seção "3. Ativação no Terminal (Claude Code)" e fechar a limpeza do `AGENTS.md` (`pendente`)
 - **Descrição:** **Regra do usuário (2026-10-12):** o `AGENTS.md` deve conter **apenas regras de como executar tarefas**, e **nenhuma tarefa em si**. Hoje, depois da seção "✅ 5. Regra de confirmação de status", o arquivo traz o plano de implementação `# 🧠 Plano de Implementação: Cérebro de Memória Persistente (Estilo Jev-Mem)` (linhas ~345-525; números aproximados, conferir com `grep`), com as seções `## 1. Arquitetura do Banco de Dados (Supabase)` (SQL), `## 2. Estrutura do Servidor MCP (Vercel Serverless)` (nota da implementação real, estrutura de arquivos e exemplo ilustrativo de `api/mcp.ts`) e `## 3. Ativação no Terminal (Claude Code)`. Isso é tarefa/plano, não regra. O plano inteiro vai, **sem alterar o texto**, para `docs/plano-cerebro-memoria-persistente.md`, uma seção por subtarefa, ajustando os links relativos do trecho movido (`api/...` → `../api/...`, `database/...` → `../database/...`). No `AGENTS.md`, o bloco é apagado **sem deixar resumo de tarefa**.
@@ -521,9 +534,9 @@
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
 #### [ ] SUB-41.1: Criar `docs/plano-cerebro-memoria-persistente.md` e mover a seção "1. Arquitetura do Banco de Dados (Supabase)"
-- **Status:** pendente
+- **Status:** em_execucao
 - **Prioridade:** MEDIA
-- **Executor:** nenhum
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 18:40)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `docs/plano-cerebro-memoria-persistente.md` com: o título `# 🧠 Plano de Implementação: Cérebro de Memória Persistente (Estilo Jev-Mem)` e as linhas **Foco** e **Stack** (copiadas do `AGENTS.md`); um parágrafo inicial dizendo que o plano **já foi implementado** (SQL consolidado e idempotente em [`database/`](../database/README.md), scripts `01` a `04`; servidor em [`api/mcp.ts`](../api/mcp.ts) e [`api/_lib/`](../api/_lib/)) e que o SQL e o código do plano são a referência original; e a seção `## 1. Arquitetura do Banco de Dados (Supabase)` inteira (texto, nota sobre a pasta `database/` e bloco SQL), **sem alterar o conteúdo**, só corrigindo o link `database/README.md` → `../database/README.md`. No `AGENTS.md`, apagar o título do plano, as linhas Foco/Stack e a seção 1 (com os `---` correspondentes). As seções 2 e 3 continuam no `AGENTS.md` até as filhas seguintes.
