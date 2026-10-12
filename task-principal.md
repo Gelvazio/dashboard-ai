@@ -2467,15 +2467,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-35.28: Feed `FeedEventos` em `src/components/monitor/FeedEventos.tsx`
-- **Status:** em_execucao
+#### [x] SUB-35.28: Feed `FeedEventos` em `src/components/monitor/FeedEventos.tsx`
+- **Status:** concluido
 - **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-35.8
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Lista ao vivo dos eventos (hora, agente, tipo, task, etapa, mensagem) com botão Pausar/Retomar a rolagem e destaque curto no evento novo; respeita `prefers-reduced-motion`. Exportar no barrel.
 - **Critérios de Aceitação:** `npm run typecheck` OK.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `0d90464`
+- **Anotação:** Criado `src/components/monitor/FeedEventos.tsx` (`{ eventos, limite?=100, className? }`, eventos do mais novo ao mais antigo): linhas com hora, agente, selo do tipo (cor por `TipoEventoAgente`), task, etapa e mensagem; Pausar/Retomar congela a lista e mostra "+N novos" (`aria-pressed`, `aria-live` desligado quando pausado); eventos novos destacados por 2 s com `motion-safe:` (respeita `prefers-reduced-motion`). Exportado em `src/components/monitor/index.ts`. typecheck e build OK.
 
 #### [ ] SUB-35.29: Indicador `IndicadorAoVivo` em `src/components/monitor/IndicadorAoVivo.tsx`
 - **Status:** pendente
