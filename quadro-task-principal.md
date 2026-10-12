@@ -99,6 +99,17 @@
 | **Data e Hora de Início:** | 2026-10-12 01:08 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-35.43
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.43** |
+| **Título da Sub-task:** | CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`) |
+| **Agente Responsável:** | DashboardAI-Clone 02 |
+| **Data e Hora de Início:** | 2026-10-12 01:08 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -107,6 +118,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-35.43** | CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`) | DashboardAI-Clone 02 | 2026-10-12 01:08 | SUB-35.42 |
 | **SUB-35.22** | Registro do Chart.js e paleta em `src/lib/charts.ts` | DashboardAI-Clone 06 | 2026-10-12 01:08 | SUB-35.21 |
 | **SUB-27.8** | Teste de integração dos papéis em `tests/integration/authService.integration.test.ts` | DashboardAI-Clone 01 | 2026-10-12 01:08 | SUB-27.25 |
 | **SUB-35.40** | Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts` | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:08 | SUB-35.2 |
@@ -246,7 +258,7 @@
 | **SUB-35.38** | Ligar o heartbeat no CLI `worker/index.ts` | 4 | Fase 12 | SUB-35.37, SUB-28.15 — ⛓️ bloqueada |
 | **SUB-35.39** | Teste do worker: eventos emitidos na ordem dos nós | 4 | Fase 12 | SUB-35.36, SUB-28.17 — ⛓️ bloqueada |
 | **SUB-35.41** | Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts` | 4 | Fase 12 | SUB-35.40 — ⛓️ bloqueada |
-| **SUB-35.43** | CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`) | 4 | Fase 12 | SUB-35.42 — ⛓️ bloqueada |
+| **SUB-35.43** | CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`) | 4 | Fase 12 | SUB-35.42 — 🔄 em execução por DashboardAI-Clone 02 |
 | **SUB-35.44** | Seção "Monitor em tempo real" no `README.md` | 4 | Fase 12 | SUB-35.31, SUB-35.40, SUB-35.43 — ⛓️ bloqueada |
 | **SUB-35.45** | Seção "Reporte de progresso (opcional)" no `AGENTS.md` | 4 | Fase 12 | SUB-35.41 — ⛓️ bloqueada |
 | **SUB-35.46** | Validação automatizada da SUB-35 | 4 | Fase 12 | SUB-35.7, SUB-35.12, SUB-35.13, SUB-35.32, SUB-35.34, SUB-35.38, SUB-35.39, SUB-35.41, SUB-35.43, SUB-35.44, SUB-35.45 — ⛓️ bloqueada |
@@ -626,3 +638,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:08 | DashboardAI-Clone 08 (Grok Bot) | SUB-35.40 | — | Lock: assumindo SUB-35.40 (Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts`) |
 | 2026-10-12 01:08 | DashboardAI-Clone 01 | SUB-27.8 | — | Lock: assumindo SUB-27.8 (Teste de integração dos papéis em `tests/integration/authService.integration.test.ts`) |
 | 2026-10-12 01:08 | DashboardAI-Clone 06 | SUB-35.22 | — | Lock: assumindo SUB-35.22 (Registro do Chart.js e paleta em `src/lib/charts.ts`) |
+| 2026-10-12 01:08 | DashboardAI-Clone 02 | SUB-35.43 | — | Lock: assumindo SUB-35.43 (CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`)) |
