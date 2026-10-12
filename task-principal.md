@@ -520,8 +520,8 @@
 - **Anotação:** pendente
 
 ### [ ] SUB-19: Interface de Pesquisa Semântica Vetorial
-- **Status:** pendente (aguardando subtarefas)
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para refinar subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:50)
 - **Depende de:** SUB-10, SUB-12, SUB-33; subtarefas SUB-19.1 a SUB-19.8
 - **Subtarefas:** (subdividida em 8 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`)
   - `SUB-19.1`: `debounce(fn, ms)` em `src/lib/debounce.ts` (`pendente`)
@@ -619,8 +619,8 @@
 - **Anotação:** pendente
 
 ### [ ] SUB-20: Formulário de Nova Memória Canônica
-- **Status:** pendente (aguardando subtarefas)
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para refinar subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:50)
 - **Depende de:** SUB-10, SUB-12, SUB-33; subtarefas SUB-20.1 a SUB-20.7
 - **Subtarefas:** (subdividida em 7 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`)
   - `SUB-20.1`: `validarMemoria(dados)` em `src/lib/memoriaForm.ts` (`pendente`)
@@ -707,8 +707,8 @@
 - **Anotação:** pendente
 
 ### [ ] SUB-21: Grid de Gerenciamento e Exclusão de Memórias
-- **Status:** pendente (aguardando subtarefas)
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para refinar subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:50)
 - **Depende de:** SUB-10, SUB-12; subtarefas SUB-21.1 a SUB-21.10
 - **Subtarefas:** (subdividida em 10 em 2026-10-11 23:47 por DashboardAI (Grok Bot) a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`)
   - `SUB-21.1`: `memoriaComoMarkdown` e `escopoMemoria` em `src/lib/memorias.ts` (`pendente`)
@@ -843,8 +843,8 @@
 - **Anotação:** Arquivos: src/lib/logs.ts (+testes), src/hooks/useLogs.ts, src/views/LogsView.tsx.
 
 ### [ ] SUB-23: Diagnóstico de Travas e Saúde da Fila
-- **Status:** pendente (aguardando subtarefas)
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para refinar subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:50)
 - **Depende de:** SUB-09, SUB-11, SUB-12; subtarefas SUB-23.1 a SUB-23.9
 - **Subtarefas:** (subdividida em 9 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`)
   - `SUB-23.1`: `minutosDeTrava` e `travaExpirada` em `src/lib/saudeFila.ts` (`pendente`)
@@ -971,8 +971,8 @@
 ## 🚀 FASE 10: Build, Validação e Documentação
 
 ### [ ] SUB-25: Validação de Build e Execução Local
-- **Status:** pendente (aguardando subtarefas)
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para refinar subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:50)
 - **Depende de:** SUB-01 a SUB-24; subtarefas SUB-25.1 a SUB-25.4
 - **Subtarefas:** (subdividida em 4 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`)
   - `SUB-25.1`: Script `scripts/validar.sh` + `npm run validar` (`pendente`)
@@ -1025,8 +1025,8 @@
 - **Anotação:** pendente
 
 ### [ ] SUB-26: Documentação Completa e Manual Operacional no `README.md`
-- **Status:** pendente (aguardando subtarefas)
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para refinar subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:50)
 - **Depende de:** SUB-25; subtarefas SUB-26.1 a SUB-26.9
 - **Subtarefas:** (subdividida em 9 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`)
   - `SUB-26.1`: Esqueleto do `README.md` (`pendente`)
@@ -1346,8 +1346,8 @@
 ## 🚀 FASE 11: Orquestração de Tasks com LangChain/LangGraph (última fase)
 
 ### [ ] SUB-28: Integração LangChain/LangGraph para Execução de Tasks
-- **Status:** pendente (aguardando subtarefas)
-- **Executor:** nenhum
+- **Status:** em_planejamento (travada para refinar subdivisão)
+- **Executor:** DashboardAI (Grok Bot) (trava de planejamento: 2026-10-11 23:50)
 - **Depende de:** SUB-01 a SUB-27, SUB-29, SUB-30 (todas as tasks anteriores concluídas); subtarefas SUB-28.1 a SUB-28.18
 - **Subtarefas:** (subdividida em 18 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`)
   - `SUB-28.1`: Contrato worker ↔ RPC ↔ MCP em `docs/langgraph-contrato.md` (`pendente`)

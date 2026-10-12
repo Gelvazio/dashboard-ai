@@ -44,6 +44,17 @@
 | **Data e Hora de Início:** | 2026-10-11 22:41 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI (Grok Bot) — Refino de subdivisão
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO (planejamento)** |
+| **Sub-task em Execução:** | **SUB-19, SUB-20, SUB-21, SUB-23, SUB-25, SUB-26, SUB-28** (e as subtarefas delas) |
+| **Título da Sub-task:** | Refino das subtarefas grandes em partes de ~3 min (sem código) |
+| **Agente Responsável:** | DashboardAI (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-11 23:50 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** até o commit do refino |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -257,3 +268,4 @@
 | 2026-10-11 23:41 | DashboardAI (Grok Bot) | Subdivisão SUB-27 | (este commit) | A pedido do usuário, SUB-27 subdividida em 18 subtarefas (SUB-27.1–27.18: lib/auth, authService, papéis, AuthProvider, LoginForm, LoginView, RotaProtegida, App, UserMenu, conexão/projeto, link de retorno, docs, validação), todas reservadas para Codex (OpenAI); trava e status em_execucao da SUB-27 mantidos. Nenhum código de SUB-27 existia na main. Dependentes atualizados: SUB-26.8 -> SUB-27.13/27.17, SUB-28.16 -> +SUB-27.9, SUB-25.2 cita SUB-27.18. Lista de livres inclui SUB-21 (liberada pelo usuário em 9fedf35) |
 | 2026-10-11 23:45 | DashboardAI (Grok Bot) | Lock planejamento SUB-21 | — | Trava de planejamento na SUB-21 (livre desde 9fedf35) para subdividir em subtarefas de ~3 min, a pedido do usuário |
 | 2026-10-11 23:47 | DashboardAI (Grok Bot) | Subdivisão SUB-21 + liberação SUB-33 | (este commit) | A pedido do usuário: SUB-21 subdividida em 10 subtarefas (SUB-21.1–21.10; a 21.9 cria a `MemoriaView`, e SUB-19.8/20.7 agora dependem dela); trava de planejamento da SUB-21 liberada. Trava da SUB-33 (DashboardAI (Grok Bot), desde 23:34) liberada sem código; SUB-33.4 e 33.6 refinadas (novas 33.10, 33.11, 33.12), total 12, filhas livres conforme dependências. Livres: 14; reservadas (SUB-27, Codex): 18; bloqueadas: 68 |
+| 2026-10-11 23:50 | DashboardAI (Grok Bot) | Lock refino | — | Trava de planejamento em SUB-19, 20, 21, 23, 25, 26 e 28 (e subtarefas) para refinar as subtarefas grandes, a pedido do usuário; SUB-27 (Codex) e SUB-08 (xAI) não travadas por mim |
