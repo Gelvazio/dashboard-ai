@@ -77,6 +77,17 @@
 | **Data e Hora de Início:** | 2026-10-12 01:07 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 02 — SUB-35.42
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.42** |
+| **Título da Sub-task:** | `commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py` |
+| **Agente Responsável:** | DashboardAI-Clone 02 |
+| **Data e Hora de Início:** | 2026-10-12 01:08 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
@@ -85,6 +96,7 @@
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
+| **SUB-35.42** | `commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py` | DashboardAI-Clone 02 | 2026-10-12 01:08 | SUB-35.1 |
 | **SUB-35.6** | Teste de integração de `agent_events` (RLS e trigger) | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:07 | SUB-35.2, SUB-35.3 |
 | **SUB-19.8** | Integrar a busca na `src/views/MemoriaView.tsx` | DashboardAI-Clone 04 (Grok Bot) | 2026-10-12 01:07 | SUB-19.7, SUB-21.9 |
 | **SUB-27.14** | Componente `UserMenu` em `src/components/layout/UserMenu.tsx` | DashboardAI-Clone 01 | 2026-10-12 01:06 | SUB-27.26 |
@@ -225,7 +237,7 @@
 | **SUB-35.39** | Teste do worker: eventos emitidos na ordem dos nós | 4 | Fase 12 | SUB-35.36, SUB-28.17 — ⛓️ bloqueada |
 | **SUB-35.40** | Ferramenta MCP `agent_event` em `api/_lib/event-tools.ts` | 4 | Fase 12 | SUB-35.2 — ⛓️ bloqueada |
 | **SUB-35.41** | Testes da ferramenta `agent_event` em `tests/unit/api-event-tools.test.ts` | 4 | Fase 12 | SUB-35.40 — ⛓️ bloqueada |
-| **SUB-35.42** | `commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py` | 4 | Fase 12 | SUB-35.1 — ⛓️ bloqueada |
+| **SUB-35.42** | `commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py` | 4 | Fase 12 | SUB-35.1 — 🔄 em execução por DashboardAI-Clone 02 |
 | **SUB-35.43** | CLI `scripts/espelhar_quadro_eventos.py` (dry-run e `--aplicar`) | 4 | Fase 12 | SUB-35.42 — ⛓️ bloqueada |
 | **SUB-35.44** | Seção "Monitor em tempo real" no `README.md` | 4 | Fase 12 | SUB-35.31, SUB-35.40, SUB-35.43 — ⛓️ bloqueada |
 | **SUB-35.45** | Seção "Reporte de progresso (opcional)" no `AGENTS.md` | 4 | Fase 12 | SUB-35.41 — ⛓️ bloqueada |
@@ -595,3 +607,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:07 | DashboardAI-Clone 02 | SUB-35.5 | `d9d9a6c` | Adicionada `atividade_atual_agentes(p_project_id bigint)` em `database/07_agent_events.sql`: SQL `stable`, `security invoker` (respeita a RLS), `distinct on (agente)` ordenado por `created_at desc` -> agente, task_codigo, etapa, tipo, status, mensagem, execucao_id, ultimo_em e ultimo_heartbeat_em (máximo dos `tipo = 'heartbeat'`). `drop function if exists` + create (reaplicável); execute só para `authenticated`/`service_role`. Validado em Postgres local: 00–07 aplicados 2x; com eventos de 2 agentes devolve 1 linha por agente com o último evento e heartbeat correto. |
 | 2026-10-12 01:07 | DashboardAI-Clone 08 (Grok Bot) | SUB-26.6 | `d7f05f6` | Subseção "Configurar o cliente MCP" em Agentes de IA do `README.md`: transporte Streamable HTTP (POST, protocolos 2025-06-18/2025-03-26/2024-11-05), URL `/mcp` (rewrite do `vercel.json`), `Authorization: Bearer <MCP_AUTH_TOKEN>` (sem token no servidor as ferramentas ficam desativadas; token errado -> 401), argumento `project`/`MCP_DEFAULT_PROJECT` e `MCP_ALLOWED_PROJECTS` para endpoint por projeto; exemplos para Claude Code (`claude mcp add --transport http ... --header`), Codex (`config.toml` com `url` + `bearer_token_env_var` e `codex mcp add --url --bearer-token-env-var`, conferido na documentação atual do Codex), JSON genérico (Cursor/Gemini CLI etc.), `curl` de `tools/list` e resumo do protocolo do `AGENTS.md`. Conferido com `api/mcp.ts` e `api/_lib/args.ts`. Só documentação. |
 | 2026-10-12 01:08 | DashboardAI-Clone 10 (Grok Bot) | SUB-21.11 | `e4bacb0` | Na `src/views/MemoriaView.tsx`: `onVer` do `MemoriaGrid` abre o `MemoriaDetailModal`; `onExcluir` (cartão ou modal) fecha o detalhe e abre `ConfirmDialog` (perigo, avisa quando a memória é global e que a exclusão é definitiva e some do `brain_search`); ao confirmar chama `useExcluirMemoria({ remover, reinserir })` do `useMemorias` (remoção otimista, reinsere e mostra toast se o banco/RLS recusar). `npm run typecheck`, `npm test` e `npm run build` OK. |
+| 2026-10-12 01:08 | DashboardAI-Clone 02 | SUB-35.42 | — | Lock: assumindo SUB-35.42 (`commits_para_eventos()` em `scripts/espelhar_quadro_eventos.py`) |
