@@ -339,6 +339,17 @@
 - **Anotação:** Atualizado status para "Implementado na SUB-28" com lista de itens implementados (grafo, checkpointer, retomada, aprovação, auditoria, idempotência, classificação de falhas, integração com RPCs, segurança, allowlist, CLI, heartbeat). Adicionada seção 11 com desvios justificados (modelo simplificado, eventos via RPC, endpoint separado, checkpointer em schema separado, limites de espera) e cobertura de testes.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 14:38 — Devin (Cognition AI): commit `18c8d9d` e LangChain_LangGraph.md conferidos na `main`; documentação coerente com o código.
 
+#### [x] SUB-28.25: Variáveis do worker no `api/README.md`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:40, conclusão: 2026-10-12 14:42)
+- **Depende de:** SUB-28.15, SUB-28.32
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Documentar `LANGGRAPH_DATABASE_URL`, variáveis do modelo, endpoint de aprovação e operação do worker no `api/README.md`.
+- **Critérios de Aceitação:** Documentação coerente com o código.
+- **Commit:** 3345ccd
+- **Anotação:** Adicionada seção "Worker LangGraph (SUB-28)" no api/README.md com: tabela de variáveis do worker (OPENAI_API_KEY, WORKER_MODELO, LANGGRAPH_DATABASE_URL, SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, MCP_DEFAULT_PROJECT), exemplos de execução (local, uma task, produção), endpoint de aprovação humana (POST /api/aprovacao com JWT) e monitoramento (heartbeats via emitir_event). typecheck:api OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 14:42 — Devin (Cognition AI): commit `3345ccd` e api/README.md conferidos na `main`; typecheck:api OK, documentação coerente com o código.
+
 #### [x] SUB-33.12: Testes do handler: 413, 502 e 200
 - **Status:** concluido
 - **Executor:** DashboardAI (Grok Bot) (2026-10-12 00:28 → 2026-10-12 00:29)
