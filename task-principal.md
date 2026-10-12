@@ -60,6 +60,17 @@
 | **Data e Hora de Início:** | 2026-10-12 01:42 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 10 (Grok Bot) — SUB-35.31
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-35.31** |
+| **Título da Sub-task:** | Registrar a tela `monitor` (rota `#/monitor` e menu) |
+| **Agente Responsável:** | DashboardAI-Clone 10 (Grok Bot) |
+| **Data e Hora de Início:** | 2026-10-12 01:42 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
@@ -2230,7 +2241,7 @@
   - `SUB-35.28`: Feed `FeedEventos` em `src/components/monitor/FeedEventos.tsx` (`pendente`)
   - `SUB-35.29`: Indicador `IndicadorAoVivo` em `src/components/monitor/IndicadorAoVivo.tsx` (`concluido`)
   - `SUB-35.30`: Tela `MonitorView` em `src/views/MonitorView.tsx` (`concluido`, `2d1cd0a`)
-  - `SUB-35.31`: Registrar a tela `monitor` (rota `#/monitor` e menu) (`pendente`)
+  - `SUB-35.31`: Registrar a tela `monitor` (rota `#/monitor` e menu) (`em_execucao`)
   - `SUB-35.32`: Validação visual do monitor (SUB-35) (`pendente`)
   - `SUB-35.33`: `emitirEvento()` em `worker/eventos.ts` (`pendente`)
   - `SUB-35.34`: Testes de `emitirEvento` em `tests/unit/worker-eventos.test.ts` (`pendente`)
@@ -2553,8 +2564,8 @@
 - **Anotação:** Criado `src/views/MonitorView.tsx`: projeto de `useProjetoAtual` (sem projeto -> aviso "selecione um projeto"), `useEventosAgentes` + `useAtividadeAgentes` (cada evento novo chama `recarregarDebounced` da atividade); cabeçalho com `IndicadorAoVivo` (recarregar refaz eventos e atividade), alerta de erro (`role="alert"`), cartão "Atividade atual" com esqueletos na 1ª carga e `AtividadeAgentesGrid`, grade 2 colunas com `GraficoPorStatus` (tema escuro pela classe `dark`) e `GraficoPorAgente`, `LinhaDoTempoAgentes` (última hora) e `FeedEventos`. Registro da rota/menu fica na SUB-35.31. `npm run typecheck`, `npm test` e `npm run build` OK.
 
 #### [ ] SUB-35.31: Registrar a tela `monitor` (rota `#/monitor` e menu)
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 10 (Grok Bot) (início: 2026-10-12 01:42)
 - **Depende de:** SUB-35.30, SUB-34.2
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Mudança única de registro (o `Record<ViewId, …>` obriga a fazer junto): `'monitor'` em `ViewId` (`src/types/index.ts`), `VIEW_IDS` (`src/lib/navegacao.ts`), `VIEWS` (`src/views/meta.ts`, título "Monitor dos Agentes"), `TELAS` com `lazy` (`src/views/index.ts`) e ícone `Activity` no `ICONES` do `Sidebar`. Atualizar `tests/unit/navegacao.test.ts`.
