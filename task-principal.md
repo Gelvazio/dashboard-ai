@@ -40,15 +40,15 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.23
+### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-26.5
 
 | Propriedade | Valor Atual |
 |---|---|
 | **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-28.23** |
-| **Título da Sub-task:** | Retomada da aprovação (`Command({ resume })`) em `api/aprovacao.ts` |
+| **Sub-task em Execução:** | **SUB-26.5** |
+| **Título da Sub-task:** | Seção Deploy na Vercel |
 | **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 13:50 |
+| **Data e Hora de Início:** | 2026-10-12 14:10 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
 ---
@@ -56,7 +56,7 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 204
-- **Em Execução:** 1 (SUB-28.23, Devin (Cognition AI), desde 2026-10-12 13:50)
+- **Em Execução:** 1 (SUB-26.5, Devin (Cognition AI), desde 2026-10-12 14:10)
 - **Pendentes:** 4 principais (25, 26, 28, 35) + 12 subtarefas
   - livres agora: 5 (SUB-26.5, SUB-28.2, SUB-35.32, SUB-25.4, SUB-25.7)
   - bloqueadas por dependência: 7
@@ -136,8 +136,8 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-26.5: Seção Deploy na Vercel
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 14:10)
 - **Depende de:** SUB-26.1, SUB-08.9, SUB-33
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Node 22 no projeto Vercel, variáveis de frontend (`VITE_*`) e de servidor (Supabase, OpenAI/embeddings, `MCP_*`), rewrite `/mcp`, limites de `maxDuration`.
@@ -188,7 +188,7 @@
   - `SUB-28.20`: `PlanoSchema` em `worker/plano.ts` (`concluido`, `048e647`)
   - `SUB-28.21`: `classificarFalha(err)` em `worker/falhas.ts` (`concluido`, `04c0f02`)
   - `SUB-28.22`: `executarUmaTask(deps)` em `worker/executar.ts` (`concluido`, `c18fcbd`)
-  - `SUB-28.23`: Retomada da aprovação (`Command({ resume })`) em `api/aprovacao.ts` (`em_execucao`)
+  - `SUB-28.23`: Retomada da aprovação (`Command({ resume })`) em `api/aprovacao.ts` (`pendente`)
   - `SUB-28.24`: Testes do worker: interrupção e retomada sem duplicar efeitos (`concluido`, `057b3a1`)
   - `SUB-28.25`: Variáveis do worker no `api/README.md` (`pendente`)
   - `SUB-28.26`: Contrato: ferramentas permitidas e idempotência em `docs/langgraph-contrato.md` (`concluido`, `07b64cc`)
@@ -229,8 +229,8 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 #### [ ] SUB-28.23: Retomada da aprovação (`Command({ resume })`) em `api/aprovacao.ts`
-- **Status:** em_execucao
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:50)
+- **Status:** pendente
+- **Executor:** nenhum
 - **Depende de:** SUB-28.16
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Após autorizar, retomar o grafo com `Command({ resume: { aprovado, por, em } })` no `thread_id` da execução. O registro de auditoria fica na SUB-28.32.
