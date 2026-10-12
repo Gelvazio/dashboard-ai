@@ -1521,8 +1521,8 @@
 - **Anotação:** Criado `src/services/authService.ts` com `entrarComSenha(email, senha, client = getSupabase())` via `signInWithPassword` (e-mail com trim); erro -> `ServiceError(mensagemErroAuth(error), 'AUTH')`; senha não guardada/logada. Exportado no barrel `src/services/index.ts`. typecheck e vitest verdes.
 
 #### [ ] SUB-27.4: `sair()` em `src/services/authService.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** DashboardAI-Clone 01
 - **Depende de:** SUB-27.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar `sair(client)` (`auth.signOut()`, limpando também `localStorage['dashboard-ai:projeto']`; erro -> `ServiceError`).
