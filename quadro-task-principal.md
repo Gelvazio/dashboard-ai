@@ -33,17 +33,6 @@
 | **Data e Hora de Início:** | 2026-10-12 00:43 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
-### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 05 (Grok Bot) — SUB-35.2
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-35.2** |
-| **Título da Sub-task:** | Trigger `validar_agent_event` em `database/07_agent_events.sql` |
-| **Agente Responsável:** | DashboardAI-Clone 05 (Grok Bot) |
-| **Data e Hora de Início:** | 2026-10-12 01:02 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ### 🔒 TRAVA ADICIONAL — DashboardAI-Clone 06 — SUB-21.7
 
 | Propriedade | Valor Atual |
@@ -81,14 +70,13 @@
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (2)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-23.5** | Teste de integração de `liberarTrava`: expirada e forçada | DashboardAI-Clone 02 | 2026-10-12 01:03 | SUB-23.4 |
 | **SUB-26.7** | Seção Memória via MCP | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:03 | SUB-26.1 |
 | **SUB-21.7** | Hook `useExcluirMemoria` em `src/hooks/useExcluirMemoria.ts` | DashboardAI-Clone 06 | 2026-10-12 01:03 | SUB-21.3 |
-| **SUB-35.2** | Trigger `validar_agent_event` em `database/07_agent_events.sql` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:02 | SUB-35.1 |
 | **SUB-33.9** | Documentar `/api/embedding` no `api/README.md` | Codex (OpenAI) | 2026-10-12 00:43 | SUB-33.11 |
 
 ---
@@ -247,10 +235,11 @@
 
 ---
 
-### ✅ CONCLUÍDAS (79)
+### ✅ CONCLUÍDAS (80)
 
 | Código | Título da Mini-task | Agente | Início | Conclusão | Commit SHA |
 |---|---|---|---|---|---|
+| **SUB-35.2** | Trigger `validar_agent_event` em `database/07_agent_events.sql` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:02 | 2026-10-12 01:03 | `54cdea9` |
 | **SUB-36** | Gráfico em rede (cérebro) dos agentes no `dashboard-task-principal.html` | DashboardAI (Grok Bot) | 2026-10-12 01:01 | 2026-10-12 01:02 | `cdbf35b` |
 | **SUB-26.4** | Seção Banco de dados | DashboardAI-Clone 08 (Grok Bot) | 2026-10-12 01:02 | 2026-10-12 01:02 | `62ea6c0` |
 | **SUB-35.1** | Tabela `agent_events` em `database/07_agent_events.sql` | DashboardAI-Clone 05 (Grok Bot) | 2026-10-12 01:01 | 2026-10-12 01:02 | `9f5692f` |
@@ -564,3 +553,4 @@ n|| **SUB-20.8** | `MarkdownEditor` em `src/components/ui/MarkdownEditor.tsx` | 
 | 2026-10-12 01:03 | DashboardAI-Clone 10 (Grok Bot) | SUB-34.6 | `67d89b6` | No `src/App.tsx`, `<Tela />` (telas `React.lazy` da SUB-34.2) agora fica dentro de `<Suspense fallback={<CarregandoTela mensagem="Carregando tela..." />}>`, dentro do `AppLayout` (sidebar e header continuam visíveis enquanto o chunk da tela carrega). Sem isso, a primeira renderização de uma tela lazy suspendia sem fronteira. `npm run typecheck`, `npm test` e `npm run build` OK. |
 | 2026-10-12 01:03 | DashboardAI-Clone 02 | SUB-23.9 | `15257fd` | Na `src/views/FilaView.tsx`: `diagnosticarFila(tasks)` (memo) conta travas expiradas e, se houver, mostra faixa `role=alert` abaixo dos KPIs: 'N task(s) presa(s) há mais de 90 min' com link 'Ver saúde da fila' para `#/logs`. typecheck e build OK. |
 | 2026-10-12 01:03 | DashboardAI-Clone 02 | SUB-23.5 | — | Lock: assumindo SUB-23.5 (Teste de integração de `liberarTrava`: expirada e forçada) |
+| 2026-10-12 01:03 | DashboardAI-Clone 05 (Grok Bot) | SUB-35.2 | `54cdea9` | Adicionados `public.validar_agent_event()` (plpgsql, `security invoker`, `search_path = public`) e o trigger `validar_agent_event_trg` (`before insert or update`) em `database/07_agent_events.sql`, no padrão de `agent_messages_preparar` (06): task informada precisa ser do mesmo projeto (erro "a task N não pertence ao projeto do evento"), `task_codigo` preenchido a partir da task; no insert, `task_codigo` sem `task_id` resolve a task do projeto (código sem task é aceito, ex. subtarefa só no quadro); `agente` com trim; interface (anon/authenticated) não escolhe `criado_por`; em update recusa mudar `project_id`, `agente` e `created_at` e preserva `criado_por`. Validado em Postgres 17 local: 00–07 aplicados em banco limpo e 07 reaplicado; task de outro projeto e as 3 alterações proibidas falham com mensagem clara; resolução por código e update de `mensagem` OK. |

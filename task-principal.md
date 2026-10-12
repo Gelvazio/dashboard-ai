@@ -2146,7 +2146,7 @@
 - **Depende de:** SUB-12, SUB-29, SUB-30; subtarefas SUB-35.1 a SUB-35.46 (as partes do worker dependem de SUB-28.x)
 - **Subtarefas:** (criada e subdividida em 46 em 2026-10-12 00:39 por DashboardAI (Grok Bot) a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`)
   - `SUB-35.1`: Tabela `agent_events` em `database/07_agent_events.sql` (`concluido`)
-  - `SUB-35.2`: Trigger `validar_agent_event` em `database/07_agent_events.sql` (`em_execucao`)
+  - `SUB-35.2`: Trigger `validar_agent_event` em `database/07_agent_events.sql` (`concluido`)
   - `SUB-35.3`: RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql` (`pendente`)
   - `SUB-35.4`: Publicar `agent_events` no Supabase Realtime (`pendente`)
   - `SUB-35.5`: Função `atividade_atual_agentes(p_project_id)` em `database/07_agent_events.sql` (`pendente`)
@@ -2207,15 +2207,15 @@
 - **Commit:** `9f5692f`
 - **Anotação:** Criado `database/07_agent_events.sql` (cabeçalho com as partes 35.1–35.5) com `public.agent_events`: `id` identity, `project_id` (FK projects, cascade), `task_id` (FK tasks, set null), `task_codigo`, `agente` (não vazio, ≤120), `execucao_id` (≤200), `etapa` (≤120), `tipo` (check inicio/progresso/fim/erro/heartbeat/trava/liberacao/commit), `status`, `mensagem` (≤2000), `metadados` jsonb objeto, `chave_idempotencia` (unique com `project_id`), `criado_por` (`usuario_atual()`), `created_at`; índices `(project_id, created_at desc)` e `(project_id, agente, created_at desc)`; comentário da tabela; sem RLS (SUB-35.3). Validado em Postgres 17 local: aplicado após 00–06 em banco limpo e reaplicado sem erro; checks de agente vazio, tipo inválido, metadados não objeto e chave de idempotência duplicada recusam como esperado.
 
-#### [ ] SUB-35.2: Trigger `validar_agent_event` em `database/07_agent_events.sql`
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 01:02)
+#### [x] SUB-35.2: Trigger `validar_agent_event` em `database/07_agent_events.sql`
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 05 (Grok Bot) (início: 2026-10-12 01:02; conclusão: 2026-10-12 01:03)
 - **Depende de:** SUB-35.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar função + trigger `before insert or update`: task (se informada) precisa ser do mesmo projeto, preenche `task_codigo` a partir da task, e em update recusa mudar `project_id`/`agente`/`created_at` (eventos são só-inclusão). Mesmo padrão do trigger de `agent_messages` (06).
 - **Critérios de Aceitação:** Aplicação limpa; inserir evento com task de outro projeto falha com mensagem clara.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `54cdea9`
+- **Anotação:** Adicionados `public.validar_agent_event()` (plpgsql, `security invoker`, `search_path = public`) e o trigger `validar_agent_event_trg` (`before insert or update`) em `database/07_agent_events.sql`, no padrão de `agent_messages_preparar` (06): task informada precisa ser do mesmo projeto (erro "a task N não pertence ao projeto do evento"), `task_codigo` preenchido a partir da task; no insert, `task_codigo` sem `task_id` resolve a task do projeto (código sem task é aceito, ex. subtarefa só no quadro); `agente` com trim; interface (anon/authenticated) não escolhe `criado_por`; em update recusa mudar `project_id`, `agente` e `created_at` e preserva `criado_por`. Validado em Postgres 17 local: 00–07 aplicados em banco limpo e 07 reaplicado; task de outro projeto e as 3 alterações proibidas falham com mensagem clara; resolução por código e update de `mensagem` OK.
 
 #### [ ] SUB-35.3: RLS de `agent_events` (viewer lê, editor inclui) em `database/07_agent_events.sql`
 - **Status:** pendente
