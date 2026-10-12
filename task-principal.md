@@ -45,23 +45,12 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
-### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.20
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-28.20** |
-| **Título da Sub-task:** | `PlanoSchema` em `worker/plano.ts` |
-| **Agente Responsável:** | Devin (Cognition AI) |
-| **Data e Hora de Início:** | 2026-10-12 12:33 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** |
-
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 202 (atualizado em 2026-10-12 na revisão do quadro por Devin)
-- **Em Execução:** 1 (SUB-28.20, Devin (Cognition AI), desde 2026-10-12 12:33)
+- **Em Execução:** 0
 - **Pendentes:** 4 principais (25, 26, 28, 35) + 42 subtarefas
   - livres agora: 10 (SUB-25.2, SUB-26.5, SUB-28.2, SUB-28.4, SUB-28.5, SUB-28.10, SUB-28.13, SUB-28.20, SUB-35.32, SUB-35.33)
   - bloqueadas por dependência: 32
@@ -1991,7 +1980,7 @@
   - `SUB-28.17`: Testes do worker: caminho feliz e erro (`pendente`)
   - `SUB-28.18`: Atualizar `LangChain_LangGraph.md` (status e desvios) (`pendente`)
   - `SUB-28.19`: Adaptar ferramentas para `tool()` do LangChain em `worker/ferramentas.ts` (`pendente`)
-  - `SUB-28.20`: `PlanoSchema` em `worker/plano.ts` (`em_execucao`)
+  - `SUB-28.20`: `PlanoSchema` em `worker/plano.ts` (`concluido`, `048e647`)
   - `SUB-28.21`: `classificarFalha(err)` em `worker/falhas.ts` (`concluido`, `04c0f02`)
   - `SUB-28.22`: `executarUmaTask(deps)` em `worker/executar.ts` (`pendente`)
   - `SUB-28.23`: Retomada da aprovação (`Command({ resume })`) em `api/aprovacao.ts` (`pendente`)
@@ -2219,16 +2208,16 @@
 - **Anotação:** Reaberta na revisão de 2026-10-12 (Devin (revisão do quadro)): marcada como concluída em `310fab9`, mas `criarFerramentaLangChain()` usa schema genérico em vez de converter o `inputSchema` MCP e não há teste de argumento inválido.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (reaberta: critérios de aceitação não atendidos)
 
-#### [ ] SUB-28.20: `PlanoSchema` em `worker/plano.ts`
-- **Status:** em_execucao
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:33)
+#### [x] SUB-28.20: `PlanoSchema` em `worker/plano.ts`
+- **Status:** concluido
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 12:33, conclusão: 2026-10-12 12:34)
 - **Depende de:** SUB-28.29
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `worker/plano.ts` com o schema zod `PlanoSchema` (passos com ferramenta, argumentos, `sensivel`, critério). O prompt fica na SUB-28.31.
 - **Critérios de Aceitação:** Testes do schema (válido e inválido).
-- **Commit:** pendente (código parcial em `24f6118`)
-- **Anotação:** Reaberta na revisão de 2026-10-12 (Devin (revisão do quadro)): marcada como concluída em `310fab9`, mas `PlanoSchema` existe, mas não há testes do schema (válido/inválido); `tests/unit/worker-plano.test.ts` só testa `montarPromptPlano`.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE (reaberta: critérios de aceitação não atendidos)
+- **Commit:** `048e647`
+- **Anotação:** `PlanoSchema` (zod) já existia em `worker/plano.ts` (`24f6118`); adicionados em `tests/unit/worker-plano.test.ts` 5 testes do schema: plano válido, passo sem `ferramenta`, `sensivel` não booleano, `argumentos` não objeto e plano sem `passos`. `npm test` verde, `npm run typecheck` e `npm run typecheck:worker` OK.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 12:34 — Devin (Cognition AI): entrega verificada (critérios conferidos, testes verdes)
 
 #### [x] SUB-28.21: `classificarFalha(err)` em `worker/falhas.ts`
 - **Status:** concluido
