@@ -1442,15 +1442,15 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-#### [ ] SUB-26.10: Seção Agentes de IA: exemplos do ciclo da fila
-- **Status:** em_execucao
-- **Executor:** DashboardAI-Clone 08 (Grok Bot) (início: 2026-10-12 01:05)
+#### [x] SUB-26.10: Seção Agentes de IA: exemplos do ciclo da fila
+- **Status:** concluido
+- **Executor:** DashboardAI-Clone 08 (Grok Bot) (2026-10-12 01:05 → 2026-10-12 01:06)
 - **Depende de:** SUB-26.1
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Exemplos JSON-RPC de `task_next` -> trabalho -> `task_finish` (concluida/recusada/erro) e de `task_list`/`task_create`.
 - **Critérios de Aceitação:** Exemplos conferidos com `api/_lib/queue-tools.ts`.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `23153af`
+- **Anotação:** Subseção "Ciclo da fila (exemplos)" em Agentes de IA do `README.md`: JSON-RPC `tools/call` de `task_next` (agent, project, lock_minutes, routine; resposta `task`/`task: null` e log `sem_tarefa`; `exclusive`), `task_finish` como `concluida` (result, pr_url, commit_sha, metadata), `recusada` e `erro` (metadata.erro_mensagem), tabela do efeito de cada status (erro volta a `pendente` com tentativas sobrando), `task_list` (status/limit/include_instruction) e `task_create` (código gerado, type ia/humano, priority, order, dependencies, execute_after, max_attempts). Conferido com `api/_lib/queue-tools.ts` e `finalizar_task` em `database/04_rpc_functions.sql`; JSONs validados. A parte de configuração de clientes ficou marcada para a SUB-26.6. Só documentação.
 
 ### [ ] SUB-27: Autenticação e Login com Supabase Auth
 - **Status:** pendente
