@@ -109,7 +109,7 @@ Kiro oferece **5 superfícies** (surfaces) que compartilham a mesma configuraç�
 >
 > **⛔ Trava:** nenhuma destas tarefas pode ser assumida por IA enquanto a **🔒 TRAVA ESPECIAL do KIRO-DEV-CLONE** estiver ativa no quadro raiz.
 >
-> ⚠️ **Pendência estrutural:** no `task-principal.md` a tarefa-mãe `KIRO-DEV-CLONE` está registrada como **`Subtarefas: Nenhuma (atômica)`**, mas aqui ela se desdobra nas 28 tarefas abaixo. Se estas tarefas forem para a fila, **o usuário precisa** subdividir a mãe no quadro (e liberar a trava) antes de qualquer agente pegá-las.
+> ⚠️ **Pendência estrutural:** no `task-principal.md` a tarefa-mãe `KIRO-DEV-CLONE` está registrada como **`Subtarefas: Nenhuma (atômica)`**, mas aqui ela se desdobra nas **30 tarefas** abaixo. Se estas tarefas forem para a fila, **o usuário precisa** subdividir a mãe no quadro (e liberar a trava) antes de qualquer agente pegá-las.
 >
 > **Dependências:** derivadas das descrições (ex.: `Tarefa 2.2` precisa do componente da `Tarefa 2.1`); ajuste pelo usuário se a ordem real for outra.
 
@@ -487,7 +487,7 @@ Seguir as mesmas regras do [`AGENTS.md`](../AGENTS.md) principal:
 
 ## Próximos Passos
 
-1. ⛔ **Antes de qualquer implementação:** o usuário precisa **liberar a 🔒 trava especial** e **subdividir a tarefa-mãe** no `task-principal.md` (hoje a mãe está registrada como atômica, mas aqui ela tem 28 tarefas)
+1. ⛔ **Antes de qualquer implementação:** o usuário precisa **liberar a 🔒 trava especial** e **subdividir a tarefa-mãe** no `task-principal.md` (hoje a mãe está registrada como atômica, mas aqui ela tem **30 tarefas**)
 2. Executar tarefas em ordem das fases, respeitando `Depende de:`
 3. Cada tarefa deve levar ≤ 5 minutos
 4. Atualizar `STATUS.md` após cada tarefa
