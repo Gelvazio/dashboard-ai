@@ -81,6 +81,19 @@
 
 ---
 
+### 🔒 TRAVA ADICIONAL — Claude Code (Opus 5.5, nuvem) — SUB-26.3
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-26.3** |
+| **Título da Sub-task:** | Seção Execução local |
+| **Agente Responsável:** | Claude Code (Opus 5.5, nuvem) |
+| **Data e Hora de Início:** | 2026-10-12 19:01 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-26.3 |
+
+---
+
 ### 🔒 TRAVA ESPECIAL: KIRO-DEV-CLONE
 
 > **ATENÇÃO:** A tarefa `KIRO-DEV-CLONE` está **TRAVADA PARA TODAS AS IAS**.
@@ -101,11 +114,11 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 46
 - **Subtarefas atômicas (~3 min):** 270
-- **Em Execução:** 3 (SUB-38, SUB-41.1, SUB-35.32)
+- **Em Execução:** 4 (SUB-38, SUB-41.1, SUB-35.32, SUB-26.3)
 - **Pendentes:** 8 principais (SUB-38, 26, 28, 35, 41, 42, 45, KIRO-DEV-CLONE) + 55 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 2 — SUB-26.3 e SUB-45.19 (`MEDIA`; a SUB-45.19 só para o Claude Code local, regra 11). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 1 — SUB-45.19 (`MEDIA`; a SUB-45.19 só para o Claude Code local, regra 11). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
   - bloqueadas por dependência: 22 — SUB-26.9 (depende da SUB-26.3), SUB-35.46 (depende da SUB-35.32), SUB-41.2 e SUB-41.3 (cadeia da SUB-41) e SUB-42 (depende da SUB-41); SUB-45.2 a SUB-45.18 (cadeia da SUB-45; a 45.2 espera a revisão SUB-45.19)
-  - em execução: 3 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI)); SUB-35.32 (Claude Code (Opus 5.5))
+  - em execução: 4 — SUB-38 (DeepSeek Harness (deepseek-flash)), restaurada ao quadro em 2026-10-12 16:25; SUB-41.1 (Devin (Cognition AI)); SUB-35.32 (Claude Code (Opus 5.5)); SUB-26.3 (Claude Code (Opus 5.5, nuvem))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
 - **Concluídas:** 249 de 316 blocos (38 principais + 211 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
@@ -138,7 +151,7 @@
 - **Subtarefas:** (subdividida em 9 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 10 em 2026-10-11 23:51)
   - `SUB-26.1`: Esqueleto do `README.md` (`concluido`, `67e13c2`)
   - `SUB-26.2`: Seção Arquitetura (`concluido`, `b3f4c36`)
-  - `SUB-26.3`: Seção Execução local (`pendente`)
+  - `SUB-26.3`: Seção Execução local (`em_execucao`)
   - `SUB-26.4`: Seção Banco de dados (`concluido`, `62ea6c0`)
   - `SUB-26.5`: Seção Deploy na Vercel (`concluido`, a5c2a8a)
   - `SUB-26.6`: Seção Agentes de IA: configurar clientes MCP (`concluido`, `d7f05f6`)
@@ -153,9 +166,9 @@
 - **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:25 (Claude Code): tarefa-mãe pendente: o `README.md` já tem Arquitetura, Banco de dados, Deploy na Vercel, Agentes de IA, Memória via MCP, Segurança e Monitor; faltam as filhas 26.3 (Execução local, linha 90 ainda diz "Seção provisória") e 26.9 (Validação, linha 535 "Seção provisória").
 
 #### [ ] SUB-26.3: Seção Execução local
-- **Status:** pendente
+- **Status:** em_execucao
 - **Prioridade:** MEDIA
-- **Executor:** nenhum
+- **Executor:** Claude Code (Opus 5.5, nuvem) (início: 2026-10-12 19:01)
 - **Depende de:** SUB-26.1, SUB-08.9, SUB-25
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Node 22 (`.nvmrc`), `npm ci`, copiar `.env.example`, `npm run dev`, `npm test`, `npm run test:integration`, `npm run validar`.
