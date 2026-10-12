@@ -40,14 +40,25 @@
 | **Data e Hora de Início:** | — |
 | **Bloqueio para Outras IAs:** | Nenhum lock ativo |
 
+### 🔒 TRAVA ADICIONAL — Devin (Cognition AI) — SUB-28.34
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-28.34** |
+| **Título da Sub-task:** | `resumoSeguro`/`chaves` só com os passos `passo-<i>` em `worker/nos/finalizar.ts` |
+| **Agente Responsável:** | Devin (Cognition AI) |
+| **Data e Hora de Início:** | 2026-10-12 13:46 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 37
 - **Subtarefas atômicas (~3 min):** 204
-- **Em Execução:** 0
+- **Em Execução:** 1 (SUB-28.34, Devin (Cognition AI), desde 2026-10-12 13:46)
 - **Pendentes:** 4 principais (25, 26, 28, 35) + 15 subtarefas
-  - livres agora: 8 (SUB-26.5, SUB-28.2, SUB-28.16, SUB-28.24, SUB-35.32, SUB-25.4, SUB-25.7, SUB-28.34)
+  - livres agora: 7 (SUB-26.5, SUB-28.2, SUB-28.16, SUB-28.24, SUB-35.32, SUB-25.4, SUB-25.7)
   - bloqueadas por dependência: 7
   - reservadas: 0
 - **Concluídas:** 222 de 241 blocos (33 principais + 189 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
@@ -188,7 +199,7 @@
   - `SUB-28.31`: `montarPromptPlano(estado)` em `worker/plano.ts` (`concluido`, `8a43f2b`)
   - `SUB-28.32`: Registro de auditoria da aprovação (`pendente`)
   - `SUB-28.33`: Corrigir `finalizar()` para a assinatura real de `finalizar_task` (`concluido`, `76f243e`)
-  - `SUB-28.34`: `resumoSeguro`/`chaves` só com os passos `passo-<i>` em `worker/nos/finalizar.ts` (`pendente`)
+  - `SUB-28.34`: `resumoSeguro`/`chaves` só com os passos `passo-<i>` em `worker/nos/finalizar.ts` (`em_execucao`)
 - **Descrição:** Implementar a orquestração multi-etapas de execução descrita em `LangChain_LangGraph.md`, mantendo Supabase como autoridade sobre a fila, dependências, locks, tentativas e resultado. Integrar o worker LangGraph às RPCs existentes e às ferramentas MCP autorizadas, com checkpoint durável, retomada, tratamento de falhas e aprovação humana para ações sensíveis.
 - **Critérios de Aceitação:** A task só inicia após todas as dependências SUB-01 a SUB-27 concluídas; execução reivindicada por `pegar_proxima_task`; estado do grafo é retomável e não duplica efeitos; escrita ocorre por ferramentas autenticadas e autorizadas; ações sensíveis pausam para aprovação; conclusão/erro e liberação do lock passam por `finalizar_task`; documentação de operação e segurança atualizada conforme `LangChain_LangGraph.md`.
 - **Commit:** pendente
@@ -277,8 +288,8 @@
 ## 📡 FASE 12: Monitor em Tempo Real dos Agentes
 
 #### [ ] SUB-28.34: `resumoSeguro`/`chaves` só com os passos `passo-<i>` em `worker/nos/finalizar.ts`
-- **Status:** pendente
-- **Executor:** nenhum
+- **Status:** em_execucao
+- **Executor:** Devin (Cognition AI) (início: 2026-10-12 13:46)
 - **Depende de:** SUB-28.17
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Achado da SUB-28.17 (cadastrado em 2026-10-12 por Devin (Cognition AI)): `resumoSeguro()` e `chaves` do `finalizarNode` usam todas as chaves de `resultados` menos `erro`, então contam `brain_search` (memórias de `carregarContexto`), `classe_falha` e `tentativas:<passo>` como passos concluídos (ex.: "3 passo(s) concluído(s): brain_search, passo-0, passo-1" com 2 passos). Filtrar só as chaves `passo-<i>` e ajustar o teste do caminho feliz em `tests/unit/worker-grafo.test.ts` para o valor exato.
