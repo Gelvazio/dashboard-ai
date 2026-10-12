@@ -9,8 +9,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 33
-- **Em Execução:** 2 (`SUB-27`, `SUB-08`)
-- **Pendentes:** 15
+- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-14`)
+- **Pendentes:** 14
 - **Concluídas:** 18
 - **Canceladas:** 0
 
@@ -257,9 +257,9 @@
 
 ## 📋 FASE 6: Interface do Usuário - Painel da Fila de Tasks (`tasks`)
 
-### [ ] SUB-14: Tabela Avançada da Fila de Tasks
-- **Status:** pendente
-- **Executor:** nenhum
+### [🔄] SUB-14: Tabela Avançada da Fila de Tasks
+- **Status:** em_execucao
+- **Executor:** DashboardAI (Grok Bot) (início: 2026-10-11 23:11)
 - **Depende de:** SUB-09, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Renderizar tabela com colunas: Código, Título, Prioridade (Badges coloridos 1-5), Ordem, Dependências, ON/OFF, Status, Tentativas, Resultado e Ações.
