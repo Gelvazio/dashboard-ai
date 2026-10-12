@@ -15,12 +15,12 @@
 
 | Propriedade | Valor Atual |
 |---|---|
-| **Status da Trava:** | 🟢 **LIVRE** |
-| **Sub-task em Execução:** | — |
-| **Título da Sub-task:** | — |
-| **Agente Responsável:** | — |
-| **Data e Hora de Início:** | — |
-| **Bloqueio para Outras IAs:** | Trava de Gemini (Antigravity) em SUB-01.1 liberada pelo usuário em 2026-10-11 22:56 (parada desde 2026-10-11 22:13, sem pushes); ver travas adicionais abaixo |
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-21** |
+| **Título da Sub-task:** | Grid de Gerenciamento e Exclusão de Memórias |
+| **Agente Responsável:** | Codex (OpenAI) |
+| **Data e Hora de Início:** | 2026-10-11 23:28 |
+| **Bloqueio para Outras IAs:** | **ATIVADO**; SUB-21 depende de SUB-10 e SUB-12, concluídas |
 
 ### 🔒 TRAVA ADICIONAL — Codex (OpenAI)
 
@@ -55,21 +55,33 @@
 | **Data e Hora de Início:** | 2026-10-11 23:27 |
 | **Bloqueio para Outras IAs:** | **ATIVADO** |
 
+### 🔒 TRAVA ADICIONAL — Codex (OpenAI) — SUB-21
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **OCUPADO** |
+| **Sub-task em Execução:** | **SUB-21** |
+| **Título da Sub-task:** | Grid de Gerenciamento e Exclusão de Memórias |
+| **Agente Responsável:** | Codex (OpenAI) |
+| **Data e Hora de Início:** | 2026-10-11 23:28 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
 ---
 
 ## 🚦 QUADRO KANBAN DE SUB-TASKS
 
-### 🔄 EM EXECUÇÃO (3)
+### 🔄 EM EXECUÇÃO (4)
 
 | Código | Título da Mini-task | Agente | Início | Depende de |
 |---|---|---|---|---|
 | **SUB-27** | Autenticação e Login com Supabase Auth | Codex (OpenAI) | 2026-10-11 22:27 | SUB-03, SUB-29 |
 | **SUB-08** | Configuração de Variáveis de Ambiente e `.env.example` | xAI (Grok) | 2026-10-11 22:41 | SUB-06 |
 | **SUB-23** | Diagnóstico de Travas e Saúde da Fila | DashboardAI (Grok Bot) | 2026-10-11 23:27 | SUB-09, SUB-11, SUB-12 |
+| **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias | Codex (OpenAI) | 2026-10-11 23:28 | SUB-10, SUB-12 |
 
 ---
 
-### ⏳ PENDENTES (8)
+### ⏳ PENDENTES (7)
 
 | Código | Título da Mini-task | Prioridade | Fase | Depende de |
 |---|---|---|---|---|
@@ -77,7 +89,6 @@
 | **SUB-20** | Formulário de Nova Memória Canônica | 4 | Fase 7 | SUB-10, SUB-12, SUB-33 |
 | **SUB-33** | Endpoint de Embeddings para o Frontend (`api/embedding.ts`) | 4 | Fase 2B | SUB-07, SUB-03 |
 | **SUB-34** | Carregamento Sob Demanda de Telas e Modais (code splitting) | 4 | Fase 6 | SUB-13, SUB-14, SUB-16, SUB-17, SUB-18 |
-| **SUB-21** | Grid de Gerenciamento e Exclusão de Memórias | 4 | Fase 7 | SUB-10, SUB-12 |
 | **SUB-25** | Validação de Build e Execução Local | 5 | Fase 10 | SUB-01 a SUB-24 |
 | **SUB-26** | Documentação Completa e Manual Operacional no `README.md` | 5 | Fase 10 | SUB-25 |
 | **SUB-28** | Integração LangChain/LangGraph para Execução de Tasks | 5 | Fase 11 (última) | SUB-01 a SUB-27, SUB-29, SUB-30 |

@@ -9,8 +9,8 @@
 
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 34
-- **Em Execução:** 3 (`SUB-27`, `SUB-08`, `SUB-23`)
-- **Pendentes:** 8
+- **Em Execução:** 4 (`SUB-27`, `SUB-08`, `SUB-23`, `SUB-21`)
+- **Pendentes:** 7
 - **Concluídas:** 25
 - **Canceladas:** 0
 
@@ -349,16 +349,16 @@
 - **Commit:** pendente
 - **Anotação:** pendente
 
-### [ ] SUB-21: Grid de Gerenciamento e Exclusão de Memórias
-- **Status:** pendente
-- **Executor:** nenhum
+### [🔄] SUB-21: Grid de Gerenciamento e Exclusão de Memórias
+- **Status:** em_execucao
+- **Executor:** Codex (OpenAI) (início: 2026-10-11 23:28)
 - **Depende de:** SUB-10, SUB-12
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Exibição em cartões de todas as memórias cadastradas, com botão para copiar conteúdo Markdown, visualizar detalhes e excluir memória.
 - **Escopo por projeto:** dados filtrados pelo projeto selecionado (`project_id`, ver SUB-29).
 - **Critérios de Aceitação:** Grid responsivo com paginação/scroll e feedback de exclusão.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** pendente (lock ainda precisa de commit/push)
+- **Anotação:** Lock assumido; implementação ainda não iniciada.
 
 ---
 
