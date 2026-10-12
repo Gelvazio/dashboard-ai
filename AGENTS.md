@@ -6,18 +6,51 @@
 
 ---
 
-## 🔒 1. PROTOCOLO OBRIGATÓRIO DE CAPTURA DE TAREFA (LOCK EM 2 PARTES) E CONCORRÊNCIA
+## 🔒 1. PROTOCOLO OBRIGATÓRIO DE CAPTURA DE TAREFA (LOCK EM 3 PARTES) E CONCORRÊNCIA
 
-Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) que chegar à fila de tarefas **DEVE SEGUIR RIGOROSAMENTE O FLUXO EM 2 PARTES ANTES DE MEXER NO CÓDIGO DA TAREFA**:
+Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) que chegar à fila de tarefas **DEVE SEGUIR RIGOROSAMENTE O FLUXO EM 3 PARTES ANTES DE MEXER NO CÓDIGO DA TAREFA**:
+
+**CHECKLIST OBRIGATÓRIO ANTES DE ASSUMIR QUALQUER TAREFA:**
+☐ [ ] Fiz `git pull origin main` **PRIMEIRO**?
+☐ [ ] Li os arquivos ATUALIZADOS (quadro-task-principal.md e task-principal.md)?
+☐ [ ] Verifiquei que a trava está LIVRE ou que minha task não conflita?
+☐ [ ] Confirmei que todas as dependências estão `concluido`?
+☐ [ ] Vou fazer commit + push do lock IMEDIATAMENTE antes de codificar?
+
+⛔ **Se NÃO marcou todos os ☐ acima, NÃO assuma a tarefa.**
+
+---
 
 ### 🔹 PARTE 1 — LER O QUADRO E IDENTIFICAR A TAREFA PENDENTE
-1. Executar `git pull origin main` para garantir o estado mais recente.
-2. Ler obrigatoriamente:
+
+⚠️ **ORDEM OBRIGATÓRIA DE EXECUÇÃO (NÃO PULAR PASSOS):**
+
+✅ **PASSO 1 (CRÍTICO — PRIMEIRO):** Executar `git pull origin main` para garantir o estado mais recente do repositório.
+   - ⛔ **NÃO** ler nenhum arquivo local antes deste comando
+   - ⛔ **NÃO** assumir nenhuma tarefa sem garantir que está no estado mais recente
+   - Se houver conflito de merge, resolver antes de prosseguir
+
+✅ **PASSO 2 (SÓ DEPOIS DO GIT PULL):** Ler obrigatoriamente os arquivos ATUALIZADOS:
    - 📄 [`quadro-task-principal.md`](file:///c:/fontes/dashboard-ai/quadro-task-principal.md)
    - 📄 [`task-principal.md`](file:///c:/fontes/dashboard-ai/task-principal.md)
-3. Conferir a seção **"🔒 TRAVA ATIVA NO MOMENTO"** em `quadro-task-principal.md`:
+
+✅ **PASSO 3:** Conferir a seção **"🔒 TRAVA ATIVA NO MOMENTO"** em `quadro-task-principal.md`:
    - ⛔ **PROIBIÇÃO TOTAL DE CONFLITO:** Se já existir uma task com trava ativa ou status `EM EXECUÇÃO` associada a outro agente, **NENHUMA OUTRA IA PODE ASSUMIR AQUELA MESMA TAREFA**.
-4. Localizar a próxima sub-task com status `pendente`.
+
+✅ **PASSO 4:** Localizar a próxima sub-task com status `pendente`:
+   - Verificar se todas as dependências da sub-task estão com status `concluido`
+   - ⛔ **NÃO** assumir uma tarefa cujas dependências não estejam 100% concluídas
+
+---
+
+### ⚠️ ERROS COMUNS A EVITAR (CAUSAM CONFLITOS)
+
+❌ **LER ARQUIVOS LOCAIS ANTES DE GIT PULL:** Os arquivos podem estar desatualizados. Sempre fazer `git pull` primeiro.
+❌ **ASSUMIR TAREFA SEM VERIFICAR TRAVAS:** Pode resultar em múltiplos agentes trabalhando na mesma tarefa.
+❌ **IGNORAR DEPENDÊNCIAS:** Uma tarefa só pode ser assumida se todas as suas dependências estiverem `concluido`.
+❌ **NÃO FAZER COMMIT/PUSH DO LOCK:** O lock não é válido até ser commitado e pushed para o remoto.
+
+---
 
 ### 🔹 PARTE 2 — GRAVAR O BLOQUEIO NO QUADRO, FAZER COMMIT E PUSH IMEDIATOS
 1. Gravar a tarefa como bloqueada no quadro para que nenhuma outra IA a pegue:
