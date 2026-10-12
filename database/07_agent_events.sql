@@ -145,3 +145,42 @@ begin
   end if;
 end;
 $$;
+
+-- -----------------------------------------------------------------------------
+-- atividade_atual_agentes (SUB-35.5): último evento de cada agente do projeto,
+-- com o horário do último heartbeat. security invoker: a RLS de agent_events
+-- decide o que o usuário vê. Só leitura; não altera travas.
+-- -----------------------------------------------------------------------------
+drop function if exists public.atividade_atual_agentes(bigint);
+create function public.atividade_atual_agentes(p_project_id bigint)
+returns table (
+  agente              text,
+  task_codigo         text,
+  etapa               text,
+  tipo                text,
+  status              text,
+  mensagem            text,
+  execucao_id         text,
+  ultimo_em           timestamptz,
+  ultimo_heartbeat_em timestamptz
+)
+language sql
+stable
+security invoker
+set search_path = public
+as $$
+  select distinct on (e.agente)
+         e.agente, e.task_codigo, e.etapa, e.tipo, e.status, e.mensagem, e.execucao_id,
+         e.created_at as ultimo_em,
+         (select max(h.created_at) from public.agent_events h
+           where h.project_id = e.project_id and h.agente = e.agente and h.tipo = 'heartbeat') as ultimo_heartbeat_em
+    from public.agent_events e
+   where e.project_id = p_project_id
+   order by e.agente, e.created_at desc, e.id desc;
+$$;
+
+comment on function public.atividade_atual_agentes(bigint) is
+  'Último evento de cada agente do projeto (+ último heartbeat), para o monitor em tempo real (SUB-35). security invoker: respeita a RLS de agent_events.';
+
+revoke all on function public.atividade_atual_agentes(bigint) from public, anon;
+grant execute on function public.atividade_atual_agentes(bigint) to authenticated, service_role;
