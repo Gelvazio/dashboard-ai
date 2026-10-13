@@ -8,6 +8,7 @@ type DadosFormularioProjeto = DadosValidacaoProjeto & {
   descricao: string;
   repositorio: string;
   branch_padrao: string;
+  tags_texto: string;
 };
 
 type CampoFormularioProjeto = keyof DadosFormularioProjeto;
@@ -19,6 +20,7 @@ const CAMPO = [
 ].join(' ');
 
 const PRIORIDADE_PADRAO: PrioridadeProjeto = 'MEDIA';
+const PRIORIDADES_PROJETO: readonly PrioridadeProjeto[] = ['MAXIMA', 'ALTA', 'MEDIA', 'BAIXA'];
 const DADOS_VAZIOS: DadosFormularioProjeto = {
   nome: '',
   slug: '',
@@ -30,8 +32,11 @@ const DADOS_VAZIOS: DadosFormularioProjeto = {
   icone: null,
   url_producao: null,
   url_documentacao: null,
+  responsavel_id: null,
   prioridade: PRIORIDADE_PADRAO,
   data_prevista_fim: null,
+  tags: [],
+  tags_texto: '',
 };
 
 export interface ProjetoFormProps {
@@ -57,8 +62,11 @@ function dadosDoProjeto(projeto?: Project): DadosFormularioProjeto {
     icone: projeto.icone,
     url_producao: projeto.url_producao,
     url_documentacao: projeto.url_documentacao,
+    responsavel_id: projeto.responsavel_id,
     prioridade: projeto.prioridade,
     data_prevista_fim: projeto.data_prevista_fim,
+    tags: projeto.tags,
+    tags_texto: projeto.tags.join(', '),
   };
 }
 
@@ -71,23 +79,43 @@ export function ProjetoForm({ projeto, onSalvou, onCancelar }: ProjetoFormProps)
   const [carregando, setCarregando] = useState(false);
 
   /** Atualiza um campo do formulário e mantém os demais valores. */
-  function alterar(campo: CampoFormularioProjeto, valor: string) {
+  function alterar<Campo extends CampoFormularioProjeto>(
+    campo: Campo,
+    valor: DadosFormularioProjeto[Campo],
+  ) {
     setDados((atuais) => ({ ...atuais, [campo]: valor }));
   }
 
   /** Valida e persiste os campos básicos do projeto. */
   async function enviar(evento: FormEvent<HTMLFormElement>) {
     evento.preventDefault();
-    const novosErros = validarProjeto(dados);
+    const dadosParaValidar = { ...dados, tags: separarTags(dados.tags_texto) };
+    const novosErros = validarProjeto(dadosParaValidar);
     setErros(novosErros);
     setErro(null);
     if (Object.keys(novosErros).length > 0) return;
 
     setCarregando(true);
     try {
+      const dadosParaSalvar = {
+        nome: dados.nome.trim(),
+        slug: dados.slug,
+        descricao: dados.descricao.trim() || null,
+        repositorio: dados.repositorio.trim() || null,
+        branch_padrao: dados.branch_padrao,
+        prefixo_codigo: dados.prefixo_codigo,
+        responsavel_id: dadosParaValidar.responsavel_id?.trim() || null,
+        data_prevista_fim: dadosParaValidar.data_prevista_fim || null,
+        cor: dadosParaValidar.cor || null,
+        icone: dadosParaValidar.icone?.trim() || null,
+        url_producao: dadosParaValidar.url_producao?.trim() || null,
+        url_documentacao: dadosParaValidar.url_documentacao?.trim() || null,
+        prioridade: dados.prioridade,
+        tags: dadosParaValidar.tags,
+      };
       const salvo = projeto
-        ? await atualizarProjeto(projeto.id, dados)
-        : await criarProjeto(dados);
+        ? await atualizarProjeto(projeto.id, dadosParaSalvar)
+        : await criarProjeto(dadosParaSalvar);
       onSalvou?.(salvo);
     } catch (falha) {
       setErro((falha as Error).message);
@@ -138,6 +166,67 @@ export function ProjetoForm({ projeto, onSalvou, onCancelar }: ProjetoFormProps)
         valor={dados.branch_padrao}
         onChange={(valor) => alterar('branch_padrao', valor)}
       />
+      <CampoProjeto
+        id={`${id}-responsavel`}
+        rotulo="Responsável (UUID do usuário)"
+        valor={dados.responsavel_id ?? ''}
+        erro={erros.responsavel_id}
+        onChange={(valor) => alterar('responsavel_id', valor)}
+      />
+      <p className="-mt-3 text-xs text-slate-500 dark:text-slate-400">
+        A lista de usuários não está disponível no frontend; informe o UUID do usuário no Supabase.
+      </p>
+      <CampoProjeto
+        id={`${id}-prazo`}
+        rotulo="Prazo previsto"
+        tipo="date"
+        valor={dados.data_prevista_fim ?? ''}
+        erro={erros.data_prevista_fim}
+        onChange={(valor) => alterar('data_prevista_fim', valor)}
+      />
+      <CampoProjeto
+        id={`${id}-cor`}
+        rotulo="Cor"
+        tipo="color"
+        valor={dados.cor ?? '#2563eb'}
+        erro={erros.cor}
+        onChange={(valor) => alterar('cor', valor)}
+      />
+      <CampoProjeto
+        id={`${id}-icone`}
+        rotulo="Ícone (nome do lucide-react)"
+        valor={dados.icone ?? ''}
+        erro={erros.icone}
+        onChange={(valor) => alterar('icone', valor)}
+      />
+      <CampoProjeto
+        id={`${id}-url-producao`}
+        rotulo="URL de produção"
+        tipo="url"
+        valor={dados.url_producao ?? ''}
+        erro={erros.url_producao}
+        onChange={(valor) => alterar('url_producao', valor)}
+      />
+      <CampoProjeto
+        id={`${id}-url-documentacao`}
+        rotulo="URL da documentação"
+        tipo="url"
+        valor={dados.url_documentacao ?? ''}
+        erro={erros.url_documentacao}
+        onChange={(valor) => alterar('url_documentacao', valor)}
+      />
+      <CampoPrioridade
+        id={`${id}-prioridade`}
+        valor={dados.prioridade}
+        erro={erros.prioridade}
+        onChange={(valor) => alterar('prioridade', valor)}
+      />
+      <CampoProjeto
+        id={`${id}-tags`}
+        rotulo="Tags (separadas por vírgula)"
+        valor={dados.tags_texto}
+        onChange={(valor) => alterar('tags_texto', valor)}
+      />
       {erro && <p role="alert" className="text-sm text-rose-600 dark:text-rose-400">{erro}</p>}
       <div className="flex justify-end gap-2">
         {onCancelar && <Botao onClick={onCancelar}>Cancelar</Botao>}
@@ -156,10 +245,19 @@ interface CampoProjetoProps {
   erro?: string;
   onChange: (valor: string) => void;
   multiline?: boolean;
+  tipo?: 'text' | 'date' | 'url' | 'color';
 }
 
 /** Renderiza um campo básico com rótulo e erro acessíveis. */
-function CampoProjeto({ id, rotulo, valor, erro, onChange, multiline = false }: CampoProjetoProps) {
+function CampoProjeto({
+  id,
+  rotulo,
+  valor,
+  erro,
+  onChange,
+  multiline = false,
+  tipo = 'text',
+}: CampoProjetoProps) {
   const a11y = {
     id,
     value: valor,
@@ -175,8 +273,44 @@ function CampoProjeto({ id, rotulo, valor, erro, onChange, multiline = false }: 
       <label htmlFor={id} className="block text-sm font-medium text-slate-700 dark:text-slate-200">
         {rotulo}
       </label>
-      {multiline ? <textarea {...a11y} rows={3} /> : <input {...a11y} type="text" />}
+      {multiline ? <textarea {...a11y} rows={3} /> : <input {...a11y} type={tipo} />}
       {erro && <p id={`${id}-erro`} className="text-xs text-rose-600 dark:text-rose-400">{erro}</p>}
     </div>
   );
+}
+
+interface CampoPrioridadeProps {
+  id: string;
+  valor: PrioridadeProjeto;
+  erro?: string;
+  onChange: (valor: PrioridadeProjeto) => void;
+}
+
+/** Renderiza o seletor de prioridade e sua mensagem de validação. */
+function CampoPrioridade({ id, valor, erro, onChange }: CampoPrioridadeProps) {
+  return (
+    <div className="space-y-1">
+      <label htmlFor={id} className="block text-sm font-medium text-slate-700 dark:text-slate-200">
+        Prioridade
+      </label>
+      <select
+        id={id}
+        value={valor}
+        onChange={(evento) => onChange(evento.target.value as PrioridadeProjeto)}
+        aria-invalid={Boolean(erro)}
+        aria-describedby={erro ? `${id}-erro` : undefined}
+        className={CAMPO}
+      >
+        {PRIORIDADES_PROJETO.map((prioridade) => (
+          <option key={prioridade} value={prioridade}>{prioridade}</option>
+        ))}
+      </select>
+      {erro && <p id={`${id}-erro`} className="text-xs text-rose-600 dark:text-rose-400">{erro}</p>}
+    </div>
+  );
+}
+
+/** Divide tags por vírgula e remove valores vazios e espaços externos. */
+function separarTags(tagsTexto: string): string[] {
+  return tagsTexto.split(',').map((tag) => tag.trim()).filter(Boolean);
 }

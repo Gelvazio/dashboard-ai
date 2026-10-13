@@ -5,6 +5,11 @@ const PREFIXO_PROJETO_RE = /^[A-Z][A-Z0-9]{0,15}$/;
 const COR_PROJETO_RE = /^#[0-9a-fA-F]{6}$/;
 const ICONE_PROJETO_RE = /^[a-z0-9-]{1,64}$/;
 const URL_PROJETO_RE = /^https?:\/\//;
+const UUID_PROJETO_RE = new RegExp(
+  '^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-' +
+    '[89ab][0-9a-f]{3}-[0-9a-f]{12}$',
+  'i',
+);
 const PRIORIDADES_PROJETO: readonly PrioridadeProjeto[] = ['MAXIMA', 'ALTA', 'MEDIA', 'BAIXA'];
 
 /** Campos editáveis necessários para validar o formulário de projeto. */
@@ -16,8 +21,10 @@ export interface DadosValidacaoProjeto {
   icone: string | null;
   url_producao: string | null;
   url_documentacao: string | null;
+  responsavel_id: string | null;
   prioridade: PrioridadeProjeto;
   data_prevista_fim: string | null;
+  tags: string[];
 }
 
 /** Valida uma data ISO completa e rejeita datas impossíveis do calendário. */
@@ -50,6 +57,9 @@ export function validarProjeto(
   }
   if (dados.url_documentacao && !URL_PROJETO_RE.test(dados.url_documentacao)) {
     erros.url_documentacao = 'A URL da documentação deve começar com http:// ou https://.';
+  }
+  if (dados.responsavel_id && !UUID_PROJETO_RE.test(dados.responsavel_id)) {
+    erros.responsavel_id = 'Informe o UUID válido do usuário responsável.';
   }
   if (!PRIORIDADES_PROJETO.includes(dados.prioridade)) {
     erros.prioridade = 'Selecione uma prioridade válida.';
