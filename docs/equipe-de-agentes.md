@@ -58,7 +58,7 @@ para o **Grok Bot**, o **Devin** (plano Free) e o **Antigravity** (Starter Quota
 | **Claude Code na nuvem** | Haiku | Sonnet | Opus (sem banco) | Regra 11: banco nunca |
 | **Gemini CLI** | modelo Flash | modelo Pro | modelo Pro (sem banco) | — |
 | **Antigravity** (Starter Quota) | Gemini 3.8 Flash | ⛔ não pega | ⛔ não pega | Só tarefa fácil (`LEVE`): cota de entrada pequena; definido pelo usuário em 2026-10-13 |
-| **Grok** | modelo rápido | modelo principal | modelo principal (sem banco) | — |
+| **Grok** (SuperGrok) | modelo rápido | Grok 4.7 | ⛔ não pega | Só até tarefa média (`MEDIO`), por cautela com a cota do plano; definido pelo usuário em 2026-10-13 |
 | **DeepSeek** | **DeepSeek V4.1 Flash** | modelo de raciocínio | ⛔ não pega | Flash definido pelo usuário em 2026-10-13 para tarefa fácil (`LEVE`) |
 | **Devin** | ✅ | ⛔ não pega | ⛔ não pega | Só tarefa fácil (`LEVE`): plano Free, com modelos limitados; definido pelo usuário em 2026-10-13. Não escolhe o modelo por tarefa |
 | **Grok Bot** | ✅ | ⛔ não pega | ⛔ não pega | Só tarefa fácil (`LEVE`), definido pelo usuário em 2026-10-13; não escolhe o modelo por tarefa e os Bots compartilham o mesmo computador |
