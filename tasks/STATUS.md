@@ -84,7 +84,6 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-49.3 | Criar workflow alternativo para Cloudflare R2 (retenção > 90 dias) | 🟡 Média | SUB-49.2 | ⬜ Pendente | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
 | SUB-49.4 | Documentar escolha entre as 2 opções e migração | 🟡 Média | SUB-49.3 | ⬜ Pendente | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
 | SUB-50 | **Configurar Supabase local com Docker para desenvolvimento** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
-| SUB-50.6 | Documentar alternância entre local e nuvem | 🟡 Média | SUB-50.5 | 🔄 Em execução | DeepSeek Harness (deepseek-flash) (local · main) (desde 2026-10-13 17:28) | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-50.7 | Atualizar o `README.md` com instruções de desenvolvimento local | 🟡 Média | SUB-50.6 | ⬜ Pendente | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-55 | **Visualizador de regras e tarefas lendo os `.md` direto (`.claude/rules/index.html`)** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-55.5 | Documentar no `README.md` como abrir o visualizador | 🟡 Média | SUB-55.4 | 🔄 Em execução | Claude Code (Opus 5.5) (local · main) (desde 2026-10-13 16:17) | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |

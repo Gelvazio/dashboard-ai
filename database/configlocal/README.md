@@ -2,7 +2,7 @@
 
 Configuração do Supabase **local**, para desenvolver e testar sem mexer no banco da nuvem
 (tarefa SUB-50). O projeto continua usando o Supabase na nuvem por padrão; o local é opcional.
-Instalação do CLI e do Docker: [`docs/supabase-local-instalacao.md`](../../docs/supabase-local-instalacao.md).
+Instalação do CLI e do Docker: [`docs/supabase-local.md`](../../docs/supabase-local.md).
 
 ## Como usar
 
