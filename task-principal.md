@@ -33,25 +33,12 @@
 
 | Propriedade | Valor Atual |
 |---|---|
-| **Status da Trava:** | 🔒 **OCUPADA** |
-| **Sub-task em Execução:** | **SUB-38** |
-| **Título da Sub-task:** | Verificação geral de todas as tarefas (marcador `VERIFICADOR-CLAUDE`) |
-| **Agente Responsável:** | DeepSeek Harness (deepseek-flash) |
-| **Data e Hora de Início:** | 2026-10-12 16:25 |
-| **Bloqueio para Outras IAs:** | Nenhuma outra IA pode assumir a SUB-38 (a 🔒 TRAVA ESPECIAL do KIRO-DEV-CLONE continua ativa logo abaixo) |
-
----
-
-### 🔒 TRAVA ADICIONAL — DeepSeek Harness (deepseek-flash) — SUB-38
-
-| Propriedade | Valor Atual |
-|---|---|
-| **Status da Trava:** | 🔴 **OCUPADO** |
-| **Sub-task em Execução:** | **SUB-38** |
-| **Título da Sub-task:** | Verificação geral de todas as tarefas (marcador `VERIFICADOR-CLAUDE`) |
-| **Agente Responsável:** | DeepSeek Harness (deepseek-flash) |
-| **Data e Hora de Início:** | 2026-10-12 16:25 |
-| **Bloqueio para Outras IAs:** | **ATIVADO** — ninguém assume a SUB-38 |
+| **Status da Trava:** | 🟢 **LIVRE** |
+| **Sub-task em Execução:** | — |
+| **Título da Sub-task:** | — |
+| **Agente Responsável:** | — |
+| **Data e Hora de Início:** | — |
+| **Bloqueio para Outras IAs:** | Nenhum (a 🔒 TRAVA ESPECIAL do KIRO-DEV-CLONE continua ativa logo abaixo). Trava da SUB-38 de DeepSeek Harness (deepseek-flash) liberada pelo usuário em 2026-10-13 13:57 |
 
 ---
 
@@ -75,12 +62,12 @@
 ## 📊 Resumo de Progresso
 - **Total de Tasks Principais:** 50
 - **Subtarefas atômicas (~3 min):** 304
-- **Em Execução:** 1 (SUB-38)
+- **Em Execução:** 0
 - **Pendentes:** 11 principais (SUB-38, 28, 35, 41, 42, 45, 47, 48, 49, 50, KIRO-DEV-CLONE) + 91 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 4 — SUB-35.46, SUB-48, SUB-49.1 e SUB-50.1 (`MEDIA`). SUB-47.0 bloqueada por aprovação do plano (equipe de agentes ainda não aprovada). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 5 — SUB-38 (`MAXIMA`), SUB-35.46, SUB-48, SUB-49.1 e SUB-50.1 (`MEDIA`). SUB-47.0 bloqueada por aprovação do plano (equipe de agentes ainda não aprovada). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
   - bloqueadas por dependência: 39 — SUB-45.2 a SUB-45.19 (cadeia da SUB-45; tarefas de banco só Claude Code local; frontend depende de banco), SUB-41.2, SUB-41.3, SUB-42 (cadeia da SUB-41), SUB-47.1 a SUB-47.13 (cadeia da SUB-47, aguardando aprovação), SUB-49.2 a SUB-49.4 (cadeia da SUB-49) e SUB-50.2 a SUB-50.7 (cadeia da SUB-50)
   - aguardando aprovação do plano pelo usuário: 14 — SUB-47.0 a SUB-47.13 ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md), agora integrando Laya Server)
-  - em execução: 1 — SUB-38 (DeepSeek Harness (deepseek-flash))
+  - em execução: 0
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
 - **Concluídas:** 252 de 353 blocos (38 principais + 214 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
@@ -90,15 +77,15 @@
 ## ⭐ PRIORIDADE MÁXIMA
 
 ### [ ] SUB-38: Verificação geral de todas as tarefas (marcador `VERIFICADOR-CLAUDE`)
-- **Status:** em_execucao
+- **Status:** pendente
 - **Prioridade:** MAXIMA
-- **Executor:** DeepSeek Harness (deepseek-flash) (início: 2026-10-12 16:25)
+- **Executor:** nenhum (trava de DeepSeek Harness (deepseek-flash), de 2026-10-12 16:25, liberada pelo usuário em 2026-10-13 13:57)
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica; mantida como 1 tarefa por decisão do usuário em 2026-10-12, apesar de passar de ~3 min)
-- **Descrição:** Ler todos os blocos do `task-principal.md` e do `task_complete.md` e conferir, um por vez, se a entrega está correta (commits citados existem, arquivos e funções existem e atendem aos critérios, testes e validação). O resultado vai no marcador `- **VERIFICADOR-CLAUDE:**` de cada bloco (já inserido como `PENDENTE`). Valores: `✅ OK`, `⚠️ RESSALVA`, `❌ FALHA` ou `⬜ NÃO IMPLEMENTADA`, sempre com data, hora, agente e evidência. Só leitura: problemas achados viram subtarefas novas, não são corrigidos aqui. Commit e push a cada bloco verificado (`docs(verificador): SUB-XX verificada (<resultado>) por <agente>`). Plano e critérios: [`docs/verificador-claude.md`](docs/verificador-claude.md).
+- **Descrição:** Ler todos os blocos do `task-principal.md` e do `task_complete.md` e conferir, um por vez, se a entrega está correta (commits citados existem, arquivos e funções existem e atendem aos critérios, testes e validação). O resultado vai no marcador `- **VERIFICADOR-CLAUDE:**` de cada bloco (já inserido como `PENDENTE`). Valores: `✅ OK`, `⚠️ RESSALVA`, `❌ FALHA` ou `⬜ NÃO IMPLEMENTADA`, sempre com data, hora, agente e evidência. Só leitura: problemas achados viram subtarefas novas, não são corrigidos aqui. **Método econômico (aprovado pelo usuário em 2026-10-13 13:57):** (1) script Python (`scripts/verificador/verificar_quadros.py`) faz a checagem mecânica de todos os blocos `PENDENTE` sem gastar tokens — commits citados existem (`git cat-file -e`), arquivos citados existem na `main` — e grava `⬜ NÃO IMPLEMENTADA`/`⚠️ RESSALVA` quando for objetivo; (2) a IA só revisa os blocos que o script marcou como duvidosos ou que pedem julgamento do critério de aceitação; (3) validação geral (`npm run typecheck`, `build`, `test`) roda **uma vez** para o projeto, não por bloco; (4) commit e push **por lote** de 20–30 blocos (`docs(verificador): lote N (SUB-XX a SUB-YY) por <agente>`), em vez de um por bloco. Plano e critérios: [`docs/verificador-claude.md`](docs/verificador-claude.md).
 - **Critérios de Aceitação:** Nenhum marcador `VERIFICADOR-CLAUDE: PENDENTE` nos dois quadros; relatório final com a lista de ressalvas e falhas.
 - **Commit:** pendente
-- **Anotação:** **Restaurada ao quadro (2026-10-12 16:25, DeepSeek Harness (deepseek-flash), a pedido do usuário):** o bloco desta tarefa foi **apagado** do `task-principal.md` pelo commit `32d6f58` ("concluir SUB-38 (verificação parcial) e liberar trava de Devin") e **nunca foi registrado no `task_complete.md`** — ficou fora dos **dois** quadros, deixando a seção `⭐ PRIORIDADE MÁXIMA` vazia e o resumo contando uma pendente que não existia como bloco. Conferido no histórico: `SUB-38:` existe em `32d6f58^`, não existe em `32d6f58` e não aparece no `task_complete.md` daquele commit. Como o critério de aceitação **não** foi atendido — há **268 marcadores `VERIFICADOR-CLAUDE: PENDENTE`** (36 no quadro ativo + 232 no histórico) contra 9 verificados — a tarefa volta como pendente e é assumida na mesma hora pela trava normal. **Estado herdado:** marcador inserido em 246 blocos (`5fb92f7`, hoje 277 por causa das 30 filhas do KIRO e da SUB-25.8); validação geral registrada em [`docs/verificador-claude.md`](docs/verificador-claude.md) (`npm run typecheck`/`build` falhavam com TS6133, corrigido na SUB-25.8); **Progresso (2026-10-12 16:40): 45 de 297 blocos verificados.** Herdados 9 (SUB-25, SUB-25.4, SUB-25.7, SUB-26, SUB-26.3, SUB-26.9 e a mãe SUB-28 com `⚠️ RESSALVA` — esta por citar o commit inexistente `76f243e` na SUB-28.33; confirmado: `cfe88af` existe, `76f243e` não). Meus 36: **4 com evidência real** (`✅ OK` — SUB-28.18, 28.23, 28.25 e 28.32: commits, arquivos e funções conferidos, `npm run typecheck:api` exit 0) e **32 factuais** (`⬜ NÃO IMPLEMENTADA` — SUB-35.46, `KIRO-DEV-CLONE` e as 30 filhas: nada do escopo existe no repositório). Com isso o quadro ativo chegou a **0 pendentes**; depois entraram tarefas novas de outros agentes (SUB-39/40/41/42), então a fila ativa voltou a ter pendentes. **Falta o histórico: ~237 blocos em `task_complete.md`**, na ordem, começando pela `SUB-01` (linha 27). A contagem ao vivo é `grep -c 'VERIFICADOR-CLAUDE: PENDENTE'` nos dois quadros — este texto é um retrato do momento. Sem navegador e sem Docker/Postgres local (restrição registrada em `STATUS.md`).
+- **Anotação:** **Restaurada ao quadro (2026-10-12 16:25, DeepSeek Harness (deepseek-flash), a pedido do usuário):** o bloco desta tarefa foi **apagado** do `task-principal.md` pelo commit `32d6f58` ("concluir SUB-38 (verificação parcial) e liberar trava de Devin") e **nunca foi registrado no `task_complete.md`** — ficou fora dos **dois** quadros, deixando a seção `⭐ PRIORIDADE MÁXIMA` vazia e o resumo contando uma pendente que não existia como bloco. Conferido no histórico: `SUB-38:` existe em `32d6f58^`, não existe em `32d6f58` e não aparece no `task_complete.md` daquele commit. Como o critério de aceitação **não** foi atendido — há **268 marcadores `VERIFICADOR-CLAUDE: PENDENTE`** (36 no quadro ativo + 232 no histórico) contra 9 verificados — a tarefa volta como pendente e é assumida na mesma hora pela trava normal. **Estado herdado:** marcador inserido em 246 blocos (`5fb92f7`, hoje 277 por causa das 30 filhas do KIRO e da SUB-25.8); validação geral registrada em [`docs/verificador-claude.md`](docs/verificador-claude.md) (`npm run typecheck`/`build` falhavam com TS6133, corrigido na SUB-25.8); **Progresso (2026-10-12 16:40): 45 de 297 blocos verificados.** Herdados 9 (SUB-25, SUB-25.4, SUB-25.7, SUB-26, SUB-26.3, SUB-26.9 e a mãe SUB-28 com `⚠️ RESSALVA` — esta por citar o commit inexistente `76f243e` na SUB-28.33; confirmado: `cfe88af` existe, `76f243e` não). Meus 36: **4 com evidência real** (`✅ OK` — SUB-28.18, 28.23, 28.25 e 28.32: commits, arquivos e funções conferidos, `npm run typecheck:api` exit 0) e **32 factuais** (`⬜ NÃO IMPLEMENTADA` — SUB-35.46, `KIRO-DEV-CLONE` e as 30 filhas: nada do escopo existe no repositório). Com isso o quadro ativo chegou a **0 pendentes**; depois entraram tarefas novas de outros agentes (SUB-39/40/41/42), então a fila ativa voltou a ter pendentes. **Falta o histórico: ~237 blocos em `task_complete.md`**, na ordem, começando pela `SUB-01` (linha 27). A contagem ao vivo é `grep -c 'VERIFICADOR-CLAUDE: PENDENTE'` nos dois quadros — este texto é um retrato do momento. Sem navegador e sem Docker/Postgres local (restrição registrada em `STATUS.md`). **Liberação e novo método (2026-10-13 13:57, Claude Code (Opus 5.5), a pedido do usuário):** o usuário liberou a trava de DeepSeek Harness (deepseek-flash) para que outra IA assuma e aprovou a mudança de escopo para o método econômico (script para a parte mecânica + IA só nos duvidosos + validação única + commit por lote), por causa do custo estimado de 3 a 7 milhões de tokens no método bloco a bloco. Os marcadores já gravados continuam valendo. Recomendação: quem assumir deve ser um modelo capaz de tarefa média (escrever o script e julgar critérios), não um modelo só de tarefa fácil.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 
 ---
