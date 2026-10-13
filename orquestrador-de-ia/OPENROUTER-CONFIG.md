@@ -359,10 +359,11 @@ execução, uma faixa acima.
 | 3. Guardrail | Jev (`is_valid`, `noul` ≥ 0,8) |
 | 4. Automação externa | GitHub / quadro / `agent_event`, como já descrito |
 
-> ⚠️ **Correção para o YAML do `ORQUESTRADOR-DE-IA.md`:** as etapas `call_jev_router` e `call_jev_guardrail` de lá
-> usam um formato que **não existe** na API do Jev (`input` + lista `questions` com `text`/`type: boolean`, resposta em
-> `results.is_complex`). O formato real é o da seção 4.1: endpoint `https://api.typesafe.ai/v1/systemone`, campo
-> `state`, `questions` como **objeto** com `type: noul` e `instructions`, e resposta em `answers.<id>.noul`.
+> ✅ **YAML do `ORQUESTRADOR-DE-IA.md` corrigido (2026-10-13):** as etapas `call_jev_router` e `call_jev_guardrail`
+> usavam um formato que não existe na API do Jev (`input` + lista `questions` com `text`/`type: boolean`, resposta em
+> `results.is_complex`). Agora seguem o formato da seção 4.1: endpoint `https://api.typesafe.ai/v1/systemone`, campo
+> `state`, `questions` como **objeto** com `type: noul` e `instructions`, e decisão por limite sobre
+> `answers.<id>.noul` (`complexThreshold` = 0,5 e `validThreshold` = 0,8).
 
 ---
 

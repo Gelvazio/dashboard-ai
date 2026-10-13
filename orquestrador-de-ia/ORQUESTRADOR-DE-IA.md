@@ -93,7 +93,10 @@ main:
           - userQuery: ${args.query}
           - supabaseUrl: "https://seu-projeto.supabase.co/rest/v1/rpc/match_project_context"
           - supabaseKey: "SUA_ANON_KEY_DO_SUPABASE"
-          - jevUrl: "https://typesafe.ai" # TODO: confirmar o endpoint completo da API do Jev AI
+          - jevUrl: "https://api.typesafe.ai/v1/systemone"
+          - jevModel: "jev-latest"
+          - complexThreshold: 0.5   # probabilidade mínima para mandar ao worker pesado
+          - validThreshold: 0.8     # probabilidade mínima para aprovar a resposta
 
     # 2. Busca de Memória e Contexto de Longo Prazo no Supabase (pgvector)
     - fetch_context_from_supabase:
@@ -125,24 +128,28 @@ main:
                   - contextText: ${contextText + "\n---\n" + item.content}
 
     # 4. Roteamento Inteligente com Jev AI (Tomada de Decisão Sistema 1)
+    #    Pergunta "noul" (sim/não): a resposta é uma probabilidade de 0 a 1 em answers.is_complex.noul.
+    #    Instruções em inglês: é o idioma em que o Jev tem maior precisão.
     - call_jev_router:
         call: http.post
         args:
           url: ${jevUrl}
           headers:
             Authorization: ${"Bearer " + args.jev_token}
+            Content-Type: "application/json"
           body:
-            input: ${userQuery}
+            model: ${jevModel}
+            state: ${userQuery}
             questions:
-              - id: "is_complex"
-                text: "Esta tarefa exige refatoração complexa de arquitetura ou lógica densa?"
-                type: "boolean"
+              is_complex:
+                type: "noul"
+                instructions: "Does this task require complex architecture refactoring or dense logic?"
         result: jevResponse
 
     # 5. Avaliação da Complexidade para Chaveamento Dinâmico de Custos
     - evaluate_routing:
         switch:
-          - condition: ${jevResponse.body.results.is_complex == true}
+          - condition: ${jevResponse.body.answers.is_complex.noul >= complexThreshold}
             next: call_claude_worker
         next: call_gemini_worker
 
@@ -159,6 +166,9 @@ main:
                 parts:
                   - text: ${"Você é o agente Worker do Orquestrador. Responda à tarefa usando estritamente o contexto fornecido abaixo.\n\n[CONTEXTO DO PROJETO]\n" + contextText + "\n\n[TAREFA ATUAL]\n" + userQuery}
         result: aiResponse
+    - extract_gemini_text:
+        assign:
+          - answerText: ${aiResponse.body.candidates[0].content.parts[0].text}
         next: call_jev_guardrail
 
     # 7. Worker Pesado - Claude 3.5 Sonnet (Para tarefas complexas / caras)
@@ -177,26 +187,34 @@ main:
               - role: "user"
                 content: ${"Você é o agente Worker sênior do Orquestrador.\n\n[CONTEXTO]\n" + contextText + "\n\n[TAREFA]\n" + userQuery}
         result: aiResponse
+    - extract_claude_text:
+        assign:
+          - answerText: ${aiResponse.body.content[0].text}
 
-    # 8. Guardrail com Jev AI para validação sintática do Output
+    # 8. Guardrail com Jev AI para validação do Output
+    #    O state leva a tarefa e a resposta (texto já extraído do worker que rodou).
     - call_jev_guardrail:
         call: http.post
         args:
           url: ${jevUrl}
           headers:
             Authorization: ${"Bearer " + args.jev_token}
+            Content-Type: "application/json"
           body:
-            input: ${aiResponse.body} # Pega o resultado do LLM que rodou
+            model: ${jevModel}
+            state:
+              task: ${userQuery}
+              answer: ${answerText}
             questions:
-              - id: "is_valid"
-                text: "A resposta atende os critérios técnicos esperados e não contém erros?"
-                type: "boolean"
+              is_valid:
+                type: "noul"
+                instructions: "Does the answer fully and correctly solve the task, without technical errors?"
         result: guardrailResponse
 
     # 9. Verificação do Guardrail antes de interagir com o GitHub
     - check_guardrail_status:
         switch:
-          - condition: ${guardrailResponse.body.results.is_valid == false}
+          - condition: ${guardrailResponse.body.answers.is_valid.noul < validThreshold}
             next: handle_failure_retry
 
     # 10. Integração de Automação Externa com o GitHub (Criação de Issue — ver seção 5)
@@ -220,10 +238,12 @@ main:
         return: "A saída da IA falhou na validação de qualidade do Jev AI Guardrail."
 
     - return_success:
-        return: ${aiResponse.body}
+        return: ${answerText}
 ```
 
-> ⚠️ As respostas dos dois workers têm formatos diferentes: o Gemini devolve o texto em `aiResponse.body.candidates[0].content.parts[0].text` e o Claude em `aiResponse.body.content[0].text`. O `return_success` devolve o `body` inteiro; para devolver só o texto, normalize a resposta logo após cada worker.
+> ℹ️ **Formato da API do Jev** (endpoint `https://api.typesafe.ai/v1/systemone`): corpo com `model`, `state` (texto ou JSON) e `questions` como **objeto** (`id → { type, instructions }`); a pergunta sim/não é do tipo `noul` e a resposta vem em `answers.<id>.noul`, uma probabilidade de 0 a 1. Por isso o fluxo compara com os limites `complexThreshold` e `validThreshold` em vez de `== true`. Detalhes, outros tipos (`choice`, `score`) e preços em [`OPENROUTER-CONFIG.md`](OPENROUTER-CONFIG.md), seção 4.
+>
+> ℹ️ **Texto de cada worker:** o Gemini devolve o texto em `candidates[0].content.parts[0].text` e o Claude em `content[0].text`. As etapas `extract_gemini_text` e `extract_claude_text` guardam o texto em `answerText`, que é o que o guardrail avalia e o que o fluxo devolve.
 
 ---
 
