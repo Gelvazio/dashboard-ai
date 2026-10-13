@@ -54,6 +54,12 @@ git push origin main
 
 - Claude: `Co-Authored-By: Claude <modelo> <noreply@anthropic.com>`; outras IAs usam o nome e o
   e-mail noreply do próprio fornecedor.
+- ✅ **Depois de cada push para a `main` que der certo**, mostrar ao usuário, sem ele pedir, a
+  **tela de tarefas pendentes** lida do `tasks/STATUS.md` já com o push: uma tabela com as
+  tarefas-mãe abertas (código, título, prioridade, status, próxima subtarefa livre ou reserva),
+  depois os itens **👀** (dependem do usuário) e a próxima subtarefa pela prioridade. Na resposta
+  final de uma tarefa, a tabela vem **antes** de "TAREFA FINALIZADA!, AJUDO EM ALGO MAIS?"
+  (esta regra é a exceção do projeto à "só a frase").
 - Push recusado porque o remoto andou → `fetch` + `pull --rebase` + reler o quadro + push de novo.
 
 ## Proibido

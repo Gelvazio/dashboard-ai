@@ -12,7 +12,7 @@ Prioridade: 🔴 Máxima · 🟠 Alta · 🟡 Média · 🟢 Baixa
 
 | Frente | Tarefa (etapa) | Situação | Atualizado em |
 |---|---|---|---|
-| Claude Code (Opus 5.5) (local · main) | SUB-52.1 ([ETAPA-013](etapas/ETAPA-013-2aa270f6-TASK-COMPLETE.md)) | ⏹️ Encerrada | 2026-10-13 15:05 |
+| Claude Code (Opus 5.5) (local · main) | SUB-53.1 ([ETAPA-014](etapas/ETAPA-014-7d3c51e9-LISTAR-PENDENTES-APOS-PUSH.md)) | ⏹️ Encerrada | 2026-10-13 15:08 |
 
 ## 📌 Tarefas
 
@@ -132,6 +132,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | 011-4fb0d31c | SUB-49: Configurar backup diário do Supabase (GitHub Artifacts e Cloudflare R2) | [ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
 | 012-f73bee11 | SUB-50: Configurar Supabase local com Docker para desenvolvimento | [ETAPA-012-f73bee11-SUPABASE-LOCAL.md](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | 013-2aa270f6 | SUB-52: Restaurar o `task_complete.md` e mover para ele toda tarefa concluída | [ETAPA-013-2aa270f6-TASK-COMPLETE.md](etapas/ETAPA-013-2aa270f6-TASK-COMPLETE.md) |
+| 014-7d3c51e9 | SUB-53: Listar as tarefas pendentes depois de cada push na `main` | [ETAPA-014-7d3c51e9-LISTAR-PENDENTES-APOS-PUSH.md](etapas/ETAPA-014-7d3c51e9-LISTAR-PENDENTES-APOS-PUSH.md) |
 
 **Histórico (antes de 2026-10-13, congelado — não editar):** quadro antigo, concluídas e etapas 1 a 9 do
 `STATUS.md` antigo estão em [`historico/`](historico/).
@@ -161,6 +162,7 @@ Decisões de 2026-10-12 a 2026-10-13 12:10: ver `historico/STATUS-antigo.md`. Da
 | 2026-10-13 14:22 | SUB-47 mantém o Laya Server; fonte oficial <https://github.com/NandhaKishorM/laya> | Gelvazio | Pedido no chat (opção C) |
 | 2026-10-13 14:49 | Migração do quadro aceita (ETAPA-001) | Gelvazio | Aceite no chat |
 | 2026-10-13 14:49 | SUB-45.5 (teste SQL novo) removida; SUB-45.6 passa a depender da SUB-45.4 | Gelvazio | Regra "nunca escrever testes, exceto para corrigir bug" |
+| 2026-10-13 15:08 | Depois de cada push para a `main`, a IA mostra a tela de tarefas pendentes antes da frase final (regra em `.claude/rules/git-quick.md`) | Gelvazio | Pedido no chat: "ao final de cada push ao main, automaticamente já liste a tela de tarefas pendentes" |
 | 2026-10-13 15:03 | SUB-38 (verificação geral, marcador `VERIFICADOR-CLAUDE`) **excluída** do quadro; etapa mantida como histórico. Os marcadores já gravados ficam como estão e ninguém preenche os `PENDENTE` | Gelvazio | Pedido no chat: "exclua ela" |
 | 2026-10-13 15:03 | Tarefa do `task_complete.md` renumerada de `SUB-51` para `SUB-52` (`SUB-51` já tinha sido usado pelo Laya Server, fundido na SUB-47) | Claude Code (Opus 5.5) | Evitar código repetido |
 | 2026-10-13 15:05 | `task_complete.md` restaurado em `tasks/`; no `STATUS.md` só ficam tarefas abertas ou em andamento e toda linha ✅ é movida para o `task_complete.md` no commit da entrega (regra em `.claude/rules/tasks/quadro.md`) | Gelvazio | Pedidos no chat: "restaure o task_complete.md…", "no quadro deve ficar apenas tarefa aberta ou em andamento" e "registre a regra também, pra evitar erros futuros" |

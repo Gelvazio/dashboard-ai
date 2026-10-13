@@ -60,7 +60,8 @@ Na dúvida, é grande. O projeto pode definir exceções (rotinas já autorizada
 5. Linha da frente atualizada. **Um commit por subtarefa entregue**, com o quadro no mesmo commit
    (e push, conforme a regra do projeto).
 6. Responder **apenas**: **TAREFA FINALIZADA!, AJUDO EM ALGO MAIS?** — sem resumo nem tabela
-   (perguntas e bloqueios são respondidos normalmente).
+   (perguntas e bloqueios são respondidos normalmente). O projeto pode pedir algo antes da frase
+   (ex.: a lista de pendentes depois do push).
 
 ## Retomar (sessão nova ou que caiu)
 

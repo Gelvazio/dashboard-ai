@@ -15,6 +15,8 @@
 | SUB-42.1 | Tirar do `AGENTS.md` as referências a tarefas específicas (regras genéricas) | 🟡 Média | SUB-41 (mesmo arquivo; evita conflito de edição) | ✅ Concluído (pela ETAPA-001) | — | [ETAPA-006](etapas/ETAPA-006-5d507457-AGENTS-SEM-TAREFAS.md) |
 | SUB-52 | **Restaurar o `task_complete.md` e mover para ele toda tarefa concluída** | 🔴 Máxima | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-013](etapas/ETAPA-013-2aa270f6-TASK-COMPLETE.md) |
 | SUB-52.1 | Restaurar `tasks/task_complete.md`, regra de mudança e mover as linhas ✅ | 🔴 Máxima | Nenhuma | ✅ Concluído | — | [ETAPA-013](etapas/ETAPA-013-2aa270f6-TASK-COMPLETE.md) |
+| SUB-53 | **Listar as tarefas pendentes depois de cada push na `main`** | 🔴 Máxima | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-014](etapas/ETAPA-014-7d3c51e9-LISTAR-PENDENTES-APOS-PUSH.md) |
+| SUB-53.1 | Regra "listar pendentes depois do push" | 🔴 Máxima | Nenhuma | ✅ Concluído | — | [ETAPA-014](etapas/ETAPA-014-7d3c51e9-LISTAR-PENDENTES-APOS-PUSH.md) |
 
 ---
 
