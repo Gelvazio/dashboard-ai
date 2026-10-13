@@ -22,7 +22,6 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 
 | Tarefa | Título | Prioridade | Depende de | Status | Em uso por | Etapa |
 |---|---|---|---|---|---|---|
-| SUB-28 | **Integração LangChain/LangGraph para Execução de Tasks** | 🟡 Média | SUB-01 a SUB-27, SUB-29, SUB-30 (todas as tasks anteriores concluídas) | 👀 Todas as filhas concluídas: aguardando o usuário fechar | — (não reservável) | [ETAPA-003](etapas/ETAPA-003-6df4b821-LANGGRAPH.md) |
 | SUB-35 | **Monitor em Tempo Real dos Agentes** | 🟡 Média | SUB-12, SUB-29, SUB-30 | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-004](etapas/ETAPA-004-57a86337-MONITOR-TEMPO-REAL.md) |
 | SUB-35.46 | Validação automatizada da SUB-35 | 🟡 Média | SUB-35.7, SUB-35.12, SUB-35.13, SUB-35.32, SUB-35.34, SUB-35.38, SUB-35.39, SUB-35.41, SUB-35.43, SUB-35.44, SUB-35.45 | ⬜ Pendente | — | [ETAPA-004](etapas/ETAPA-004-57a86337-MONITOR-TEMPO-REAL.md) |
 | SUB-41 | **Tirar do `AGENTS.md` o plano "🧠 Cérebro de Memória Persistente" (o `AGENTS.md` fica só com regras)** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-005](etapas/ETAPA-005-6b941e1e-AGENTS-SEM-PLANO-CEREBRO.md) |
@@ -78,21 +77,21 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | KIRO-DEV-CLONE.28 | UI para workflows | 🟢 Baixa | KIRO-DEV-CLONE.27 | ⬜ Pendente | 🔒 Trava especial (só o usuário libera) | [ETAPA-008](etapas/ETAPA-008-f301fc16-KIRO-DEV-CLONE.md) |
 | KIRO-DEV-CLONE.29 | `projects/kiro-dev-clone/STATUS.md` | 🟢 Baixa | Nenhuma | ⬜ Pendente | 🔒 Trava especial (só o usuário libera) | [ETAPA-008](etapas/ETAPA-008-f301fc16-KIRO-DEV-CLONE.md) |
 | KIRO-DEV-CLONE.30 | Pasta `projects/kiro-dev-clone/docs/` | 🟢 Baixa | Nenhuma | ⬜ Pendente | 🔒 Trava especial (só o usuário libera) | [ETAPA-008](etapas/ETAPA-008-f301fc16-KIRO-DEV-CLONE.md) |
-| SUB-47 | **Equipe de agentes: classificar tarefas por nível com Laya Server (System-One)** | 🟡 Média | aprovação do plano pelo usuário | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
-| SUB-47.0 | Configurar Laya Server via Docker Compose | 🟡 Média | aprovação do plano pelo usuário | 👀 Aguardando aprovação do plano | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
-| SUB-47.1 | Criar wrapper TypeScript para API do Laya com Opus como revisor/fallback (`src/lib/laya.ts`) | 🟡 Média | aprovação do plano pelo usuário; SUB-47.0 | 👀 Aguardando aprovação do plano | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
-| SUB-47.2 | Skill `classificar-tarefa` (níveis, sinais, matriz ferramenta × modelo) | 🟡 Média | aprovação do plano pelo usuário; SUB-47.1 | 👀 Aguardando aprovação do plano | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
-| SUB-47.3 | Script `scripts/sincronizar-agentes.mjs` (`.agents/` → `.claude/`) | 🟡 Média | aprovação do plano pelo usuário | 👀 Aguardando aprovação do plano | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
-| SUB-47.4 | Agente `classificador-tarefas` (usa Laya, não Opus) | 🟡 Média | aprovação do plano pelo usuário; SUB-47.2, SUB-47.3 | 👀 Aguardando aprovação do plano | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
-| SUB-47.5 | Executores `executor-leve` (Haiku), `executor-medio` (Sonnet), `executor-pesado` (Opus) | 🟡 Média | aprovação do plano pelo usuário; SUB-47.3 | 👀 Aguardando aprovação do plano | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
-| SUB-47.6 | Skill `liderar-equipe` (fluxo do líder) | 🟡 Média | aprovação do plano pelo usuário; SUB-47.4, SUB-47.5 | 👀 Aguardando aprovação do plano | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
-| SUB-47.7 | Regra nova no `AGENTS.md`: campo `Nível`, matriz e equipe | 🟡 Média | aprovação do plano pelo usuário; SUB-47.2 | 👀 Aguardando aprovação do plano | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
-| SUB-47.8 | `proxima-task` filtra por nível | 🟡 Média | aprovação do plano pelo usuário; SUB-47.7 | 👀 Aguardando aprovação do plano | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
-| SUB-47.9 | Classificar os blocos pendentes do quadro | 🟡 Média | aprovação do plano pelo usuário; SUB-47.4, SUB-47.7 | 👀 Aguardando aprovação do plano | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
-| SUB-47.10 | Instalação global em `~/.agents/` e `~/.claude/` (só com autorização) | 🟡 Média | aprovação do plano pelo usuário; SUB-47.6 | 👀 Aguardando aprovação do plano | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
-| SUB-47.11 | Piloto da equipe em 1 item livre + aceite do usuário | 🟡 Média | aprovação do plano pelo usuário; SUB-47.6, SUB-47.8, SUB-47.9 | 👀 Aguardando aprovação do plano | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
-| SUB-47.12 | Integrar classificação Laya no worker LangGraph | 🟡 Média | aprovação do plano pelo usuário; SUB-47.1 | 👀 Aguardando aprovação do plano | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
-| SUB-47.13 | Documentar Laya Server e Opus no README | 🟡 Média | aprovação do plano pelo usuário; SUB-47.0 | 👀 Aguardando aprovação do plano | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+| SUB-47 | **Equipe de agentes: classificar tarefas por nível com Laya Server (System-One)** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+| SUB-47.0 | Configurar Laya Server via Docker Compose | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+| SUB-47.1 | Criar wrapper TypeScript para API do Laya com Opus como revisor/fallback (`src/lib/laya.ts`) | 🟡 Média | SUB-47.0 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+| SUB-47.2 | Skill `classificar-tarefa` (níveis, sinais, matriz ferramenta × modelo) | 🟡 Média | SUB-47.1 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+| SUB-47.3 | Script `scripts/sincronizar-agentes.mjs` (`.agents/` → `.claude/`) | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+| SUB-47.4 | Agente `classificador-tarefas` (usa Laya, não Opus) | 🟡 Média | SUB-47.2, SUB-47.3 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+| SUB-47.5 | Executores `executor-leve` (Haiku), `executor-medio` (Sonnet), `executor-pesado` (Opus) | 🟡 Média | SUB-47.3 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+| SUB-47.6 | Skill `liderar-equipe` (fluxo do líder) | 🟡 Média | SUB-47.4, SUB-47.5 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+| SUB-47.7 | Regra nova no `AGENTS.md`: campo `Nível`, matriz e equipe | 🟡 Média | SUB-47.2 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+| SUB-47.8 | `proxima-task` filtra por nível | 🟡 Média | SUB-47.7 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+| SUB-47.9 | Classificar os blocos pendentes do quadro | 🟡 Média | SUB-47.4, SUB-47.7 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+| SUB-47.10 | Instalação global em `~/.agents/` e `~/.claude/` (só com autorização) | 🟡 Média | SUB-47.6 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+| SUB-47.11 | Piloto da equipe em 1 item livre + aceite do usuário | 🟡 Média | SUB-47.6, SUB-47.8, SUB-47.9 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+| SUB-47.12 | Integrar classificação Laya no worker LangGraph | 🟡 Média | SUB-47.1 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+| SUB-47.13 | Documentar Laya Server e Opus no README | 🟡 Média | SUB-47.0 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-48 | **Definir estrutura `projects/` para projetos de IA independentes** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-010](etapas/ETAPA-010-43fbb21f-ESTRUTURA-PROJECTS.md) |
 | SUB-48.1 | Definir estrutura `projects/` para projetos de IA independentes | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-010](etapas/ETAPA-010-43fbb21f-ESTRUTURA-PROJECTS.md) |
 | SUB-49 | **Configurar backup diário do Supabase (GitHub Artifacts e Cloudflare R2)** | 🟡 Média | SUB-48 | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
@@ -168,6 +167,8 @@ Decisões de 2026-10-12 a 2026-10-13 12:10: ver `historico/STATUS-antigo.md`. Da
 | 2026-10-13 15:05 | `task_complete.md` restaurado em `tasks/`; no `STATUS.md` só ficam tarefas abertas ou em andamento e toda linha ✅ é movida para o `task_complete.md` no commit da entrega (regra em `.claude/rules/tasks/quadro.md`) | Gelvazio | Pedidos no chat: "restaure o task_complete.md…", "no quadro deve ficar apenas tarefa aberta ou em andamento" e "registre a regra também, pra evitar erros futuros" |
 | 2026-10-13 15:00 | Toda a pasta `.claude/` vai para o Git (inclusive as sobras da skill `proxima-task`), **menos** `settings.local.json` e `launch.json`, que ficam no `.gitignore` | Gelvazio | Pedidos no chat: "tudo da pasta .claude deve ir pro git" e "settings.local.json e o launch.json, estes 2 mantenha fora do git" |
 | 2026-10-13 14:49 | Não apagar `test_output.md` e `evals/` em `.claude/skills/proxima-task/` (ficam fora do Git) | Gelvazio | Pedido no chat: "não apague nada" |
+| 2026-10-13 15:09 | SUB-28 fechada: todas as subtarefas já estavam concluídas; linha da mãe movida para o `task_complete.md` | Gelvazio | Pedido no chat: "feche a sub-28" |
+| 2026-10-13 15:09 | Plano da SUB-47 (ETAPA-009) **aprovado**; a dependência "aprovação do plano pelo usuário" sai das subtarefas SUB-47.0 a SUB-47.13 | Gelvazio | Pedido no chat: "sub-47 aprovada" |
 
 ## Pendências (ficou para depois)
 

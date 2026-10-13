@@ -17,6 +17,7 @@
 | SUB-52.1 | Restaurar `tasks/task_complete.md`, regra de mudança e mover as linhas ✅ | 🔴 Máxima | Nenhuma | ✅ Concluído | — | [ETAPA-013](etapas/ETAPA-013-2aa270f6-TASK-COMPLETE.md) |
 | SUB-53 | **Listar as tarefas pendentes depois de cada push na `main`** | 🔴 Máxima | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-014](etapas/ETAPA-014-7d3c51e9-LISTAR-PENDENTES-APOS-PUSH.md) |
 | SUB-53.1 | Regra "listar pendentes depois do push" | 🔴 Máxima | Nenhuma | ✅ Concluído | — | [ETAPA-014](etapas/ETAPA-014-7d3c51e9-LISTAR-PENDENTES-APOS-PUSH.md) |
+| SUB-28 | **Integração LangChain/LangGraph para Execução de Tasks** | 🟡 Média | SUB-01 a SUB-27, SUB-29, SUB-30 (todas as tasks anteriores concluídas) | ✅ Concluído | — (não reservável) | [ETAPA-003](etapas/ETAPA-003-6df4b821-LANGGRAPH.md) |
 
 ---
 

@@ -20,7 +20,7 @@
 - **Criado em:** 2026-10-13 12:10
 - **Executor do plano:** Claude Code (Opus 5.5)
 - **Tarefa no quadro:** `SUB-47` (subtarefas `SUB-47.0` a `SUB-47.13`; classificador Laya Server + Opus desde 2026-10-13)
-- **Status:** ⬜ Aguardando aprovação do usuário
+- **Status:** ✅ Aprovado pelo usuário em 2026-10-13 15:09 ("sub-47 aprovada", registrado por Claude Code (Opus 5.5) (nuvem · main)); subtarefas liberadas no `tasks/STATUS.md`
 - **Concluído em / tempo decorrido:** —
 
 #### Objetivo
