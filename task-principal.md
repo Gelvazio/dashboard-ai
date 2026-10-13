@@ -657,10 +657,10 @@
   - `KIRO-DEV-CLONE.28`: UI para workflows (`pendente`, 🔒 reservada)
   - `KIRO-DEV-CLONE.29`: `projects/kiro-dev-clone/STATUS.md` (`pendente`, 🔒 reservada)
   - `KIRO-DEV-CLONE.30`: Pasta `projects/kiro-dev-clone/docs/` (`pendente`, 🔒 reservada)
-- **Descrição:** Detalhes na pasta [`projects/kiro-dev-clone/`](projects/kiro-dev-clone/AGENTS.md): as 30 subtarefas abaixo espelham, uma a uma, as tarefas descritas nesse arquivo. Como projeto autônomo (Opção B da SUB-48), o kiro-dev-clone terá seu próprio banco, MCP e embeddings.
+- **Descrição:** Clone do Kiro.dev (https://kiro.dev/docs/). As 30 subtarefas abaixo foram originalmente subdivididas com base na documentação do Kiro.dev e espelham as funcionalidades principais. Como projeto filho em `projects/kiro-dev-clone/`, compartilha infraestrutura central do Dashboard AI (banco, MCP, embeddings) com isolamento por `project_id` + RLS.
 - **Critérios de Aceitação:** A ser definido pelo usuário na pasta `projects/kiro-dev-clone/`.
 - **Commit:** pendente
-- **Anotação:** ⛔ **TRAVADO PARA TODAS AS IAS** (2026-10-12 15:10): tarefa reservada para implementação manual pelo usuário; nenhuma IA pode assumir as filhas sem autorização explícita — ver a **🔒 TRAVA ESPECIAL** no início do quadro. **Subdivisão (2026-10-12 16:11, DeepSeek Harness (deepseek-flash), a pedido do usuário):** a mãe, antes atômica, passou a declarar as 30 filhas `KIRO-DEV-CLONE.1` a `.30`, espelhando [`projects/kiro-dev-clone/AGENTS.md`](projects/kiro-dev-clone/AGENTS.md), com `Prioridade: BAIXA` (herdada da mãe — regra 1.2.4) e as dependências de lá. A **🔒 trava especial permanece ativa**: as filhas ficam **reservadas** e só o usuário libera. **Pasta renomeada (2026-10-12 16:18, DeepSeek Harness (deepseek-flash), a pedido do usuário):** `KIRO-DEV-CLONE/` → `projects/kiro-dev-clone/`, alinhando à convenção de minúsculas do repositório. O **código da tarefa-mãe** no quadro continua `KIRO-DEV-CLONE` (é identificador, não caminho).
+- **Anotação:** ⛔ **TRAVADO PARA TODAS AS IAS** (2026-10-12 15:10): tarefa reservada para implementação manual pelo usuário; nenhuma IA pode assumir as filhas sem autorização explícita — ver a **🔒 TRAVA ESPECIAL** no início do quadro. **Subdivisão (2026-10-12 16:11, DeepSeek Harness (deepseek-flash), a pedido do usuário):** a mãe, antes atômica, passou a declarar as 30 filhas `KIRO-DEV-CLONE.1` a `.30`, espelhando as funcionalidades do Kiro.dev. A **🔒 trava especial permanece ativa**: as filhas ficam **reservadas** e só o usuário libera. **Movido para projects/ (2026-10-13):** pasta movida para `projects/kiro-dev-clone/` para seguir estrutura multi-projeto. **Opção A definida (2026-10-13):** projeto filho compartilha infraestrutura central do Dashboard AI (banco, MCP, embeddings) com isolamento por `project_id` + RLS.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): tarefa-mãe `pendente (aguardando subtarefas)` e 🔒 travada para todas as IAs; as 30 filhas continuam `pendente` e **nada** do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
 
@@ -670,7 +670,7 @@
 - **Executor:** nenhum
 - **Depende de:** KIRO-DEV-CLONE.2
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Adicionar item no menu principal com o nome exato "KIRO DEV CLONE", apontando para a rota `/kiro-dev-clone` e mantendo a consistência visual (Tarefa 1.1 de [`projects/kiro-dev-clone/AGENTS.md`](projects/kiro-dev-clone/AGENTS.md)).
+- **Descrição:** Adicionar item no menu principal com o nome exato "KIRO DEV CLONE", apontando para a rota `/kiro-dev-clone` e mantendo a consistência visual.
 - **Critérios de Aceitação:** Item visível no menu com o nome exato; clique leva à rota; `npm run typecheck` e `npm test` verdes.
 - **Commit:** pendente
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
