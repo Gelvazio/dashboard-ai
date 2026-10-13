@@ -13,6 +13,7 @@ Prioridade: 🔴 Máxima · 🟠 Alta · 🟡 Média · 🟢 Baixa
 | Frente | Tarefa (etapa) | Situação | Atualizado em |
 |---|---|---|---|
 | Claude Code (Opus 5.5) (local · main) | SUB-41.3 ([ETAPA-005](etapas/ETAPA-005-6b941e1e-AGENTS-SEM-PLANO-CEREBRO.md)) | 🔄 Em execução | 2026-10-13 15:19 |
+| Claude Code (Opus 5.5) (nuvem · main) | SUB-50.1 ([ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md)) | 🔄 Em execução | 2026-10-13 15:12 |
 
 ## 📌 Tarefas
 
@@ -98,7 +99,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-49.3 | Criar workflow alternativo para Cloudflare R2 (retenção > 90 dias) | 🟡 Média | SUB-49.2 | ⬜ Pendente | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
 | SUB-49.4 | Documentar escolha entre as 2 opções e migração | 🟡 Média | SUB-49.3 | ⬜ Pendente | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
 | SUB-50 | **Configurar Supabase local com Docker para desenvolvimento** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
-| SUB-50.1 | Instalar e configurar o Supabase CLI | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
+| SUB-50.1 | Instalar e configurar o Supabase CLI | 🟡 Média | Nenhuma | 🔄 Em execução | Claude Code (Opus 5.5) (nuvem · main) (desde 2026-10-13 15:12) | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-50.2 | Inicializar o Supabase local na pasta `database/configlocal` (`supabase init --config database/configlocal`) | 🟡 Média | SUB-50.1 | ⬜ Pendente | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-50.3 | Converter scripts `database/*.sql` para `database/configlocal/migrations/` | 🟡 Média | SUB-50.2 | ⬜ Pendente | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-50.4 | Configurar variáveis de ambiente para ambiente local | 🟡 Média | SUB-50.3 | ⬜ Pendente | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
