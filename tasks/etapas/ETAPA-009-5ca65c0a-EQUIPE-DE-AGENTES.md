@@ -188,7 +188,19 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.1 — Criar wrapper TypeScript para API do Laya com Opus como revisor/fallback (`src/lib/laya.ts`)
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** criar `worker/laya.ts` (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:38).
+
+- **Reserva liberada pelo usuário (2026-10-13 20:38):** a reserva de Gemini (Antigravity) (local · main), parada
+  desde 2026-10-13 18:04 sem commit de entrega (só o `lock` `b8370f2`; `src/lib/laya.ts` não existia),
+  foi liberada por Gelvazio no chat: "Faça SUB-47.1".
+- **Mudanças decididas (2026-10-13 20:38):** (1) **local:** `worker/` em vez de `src/lib/` — `src/` vai para o
+  bundle do navegador e a `ANTHROPIC_API_KEY` não pode ir para lá (`docs/laya-server.md`); quem usa é o
+  worker (SUB-47.12). Escolha do usuário no chat: "worker/laya.ts". (2) **divisão** (regra de ~3 min,
+  `multiplas-ias.md`): esta subtarefa fica só com o Laya; Opus → SUB-47.14; híbrido → SUB-47.15; as
+  dependências da SUB-47.2 e SUB-47.12 passam para a SUB-47.15. (3) **contrato** tirado de
+  `docs/http-api.md` e `laya/serve.py` da 0.4.6 (`c73908d`): resposta `{ model, answers, usage,
+  routing? }`; cada resposta tem `type`, `confidence` (entropia normalizada) e `answer_confidence`
+  (probabilidade da resposta dada) — o limiar 0,7 do híbrido usa `answer_confidence`.
 
 - **Descrição:** Criar `src/lib/laya.ts` com: tipos TypeScript para request/response do endpoint `/v1/systemone` (baseado na especificação Jev), função `classificarLaya(estado, perguntas)` que faz POST para o Laya Server e devolve `{ choice, score, noul }`, função `classificarComOpus(estado, perguntas)` que usa Anthropic API (Opus 5.5 ou superior) para classificação, e função `classificar(estado, perguntas)` que implementa o modo híbrido: (1) tenta Laya Server; (2) se score < 0.7 (baixa confiança) ou erro, usa Opus como revisor/fallback; (3) retorna a decisão com metadados (qual classificador usou, score, tempo). Configurar variáveis de ambiente: `LAYA_SERVER_URL` (padrão: `http://localhost:8000`), `ANTHROPIC_API_KEY` (para Opus), `CLASSIFICADOR_MODE` (padrão: `hybrid`; opções: `laya`, `opus`, `hybrid`). Função `status()` para health check do Laya. Tratar erros de conexão e timeouts. Exportar em `src/lib/index.ts`.
 - **Critérios de Aceitação:** Wrapper TypeScript funcional; tipos conferidos contra a especificação da fonte oficial; modo híbrido implementado; Opus integrado como fallback; `npm run typecheck` verde. **Sem testes novos** (regra do usuário: nunca escrever testes, exceto para corrigir bug).
@@ -196,6 +208,29 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 - **Anotação:** Formato de request/response do `/v1/systemone` deve ser tirado da fonte oficial <https://github.com/NandhaKishorM/laya>, não deduzido. Integrado da SUB-51 para usar Laya Server como classificador primário e Opus como revisor/fallback. Vantagens: Laya < 1s e grátis na maioria dos casos; Opus garante precisão em casos complexos ou quando Laya tem baixa confiança (score < 0.7). Configurável via `CLASSIFICADOR_MODE`.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
+
+### SUB-47.14 — Fallback com Opus (`worker/opus.ts`: `classificarComOpus`)
+
+**Próximo passo:** depende da SUB-47.1.
+
+- **Descrição:** `classificarComOpus(estado, perguntas)` chama a API de Mensagens da Anthropic
+  (modelo Opus 5.5 ou superior, configurável) só no servidor, com a `ANTHROPIC_API_KEY`, e devolve as
+  respostas no mesmo formato de `worker/laya.ts`. Timeout e erros tratados. Criada em 2026-10-13 20:38 ao dividir a
+  SUB-47.1.
+- **Critérios de Aceitação:** mesmo tipo de resposta do Laya; chave nunca registrada em log;
+  `npm run typecheck:worker` verde.
+- **Entrega:** — · **Verificação:** —
+
+### SUB-47.15 — Modo híbrido (`worker/classificador.ts`: `classificar`, `CLASSIFICADOR_MODE`)
+
+**Próximo passo:** depende da SUB-47.1 e da SUB-47.14.
+
+- **Descrição:** `classificar(estado, perguntas)` com `CLASSIFICADOR_MODE` = `laya` | `opus` | `hybrid`
+  (padrão): tenta o Laya; se alguma `answer_confidence` < 0,7 ou o Laya falhar, usa o Opus; devolve a
+  decisão com metadados (classificador usado, confiança, tempo). Erro explícito se os dois falharem.
+  Variáveis no `.env.example`. Criada em 2026-10-13 20:38 ao dividir a SUB-47.1.
+- **Critérios de Aceitação:** os três modos; nunca inventa nível; `npm run typecheck:worker` verde.
+- **Entrega:** — · **Verificação:** —
 
 ### SUB-47.2 — Skill `classificar-tarefa` (níveis, sinais, matriz ferramenta × modelo)
 
