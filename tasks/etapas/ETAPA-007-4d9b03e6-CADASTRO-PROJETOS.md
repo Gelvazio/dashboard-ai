@@ -78,13 +78,13 @@ Pendente (preencher ao fechar a SUB-45, com o tempo decorrido).
 
 ### SUB-45.2 — Colunas `cor` e `icone` em `database/08_projects_campos.sql`
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** nenhum — entregue. Seguir na SUB-45.3.
 
 - **Descrição:** No mesmo arquivo: `cor text` com `check (cor is null or cor ~ '^#[0-9a-fA-F]{6}$')` e `icone text` (nome de ícone do lucide-react, ex.: `folder-kanban`) com `check (icone is null or icone ~ '^[a-z0-9-]{1,64}$')`. Constraints criadas de forma idempotente (bloco `do $$ ... if not exists (select 1 from pg_constraint ...)`). Comentários nas colunas. ⚠️ Tarefa de banco: pela regra 11 da seção 1.1 do `AGENTS.md`, só o Claude Code local executa (não em sessão na nuvem).
 - **Critérios de Aceitação:** Colunas e checks no arquivo, idempotentes.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **Entrega:** commit desta entrega (`feat(SUB-45.2)`) · **Verificação:** bloco "Personalização visual (SUB-45.2)" acrescentado a `database/08_projects_campos.sql` (e à cópia de migration `20261013000008_08_projects_campos.sql`, **hash idêntico** conferido); **aplicado 2× no Supabase local** (`psql -v ON_ERROR_STOP=1`) sem erro nem conflito; colunas `cor text` e `icone text` e as constraints `projects_cor_check` (`CHECK (((cor IS NULL) OR (cor ~ '^#[0-9a-fA-F]{6}$'::text)))`) e `projects_icone_check` (`CHECK (((icone IS NULL) OR (icone ~ '^[a-z0-9-]{1,64}$'::text)))`) presentes; **os checks foram testados** em transações com `rollback` (nenhum dado ficou no banco — o `projects` seguiu com 1 linha): aceitos `#1A2b3C` + `folder-kanban` e os dois nulos; recusados `vermelho`, `1A2b3C` (sem `#`) e `Folder_Kanban` (maiúscula/underscore).
+- **Anotação:** O bloco segue o padrão da SUB-45.1, inclusive o filtro `conrelid = 'public.projects'::regclass` em cada teste de existência de constraint (a lição registrada na 45.1: sem o filtro, uma constraint de mesmo nome em outra tabela faria a criação ser pulada em silêncio). As constraints foram nomeadas `projects_cor_check` e `projects_icone_check`. Nada foi aplicado no Supabase da **nuvem** (isso é a SUB-45.6, que exige autorização explícita do usuário).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-13 17:40 — confirmado por DeepSeek Harness (deepseek-flash): idempotência 2× e os 5 casos de teste dos checks
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
 ### SUB-45.3 — Colunas `url_producao` e `url_documentacao` em `database/08_projects_campos.sql`

@@ -52,6 +52,7 @@
 | SUB-50 | **Configurar Supabase local com Docker para desenvolvimento** | 🟡 Média | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-45.19 | Revisar a SUB-45.1 (`database/08_projects_campos.sql`) — 4 itens conferidos no Supabase local | 🟡 Média | SUB-45.1, SUB-50 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-47.0 | Configurar Laya Server via Docker Compose | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+| SUB-45.2 | Colunas `cor` e `icone` em `database/08_projects_campos.sql` (com os 2 `check`) | 🟡 Média | SUB-45.1, SUB-45.19 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 
 ---
 

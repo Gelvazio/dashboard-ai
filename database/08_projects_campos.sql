@@ -34,3 +34,32 @@ end $$;
 
 comment on column public.projects.responsavel_id    is 'Usuário dono do projeto (auth.users.id); vira null se o usuário for apagado.';
 comment on column public.projects.data_prevista_fim is 'Prazo previsto para o fim do projeto (opcional).';
+
+-- -----------------------------------------------------------------------------
+-- Personalização visual (SUB-45.2)
+-- -----------------------------------------------------------------------------
+alter table public.projects add column if not exists cor   text;  -- #RRGGBB
+alter table public.projects add column if not exists icone text;  -- nome do ícone (lucide-react)
+
+-- As constraints são criadas só se ainda não existirem. O filtro por `conrelid`
+-- é essencial: sem ele, uma constraint de MESMO NOME em outra tabela faria este
+-- bloco pular a criação aqui, sem avisar.
+do $$
+begin
+  if not exists (select 1 from pg_constraint
+                 where conname = 'projects_cor_check'
+                   and conrelid = 'public.projects'::regclass) then
+    alter table public.projects add constraint projects_cor_check
+      check (cor is null or cor ~ '^#[0-9a-fA-F]{6}$');
+  end if;
+
+  if not exists (select 1 from pg_constraint
+                 where conname = 'projects_icone_check'
+                   and conrelid = 'public.projects'::regclass) then
+    alter table public.projects add constraint projects_icone_check
+      check (icone is null or icone ~ '^[a-z0-9-]{1,64}$');
+  end if;
+end $$;
+
+comment on column public.projects.cor   is 'Cor do projeto na tela, no formato #RRGGBB (opcional).';
+comment on column public.projects.icone is 'Nome do ícone do lucide-react (ex.: folder-kanban): minúsculas, dígitos e hífen, até 64 (opcional).';
