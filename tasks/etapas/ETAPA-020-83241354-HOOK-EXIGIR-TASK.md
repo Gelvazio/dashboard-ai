@@ -71,9 +71,9 @@ Com reserva de Claude Code: `Edit` em `src/` passa. Qualquer erro do próprio ho
 
 ### SUB-59.4 — Aceite do usuário
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:14).
+**Próximo passo:** nenhum (concluída).
 edição em `src/` e confere que ela é barrada; depois responde "sim".
 
 - **Descrição:** o usuário confere no Claude Code local que, sem reserva, a edição é barrada.
 - **Critérios de Aceitação:** "sim" do usuário.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `docs(SUB-59.4)` · **Verificação:** aceite do usuário no chat em 2026-10-13 20:14 (resposta "Sim" ao roteiro de testes locais dos aceites 58.5, 59.4, 60.5 e 61.3)

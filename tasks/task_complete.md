@@ -84,6 +84,8 @@
 | SUB-61.2 | `GEMINI.md` apontando para o `AGENTS.md` | 🟡 Média | SUB-61.1 | ✅ Concluído | — | [ETAPA-022](etapas/ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md) |
 | SUB-58.5 | Aceite do usuário | 🟡 Média | SUB-58.4 | ✅ Concluído | — | [ETAPA-019](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
 | SUB-58 | **Completar a estrutura do Claude Code (`.mcp.json`, hook de início, `CLAUDE.local.md`, `settings.json` limpo)** | 🟡 Média | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-019](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
+| SUB-59.4 | Aceite do usuário | 🟡 Média | SUB-59.3 | ✅ Concluído | — | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
+| SUB-59 | **Hooks que obrigam o Claude Code a registrar a tarefa no quadro antes de editar** | 🟡 Média | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
 
 ---
 
