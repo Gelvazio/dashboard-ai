@@ -71,7 +71,7 @@ Com reserva de Claude Code: `Edit` em `src/` passa. Qualquer erro do próprio ho
 
 ### SUB-59.4 — Aceite do usuário
 
-**Próximo passo:** 👀 o usuário, no Claude Code local, abre uma sessão sem reserva, pede uma
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:14).
 edição em `src/` e confere que ela é barrada; depois responde "sim".
 
 - **Descrição:** o usuário confere no Claude Code local que, sem reserva, a edição é barrada.
