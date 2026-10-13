@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "dashboard-ai": {
+      "type": "http",
+      "url": "${DASHBOARD_AI_MCP_URL}",
+      "headers": {
+        "Authorization": "Bearer ${MCP_AUTH_TOKEN}"
+      }
+    }
+  }
+}

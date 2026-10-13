@@ -422,7 +422,10 @@ SSE), protocolos `2025-06-18`, `2025-03-26` e `2024-11-05`, e responde só a `PO
   `MCP_DEFAULT_PROJECT`. Para dar a um projeto um endpoint/token só dele, faça um deploy com
   `MCP_ALLOWED_PROJECTS=meu-app` (outros slugs e memória global são recusados).
 
-**Claude Code:**
+**Claude Code:** o [`.mcp.json`](.mcp.json) da raiz já registra o servidor `dashboard-ai`
+para quem abrir o projeto. Basta exportar, antes de abrir o Claude Code,
+`DASHBOARD_AI_MCP_URL` (ex.: `https://<seu-app>.vercel.app/mcp`) e `MCP_AUTH_TOKEN`; sem elas o
+servidor só aparece como desconectado. Para registrar à mão, fora do projeto:
 
 ```bash
 claude mcp add --transport http dashboard-ai https://<seu-app>.vercel.app/mcp \

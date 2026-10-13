@@ -42,13 +42,13 @@ JSON válido e com as mesmas permissões, menos a linha do caminho fixo; `npm ru
 
 ### SUB-58.1 — `.mcp.json` apontando para o MCP do projeto
 
-**Próximo passo:** criar o `.mcp.json`, a variável no `.env.example` e a linha no `README.md` (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 19:37).
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** criar `.mcp.json` (servidor `dashboard-ai`, tipo `http`, URL
   `${DASHBOARD_AI_MCP_URL}`, cabeçalho `Authorization: Bearer ${MCP_AUTH_TOKEN}`) e acrescentar
   `DASHBOARD_AI_MCP_URL` ao `.env.example` e uma linha na seção do MCP do `README.md`.
 - **Critérios de Aceitação:** JSON válido; nenhum valor secreto ou URL real no arquivo.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-58.1)` · **Verificação:** `python3 -m json.tool .mcp.json` ok; conferido que não há URL real nem token no arquivo
 
 ### SUB-58.2 — Hook de início de sessão que sincroniza a `main`
 
