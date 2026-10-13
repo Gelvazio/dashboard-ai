@@ -13,7 +13,7 @@ Prioridade: 🔴 Máxima · 🟠 Alta · 🟡 Média · 🟢 Baixa
 | Frente | Tarefa (etapa) | Situação | Atualizado em |
 |---|---|---|---|
 | Claude Code (Opus 5.5) (local · main) | SUB-50.2 ([ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md)) | 🔄 Em execução | 2026-10-13 15:40 |
-| Claude Code (Opus 5.5) (nuvem · main) | SUB-47.5 ([ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md)) | ⏹️ Encerrada | 2026-10-13 15:25 |
+| Claude Code (Opus 5.5) (nuvem · main) | SUB-48.1 ([ETAPA-010](etapas/ETAPA-010-43fbb21f-ESTRUTURA-PROJECTS.md)) | 🔄 Em execução | 2026-10-13 15:41 |
 
 ## 📌 Tarefas
 
@@ -89,7 +89,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-47.12 | Integrar classificação Laya no worker LangGraph | 🟡 Média | SUB-47.1 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-47.13 | Documentar Laya Server e Opus no README | 🟡 Média | SUB-47.0 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-48 | **Definir estrutura `projects/` para projetos de IA independentes** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-010](etapas/ETAPA-010-43fbb21f-ESTRUTURA-PROJECTS.md) |
-| SUB-48.1 | Definir estrutura `projects/` para projetos de IA independentes | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-010](etapas/ETAPA-010-43fbb21f-ESTRUTURA-PROJECTS.md) |
+| SUB-48.1 | Definir estrutura `projects/` para projetos de IA independentes | 🟡 Média | Nenhuma | 🔄 Em execução | Claude Code (Opus 5.5) (nuvem · main) (desde 2026-10-13 15:41) | [ETAPA-010](etapas/ETAPA-010-43fbb21f-ESTRUTURA-PROJECTS.md) |
 | SUB-49 | **Configurar backup diário do Supabase (GitHub Artifacts e Cloudflare R2)** | 🟡 Média | SUB-48 | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
 | SUB-49.1 | Criar workflow GitHub Actions para backup com GitHub Artifacts | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
 | SUB-49.2 | Documentar uso de GitHub Artifacts (limites, retenção, download) | 🟡 Média | SUB-49.1 | ⬜ Pendente | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
