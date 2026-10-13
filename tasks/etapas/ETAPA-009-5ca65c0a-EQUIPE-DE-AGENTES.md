@@ -221,7 +221,7 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.14 — Fallback com Opus (`worker/opus.ts`: `classificarComOpus`)
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:50).
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** `classificarComOpus(estado, perguntas)` chama a API de Mensagens da Anthropic
   (modelo Opus 5.5 ou superior, configurável) só no servidor, com a `ANTHROPIC_API_KEY`, e devolve as
@@ -229,7 +229,7 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
   SUB-47.1.
 - **Critérios de Aceitação:** mesmo tipo de resposta do Laya; chave nunca registrada em log;
   `npm run typecheck:worker` verde.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-47.14)` — `worker/opus.ts` + `ANTHROPIC_API_KEY`, `OPUS_MODELO` e `OPUS_TIMEOUT_MS` no `.env.example` · **Verificação:** `tsc` 6.0 com as opções do `worker/tsconfig.json` em `laya.ts` + `opus.ts`: sem erros; funções ≤ 24 linhas, linhas ≤ 100. API conferida em platform.claude.com (`POST /v1/messages`, `anthropic-version: 2023-06-01`, `tool_choice` forçado, modelo `claude-opus-5-5`). Comportamento com `fetch` injetado (sem chamar a Anthropic), 10 casos: sem chave → `configuracao`; sucesso no formato do Laya (choice/score/noul com `answer_confidence`), corpo com esquema por pergunta (`enum` das opções, `maximum` do nível, todas obrigatórias); opção inventada, nível fora, pergunta faltando e sem `tool_use` → `resposta`; 401 → `http`; timeout; conexão. A chave não aparece em nenhuma mensagem de erro. Não chamado contra a API real (sem chave nesta sessão)
 
 ### SUB-47.15 — Modo híbrido (`worker/classificador.ts`: `classificar`, `CLASSIFICADOR_MODE`)
 

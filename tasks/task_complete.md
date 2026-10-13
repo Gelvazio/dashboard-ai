@@ -98,6 +98,7 @@
 | SUB-47.1 | Wrapper do Laya Server (`worker/laya.ts`: tipos, `classificarLaya`, `statusLaya`) | 🟡 Média | SUB-47.0 | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-49.7 | Aceite do usuário: 1º disparo manual dos dois workflows de backup | 🟡 Média | SUB-49.4 | ✅ Concluído | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
 | SUB-49 | **Configurar backup diário do Supabase (GitHub Artifacts e Cloudflare R2)** | 🟡 Média | SUB-48 | ✅ Concluído | — (não reservável) | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
+| SUB-47.14 | Fallback com Opus (`worker/opus.ts`: `classificarComOpus`) | 🟡 Média | SUB-47.1 | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 
 ---
 
