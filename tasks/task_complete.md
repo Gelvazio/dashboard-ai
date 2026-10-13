@@ -46,6 +46,7 @@
 | SUB-57.1 | Registrar o cancelamento da SUB-35.46.2 e atualizar o quadro | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-018](etapas/ETAPA-018-a9bba1c3-REMOVER-SUB35-46-2.md) |
 | SUB-50.3 | Converter scripts `database/*.sql` para `database/configlocal/supabase/migrations/` | 🟡 Média | SUB-50.2 | ✅ Concluído | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-50.4 | Configurar variáveis de ambiente para ambiente local (`.env.local.example`, `scripts/alternar-env.mjs`, `npm run dev:local`) | 🟡 Média | SUB-50.3 | ✅ Concluído | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
+| SUB-50.5 | Rodar o Supabase local e validar (serviços, migrations e conexão da aplicação) | 🟡 Média | SUB-50.4 | ✅ Concluído | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 
 ---
 

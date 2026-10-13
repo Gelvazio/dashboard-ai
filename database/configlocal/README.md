@@ -9,14 +9,25 @@ Instalação do CLI e do Docker: [`docs/supabase-local-instalacao.md`](../../doc
 O CLI está no projeto (`npm install -D supabase`), então se usa com `npx`. Como a configuração
 não fica na pasta padrão `supabase/` da raiz, **todo comando leva `--workdir database/configlocal`**:
 
-```bash
-npx supabase --workdir database/configlocal start    # sobe os contêineres (precisa do Docker)
-npx supabase --workdir database/configlocal status   # URLs e chaves locais
-npx supabase --workdir database/configlocal stop     # para os contêineres
-```
+| Comando | O que faz |
+|---|---|
+| `npx supabase --workdir database/configlocal start` | sobe os contêineres (precisa do Docker; a 1ª vez baixa as imagens) |
+| `… stop` | para os contêineres (os dados locais continuam no volume) |
+| `… status` | portas, URL e as **chaves locais** (`anon` e `service_role`) |
+| `… db reset` | **apaga e recria** o banco local, aplicando as 9 migrations do zero |
+| `… db diff` | mostra o que o banco local tem fora das migrations |
+| `… migration list` | migrations aplicadas × pendentes |
+| `… migration new <nome>` | cria uma migration nova em `supabase/migrations/` |
+| `… gen types typescript --local` | gera os tipos TypeScript a partir do banco local |
+
+As mesmas chaves locais podem ser lidas do contêiner do Kong, sem o CLI:
+`docker exec supabase_kong_dashboard-ai cat /home/kong/kong.yml`.
 
 ⚠️ O CLI não tem a opção `--config`; a pasta é escolhida com `--workdir`, que aponta para a pasta
 que **contém** `supabase/`.
+⚠️ Ele fala com o Docker pelo *named pipe* do Windows: **dentro de sessões de agente com sandbox**
+(ex.: DSH) esse acesso é bloqueado, então rode os comandos do CLI num terminal normal. Para inspecionar
+o stack de dentro do agente, `docker ps` e `docker exec` funcionam.
 
 ## Alternar entre local e nuvem (variáveis de ambiente)
 
