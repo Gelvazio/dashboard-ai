@@ -63,7 +63,7 @@ JSON válido e com as mesmas permissões, menos a linha do caminho fixo; `npm ru
 
 ### SUB-58.3 — `CLAUDE.local.md` fora do Git
 
-**Próximo passo:** depende da SUB-58.2.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 19:41).
 
 - **Descrição:** acrescentar `CLAUDE.local.md` ao `.gitignore` e à lista "O que nunca vai para o
   Git" do `.claude/rules/git-quick.md`.
