@@ -25,7 +25,8 @@ só**, dentro de [`.claude/rules/`](.claude/rules/INDEX.md).
 | 8 | [`.claude/rules/codigo-solid.md`](.claude/rules/codigo-solid.md) e [`codigo-limites-nomes.md`](.claude/rules/codigo-limites-nomes.md) | Como escrever código |
 
 Opcional: [`.claude/rules/reporte-progresso.md`](.claude/rules/reporte-progresso.md) (eventos no
-monitor). Skill do fluxo: [`proxima-task`](.claude/skills/proxima-task/SKILL.md).
+monitor). Skill do fluxo: [`proxima-task`](.agents/skills/proxima-task/SKILL.md) (cópia para o Claude Code em
+`.claude/skills/`; não editar a cópia).
 
 **Se uma regra daqui parecer contradizer outra, vale a do arquivo do assunto; avise o usuário.**
 

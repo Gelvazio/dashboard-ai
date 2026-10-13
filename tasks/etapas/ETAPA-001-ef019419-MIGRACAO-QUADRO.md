@@ -5,7 +5,7 @@
 OPCAO DE SER ASSUMIDA POR QUALQUER IA, ISSO DEVE SER MANTIDO"
 **Objetivo:** trocar o quadro antigo (`task-principal.md` + `task_complete.md` + `STATUS.md` da raiz) pelo modelo de
 `.claude/rules/tasks/quadro.md` (`tasks/STATUS.md` + `tasks/etapas/`), com cada regra escrita em um lugar só.
-**Próximo passo:** 001.7 — deixar uma só skill `proxima-task` (em `.claude/skills/`) e tirar a `documentacao-padrao` do projeto.
+**Próximo passo:** 001.8 — trocar o parse do `index.html` (lia `task-principal.md`) para `tasks/STATUS.md` + etapas.
 
 ### Escopo
 
@@ -55,7 +55,7 @@ OPCAO DE SER ASSUMIDA POR QUALQUER IA, ISSO DEVE SER MANTIDO"
 | 001.4 | Etapas das tarefas pendentes (uma linha por subtarefa no `STATUS.md`) | ✅ Concluído | 2026-10-13 14:45 | Script copia os blocos literalmente: 88 blocos pendentes (11 mães + 77 subtarefas) → 11 etapas (002 a 012) + 91 linhas (77 + 3 subtarefas `.1` novas: SUB-38.1, SUB-42.1, SUB-48.1); 80 seções de subtarefa; planos de `docs/` de SUB-38, SUB-45 e SUB-47 embutidos nas etapas |
 | 001.5 | Histórico em `tasks/historico/` (sem alterar texto) | ✅ Concluído | 2026-10-13 14:50 | `git mv` de `task-principal.md`, `task_complete.md`, `STATUS.md` (→ `STATUS-antigo.md`) e dos planos de SUB-40 e validação de telas; planos de SUB-38/45/47 removidos de `docs/` (conteúdo já nas etapas); `task-principal.md` da raiz virou aviso de uma linha; `tasks/historico/README.md` explica o conteúdo |
 | 001.6 | Regras sem duplicata (`AGENTS.md` curto + `.claude/rules/` no Git) | ✅ Concluído | 2026-10-13 15:05 | `AGENTS.md` 547 → 39 linhas de regra + anexo da SUB-41 intacto; cada seção antiga mapeada para um arquivo de `.claude/rules/` (tabela no chat); 4 arquivos novos (`multiplas-ias`, `reporte-progresso`, `testes-validacao`) e referências ao projeto `aulasenai` removidas do `INDEX`/`essentials`/`git-quick`; todos ≤ 5 KB; `CLAUDE.md` aponta para `.claude/rules/`; `.gitignore` com `settings.local.json` e `launch.json`; SUB-42 resolvida |
-| 001.7 | Skill `proxima-task` única; tirar `documentacao-padrao` | 🔄 Em progresso | — | — |
-| 001.8 | Painel `index.html` lendo o modelo novo | ⬜ Pendente | — | — |
+| 001.7 | Skill `proxima-task` única; tirar `documentacao-padrao` | ✅ Concluído | 2026-10-13 15:12 | Fonte única em `.agents/skills/proxima-task/SKILL.md`, reescrita para o modelo novo (frentes, subtarefas livres por prioridade, 👀); `.claude/skills/proxima-task/SKILL.md` é cópia idêntica marcada "não editar" (o Claude Code só lê de lá; a SUB-47.3 automatiza a cópia); `.claude/skills/documentacao-padrao` (cópia da skill global que manda plano em `docs/`) removida do projeto — a global continua em `~/.agents/skills/` |
+| 001.8 | Painel `index.html` lendo o modelo novo | 🔄 Em progresso | — | — |
 | 001.9 | Links (README, `docs/`, espelho de eventos) | ⬜ Pendente | — | — |
 | 001.10 | Aceite do usuário | ⬜ Pendente | — | — |
