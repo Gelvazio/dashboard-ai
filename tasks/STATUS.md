@@ -66,7 +66,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | KIRO-DEV-CLONE.29 | `projects/kiro-dev-clone/STATUS.md` | 🟢 Baixa | Nenhuma | ⬜ Pendente | 🔒 Trava especial (só o usuário libera) | [ETAPA-008](etapas/ETAPA-008-f301fc16-KIRO-DEV-CLONE.md) |
 | KIRO-DEV-CLONE.30 | Pasta `projects/kiro-dev-clone/docs/` | 🟢 Baixa | Nenhuma | ⬜ Pendente | 🔒 Trava especial (só o usuário libera) | [ETAPA-008](etapas/ETAPA-008-f301fc16-KIRO-DEV-CLONE.md) |
 | SUB-47 | **Equipe de agentes: classificar tarefas por nível com Laya Server (System-One)** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
-| SUB-47.0 | Configurar Laya Server via Docker Compose | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+| SUB-47.0 | Configurar Laya Server via Docker Compose | 🟡 Média | Nenhuma | 🔄 Em execução | Codex (GPT-6) (local · main) (desde 2026-10-13 17:32) | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-47.1 | Criar wrapper TypeScript para API do Laya com Opus como revisor/fallback (`src/lib/laya.ts`) | 🟡 Média | SUB-47.0 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-47.2 | Skill `classificar-tarefa` (níveis, sinais, matriz ferramenta × modelo) | 🟡 Média | SUB-47.1 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-47.4 | Agente `classificador-tarefas` (usa Laya, não Opus) | 🟡 Média | SUB-47.2, SUB-47.3 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
