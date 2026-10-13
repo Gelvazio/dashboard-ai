@@ -465,8 +465,7 @@ na coluna "Em uso por" (commit + push imediatos antes de codar, no máximo 1 sub
 nunca mexer na reserva de outra); a etapa de cada tarefa, em [`tasks/etapas/`](tasks/etapas/), guarda
 plano, descrição e entrega. O quadro antigo e as concluídas até 2026-10-13 estão em
 [`tasks/historico/`](tasks/historico/README.md). O passo a passo está na skill
-[`proxima-task`](.agents/skills/proxima-task/SKILL.md), e o painel [`index.html`](index.html) lê o
-quadro e o histórico.
+[`proxima-task`](.agents/skills/proxima-task/SKILL.md). A raiz `/` é o **app React** (entry do Vite em `index.html` → `src/main.tsx`); o painel do quadro é [`public/painel.html`](public/painel.html) (servido em `/painel.html`) e lê o quadro e o histórico.
 
 ### Ciclo da fila (exemplos)
 
