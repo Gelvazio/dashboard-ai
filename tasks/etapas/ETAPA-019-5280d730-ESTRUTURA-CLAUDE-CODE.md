@@ -81,10 +81,10 @@ JSON válido e com as mesmas permissões, menos a linha do caminho fixo; `npm ru
 
 ### SUB-58.5 — Aceite do usuário
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:14).
+**Próximo passo:** nenhum (concluída).
 `MCP_AUTH_TOKEN` e ver o `dashboard-ai` em `/mcp`; (2) abrir uma sessão nova e ver a mensagem
 `[hook sincronizar-main]`; (3) rodar `npm run validar`; (4) responder "sim".
 
 - **Descrição:** o usuário confere no Claude Code local se o MCP aparece e o hook roda ao abrir.
 - **Critérios de Aceitação:** "sim" do usuário.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `docs(SUB-58.5)` · **Verificação:** aceite do usuário no chat em 2026-10-13 20:14 (resposta "Sim" ao roteiro de testes locais dos aceites 58.5, 59.4, 60.5 e 61.3)

@@ -82,6 +82,8 @@
 | SUB-60.4 | Gerar as cópias e documentar | 🟡 Média | SUB-60.3 | ✅ Concluído | — | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
 | SUB-61.1 | Hook `pre-commit` que sincroniza as skills | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-022](etapas/ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md) |
 | SUB-61.2 | `GEMINI.md` apontando para o `AGENTS.md` | 🟡 Média | SUB-61.1 | ✅ Concluído | — | [ETAPA-022](etapas/ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md) |
+| SUB-58.5 | Aceite do usuário | 🟡 Média | SUB-58.4 | ✅ Concluído | — | [ETAPA-019](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
+| SUB-58 | **Completar a estrutura do Claude Code (`.mcp.json`, hook de início, `CLAUDE.local.md`, `settings.json` limpo)** | 🟡 Média | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-019](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
 
 ---
 
