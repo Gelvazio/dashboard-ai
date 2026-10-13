@@ -91,16 +91,17 @@
 ---
 
 ## 📊 Resumo de Progresso
-- **Total de Tasks Principais:** 47
-- **Subtarefas atômicas (~3 min):** 270
+- **Total de Tasks Principais:** 48
+- **Subtarefas atômicas (~3 min):** 280
 - **Em Execução:** 1 (SUB-38)
-- **Pendentes:** 8 principais (SUB-38, 28, 35, 41, 42, 45, 46, KIRO-DEV-CLONE) + 52 subtarefas
+- **Pendentes:** 9 principais (SUB-38, 28, 35, 41, 42, 45, 46, 47, KIRO-DEV-CLONE) + 62 subtarefas
   - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 1 — SUB-35.46 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
   - bloqueadas por dependência: 21 — SUB-45.2 a SUB-45.19 (cadeia da SUB-45; tarefas de banco só Claude Code local; frontend depende de banco) e SUB-41.2, SUB-41.3, SUB-42 (cadeia da SUB-41)
+  - aguardando aprovação do plano pelo usuário: 10 — SUB-47.1 a SUB-47.10 ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md))
   - em execução: 1 — SUB-38 (DeepSeek Harness (deepseek-flash))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
   - travada para todas as IAs: 1 — SUB-46 (`BAIXA`, atômica), sob a 🔒 TRAVA ESPECIAL (aguarda decisão do usuário)
-- **Concluídas:** 252 de 317 blocos (38 principais + 214 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 252 de 328 blocos (38 principais + 214 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -1086,5 +1087,162 @@
 - **Critérios de Aceitação:** A definir pelo usuário ao liberar a trava (stack escolhida, escopo e subdivisão em subtarefas de ~3 min). Por ser tarefa grande (várias partes, chaves de API), exige plano em `docs/` (seção 6 do `AGENTS.md`).
 - **Commit:** pendente
 - **Anotação:** ⛔ **TRAVADO PARA TODAS AS IAS** (2026-10-13, criada por Claude Code (Opus 5.5) a pedido do usuário): o usuário ainda vai decidir se quer fazer esta tarefa. Nenhuma IA pode assumi-la nem subdividi-la sem autorização explícita — ver a **🔒 TRAVA ESPECIAL: SUB-46** no início do quadro. Prioridade `BAIXA` definida pelo usuário.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+---
+
+## 🤝 FASE 18: Equipe de Agentes e Classificação de Tarefas por Nível
+
+### [ ] SUB-47: Equipe de agentes: classificar tarefas por nível e modelo de cada ferramenta de IA
+- **Status:** pendente (aguardando subtarefas)
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); subtarefas SUB-47.1 a SUB-47.10
+- **Subtarefas:** (subdividida em 10 em 2026-10-13 12:10 por Claude Code (Opus 5.5), a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`)
+  - `SUB-47.1`: Skill `classificar-tarefa` (níveis, sinais, matriz ferramenta × modelo) (`pendente`)
+  - `SUB-47.2`: Script `scripts/sincronizar-agentes.mjs` (`.agents/` → `.claude/`) (`pendente`)
+  - `SUB-47.3`: Agente `classificador-tarefas` (Opus) (`pendente`)
+  - `SUB-47.4`: Executores `executor-leve` (Haiku), `executor-medio` (Sonnet), `executor-pesado` (Opus) (`pendente`)
+  - `SUB-47.5`: Skill `liderar-equipe` (fluxo do líder) (`pendente`)
+  - `SUB-47.6`: Regra nova no `AGENTS.md`: campo `Nível`, matriz e equipe (`pendente`)
+  - `SUB-47.7`: `proxima-task` filtra por nível (`pendente`)
+  - `SUB-47.8`: Classificar os blocos pendentes do quadro (`pendente`)
+  - `SUB-47.9`: Instalação global em `~/.agents/` e `~/.claude/` (só com autorização) (`pendente`)
+  - `SUB-47.10`: Piloto da equipe em 1 item livre + aceite do usuário (`pendente`)
+- **Descrição:** Cada tarefa do quadro passa a ter `Nível` (`LEVE`, `MEDIO`, `PESADO`), definido por um classificador especialista (Opus). Cada ferramenta de IA (Claude Code, Grok, DeepSeek, Gemini, Devin) pega só o que o seu modelo dá conta, conforme uma matriz ferramenta × modelo × nível. No Claude Code, uma equipe de subagentes (líder + classificador + executores Haiku/Sonnet/Opus) trabalha em paralelo, com só o líder mexendo no Git e no quadro. Plano completo: [`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md).
+- **Critérios de Aceitação:** Todas as subtarefas `concluido`; piloto (SUB-47.10) aceito pelo usuário.
+- **Commit:** pendente
+- **Anotação:** Criada em 2026-10-13 12:10 por Claude Code (Opus 5.5), a pedido do usuário. Prioridade `MEDIA` (padrão da seção 1.2, o usuário não definiu outra). **Nenhuma subtarefa pode ser pega antes de o usuário aprovar o plano** em `docs/equipe-de-agentes.md`; quando aprovar, a dependência de aprovação sai dos blocos e o resumo é atualizado.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-47.1: Skill `classificar-tarefa` (níveis, sinais, matriz ferramenta × modelo)
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md))
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `.agents/skills/classificar-tarefa/SKILL.md`: níveis `LEVE`/`MEDIO`/`PESADO` com sinais concretos, ordem de decisão (a regra mais restritiva vence; na dúvida, sobe o nível), **matriz ferramenta × modelo × nível** (Claude Code local/nuvem, Gemini, Grok, DeepSeek, Devin), exemplos reais do quadro e o formato de saída (`- **Nível:** X` abaixo de `Prioridade:` + justificativa curta na anotação). Proibido: mudar `Prioridade`, reclassificar bloco travado por outro agente ou sob 🔒 trava especial.
+- **Critérios de Aceitação:** Skill com frontmatter válido; matriz **confirmada pelo usuário** e registrada na anotação.
+- **Commit:** pendente
+- **Anotação:** Plano em `docs/equipe-de-agentes.md`.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-47.2: Script `scripts/sincronizar-agentes.mjs` (`.agents/` → `.claude/`)
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md))
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Script Node que copia `.agents/skills/*` para `.claude/skills/*` e `.agents/agents/*` para `.claude/agents/*` (o Claude Code só lê `.claude/`, local e nuvem). Script `npm run sync:agentes` no `package.json`. Não toca em `.claude/settings.local.json` nem em `.claude/launch.json`.
+- **Critérios de Aceitação:** `node --check` sem erro; execução copia os arquivos; nada fora de `skills/` e `agents/` é alterado.
+- **Commit:** pendente
+- **Anotação:** Plano em `docs/equipe-de-agentes.md`.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-47.3: Agente `classificador-tarefas` (Opus)
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.1, SUB-47.2
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `.agents/agents/classificador-tarefas.md` (`model: opus`, `skills: [classificar-tarefa]`, ferramentas só de leitura + edição do quadro). Ele lê os blocos sem `Nível`, grava o nível com justificativa e devolve a lista ao líder. Não faz Git. Rodar `npm run sync:agentes`.
+- **Critérios de Aceitação:** Frontmatter válido; cópia em `.claude/agents/`.
+- **Commit:** pendente
+- **Anotação:** Plano em `docs/equipe-de-agentes.md`.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-47.4: Executores `executor-leve` (Haiku), `executor-medio` (Sonnet), `executor-pesado` (Opus)
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.2
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `.agents/agents/executor-leve.md`, `executor-medio.md` e `executor-pesado.md`. Cada um recebe do líder um item já travado, edita **só** os arquivos da tarefa, segue as regras de código do projeto e devolve relatório (arquivos alterados, o que foi feito, pendências). **Proibido** usar Git e editar o quadro. Rodar `npm run sync:agentes`.
+- **Critérios de Aceitação:** Frontmatter válido; instruções proíbem Git e edição do quadro; cópias em `.claude/agents/`.
+- **Commit:** pendente
+- **Anotação:** Plano em `docs/equipe-de-agentes.md`.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-47.5: Skill `liderar-equipe` (fluxo do líder)
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.3, SUB-47.4
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `.agents/skills/liderar-equipe/SKILL.md`: fetch + pull, chamar o classificador nos blocos sem nível, escolher até 3 itens livres por prioridade e com arquivos diferentes, travar (commit + push), disparar os executores em paralelo pelo nível, validar cada entrega (`npm run validar`), commit por tarefa, mover para `task_complete.md`, push. Tarefa de banco: o próprio líder, só na sessão local (regra 11). Rodar `npm run sync:agentes`.
+- **Critérios de Aceitação:** Fluxo coerente com as seções 1, 1.1 e 1.2 do `AGENTS.md`; cópia em `.claude/skills/`.
+- **Commit:** pendente
+- **Anotação:** Plano em `docs/equipe-de-agentes.md`.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-47.6: Regra nova no `AGENTS.md`: campo `Nível`, matriz e equipe
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Acrescentar ao `AGENTS.md` (seção nova 1.4): todo bloco tem `Nível:` abaixo de `Prioridade:`; quem cria ou subdivide classifica pela skill `classificar-tarefa`; cada agente se identifica como ferramenta + modelo e só pega item até o nível máximo da sua linha na matriz (modelo forte pega item mais leve só se não houver item livre do seu nível); equipe do Claude Code: cada executor conta como um agente com nome próprio, e só o líder mexe no Git e no quadro.
+- **Critérios de Aceitação:** Sem contradição com as regras existentes; `npm run validar` verde.
+- **Commit:** pendente
+- **Anotação:** Plano em `docs/equipe-de-agentes.md`.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-47.7: `proxima-task` filtra por nível
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.6
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Ajustar o passo 3 de `.agents/skills/proxima-task/SKILL.md` para considerar o `Nível` e a matriz da skill `classificar-tarefa`. Rodar `npm run sync:agentes`.
+- **Critérios de Aceitação:** Passo 3 cita o nível; cópia atualizada.
+- **Commit:** pendente
+- **Anotação:** Plano em `docs/equipe-de-agentes.md`.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-47.8: Classificar os blocos pendentes do quadro
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.3, SUB-47.6
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Rodar o `classificador-tarefas` em todos os blocos pendentes do `task-principal.md` (exceto os sob 🔒 trava especial e os travados por outro agente) e gravar `Nível:` + justificativa.
+- **Critérios de Aceitação:** Todo bloco pendente elegível tem `Nível:`; o diff só acrescenta linhas de nível e justificativa.
+- **Commit:** pendente
+- **Anotação:** Plano em `docs/equipe-de-agentes.md`.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-47.9: Instalação global em `~/.agents/` e `~/.claude/` (só com autorização)
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.5
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Com **autorização explícita do usuário no passo**, copiar as skills e os agentes para `~/.agents/` (fonte global) e `~/.claude/skills/` + `~/.claude/agents/` (uso local em qualquer projeto). Para projetos na nuvem, documentar o uso do `npm run sync:agentes` (ou a cópia manual) em cada repositório.
+- **Critérios de Aceitação:** Arquivos presentes nas pastas globais; o procedimento para outros projetos fica descrito no plano.
+- **Commit:** pendente
+- **Anotação:** Plano em `docs/equipe-de-agentes.md`.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-47.10: Piloto da equipe em 1 item livre + aceite do usuário
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.5, SUB-47.7, SUB-47.8
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Rodar a equipe (skill `liderar-equipe`) em 1 item livre do quadro, de ponta a ponta. Anotar o consumo, os problemas e os ajustes. Pedir o aceite do usuário.
+- **Critérios de Aceitação:** Item entregue pela equipe com o protocolo completo; aceite do usuário registrado.
+- **Commit:** pendente
+- **Anotação:** Plano em `docs/equipe-de-agentes.md`.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE

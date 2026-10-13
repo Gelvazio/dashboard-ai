@@ -3,7 +3,7 @@
 **Objetivo:** gerenciador genérico de tasks de IA multi-projeto (fila, memória persistente e monitor dos agentes).
 **Partes interessadas:** Gelvazio (decide, aprova e usa) · agentes de IA (executam pelo quadro)
 **Links:** [Regras](AGENTS.md) · [Planos](docs/) · [Quadro](task-principal.md) · [Concluídas](task_complete.md)
-**Próximo passo:** Etapa 7 — executar SUB-40.1 a 40.6 em sequência (uma trava por vez) e pedir autorização para a 40.7. Pendentes também: aceite da Etapa 2 e a verificação geral `SUB-38` (`MAXIMA`), a partir do bloco SUB-28
+**Próximo passo:** aprovação do plano da `SUB-47` ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)). Antes: Etapa 7 — executar SUB-40.1 a 40.6 em sequência (uma trava por vez) e pedir autorização para a 40.7. Pendentes também: aceite da Etapa 2 e a verificação geral `SUB-38` (`MAXIMA`), a partir do bloco SUB-28
 
 Legenda: ⬜ Pendente · 🔄 Em progresso · ✅ Concluído · ⛔ Bloqueado
 
@@ -96,6 +96,16 @@ Plano: [`docs/validacao-telas-producao.md`](docs/validacao-telas-producao.md). E
 | 8.3 | SUB-35.32 Monitor em tempo real | ✅ Concluído | 2026-10-12 19:03 | `4ffc7c5`; tempo real confirmado pelo usuário; bug do Chart.js corrigido em `4f4e90f` |
 | 8.4 | Aceite do usuário | ⬜ Pendente | — | — |
 
+## Etapa 9 — Equipe de agentes e classificação por nível, `SUB-47` (pedida em 2026-10-13)
+Plano: [`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md) · aguardando aprovação do usuário.
+
+| Item | Descrição | Status | Concluído em | Verificação |
+|------|-----------|--------|--------------|-------------|
+| 9.1 | Plano em `docs/equipe-de-agentes.md` + `SUB-47` e filhas no quadro | ✅ Concluído | 2026-10-13 12:10 | 10 blocos `SUB-47.x` no quadro |
+| 9.2 | Aprovação do plano e da matriz ferramenta × modelo pelo usuário | ⬜ Pendente | — | resposta no chat |
+| 9.3 | Executar SUB-47.1 a SUB-47.10 (um item por vez) | ⬜ Pendente | — | blocos movidos para o `task_complete.md` |
+| 9.4 | Aceite do usuário (piloto SUB-47.10) | ⬜ Pendente | — | — |
+
 ## Riscos
 | Risco | Chance | Impacto | Plano B | Situação |
 |-------|--------|---------|---------|----------|
@@ -120,6 +130,8 @@ Plano: [`docs/validacao-telas-producao.md`](docs/validacao-telas-producao.md). E
 | 2026-10-12 | Verificação geral adiada e registrada como `SUB-38`, prioridade `MAXIMA` | Gelvazio | Pedido no chat |
 | 2026-10-12 | Prioridade em todas as tarefas; agentes pegam pela maior prioridade, `BAIXA` só com orientação do usuário | Gelvazio | Pedido no chat |
 | 2026-10-12 | Prioridades iniciais: SUB-38 `MAXIMA`; SUB-25 e SUB-25.8 `ALTA` (build quebrado); KIRO-DEV-CLONE `BAIXA`; demais `MEDIA` (concluídas só como histórico) | Claude Code | Padrão `MEDIA`; o usuário pode ajustar |
+| 2026-10-13 | `SUB-46` (orquestrador OpenRouter + Jev) criada com prioridade `BAIXA` e 🔒 trava especial para todas as IAs | Gelvazio | Vai decidir no futuro se faz |
+| 2026-10-13 | Equipe de agentes com subagentes (não o agent teams experimental); classificador em Opus; matriz por ferramenta (Claude, Grok, DeepSeek, Gemini, Devin), `SUB-47` | Gelvazio | Pedido no chat; erro de classificação para baixo custa mais que o classificador |
 
 ## Pendências (ficou para depois)
 | Item | Motivo | Quando retomar |
