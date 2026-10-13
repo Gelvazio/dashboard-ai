@@ -1,0 +1,59 @@
+name: Backup Supabase para GitHub Artifacts
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: backup-supabase-artifacts
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    name: Criar backup do Supabase
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Conferir configuração do banco
+        env:
+          SUPABASE_DATABASE_URL: ${{ secrets.SUPABASE_DATABASE_URL }}
+        run: |
+          if [ -z "$SUPABASE_DATABASE_URL" ]; then
+            echo "::error::Configure o secret SUPABASE_DATABASE_URL no repositório."
+            exit 1
+          fi
+
+      - name: Gerar dump SQL comprimido
+        env:
+          SUPABASE_DATABASE_URL: ${{ secrets.SUPABASE_DATABASE_URL }}
+        run: |
+          set -euo pipefail
+          docker run --rm \
+            -e SUPABASE_DATABASE_URL \
+            postgres:17 \
+            bash -o pipefail -c \
+            'pg_dump "$SUPABASE_DATABASE_URL" --no-owner --no-privileges | gzip -c' \
+            > "$RUNNER_TEMP/supabase-backup.sql.gz"
+
+      - name: Publicar backup como artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: supabase-backup-${{ github.run_number }}
+          path: ${{ runner.temp }}/supabase-backup.sql.gz
+          if-no-files-found: error
+          retention-days: ${{ vars.SUPABASE_BACKUP_RETENTION_DAYS || 30 }}
+
+      - name: Instruções para baixar
+        run: |
+          {
+            echo '## Backup Supabase concluído'
+            echo
+            echo 'Baixe o arquivo em **Actions → execução deste workflow → Artifacts**.'
+            echo 'O artifact chama-se `supabase-backup-${GITHUB_RUN_NUMBER}`.'
+            echo 'Retenção padrão: 30 dias. Ajuste pela variável de repositório'
+            echo '`SUPABASE_BACKUP_RETENTION_DAYS`.'
+          } >> "$GITHUB_STEP_SUMMARY"

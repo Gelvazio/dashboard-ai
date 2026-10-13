@@ -16,12 +16,12 @@
 
 ### SUB-49.1 — Criar workflow GitHub Actions para backup com GitHub Artifacts
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** após o secret `SUPABASE_DATABASE_URL` estar configurado no GitHub, executar o workflow manualmente e conferir o artifact e seu tamanho. Não disparar nesta sessão por causa da regra global de não executar testes/validações.
 
 - **Descrição:** Criar `.github/workflows/backup-supabase-artifacts.yml` com: agendamento cron diário (2h UTC), gatilho manual (`workflow_dispatch`), passo de dump do banco usando `pg_dump` com a connection string do Supabase (secret `SUPABASE_DATABASE_URL`), compressão do dump (`gzip`), upload como artifact com nome `supabase-backup-${{ github.run_number }}`, retenção de 30 dias (configurável), e documentação de como baixar o artifact (aba Actions → run → Artifacts). Variáveis de ambiente: `SUPABASE_DATABASE_URL` (obrigatória, secret).
 - **Critérios de Aceitação:** Workflow criado; sintaxe YAML válida; dry-run (workflow_dispatch) funciona; artifact gerado com tamanho aceitável (< 2 GB); documentação de download presente.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `feat(SUB-49.1): criar workflow de backup por Codex GPT-6 (local · main)`
+- **Anotação:** Criado `.github/workflows/backup-supabase-artifacts.yml` com agendamento diário às 02:00 UTC, `workflow_dispatch`, dump com `pg_dump` 17, compressão gzip, upload como artifact por 30 dias (configurável pela variável `SUPABASE_BACKUP_RETENTION_DAYS`) e instruções no resumo da execução. O workflow exige o secret `SUPABASE_DATABASE_URL`. A execução manual e a confirmação do tamanho do artifact ficaram pendentes por causa da regra global do usuário que proíbe testes e validações nesta sessão.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
