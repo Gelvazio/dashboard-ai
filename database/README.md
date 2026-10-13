@@ -20,7 +20,7 @@ atualizam instalações da versão anterior (sem `project_id`).
 | `05_rls_policies.sql` | RLS e permissões das tabelas e funções de 00–04 |
 | `06_messages_rules.sql` | `agent_messages` (recados entre agentes, por projeto/task) e `project_rules` (regras do repositório por seção, com `md5`), `ler_recados()`, `conferir_regras()` e a RLS dessas tabelas |
 | `07_agent_events.sql` | `agent_events` (eventos dos agentes para o monitor em tempo real), trigger `validar_agent_event`, RLS, publicação no Supabase Realtime e `atividade_atual_agentes()` |
-| `08_projects_campos.sql` | Campos novos de `public.projects` (perfil do projeto: cor, ícone, URLs, prioridade e tags) |
+| `08_projects_campos.sql` | Campos de `public.projects`: responsável, prazo, cor, ícone, URLs, prioridade e tags; checks e índice GIN |
 
 ## Modelo de acesso
 
@@ -104,6 +104,27 @@ for f in database/0*.sql; do psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f "$f"; do
 Requisitos: PostgreSQL 15+ (usa `unique nulls not distinct`) com `pgvector` ≥ 0.5 (índice HNSW).
 
 Depois de aplicar, cadastre o primeiro administrador (veja a seção abaixo).
+
+## Cadastro de projetos (08)
+
+O script `08_projects_campos.sql` complementa `public.projects`, criada pelo script `00`.
+Ele é idempotente e deve ser aplicado depois dos scripts `00` a `07`, tanto no Supabase remoto
+quanto nas migrations locais.
+
+| Campo | Tipo e regra |
+|---|---|
+| `responsavel_id` | UUID do usuário responsável; referência a `auth.users(id)` com `ON DELETE SET NULL` quando o schema Auth existe |
+| `data_prevista_fim` | Prazo opcional (`date`) |
+| `cor` | Cor opcional no formato `#RRGGBB` |
+| `icone` | Nome opcional de ícone do lucide-react: minúsculas, números e hífen, até 64 caracteres |
+| `url_producao`, `url_documentacao` | URLs opcionais iniciadas por `http://` ou `https://` |
+| `prioridade` | `MAXIMA`, `ALTA`, `MEDIA` ou `BAIXA`; padrão `MEDIA` |
+| `tags` | Lista de texto; padrão vazio e índice GIN `projects_tags_gin` |
+
+O status do projeto continua na coluna `ativo boolean` criada pelo `00`; a interface mostra
+`1-ATIVO` ou `0-INATIVO`. A tela fica na rota `#/projetos`. Administradores criam projetos;
+owners e administradores podem editá-los e ativá-los ou inativá-los. A RLS continua limitando
+os projetos visíveis ao usuário.
 
 ## Scripts de produção × migrations locais
 

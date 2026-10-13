@@ -34,7 +34,7 @@ O DashboardAI é composto por três camadas principais que trabalham juntas para
 - **Stack:** React 19 + Vite + TypeScript + Tailwind CSS v4
 - Localizado em `src/`
 - Acessa o Supabase apenas com a chave **anon** + sessão do usuário (RLS aplicada)
-- Principais áreas: Fila de Tarefas, Cérebro de Memória, Logs, Monitor em tempo real e Configurações
+- Principais áreas: Fila de Tarefas, Projetos, Cérebro de Memória, Logs, Monitor em tempo real e Configurações
 - Autenticação via Supabase Auth (login com e-mail e senha ou link mágico) e cadastro pelo link
   **Criar usuário** da tela de login (ver [Cadastro de usuários](#4-cadastro-de-usuários-criar-usuário))
 
@@ -207,7 +207,7 @@ Aplique **em ordem numérica** (`00` → `08`):
 | `05_rls_policies.sql` | RLS e permissões das tabelas e funções de 00–04 |
 | `06_messages_rules.sql` | Recados entre agentes e regras por projeto |
 | `07_agent_events.sql` | Eventos dos agentes para o monitor em tempo real |
-| `08_projects_campos.sql` | Campos do perfil do projeto (cor, ícone, URLs, prioridade, tags) |
+| `08_projects_campos.sql` | Responsável, prazo, cor, ícone, URLs, prioridade e tags do projeto |
 
 - **SQL Editor do Supabase:** abra cada arquivo, cole e execute, na ordem da tabela.
 - **psql** (use a *connection string* do painel do Supabase, em *Project Settings > Database*):
@@ -250,6 +250,12 @@ on conflict (project_id, user_id) do update set role = excluded.role;
 | `editor` | Também cria e edita tasks e memórias do projeto |
 | `owner` | Também edita o projeto, a equipe e as regras |
 | `admin` (global, `user_roles`) | Tudo, em todos os projetos |
+
+O cadastro e a lista ficam em [`#/projetos`](#/projetos), no menu **Projetos**. Administradores
+criam projetos; o responsável (owner) ou um administrador pode editar e ativar/inativar. O status
+continua sendo `projects.ativo` (boolean), exibido como **1-ATIVO** ou **0-INATIVO**. Toda task já
+pertence a um projeto pelo campo obrigatório `tasks.project_id`. Para os novos campos da tabela
+`projects`, aplique também `database/08_projects_campos.sql` conforme a ordem acima.
 
 Agentes, MCP e scripts usam a chave `service_role` no servidor (ignora a RLS); o navegador usa
 só a chave anon com o login do usuário.

@@ -237,15 +237,13 @@ mantido abaixo só como histórico.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-13 18:32 — conferido por leitura do código (Codex GPT-6).
 ### SUB-45.17 — Documentar projetos no `README.md` e no `database/README.md`
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** nenhum — entregue. Seguir na SUB-45.18.
 
 - **Descrição:** No `database/README.md`: incluir o `08_projects_campos.sql` na ordem de aplicação, com a lista de colunas novas e os checks. No `README.md`: descrever a tela Projetos (quem cria, quem edita, status 1-ATIVO/0-INATIVO, toda task pertence a um projeto via `tasks.project_id`).
-- **Critérios de Aceitação:** `npm run validar` verde; links relativos funcionando.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
+- **Critérios de Aceitação:** ordem dos scripts e campos descritos; rota, permissões e relacionamento task-projeto documentados. Nenhum teste foi executado por regra do projeto.
+- **Entrega:** commit desta entrega · **Verificação:** leitura dos dois READMEs e comparação manual com `database/08_projects_campos.sql`, `tasks.project_id` e as regras de acesso.
+- **Anotação:** atualizados `README.md` e `database/README.md` com a rota, status booleano, permissões e os oito campos novos, incluindo checks, default de prioridade e índice GIN.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-13 18:39 — conferido por leitura dos documentos e script SQL (Codex GPT-6).
 ### SUB-45.18 — Validação visual da tela Projetos
 
 **Próximo passo:** executar conforme a descrição.

@@ -70,6 +70,8 @@
 ---
 | SUB-45.16 | Registrar a tela `projetos` (rota `#/projetos` e menu) | 🟡 Média | SUB-45.15 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 
+| SUB-45.17 | Documentar projetos no `README.md` e no `database/README.md` | 🟡 Média | SUB-45.4, SUB-45.16 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
+
 ## 📜 Histórico do quadro antigo (blocos, até 2026-10-13)
 
 > Blocos do modelo antigo (SUB-01 a SUB-46), movidos do `task-principal.md` (hoje em
