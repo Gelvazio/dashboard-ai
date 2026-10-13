@@ -10,6 +10,13 @@
 
 > 🔄 **Sincronizar SEMPRE com `fetch` antes do `pull`:** rode `git fetch --all --prune` **antes** de qualquer `git pull --rebase origin main`. Sem o `fetch`, a referência `origin/main` é **local e envelhece**: um `git status` mostrando `## main...origin/main` (sem `ahead`/`behind`) **não** prova que você está atualizado. Já houve agente lendo o quadro "sincronizado" com o remoto vários commits à frente. **Com os hooks da seção 1.3 instalados, o Git passa a barrar o push atrasado sozinho** — instale uma vez por clone.
 
+> ⚠️ **REGRA CRÍTICA - NÃO MEXER EM NADA ALÉM DO SOLICITADO:** ao modificar o `task-principal.md` (quadro de tarefas), mexa **EXCLUSIVAMENTE** na tarefa/subtarefa **EXPLICITAMENTE SOLICITADA** pelo usuário (pelo número ex: SUB-XX.Y). **NUNCA**:
+>   - Reanumere fases automaticamente
+>   - Reordene tarefas sem autorização
+>   - Modifique tarefas não solicitadas
+>   - Altere estrutura do quadro sem pedido explícito
+> Se precisar remover uma tarefa, remova **SÓ ELA** (bloco + trava se existir) e **NADA MAIS**. **Esta regra é OBRIGATÓRIA e não tem exceção.**
+
 > 📦 **Concluídas em arquivo separado:** os blocos `[x]` (tarefas e subtarefas `concluido`) ficam em [`task_complete.md`](task_complete.md). Para pegar tarefas, leia só o `task-principal.md`: a lista `Subtarefas:` das tarefas-mãe abertas já traz `(concluido, <sha>)`, e **dependência que não aparece como bloco no `task-principal.md` está `concluido` no `task_complete.md`**. Abra o `task_complete.md` só para consultar uma entrega ou reabrir uma tarefa (o bloco volta para o `task-principal.md` como `pendente`, com o motivo na anotação).
 >
 > 🗂️ **Scripts temporários:** cada agente guarda scripts auxiliares dentro da própria pasta de trabalho, nunca em `/tmp` ou outra pasta compartilhada (outro agente pode sobrescrevê-los).
