@@ -1079,10 +1079,10 @@
   - `SUB-47.11`: Piloto da equipe em 1 item livre + aceite do usuário (`pendente`)
   - `SUB-47.12`: Integrar classificação Laya no worker LangGraph (`pendente`)
   - `SUB-47.13`: Documentar Laya Server no README (`pendente`)
-- **Descrição:** Cada tarefa do quadro passa a ter `Nível` (`LEVE`, `MEDIO`, `PESADO`), definido automaticamente pelo **Laya Server** (System-One control, Jev-compatible) em vez de um classificador manual Opus. O Laya Server roda como serviço em background via Docker, expõe endpoint HTTP `/v1/systemone` e fornece decisões estruturadas rápidas (< 1s, sem custo de LLM). Cada ferramenta de IA (Claude Code, Grok, DeepSeek, Gemini, Devin) pega só o que o seu modelo dá conta, conforme uma matriz ferramenta × modelo × nível. No Claude Code, uma equipe de subagentes (líder + classificador Laya + executores Haiku/Sonnet/Opus) trabalha em paralelo, com só o líder mexendo no Git e no quadro. Plano completo: [`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md) + integração Laya em `docs/laya-server.md`.
+- **Descrição:** Cada tarefa do quadro passa a ter `Nível` (`LEVE`, `MEDIO`, `PESADO`), definido automaticamente pelo **Laya Server** (System-One control, Jev-compatible) com **Opus 5.5 como revisor/fallback**. O Laya Server roda como serviço em background via Docker, expõe endpoint HTTP `/v1/systemone` e fornece decisões estruturadas rápidas (< 1s, sem custo de LLM). Quando o score do Laya é baixo (< 0.7) ou o servidor está indisponível, o Opus revisa a decisão (modo híbrido). Cada ferramenta de IA (Claude Code, Grok, DeepSeek, Gemini, Devin) pega só o que o seu modelo dá conta, conforme uma matriz ferramenta × modelo × nível. No Claude Code, uma equipe de subagentes (líder + classificador Laya/Opus + executores Haiku/Sonnet/Opus) trabalha em paralelo, com só o líder mexendo no Git e no quadro. Plano completo: [`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md) + integração Laya em `docs/laya-server.md`.
 - **Critérios de Aceitação:** Todas as subtarefas `concluido`; Laya Server rodando e acessível; classificação automática funciona; piloto (SUB-47.11) aceito pelo usuário.
 - **Commit:** pendente
-- **Anotação:** Criada em 2026-10-13 12:10 por Claude Code (Opus 5.5), a pedido do usuário. **Atualizada em 2026-10-13 para integrar Laya Server:** o classificador manual Opus foi substituído pelo Laya Server (System-One control), que fornece decisões estruturadas rápidas sem custo de LLM. Vantagens: < 1s por classificação, custo zero (local), precisão em decisões estruturadas. Prioridade `MEDIA` (padrão da seção 1.2). **Nenhuma subtarefa pode ser pega antes de o usuário aprovar o plano** em `docs/equipe-de-agentes.md`; quando aprovar, a dependência de aprovação sai dos blocos e o resumo é atualizado.
+- **Anotação:** Criada em 2026-10-13 12:10 por Claude Code (Opus 5.5), a pedido do usuário. **Atualizada em 2026-10-13 para integrar Laya Server com Opus como revisor/fallback:** o classificador manual Opus foi substituído pelo Laya Server (System-One control) como primário, com Opus 5.5 como revisor quando o score do Laya é baixo (< 0.7) ou quando o servidor está indisponível. Vantagens: < 1s por classificação na maioria dos casos (Laya), custo zero (local), precisão garantida em casos complexos (Opus fallback). Configurável via `CLASSIFICADOR_MODE` (laya/opus/hybrid). Prioridade `MEDIA` (padrão da seção 1.2). **Nenhuma subtarefa pode ser pega antes de o usuário aprovar o plano** em `docs/equipe-de-agentes.md`; quando aprovar, a dependência de aprovação sai dos blocos e o resumo é atualizado.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
@@ -1099,16 +1099,16 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
-#### [ ] SUB-47.1: Criar wrapper TypeScript para API do Laya (`src/lib/laya.ts`)
+#### [ ] SUB-47.1: Criar wrapper TypeScript para API do Laya com Opus como revisor/fallback (`src/lib/laya.ts`)
 - **Status:** pendente
 - **Prioridade:** MEDIA
 - **Executor:** nenhum
 - **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.0
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Criar `src/lib/laya.ts` com: tipos TypeScript para request/response do endpoint `/v1/systemone` (baseado na especificação Jev), função `classificar(estado, perguntas)` que faz POST para o Laya Server e devolve `{ choice, score, noul }`, função `status()` para health check. Configurar URL base via variável de ambiente `LAYA_SERVER_URL` (padrão: `http://localhost:8000`). Tratar erros de conexão e timeouts. Exportar em `src/lib/index.ts`.
-- **Critérios de Aceitação:** Wrapper TypeScript funcional; tipos corretos; testes unitários passando; `npm run typecheck` verde.
+- **Descrição:** Criar `src/lib/laya.ts` com: tipos TypeScript para request/response do endpoint `/v1/systemone` (baseado na especificação Jev), função `classificarLaya(estado, perguntas)` que faz POST para o Laya Server e devolve `{ choice, score, noul }`, função `classificarComOpus(estado, perguntas)` que usa Anthropic API (Opus 5.5 ou Sonnet 3.5) para classificação, e função `classificar(estado, perguntas)` que implementa o modo híbrido: (1) tenta Laya Server; (2) se score < 0.7 (baixa confiança) ou erro, usa Opus como revisor/fallback; (3) retorna a decisão com metadados (qual classificador usou, score, tempo). Configurar variáveis de ambiente: `LAYA_SERVER_URL` (padrão: `http://localhost:8000`), `ANTHROPIC_API_KEY` (para Opus), `CLASSIFICADOR_MODE` (padrão: `hybrid`; opções: `laya`, `opus`, `hybrid`). Função `status()` para health check do Laya. Tratar erros de conexão e timeouts. Exportar em `src/lib/index.ts`.
+- **Critérios de Aceitação:** Wrapper TypeScript funcional; tipos corretos; modo híbrido implementado; Opus integrado como fallback; testes unitários passando; `npm run typecheck` verde.
 - **Commit:** pendente
-- **Anotação:** Integrado da SUB-51 para que o classificador use o Laya Server.
+- **Anotação:** Integrado da SUB-51 para usar Laya Server como classificador primário e Opus como revisor/fallback. Vantagens: Laya < 1s e grátis na maioria dos casos; Opus garante precisão em casos complexos ou quando Laya tem baixa confiança (score < 0.7). Configurável via `CLASSIFICADOR_MODE`.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
@@ -1268,16 +1268,16 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
-#### [ ] SUB-47.13: Documentar Laya Server no README
+#### [ ] SUB-47.13: Documentar Laya Server e Opus no README
 - **Status:** pendente
 - **Prioridade:** MEDIA
 - **Executor:** nenhum
 - **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.0
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Atualizar o `README.md` com seção "Laya Server (System-One Control)" descrevendo: o que é o Laya Server, como iniciar (Docker Compose), variáveis de ambiente, endpoints disponíveis, integração na classificação de tarefas, e monitoramento. Adicionar também instruções de troubleshooting (servidor não inicia, timeouts, erros de conexão). Criar `docs/laya-server.md` com documentação técnica detalhada.
-- **Critérios de Aceitação:** README atualizado com seção do Laya; instruções completas; troubleshooting documentado; `docs/laya-server.md` criado.
+- **Descrição:** Atualizar o `README.md` com seção "Laya Server + Opus (Classificação Híbrida)" descrevendo: o que é o Laya Server (System-One control), como iniciar (Docker Compose), variáveis de ambiente (`LAYA_SERVER_URL`, `ANTHROPIC_API_KEY`, `CLASSIFICADOR_MODE`), modo híbrido (Laya primário, Opus revisor/fallback quando score < 0.7), quando cada classificador é usado, custo e velocidade comparativos, e monitoramento. Adicionar também instruções de troubleshooting (servidor não inicia, timeouts, erros de conexão, API key do Opus). Criar `docs/laya-server.md` com documentação técnica detalhada incluindo a integração com Opus.
+- **Critérios de Aceitação:** README atualizado com seção do Laya + Opus; instruções completas; modo híbrido documentado; troubleshooting documentado; `docs/laya-server.md` criado.
 - **Commit:** pendente
-- **Anotação:** Integrado da SUB-51 para documentação do Laya Server.
+- **Anotação:** Integrado da SUB-51 para documentação do Laya Server com Opus como revisor/fallback.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
