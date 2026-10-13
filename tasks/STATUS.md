@@ -17,7 +17,6 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | Tarefa | Título | Prioridade | Depende de | Status | Em uso por | Etapa |
 |---|---|---|---|---|---|---|
 | SUB-45 | **Cadastro de projetos (campos novos na tabela `projects` e tela `#/projetos`)** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
-| SUB-45.3 | Colunas `url_producao` e `url_documentacao` em `database/08_projects_campos.sql` | 🟡 Média | SUB-45.2 | 🔄 Em execução | DeepSeek Harness (deepseek-flash) (local · main) (desde 2026-10-13 17:42) | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.4 | Colunas `prioridade` e `tags` em `database/08_projects_campos.sql` | 🟡 Média | SUB-45.3 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.6 | Aplicar o `database/08_projects_campos.sql` no Supabase (só com autorização do usuário) | 🟡 Média | SUB-45.4 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.7 | Tipos novos de `Project` em `src/types/database.ts` | 🟡 Média | SUB-45.4 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |

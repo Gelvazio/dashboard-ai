@@ -63,3 +63,29 @@ end $$;
 
 comment on column public.projects.cor   is 'Cor do projeto na tela, no formato #RRGGBB (opcional).';
 comment on column public.projects.icone is 'Nome do ícone do lucide-react (ex.: folder-kanban): minúsculas, dígitos e hífen, até 64 (opcional).';
+
+-- -----------------------------------------------------------------------------
+-- URLs do projeto (SUB-45.3)
+-- -----------------------------------------------------------------------------
+alter table public.projects add column if not exists url_producao    text;
+alter table public.projects add column if not exists url_documentacao text;
+
+do $$
+begin
+  if not exists (select 1 from pg_constraint
+                 where conname = 'projects_url_producao_check'
+                   and conrelid = 'public.projects'::regclass) then
+    alter table public.projects add constraint projects_url_producao_check
+      check (url_producao is null or url_producao ~ '^https?://');
+  end if;
+
+  if not exists (select 1 from pg_constraint
+                 where conname = 'projects_url_documentacao_check'
+                   and conrelid = 'public.projects'::regclass) then
+    alter table public.projects add constraint projects_url_documentacao_check
+      check (url_documentacao is null or url_documentacao ~ '^https?://');
+  end if;
+end $$;
+
+comment on column public.projects.url_producao     is 'URL do ambiente de produção do projeto (opcional; precisa começar com http:// ou https://).';
+comment on column public.projects.url_documentacao is 'URL da documentação do projeto (opcional; precisa começar com http:// ou https://).';
