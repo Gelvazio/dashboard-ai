@@ -70,7 +70,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-47.11 | Piloto da equipe em 1 item livre + aceite do usuário | 🟡 Média | SUB-47.6, SUB-47.8, SUB-47.9 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-47.12 | Integrar classificação Laya no worker LangGraph | 🟡 Média | SUB-47.1 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-49 | **Configurar backup diário do Supabase (GitHub Artifacts e Cloudflare R2)** | 🟡 Média | SUB-48 | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
-| SUB-49.4 | Documentar escolha entre as 2 opções e migração | 🟡 Média | SUB-49.6 | 🔄 Em execução | Claude Code (Opus 5.5) (nuvem · main) (desde 2026-10-13 20:29) | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
+| SUB-49.7 | Aceite do usuário: 1º disparo manual dos dois workflows de backup | 🟡 Média | SUB-49.4 | 👀 Aguardando o usuário | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
 | SUB-55 | **Visualizador de regras e tarefas lendo os `.md` direto (`.claude/rules/index.html`)** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-55.5 | Documentar no `README.md` como abrir o visualizador | 🟡 Média | SUB-55.4 | 🔄 Em execução | Claude Code (Opus 5.5) (local · main) (desde 2026-10-13 16:17) | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-55.6 | Aceite do usuário | 🟡 Média | SUB-55.5 | ⬜ Pendente | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |

@@ -101,7 +101,7 @@
 
 ### SUB-49.4 — Documentar escolha entre as 2 opções e migração
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:29).
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** Atualizar `docs/backup-github-artifacts.md` (ou renomear para `docs/backup-database.md`) com: tabela comparativa (Artifacts vs R2), fluxograma de decisão (se dump < 2 GB e retenção ≤ 90 dias → Artifacts; se dump > 2 GB ou retenção > 90 dias → R2), como alternar entre os workflows (ativar/desativar o workflow R2 com `if: true/false`), como migrar backups existentes (download de Artifacts → upload para R2), e exemplos de custo real (10 GB backup: Artifacts grátis, R2 grátis 10 GB). Adicionar no `README.md` a nota de que o projeto vem configurado com Artifacts por padrão.
 - **Critérios de Aceitação:** Documentação de decisão clara; tabela comparativa; instruções de migração; `README.md` atualizado.
@@ -109,3 +109,16 @@
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
+
+### SUB-49.7 — Aceite do usuário: 1º disparo manual dos dois workflows de backup
+
+**Próximo passo:** 👀 o usuário (1) cria o secret `SUPABASE_BACKUP_PASSPHRASE` e guarda a senha fora
+do GitHub; (2) roda **Run workflow** no *Backup Supabase para GitHub Artifacts* e confere o artifact
+`.gpg`; (3) se for usar o R2, cria bucket, token e secrets (`docs/backup-cloudflare-r2.md`) e roda o
+manual do R2; (4) restaura um dos backups num banco de teste; (5) responde "sim".
+
+- **Descrição:** criada em 2026-10-13 20:30 por Claude Code (Opus 5.5) (nuvem · main): a execução real no runner
+  Windows (Docker, PowerShell, envio ao R2) não pôde ser conferida na sessão da nuvem; o critério da
+  mãe pede "backup manual funciona" e "restore documentado".
+- **Critérios de Aceitação:** artifact cifrado gerado; restauração funcionando; "sim" do usuário.
+- **Entrega:** — · **Verificação:** —

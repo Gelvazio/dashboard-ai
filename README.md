@@ -649,6 +649,9 @@ obsoletas em vez de deixá-las contradizer as novas.
 
 ## Backup do banco
 
+**Padrão: GitHub Artifacts ligado; Cloudflare R2 desligado.** Comparação, decisão e migração entre
+os dois: [`docs/backup-database.md`](docs/backup-database.md).
+
 Backup diário do Supabase local (02:00 UTC, 23:00 de Brasília) pelo workflow
 [`backup-supabase-artifacts.yml`](.github/workflows/backup-supabase-artifacts.yml), publicado como
 GitHub Artifact por 30 dias. Como o repositório é **público**, o dump sai **criptografado** e só é

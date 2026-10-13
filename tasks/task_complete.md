@@ -94,6 +94,7 @@
 | SUB-49.2 | Documentar uso de GitHub Artifacts (limites, retenção, download) | 🟡 Média | SUB-49.1, SUB-49.5 | ✅ Concluído | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
 | SUB-49.3 | Criar workflow alternativo para Cloudflare R2 (retenção > 90 dias) | 🟡 Média | SUB-49.2 | ✅ Concluído | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
 | SUB-49.6 | Documentar o backup no Cloudflare R2 (`docs/backup-cloudflare-r2.md`) | 🟡 Média | SUB-49.3 | ✅ Concluído | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
+| SUB-49.4 | Documentar escolha entre as 2 opções e migração | 🟡 Média | SUB-49.6 | ✅ Concluído | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
 
 ---
 
