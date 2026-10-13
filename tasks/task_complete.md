@@ -29,6 +29,8 @@
 | SUB-50.2 | Inicializar o Supabase local na pasta `database/configlocal` (`supabase init --config database/configlocal`) | 🟡 Média | SUB-50.1 | ✅ Concluído | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-48.1 | Definir estrutura `projects/` para projetos de IA independentes | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-010](etapas/ETAPA-010-43fbb21f-ESTRUTURA-PROJECTS.md) |
 | SUB-48 | **Definir estrutura `projects/` para projetos de IA independentes** | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-010](etapas/ETAPA-010-43fbb21f-ESTRUTURA-PROJECTS.md) |
+| SUB-35 | **Monitor em Tempo Real dos Agentes** | 🟡 Média | SUB-12, SUB-29, SUB-30 | ✅ Concluído | — (não reservável) | [ETAPA-004](etapas/ETAPA-004-57a86337-MONITOR-TEMPO-REAL.md) |
+| SUB-35.46 | Validação automatizada da SUB-35 (validação de banco cancelada pelo usuário) | 🟡 Média | SUB-35.7, SUB-35.12, SUB-35.13, SUB-35.32, SUB-35.34, SUB-35.38, SUB-35.39, SUB-35.41, SUB-35.43, SUB-35.44, SUB-35.45 | ✅ Concluído | — (não reservável) | [ETAPA-004](etapas/ETAPA-004-57a86337-MONITOR-TEMPO-REAL.md) |
 | SUB-54.1 | Regras sem "linha da frente" (`quadro.md`, `frentes-e-reserva.md`, `ciclo-da-task.md`) | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
 | SUB-54.2 | Skill `proxima-task` lendo as frentes pela coluna "Em uso por" | 🟡 Média | SUB-54.1 | ✅ Concluído | — | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
 | SUB-54.3 | Remover a seção "🧭 Frentes" do `STATUS.md` e avisar as IAs | 🟡 Média | SUB-54.2 | ✅ Concluído | — | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
@@ -38,6 +40,8 @@
 | SUB-55.4 | `leitor-tarefas.js`: tarefas abertas e concluídas, frentes e itens 👀 | 🟡 Média | SUB-55.3 | ✅ Concluído | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-56 | **Consultar tarefas concluídas antes de afirmar status ou dependências** | 🟡 Média | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-017](etapas/ETAPA-017-c31f8a42-CONSULTAR-TASK-COMPLETE.md) |
 | SUB-56.1 | Instruir no `AGENTS.md` a consulta ao `tasks/task_complete.md` | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-017](etapas/ETAPA-017-c31f8a42-CONSULTAR-TASK-COMPLETE.md) |
+| SUB-57 | **Remover a validação de integração SUB-35.46.2 por decisão do usuário** | 🟡 Média | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-018](etapas/ETAPA-018-a9bba1c3-REMOVER-SUB35-46-2.md) |
+| SUB-57.1 | Registrar o cancelamento da SUB-35.46.2 e atualizar o quadro | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-018](etapas/ETAPA-018-a9bba1c3-REMOVER-SUB35-46-2.md) |
 
 ---
 

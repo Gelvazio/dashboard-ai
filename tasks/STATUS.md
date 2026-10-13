@@ -16,9 +16,6 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 
 | Tarefa | Título | Prioridade | Depende de | Status | Em uso por | Etapa |
 |---|---|---|---|---|---|---|
-| SUB-35 | **Monitor em Tempo Real dos Agentes** | 🟡 Média | SUB-12, SUB-29, SUB-30 | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-004](etapas/ETAPA-004-57a86337-MONITOR-TEMPO-REAL.md) |
-| SUB-35.46 | Validação automatizada da SUB-35 (dividida em .1 sem banco e .2 de banco) | 🟡 Média | SUB-35.7, SUB-35.12, SUB-35.13, SUB-35.32, SUB-35.34, SUB-35.38, SUB-35.39, SUB-35.41, SUB-35.43, SUB-35.44, SUB-35.45 | ⬜ Pendente (pegue a 35.46.1 ou a 35.46.2) | — (não reservável) | [ETAPA-004](etapas/ETAPA-004-57a86337-MONITOR-TEMPO-REAL.md) |
-| SUB-35.46.2 | Validação de banco: `npm run test:integration` — só Claude Code local | 🟡 Média | SUB-35.7, SUB-35.12, SUB-35.13, SUB-35.32, SUB-35.34, SUB-35.38, SUB-35.39, SUB-35.41, SUB-35.43, SUB-35.44, SUB-35.45 | ⬜ Pendente | — | [ETAPA-004](etapas/ETAPA-004-57a86337-MONITOR-TEMPO-REAL.md) |
 | SUB-45 | **Cadastro de projetos (campos novos na tabela `projects` e tela `#/projetos`)** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.2 | Colunas `cor` e `icone` em `database/08_projects_campos.sql` | 🟡 Média | SUB-45.1, SUB-45.19 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.3 | Colunas `url_producao` e `url_documentacao` em `database/08_projects_campos.sql` | 🟡 Média | SUB-45.2 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
@@ -97,8 +94,6 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-55 | **Visualizador de regras e tarefas lendo os `.md` direto (`.claude/rules/index.html`)** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-55.5 | Documentar no `README.md` como abrir o visualizador | 🟡 Média | SUB-55.4 | 🔄 Em execução | Claude Code (Opus 5.5) (local · main) (desde 2026-10-13 16:17) | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-55.6 | Aceite do usuário | 🟡 Média | SUB-55.5 | ⬜ Pendente | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
-| SUB-57 | **Remover a validação de integração SUB-35.46.2 por decisão do usuário** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-018](etapas/ETAPA-018-a9bba1c3-REMOVER-SUB35-46-2.md) |
-| SUB-57.1 | Registrar o cancelamento da SUB-35.46.2 e atualizar o quadro | 🟡 Média | Nenhuma | 🔄 Em execução | Codex (GPT-6) (local · main) (desde 2026-10-13 16:45) | [ETAPA-018](etapas/ETAPA-018-a9bba1c3-REMOVER-SUB35-46-2.md) |
 
 ## Escopo do projeto
 

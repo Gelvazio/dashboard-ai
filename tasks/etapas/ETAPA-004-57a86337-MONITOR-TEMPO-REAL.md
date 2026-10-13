@@ -1,7 +1,7 @@
 ## Etapa 004-57a86337 — SUB-35: Monitor em Tempo Real dos Agentes
 
 **Tarefa:** SUB-35 · **Migrada em:** 2026-10-13 (ETAPA-001) · **Executor:** por subtarefa (coluna "Em uso por" do `tasks/STATUS.md`)
-**Próximo passo:** escolher uma subtarefa livre no `tasks/STATUS.md` (cada subtarefa tem o próprio próximo passo abaixo).
+**Próximo passo:** nenhum — SUB-35 concluída; validação de integração cancelada a pedido do usuário.
 
 > Bloco migrado do `task-principal.md` sem alterar o texto. **Status, prioridade, dependências e reserva** de cada subtarefa ficam só no [`tasks/STATUS.md`](../STATUS.md); aqui ficam descrição, critérios, entrega e anotações. Quem reserva uma subtarefa edita só a seção dela.
 
@@ -17,18 +17,21 @@
 
 ### SUB-35.46 — Validação automatizada da SUB-35
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** nenhum — escopo restante concluído; validação de banco cancelada pelo usuário.
 
-- **Descrição:** Rodar `npm run typecheck`, `npm test`, `npm run build`, `npm run test:integration` e os testes Python; registrar o resultado na anotação da SUB-35.
-- **Critérios de Aceitação:** Tudo verde.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Descrição:** Validar o código sem banco pelos comandos da SUB-35.46.1. A validação de banco da
+  SUB-35.46.2 foi cancelada pelo usuário e não foi executada.
+- **Critérios de Aceitação:** Validações sem banco concluídas; item de integração removido por decisão
+  do usuário.
+- **Commit:** entrega registrada em `tasks/task_complete.md`
+- **Anotação:** Fechada após a conclusão da SUB-35.46.1. Em 2026-10-13, Gelvazio pediu a remoção da
+  SUB-35.46.2; a validação de integração permanece não executada.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente`; a dependência SUB-35.32 continua `pendente` (marcador `⬜ NÃO IMPLEMENTADA`, Devin, 15:50), então a validação automatizada da SUB-35 não foi executada.
 
 ### SUB-35.46.1 — Validação sem banco (typecheck, testes, build, Python)
 
-**Próximo passo:** nenhum — entregue. Falta a SUB-35.46.2 (banco).
+**Próximo passo:** nenhum — entregue; a validação de banco foi cancelada por pedido do usuário.
 
 - **Descrição:** Parte sem banco da SUB-35.46, separada em 2026-10-13 15:19 por Claude Code (Opus 5.5) (nuvem · main) pela regra de `multiplas-ias.md` (o `npm run test:integration` é tarefa de banco). Rodar `npm run typecheck`, `npm test`, `npm run build` e os testes Python (`scripts/test_*.py`) e registrar o resultado.
 - **Critérios de Aceitação:** Tudo verde, ou cada falha registrada com o comando e a saída.
@@ -46,9 +49,16 @@
 
 ### SUB-35.46.2 — Validação de banco (`npm run test:integration`)
 
-**Próximo passo:** rodar `npm run test:integration` contra o banco e registrar o resultado.
+**Próximo passo:** cancelada em 2026-10-13 por pedido do usuário; a validação não foi executada.
 
 - **Descrição:** Parte de banco da SUB-35.46 (separada em 2026-10-13 15:19): rodar `npm run test:integration` e registrar o resultado. **Só o Claude Code local** (`multiplas-ias.md`).
 - **Critérios de Aceitação:** Tudo verde, ou cada falha registrada com o comando e a saída.
 - **Entrega:** — · **Verificação:** —
-- **Anotação:** —
+- **Anotação:** Cancelada a pedido explícito de Gelvazio em 2026-10-13. Removida do quadro ativo;
+  nenhum teste de integração foi executado.
+
+### Encerramento da SUB-35 — 2026-10-13
+
+O usuário pediu a remoção da validação de banco SUB-35.46.2. As subtarefas restantes estavam
+concluídas; a SUB-35 e a SUB-35.46 foram encerradas com essa ressalva. A validação de banco não foi
+executada.
