@@ -188,7 +188,7 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.1 — Criar wrapper TypeScript para API do Laya com Opus como revisor/fallback (`src/lib/laya.ts`)
 
-**Próximo passo:** criar `worker/laya.ts` (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:38).
+**Próximo passo:** nenhum (concluída).
 
 - **Reserva liberada pelo usuário (2026-10-13 20:38):** a reserva de Gemini (Antigravity) (local · main), parada
   desde 2026-10-13 18:04 sem commit de entrega (só o `lock` `b8370f2`; `src/lib/laya.ts` não existia),
@@ -204,7 +204,17 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 - **Descrição:** Criar `src/lib/laya.ts` com: tipos TypeScript para request/response do endpoint `/v1/systemone` (baseado na especificação Jev), função `classificarLaya(estado, perguntas)` que faz POST para o Laya Server e devolve `{ choice, score, noul }`, função `classificarComOpus(estado, perguntas)` que usa Anthropic API (Opus 5.5 ou superior) para classificação, e função `classificar(estado, perguntas)` que implementa o modo híbrido: (1) tenta Laya Server; (2) se score < 0.7 (baixa confiança) ou erro, usa Opus como revisor/fallback; (3) retorna a decisão com metadados (qual classificador usou, score, tempo). Configurar variáveis de ambiente: `LAYA_SERVER_URL` (padrão: `http://localhost:8000`), `ANTHROPIC_API_KEY` (para Opus), `CLASSIFICADOR_MODE` (padrão: `hybrid`; opções: `laya`, `opus`, `hybrid`). Função `status()` para health check do Laya. Tratar erros de conexão e timeouts. Exportar em `src/lib/index.ts`.
 - **Critérios de Aceitação:** Wrapper TypeScript funcional; tipos conferidos contra a especificação da fonte oficial; modo híbrido implementado; Opus integrado como fallback; `npm run typecheck` verde. **Sem testes novos** (regra do usuário: nunca escrever testes, exceto para corrigir bug).
-- **Commit:** pendente
+- **Commit:** `feat(SUB-47.1)` — `worker/laya.ts` + variáveis `LAYA_SERVER_URL`, `LAYA_API_KEY` e
+  `LAYA_TIMEOUT_MS` no `.env.example`. A descrição acima é a original (arquivo `src/lib/laya.ts`, com
+  Opus e híbrido); o que foi entregue segue as "Mudanças decididas": só a parte do Laya, em `worker/`.
+- **Verificação:** `tsc` 6.0 com as opções do `worker/tsconfig.json` (strict, NodeNext) no arquivo:
+  sem erros (o `npm ci` não roda nesta sessão, sem acesso ao registro do npm, então
+  `npm run typecheck:worker` completo fica para o ambiente local); funções ≤ 22 linhas e linhas ≤ 100.
+  Comportamento conferido com `tsx` contra um servidor HTTP falso que devolve a resposta de exemplo do
+  `docs/http-api.md` oficial, em 8 casos: sucesso (corpo `state` + `questions`, bearer só com chave),
+  HTTP 401 → `ErroLaya(http)`, formato errado → `ErroLaya(resposta)`, sem resposta → `ErroLaya(timeout)`,
+  servidor fora → `ErroLaya(conexao)`, `statusLaya` ok e fora do ar (sem lançar). Não conferido contra o
+  Laya real (sem Docker nesta sessão).
 - **Anotação:** Formato de request/response do `/v1/systemone` deve ser tirado da fonte oficial <https://github.com/NandhaKishorM/laya>, não deduzido. Integrado da SUB-51 para usar Laya Server como classificador primário e Opus como revisor/fallback. Vantagens: Laya < 1s e grátis na maioria dos casos; Opus garante precisão em casos complexos ou quando Laya tem baixa confiança (score < 0.7). Configurável via `CLASSIFICADOR_MODE`.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE

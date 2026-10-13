@@ -95,6 +95,7 @@
 | SUB-49.3 | Criar workflow alternativo para Cloudflare R2 (retenção > 90 dias) | 🟡 Média | SUB-49.2 | ✅ Concluído | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
 | SUB-49.6 | Documentar o backup no Cloudflare R2 (`docs/backup-cloudflare-r2.md`) | 🟡 Média | SUB-49.3 | ✅ Concluído | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
 | SUB-49.4 | Documentar escolha entre as 2 opções e migração | 🟡 Média | SUB-49.6 | ✅ Concluído | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
+| SUB-47.1 | Wrapper do Laya Server (`worker/laya.ts`: tipos, `classificarLaya`, `statusLaya`) | 🟡 Média | SUB-47.0 | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 
 ---
 
