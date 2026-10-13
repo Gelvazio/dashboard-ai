@@ -73,16 +73,16 @@
 
 
 ## 📊 Resumo de Progresso
-- **Total de Tasks Principais:** 50
-- **Subtarefas atômicas (~3 min):** 291
+- **Total de Tasks Principais:** 51
+- **Subtarefas atômicas (~3 min):** 299
 - **Em Execução:** 1 (SUB-38)
-- **Pendentes:** 11 principais (SUB-38, 28, 35, 41, 42, 45, 47, 48, 49, 50, KIRO-DEV-CLONE) + 78 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 4 — SUB-35.46, SUB-48, SUB-49.1 e SUB-50.1 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
-  - bloqueadas por dependência: 28 — SUB-45.2 a SUB-45.19 (cadeia da SUB-45; tarefas de banco só Claude Code local; frontend depende de banco), SUB-41.2, SUB-41.3, SUB-42 (cadeia da SUB-41), SUB-49.2 a SUB-49.4 (cadeia da SUB-49) e SUB-50.2 a SUB-50.7 (cadeia da SUB-50)
+- **Pendentes:** 12 principais (SUB-38, 28, 35, 41, 42, 45, 47, 48, 49, 50, 51, KIRO-DEV-CLONE) + 86 subtarefas
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 4 — SUB-35.46, SUB-48, SUB-49.1 e SUB-50.1 (`MEDIA`). SUB-51.1 bloqueada por SUB-47 (equipe de agentes ainda não aprovada). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - bloqueadas por dependência: 35 — SUB-45.2 a SUB-45.19 (cadeia da SUB-45; tarefas de banco só Claude Code local; frontend depende de banco), SUB-41.2, SUB-41.3, SUB-42 (cadeia da SUB-41), SUB-49.2 a SUB-49.4 (cadeia da SUB-49), SUB-50.2 a SUB-50.7 (cadeia da SUB-50) e SUB-51.2 a SUB-51.8 (cadeia da SUB-51)
   - aguardando aprovação do plano pelo usuário: 10 — SUB-47.1 a SUB-47.10 ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md))
   - em execução: 1 — SUB-38 (DeepSeek Harness (deepseek-flash))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 252 de 340 blocos (38 principais + 214 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 252 de 348 blocos (38 principais + 214 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -1420,6 +1420,135 @@
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar seção "Desenvolvimento local com Supabase" no `README.md` com: link para `docs/supabase-local.md`, pré-requisitos (Docker Desktop, Supabase CLI), comandos básicos (`supabase init`, `supabase start`, `supabase stop`), como alternar entre local e nuvem (`npm run dev:local` vs `npm run dev`), e quando usar cada ambiente (local para desenvolvimento/testes, nuvem para produção/staging). Atualizar também a seção "Banco de dados" para mencionar que as migrations estão em `supabase/migrations/` e como aplicá-las localmente.
 - **Critérios de Aceitação:** README atualizado com seção de desenvolvimento local; links funcionando; comandos básicos documentados; seção de banco atualizada.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+---
+
+## 🧠 FASE 22: Integração do Laya Server (System-One Control)
+
+### [ ] SUB-51: Integrar Laya Server para decisões estruturadas e classificação de tarefas
+- **Status:** pendente (aguardando subtarefas)
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-47 (equipe de agentes); subtarefas SUB-51.1 a SUB-51.8
+- **Subtarefas:**
+  - `SUB-51.1`: Criar documentação do Laya Server e arquitetura de integração (`pendente`)
+  - `SUB-51.2`: Configurar Laya Server via Docker Compose (`pendente`)
+  - `SUB-51.3`: Criar wrapper TypeScript para API do Laya (`src/lib/laya.ts`) (`pendente`)
+  - `SUB-51.4`: Implementar MCP tool `laya_classify` para classificação de tarefas (`pendente`)
+  - `SUB-51.5`: Integrar classificação de tarefas no worker LangGraph (`pendente`)
+  - `SUB-51.6`: Implementar MCP tool `laya_route` para roteamento de modelos (`pendente`)
+  - `SUB-51.7`: Criar dashboard de monitoramento do Laya Server (`pendente`)
+  - `SUB-51.8`: Documentar uso e atualizar o README (`pendente`)
+- **Descrição:** Integrar o Laya Server (System-One control plane compatível com Jev API) no Dashboard AI para decisões estruturadas rápidas: classificação de tarefas por nível (LEVE/MEDIO/PESADO), roteamento automático de modelos por tipo de tarefa, e julgamento de comandos perigosos antes de execução. O Laya Server roda como serviço em background via Docker, expõe endpoint HTTP `/v1/systemone` (Jev-compatible), e é acessado via MCP tools (`laya_classify`, `laya_route`, `laya_judge`). A tarefa configura o servidor, cria wrapper TypeScript, integra no worker LangGraph, adiciona ferramentas MCP e documenta o fluxo completo.
+- **Critérios de Aceitação:** Laya Server rodando via Docker e acessível; wrapper TypeScript funcional; MCP tools implementadas e testadas; classificação de tarefas integrada no worker; dashboard de monitoramento funcionando; documentação completa no README.
+- **Commit:** pendente
+- **Anotação:** Criada em 2026-10-13 a pedido do usuário para adicionar System-One control ao Dashboard AI. O Laya Server fornece decisões estruturadas rápidas (choice/score/noul) sem chamar LLM caro, substituindo o classificador manual de tarefas e permitindo roteamento inteligente de modelos. Compatível com Jev API, pode ser usado como substituto local do TypeSafe Jev. Vantagens: decisões rápidas (< 1s), custo baixo (sem chamadas de LLM), precisão em classificação estruturada.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-51.1: Criar documentação do Laya Server e arquitetura de integração
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `docs/laya-server.md` com: descrição do Laya Server (System-One control, Jev-compatible), arquitetura de integração no Dashboard AI (Docker, wrapper TypeScript, MCP tools, worker LangGraph), casos de uso (classificação de tarefas, roteamento de modelos, julgamento de comandos), comparação com classificador manual (custo, velocidade, precisão), e pré-requisitos (Docker, Python, GPU opcional). Incluir também referências à documentação oficial do Laya (https://laya-ai.com/guides/self-host-laya, https://laya-model.com/guides/serve-docker).
+- **Critérios de Aceitação:** Documentação completa com arquitetura; casos de uso claros; pré-requisitos listados; links para docs oficiais.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-51.2: Configurar Laya Server via Docker Compose
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-51.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `docker-compose.laya.yml` na raiz do projeto com serviço `laya-serve` baseado na configuração oficial do Laya. Configurar variáveis de ambiente: `LAYA_SERVE_BACKEND=laya`, `LAYA_SERVE_PRELOAD=true`, `LAYA_SERVE_DEVICE=cpu` (ou `cuda` se GPU disponível), `LAYA_API_KEY` (opcional, para proteção), `LAYA_BIND_ADDRESS=127.0.0.1` (só localhost). Publicar porta `8000` e adicionar health check. Criar script `scripts/start-laya.sh` (Windows: `.bat`) para iniciar/parar o serviço. Documentar como rodar: `docker compose -f docker-compose.laya.yml up -d laya-serve`.
+- **Critérios de Aceitação:** Docker Compose funcional; serviço inicia sem erros; health check passa; portas corretas; script de start/stop funcional.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-51.3: Criar wrapper TypeScript para API do Laya (`src/lib/laya.ts`)
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-51.2
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `src/lib/laya.ts` com: tipos TypeScript para request/response do endpoint `/v1/systemone` (baseado na especificação Jev), função `classificar(estado, perguntas)` que faz POST para o Laya Server e devolve `{ choice, score, noul }`, função `rotear(modelo, script, idioma)` para escolher checkpoint, e função `status()` para health check. Configurar URL base via variável de ambiente `LAYA_SERVER_URL` (padrão: `http://localhost:8000`). Tratar erros de conexão e timeouts. Exportar em `src/lib/index.ts`.
+- **Critérios de Aceitação:** Wrapper TypeScript funcional; tipos corretos; testes unitários passando; `npm run typecheck` verde.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-51.4: Implementar MCP tool `laya_classify` para classificação de tarefas
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-51.3
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar ferramenta MCP `laya_classify` em `api/_lib/laya-tools.ts` (ou adicionar ao `api/_lib/brain-tools.ts`) que recebe `{ descricao_tarefa, contexto }` e usa o wrapper do Laya para classificar a tarefa em LEVE/MEDIO/PESADO. Definir o schema de pergunta Laya com as 3 opções e critérios (LEVE: < 3 min, 1 arquivo; MEDIO: 3-15 min, 3-5 arquivos; PESADO: > 15 min, banco, segurança). Registrar a ferramenta no registro de ferramentas MCP (`api/_lib/`).
+- **Critérios de Aceitação:** MCP tool implementada; schema de pergunta definido; classificação funciona; registrada no MCP; testes passam.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-51.5: Integrar classificação de tarefas no worker LangGraph
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-51.4
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Integrar a classificação do Laya no worker LangGraph: ao criar uma tarefa via `pegar_proxima_task` ou manualmente, chamar `laya_classify` para definir o nível automaticamente, substituindo o classificador manual de Opus da SUB-47. Adicionar campo `nivel_tarefa` na tabela `tasks` (se não existir) ou usar o campo existente. Atualizar o nó `planejar` do worker para considerar o nível na distribuição por modelo (LEVE → modelos pequenos, MEDIO → modelos médios, PESADO → modelos grandes).
+- **Critérios de Aceitação:** Classificação automática integrada; campo `nivel_tarefa` presente; nó `planejar` atualizado; testes do worker passam.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-51.6: Implementar MCP tool `laya_route` para roteamento de modelos
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-51.3
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar ferramenta MCP `laya_route` em `api/_lib/laya-tools.ts` que recebe `{ tipo_tarefa, idioma, script }` e usa o Laya para escolher o modelo ideal (ex: Claude Haiku/GPT-4o-mini para LEVE, Claude Sonnet/GPT-4o para MEDIO, Claude Opus/GPT-4-turbo para PESADO). Definir schema de pergunta com mapeamento de tipo→modelo. Integrar no worker LangGraph no nó `executar` para escolher o modelo antes de chamar a ferramenta.
+- **Critérios de Aceitação:** MCP tool implementada; mapeamento de modelos definido; integração no worker funciona; testes passam.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-51.7: Criar dashboard de monitoramento do Laya Server
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-51.2
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar tela `src/views/LayaView.tsx` com monitoramento do Laya Server: status (health check), modelos carregados, métricas (latência média, requests/s, taxa de erro), log de decisões recentes (classificações, roteamentos) e gráficos de uso por tipo de decisão. Usar a API `/health` do Laya Server para dados em tempo real. Adicionar rota `#/laya` e item de menu. Apenas administradores veem a tela.
+- **Critérios de Aceitação:** Tela criada; dados do Laya Server exibidos; gráficos funcionam; `npm run build` verde; chunk da tela ≤ 500 kB.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-51.8: Documentar uso e atualizar o README
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-51.7
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Atualizar o `README.md` com seção "Laya Server (System-One Control)" descrevendo: o que é o Laya Server, como iniciar (Docker Compose), variáveis de ambiente, endpoints disponíveis, MCP tools (`laya_classify`, `laya_route`), integração no worker LangGraph, e monitoramento. Adicionar também instruções de troubleshooting (servidor não inicia, timeouts, erros de conexão). Atualizar `docs/laya-server.md` com notas de integração específicas do Dashboard AI.
+- **Critérios de Aceitação:** README atualizado com seção do Laya; instruções completas; troubleshooting documentado; links funcionando.
 - **Commit:** pendente
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
