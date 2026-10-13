@@ -182,9 +182,9 @@
         <h1>Quadro de execução — Dashboard AI</h1>
         <p>
           Fonte ao vivo:
-          <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/task-principal.md" target="_blank" rel="noopener">task-principal.md</a>
+          <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/tasks/STATUS.md" target="_blank" rel="noopener">tasks/STATUS.md</a>
           +
-          <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/task_complete.md" target="_blank" rel="noopener">task_complete.md</a>
+          <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/tasks/historico/task_complete.md" target="_blank" rel="noopener">histórico</a>
           no GitHub (<code>main</code>).
         </p>
       </div>
@@ -268,18 +268,18 @@
     </article>
 
     <footer>
-      Fonte: os arquivos <code>task-principal.md</code> (quadro ativo) e <code>task_complete.md</code> (concluídas) da branch <code>main</code>
+      Fonte: os arquivos <code>tasks/STATUS.md</code> (quadro: uma linha por subtarefa) e <code>tasks/historico/task_complete.md</code> (concluídas até 2026-10-13) da branch <code>main</code>
       (mesmo conteúdo dos blobs no GitHub:
-      <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/task-principal.md" target="_blank" rel="noopener">quadro</a>,
-      <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/task_complete.md" target="_blank" rel="noopener">concluídas</a>).
+      <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/tasks/STATUS.md" target="_blank" rel="noopener">quadro</a>,
+      <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/tasks/historico/task_complete.md" target="_blank" rel="noopener">histórico</a>).
       O repositório é privado: sem token, a página lê o Markdown local. Com um PAT, lê a <code>main</code> remota.
       Abra via servidor HTTP na pasta do repo, por exemplo <code>npx --yes serve .</code>
     </footer>
   </div>
 
   <script>
-    const BOARD_FILE = "task-principal.md";
-    const COMPLETE_FILE = "task_complete.md";
+    const BOARD_FILE = "tasks/STATUS.md";
+    const COMPLETE_FILE = "tasks/historico/task_complete.md";
     function sourceUrls(file) {
       return {
         raw: `https://raw.githubusercontent.com/Gelvazio/dashboard-ai/main/${file}`,
@@ -425,6 +425,39 @@
       });
     }
 
+    // Coluna "Em uso por" do tasks/STATUS.md: "<frente> (desde AAAA-MM-DD HH:MM)", "—" ou trava especial.
+    function reservationParts(inUse) {
+      const text = clean(inUse);
+      const start = (text.match(/desde\s+(\d{4}-\d{2}-\d{2}[ T]\d{1,2}:\d{2})/i) || [])[1] || "";
+      const agent = text.split(/\s*\(desde\b/i)[0].trim();
+      const isFree = !agent || /^[—-]/.test(agent) || /trava especial/i.test(agent);
+      return { agent: isFree ? "" : agent, start };
+    }
+
+    // Tabela "📌 Tarefas" do tasks/STATUS.md: uma linha por tarefa-mãe e por subtarefa.
+    function parseStatusTasks(table, buckets) {
+      const rows = mapRows(table, {
+        code: ["tarefa"],
+        title: ["título", "titulo"],
+        priority: ["prioridade"],
+        depends: ["depende"],
+        status: ["status"],
+        inUse: ["em uso por"]
+      });
+      for (const row of rows) {
+        const res = reservationParts(row.inUse);
+        const task = { code: row.code, title: row.title, priority: row.priority, depends: row.depends,
+          status: row.status, agent: res.agent, start: res.start };
+        if (row.status.includes("✅")) buckets.done.push(task);
+        else if (row.status.includes("🔄")) {
+          buckets.running.push(task);
+          buckets.locks.push({ status: "🔒 OCUPADA", code: row.code, title: row.title,
+            agent: res.agent, started: res.start, blocked: "Reserva no tasks/STATUS.md" });
+        }
+        else buckets.pending.push(task);
+      }
+    }
+
     function parseBoard(md) {
       const tables = locateTablesWithHeadings(md);
       const locks = [];
@@ -437,6 +470,11 @@
       for (const t of tables) {
         const h = t.heading.toLowerCase();
         const headers = t.header.map((x) => x.toLowerCase()).join(" | ");
+
+        if (headers.includes("em uso por")) {
+          parseStatusTasks(t, { locks, running, pending, done });
+          continue;
+        }
 
         if (h.includes("trava") || headers.includes("status da trava") || headers.includes("sub-task em execução")) {
           const rows = mapRows(t, {
@@ -581,7 +619,7 @@
       if (typeof vis === "undefined" || !vis.Network) { box.innerHTML = '<div class="empty">Biblioteca vis-network não carregou.</div>'; return; }
       const nodes = [], edges = [];
       nodes.push({ id: "hub", label: "Quadro\nprincipal", shape: "dot", size: 34, color: { background: "#6ea8ff", border: "#b9d3ff" },
-        font: { color: "#e8eef8", size: 15, face: "DM Sans", multi: false }, title: tipEl("<b>task-principal.md</b><br>Projeto central"), fixed: false, mass: 4 });
+        font: { color: "#e8eef8", size: 15, face: "DM Sans", multi: false }, title: tipEl("<b>tasks/STATUS.md</b><br>Projeto central"), fixed: false, mass: 4 });
       for (const a of model) {
         const aid = "ag:" + a.key;
         const color = a.idle ? { background: "#3a4660", border: "#8b9bb4" } : { background: "#f5a524", border: "#ffd166" };
@@ -798,7 +836,7 @@
       );
     }
 
-    // O quadro ativo é obrigatório; as concluídas (task_complete.md) são opcionais.
+    // O quadro (tasks/STATUS.md) é obrigatório; o histórico de concluídas é opcional.
     async function loadBoardMarkdown() {
       const board = await loadMarkdown(BOARD_FILE);
       try {

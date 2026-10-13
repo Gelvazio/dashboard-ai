@@ -5,7 +5,7 @@
 OPCAO DE SER ASSUMIDA POR QUALQUER IA, ISSO DEVE SER MANTIDO"
 **Objetivo:** trocar o quadro antigo (`task-principal.md` + `task_complete.md` + `STATUS.md` da raiz) pelo modelo de
 `.claude/rules/tasks/quadro.md` (`tasks/STATUS.md` + `tasks/etapas/`), com cada regra escrita em um lugar só.
-**Próximo passo:** 001.8 — trocar o parse do `index.html` (lia `task-principal.md`) para `tasks/STATUS.md` + etapas.
+**Próximo passo:** 001.9 — corrigir os links para `task-principal.md`, `task_complete.md`, `STATUS.md` e planos movidos (README, `docs/`, scripts).
 
 ### Escopo
 
@@ -56,6 +56,6 @@ OPCAO DE SER ASSUMIDA POR QUALQUER IA, ISSO DEVE SER MANTIDO"
 | 001.5 | Histórico em `tasks/historico/` (sem alterar texto) | ✅ Concluído | 2026-10-13 14:50 | `git mv` de `task-principal.md`, `task_complete.md`, `STATUS.md` (→ `STATUS-antigo.md`) e dos planos de SUB-40 e validação de telas; planos de SUB-38/45/47 removidos de `docs/` (conteúdo já nas etapas); `task-principal.md` da raiz virou aviso de uma linha; `tasks/historico/README.md` explica o conteúdo |
 | 001.6 | Regras sem duplicata (`AGENTS.md` curto + `.claude/rules/` no Git) | ✅ Concluído | 2026-10-13 15:05 | `AGENTS.md` 547 → 39 linhas de regra + anexo da SUB-41 intacto; cada seção antiga mapeada para um arquivo de `.claude/rules/` (tabela no chat); 4 arquivos novos (`multiplas-ias`, `reporte-progresso`, `testes-validacao`) e referências ao projeto `aulasenai` removidas do `INDEX`/`essentials`/`git-quick`; todos ≤ 5 KB; `CLAUDE.md` aponta para `.claude/rules/`; `.gitignore` com `settings.local.json` e `launch.json`; SUB-42 resolvida |
 | 001.7 | Skill `proxima-task` única; tirar `documentacao-padrao` | ✅ Concluído | 2026-10-13 15:12 | Fonte única em `.agents/skills/proxima-task/SKILL.md`, reescrita para o modelo novo (frentes, subtarefas livres por prioridade, 👀); `.claude/skills/proxima-task/SKILL.md` é cópia idêntica marcada "não editar" (o Claude Code só lê de lá; a SUB-47.3 automatiza a cópia); `.claude/skills/documentacao-padrao` (cópia da skill global que manda plano em `docs/`) removida do projeto — a global continua em `~/.agents/skills/` |
-| 001.8 | Painel `index.html` lendo o modelo novo | 🔄 Em progresso | — | — |
-| 001.9 | Links (README, `docs/`, espelho de eventos) | ⬜ Pendente | — | — |
+| 001.8 | Painel `index.html` lendo o modelo novo | ✅ Concluído | 2026-10-13 15:22 | Lê `tasks/STATUS.md` + `tasks/historico/task_complete.md`; nova função lê a tabela "📌 Tarefas" (status por emoji, reserva por "Em uso por"); funções do próprio `index.html` rodadas no Node contra os arquivos reais: 1 reserva, 89 pendentes, 259 concluídas (sem navegador, regra do usuário) |
+| 001.9 | Links (README, `docs/`, espelho de eventos) | 🔄 Em progresso | — | — |
 | 001.10 | Aceite do usuário | ⬜ Pendente | — | — |
