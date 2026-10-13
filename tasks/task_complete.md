@@ -35,6 +35,7 @@
 | SUB-55.1 | Estrutura: `index.html`, estilo e telas sem dados embutidos | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-55.2 | `fonte.js`: ler arquivo do repositório (local, raw ou jsDelivr) | 🟡 Média | SUB-55.1 | ✅ Concluído | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-55.3 | `leitor-regras.js`: regras do `INDEX.md` em seções | 🟡 Média | SUB-55.2 | ✅ Concluído | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
+| SUB-55.4 | `leitor-tarefas.js`: tarefas abertas e concluídas, frentes e itens 👀 | 🟡 Média | SUB-55.3 | ✅ Concluído | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 
 ---
 

@@ -82,17 +82,23 @@ gerador e sem dados embutidos.
 
 ### SUB-55.4 — `leitor-tarefas.js`: tarefas abertas e concluídas, frentes e itens 👀
 
-**Próximo passo:** reservar e portar o `leitor_tarefas.py` (55.3 concluída).
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** porta do `leitor_tarefas.py`: "📌 Tarefas" do `STATUS.md` + "✅ Concluídas" do `task_complete.md`,
   com a etapa e o próximo passo de cada uma; frentes ativas = nomes em "Em uso por"; itens 👀 das etapas da tabela
   "🗂️ Etapas".
 - **Critérios de Aceitação:** no Node, contra os arquivos locais, a contagem bate com o quadro.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-55.4)` · **Verificação:** `visualizador/leitor-tarefas.js` com `lerTarefas()`; o
+  modal de cada subtarefa mostra a seção `### <código>` da etapa (a mãe mostra a etapa inteira); "Aguardando o
+  usuário" junta as linhas 👀 do quadro e os itens 👀 das tabelas de itens das etapas; `node --check` ok; rodado
+  no Node (`vm`, leitura local) junto com `lerRegras()`: 107 tarefas (82 abertas do `STATUS.md` + 25 concluídas,
+  igual às tabelas), todas com etapa e próximo passo; 1 frente ativa (esta, na SUB-55.4); 1 item aguardando
+  (SUB-54.4); linhas ≤ 100 caracteres; funções ≤ 45 linhas; `<script>` no `index.html`. Isso resolve o erro
+  "lerTarefas is not defined" que o usuário viu ao abrir a página antes desta entrega.
 
 ### SUB-55.5 — Documentar no `README.md` como abrir o visualizador
 
-**Próximo passo:** depois da 55.4.
+**Próximo passo:** reservar e escrever a seção no `README.md` (55.4 concluída).
 
 - **Descrição:** seção curta no `README.md`: o que a página mostra, de onde lê e como abrir (duplo clique ou
   servidor).
