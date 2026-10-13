@@ -9,7 +9,7 @@
 
 - **Descrição:** Configurar backup diário automático do banco de dados Supabase do Dashboard AI com 2 opções: **GitHub Artifacts** (grátis, até 2 GB, retenção até 90 dias) e **Cloudflare R2** (grátis 10 GB, download grátis, retenção permanente). A tarefa cria workflows de GitHub Actions para ambas as opções, documenta quando usar cada uma e como migrar entre elas. O backup é um dump SQL (`pg_dump`) da base de dados, agendado via cron (ex: 2h UTC diariamente) e também pode ser disparado manualmente via `workflow_dispatch`.
 - **Critérios de Aceitação:** Workflows criados e testados (dry-run); documentação completa no `README.md` e em arquivo específico; instruções claras para escolher entre Artifacts e R2; backup manual funciona; restore documentado.
-- **Commit:** pendente
+- **Commit:** SUB-49.1 a 49.7. Concluída em 2026-10-13 20:46 quando o usuário marcou a SUB-49.7 como feita (sem confirmação do disparo real no runner).
 - **Anotação:** Criada em 2026-10-13 a pedido do usuário para garantir backup diário do banco com 2 opções econômicas. GitHub Artifacts: grátis até 2 GB, retenção até 90 dias, ideal para dumps SQL pequenos. Cloudflare R2: grátis 10 GB, download grátis, retenção permanente, ideal se precisar de > 90 dias ou volume maior.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
@@ -112,7 +112,7 @@
 
 ### SUB-49.7 — Aceite do usuário: 1º disparo manual dos dois workflows de backup
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:46).
+**Próximo passo:** nenhum (concluída).
 do GitHub; (2) roda **Run workflow** no *Backup Supabase para GitHub Artifacts* e confere o artifact
 `.gpg`; (3) se for usar o R2, cria bucket, token e secrets (`docs/backup-cloudflare-r2.md`) e roda o
 manual do R2; (4) restaura um dos backups num banco de teste; (5) responde "sim".
@@ -121,4 +121,4 @@ manual do R2; (4) restaura um dos backups num banco de teste; (5) responde "sim"
   Windows (Docker, PowerShell, envio ao R2) não pôde ser conferida na sessão da nuvem; o critério da
   mãe pede "backup manual funciona" e "restore documentado".
 - **Critérios de Aceitação:** artifact cifrado gerado; restauração funcionando; "sim" do usuário.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `docs(SUB-49.7)` · **Verificação:** **marcada como feita a pedido do usuário** em 2026-10-13 20:46 ("Marqe como feita"), **sem confirmação** do 1º disparo manual nem da restauração no runner Windows. Se um backup falhar, conferir primeiro: secret `SUPABASE_BACKUP_PASSPHRASE` criado (≥ 20 caracteres), runner/Docker/Supabase local ligados às 02:00 UTC
