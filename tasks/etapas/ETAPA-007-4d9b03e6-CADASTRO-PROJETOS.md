@@ -57,7 +57,7 @@ Completar a tabela `public.projects` com os campos que o usuário escolheu e cri
 | 2 | SUB-45.2 — `cor` e `icone` | `database/08_projects_campos.sql` | checks idempotentes | ⬜ Pendente |
 | 3 | SUB-45.3 — `url_producao` e `url_documentacao` | `database/08_projects_campos.sql` | checks idempotentes | ⬜ Pendente |
 | 4 | SUB-45.4 — `prioridade` e `tags` | `database/08_projects_campos.sql` | check e índice GIN | ⬜ Pendente |
-| 5 | SUB-45.5 — teste SQL | `database/tests/test_projects_campos.sql`, `database/tests/run_tests.sh` | `run_tests.sh` verde | ⬜ Pendente |
+| 5 | ~~SUB-45.5 — teste SQL~~ | — | — | ❌ Removida pelo usuário (2026-10-13) |
 | 6 | SUB-45.6 — aplicar no Supabase | — | consultas só de leitura | ⬜ Pendente |
 | 7 | SUB-45.7 — tipos | `src/types/database.ts` | `typecheck` e `test` | ⬜ Pendente |
 | 8 | SUB-45.8 — `validarProjeto()` | `src/lib/projeto.ts` | `typecheck` e `lint` | ⬜ Pendente |
@@ -109,9 +109,11 @@ Pendente (preencher ao fechar a SUB-45, com o tempo decorrido).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
-### SUB-45.5 — Teste SQL `database/tests/test_projects_campos.sql`
+### ~~SUB-45.5 — Teste SQL `database/tests/test_projects_campos.sql`~~ (removida)
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** nenhum — ❌ **removida a pedido do usuário em 2026-10-13 14:49** (regra "nunca escrever testes,
+exceto para corrigir bug"). Saiu do `tasks/STATUS.md`; a SUB-45.6 passou a depender da SUB-45.4. Texto original
+mantido abaixo só como histórico.
 
 - **Descrição:** Teste no padrão de `database/tests/test_multi_projeto.sql` (`raise notice 'ok: ...'` e `TODOS_OS_TESTES_PASSARAM`): defaults de `prioridade` e `tags`; checks recusam cor `azul`, ícone `Folder Kanban`, URL `ftp://x` e prioridade `URGENTE`; aceitam valores válidos; `responsavel_id` vira `null` quando o usuário é apagado. Incluir o arquivo no `database/tests/run_tests.sh` e corrigir a mensagem "schema 00-06" para o intervalo real. ⚠️ Exige banco: pela regra 11 da seção 1.1 do `AGENTS.md`, só o Claude Code local executa (não em sessão na nuvem).
 - **Critérios de Aceitação:** `database/tests/run_tests.sh` verde contra um Postgres com pgvector descartável (nunca o Supabase de produção).

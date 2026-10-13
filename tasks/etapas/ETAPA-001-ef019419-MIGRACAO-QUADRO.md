@@ -5,7 +5,7 @@
 OPCAO DE SER ASSUMIDA POR QUALQUER IA, ISSO DEVE SER MANTIDO"
 **Objetivo:** trocar o quadro antigo (`task-principal.md` + `task_complete.md` + `STATUS.md` da raiz) pelo modelo de
 `.claude/rules/tasks/quadro.md` (`tasks/STATUS.md` + `tasks/etapas/`), com cada regra escrita em um lugar só.
-**Próximo passo:** 001.10 — aceite do usuário (quadro já liberado para todas as IAs).
+**Próximo passo:** nenhum — etapa concluída e aceita em 2026-10-13 14:49.
 
 ### Escopo
 
@@ -58,4 +58,4 @@ OPCAO DE SER ASSUMIDA POR QUALQUER IA, ISSO DEVE SER MANTIDO"
 | 001.7 | Skill `proxima-task` única; tirar `documentacao-padrao` | ✅ Concluído | 2026-10-13 15:12 | Fonte única em `.agents/skills/proxima-task/SKILL.md`, reescrita para o modelo novo (frentes, subtarefas livres por prioridade, 👀); `.claude/skills/proxima-task/SKILL.md` é cópia idêntica marcada "não editar" (o Claude Code só lê de lá; a SUB-47.3 automatiza a cópia); `.claude/skills/documentacao-padrao` (cópia da skill global que manda plano em `docs/`) removida do projeto — a global continua em `~/.agents/skills/` |
 | 001.8 | Painel `index.html` lendo o modelo novo | ✅ Concluído | 2026-10-13 15:22 | Lê `tasks/STATUS.md` + `tasks/historico/task_complete.md`; nova função lê a tabela "📌 Tarefas" (status por emoji, reserva por "Em uso por"); funções do próprio `index.html` rodadas no Node contra os arquivos reais: 1 reserva, 89 pendentes, 259 concluídas (sem navegador, regra do usuário) |
 | 001.9 | Links (README, `docs/`, espelho de eventos) | ✅ Concluído | 2026-10-13 15:30 | README (protocolo de trabalho e link do plano de validação) atualizado; `docs/` e `scripts/` sem referência ao quadro antigo; espelho de eventos sem mudança (prefixos `lock:`/`feat(<COD>)` mantidos no `git-quick.md`); verificador de links: 186 links relativos em AGENTS, CLAUDE, README, regras, skill, `tasks/` — 0 quebrados |
-| 001.10 | Aceite do usuário | 👀 Aguardando o usuário | — | — |
+| 001.10 | Aceite do usuário | ✅ Concluído | 2026-10-13 14:49 | "1-OK" no chat; na mesma resposta: não apagar as sobras da skill e remover a SUB-45.5 (registrado no `STATUS.md`) |

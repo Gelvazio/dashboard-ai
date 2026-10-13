@@ -12,7 +12,7 @@ Prioridade: 🔴 Máxima · 🟠 Alta · 🟡 Média · 🟢 Baixa
 
 | Frente | Tarefa (etapa) | Situação | Atualizado em |
 |---|---|---|---|
-| Claude Code (Opus 5.5) (local · main) | MIGRA-QUADRO ([ETAPA-001](etapas/ETAPA-001-ef019419-MIGRACAO-QUADRO.md)) | 👀 Aguardando o usuário (aceite) | 2026-10-13 15:30 |
+| Claude Code (Opus 5.5) (local · main) | MIGRA-QUADRO ([ETAPA-001](etapas/ETAPA-001-ef019419-MIGRACAO-QUADRO.md)) | ⏹️ Encerrada | 2026-10-13 14:49 |
 
 ## 📌 Tarefas
 
@@ -21,7 +21,7 @@ Cada **subtarefa** é uma linha própria e pode ser reservada por **qualquer IA*
 
 | Tarefa | Título | Prioridade | Depende de | Status | Em uso por | Etapa |
 |---|---|---|---|---|---|---|
-| MIGRA-QUADRO | **Migrar o quadro para o modelo novo e eliminar regras duplicadas** | 🔴 Máxima | Nenhuma | 👀 Aguardando aceite do usuário | — | [ETAPA-001](etapas/ETAPA-001-ef019419-MIGRACAO-QUADRO.md) |
+| MIGRA-QUADRO | **Migrar o quadro para o modelo novo e eliminar regras duplicadas** | 🔴 Máxima | Nenhuma | ✅ Concluído | — | [ETAPA-001](etapas/ETAPA-001-ef019419-MIGRACAO-QUADRO.md) |
 | SUB-38 | **Verificação geral de todas as tarefas (marcador `VERIFICADOR-CLAUDE`)** | 🔴 Máxima | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-002](etapas/ETAPA-002-90cd9004-VERIFICACAO-GERAL.md) |
 | SUB-38.1 | Verificação geral de todas as tarefas (marcador `VERIFICADOR-CLAUDE`) | 🔴 Máxima | Nenhuma | ⬜ Pendente | — | [ETAPA-002](etapas/ETAPA-002-90cd9004-VERIFICACAO-GERAL.md) |
 | SUB-28 | **Integração LangChain/LangGraph para Execução de Tasks** | 🟡 Média | SUB-01 a SUB-27, SUB-29, SUB-30 (todas as tasks anteriores concluídas) | 👀 Todas as filhas concluídas: aguardando o usuário fechar | — (não reservável) | [ETAPA-003](etapas/ETAPA-003-6df4b821-LANGGRAPH.md) |
@@ -37,8 +37,7 @@ Cada **subtarefa** é uma linha própria e pode ser reservada por **qualquer IA*
 | SUB-45.2 | Colunas `cor` e `icone` em `database/08_projects_campos.sql` | 🟡 Média | SUB-45.1, SUB-45.19 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.3 | Colunas `url_producao` e `url_documentacao` em `database/08_projects_campos.sql` | 🟡 Média | SUB-45.2 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.4 | Colunas `prioridade` e `tags` em `database/08_projects_campos.sql` | 🟡 Média | SUB-45.3 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
-| SUB-45.5 | Teste SQL `database/tests/test_projects_campos.sql` | 🟡 Média | SUB-45.4 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
-| SUB-45.6 | Aplicar o `database/08_projects_campos.sql` no Supabase (só com autorização do usuário) | 🟡 Média | SUB-45.5 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
+| SUB-45.6 | Aplicar o `database/08_projects_campos.sql` no Supabase (só com autorização do usuário) | 🟡 Média | SUB-45.4 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.7 | Tipos novos de `Project` em `src/types/database.ts` | 🟡 Média | SUB-45.4 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.8 | `validarProjeto()` em `src/lib/projeto.ts` | 🟡 Média | SUB-45.7 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.9 | `criarProjeto()` em `src/services/projectService.ts` | 🟡 Média | SUB-45.7 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
@@ -163,6 +162,9 @@ Decisões de 2026-10-12 a 2026-10-13 12:10: ver `historico/STATUS-antigo.md`. Da
 | 2026-10-13 14:32 | Toda tarefa-mãe tem no mínimo 1 subtarefa | Gelvazio | Pedido no chat |
 | 2026-10-13 12:25–12:35 | Matriz ferramenta × modelo × nível (fácil/média/difícil) da SUB-47: difícil só Claude Code com Opus 5.5+ ou Fable | Gelvazio | Pedidos no chat (detalhe na ETAPA-009) |
 | 2026-10-13 14:22 | SUB-47 mantém o Laya Server; fonte oficial <https://github.com/NandhaKishorM/laya> | Gelvazio | Pedido no chat (opção C) |
+| 2026-10-13 14:49 | Migração do quadro aceita (ETAPA-001) | Gelvazio | Aceite no chat |
+| 2026-10-13 14:49 | SUB-45.5 (teste SQL novo) removida; SUB-45.6 passa a depender da SUB-45.4 | Gelvazio | Regra "nunca escrever testes, exceto para corrigir bug" |
+| 2026-10-13 14:49 | Não apagar `test_output.md` e `evals/` em `.claude/skills/proxima-task/` (ficam fora do Git) | Gelvazio | Pedido no chat: "não apague nada" |
 
 ## Pendências (ficou para depois)
 
