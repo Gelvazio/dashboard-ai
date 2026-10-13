@@ -49,14 +49,16 @@ A regra mais restritiva vence. Exemplo: "1 arquivo, mas é SQL" = `PESADO`.
 Em linguagem simples: `LEVE` = **tarefa fácil**, `MEDIO` = **tarefa média**, `PESADO` = **tarefa difícil**. As tarefas
 fáceis são as que vão para os modelos rápidos e baratos (ex.: **DeepSeek V4.1 Flash**, Haiku, Gemini Flash) e
 para o **Grok Bot**, o **Devin** (plano Free) e o **Antigravity** (Starter Quota), que só pegam tarefa fácil.
+**Tarefa difícil (`PESADO`) é só do Claude Code com Opus 5.5 ou superior, ou Fable** (definido pelo usuário em
+2026-10-13); nenhuma outra ferramenta ou modelo pega `PESADO`.
 
 ### Matriz ferramenta × modelo × nível (proposta — o usuário confirma no passo 47.1)
 
 | Ferramenta | `LEVE` | `MEDIO` | `PESADO` | Observação |
 |---|---|---|---|---|
-| **Claude Code local** | Haiku | Sonnet | Opus | Único que pega tarefa de banco (regra 11) |
-| **Claude Code na nuvem** | Haiku | Sonnet | Opus (sem banco) | Regra 11: banco nunca |
-| **Gemini CLI** | modelo Flash | modelo Pro | modelo Pro (sem banco) | — |
+| **Claude Code local** | Haiku | Sonnet | Opus 5.5 ou superior, ou Fable | Único que pega tarefa de banco (regra 11) |
+| **Claude Code na nuvem** | Haiku | Sonnet | Opus 5.5 ou superior, ou Fable (sem banco) | Regra 11: banco nunca |
+| **Gemini CLI** | modelo Flash | modelo Pro | ⛔ não pega | — |
 | **Antigravity** (Starter Quota) | Gemini 3.8 Flash | ⛔ não pega | ⛔ não pega | Só tarefa fácil (`LEVE`): cota de entrada pequena; definido pelo usuário em 2026-10-13 |
 | **Grok** (SuperGrok) | modelo rápido | Grok 4.7 | ⛔ não pega | Só até tarefa média (`MEDIO`), por cautela com a cota do plano; definido pelo usuário em 2026-10-13 |
 | **DeepSeek** | **DeepSeek V4.1 Flash** | modelo de raciocínio | ⛔ não pega | Flash definido pelo usuário em 2026-10-13 para tarefa fácil (`LEVE`) |
