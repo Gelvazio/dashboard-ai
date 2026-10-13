@@ -67,7 +67,7 @@ cópia desatualizada é recusado pelo `pre-push` com instrução de rodar `npm r
 
 ### SUB-60.3 — Modo `--checar` no `pre-push` e no `validar.sh`
 
-**Próximo passo:** depende da SUB-60.2.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:00).
 
 - **Descrição:** `--checar` não grava nada e sai 1 listando o que está desatualizado.
 - **Critérios de Aceitação:** os casos do critério de pronto conferidos num clone de teste.
