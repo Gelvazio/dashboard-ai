@@ -99,6 +99,11 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-50.5 | Rodar o Supabase local e validar (`supabase start --config database/configlocal`) | 🟡 Média | SUB-50.4 | ⬜ Pendente | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-50.6 | Documentar alternância entre local e nuvem | 🟡 Média | SUB-50.5 | ⬜ Pendente | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-50.7 | Atualizar o `README.md` com instruções de desenvolvimento local | 🟡 Média | SUB-50.6 | ⬜ Pendente | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
+| SUB-54 | **Tirar a tabela "🧭 Frentes" do quadro (fica só o "Em uso por")** | 🟠 Alta | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
+| SUB-54.1 | Regras sem "linha da frente" (`quadro.md`, `frentes-e-reserva.md`, `ciclo-da-task.md`) | 🟠 Alta | Nenhuma | ⬜ Pendente | — | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
+| SUB-54.2 | Skill `proxima-task` lendo as frentes pela coluna "Em uso por" | 🟠 Alta | SUB-54.1 | ⬜ Pendente | — | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
+| SUB-54.3 | Remover a seção "🧭 Frentes" do `STATUS.md` e avisar as IAs | 🟠 Alta | SUB-54.2 | ⬜ Pendente | — | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
+| SUB-54.4 | Aceite do usuário | 🟠 Alta | SUB-54.3 | ⬜ Pendente | — | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
 
 ## Escopo do projeto
 
@@ -124,6 +129,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | 012-f73bee11 | SUB-50: Configurar Supabase local com Docker para desenvolvimento | [ETAPA-012-f73bee11-SUPABASE-LOCAL.md](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | 013-2aa270f6 | SUB-52: Restaurar o `task_complete.md` e mover para ele toda tarefa concluída | [ETAPA-013-2aa270f6-TASK-COMPLETE.md](etapas/ETAPA-013-2aa270f6-TASK-COMPLETE.md) |
 | 014-7d3c51e9 | SUB-53: Listar as tarefas pendentes depois de cada push na `main` | [ETAPA-014-7d3c51e9-LISTAR-PENDENTES-APOS-PUSH.md](etapas/ETAPA-014-7d3c51e9-LISTAR-PENDENTES-APOS-PUSH.md) |
+| 015-074d37b0 | SUB-54: Tirar a tabela "🧭 Frentes" do quadro (fica só o "Em uso por") | [ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
 
 **Histórico (antes de 2026-10-13, congelado — não editar):** quadro antigo, concluídas e etapas 1 a 9 do
 `STATUS.md` antigo estão em [`historico/`](historico/).
@@ -153,6 +159,7 @@ Decisões de 2026-10-12 a 2026-10-13 12:10: ver `historico/STATUS-antigo.md`. Da
 | 2026-10-13 14:22 | SUB-47 mantém o Laya Server; fonte oficial <https://github.com/NandhaKishorM/laya> | Gelvazio | Pedido no chat (opção C) |
 | 2026-10-13 14:49 | Migração do quadro aceita (ETAPA-001) | Gelvazio | Aceite no chat |
 | 2026-10-13 14:49 | SUB-45.5 (teste SQL novo) removida; SUB-45.6 passa a depender da SUB-45.4 | Gelvazio | Regra "nunca escrever testes, exceto para corrigir bug" |
+| 2026-10-13 15:48 | Tabela "🧭 Frentes" sai do `STATUS.md` (SUB-54): quem está fazendo o quê fica só na coluna "Em uso por" (fonte única; acaba o conflito de linhas vizinhas) | Gelvazio | Aprovado no chat ("sim") |
 | 2026-10-13 15:27 | Ferramentas **só de leitura** do MCP do Supabase (listar projetos, tabelas, migrações, extensões, logs, advisors, docs, tipos) liberadas no `.claude/settings.json`; `execute_sql` e `apply_migration` continuam pedindo confirmação (podem gravar no banco, e gravar exige autorização do usuário) | Gelvazio | Pedido no chat: "anote esta regra, pra nunca mais me perguntar, só faça" (pedido de permissão do "List projects") |
 | 2026-10-13 15:16 | Comandos recorrentes (git sem `--force`, leitura, `npm run validar/typecheck/build/test`) liberados no `.claude/settings.json` versionado; `git push --force`/`-f`, `git add .` e `git add -A` negados. Caminhos da pasta temporária de cada sessão ficam só no `settings.local.json` | Gelvazio | Pedidos no chat: "libere os comandos recorrentes agora" e "já envie eles pro main" |
 | 2026-10-13 15:08 | Depois de cada push para a `main`, a IA mostra a tela de tarefas pendentes antes da frase final (regra em `.claude/rules/git-quick.md`) | Gelvazio | Pedido no chat: "ao final de cada push ao main, automaticamente já liste a tela de tarefas pendentes" |
