@@ -16,7 +16,7 @@
 
 ### SUB-49.1 — Criar workflow GitHub Actions para backup com GitHub Artifacts
 
-**Próximo passo:** configurar no GitHub um runner self-hosted Windows na mesma máquina do Supabase local e o secret `SUPABASE_LOCAL_DATABASE_URL`; depois executar o workflow manualmente e conferir o artifact e seu tamanho. Não disparar nesta sessão por causa da regra global de não executar testes/validações.
+**Próximo passo:** a pedido do usuário, reserva liberada em 2026-10-13 para iniciar a SUB-47.0. Para retomar a SUB-49.1, configurar no GitHub um runner self-hosted Windows na mesma máquina do Supabase local e o secret `SUPABASE_LOCAL_DATABASE_URL`; depois executar o workflow manualmente e conferir o artifact e seu tamanho (a execução manual permanece vedada pela regra global de não executar testes/validações).
 
 - **Descrição:** Criar `.github/workflows/backup-supabase-artifacts.yml` com agendamento diário às 02:00 UTC e `workflow_dispatch`; executar em runner self-hosted Windows na máquina do Supabase local; usar o secret `SUPABASE_LOCAL_DATABASE_URL` (host `host.docker.internal`, porta 54322, banco `postgres`); gerar dump com `pg_dump` 17, comprimir com `gzip` e publicar artifact `supabase-backup-${{ github.run_number }}` por 30 dias (configurável). Incluir instruções para baixar o artifact.
 - **Critérios de Aceitação:** Workflow direcionado ao runner self-hosted Windows; URL restrita ao host e porta local 54322; workflow manual produz artifact menor que 2 GB; instruções de download aparecem no resumo da execução.
