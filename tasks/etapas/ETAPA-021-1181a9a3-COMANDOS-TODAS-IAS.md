@@ -46,10 +46,11 @@ cópia desatualizada é recusado pelo `pre-push` com instrução de rodar `npm r
 
 | Data | Decisão | Quem | Por quê |
 |---|---|---|---|
+| 2026-10-13 19:59 | Plano da SUB-60 **aprovado**, com o `--checar` no `pre-push` | Gelvazio | Resposta no chat: "Sim, pode executar" |
 
 ### SUB-60.1 — Sincronizador com destinos em mapa + cópia para `.grok/skills/`
 
-**Próximo passo:** aguardar a aprovação do plano.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 19:59).
 
 - **Descrição:** refatorar `scripts/sincronizar-agentes.mjs` para uma lista de destinos
   (`{ pasta, subpastas }`) e acrescentar o Grok.
