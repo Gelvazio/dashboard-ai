@@ -63,12 +63,12 @@ JSON válido e com as mesmas permissões, menos a linha do caminho fixo; `npm ru
 
 ### SUB-58.3 — `CLAUDE.local.md` fora do Git
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 19:41).
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** acrescentar `CLAUDE.local.md` ao `.gitignore` e à lista "O que nunca vai para o
   Git" do `.claude/rules/git-quick.md`.
 - **Critérios de Aceitação:** `git check-ignore CLAUDE.local.md` confirma.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-58.3)` · **Verificação:** `git check-ignore -v CLAUDE.local.md` aponta a regra nova do `.gitignore`; `git-quick.md` com linhas ≤ 100 caracteres e < 5 KB
 
 ### SUB-58.4 — Tirar o caminho fixo do `settings.json`
 

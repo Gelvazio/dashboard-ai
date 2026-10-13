@@ -51,3 +51,5 @@ variaveis.js
 # Claude Code: configuracoes pessoais (fora do Git, pedido do usuario)
 .claude/settings.local.json
 .claude/launch.json
+# Claude Code: instrucoes pessoais de cada um (SUB-58.3)
+CLAUDE.local.md
