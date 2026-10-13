@@ -12,12 +12,8 @@ Prioridade: 🔴 Máxima · 🟠 Alta · 🟡 Média · 🟢 Baixa
 
 | Frente | Tarefa (etapa) | Situação | Atualizado em |
 |---|---|---|---|
-<<<<<<< Updated upstream
-| Claude Code (Opus 5.5) (local · main) | SUB-41.3 ([ETAPA-005](etapas/ETAPA-005-6b941e1e-AGENTS-SEM-PLANO-CEREBRO.md)) | 🔄 Em execução | 2026-10-13 15:19 |
-| Claude Code (Opus 5.5) (nuvem · main) | SUB-50.1 ([ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md)) | 🔄 Em execução | 2026-10-13 15:12 |
-=======
 | Claude Code (Opus 5.5) (local · main) | SUB-41 ([ETAPA-005](etapas/ETAPA-005-6b941e1e-AGENTS-SEM-PLANO-CEREBRO.md)) | ⏹️ Encerrada | 2026-10-13 15:21 |
->>>>>>> Stashed changes
+| Claude Code (Opus 5.5) (nuvem · main) | SUB-50.1 ([ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md)) | 🔄 Em execução | 2026-10-13 15:12 |
 
 ## 📌 Tarefas
 
