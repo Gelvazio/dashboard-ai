@@ -91,11 +91,11 @@
 ---
 
 ## 📊 Resumo de Progresso
-- **Total de Tasks Principais:** 48
+- **Total de Tasks Principais:** 49
 - **Subtarefas atômicas (~3 min):** 280
 - **Em Execução:** 1 (SUB-38)
-- **Pendentes:** 9 principais (SUB-38, 28, 35, 41, 42, 45, 46, 47, KIRO-DEV-CLONE) + 62 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 1 — SUB-35.46 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+- **Pendentes:** 10 principais (SUB-38, 28, 35, 41, 42, 45, 46, 47, 48, KIRO-DEV-CLONE) + 62 subtarefas
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 2 — SUB-35.46 e SUB-48 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
   - bloqueadas por dependência: 21 — SUB-45.2 a SUB-45.19 (cadeia da SUB-45; tarefas de banco só Claude Code local; frontend depende de banco) e SUB-41.2, SUB-41.3, SUB-42 (cadeia da SUB-41)
   - aguardando aprovação do plano pelo usuário: 10 — SUB-47.1 a SUB-47.10 ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md))
   - em execução: 1 — SUB-38 (DeepSeek Harness (deepseek-flash))
@@ -1244,5 +1244,26 @@
 - **Critérios de Aceitação:** Item entregue pela equipe com o protocolo completo; aceite do usuário registrado.
 - **Commit:** pendente
 - **Anotação:** Plano em `docs/equipe-de-agentes.md`.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+---
+
+## 📁 FASE 19: Estrutura de Projetos de IA (Multi-Projeto)
+
+### [ ] SUB-48: Definir estrutura `projects/` para projetos de IA independentes
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** A pasta `projects/` (já criada na raiz) é onde serão colocados todos os projetos de IA independentes. Cada subpasta dentro de `projects/` (ex: `projects/meu-app-ia/`, `projects/analise-dados-ai/`) é um projeto de IA autônomo, com seu próprio código, banco e configurações, mas **herda a lógica de tasks e tarefas por modelos** do Dashboard AI (projeto mãe). Isso significa:
+  - Cada projeto independente tem seu próprio repositório (Git) ou estrutura de código
+  - Cada projeto pode ter suas próprias regras em `AGENTS.md` (específicas daquele projeto)
+  - A lógica de classificação de tarefas por nível (LEVE/MEDIO/PESADO) e distribuição por modelo (LEVE → Haiku, MEDIO → Sonnet, PESADO → Opus) do Dashboard AI pode ser reutilizada nos projetos filhos
+  - Projetos filhos podem ter seus próprios quadros de tarefas ou usar o quadro do Dashboard AI (a definir em cada caso)
+- **Critérios de Aceitação:** Pasta `projects/` criada com esta documentação; cada projeto filho claro sobre sua autonomia e dependência do Dashboard AI.
+- **Commit:** pendente
+- **Anotação:** Criada em 2026-10-13 a pedido do usuário para definir a estrutura multi-projeto.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
