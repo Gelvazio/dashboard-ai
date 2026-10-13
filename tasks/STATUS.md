@@ -94,6 +94,13 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-50.7 | Atualizar o `README.md` com instruções de desenvolvimento local | 🟡 Média | SUB-50.6 | ⬜ Pendente | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-54 | **Tirar a tabela "🧭 Frentes" do quadro (fica só o "Em uso por")** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
 | SUB-54.4 | Aceite do usuário | 🟡 Média | SUB-54.3 | 👀 Aguardando aceite | — | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
+| SUB-55 | **Visualizador de regras e tarefas lendo os `.md` direto (`.claude/rules/index.html`)** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
+| SUB-55.1 | Estrutura: `index.html`, estilo e telas sem dados embutidos | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
+| SUB-55.2 | `fonte.js`: ler arquivo do repositório (local, raw ou jsDelivr) | 🟡 Média | SUB-55.1 | ⬜ Pendente | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
+| SUB-55.3 | `leitor-regras.js`: regras do `INDEX.md` em seções | 🟡 Média | SUB-55.2 | ⬜ Pendente | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
+| SUB-55.4 | `leitor-tarefas.js`: tarefas abertas e concluídas, frentes e itens 👀 | 🟡 Média | SUB-55.3 | ⬜ Pendente | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
+| SUB-55.5 | Documentar no `README.md` como abrir o visualizador | 🟡 Média | SUB-55.4 | ⬜ Pendente | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
+| SUB-55.6 | Aceite do usuário | 🟡 Média | SUB-55.5 | ⬜ Pendente | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 
 ## Escopo do projeto
 
@@ -120,6 +127,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | 013-2aa270f6 | SUB-52: Restaurar o `task_complete.md` e mover para ele toda tarefa concluída | [ETAPA-013-2aa270f6-TASK-COMPLETE.md](etapas/ETAPA-013-2aa270f6-TASK-COMPLETE.md) |
 | 014-7d3c51e9 | SUB-53: Listar as tarefas pendentes depois de cada push na `main` | [ETAPA-014-7d3c51e9-LISTAR-PENDENTES-APOS-PUSH.md](etapas/ETAPA-014-7d3c51e9-LISTAR-PENDENTES-APOS-PUSH.md) |
 | 015-074d37b0 | SUB-54: Tirar a tabela "🧭 Frentes" do quadro (fica só o "Em uso por") | [ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
+| 016-95657172 | SUB-55: Visualizador de regras e tarefas lendo os `.md` direto | [ETAPA-016-95657172-VISUALIZADOR-REGRAS.md](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 
 **Histórico (antes de 2026-10-13, congelado — não editar):** quadro antigo, concluídas e etapas 1 a 9 do
 `STATUS.md` antigo estão em [`historico/`](historico/).
@@ -149,6 +157,7 @@ Decisões de 2026-10-12 a 2026-10-13 12:10: ver `historico/STATUS-antigo.md`. Da
 | 2026-10-13 14:22 | SUB-47 mantém o Laya Server; fonte oficial <https://github.com/NandhaKishorM/laya> | Gelvazio | Pedido no chat (opção C) |
 | 2026-10-13 14:49 | Migração do quadro aceita (ETAPA-001) | Gelvazio | Aceite no chat |
 | 2026-10-13 14:49 | SUB-45.5 (teste SQL novo) removida; SUB-45.6 passa a depender da SUB-45.4 | Gelvazio | Regra "nunca escrever testes, exceto para corrigir bug" |
+| 2026-10-13 16:04 | `.claude/rules/index.html` deixa de ser cópia gerada do aulasenai e passa a ler as regras e o quadro direto dos `.md` da `main` (SUB-55) | Gelvazio | Aprovado no chat ("sim") |
 | 2026-10-13 15:48 | Tabela "🧭 Frentes" sai do `STATUS.md` (SUB-54): quem está fazendo o quê fica só na coluna "Em uso por" (fonte única; acaba o conflito de linhas vizinhas) | Gelvazio | Aprovado no chat ("sim") |
 | 2026-10-13 15:27 | Ferramentas **só de leitura** do MCP do Supabase (listar projetos, tabelas, migrações, extensões, logs, advisors, docs, tipos) liberadas no `.claude/settings.json`; `execute_sql` e `apply_migration` continuam pedindo confirmação (podem gravar no banco, e gravar exige autorização do usuário) | Gelvazio | Pedido no chat: "anote esta regra, pra nunca mais me perguntar, só faça" (pedido de permissão do "List projects") |
 | 2026-10-13 15:16 | Comandos recorrentes (git sem `--force`, leitura, `npm run validar/typecheck/build/test`) liberados no `.claude/settings.json` versionado; `git push --force`/`-f`, `git add .` e `git add -A` negados. Caminhos da pasta temporária de cada sessão ficam só no `settings.local.json` | Gelvazio | Pedidos no chat: "libere os comandos recorrentes agora" e "já envie eles pro main" |
