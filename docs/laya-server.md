@@ -76,8 +76,9 @@ O fluxo `hybrid` tenta o Laya primeiro. Se a menor `answer_confidence` das respo
 de `0.7` (ou não vier), ou se o servidor falhar ou estourar o tempo, o classificador pede a decisão
 ao Opus. Usa-se `answer_confidence` (a probabilidade da resposta dada) e **não** `confidence`,
 que no Laya é a entropia normalizada. O limiar `0.7` é uma política deste projeto, não um limiar
-universal do modelo. Se o Opus também falhar, vale a resposta do Laya marcada com `baixaConfianca: true`; se não
-houver nenhuma resposta, `classificar` lança `ErroClassificador` em vez de inventar um nível.
+universal do modelo. Se o Opus também falhar, vale a resposta do Laya marcada com
+`baixaConfianca: true`; se não houver nenhuma resposta, `classificar` lança `ErroClassificador`
+em vez de inventar um nível.
 
 **Segredos:** `ANTHROPIC_API_KEY` e `LAYA_API_KEY` não podem usar prefixo `VITE_` nem ser embutidas
 no bundle do navegador. Configure a chave Anthropic somente no servidor (arquivo `.env` local ou
