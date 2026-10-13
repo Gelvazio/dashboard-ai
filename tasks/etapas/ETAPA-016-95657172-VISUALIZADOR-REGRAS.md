@@ -69,16 +69,20 @@ gerador e sem dados embutidos.
 
 ### SUB-55.3 — `leitor-regras.js`: regras do `INDEX.md` divididas em seções
 
-**Próximo passo:** depois da 55.2.
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** porta do `leitor_regras.py` do aulasenai: categorias pelo `INDEX.md`, seções por `##` (fora de
   bloco de código), tipo (Proibição, Fluxo, Referência, Obrigatória); a lista de arquivos vem do `INDEX.md`.
 - **Critérios de Aceitação:** no Node, contra os arquivos locais, devolve as seções de todos os arquivos do índice.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-55.3)` · **Verificação:** `visualizador/leitor-regras.js` com `lerRegras()` (lê o
+  `INDEX.md` e os arquivos listados nele; arquivo que faltar é ignorado); `node --check` ok; rodado no Node (`vm`,
+  `lerArquivo` trocado por leitura local): 58 seções dos 11 arquivos de `.claude/rules/` (todos os `.md` da pasta
+  e de `tasks/`), índice em primeiro; tipos: 43 Obrigatória, 6 Proibição, 5 Referência, 4 Fluxo; linhas ≤ 100;
+  funções ≤ 45 linhas; `<script>` no `index.html`.
 
 ### SUB-55.4 — `leitor-tarefas.js`: tarefas abertas e concluídas, frentes e itens 👀
 
-**Próximo passo:** depois da 55.3.
+**Próximo passo:** reservar e portar o `leitor_tarefas.py` (55.3 concluída).
 
 - **Descrição:** porta do `leitor_tarefas.py`: "📌 Tarefas" do `STATUS.md` + "✅ Concluídas" do `task_complete.md`,
   com a etapa e o próximo passo de cada uma; frentes ativas = nomes em "Em uso por"; itens 👀 das etapas da tabela
