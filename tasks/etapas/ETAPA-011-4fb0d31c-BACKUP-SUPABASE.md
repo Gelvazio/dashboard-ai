@@ -26,9 +26,28 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-13 17:42 — Gemini (Antigravity) (local · main): workflow criado e conferido na `main`; critérios de runner self-hosted Windows, validação de URL local e step summary atendidos. Execução manual vedada pela regra de validação do projeto.
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
+### SUB-49.5 — Criptografar o dump no workflow (falha se faltar a senha)
+
+**Próximo passo:** aguardar a aprovação do plano.
+
+- **Pedido:** escolha do usuário em 2026-10-13 20:19 ("Criptografar o dump") diante do achado: repositório
+  público, workflow ativo com agendamento às 02:00 UTC (23:00 de Brasília) e nenhum artifact publicado
+  ainda (conferido pela API: 0 artifacts).
+- **Descrição:** em `.github/workflows/backup-supabase-artifacts.yml`: (1) passo novo que **falha** se
+  o secret `SUPABASE_BACKUP_PASSPHRASE` não existir ou tiver menos de 20 caracteres — sem senha, nada
+  é gerado nem publicado; (2) o dump passa por `gpg --symmetric --cipher-algo AES256` (o `gnupg` já
+  vem na imagem `postgres:17`), com a senha lida por `--passphrase-file` (não aparece na linha de
+  comando); (3) o artifact passa a ser `supabase-backup.sql.gz.gpg`; (4) o resumo da execução mostra o
+  comando de restauração (`gpg --decrypt … | gunzip | psql`).
+- **Critérios de Aceitação:** sem a senha o job falha antes do dump; com a senha o arquivo publicado
+  não abre sem ela; YAML válido; restauração documentada no resumo.
+- **Riscos:** perder a senha = perder os backups (guardar fora do GitHub, ex.: gerenciador de
+  senhas); artifact cifrado continua baixável por qualquer conta, mas ilegível.
+- **Entrega:** — · **Verificação:** —
+
 ### SUB-49.2 — Documentar uso de GitHub Artifacts (limites, retenção, download)
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:16).
+**Próximo passo:** depende da SUB-49.5 (criptografia). Liberada em 2026-10-13 20:19 por Claude Code (Opus 5.5) (nuvem · main): ao levantar a documentação, achado que o repositório é **público** e o artifact (dump completo do banco) poderia ser baixado por qualquer conta do GitHub; o usuário escolheu criptografar o dump antes de documentar. Corrigir na documentação: plano gratuito tem **500 MB** de armazenamento em repositório privado (dividido com Packages), não 2 GB; repositório público tem retenção máxima de 90 dias; o artifact **não** é privado em repositório público.
 
 - **Descrição:** Criar `docs/backup-github-artifacts.md` com: descrição do GitHub Artifacts (armazenamento temporário, privado), limites do plano gratuito (2 GB armazenamento, 100 GB download/mês, retenção até 90 dias), quando usar (dumps SQL < 2 GB, retenção até 90 dias), como baixar o backup (UI do GitHub Actions, ou API), como restaurar (psql com o dump), como ajustar a retenção (parâmetro `retention-days`), e como monitorar o uso (aba Actions → Usage). Adicionar seção "Backup" no `README.md` referenciando este documento.
 - **Critérios de Aceitação:** Documentação completa e clara; links para Actions e uso; exemplo de comando de restore; `README.md` com seção de backup.
