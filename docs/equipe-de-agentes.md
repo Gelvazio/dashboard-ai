@@ -47,7 +47,8 @@ ferramenta de IA (Claude Code, Grok, DeepSeek, Gemini, Devin) pega só o que o s
 A regra mais restritiva vence. Exemplo: "1 arquivo, mas é SQL" = `PESADO`.
 
 Em linguagem simples: `LEVE` = **tarefa fácil**, `MEDIO` = **tarefa média**, `PESADO` = **tarefa difícil**. As tarefas
-fáceis são as que vão para os modelos rápidos e baratos (ex.: **DeepSeek V4.1 Flash**, Haiku, Gemini Flash).
+fáceis são as que vão para os modelos rápidos e baratos (ex.: **DeepSeek V4.1 Flash**, Haiku, Gemini Flash) e
+para o **Grok Bot**, que só pega tarefa fácil.
 
 ### Matriz ferramenta × modelo × nível (proposta — o usuário confirma no passo 47.1)
 
@@ -59,6 +60,7 @@ fáceis são as que vão para os modelos rápidos e baratos (ex.: **DeepSeek V4.
 | **Grok** | modelo rápido | modelo principal | modelo principal (sem banco) | — |
 | **DeepSeek** | **DeepSeek V4.1 Flash** | modelo de raciocínio | ⛔ não pega | Flash definido pelo usuário em 2026-10-13 para tarefa fácil (`LEVE`) |
 | **Devin** | ✅ | ✅ | ⛔ não pega | Não escolhe o modelo por tarefa |
+| **Grok Bot** | ✅ | ⛔ não pega | ⛔ não pega | Só tarefa fácil (`LEVE`), definido pelo usuário em 2026-10-13; não escolhe o modelo por tarefa e os Bots compartilham o mesmo computador |
 
 Cada agente se identifica no quadro como **ferramenta + modelo** (ex.: `Grok (modelo rápido)`) e só pega item com
 `Nível` igual ou abaixo do máximo da sua linha. Um modelo forte pode pegar item mais leve **só se** não houver item
