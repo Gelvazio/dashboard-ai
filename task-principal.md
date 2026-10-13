@@ -1221,14 +1221,18 @@
 - **Executor:** nenhum
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** A pasta `projects/` (já criada na raiz) é onde serão colocados todos os projetos de IA independentes. Cada subpasta dentro de `projects/` (ex: `projects/meu-app-ia/`, `projects/analise-dados-ai/`) é um projeto de IA autônomo, com seu próprio código, banco e configurações, mas **herda a lógica de tasks e tarefas por modelos** do Dashboard AI (projeto mãe). Isso significa:
-  - Cada projeto independente tem seu próprio repositório (Git) ou estrutura de código
-  - Cada projeto pode ter suas próprias regras em `AGENTS.md` (específicas daquele projeto)
-  - A lógica de classificação de tarefas por nível (LEVE/MEDIO/PESADO) e distribuição por modelo (LEVE → Haiku, MEDIO → Sonnet, PESADO → Opus) do Dashboard AI pode ser reutilizada nos projetos filhos
-  - Projetos filhos podem ter seus próprios quadros de tarefas ou usar o quadro do Dashboard AI (a definir em cada caso)
-- **Critérios de Aceitação:** Pasta `projects/` criada com esta documentação; cada projeto filho claro sobre sua autonomia e dependência do Dashboard AI.
+- **Descrição:** A pasta `projects/` (já criada na raiz) é onde serão colocados todos os projetos de IA independentes. Cada subpasta dentro de `projects/` (ex: `projects/meu-app-ia/`, `projects/analise-dados-ai/`) é um projeto de IA **totalmente autônomo**, com sua própria infraestrutura. **Opção B (Independência Total):**
+  - Cada projeto filho tem seu **próprio banco de dados Supabase** (ou outro banco) - não compartilha com o Dashboard AI
+  - Cada projeto filho tem seu **próprio MCP server** (se precisar de integração com agentes) - não usa o MCP central do Dashboard AI
+  - Cada projeto filho tem suas **próprias embeddings** (se precisar de memória semântica) - não compartilha a tabela `ai_memories` do Dashboard AI
+  - Cada projeto filho tem seu **próprio repositório Git** (ou estrutura de código separada)
+  - Cada projeto filho tem suas **próprias regras em `AGENTS.md`** (específicas daquele projeto)
+  - O Dashboard AI serve apenas como **visualizador de quadros de tarefas** (index.html) e compartilha a **lógica de classificação de tarefas por nível** (LEVE/MEDIO/PESADO) e **distribuição por modelo** (SUB-47) - isso pode ser reutilizado nos projetos filhos
+  - Cada projeto filho tem seu **próprio quadro de tarefas** (task-principal.md na pasta do projeto) ou pode usar o quadro central apenas como referência
+  - O Dashboard AI não interfere na execução dos projetos filhos - só fornece o framework de gestão de tasks e distribuição por modelos
+- **Critérios de Aceitação:** Pasta `projects/` criada com esta documentação; estrutura clara definindo que cada projeto filho é totalmente autônomo (banco próprio, MCP próprio, embeddings próprios); Dashboard AI só compartilha lógica de gestão de tasks e distribuição por modelos (SUB-47).
 - **Commit:** pendente
-- **Anotação:** Criada em 2026-10-13 a pedido do usuário para definir a estrutura multi-projeto.
+- **Anotação:** Criada em 2026-10-13 a pedido do usuário para definir a estrutura multi-projeto. **Opção B definida (2026-10-13):** cada projeto filho é totalmente autônomo (banco próprio, MCP próprio, embeddings próprios, repositório próprio). O Dashboard AI serve apenas como visualizador de quadros e compartilha a lógica de gestão de tasks e distribuição por modelos (SUB-47).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
