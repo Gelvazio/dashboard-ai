@@ -2,7 +2,7 @@
  * Projetos visíveis ao usuário (a RLS devolve só os projetos em que ele é membro,
  * ou todos se for administrador).
  */
-import type { Project, ProjectInsert } from '@/types';
+import type { Project, ProjectInsert, ProjectUpdate } from '@/types';
 import { getSupabase, resultado, ServiceError, type DashboardClient } from './supabase';
 
 /** Projetos ativos e não excluídos, em ordem alfabética. */
@@ -31,4 +31,33 @@ export async function criarProjeto(
     }
     throw erro;
   }
+}
+
+/** Atualiza os campos fornecidos de um projeto acessível ao usuário. */
+export async function atualizarProjeto(
+  id: number,
+  campos: ProjectUpdate,
+  client: DashboardClient = getSupabase(),
+): Promise<Project> {
+  try {
+    return resultado(
+      await client.from('projects').update(campos).eq('id', id).select('*').single(),
+      'Atualizar projeto',
+    );
+  } catch (erro) {
+    if (!(erro instanceof ServiceError)) throw erro;
+    if (erro.code === '42501') {
+      throw new ServiceError('Só responsáveis ou administradores podem editar projetos.', erro.code);
+    }
+    throw erro;
+  }
+}
+
+/** Ativa ou inativa um projeto, preservando os demais campos. */
+export async function definirProjetoAtivo(
+  id: number,
+  ativo: boolean,
+  client: DashboardClient = getSupabase(),
+): Promise<Project> {
+  return atualizarProjeto(id, { ativo }, client);
 }
