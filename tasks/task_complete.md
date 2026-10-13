@@ -1,6 +1,29 @@
 # ✅ TASK-COMPLETE: Tarefas concluídas do Dashboard AI
 
-> Arquivo histórico das tarefas e subtarefas `concluido`, movidas do [`task-principal.md`](task-principal.md). Agentes **não precisam ler este arquivo** para pegar tarefas: o quadro ativo, as travas e o resumo ficam só no `task-principal.md`. Use-o para consultar entregas (commit, anotação, confirmação) ou reabrir uma tarefa (mova o bloco de volta ao quadro).
+> Tarefas e subtarefas **concluídas**. O quadro [`STATUS.md`](STATUS.md) só tem o que está aberto ou em
+> andamento: toda linha que vira ✅ é **recortada** de lá e colada no fim da tabela abaixo, no mesmo commit da
+> entrega (regra em [`quadro.md`](../.claude/rules/tasks/quadro.md)). Entrega e verificação de cada uma ficam
+> na etapa (coluna "Etapa"). Reabrir = mover a linha de volta ao `STATUS.md`. Agentes não precisam ler este
+> arquivo para pegar tarefas.
+
+## ✅ Concluídas
+
+| Tarefa | Título | Prioridade | Depende de | Status | Em uso por | Etapa |
+|---|---|---|---|---|---|---|
+| MIGRA-QUADRO | **Migrar o quadro para o modelo novo e eliminar regras duplicadas** | 🔴 Máxima | Nenhuma | ✅ Concluído | — | [ETAPA-001](etapas/ETAPA-001-ef019419-MIGRACAO-QUADRO.md) |
+| SUB-42 | **Tirar do `AGENTS.md` as referências a tarefas específicas (regras genéricas)** | 🟡 Média | SUB-41 (mesmo arquivo; evita conflito de edição) | ✅ Concluído | — (não reservável) | [ETAPA-006](etapas/ETAPA-006-5d507457-AGENTS-SEM-TAREFAS.md) |
+| SUB-42.1 | Tirar do `AGENTS.md` as referências a tarefas específicas (regras genéricas) | 🟡 Média | SUB-41 (mesmo arquivo; evita conflito de edição) | ✅ Concluído (pela ETAPA-001) | — | [ETAPA-006](etapas/ETAPA-006-5d507457-AGENTS-SEM-TAREFAS.md) |
+| SUB-51 | **Restaurar o `task_complete.md` e mover para ele toda tarefa concluída** | 🔴 Máxima | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-013](etapas/ETAPA-013-2aa270f6-TASK-COMPLETE.md) |
+| SUB-51.1 | Restaurar `tasks/task_complete.md`, regra de mudança e mover as linhas ✅ | 🔴 Máxima | Nenhuma | ✅ Concluído | — | [ETAPA-013](etapas/ETAPA-013-2aa270f6-TASK-COMPLETE.md) |
+
+---
+
+## 📜 Histórico do quadro antigo (blocos, até 2026-10-13)
+
+> Blocos do modelo antigo (SUB-01 a SUB-46), movidos do `task-principal.md` (hoje em
+> [`historico/task-principal.md`](historico/task-principal.md)). Os links relativos abaixo apontam para os
+> lugares antigos (raiz do repositório) e podem não abrir daqui. Não acrescentar blocos: concluídas novas vão
+> na tabela acima.
 
 ✅ **REVISÃO DO QUADRO (2026-10-12, Devin)**
 > O quadro restaurado de `8d700c556f` foi conferido contra o histórico do git: 18 subtarefas concluídas sem registro receberam commit/anotação; o SHA da SUB-26.8 foi corrigido (`f48b2de`); SUB-33, SUB-19 e SUB-20 foram fechadas (todas as filhas concluídas); listas de filhas e resumo foram recalculados.

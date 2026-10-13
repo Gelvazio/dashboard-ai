@@ -1,8 +1,8 @@
 # 🗂️ Quadro de tarefas — fonte única
 
 Esta pasta (`.claude/rules/tasks/`) serve para **qualquer projeto**: não tem nada específico de um
-projeto. Para usar em outro, copie a pasta e crie `tasks/STATUS.md` e `tasks/etapas/` pelos
-modelos abaixo. Ciclo da tarefa: `ciclo-da-task.md` · várias sessões/IAs: `frentes-e-reserva.md`.
+projeto. Para usar em outro, copie a pasta e crie `tasks/STATUS.md`, `tasks/task_complete.md`
+e `tasks/etapas/` pelos modelos abaixo. Ciclo da tarefa: `ciclo-da-task.md` · várias sessões/IAs: `frentes-e-reserva.md`.
 
 ## Tarefa e subtarefa
 
@@ -17,7 +17,8 @@ modelos abaixo. Ciclo da tarefa: `ciclo-da-task.md` · várias sessões/IAs: `fr
 
 | Informação | Lugar único |
 |------------|-------------|
-| Status, prioridade, dependências e reserva de cada subtarefa (e da mãe) | Linha própria em "📌 Tarefas" do `tasks/STATUS.md` |
+| Status, prioridade, dependências e reserva de cada subtarefa (e da mãe) **aberta ou em andamento** | Linha própria em "📌 Tarefas" do `tasks/STATUS.md` |
+| Linha de tarefa ou subtarefa **concluída (✅)** | Tabela "✅ Concluídas" do `tasks/task_complete.md` |
 | Pedido, objetivo, plano (tarefa grande), escopo, riscos, decisões | **Etapa** da tarefa-mãe: `tasks/etapas/ETAPA-NNN-<uuid8>-ASSUNTO.md` |
 | Descrição, critérios, próximo passo, entrega e verificação de cada subtarefa | Seção da subtarefa dentro da etapa da mãe |
 | Tarefa que cada sessão está fazendo | Linha da frente em "🧭 Frentes" do `tasks/STATUS.md` |
@@ -26,6 +27,9 @@ modelos abaixo. Ciclo da tarefa: `ciclo-da-task.md` · várias sessões/IAs: `fr
 
 - ⛔ Não copiar para outro lugar: sem `TASKS.md`, sem plano separado em `docs/`, sem lista de
   pendências do usuário montada à mão, sem resumo com contagens, sem cópia da fila em tabela de banco.
+- ⛔ **No `STATUS.md` só ficam tarefas abertas ou em andamento.** Linha (mãe ou subtarefa) que vira
+  ✅ é **recortada** do "📌 Tarefas" e colada no fim da tabela do `tasks/task_complete.md`, no
+  **mesmo commit** da entrega (move, não copia). Reabrir = mover a linha de volta.
 - O que o usuário precisa fazer = linhas e itens **👀** (filtrar; não copiar).
 - O que não está no quadro não aconteceu. Histórico nunca é apagado: só se acrescentam etapas.
 - Quadro em formato antigo → migrar para este modelo levando o conteúdo, sem perder histórico.
@@ -47,7 +51,7 @@ modelos abaixo. Ciclo da tarefa: `ciclo-da-task.md` · várias sessões/IAs: `fr
 ## 🧭 Frentes de trabalho
 | Frente | Tarefa (etapa) | Situação | Atualizado em |
 
-## 📌 Tarefas            (linha da mãe em negrito, seguida de uma linha por subtarefa)
+## 📌 Tarefas            (só abertas/em andamento; mãe em negrito + uma linha por subtarefa)
 | Tarefa | Título | Prioridade | Depende de | Status | Em uso por | Etapa |
 
 ## Escopo do projeto
@@ -60,6 +64,14 @@ modelos abaixo. Ciclo da tarefa: `ciclo-da-task.md` · várias sessões/IAs: `fr
 - **Status** na linha: só o emoji e 1–3 palavras (`🔄 Em execução`); o detalhe fica na etapa.
 - **Em uso por:** `<frente> (desde <data hora>)`, `—` (livre) ou `— (não reservável)` na mãe.
 - Seção sem conteúdo fica com a tabela vazia (não apagar o cabeçalho).
+
+## Modelo do `tasks/task_complete.md`
+
+```markdown
+# ✅ Concluídas — <Projeto>
+## ✅ Concluídas            (linhas recortadas do STATUS.md, sempre no fim da tabela)
+| Tarefa | Título | Prioridade | Depende de | Status | Em uso por | Etapa |
+```
 
 ## Modelo da etapa (uma por tarefa-mãe)
 

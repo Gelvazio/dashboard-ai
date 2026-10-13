@@ -7,7 +7,7 @@ vivo é o [`tasks/STATUS.md`](../STATUS.md).
 | Arquivo | O que é |
 |---|---|
 | [`task-principal.md`](task-principal.md) | Quadro ativo antigo, no estado da migração (as tarefas pendentes foram copiadas para `tasks/etapas/`) |
-| [`task_complete.md`](task_complete.md) | Todas as tarefas concluídas até 2026-10-13 (SUB-01 a SUB-46) |
+| ~~`task_complete.md`~~ | Restaurado em 2026-10-13 (SUB-51) para [`tasks/task_complete.md`](../task_complete.md), que volta a receber as concluídas |
 | [`STATUS-antigo.md`](STATUS-antigo.md) | Etapas 1 a 9, decisões e lições registradas até 2026-10-13 |
 | [`docs/`](docs/) | Planos de tarefas já concluídas (SUB-40 e validação das telas) |
 

@@ -184,7 +184,7 @@
           Fonte ao vivo:
           <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/tasks/STATUS.md" target="_blank" rel="noopener">tasks/STATUS.md</a>
           +
-          <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/tasks/historico/task_complete.md" target="_blank" rel="noopener">histórico</a>
+          <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/tasks/task_complete.md" target="_blank" rel="noopener">histórico</a>
           no GitHub (<code>main</code>).
         </p>
       </div>
@@ -268,10 +268,10 @@
     </article>
 
     <footer>
-      Fonte: os arquivos <code>tasks/STATUS.md</code> (quadro: uma linha por subtarefa) e <code>tasks/historico/task_complete.md</code> (concluídas até 2026-10-13) da branch <code>main</code>
+      Fonte: os arquivos <code>tasks/STATUS.md</code> (quadro: uma linha por subtarefa) e <code>tasks/task_complete.md</code> (concluídas) da branch <code>main</code>
       (mesmo conteúdo dos blobs no GitHub:
       <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/tasks/STATUS.md" target="_blank" rel="noopener">quadro</a>,
-      <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/tasks/historico/task_complete.md" target="_blank" rel="noopener">histórico</a>).
+      <a href="https://github.com/Gelvazio/dashboard-ai/blob/main/tasks/task_complete.md" target="_blank" rel="noopener">histórico</a>).
       O repositório é privado: sem token, a página lê o Markdown local. Com um PAT, lê a <code>main</code> remota.
       Abra via servidor HTTP na pasta do repo, por exemplo <code>npx --yes serve .</code>
     </footer>
@@ -279,7 +279,7 @@
 
   <script>
     const BOARD_FILE = "tasks/STATUS.md";
-    const COMPLETE_FILE = "tasks/historico/task_complete.md";
+    const COMPLETE_FILE = "tasks/task_complete.md";
     function sourceUrls(file) {
       return {
         raw: `https://raw.githubusercontent.com/Gelvazio/dashboard-ai/main/${file}`,

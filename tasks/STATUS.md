@@ -3,7 +3,7 @@
 **Objetivo:** gerenciador genérico de tasks de IA multi-projeto (fila, memória persistente e monitor dos agentes).
 **Partes interessadas:** Gelvazio (decide, aprova e usa) · agentes de IA (Claude Code, Grok, Gemini, DeepSeek, Devin…)
 executam pelo quadro.
-**Links:** [Regras](../AGENTS.md) · [Etapas](etapas/) · [Recados](RECADOS.md) · [Histórico](historico/)
+**Links:** [Regras](../AGENTS.md) · [Etapas](etapas/) · [Concluídas](task_complete.md) · [Recados](RECADOS.md) · [Histórico](historico/)
 
 Legenda: ⬜ Pendente · 🔄 Em progresso · ✅ Concluído · ⛔ Bloqueado · 👀 Aguardando o usuário ·
 Prioridade: 🔴 Máxima · 🟠 Alta · 🟡 Média · 🟢 Baixa
@@ -12,18 +12,16 @@ Prioridade: 🔴 Máxima · 🟠 Alta · 🟡 Média · 🟢 Baixa
 
 | Frente | Tarefa (etapa) | Situação | Atualizado em |
 |---|---|---|---|
-| Claude Code (Opus 5.5) (local · main) | SUB-51.1 ([ETAPA-013](etapas/ETAPA-013-2aa270f6-TASK-COMPLETE.md)) | 🔄 Em execução | 2026-10-13 14:59 |
+| Claude Code (Opus 5.5) (local · main) | SUB-51.1 ([ETAPA-013](etapas/ETAPA-013-2aa270f6-TASK-COMPLETE.md)) | ⏹️ Encerrada | 2026-10-13 15:05 |
 
 ## 📌 Tarefas
 
 Cada **subtarefa** é uma linha própria e pode ser reservada por **qualquer IA** (coluna "Em uso por"). A linha em
-**negrito** é a tarefa-mãe: não se reserva; ela fecha quando todas as subtarefas estiverem ✅.
+**negrito** é a tarefa-mãe: não se reserva; ela fecha quando todas as subtarefas estiverem ✅. Aqui só ficam
+tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_complete.md`](task_complete.md).
 
 | Tarefa | Título | Prioridade | Depende de | Status | Em uso por | Etapa |
 |---|---|---|---|---|---|---|
-| MIGRA-QUADRO | **Migrar o quadro para o modelo novo e eliminar regras duplicadas** | 🔴 Máxima | Nenhuma | ✅ Concluído | — | [ETAPA-001](etapas/ETAPA-001-ef019419-MIGRACAO-QUADRO.md) |
-| SUB-51 | **Restaurar o `task_complete.md` e mover para ele toda tarefa concluída** | 🔴 Máxima | Nenhuma | 🔄 Em execução | — (não reservável) | [ETAPA-013](etapas/ETAPA-013-2aa270f6-TASK-COMPLETE.md) |
-| SUB-51.1 | Restaurar `tasks/task_complete.md`, regra de mudança e mover as linhas ✅ | 🔴 Máxima | Nenhuma | 🔄 Em execução | Claude Code (Opus 5.5) (local · main) (desde 2026-10-13 14:59) | [ETAPA-013](etapas/ETAPA-013-2aa270f6-TASK-COMPLETE.md) |
 | SUB-38 | **Verificação geral de todas as tarefas (marcador `VERIFICADOR-CLAUDE`)** | 🔴 Máxima | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-002](etapas/ETAPA-002-90cd9004-VERIFICACAO-GERAL.md) |
 | SUB-38.1 | Verificação geral de todas as tarefas (marcador `VERIFICADOR-CLAUDE`) | 🔴 Máxima | Nenhuma | ⬜ Pendente | — | [ETAPA-002](etapas/ETAPA-002-90cd9004-VERIFICACAO-GERAL.md) |
 | SUB-28 | **Integração LangChain/LangGraph para Execução de Tasks** | 🟡 Média | SUB-01 a SUB-27, SUB-29, SUB-30 (todas as tasks anteriores concluídas) | 👀 Todas as filhas concluídas: aguardando o usuário fechar | — (não reservável) | [ETAPA-003](etapas/ETAPA-003-6df4b821-LANGGRAPH.md) |
@@ -33,8 +31,6 @@ Cada **subtarefa** é uma linha própria e pode ser reservada por **qualquer IA*
 | SUB-41.1 | Criar `docs/plano-cerebro-memoria-persistente.md` e mover a seção "1. Arquitetura do Banco de Dados (Supabase)" | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-6b941e1e-AGENTS-SEM-PLANO-CEREBRO.md) |
 | SUB-41.2 | Mover a seção "2. Estrutura do Servidor MCP (Vercel Serverless)" | 🟡 Média | SUB-41.1 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-6b941e1e-AGENTS-SEM-PLANO-CEREBRO.md) |
 | SUB-41.3 | Mover a seção "3. Ativação no Terminal (Claude Code)" e fechar a limpeza do `AGENTS.md` | 🟡 Média | SUB-41.2 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-6b941e1e-AGENTS-SEM-PLANO-CEREBRO.md) |
-| SUB-42 | **Tirar do `AGENTS.md` as referências a tarefas específicas (regras genéricas)** | 🟡 Média | SUB-41 (mesmo arquivo; evita conflito de edição) | ✅ Concluído | — (não reservável) | [ETAPA-006](etapas/ETAPA-006-5d507457-AGENTS-SEM-TAREFAS.md) |
-| SUB-42.1 | Tirar do `AGENTS.md` as referências a tarefas específicas (regras genéricas) | 🟡 Média | SUB-41 (mesmo arquivo; evita conflito de edição) | ✅ Concluído (pela ETAPA-001) | — | [ETAPA-006](etapas/ETAPA-006-5d507457-AGENTS-SEM-TAREFAS.md) |
 | SUB-45 | **Cadastro de projetos (campos novos na tabela `projects` e tela `#/projetos`)** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.2 | Colunas `cor` e `icone` em `database/08_projects_campos.sql` | 🟡 Média | SUB-45.1, SUB-45.19 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.3 | Colunas `url_producao` e `url_documentacao` em `database/08_projects_campos.sql` | 🟡 Média | SUB-45.2 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
@@ -167,6 +163,7 @@ Decisões de 2026-10-12 a 2026-10-13 12:10: ver `historico/STATUS-antigo.md`. Da
 | 2026-10-13 14:22 | SUB-47 mantém o Laya Server; fonte oficial <https://github.com/NandhaKishorM/laya> | Gelvazio | Pedido no chat (opção C) |
 | 2026-10-13 14:49 | Migração do quadro aceita (ETAPA-001) | Gelvazio | Aceite no chat |
 | 2026-10-13 14:49 | SUB-45.5 (teste SQL novo) removida; SUB-45.6 passa a depender da SUB-45.4 | Gelvazio | Regra "nunca escrever testes, exceto para corrigir bug" |
+| 2026-10-13 15:05 | `task_complete.md` restaurado em `tasks/`; no `STATUS.md` só ficam tarefas abertas ou em andamento e toda linha ✅ é movida para o `task_complete.md` no commit da entrega (regra em `.claude/rules/tasks/quadro.md`) | Gelvazio | Pedidos no chat: "restaure o task_complete.md…", "no quadro deve ficar apenas tarefa aberta ou em andamento" e "registre a regra também, pra evitar erros futuros" |
 | 2026-10-13 15:00 | Toda a pasta `.claude/` vai para o Git (inclusive as sobras da skill `proxima-task`), **menos** `settings.local.json` e `launch.json`, que ficam no `.gitignore` | Gelvazio | Pedidos no chat: "tudo da pasta .claude deve ir pro git" e "settings.local.json e o launch.json, estes 2 mantenha fora do git" |
 | 2026-10-13 14:49 | Não apagar `test_output.md` e `evals/` em `.claude/skills/proxima-task/` (ficam fora do Git) | Gelvazio | Pedido no chat: "não apague nada" |
 

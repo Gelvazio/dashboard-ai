@@ -50,9 +50,11 @@ Na dúvida, é grande. O projeto pode definir exceções (rotinas já autorizada
 
 ## 4. Encerrar
 
-1. **Subtarefa:** seção com entrega (commit) e verificação; linha com `✅` e "Em uso por" = `—`.
+1. **Subtarefa:** seção com entrega (commit) e verificação; linha com `✅` e "Em uso por" = `—`,
+   **movida** do `STATUS.md` para o `tasks/task_complete.md` (regra em `quadro.md`).
 2. **Tarefa-mãe:** quando todas as subtarefas estiverem ✅ (a última de tarefa grande é o **aceite**
-   de quem pediu, 👀 até ele confirmar), a linha da mãe vira `✅`.
+   de quem pediu, 👀 até ele confirmar), a linha da mãe vira `✅` e também vai para o
+   `task_complete.md`.
 3. Pendências que ficaram para depois → "Pendências" do `STATUS.md`, com motivo.
 4. Lição aprendida que vira regra → "Lições aprendidas" do `STATUS.md` (e a regra no lugar certo).
 5. Linha da frente atualizada. **Um commit por subtarefa entregue**, com o quadro no mesmo commit
