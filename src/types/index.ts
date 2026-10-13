@@ -5,7 +5,7 @@
 export * from './database';
 
 /** Telas principais do Dashboard (navegação da SUB-12). */
-export type ViewId = 'fila' | 'memoria' | 'logs' | 'monitor' | 'configuracoes';
+export type ViewId = 'fila' | 'memoria' | 'logs' | 'monitor' | 'configuracoes' | 'projetos';
 
 /** Slug de projeto (tabela `projects`): todo dado da interface pertence a um projeto. */
 export type ProjectSlug = string;

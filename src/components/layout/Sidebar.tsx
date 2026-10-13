@@ -1,4 +1,13 @@
-import { Activity, Brain, ListTodo, ScrollText, Settings, X, type LucideIcon } from 'lucide-react';
+import {
+  Activity,
+  Brain,
+  FolderKanban,
+  ListTodo,
+  ScrollText,
+  Settings,
+  X,
+  type LucideIcon,
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { ViewId } from '@/types';
 import { VIEWS } from '@/views/meta';
@@ -9,6 +18,7 @@ const ICONES: Record<ViewId, LucideIcon> = {
   logs: ScrollText,
   monitor: Activity,
   configuracoes: Settings,
+  projetos: FolderKanban,
 };
 
 interface Props {

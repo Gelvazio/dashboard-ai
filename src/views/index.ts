@@ -16,6 +16,7 @@ const MemoriaView = lazy(() => import('./MemoriaView').then((m) => ({ default: m
 const LogsView = lazy(() => import('./LogsView').then((m) => ({ default: m.LogsView })));
 const MonitorView = lazy(() => import('./MonitorView').then((m) => ({ default: m.MonitorView })));
 const ConfiguracoesView = lazy(() => import('./ConfiguracoesView').then((m) => ({ default: m.ConfiguracoesView })));
+const ProjetosView = lazy(() => import('./ProjetosView').then((m) => ({ default: m.ProjetosView })));
 
 export const TELAS: Record<ViewId, ComponentType> = {
   fila: FilaView,
@@ -23,4 +24,5 @@ export const TELAS: Record<ViewId, ComponentType> = {
   logs: LogsView,
   monitor: MonitorView,
   configuracoes: ConfiguracoesView,
+  projetos: ProjetosView,
 };

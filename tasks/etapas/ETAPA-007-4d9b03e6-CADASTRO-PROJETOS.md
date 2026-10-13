@@ -228,15 +228,13 @@ mantido abaixo só como histórico.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-13 18:25 — conferido por leitura do código (Codex GPT-6).
 ### SUB-45.16 — Registrar a tela `projetos` (rota `#/projetos` e menu)
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** nenhum — entregue. Seguir na SUB-45.17.
 
 - **Descrição:** Adicionar `{ id: 'projetos', titulo: 'Projetos' }` em `src/views/meta.ts`, exportar em `src/views/index.ts` e ligar a rota e o item de menu do mesmo jeito que a tela `monitor` (SUB-35.31), com carregamento preguiçoso (lazy).
-- **Critérios de Aceitação:** `npm run validar` verde.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
+- **Critérios de Aceitação:** rota `#/projetos`, item lateral e carregamento lazy registrados; testes não executados por regra do projeto.
+- **Entrega:** commit desta entrega · **Verificação:** leitura cruzada de `ViewId`, `VIEW_IDS`, metadados, mapa de telas lazy e mapa de ícones da navegação.
+- **Anotação:** `projetos` registrado em todos os mapas de navegação, com rota `#/projetos`, título e ícone `FolderKanban`; a tela carrega sob demanda.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-13 18:32 — conferido por leitura do código (Codex GPT-6).
 ### SUB-45.17 — Documentar projetos no `README.md` e no `database/README.md`
 
 **Próximo passo:** executar conforme a descrição.

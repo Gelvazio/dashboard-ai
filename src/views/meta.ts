@@ -7,6 +7,7 @@ export const VIEWS: ReadonlyArray<{ id: ViewId; titulo: string }> = [
   { id: 'logs', titulo: 'Logs do Agendador' },
   { id: 'monitor', titulo: 'Monitor dos Agentes' },
   { id: 'configuracoes', titulo: 'Configurações' },
+  { id: 'projetos', titulo: 'Projetos' },
 ];
 
 export const tituloDaView = (id: ViewId) => VIEWS.find((v) => v.id === id)?.titulo ?? id;
