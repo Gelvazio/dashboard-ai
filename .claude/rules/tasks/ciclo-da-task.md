@@ -57,7 +57,7 @@ Na dúvida, é grande. O projeto pode definir exceções (rotinas já autorizada
    `task_complete.md`.
 3. Pendências que ficaram para depois → "Pendências" do `STATUS.md`, com motivo.
 4. Lição aprendida que vira regra → "Lições aprendidas" do `STATUS.md` (e a regra no lugar certo).
-5. Linha da frente atualizada. **Um commit por subtarefa entregue**, com o quadro no mesmo commit
+5. **Um commit por subtarefa entregue**, com o quadro no mesmo commit
    (e push, conforme a regra do projeto).
 6. Responder **apenas**: **TAREFA FINALIZADA!, AJUDO EM ALGO MAIS?** — sem resumo nem tabela
    (perguntas e bloqueios são respondidos normalmente). O projeto pode pedir algo antes da frase
@@ -65,7 +65,7 @@ Na dúvida, é grande. O projeto pode definir exceções (rotinas já autorizada
 
 ## Retomar (sessão nova ou que caiu)
 
-1. Ler o `STATUS.md`: linha da sua frente e da subtarefa reservada.
+1. Ler o `STATUS.md` e achar a subtarefa com o nome da sua frente em "Em uso por".
 2. Ler o **Próximo passo** da seção da subtarefa; conferir o que já foi feito (arquivos e commits) e
    **continuar de onde parou**.
 3. ❌ Não recomeçar do zero, não refazer o que está ✅, não pular etapas.

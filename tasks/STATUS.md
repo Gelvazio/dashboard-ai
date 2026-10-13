@@ -100,7 +100,6 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-50.6 | Documentar alternância entre local e nuvem | 🟡 Média | SUB-50.5 | ⬜ Pendente | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-50.7 | Atualizar o `README.md` com instruções de desenvolvimento local | 🟡 Média | SUB-50.6 | ⬜ Pendente | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-54 | **Tirar a tabela "🧭 Frentes" do quadro (fica só o "Em uso por")** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
-| SUB-54.1 | Regras sem "linha da frente" (`quadro.md`, `frentes-e-reserva.md`, `ciclo-da-task.md`) | 🟡 Média | Nenhuma | 🔄 Em execução | Claude Code (Opus 5.5) (local · main) (desde 2026-10-13 15:50) | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
 | SUB-54.2 | Skill `proxima-task` lendo as frentes pela coluna "Em uso por" | 🟡 Média | SUB-54.1 | ⬜ Pendente | — | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
 | SUB-54.3 | Remover a seção "🧭 Frentes" do `STATUS.md` e avisar as IAs | 🟡 Média | SUB-54.2 | ⬜ Pendente | — | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
 | SUB-54.4 | Aceite do usuário | 🟡 Média | SUB-54.3 | ⬜ Pendente | — | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |

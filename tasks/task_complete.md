@@ -29,6 +29,7 @@
 | SUB-50.2 | Inicializar o Supabase local na pasta `database/configlocal` (`supabase init --config database/configlocal`) | 🟡 Média | SUB-50.1 | ✅ Concluído | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-48.1 | Definir estrutura `projects/` para projetos de IA independentes | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-010](etapas/ETAPA-010-43fbb21f-ESTRUTURA-PROJECTS.md) |
 | SUB-48 | **Definir estrutura `projects/` para projetos de IA independentes** | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-010](etapas/ETAPA-010-43fbb21f-ESTRUTURA-PROJECTS.md) |
+| SUB-54.1 | Regras sem "linha da frente" (`quadro.md`, `frentes-e-reserva.md`, `ciclo-da-task.md`) | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
 
 ---
 

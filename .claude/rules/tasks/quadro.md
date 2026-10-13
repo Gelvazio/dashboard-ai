@@ -21,7 +21,7 @@ e `tasks/etapas/` pelos modelos abaixo. Ciclo da tarefa: `ciclo-da-task.md` · v
 | Linha de tarefa ou subtarefa **concluída (✅)** | Tabela "✅ Concluídas" do `tasks/task_complete.md` |
 | Pedido, objetivo, plano (tarefa grande), escopo, riscos, decisões | **Etapa** da tarefa-mãe: `tasks/etapas/ETAPA-NNN-<uuid8>-ASSUNTO.md` |
 | Descrição, critérios, próximo passo, entrega e verificação de cada subtarefa | Seção da subtarefa dentro da etapa da mãe |
-| Tarefa que cada sessão está fazendo | Linha da frente em "🧭 Frentes" do `tasks/STATUS.md` |
+| Tarefa que cada sessão (frente) está fazendo | Coluna "Em uso por" do "📌 Tarefas" (sem tabela de frentes) |
 | Decisões, riscos, pendências e lições do projeto | Seções do `tasks/STATUS.md` |
 | Recados entre sessões | `tasks/RECADOS.md` (só se acrescentam linhas) |
 
@@ -47,9 +47,6 @@ e `tasks/etapas/` pelos modelos abaixo. Ciclo da tarefa: `ciclo-da-task.md` · v
 
 **Objetivo:** <1 frase> · **Partes interessadas:** <quem decide / aprova / usa>
 **Links:** [Regras](../AGENTS.md) · [Etapas](etapas/) · [Recados](RECADOS.md)
-
-## 🧭 Frentes de trabalho
-| Frente | Tarefa (etapa) | Situação | Atualizado em |
 
 ## 📌 Tarefas            (só abertas/em andamento; mãe em negrito + uma linha por subtarefa)
 | Tarefa | Título | Prioridade | Depende de | Status | Em uso por | Etapa |

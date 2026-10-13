@@ -7,9 +7,9 @@ trabalham no mesmo repositório e só se falam pelos arquivos. Quadro: `quadro.m
 
 - Cada sessão é uma **frente**: `<IA (modelo)> (<ambiente> · <branch>)` (ex.:
   `Claude Code (Opus 5.5) (local · main)`, `Grok (Grok 4.7) (nuvem · main)`).
-- Cada frente atualiza **só a própria linha** em "🧭 Frentes", ao começar e ao parar. Sem
-  pendência → `⏹️ Encerrada`.
 - O nome da frente aparece na reserva ("Em uso por"), na seção da subtarefa e na mensagem de commit.
+- **Não existe tabela de frentes:** o que cada frente está fazendo é a linha em que o nome dela
+  aparece em "Em uso por". Sem reserva = frente parada (nada a atualizar).
 
 ## Pegar uma subtarefa
 

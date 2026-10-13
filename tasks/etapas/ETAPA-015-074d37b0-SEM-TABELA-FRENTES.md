@@ -31,7 +31,7 @@ mesmo tempo) e com a informação repetida: quem está fazendo o quê já está 
 
 ### SUB-54.1 — Regras sem "linha da frente" (`quadro.md`, `frentes-e-reserva.md`, `ciclo-da-task.md`)
 
-**Próximo passo:** reservar e editar as três regras.
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** `quadro.md`: "Tarefa que cada sessão está fazendo" → coluna "Em uso por" do "📌 Tarefas"; tirar
   "🧭 Frentes" do modelo do `STATUS.md` e "Em uso por" passa a ser a forma de achar a frente. `frentes-e-reserva.md`:
@@ -39,7 +39,11 @@ mesmo tempo) e com a informação repetida: quem está fazendo o quê já está 
   `ciclo-da-task.md`: tirar "Linha da frente atualizada" (Encerrar) e, no Retomar, procurar o próprio nome em
   "Em uso por".
 - **Critérios de Aceitação:** nenhuma das três regras manda atualizar linha de frente; arquivos ≤ 5 KB.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-54.1)` · **Verificação:** `quadro.md` (lugar único = coluna "Em uso por"; seção
+  "🧭 Frentes" fora do modelo), `frentes-e-reserva.md` (sem "atualizar a própria linha"; frente sem reserva = parada)
+  e `ciclo-da-task.md` (sem "Linha da frente atualizada"; Retomar procura o nome em "Em uso por"); `grep` sem
+  "🧭 Frentes"/"linha da frente" em `.claude/rules`, `AGENTS.md` e `README.md` (fora o título do
+  `frentes-e-reserva.md`); tamanhos 4,8 KB, 2,9 KB e 4,2 KB (≤ 5 KB).
 
 ### SUB-54.2 — Skill `proxima-task` lendo as frentes pela coluna "Em uso por"
 
