@@ -205,13 +205,13 @@ mantido abaixo só como histórico.
 
 ### SUB-45.14 — Componente `src/components/projetos/ProjetosLista.tsx`
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** nenhum — entregue. Seguir na SUB-45.15.
 
 - **Descrição:** Tabela (cards no celular) com: bolinha da cor, nome, slug, prioridade, `StatusProjetoBadge`, data de criação (`created_at` formatada) e botões Editar e Ativar/Inativar (`definirProjetoAtivo`). Estado vazio: "Nenhum projeto cadastrado.".
 - **Critérios de Aceitação:** `npm run typecheck`, `npm run lint` e `npm run build` verdes.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **Entrega:** commit desta entrega (`feat(SUB-45.14)`) · **Verificação:** `npm run typecheck` **exit 0**, `npm run build` **exit 0** (`tsc -b && vite build`) e `npm test` **exit 0** (suíte existente verde). ⚠️ **Desvio registrado:** o projeto **não tem script `lint`** — `package.json` não define `npm run lint`, então esse critério da subtarefa **não é executável**; no lugar rodei `build` + a suíte de testes. Componente criado com tabela no desktop (`hidden … md:block`) e cards no celular (`md:hidden`), estado vazio "Nenhum projeto cadastrado.", colunas Projeto (bolinha da cor + nome), Identificador, Prioridade, Status (`StatusProjetoBadge`), Criado em (`formatarDataHora`) e Ações (Editar + Ativar/Inativar por `definirProjetoAtivo`, com o erro exibido em `role="alert"`).
+- **Anotação:** A bolinha da cor usa o **`fill` de um `<circle>` SVG em vez de `style` inline** — conferi que o projeto não usa `style={{…}}` em nenhum componente e a regra de código pede HTML sem `style`; a cor vem do banco (`#RRGGBB`) e o SVG aceita o valor direto. A prioridade do projeto (MAXIMA/ALTA/MEDIA/BAIXA) ganhou um **badge próprio** com rótulos em português: **não** reutilizei o `PrioridadeBadge` de `components/tasks` porque ele é numérico (1–5, prioridade de task) e representa outra coisa. A persistência fica no `projectService` (importado, como no resto do projeto) e quem usa o componente decide o que fazer em `onEditar`/`onMudou`; exportado no `src/components/projetos/index.ts` junto do badge. Arquivos do Codex (`ProjetoForm.tsx`, `StatusProjetoBadge.tsx`) não foram tocados.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-13 18:05 — confirmado por DeepSeek Harness (deepseek-flash): typecheck, build e suíte verdes (script `lint` inexistente no projeto)
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
 ### SUB-45.15 — Tela `src/views/ProjetosView.tsx`
