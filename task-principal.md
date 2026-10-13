@@ -91,17 +91,17 @@
 ---
 
 ## 📊 Resumo de Progresso
-- **Total de Tasks Principais:** 49
+- **Total de Tasks Principais:** 50
 - **Subtarefas atômicas (~3 min):** 280
 - **Em Execução:** 1 (SUB-38)
-- **Pendentes:** 10 principais (SUB-38, 28, 35, 41, 42, 45, 46, 47, 48, KIRO-DEV-CLONE) + 62 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 2 — SUB-35.46 e SUB-48 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+- **Pendentes:** 11 principais (SUB-38, 28, 35, 41, 42, 45, 46, 47, 48, 49, KIRO-DEV-CLONE) + 67 subtarefas
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 3 — SUB-35.46, SUB-48 e SUB-49 (`ALTA` ou `MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
   - bloqueadas por dependência: 21 — SUB-45.2 a SUB-45.19 (cadeia da SUB-45; tarefas de banco só Claude Code local; frontend depende de banco) e SUB-41.2, SUB-41.3, SUB-42 (cadeia da SUB-41)
   - aguardando aprovação do plano pelo usuário: 10 — SUB-47.1 a SUB-47.10 ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md))
   - em execução: 1 — SUB-38 (DeepSeek Harness (deepseek-flash))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
   - travada para todas as IAs: 1 — SUB-46 (`BAIXA`, atômica), sob a 🔒 TRAVA ESPECIAL (aguarda decisão do usuário)
-- **Concluídas:** 252 de 328 blocos (38 principais + 214 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 252 de 329 blocos (38 principais + 214 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -1265,5 +1265,32 @@
 - **Critérios de Aceitação:** Pasta `projects/` criada com esta documentação; cada projeto filho claro sobre sua autonomia e dependência do Dashboard AI.
 - **Commit:** pendente
 - **Anotação:** Criada em 2026-10-13 a pedido do usuário para definir a estrutura multi-projeto.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+---
+
+## 🔄 FASE 20: Refatoração - Projeto como Visualizador de Tasks (sem banco próprio)
+
+### [ ] SUB-49: Refatorar `dashboard-ai-devin` para ser apenas visualizador de tasks com distribuição por modelos
+- **Status:** pendente
+- **Prioridade:** ALTA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** (a subdividir conforme a execução)
+  - SUB-49.1: Remover código de banco de dados vetorial (memória persistente com pgvector) (`pendente`)
+  - SUB-49.2: Remover código de tabela de banco de dados de tasks deste projeto (`pendente`)
+  - SUB-49.3: Adaptar frontend para se conectar a APIs externas de tasks (em vez de Supabase local) (`pendente`)
+  - SUB-49.4: Manter apenas lógica de distribuição de tasks por modelos (SUB-47) no quadro (`pendente`)
+  - SUB-49.5: Atualizar documentação (README.md, AGENTS.md) para refletir novo foco (`pendente`)
+- **Descrição:** Mudar o foco do projeto `dashboard-ai-devin` de "gestor de tasks com banco próprio" para "apenas visualizador de tasks com distribuição por modelos". Isso significa:
+  - **Remover** todo o código relacionado a banco de dados vetorial (memória persistente com pgvector, `ai_memories`, `match_memories`, embeddings)
+  - **Remover** todo o código relacionado à tabela de banco de dados de tasks deste projeto (a tabela `tasks` e suas RPCs como `pegar_proxima_task`, `finalizar_task` etc. devem ser externalizadas)
+  - **Manter** apenas o frontend React que visualiza tasks e a lógica de distribuição por modelos (conforme SUB-47: LEVE → Haiku, MEDIO → Sonnet, PESADO → Opus)
+  - O projeto se torna um cliente/consumidor que se conecta a APIs externas de task queues (em vez de ter banco próprio)
+  - A pasta `projects/` pode conter implementações específicas de cada projeto de IA que se conectam a este visualizador
+- **Critérios de Aceitação:** Código de banco vetorial removido; código de tabela de tasks removido ou externalizado; frontend adaptado para APIs externas; lógica de distribuição por modelos mantida; documentação atualizada.
+- **Commit:** pendente
+- **Anotação:** Criada em 2026-10-13 a pedido do usuário para mudar o foco do projeto de "gestor com banco" para "apenas visualizador com distribuição por modelos".
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
