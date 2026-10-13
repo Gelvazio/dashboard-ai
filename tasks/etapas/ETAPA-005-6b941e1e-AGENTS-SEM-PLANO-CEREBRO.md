@@ -33,12 +33,12 @@
 
 ### SUB-41.2 — Mover a seção "2. Estrutura do Servidor MCP (Vercel Serverless)"
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** Mover do `AGENTS.md` para o fim de `docs/plano-cerebro-memoria-persistente.md` a seção `## 2. Estrutura do Servidor MCP (Vercel Serverless)` inteira: a nota "ℹ️ Implementação real", a "Estrutura de Arquivos Recomendada" e o exemplo ilustrativo de `api/mcp.ts`, **sem alterar o conteúdo**, só corrigindo os links relativos da nota (`api/mcp.ts`, `api/_lib/`, `api/_lib/brain-tools.ts`, `api/_lib/supabase.ts` → `../api/...`). Apagar a seção (com o `---` correspondente) do `AGENTS.md`.
 - **Critérios de Aceitação:** Seção 2 completa no novo arquivo e fora do `AGENTS.md`; todos os links `../api/...` apontando para arquivos que existem; `npm run validar` verde.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `feat(SUB-41.2)` (Claude Code (Opus 5.5) (local · main), 2026-10-13)
+- **Anotação:** **Entrega (2026-10-13 15:18, Claude Code (Opus 5.5) (local · main)):** seção 2 inteira (nota "Implementação real", estrutura de arquivos e exemplo de `api/mcp.ts`) movida para o fim de `docs/plano-cerebro-memoria-persistente.md` sem alterar o texto, só os links `api/...` → `../api/...`; apagada do `AGENTS.md`. **Verificação:** os 4 links `../api/...` apontam para arquivos que existem (`ls`); só texto mudou, então o `npm run validar` de 15:08 continua valendo (mesma ressalva do `chunks`, anterior e sem relação).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 

@@ -19,6 +19,7 @@
 | SUB-53.1 | Regra "listar pendentes depois do push" | 🔴 Máxima | Nenhuma | ✅ Concluído | — | [ETAPA-014](etapas/ETAPA-014-7d3c51e9-LISTAR-PENDENTES-APOS-PUSH.md) |
 | SUB-28 | **Integração LangChain/LangGraph para Execução de Tasks** | 🟡 Média | SUB-01 a SUB-27, SUB-29, SUB-30 (todas as tasks anteriores concluídas) | ✅ Concluído | — (não reservável) | [ETAPA-003](etapas/ETAPA-003-6df4b821-LANGGRAPH.md) |
 | SUB-41.1 | Criar `docs/plano-cerebro-memoria-persistente.md` e mover a seção "1. Arquitetura do Banco de Dados (Supabase)" | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-6b941e1e-AGENTS-SEM-PLANO-CEREBRO.md) |
+| SUB-41.2 | Mover a seção "2. Estrutura do Servidor MCP (Vercel Serverless)" | 🟡 Média | SUB-41.1 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-6b941e1e-AGENTS-SEM-PLANO-CEREBRO.md) |
 
 ---
 
