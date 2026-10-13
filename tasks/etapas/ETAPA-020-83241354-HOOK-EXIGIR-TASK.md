@@ -55,7 +55,7 @@ Com reserva de Claude Code: `Edit` em `src/` passa. Qualquer erro do próprio ho
 
 ### SUB-59.2 — Hook `lembrar-task.mjs` (lembrete a cada pedido)
 
-**Próximo passo:** depende da SUB-59.1.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 19:52).
 
 - **Descrição:** script Node e entrada `UserPromptSubmit` no `.claude/settings.json`.
 - **Critérios de Aceitação:** imprime o lembrete e sai com código 0.

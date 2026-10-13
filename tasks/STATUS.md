@@ -79,7 +79,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-58 | **Completar a estrutura do Claude Code (`.mcp.json`, hook de início, `CLAUDE.local.md`, `settings.json` limpo)** | 🟡 Média | Nenhuma | 🔄 Em andamento | — (não reservável) | [ETAPA-019](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
 | SUB-58.5 | Aceite do usuário | 🟡 Média | SUB-58.4 | 👀 Aguardando o usuário | — | [ETAPA-019](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
 | SUB-59 | **Hooks que obrigam o Claude Code a registrar a tarefa no quadro antes de editar** | 🟡 Média | Nenhuma | 🔄 Em andamento | — (não reservável) | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
-| SUB-59.2 | Hook `lembrar-task.mjs` (lembrete a cada pedido) | 🟡 Média | SUB-59.1 | ⬜ Pendente | — | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
+| SUB-59.2 | Hook `lembrar-task.mjs` (lembrete a cada pedido) | 🟡 Média | SUB-59.1 | 🔄 Em execução | Claude Code (Opus 5.5) (nuvem · main) (desde 2026-10-13 19:52) | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
 | SUB-59.3 | Documentar a trava em `.claude/rules/multiplas-ias.md` | 🟡 Média | SUB-59.2 | ⬜ Pendente | — | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
 | SUB-59.4 | Aceite do usuário | 🟡 Média | SUB-59.3 | ⬜ Pendente | — | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
 
