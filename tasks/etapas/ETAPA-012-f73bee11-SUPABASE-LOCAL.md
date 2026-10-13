@@ -27,12 +27,15 @@
 
 ### SUB-50.2 — Inicializar o Supabase local na pasta `database/configlocal` (`supabase init --config database/configlocal`)
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** nenhum (concluída). Seguir na SUB-50.3.
 
 - **Descrição:** Executar `supabase init --config database/configlocal` na raiz do projeto para criar a estrutura do Supabase local dentro da pasta `database/configlocal`. Isso cria: `database/configlocal/migrations/` (migrations SQL), `database/configlocal/config.toml` (configuração local), `database/configlocal/functions/` (Edge Functions, se usar), e atualiza o `.gitignore` para ignorar o estado local (`database/configlocal/.branches/`, `database/configlocal/.temp/`). Documentar o que cada arquivo/pasta significa e quais devem ser versionados (migrations, config.toml) vs. quais são gerados automaticamente (`.branches/`, `.temp/`). A pasta `database/configlocal` mantém toda a configuração do Docker local separada do SQL da produção.
 - **Critérios de Aceitação:** `supabase init --config database/configlocal` executado; estrutura `database/configlocal/` criada; `.gitignore` atualizado; documentação explicando a estrutura.
-- **Commit:** pendente
+- **Commit:** `feat(SUB-50.2)` (Claude Code (Opus 5.5) (local · main), 2026-10-13)
 - **Anotação:** Ajustado para usar `database/configlocal` em vez de `supabase/` (padrão).
+  **Entrega (2026-10-13, Claude Code (Opus 5.5) (local · main)):** com autorização do usuário ("npm -D no projeto"), `npm install -D supabase@2.120.0` (entra no `package.json`; usar `npx supabase`). **Correção da descrição:** o CLI **não tem** `--config`; a pasta é escolhida com a opção global `--workdir` (conferido no `npx supabase init --help`). Rodado `npx supabase --workdir database/configlocal init --yes`, que criou `database/configlocal/supabase/config.toml` e `database/configlocal/supabase/.gitignore` (ignora `.branches`, `.temp`, `.env.local`, `.env.*.local`, `.env.keys`; o `.gitignore` da raiz não precisou mudar). `project_id` trocado de `"configlocal"` para `"dashboard-ai"` (nome dos contêineres). A pasta `migrations/` só nasce na SUB-50.3. Documentação da estrutura, do `--workdir` e das portas em `database/configlocal/README.md`.
+  ⚠️ **Para as próximas subtarefas (50.3 a 50.7):** onde a descrição diz `--config database/configlocal`, usar `--workdir database/configlocal`; migrações ficam em `database/configlocal/supabase/migrations/` (não em `database/configlocal/migrations/`).
+  **Verificação:** `npx supabase --version` = 2.120.0; `init` terminou com "Finished supabase init."; `git check-ignore` confirma `.temp/` ignorado; portas conferidas no `config.toml` (54321 `[api]`, 54322 `[db]`, 54323 `[studio]`, 54324 `[local_smtp]`). Nada subido no Docker (isso é a SUB-50.5).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
