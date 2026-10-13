@@ -43,7 +43,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-45.16 | Registrar a tela `projetos` (rota `#/projetos` e menu) | 🟡 Média | SUB-45.15 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.17 | Documentar projetos no `README.md` e no `database/README.md` | 🟡 Média | SUB-45.4, SUB-45.16 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.18 | Validação visual da tela Projetos | 🟡 Média | SUB-45.6, SUB-45.16 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
-| SUB-45.19 | Revisar a SUB-45.1 (`database/08_projects_campos.sql`) com o MCP do Supabase — só Claude Code local | 🟡 Média | SUB-45.1 | ⛔ Bloqueado | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
+| SUB-45.19 | Revisar a SUB-45.1 (`database/08_projects_campos.sql`) com o MCP do Supabase — só Claude Code local | 🟡 Média | SUB-45.1, SUB-50 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | KIRO-DEV-CLONE | **Clone do Kiro.dev** | 🟢 Baixa | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | 🔒 Trava especial (só o usuário libera) | [ETAPA-008](etapas/ETAPA-008-f301fc16-KIRO-DEV-CLONE.md) |
 | KIRO-DEV-CLONE.1 | Link "KIRO DEV CLONE" no menu | 🟢 Baixa | KIRO-DEV-CLONE.2 | ⬜ Pendente | 🔒 Trava especial (só o usuário libera) | [ETAPA-008](etapas/ETAPA-008-f301fc16-KIRO-DEV-CLONE.md) |
 | KIRO-DEV-CLONE.2 | Rota `/kiro-dev-clone` | 🟢 Baixa | KIRO-DEV-CLONE.3 | ⬜ Pendente | 🔒 Trava especial (só o usuário libera) | [ETAPA-008](etapas/ETAPA-008-f301fc16-KIRO-DEV-CLONE.md) |
