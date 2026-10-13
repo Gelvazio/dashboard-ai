@@ -1,9 +1,15 @@
 # Laya Server + Opus: classificação híbrida
 
-Este guia descreve o servidor Laya configurado neste repositório e o contrato planejado para a
-classificação híbrida de tarefas. A integração do wrapper TypeScript ainda está em andamento na
-SUB-47.1; a classificação automática só estará disponível depois que essa implementação e a
-integração do worker forem concluídas.
+Este guia descreve o servidor Laya configurado neste repositório e o classificador híbrido do
+worker, que fica no servidor (fora de `src/`, para nada ir ao navegador):
+
+| Arquivo | Papel |
+|---|---|
+| [`worker/laya.ts`](../worker/laya.ts) | `classificarLaya` e `statusLaya` (SUB-47.1), contrato do Laya 0.4.6 |
+| [`worker/opus.ts`](../worker/opus.ts) | `classificarComOpus` (SUB-47.14), mesmo formato de resposta |
+| [`worker/classificador.ts`](../worker/classificador.ts) | `classificar` (SUB-47.15): modos `laya`, `opus` e `hybrid` |
+
+O uso dentro do grafo do worker é a SUB-47.12; até lá, o classificador existe mas nada o chama.
 
 ## O que é o Laya
 
@@ -55,24 +61,28 @@ Esse segredo protege o endpoint do Laya; é diferente da chave da API Anthropic 
 
 ## Configuração do classificador híbrido
 
-O wrapper previsto usa estas variáveis no processo que executa a integração:
+O classificador lê estas variáveis no processo do worker (modelo em `.env.example`):
 
 | Variável | Uso |
 |---|---|
 | `LAYA_SERVER_URL` | URL base do servidor; localmente, `http://localhost:8000`. |
-| `CLASSIFICADOR_MODE` | `laya` usa só o Laya, `opus` usa só o Opus e `hybrid` começa no Laya e pode recorrer ao Opus. O padrão planejado é `hybrid`. |
+| `LAYA_API_KEY` | Opcional: a mesma chave do serviço, quando ele exige bearer. |
+| `LAYA_TIMEOUT_MS` | Opcional: tempo máximo por chamada ao Laya (padrão 60000 ms). |
+| `CLASSIFICADOR_MODE` | `laya` usa só o Laya, `opus` usa só o Opus e `hybrid` começa no Laya e pode recorrer ao Opus. Padrão: `hybrid`; outro valor é erro. |
 | `ANTHROPIC_API_KEY` | Chave secreta para as chamadas ao Opus quando esse modo for usado. |
+| `OPUS_MODELO` / `OPUS_TIMEOUT_MS` | Opcionais: modelo (padrão `claude-opus-5-5`) e tempo máximo (padrão 60000 ms). |
 
-O fluxo `hybrid` tenta o Laya primeiro. Se o score retornado ficar abaixo de `0.7`, ou se o
-servidor falhar ou expirar o tempo da chamada, o wrapper previsto pede uma segunda avaliação ao
-Opus. O limiar `0.7` é uma política deste projeto, não um limiar universal do modelo. Se ambos os
-classificadores falharem, a integração deve retornar um erro explícito em vez de inventar um nível.
+O fluxo `hybrid` tenta o Laya primeiro. Se a menor `answer_confidence` das respostas ficar abaixo
+de `0.7` (ou não vier), ou se o servidor falhar ou estourar o tempo, o classificador pede a decisão
+ao Opus. Usa-se `answer_confidence` (a probabilidade da resposta dada) e **não** `confidence`,
+que no Laya é a entropia normalizada. O limiar `0.7` é uma política deste projeto, não um limiar
+universal do modelo. Se o Opus também falhar, vale a resposta do Laya marcada com `baixaConfianca: true`; se não
+houver nenhuma resposta, `classificar` lança `ErroClassificador` em vez de inventar um nível.
 
 **Segredos:** `ANTHROPIC_API_KEY` e `LAYA_API_KEY` não podem usar prefixo `VITE_` nem ser embutidas
 no bundle do navegador. Configure a chave Anthropic somente no servidor (arquivo `.env` local ou
-variáveis de ambiente do ambiente de backend). A implementação do wrapper deve manter a chamada
-Anthropic no servidor; a chave não pode ser enviada ao navegador. O wrapper e o worker ainda estão
-em subtarefas próprias, portanto estas variáveis só terão efeito quando forem lidas pelo código.
+variáveis de ambiente do ambiente de backend). O `worker/opus.ts` lê a chave só no servidor e não
+a coloca em log nem em mensagem de erro.
 
 ## Custo, latência e monitoramento
 
@@ -85,9 +95,9 @@ com o hardware, os pesos carregados, o tamanho da tarefa e a rede.
 
 Para monitorar o serviço, use `docker compose -f docker-compose.laya.yml ps` e consulte
 `http://localhost:8000/health`. Para investigar inicialização ou erros, veja
-`docker compose -f docker-compose.laya.yml logs -f laya-serve`. Quando o wrapper for concluído, seus
-metadados de resposta devem permitir identificar qual classificador decidiu, o score e o tempo
-decorrido; isso ainda depende da entrega da SUB-47.1.
+`docker compose -f docker-compose.laya.yml logs -f laya-serve`. Cada decisão de `classificar`
+traz `classificador` (`laya` ou `opus`), `confianca`, `tempoMs`, `motivoRevisao` (por que o Opus
+foi chamado) e `baixaConfianca`.
 
 ## Solução de problemas
 

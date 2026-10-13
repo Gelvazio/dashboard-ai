@@ -233,14 +233,14 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.15 — Modo híbrido (`worker/classificador.ts`: `classificar`, `CLASSIFICADOR_MODE`)
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:53).
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** `classificar(estado, perguntas)` com `CLASSIFICADOR_MODE` = `laya` | `opus` | `hybrid`
   (padrão): tenta o Laya; se alguma `answer_confidence` < 0,7 ou o Laya falhar, usa o Opus; devolve a
   decisão com metadados (classificador usado, confiança, tempo). Erro explícito se os dois falharem.
   Variáveis no `.env.example`. Criada em 2026-10-13 20:38 ao dividir a SUB-47.1.
 - **Critérios de Aceitação:** os três modos; nunca inventa nível; `npm run typecheck:worker` verde.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-47.15)` — `worker/classificador.ts`, `CLASSIFICADOR_MODE` no `.env.example` e `docs/laya-server.md` atualizado (deixou de dizer "previsto"/"em andamento") · **Verificação:** `tsc` 6.0 com as opções do `worker/tsconfig.json` em `laya.ts` + `opus.ts` + `classificador.ts`: sem erros; funções ≤ 23 linhas, linhas ≤ 100. Com classificadores falsos injetados, 10 casos: hybrid com Laya 0.95 e no limite 0.70 → só Laya; Laya 0.40, sem confiança ou fora do ar → Opus, com `motivoRevisao`; Laya 0.40 + Opus falhando → Laya com `baixaConfianca: true`; os dois falhando → `ErroClassificador`; modo `laya` (sem revisão, 0.3 marcado incerto) e modo `opus` chamam só um. `lerModoClassificador`: vazio → hybrid, aceita maiúsculas/espaços, valor inválido → erro. **Decisão:** `baixaConfianca` vale para qualquer modo (confiança final < 0,7 ou ausente), para quem usa saber que a decisão é incerta
 
 ### SUB-47.2 — Skill `classificar-tarefa` (níveis, sinais, matriz ferramenta × modelo)
 
