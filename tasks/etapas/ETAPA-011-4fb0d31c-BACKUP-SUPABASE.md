@@ -28,7 +28,7 @@
 
 ### SUB-49.5 — Criptografar o dump no workflow (falha se faltar a senha)
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:19).
+**Próximo passo:** nenhum (concluída).
 
 - **Pedido:** escolha do usuário em 2026-10-13 20:19 ("Criptografar o dump") diante do achado: repositório
   público, workflow ativo com agendamento às 02:00 UTC (23:00 de Brasília) e nenhum artifact publicado
@@ -44,7 +44,7 @@
 - **Riscos:** perder a senha = perder os backups (guardar fora do GitHub, ex.: gerenciador de
   senhas); artifact cifrado continua baixável por qualquer conta, mas ilegível.
 - **Aprovação:** plano aprovado pelo usuário (Gelvazio) em 2026-10-13 20:19: "Sim, pode executar".
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-49.5)` · **Verificação:** YAML lido pelo PyYAML (5 passos, o da senha primeiro). O comando de dump do workflow, extraído do YAML e rodado com `gpg` 2.4 e um `pg_dump` falso: gera `PGP symmetric … AES 256-bit`; não abre sem senha nem com senha errada; com a senha, `gpg --decrypt | gunzip` devolve o SQL; `pg_dump` com erro derruba o passo (código 3), então o upload não roda. **Não conferido aqui:** execução real no runner Windows com Docker e o passo PowerShell da senha (sem `pwsh` nesta sessão) — conferir no 1º disparo manual depois de criar o secret
 
 ### SUB-49.2 — Documentar uso de GitHub Artifacts (limites, retenção, download)
 

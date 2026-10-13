@@ -18,6 +18,20 @@ jobs:
     runs-on: [self-hosted, Windows, X64]
     timeout-minutes: 30
     steps:
+      # SUB-49.5: o repositório é público e qualquer conta do GitHub baixa artifacts. Sem a
+      # senha de criptografia o job para aqui, antes de gerar ou publicar qualquer dump.
+      - name: Conferir senha de criptografia do backup
+        env:
+          SUPABASE_BACKUP_PASSPHRASE: ${{ secrets.SUPABASE_BACKUP_PASSPHRASE }}
+        run: |
+          $tamanhoMinimoSenha = 20
+          if ([string]::IsNullOrWhiteSpace($env:SUPABASE_BACKUP_PASSPHRASE)) {
+            throw "Configure o secret SUPABASE_BACKUP_PASSPHRASE: sem ele o backup não é gerado."
+          }
+          if ($env:SUPABASE_BACKUP_PASSPHRASE.Length -lt $tamanhoMinimoSenha) {
+            throw "SUPABASE_BACKUP_PASSPHRASE precisa ter pelo menos $tamanhoMinimoSenha caracteres."
+          }
+
       - name: Conferir URL do Supabase local
         env:
           SUPABASE_LOCAL_DATABASE_URL: ${{ secrets.SUPABASE_LOCAL_DATABASE_URL }}
@@ -44,12 +58,14 @@ jobs:
             throw "Use host.docker.internal:54322/postgres para apontar ao Supabase local."
           }
 
-      - name: Gerar dump SQL comprimido
+      - name: Gerar dump SQL comprimido e criptografado
         env:
           SUPABASE_LOCAL_DATABASE_URL: ${{ secrets.SUPABASE_LOCAL_DATABASE_URL }}
+          SUPABASE_BACKUP_PASSPHRASE: ${{ secrets.SUPABASE_BACKUP_PASSPHRASE }}
         run: |
           $mountDirectory = "type=bind,source=$env:RUNNER_TEMP,target=/backup"
-          $dumpCommand = 'pg_dump "$SUPABASE_LOCAL_DATABASE_URL" --no-owner --no-privileges | gzip -c > /backup/supabase-backup.sql.gz'
+          # gpg já vem na imagem postgres:17; a senha entra por arquivo (não aparece no comando).
+          $dumpCommand = 'pg_dump "$SUPABASE_LOCAL_DATABASE_URL" --no-owner --no-privileges | gzip -c | gpg --batch --yes --pinentry-mode loopback --symmetric --cipher-algo AES256 --passphrase-file <(printf "%s" "$SUPABASE_BACKUP_PASSPHRASE") --output /backup/supabase-backup.sql.gz.gpg'
           $dockerArguments = @(
             "run"
             "--rm"
@@ -57,6 +73,8 @@ jobs:
             "--mount=$mountDirectory"
             "-e"
             "SUPABASE_LOCAL_DATABASE_URL"
+            "-e"
+            "SUPABASE_BACKUP_PASSPHRASE"
             "postgres:17"
             "bash"
             "-o"
@@ -70,7 +88,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: supabase-backup-${{ github.run_number }}
-          path: ${{ runner.temp }}/supabase-backup.sql.gz
+          path: ${{ runner.temp }}/supabase-backup.sql.gz.gpg
           if-no-files-found: error
           retention-days: ${{ vars.SUPABASE_BACKUP_RETENTION_DAYS || 30 }}
 
@@ -83,4 +101,14 @@ jobs:
           O artifact chama-se supabase-backup-$env:GITHUB_RUN_NUMBER.
           Retenção padrão: 30 dias. Ajuste pela variável SUPABASE_BACKUP_RETENTION_DAYS.
           O runner Windows e o Supabase local precisam estar ligados durante o backup.
+
+          O arquivo supabase-backup.sql.gz.gpg está **criptografado** (AES-256): o repositório é
+          público e qualquer conta do GitHub pode baixá-lo, mas só abre com a senha do secret
+          SUPABASE_BACKUP_PASSPHRASE. Guarde a senha fora do GitHub: sem ela o backup se perde.
+
+          Para restaurar (descompacte o zip do artifact antes):
+
+          ``````bash
+          gpg --decrypt supabase-backup.sql.gz.gpg | gunzip | psql "<URL do banco de destino>"
+          ``````
           "@ | Add-Content -Path $env:GITHUB_STEP_SUMMARY -Encoding utf8

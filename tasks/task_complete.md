@@ -90,6 +90,7 @@
 | SUB-60 | **Comandos (skills) para todas as IAs, sempre sincronizados** | 🟡 Média | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
 | SUB-61.3 | Aceite do usuário | 🟡 Média | SUB-61.2 | ✅ Concluído | — | [ETAPA-022](etapas/ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md) |
 | SUB-61 | **Sincronia automática das skills no commit e Gemini CLI lendo o `AGENTS.md`** | 🟡 Média | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-022](etapas/ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md) |
+| SUB-49.5 | Criptografar o dump no workflow (falha se faltar a senha) | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
 
 ---
 
