@@ -170,12 +170,13 @@ _A preencher ao final: resultado, commits, pendências e tempo decorrido._
 
 ### SUB-47.0 — Configurar Laya Server via Docker Compose
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** ⛔ bloqueada. Destrava quando o usuário (1) abrir o Docker Desktop e (2) autorizar baixar e rodar a imagem/código do Laya (<https://github.com/NandhaKishorM/laya>, repositório de terceiros). Depois: conferir README oficial, escrever `docker-compose.laya.yml` e os scripts.
 
 - **Descrição:** Criar `docker-compose.laya.yml` na raiz do projeto com serviço `laya-serve` baseado na configuração oficial do Laya. Configurar variáveis de ambiente: `LAYA_SERVE_BACKEND=laya`, `LAYA_SERVE_PRELOAD=true`, `LAYA_SERVE_DEVICE=cpu` (ou `cuda` se GPU disponível), `LAYA_API_KEY` (opcional, para proteção), `LAYA_BIND_ADDRESS=127.0.0.1` (só localhost). Publicar porta `8000` e adicionar health check. Criar script `scripts/start-laya.sh` (Windows: `.bat`) para iniciar/parar o serviço. Documentar como rodar: `docker compose -f docker-compose.laya.yml up -d laya-serve`.
 - **Critérios de Aceitação:** Docker Compose funcional; serviço inicia sem erros; health check passa; portas corretas; script de start/stop funcional; configuração conferida contra a fonte oficial.
 - **Commit:** pendente
 - **Anotação:** Integrado da SUB-51 para usar Laya Server como classificador automático (System-One control) em vez de classificador manual Opus. **Fonte oficial obrigatória:** <https://github.com/NandhaKishorM/laya> — imagem, serviço, variáveis (`LAYA_SERVE_*`, `LAYA_API_KEY`, `LAYA_BIND_ADDRESS`), porta e health check acima são **suposições a conferir** no README/docs do repositório antes de escrever o `docker-compose.laya.yml`. **Pré-requisito:** Docker Desktop instalado e rodando nesta máquina (em 2026-10-12 o Docker estava parado — ver SUB-38); sem Docker, o item fica ⛔ com esse motivo.
+- **Bloqueio (2026-10-13 15:33, Claude Code (Opus 5.5) (local · main)):** `docker --version` = 29.4.3, mas `docker info` falha (`dockerDesktopLinuxEngine` não encontrado: Docker Desktop parado). Além disso, subir o serviço exige baixar e executar código de terceiros, o que pede autorização explícita do usuário.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
