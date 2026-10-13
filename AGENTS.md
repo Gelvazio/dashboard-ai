@@ -1,368 +1,41 @@
-# 🤖 DIRETRIZES DE AGENTES DE IA & PROTOCOLO DE CONCORRÊNCIA
+# 🤖 AGENTS.md — Porta de entrada para todas as IAs (Dashboard AI)
 
-> 📜 **Fonte única das regras:** este `AGENTS.md` vale para **todas as IAs** (Claude, Gemini, Grok, Copilot, Devin, Antigravity etc.). Toda **regra nova** pedida pelo usuário é escrita **aqui**, e não em arquivos de uma IA só (`CLAUDE.md`, `GEMINI.md`, `.cursorrules`, `copilot-instructions.md` etc.). Esses arquivos só apontam para o `AGENTS.md` e não guardam regras próprias. **Pedido para "salvar no `CLAUDE.md`"** (ou no arquivo de qualquer outra IA) **significa salvar aqui, no `AGENTS.md`**. As regras daqui são **só de como executar tarefas**. Tarefas ficam no [`task-principal.md`](task-principal.md); planos ficam em `docs/`.
+Vale para **todas as IAs** (Claude, Gemini, Grok, Copilot, Devin, DeepSeek, Antigravity etc.).
+Este arquivo **não repete regras**: ele diz onde cada uma está. Cada regra existe em **um arquivo
+só**, dentro de [`.claude/rules/`](.claude/rules/INDEX.md).
 
-> ✅ **TAREFA CONCLUÍDA = BLOCO MOVIDO PARA O [`task_complete.md`](task_complete.md) (OBRIGATÓRIO, SEM EXCEÇÃO):** sempre que uma tarefa ou subtarefa for concluída, o bloco dela sai do `task-principal.md` e vai para o `task_complete.md` **no mesmo commit da conclusão**. Na tarefa-mãe fica só a referência `(concluido, <sha>)`. Se você achar no quadro ativo um bloco concluído que ficou para trás, mova-o na hora. Detalhes na PARTE 3 (passo 2) e na regra 10 da seção 1.1.
+- **Regra nova pedida pelo usuário** → vai para o arquivo do assunto em `.claude/rules/` (veja o
+  [`INDEX.md`](.claude/rules/INDEX.md)). Pedido para "salvar no `CLAUDE.md`" (ou `GEMINI.md`,
+  `.cursorrules`, `copilot-instructions.md`…) significa salvar lá. Arquivos de uma IA só apenas
+  apontam para este `AGENTS.md`.
+- **Tarefas** ficam no quadro [`tasks/STATUS.md`](tasks/STATUS.md) (etapas em
+  [`tasks/etapas/`](tasks/etapas/)). Nunca neste arquivo e nunca em `docs/`.
 
-> 🌿 **TODO TRABALHO É FEITO NA BRANCH `main` (OBRIGATÓRIO, SEM EXCEÇÃO):** trava, código, quadro, documentação e conclusão vão **direto** para a `main` (`git pull --rebase origin main` → commit → `git push origin main`). ⛔ Não criar nem usar branches paralelas (`feature/*`, `claude/*`, `devin/*` etc.) nem abrir PR para entregar tarefa do quadro, **mesmo quando a ferramenta ou a sessão (ex.: sessão em nuvem) indicar outra branch** — a trava só existe para os outros agentes quando está na `main`. Se o push para a `main` for recusado por falta de permissão, **pare e avise o usuário**; não publique em outra branch como alternativa.
+## ⛔ Antes de qualquer tarefa, leia (nesta ordem)
 
-> 📌 **Quadro único:** o antigo `quadro-task-principal.md` foi incorporado ao `task-principal.md`. Travas, status e tarefas ativas ficam só no `task-principal.md`; não recrie o arquivo antigo.
+| # | Arquivo | O que define |
+|---|---------|--------------|
+| 1 | [`.claude/rules/essentials.md`](.claude/rules/essentials.md) | Sincronizar, o que ler, checklist de início |
+| 2 | [`.claude/rules/git-quick.md`](.claude/rules/git-quick.md) | Tudo na `main`, hooks, commits, proibições |
+| 3 | [`.claude/rules/tasks/quadro.md`](.claude/rules/tasks/quadro.md) | Onde fica cada informação; tarefa × subtarefa |
+| 4 | [`.claude/rules/tasks/frentes-e-reserva.md`](.claude/rules/tasks/frentes-e-reserva.md) | Pegar e reservar subtarefa, prioridade, limites |
+| 5 | [`.claude/rules/tasks/ciclo-da-task.md`](.claude/rules/tasks/ciclo-da-task.md) | Abrir, plano na etapa, executar, encerrar, retomar |
+| 6 | [`.claude/rules/multiplas-ias.md`](.claude/rules/multiplas-ias.md) | Banco só pelo Claude Code local, trava especial, tamanho das subtarefas |
+| 7 | [`.claude/rules/testes-validacao.md`](.claude/rules/testes-validacao.md) | Nunca abrir navegador; nunca escrever testes (exceto bug) |
+| 8 | [`.claude/rules/codigo-solid.md`](.claude/rules/codigo-solid.md) e [`codigo-limites-nomes.md`](.claude/rules/codigo-limites-nomes.md) | Como escrever código |
 
-> 🔄 **Sincronizar SEMPRE com `fetch` antes do `pull`:** rode `git fetch --all --prune` **antes** de qualquer `git pull --rebase origin main`. Sem o `fetch`, a referência `origin/main` é **local e envelhece**: um `git status` mostrando `## main...origin/main` (sem `ahead`/`behind`) **não** prova que você está atualizado. Já houve agente lendo o quadro "sincronizado" com o remoto vários commits à frente. **Com os hooks da seção 1.3 instalados, o Git passa a barrar o push atrasado sozinho** — instale uma vez por clone.
+Opcional: [`.claude/rules/reporte-progresso.md`](.claude/rules/reporte-progresso.md) (eventos no
+monitor). Skill do fluxo: [`proxima-task`](.claude/skills/proxima-task/SKILL.md).
 
-> ⚠️ **REGRA CRÍTICA - NÃO MEXER EM NADA ALÉM DO SOLICITADO:** ao modificar o `task-principal.md` (quadro de tarefas), mexa **EXCLUSIVAMENTE** na tarefa/subtarefa **EXPLICITAMENTE SOLICITADA** pelo usuário (pelo número ex: SUB-XX.Y). **NUNCA**:
->   - Reanumere fases automaticamente
->   - Reordene tarefas sem autorização
->   - Modifique tarefas não solicitadas
->   - Altere estrutura do quadro sem pedido explícito
-> Se precisar remover uma tarefa, remova **SÓ ELA** (bloco + trava se existir) e **NADA MAIS**. **Esta regra é OBRIGATÓRIA e não tem exceção.**
-
-> 📦 **Concluídas em arquivo separado:** os blocos `[x]` (tarefas e subtarefas `concluido`) ficam em [`task_complete.md`](task_complete.md). Para pegar tarefas, leia só o `task-principal.md`: a lista `Subtarefas:` das tarefas-mãe abertas já traz `(concluido, <sha>)`, e **dependência que não aparece como bloco no `task-principal.md` está `concluido` no `task_complete.md`**. Abra o `task_complete.md` só para consultar uma entrega ou reabrir uma tarefa (o bloco volta para o `task-principal.md` como `pendente`, com o motivo na anotação).
->
-> 🗂️ **Scripts temporários:** cada agente guarda scripts auxiliares dentro da própria pasta de trabalho, nunca em `/tmp` ou outra pasta compartilhada (outro agente pode sobrescrevê-los).
->
-> 🧭 **Skill do fluxo:** para pegar, executar, concluir ou liberar tarefas listadas no `task-principal.md`, use a skill [`proxima-task`](.agents/skills/proxima-task/SKILL.md) (no Devin: `@skills:proxima-task`). Ela resume o protocolo deste arquivo passo a passo; em caso de divergência, vale este `AGENTS.md`.
-
-> **AVISO A TODOS OS AGENTES DE IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.):**
-> Este repositório opera com fluxo autônomo baseado em fila atômica de tarefas e trava contra conflitos de edição.
-> Siga rigorosamente as regras abaixo **ANTES** de executar qualquer código.
-
----
-
-## 🔒 1. PROTOCOLO OBRIGATÓRIO DE CAPTURA DE TAREFA (LOCK EM 3 PARTES) E CONCORRÊNCIA
-
-Todo e qualquer agente de IA (Claude, Gemini, Grok, Copilot, Antigravity, etc.) que chegar à fila de tarefas **DEVE SEGUIR RIGOROSAMENTE O FLUXO EM 3 PARTES ANTES DE MEXER NO CÓDIGO DA TAREFA**:
-
-**CHECKLIST OBRIGATÓRIO ANTES DE ASSUMIR QUALQUER TAREFA:**
-☐ [ ] Instalei os hooks de sincronização (`git config core.hooksPath .githooks`, seção 1.3)?
-☐ [ ] Fiz `git fetch --all --prune` para atualizar a referência `origin/main`?
-☐ [ ] Fiz `git pull --rebase origin main` **PRIMEIRO** (depois do fetch)?
-☐ [ ] Li o arquivo ATUALIZADO (task-principal.md)?
-☐ [ ] Verifiquei que a trava está LIVRE ou que minha task não conflita?
-☐ [ ] Confirmei que todas as dependências estão `concluido`?
-☐ [ ] Escolhi o item livre de **maior prioridade** (`MAXIMA` → `ALTA` → `MEDIA` → `BAIXA`, seção 1.2)?
-☐ [ ] Não tenho nenhum outro item travado (máximo 1 subtarefa ou 1 tarefa atômica por agente)?
-☐ [ ] O item é uma subtarefa ou tarefa atômica (não uma tarefa-mãe com subtarefas)?
-☐ [ ] Vou fazer commit + push do lock IMEDIATAMENTE antes de codificar?
-
-⛔ **Se NÃO marcou todos os ☐ acima, NÃO assuma a tarefa.**
+**Se uma regra daqui parecer contradizer outra, vale a do arquivo do assunto; avise o usuário.**
 
 ---
 
-### 🔹 PARTE 1 — LER O QUADRO E IDENTIFICAR A TAREFA PENDENTE
-
-⚠️ **ORDEM OBRIGATÓRIA DE EXECUÇÃO (NÃO PULAR PASSOS):**
-
-✅ **PASSO 1 (CRÍTICO — PRIMEIRO):** Executar `git fetch --all --prune` e, **só depois**, `git pull --rebase origin main`, para garantir o estado mais recente do repositório.
-   - ⛔ **NUNCA** confie em `git status` / `git log` antes do `fetch`: eles comparam com a referência **local** `origin/main`, que envelhece. Um `## main...origin/main` sem `ahead`/`behind` **não** significa "estou atualizado".
-   - ⛔ **NÃO** ler nenhum arquivo local antes destes comandos
-   - ⛔ **NÃO** assumir nenhuma tarefa sem garantir que está no estado mais recente
-   - Se o `fetch` indicar que `origin/main` andou, **releia o quadro** mesmo quando o pull for fast-forward
-   - Os hooks da seção 1.3 automatizam o `fetch` no push e na troca de branch, mas **não substituem** este PASSO 1
-   - Se houver conflito no rebase, resolver antes de prosseguir
-
-✅ **PASSO 2 (SÓ DEPOIS DO GIT PULL):** Ler obrigatoriamente o arquivo ATUALIZADO:
-   - 📄 [`task-principal.md`](task-principal.md)
-
-✅ **PASSO 3:** Conferir a seção **"🔒 TRAVA ATIVA NO MOMENTO"** em `task-principal.md`:
-   - ⛔ **PROIBIÇÃO TOTAL DE CONFLITO:** Se já existir uma task com trava ativa (tabela principal ou bloco `### 🔒 TRAVA ADICIONAL`) ou status `em_execucao` associada a outro agente, **NENHUMA OUTRA IA PODE ASSUMIR AQUELA MESMA TAREFA**.
-
-✅ **PASSO 4:** Localizar a próxima sub-task com status `pendente`, **pela prioridade** (seção 1.2):
-   - Verificar se todas as dependências da sub-task estão com status `concluido`
-   - Entre os itens livres, pegar o de **maior prioridade** (`MAXIMA` → `ALTA` → `MEDIA` → `BAIXA`); na mesma prioridade, o primeiro na ordem do quadro
-   - ⛔ **NÃO** assumir uma tarefa cujas dependências não estejam 100% concluídas
-
----
-
-### ⚠️ ERROS COMUNS A EVITAR (CAUSAM CONFLITOS)
-
-❌ **CONFIAR NO `git status` SEM `git fetch`:** a referência `origin/main` é local e envelhece; sem o fetch você pode jurar que está sincronizado com um remoto vários commits à frente.
-❌ **LER ARQUIVOS LOCAIS ANTES DE GIT PULL:** Os arquivos podem estar desatualizados. Sempre fazer `git fetch --all` e `git pull` primeiro.
-❌ **ASSUMIR TAREFA SEM VERIFICAR TRAVAS:** Pode resultar em múltiplos agentes trabalhando na mesma tarefa.
-❌ **IGNORAR DEPENDÊNCIAS:** Uma tarefa só pode ser assumida se todas as suas dependências estiverem `concluido`.
-❌ **NÃO FAZER COMMIT/PUSH DO LOCK:** O lock não é válido até ser commitado e pushed para o remoto.
-
----
-
-### 🔹 PARTE 2 — GRAVAR O BLOQUEIO NO QUADRO, FAZER COMMIT E PUSH IMEDIATOS
-1. Gravar a tarefa como bloqueada no quadro para que nenhuma outra IA a pegue:
-   - Em `task-principal.md`: mudar o status da sub-task para `em_execucao` e registrar o executor.
-2. **Executar COMMIT e PUSH do bloqueio IMEDIATAMENTE (antes de criar código da tarefa):**
-   ```bash
-   git add task-principal.md
-   git commit -m "lock: assumindo sub-task SUB-XX por [Nome do Agente]"
-   git push origin main
-   ```
-   *Dessa forma, a main remota no GitHub é atualizada na hora, impedindo colisões de outros agentes.*
-
----
-
-### 🔹 PARTE 3 — EXECUÇÃO, FINALIZAÇÃO, COMMIT E PUSH DA ENTREGA
-1. Executar e validar o código da mini-task com qualidade.
-2. Atualizar `task-principal.md`: alterar status para `concluido` e registrar a anotação técnica detalhada; em seguida **mover o bloco concluído** (inteiro, com commit, anotação e confirmação) para o fim da fase correspondente em `task_complete.md`. Na lista `Subtarefas:` da tarefa-mãe fica só a referência `(concluido, <sha>)`. Se a tarefa-mãe for fechada, o bloco dela também vai para o `task_complete.md`.
-3. **Executar COMMIT e PUSH da conclusão IMEDIATAMENTE:**
-   ```bash
-   git add <arquivos da tarefa> task-principal.md task_complete.md
-   git commit -m "feat(SUB-XX): descrição do que foi implementado"
-   git push origin main
-   ```
-
----
-
-## ⚖️ 1.1 REGRAS COMPLEMENTARES DE CONCORRÊNCIA (OBRIGATÓRIAS)
-
-1. **Uma tarefa por agente, no máximo:**
-   - Cada agente pode ter **no máximo 1 item travado** por vez: **1 subtarefa** (ex: `SUB-19.3`) **ou 1 tarefa atômica** (tarefa sem subtarefas, `Subtarefas: Nenhuma (atômica)`).
-   - ⛔ É proibido travar uma tarefa-mãe que tenha subtarefas (status `pendente (aguardando subtarefas)`). Ela só é concluída quando todas as filhas estiverem `concluido`.
-   - Só depois de concluir e fazer push da entrega (ou liberar a trava) o agente pode pegar o próximo item.
-   - Exceção: o planejamento/subdivisão de tarefas pedido pelo usuário, que trava as tarefas-mãe apenas durante a edição do quadro e as libera no mesmo ciclo, sem escrever código.
-
-2. **Push da trava recusado (corrida entre agentes):**
-   - Se o `git push` do lock for recusado, executar `git fetch --all --prune`, depois `git pull --rebase origin main` e **reler o quadro**.
-   - Se outro agente travou o mesmo item, **desfazer o seu lock local** e escolher outro item livre. Nunca sobrescrever a trava de outro agente.
-   - ⛔ Nunca usar `git push --force`.
-
-3. **Tarefas travadas para todas as IAs:**
-   - ⛔ **KIRO-DEV-CLONE**: esta tarefa está **TRAVADA PARA TODAS AS IAS** — nenhuma IA pode assumi-la (nem subtarefas que venham a ser criadas nela) sem autorização explícita do usuário.
-   - Para liberar a trava, o usuário deve editar o `task-principal.md` e remover a trava manualmente.
-   - Esta trava tem precedência sobre o protocolo normal de captura de tarefas e sobre a prioridade (seção 1.2).
-
-4. **Travas em paralelo:**
-   - Vários agentes podem trabalhar ao mesmo tempo, **cada um em um item diferente**.
-   - Cada agente registra sua trava em um bloco próprio `### 🔒 TRAVA ADICIONAL — <Nome da IA> — <SUB-XX>` em `task-principal.md`, e nunca edita o bloco de outro agente.
-   - A proibição vale para o **mesmo item**: ninguém assume um item que já tem trava de outro agente.
-
-5. **Travas só são liberadas pelo usuário:**
-   - Não existe tarefa "abandonada": uma tarefa travada é uma tarefa que ainda não terminou.
-   - ⛔ Nenhum agente pode liberar, assumir ou alterar a trava de outro agente por conta própria, independentemente do tempo sem commits.
-   - Se uma trava estiver causando problemas, quem decide e libera manualmente é o **usuário**.
-
-6. **Estados das subtarefas no quadro:**
-   - 🟢 **livre:** `pendente`, sem trava e com todas as dependências `concluido`; qualquer agente pode pegar.
-   - ⛓️ **bloqueada:** `pendente`, mas com alguma dependência ainda não concluída; ninguém pode pegar.
-   - 🔒 **reservada:** pertence a uma tarefa-mãe travada por um agente; só esse agente pode pegar.
-   - 🔄 **em execução:** travada por um agente.
-
-7. **Tamanho máximo (~3 minutos):**
-   - Cada subtarefa deve caber em cerca de **3 minutos** de trabalho de uma IA: 1 função, 1 método, 1 componente, 1 classe, 1 arquivo de teste ou 1 seção de documentação.
-   - Se o agente perceber que o item é maior, deve **subdividi-lo** (seção 2) antes de codificar, em vez de entregar parcialmente.
-
-8. **Commits limpos:**
-   - Rodar `git fetch --all --prune` antes de qualquer `git pull --rebase origin main` — e repetir o fetch imediatamente antes de publicar, para conferir se o remoto andou durante o seu trabalho.
-   - Usar sempre `git pull --rebase origin main` (nunca merge) e adicionar **só os arquivos da tarefa** + quadro (nunca `git add .`).
-   - ⛔ **Não** usar `git pull --all` nem `git pull` sem `--rebase`: sem o `--rebase` o comando cria um **merge**, proibido por esta seção. Para "pegar tudo de todos os remotos", a forma correta é `git fetch --all` seguido de `git pull --rebase origin main`.
-   - Este item é **verificado mecanicamente** pelo hook [`.githooks/pre-merge-commit`](.githooks/pre-merge-commit), que recusa o merge (ver seção 1.3).
-
-9. **Resumo de Progresso: editar só o próprio item:**
-   - Ao travar ou concluir um item, mude no `📊 Resumo de Progresso` **apenas o trecho do seu item** (incluir ou retirar o código dele de "livres agora", "em execução", "bloqueadas", e somar/subtrair 1 nas contagens).
-   - ⛔ **Nunca reescrever a linha inteira** (nem gerá-la de uma lista fixa, nem por script): outro agente pode ter criado, travado ou concluído itens depois do seu último `pull`, e a reescrita apaga esses itens do resumo sem aviso.
-   - Logo antes de editar o resumo, faça `git fetch --all --prune` + `git pull --rebase origin main` e **releia** o resumo atual; depois do commit, confira no diff que só o seu trecho mudou.
-
-10. **Quadro ativo sem concluídas (atualizador de tasks completas):**
-   - O `task-principal.md` só guarda o que **não** terminou. Todo bloco concluído (cabeçalho `[x]` **ou** `Status: concluido`, tarefa-mãe ou subtarefa) fica no [`task_complete.md`](task_complete.md).
-   - **Quem conclui move:** ao concluir um item, o próprio agente move o bloco no mesmo commit da conclusão (PARTE 3, passo 2).
-   - **Quem encontra move:** qualquer agente que, ao ler o quadro, achar um bloco concluído que ficou para trás deve movê-lo, sem esperar pedido. O commit é separado: `docs(board): mover concluídas para task_complete.md por <agente>`.
-   - **Como mover:**
-     - mover o bloco **inteiro e sem alterar o texto** para o **fim da fase correspondente** no `task_complete.md`, com o mesmo título de fase (criar o cabeçalho da fase lá, se ainda não existir);
-     - na lista `Subtarefas:` da tarefa-mãe que continua no quadro, deixar só `(concluido, <sha>)`;
-     - não apagar nem duplicar blocos: a soma de blocos dos dois arquivos é igual antes e depois.
-   - ⛔ **Não mover:**
-     - bloco com trava ativa (`em_execucao`);
-     - tarefa-mãe com alguma filha ainda não `concluido`;
-     - bloco sob 🔒 TRAVA ESPECIAL.
-   - As contagens do `📊 Resumo de Progresso` **não mudam** com a mudança de arquivo, porque o bloco já contava como concluído (regra 9).
-
-11. **Tarefas de banco de dados: só o Claude Code local:**
-   - Só o **Claude Code rodando localmente** (na máquina do usuário, com o **MCP do Supabase** conectado) pega tarefas de banco de dados.
-   - Valem como "tarefa de banco": criar ou alterar SQL, schema, trigger, função, RLS ou migração (`database/*.sql`); consultas; suítes do banco (`database/tests/`); testes de integração (`npm run test:integration`); aplicar scripts no Supabase; e validação de telas contra um banco real.
-   - ⛔ **Claude Code em sessão na nuvem** (claude.ai/code, container remoto) **não pega** tarefa de banco de dados, mesmo tendo o MCP do Supabase.
-   - ⛔ As outras IAs (Gemini, Grok, Copilot, Devin, DeepSeek, Antigravity etc.) também **não pegam** tarefa de banco de dados.
-   - Para quem não pode, o item fica indisponível, qualquer que seja a prioridade (seção 1.2).
-   - Se o item tiver uma parte sem banco (código do frontend, documentação), crie uma subtarefa separada para essa parte (seção 2), e deixe a parte de banco para o Claude Code local.
-   - Esta regra não libera nada: mudança em banco de produção (aplicar SQL, criar usuário, gravar dados) continua exigindo autorização explícita do usuário.
-
----
-
-## 🎯 1.2 PRIORIDADE DAS TAREFAS (OBRIGATÓRIA)
-
-Todo bloco de tarefa ou subtarefa, no `task-principal.md` e no `task_complete.md`, tem o campo logo abaixo de `Status:`:
-
-```markdown
-- **Prioridade:** ALTA
-```
-
-| Valor | Uso |
-|---|---|
-| `MAXIMA` | Acima de todas. Reservada para o que o usuário define como mais urgente (ex.: `SUB-38`, verificação geral) |
-| `ALTA` | Bloqueia outras tarefas ou quebra a validação (build, typecheck, testes) |
-| `MEDIA` | Trabalho normal do quadro; valor padrão quando nada for dito |
-| `BAIXA` | Pode esperar; só é pega com orientação do usuário (ver regra 2) |
-
-**Regras:**
-
-1. **Ordem de captura:** entre os itens 🟢 livres, o agente pega sempre o de **maior prioridade** (`MAXIMA` → `ALTA` → `MEDIA` → `BAIXA`). Na mesma prioridade, vale a ordem do quadro. ⛔ Não pegar um item de prioridade menor enquanto houver item livre de prioridade maior.
-2. **Exceção — orientação do usuário:** o agente só pega item de prioridade menor (ex.: `BAIXA`) quando **já recebeu orientação explícita do usuário** para isso (ou para uma tarefa específica). Registrar essa orientação na anotação do bloco.
-3. **Prioridade não fura dependência nem trava:** item com dependência não `concluido`, travado por outro agente ou com 🔴 trava especial continua indisponível, qualquer que seja a prioridade.
-4. **Quem define:** a prioridade é definida pelo usuário. Ao criar ou subdividir uma tarefa, o agente usa a da tarefa-mãe (ou `MEDIA`, se não houver) e não muda a prioridade de itens existentes sem pedido do usuário.
-5. **Tarefas concluídas** mantêm o campo só como histórico; ele não tem efeito na fila.
-
----
-
-## 🪝 1.3 HOOKS DE SINCRONIZAÇÃO (VERSIONADOS — INSTALAR 1x POR CLONE)
-
-Três hooks em [`.githooks/`](.githooks/) transformam as regras de sincronização de "boa intenção" em **impedimento mecânico**: o Git barra, em vez de depender de o agente lembrar.
-
-| Hook | Quando roda | O que faz |
-|---|---|---|
-| [`.githooks/pre-push`](.githooks/pre-push) | a cada `git push` | Roda `git fetch --all --prune` e **RECUSA** o push (exit 1) quando o remoto tem commits que você não tem — o caso que seria rejeitado depois e que empurraria para o `--force` (proibido) |
-| [`.githooks/post-checkout`](.githooks/post-checkout) | ao trocar de branch | Roda `git fetch --all --prune` e **avisa** (sem bloquear) quantos commits você está atrás do upstream. Não dispara durante rebase/merge/cherry-pick |
-| [`.githooks/pre-merge-commit`](.githooks/pre-merge-commit) | quando `git merge`/`git pull` criaria um commit de merge | **RECUSA o commit de merge** (exit 1) — fecha o item 8 da seção 1.1 ("nunca merge"). Não afeta `pull --rebase`, fast-forward nem `merge --squash`. ⚠️ O Git deixa o merge **preparado** (`MERGE_HEAD`): a recuperação é `git merge --abort` |
-
-### Instalação (obrigatória, uma vez por clone)
-
-```bash
-git config core.hooksPath .githooks   # ativa os três hooks
-git config pull.rebase true           # faz o `git pull` simples já usar rebase
-```
-
-Nenhuma das duas vive no repositório: `core.hooksPath` e `pull.rebase` ficam no `.git/config`, que **não** é versionado — cada clone/pasta de trabalho precisa rodar os comandos uma vez. Confira com:
-
-```bash
-git config --get core.hooksPath     # deve imprimir: .githooks
-git config --get pull.rebase        # deve imprimir: true
-```
-
-O `pull.rebase true` é a **prevenção**: sem ele, um `git pull` distraído tenta merge e só é barrado no fim pelo `pre-merge-commit` — que deixa o merge preparado e exige `git merge --abort` para desfazer.
-
-### Detalhes que importam
-
-- **⛔ Não usar `--force`:** o hook também bloqueia force-push, porque o commit do remoto deixa de ser ancestral do seu. Se o hook bloqueou, o caminho é `git fetch --all --prune` → `git pull --rebase origin main` → **reler o quadro** → publicar de novo.
-- **Escape hatch:** `git push --no-verify` pula o `pre-push`; `git merge --no-verify <ref>` pula o `pre-merge-commit`. Só usar com motivo registrado na anotação do bloco da tarefa.
-- **Se o merge foi bloqueado:** quase sempre é um `git pull` sem `--rebase`. O repositório **fica no meio do merge**, então rode nesta ordem: `git merge --abort` → `git fetch --all --prune` → `git pull --rebase origin main`. Fast-forward (`--ff-only`) e `--squash` **não** são afetados, porque não geram commit de merge.
-- **Se o hook não rodar**, quase sempre é fim de linha: o [`.gitattributes`](.gitattributes) força `eol=lf` em `.githooks/*` porque, com CRLF, o shebang `#!/bin/sh` quebra no Git Bash. Verificação:
-  ```bash
-  git ls-files --eol .githooks    # esperado: i/lf  w/lf  attr/text eol=lf
-  ```
-- **Desativar:** `git config --unset core.hooksPath`.
-- **Nada disso substitui o PASSO 1:** os hooks cobrem o *push*, a *troca de branch* e o *merge*, mas não o momento de **pegar tarefa**. O `git fetch --all --prune` + `git pull --rebase origin main` antes de ler o quadro continua obrigatório.
-
----
-
-## 🧩 2. SUBDIVISÃO EM SUBTAREFAS E CONTROLE DE DEPENDÊNCIAS
-
-1. **Subdivisão Contínua (Granularidade Máxima):**
-   - Qualquer tarefa ou subtarefa pode ser subdividida em tarefas menores (ex: `SUB-01.1`, `SUB-01.2`, `SUB-01.3`) caso o agente identifique etapas independentes.
-   - Isso permite que qualquer IA assuma uma fração clara e objetiva do trabalho sem perder contexto.
-
-2. **Declaração Obrigatória de Dependências e Subtarefas:**
-   - Toda tarefa em [`task-principal.md`](task-principal.md) deve conter obrigatoriamente:
-     - **`Depende de:`** Código das tasks que precisam estar `concluido` antes de iniciar (ex: `SUB-01` ou `Nenhuma`).
-     - **`Subtarefas:`** Lista de subtarefas filhas em que ela se divide (ou `Nenhuma (atômica)`).
-     - **`Prioridade:`** `MAXIMA`, `ALTA`, `MEDIA` ou `BAIXA` (seção 1.2).
-   - ⛔ **REGRA DE BLOQUEIO POR DEPENDÊNCIA:** Nenhuma IA pode assumir uma tarefa cujas dependências ainda não estejam 100% `concluido`.
-
----
-
-## 🏷️ 3. IDENTIFICAÇÃO OBRIGATÓRIA DA IA EXECUTORA
-
-Sempre que uma IA assumir uma sub-task, deve identificar explicitamente seu nome/modelo em todos os registros:
-- **Exemplos de identificação:** `Claude Code`, `xAI (Grok)`, `Gemini (Antigravity)`, `Copilot / OpenAI`.
-- **Onde registrar o nome da IA:**
-  - 1. No campo `Executor:` em [`task-principal.md`](task-principal.md).
-  - 2. No campo `Agente Responsável:` da Trava Ativa e na tabela em `task-principal.md`.
-  - 3. Na mensagem de commit do lock: `git commit -m "lock: assumindo sub-task SUB-XX por [Nome da IA]"`.
-  - 4. Na anotação do bloco e no commit da entrega final.
-
----
-
-## 📡 4. REPORTE DE PROGRESSO (OPCIONAL)
-
-Agentes conectados ao MCP do DashboardAI podem reportar o andamento ao **monitor em tempo real** (SUB-35) com a ferramenta `agent_event` ([`api/_lib/event-tools.ts`](api/_lib/event-tools.ts)), que grava em `agent_events`.
-
-> ⚠️ **O reporte é complementar e NÃO substitui o protocolo de lock das seções 1 e 1.1.** A trava só vale quando está commitada e com push no `task-principal.md`; um evento `trava`, `inicio` ou `fim` no monitor não trava, não libera e não conclui nada. Se o MCP estiver indisponível, siga normalmente só com o quadro.
-
-**Quando emitir (um evento por momento, sempre com `agente` igual ao nome usado no quadro e `task_codigo` da subtarefa):**
-
-| Momento | `tipo` | Exemplo de `mensagem` |
-|---|---|---|
-| Logo após o push do lock | `inicio` | `Assumida SUB-35.45` |
-| Etapas relevantes (implementação, testes, build) | `progresso` (com `etapa`) | `npm test verde (194 testes)` |
-| Trabalho longo, a cada ~5 min sem outro evento | `heartbeat` | `Ainda em SUB-35.45` |
-| Falha que impede a entrega | `erro` (com `status`) | `typecheck falhou em src/lib/x.ts` |
-| Depois do push da entrega e da liberação da trava | `fim` | `Entregue em abc1234` |
-
-**Exemplo (`tools/call`):**
-
-```json
-{ "jsonrpc": "2.0", "id": 1, "method": "tools/call",
-  "params": { "name": "agent_event", "arguments": {
-    "project": "default", "agente": "DashboardAI-Clone 08 (Grok Bot)", "tipo": "fim",
-    "task_codigo": "SUB-35.45", "mensagem": "Entregue em abc1234",
-    "chave_idempotencia": "fim:SUB-35.45:abc1234" } } }
-```
-
-**Regras:**
-- Use `chave_idempotencia` em eventos que podem ser reenviados (ex.: `inicio:SUB-XX`, `fim:SUB-XX:<sha>`, `git:<sha>`): reenvios com a mesma chave são ignorados.
-- Mensagens curtas (≤ 2.000 caracteres), sem segredos, tokens, chaves ou dados pessoais.
-- Falha ao emitir um evento **não** bloqueia a subtarefa: registre no relatório e continue o protocolo do quadro.
-- Agentes que só usam o quadro em Markdown não precisam emitir nada: o espelho `scripts/espelhar_quadro_eventos.py` (SUB-35.42/35.43) converte os commits `lock:`/`feat(...)`/`docs(board): concluir` em eventos.
-
----
-
-## ✅ 5. REGRA DE CONFIRMAÇÃO DE STATUS DAS TAREFAS
-
-Após qualquer verificação de conclusão de subtarefa (pelo usuário ou por um agente), **obrigatoriamente** adicione a seguinte linha no bloco da subtarefa (no `task-principal.md` ou, se já concluída, no `task_complete.md`):
-
-```markdown
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** <valor>
-```
-
-### Valores permitidos
-
-| Situação | Valor da linha | Exemplo |
-|----------|----------------|---------|
-| Tarefa **confirmada** como realmente concluída (código/documentação verificados) | Data e hora da confirmação + agente | `2026-10-12 08:43 (reconfirmado por Grok)` |
-| Tarefa **não confirmada** ou ainda em verificação | `PENDENTE` | `PENDENTE` |
-
-### Regras
-
-1. A linha deve ficar no final do bloco da subtarefa (depois de **Anotação**; o marcador `VERIFICADOR-CLAUDE` da `SUB-38`, quando existir, vem logo abaixo dela).
-2. Só marque com data/hora se a entrega foi **explicitamente verificada** (arquivo existe, conteúdo atende aos critérios, commit correspondente).
-3. Subtarefas ainda `[ ]` ou com implementação placeholder/incompleta devem permanecer `PENDENTE`.
-4. Ao reconfirmar uma tarefa já marcada, atualize a linha com a nova data e indique “reconfirmado”.
-5. Esta confirmação é **complementar** ao status normal (`concluido` / `pendente`) e ao protocolo de lock. Não substitui o commit da entrega nem a atualização do status principal.
-
-> ⚠️ Esta regra foi adicionada em 2026-10-12 após a restauração do quadro e a verificação das entregas recentes.
-
----
-
-## 📝 6. PLANO EM `docs/` PARA TAREFAS GRANDES (OBRIGATÓRIO)
-
-Antes de executar uma **tarefa grande**, o agente cria o plano em `docs/<nome-descritivo-em-kebab-case>.md`. Vale para qualquer IA.
-
-**Tarefa grande** é a que tem pelo menos um destes pontos:
-- mexe em **banco de dados** (SQL, schema, trigger, função, migração);
-- mexe em **segurança** (autenticação, papéis, RLS, chaves, permissões);
-- tem **várias partes** (tarefa-mãe com subtarefas);
-- faz **geração ou mudança em massa** ou **apaga dados**.
-
-**Tarefa pequena** (ajuste pontual em até ~3 arquivos, sem nenhum dos pontos acima) **não** precisa de plano em `docs/`.
-
-**Regras:**
-
-1. **Quando criar:** antes do primeiro commit de código da tarefa. Numa tarefa-mãe, o plano é **um só**, criado por quem pegar a primeira subtarefa e mantido por quem pegar as seguintes.
-2. **Conteúdo mínimo:**
-   - cabeçalho com a data de criação, o executor e o código da tarefa no quadro;
-   - objetivo em 1 frase;
-   - escopo (o que entra e o que **não** entra);
-   - riscos com plano B;
-   - tabela de passos (`# | Subtarefa | Arquivos | Verificação | Status`) com os estados `⬜ Pendente`, `🔄 Em progresso`, `✅ Concluído` e `⛔ Bloqueado`.
-3. **Aprovação:** a tarefa no quadro, criada ou pedida pelo usuário, já conta como aprovação do plano. **Mudança de escopo** exige nova aprovação do usuário, registrada no plano e na anotação do bloco.
-4. **Ligação com o quadro:** citar o arquivo do plano na anotação do bloco (`Plano em docs/<arquivo>.md`). O detalhamento de cada passo continua no `task-principal.md`, que é a fonte da verdade; o plano não substitui o bloco.
-5. **Atualização na hora:** ao concluir cada passo, marcar `✅` com o commit da entrega. Ao terminar a tarefa, preencher a conclusão e o tempo decorrido.
-6. **Commit junto:** o plano vai no mesmo commit do lock ou da entrega da subtarefa (`git add docs/<arquivo>.md`), nunca sozinho depois.
-
----
+# 📎 Anexo — plano a ser movido (tarefa SUB-41)
+
+> O texto abaixo **não é regra**: é o plano original do "Cérebro de Memória Persistente", já
+> implementado. A tarefa **SUB-41** (ver `tasks/STATUS.md`) vai movê-lo para
+> `docs/plano-cerebro-memoria-persistente.md`. Até lá, fica aqui sem alterações.
 
 # 🧠 Plano de Implementação: Cérebro de Memória Persistente (Estilo Jev-Mem)
 **Foco:** Ultra-rápido, baseado em primitivas estruturadas, custo zero de infraestrutura e consumo mínimo de tokens.

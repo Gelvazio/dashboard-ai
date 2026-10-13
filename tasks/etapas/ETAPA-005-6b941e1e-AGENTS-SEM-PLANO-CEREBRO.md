@@ -5,6 +5,12 @@
 
 > Bloco migrado do `task-principal.md` sem alterar o texto. **Status, prioridade, dependências e reserva** de cada subtarefa ficam só no [`tasks/STATUS.md`](../STATUS.md); aqui ficam descrição, critérios, entrega e anotações. Quem reserva uma subtarefa edita só a seção dela.
 
+> ⚠️ **Nota da migração (2026-10-13, ETAPA-001):** o `AGENTS.md` foi reescrito como porta de entrada curta. O plano
+> "Cérebro de Memória Persistente" continua **sem alterações**, agora no fim do arquivo, sob o título
+> "📎 Anexo — plano a ser movido (tarefa SUB-41)". Onde as subtarefas abaixo dizem "o `AGENTS.md` termina na seção
+> 5", leia: depois de mover o plano, apagar também o título e o aviso do anexo, e o `AGENTS.md` termina na tabela de
+> leitura obrigatória.
+
 ### Tarefa-mãe
 
 - **Descrição:** **Regra do usuário (2026-10-12):** o `AGENTS.md` deve conter **apenas regras de como executar tarefas**, e **nenhuma tarefa em si**. Hoje, depois da seção "✅ 5. Regra de confirmação de status", o arquivo traz o plano de implementação `# 🧠 Plano de Implementação: Cérebro de Memória Persistente (Estilo Jev-Mem)` (linhas ~345-525; números aproximados, conferir com `grep`), com as seções `## 1. Arquitetura do Banco de Dados (Supabase)` (SQL), `## 2. Estrutura do Servidor MCP (Vercel Serverless)` (nota da implementação real, estrutura de arquivos e exemplo ilustrativo de `api/mcp.ts`) e `## 3. Ativação no Terminal (Claude Code)`. Isso é tarefa/plano, não regra. O plano inteiro vai, **sem alterar o texto**, para `docs/plano-cerebro-memoria-persistente.md`, uma seção por subtarefa, ajustando os links relativos do trecho movido (`api/...` → `../api/...`, `database/...` → `../database/...`). No `AGENTS.md`, o bloco é apagado **sem deixar resumo de tarefa**.

@@ -22,6 +22,16 @@
 
 ### SUB-42.1 — Tirar do `AGENTS.md` as referências a tarefas específicas (regras genéricas)
 
-**Próximo passo:** começar pelo escopo da tarefa-mãe.
+**Próximo passo:** nenhum — concluída.
+
+- **Entrega:** resolvida pela migração do quadro ([ETAPA-001](ETAPA-001-ef019419-MIGRACAO-QUADRO.md), item
+  001.6, 2026-10-13, Claude Code (Opus 5.5) (local · main)): o `AGENTS.md` foi reescrito como porta de entrada e as
+  regras foram para `.claude/rules/`, já escritas de forma genérica. Os 5 trechos listados na tarefa-mãe deixaram de
+  existir: a trava do KIRO virou a regra genérica "trava especial" (`multiplas-ias.md`); o exemplo `SUB-38` da
+  prioridade, os códigos `SUB-35.x` do reporte (`reporte-progresso.md` usa `SUB-XX.N`), a referência à `SUB-38` e a
+  nota histórica da seção 5, e os avisos de histórico do cabeçalho saíram. A dependência da SUB-41 não impediu: o plano
+  Cérebro continua intacto no fim do `AGENTS.md`, como anexo.
+- **Verificação:** `Select-String "SUB-[0-9]|KIRO" AGENTS.md` só encontra o anexo da SUB-41 (título, aviso e a nota
+  "SUB-07" do texto original do plano).
 
 Subtarefa criada na migração (regra: toda tarefa-mãe tem no mínimo 1 subtarefa). Executa todo o escopo da tarefa-mãe: descrição e critérios na seção **Tarefa-mãe** acima.
