@@ -75,7 +75,7 @@ cópia desatualizada é recusado pelo `pre-push` com instrução de rodar `npm r
 
 ### SUB-60.4 — Gerar as cópias e documentar
 
-**Próximo passo:** depende da SUB-60.3.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:01).
 
 - **Descrição:** rodar `npm run sync:agentes`, versionar as cópias; uma linha no `AGENTS.md`
   (onde cada IA acha os comandos) e a tabela do levantamento no `README.md`.
