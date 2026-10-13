@@ -59,7 +59,28 @@
 
 ### SUB-49.3 — Criar workflow alternativo para Cloudflare R2 (retenção > 90 dias)
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** aguardar a aprovação do plano abaixo.
+
+- **Plano (Claude Code (Opus 5.5) (nuvem · main), 2026-10-13 20:23; aguarda aprovação):**
+  - Arquivo novo `.github/workflows/backup-supabase-r2.yml`, mesmo runner `[self-hosted, Windows,
+    X64]`, cron `0 2 * * *` e `workflow_dispatch`.
+  - **Ligado por variável, não por `if: false`:** o agendamento só roda com a variável
+    `SUPABASE_BACKUP_R2_ENABLED` = `true`; o disparo manual roda sempre (para testar antes de ligar).
+  - Mesmos passos de segurança do workflow de Artifacts: senha `SUPABASE_BACKUP_PASSPHRASE`
+    obrigatória, URL local conferida, dump `pg_dump | gzip | gpg AES-256` (SUB-49.5).
+  - Passo que falha se faltar algum secret `CLOUDFLARE_R2_ACCOUNT_ID`, `CLOUDFLARE_R2_ACCESS_KEY`,
+    `CLOUDFLARE_R2_SECRET_KEY` ou `CLOUDFLARE_R2_BUCKET`.
+  - Upload com a imagem Docker `amazon/aws-cli` (compatível com S3): endpoint
+    `https://<ACCOUNT_ID>.r2.cloudflarestorage.com`, região `auto`, chave
+    `supabase/AAAA/MM/DD/supabase-backup-<número>.sql.gz.gpg`; checksums só quando exigidos
+    (`AWS_REQUEST_CHECKSUM_CALCULATION=WHEN_REQUIRED`) por compatibilidade com o R2.
+  - Resumo da execução com o caminho do objeto e o comando de restauração.
+- **Fora desta subtarefa:** instruções de bucket, token e custos → **SUB-49.6** (nova, para manter a
+  subtarefa pequena); juntar os passos repetidos dos dois workflows numa ação composta fica como
+  pendência (evita mexer no workflow de Artifacts que ainda não rodou de verdade).
+- **Dados conferidos na documentação da Cloudflare (2026-10-13 20:23):** grátis 10 GB-mês, 1 milhão de operações
+  Classe A e 10 milhões Classe B por mês, saída grátis; acima disso US$ 0,015/GB-mês; objetos ficam
+  até uma regra de ciclo de vida apagá-los.
 
 - **Descrição:** Criar `.github/workflows/backup-supabase-r2.yml` (condicional, desativado por padrão com `if: false`) com: mesmo cron e workflow_dispatch da SUB-49.1, dump do banco, compressão, upload para Cloudflare R2 usando `rclone` ou AWS CLI (compatível S3), secrets: `CLOUDFLARE_R2_ACCOUNT_ID`, `CLOUDFLARE_R2_ACCESS_KEY`, `CLOUDFLARE_R2_SECRET_KEY`, `CLOUDFLARE_R2_BUCKET`. Documentar como criar o bucket no Cloudflare R2, como obter as credenciais e como usar o workflow. Vantagens: grátis 10 GB, download grátis, retenção permanente.
 - **Critérios de Aceitação:** Workflow criado (desativado); instruções de configuração do bucket R2; exemplo de upload com rclone; notas de custo para além de 10 GB.
@@ -67,6 +88,16 @@
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
+
+### SUB-49.6 — Documentar o backup no Cloudflare R2 (`docs/backup-cloudflare-r2.md`)
+
+**Próximo passo:** depende da SUB-49.3.
+
+- **Descrição:** criar o bucket, o token só daquele bucket (Object Read & Write), os 4 secrets, a
+  variável `SUPABASE_BACKUP_R2_ENABLED`, a regra de ciclo de vida (apagar depois de N dias), baixar
+  com `aws s3 cp`, restaurar e custos acima do grátis. Criada em 2026-10-13 20:23 ao dividir a SUB-49.3.
+- **Critérios de Aceitação:** passo a passo completo; custos com fonte; restauração com o comando.
+- **Entrega:** — · **Verificação:** —
 
 ### SUB-49.4 — Documentar escolha entre as 2 opções e migração
 
