@@ -13,6 +13,16 @@ export async function listarProjetos(client: DashboardClient = getSupabase()): P
   );
 }
 
+/** Lista projetos ativos e inativos visíveis ao usuário, sem os excluídos. */
+export async function listarProjetosParaGerenciamento(
+  client: DashboardClient = getSupabase(),
+): Promise<Project[]> {
+  return resultado(
+    await client.from('projects').select('*').eq('excluido', false).order('nome'),
+    'Listar projetos para gerenciamento',
+  );
+}
+
 /** Cria um projeto e traduz os erros comuns de permissão e identificador duplicado. */
 export async function criarProjeto(
   dados: ProjectInsert,

@@ -19,6 +19,8 @@ export interface ProjetosListaProps {
   onEditar?: (projeto: Project) => void;
   /** Chamado com o projeto atualizado depois de ativar/inativar. */
   onMudou?: (projeto: Project) => void;
+  /** Define quais projetos o usuário pode editar e ativar/inativar. */
+  podeGerenciar?: (projeto: Project) => boolean;
   className?: string;
 }
 
@@ -74,7 +76,13 @@ function BolaCor({ cor, nome }: { cor: string | null; nome: string }) {
   );
 }
 
-export function ProjetosLista({ projetos, onEditar, onMudou, className }: ProjetosListaProps) {
+export function ProjetosLista({
+  projetos,
+  onEditar,
+  onMudou,
+  podeGerenciar,
+  className,
+}: ProjetosListaProps) {
   const [ocupado, setOcupado] = useState<number | null>(null);
   const [erro, setErro] = useState<string | null>(null);
 
@@ -100,20 +108,22 @@ export function ProjetosLista({ projetos, onEditar, onMudou, className }: Projet
 
   const acoes = (p: Project) => (
     <div className="flex flex-wrap items-center justify-end gap-2">
-      {onEditar && (
+      {onEditar && (!podeGerenciar || podeGerenciar(p)) && (
         <Botao variante="fantasma" onClick={() => onEditar(p)} aria-label={`Editar ${p.nome}`}>
           <Pencil className="size-4" aria-hidden /> Editar
         </Botao>
       )}
-      <Botao
-        variante={p.ativo ? 'secundario' : 'primario'}
-        carregando={ocupado === p.id}
-        onClick={() => void alternarAtivo(p)}
-        aria-label={p.ativo ? `Inativar ${p.nome}` : `Ativar ${p.nome}`}
-      >
-        {p.ativo ? <PowerOff className="size-4" aria-hidden /> : <Power className="size-4" aria-hidden />}
-        {p.ativo ? 'Inativar' : 'Ativar'}
-      </Botao>
+      {(!podeGerenciar || podeGerenciar(p)) && (
+        <Botao
+          variante={p.ativo ? 'secundario' : 'primario'}
+          carregando={ocupado === p.id}
+          onClick={() => void alternarAtivo(p)}
+          aria-label={p.ativo ? `Inativar ${p.nome}` : `Ativar ${p.nome}`}
+        >
+          {p.ativo ? <PowerOff className="size-4" aria-hidden /> : <Power className="size-4" aria-hidden />}
+          {p.ativo ? 'Inativar' : 'Ativar'}
+        </Botao>
+      )}
     </div>
   );
 
