@@ -73,16 +73,16 @@
 
 
 ## 📊 Resumo de Progresso
-- **Total de Tasks Principais:** 48
-- **Subtarefas atômicas (~3 min):** 280
+- **Total de Tasks Principais:** 49
+- **Subtarefas atômicas (~3 min):** 284
 - **Em Execução:** 1 (SUB-38)
-- **Pendentes:** 9 principais (SUB-38, 28, 35, 41, 42, 45, 47, 48, KIRO-DEV-CLONE) + 67 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 2 — SUB-35.46 e SUB-48 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
-  - bloqueadas por dependência: 21 — SUB-45.2 a SUB-45.19 (cadeia da SUB-45; tarefas de banco só Claude Code local; frontend depende de banco) e SUB-41.2, SUB-41.3, SUB-42 (cadeia da SUB-41)
+- **Pendentes:** 10 principais (SUB-38, 28, 35, 41, 42, 45, 47, 48, 49, KIRO-DEV-CLONE) + 71 subtarefas
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 3 — SUB-35.46, SUB-48 e SUB-49.1 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - bloqueadas por dependência: 21 — SUB-45.2 a SUB-45.19 (cadeia da SUB-45; tarefas de banco só Claude Code local; frontend depende de banco) e SUB-41.2, SUB-41.3, SUB-42 (cadeia da SUB-41) e SUB-49.2 a SUB-49.4 (cadeia da SUB-49)
   - aguardando aprovação do plano pelo usuário: 10 — SUB-47.1 a SUB-47.10 ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md))
   - em execução: 1 — SUB-38 (DeepSeek Harness (deepseek-flash))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 252 de 329 blocos (38 principais + 214 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 252 de 333 blocos (38 principais + 214 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -1234,6 +1234,79 @@
 - **Critérios de Aceitação:** Pasta `projects/` criada com esta documentação; estrutura clara definindo que cada projeto filho compartilha infraestrutura central (banco, MCP, embeddings) do Dashboard AI, com isolamento garantido por `project_id` + RLS. Dashboard AI é agregador central com banco compartilhado (mais econômico que múltiplas contas Free).
 - **Commit:** pendente
 - **Anotação:** Criada em 2026-10-13 a pedido do usuário para definir a estrutura multi-projeto. **Opção A definida (2026-10-13):** cada projeto filho compartilha infraestrutura central do Dashboard AI (banco, MCP, embeddings) com isolamento por `project_id` + RLS. Mais econômico que múltiplas contas Supabase Free (500MB cada). Dashboard AI é agregador central.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+---
+
+## 💾 FASE 20: Backup Diário do Banco de Dados
+
+### [ ] SUB-49: Configurar backup diário do Supabase (GitHub Artifacts e Cloudflare R2)
+- **Status:** pendente (aguardando subtarefas)
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-48; subtarefas SUB-49.1 a SUB-49.4
+- **Subtarefas:**
+  - `SUB-49.1`: Criar workflow GitHub Actions para backup com GitHub Artifacts (`pendente`)
+  - `SUB-49.2`: Documentar uso de GitHub Artifacts (limites, retenção, download) (`pendente`)
+  - `SUB-49.3`: Criar workflow alternativo para Cloudflare R2 (retenção > 90 dias) (`pendente`)
+  - `SUB-49.4`: Documentar escolha entre as 2 opções e migração (`pendente`)
+- **Descrição:** Configurar backup diário automático do banco de dados Supabase do Dashboard AI com 2 opções: **GitHub Artifacts** (grátis, até 2 GB, retenção até 90 dias) e **Cloudflare R2** (grátis 10 GB, download grátis, retenção permanente). A tarefa cria workflows de GitHub Actions para ambas as opções, documenta quando usar cada uma e como migrar entre elas. O backup é um dump SQL (`pg_dump`) da base de dados, agendado via cron (ex: 2h UTC diariamente) e também pode ser disparado manualmente via `workflow_dispatch`.
+- **Critérios de Aceitação:** Workflows criados e testados (dry-run); documentação completa no `README.md` e em arquivo específico; instruções claras para escolher entre Artifacts e R2; backup manual funciona; restore documentado.
+- **Commit:** pendente
+- **Anotação:** Criada em 2026-10-13 a pedido do usuário para garantir backup diário do banco com 2 opções econômicas. GitHub Artifacts: grátis até 2 GB, retenção até 90 dias, ideal para dumps SQL pequenos. Cloudflare R2: grátis 10 GB, download grátis, retenção permanente, ideal se precisar de > 90 dias ou volume maior.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-49.1: Criar workflow GitHub Actions para backup com GitHub Artifacts
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `.github/workflows/backup-supabase-artifacts.yml` com: agendamento cron diário (2h UTC), gatilho manual (`workflow_dispatch`), passo de dump do banco usando `pg_dump` com a connection string do Supabase (secret `SUPABASE_DATABASE_URL`), compressão do dump (`gzip`), upload como artifact com nome `supabase-backup-${{ github.run_number }}`, retenção de 30 dias (configurável), e documentação de como baixar o artifact (aba Actions → run → Artifacts). Variáveis de ambiente: `SUPABASE_DATABASE_URL` (obrigatória, secret).
+- **Critérios de Aceitação:** Workflow criado; sintaxe YAML válida; dry-run (workflow_dispatch) funciona; artifact gerado com tamanho aceitável (< 2 GB); documentação de download presente.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-49.2: Documentar uso de GitHub Artifacts (limites, retenção, download)
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-49.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `docs/backup-github-artifacts.md` com: descrição do GitHub Artifacts (armazenamento temporário, privado), limites do plano gratuito (2 GB armazenamento, 100 GB download/mês, retenção até 90 dias), quando usar (dumps SQL < 2 GB, retenção até 90 dias), como baixar o backup (UI do GitHub Actions, ou API), como restaurar (psql com o dump), como ajustar a retenção (parâmetro `retention-days`), e como monitorar o uso (aba Actions → Usage). Adicionar seção "Backup" no `README.md` referenciando este documento.
+- **Critérios de Aceitação:** Documentação completa e clara; links para Actions e uso; exemplo de comando de restore; `README.md` com seção de backup.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-49.3: Criar workflow alternativo para Cloudflare R2 (retenção > 90 dias)
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-49.2
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `.github/workflows/backup-supabase-r2.yml` (condicional, desativado por padrão com `if: false`) com: mesmo cron e workflow_dispatch da SUB-49.1, dump do banco, compressão, upload para Cloudflare R2 usando `rclone` ou AWS CLI (compatível S3), secrets: `CLOUDFLARE_R2_ACCOUNT_ID`, `CLOUDFLARE_R2_ACCESS_KEY`, `CLOUDFLARE_R2_SECRET_KEY`, `CLOUDFLARE_R2_BUCKET`. Documentar como criar o bucket no Cloudflare R2, como obter as credenciais e como usar o workflow. Vantagens: grátis 10 GB, download grátis, retenção permanente.
+- **Critérios de Aceitação:** Workflow criado (desativado); instruções de configuração do bucket R2; exemplo de upload com rclone; notas de custo para além de 10 GB.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-49.4: Documentar escolha entre as 2 opções e migração
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-49.3
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Atualizar `docs/backup-github-artifacts.md` (ou renomear para `docs/backup-database.md`) com: tabela comparativa (Artifacts vs R2), fluxograma de decisão (se dump < 2 GB e retenção ≤ 90 dias → Artifacts; se dump > 2 GB ou retenção > 90 dias → R2), como alternar entre os workflows (ativar/desativar o workflow R2 com `if: true/false`), como migrar backups existentes (download de Artifacts → upload para R2), e exemplos de custo real (10 GB backup: Artifacts grátis, R2 grátis 10 GB). Adicionar no `README.md` a nota de que o projeto vem configurado com Artifacts por padrão.
+- **Critérios de Aceitação:** Documentação de decisão clara; tabela comparativa; instruções de migração; `README.md` atualizado.
+- **Commit:** pendente
+- **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
