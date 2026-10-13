@@ -415,13 +415,14 @@ curl -s https://<seu-app>.vercel.app/mcp \
 ```
 
 **Protocolo de trabalho:** além da fila no banco, agentes que trabalham **neste repositório**
-seguem o [`AGENTS.md`](AGENTS.md): `git pull --rebase` antes de tudo, no máximo 1 item travado
-por agente, trava registrada no [`task-principal.md`](task-principal.md) com commit + push imediatos
-antes de codar, nunca mexer na trava de outro agente e registrar o SHA da entrega. Ao concluir, o
-bloco da tarefa vai para o [`task_complete.md`](task_complete.md), que guarda o histórico de
-entregas; o `task-principal.md` fica só com travas, resumo e tarefas ativas. O passo a passo está
-na skill [`proxima-task`](.agents/skills/proxima-task/SKILL.md). O
-[`dashboard-task-principal.html`](dashboard-task-principal.html) lê os dois arquivos.
+seguem o [`AGENTS.md`](AGENTS.md), que aponta as regras em [`.claude/rules/`](.claude/rules/INDEX.md).
+O quadro é o [`tasks/STATUS.md`](tasks/STATUS.md): uma linha por subtarefa, que qualquer IA reserva
+na coluna "Em uso por" (commit + push imediatos antes de codar, no máximo 1 subtarefa por frente,
+nunca mexer na reserva de outra); a etapa de cada tarefa, em [`tasks/etapas/`](tasks/etapas/), guarda
+plano, descrição e entrega. O quadro antigo e as concluídas até 2026-10-13 estão em
+[`tasks/historico/`](tasks/historico/README.md). O passo a passo está na skill
+[`proxima-task`](.agents/skills/proxima-task/SKILL.md), e o painel [`index.html`](index.html) lê o
+quadro e o histórico.
 
 ### Ciclo da fila (exemplos)
 
@@ -626,7 +627,7 @@ O resultado da validação é registrado em [`docs/VALIDACAO.md`](docs/VALIDACAO
 - Validação local (scripts `scripts/validar.sh`)
 - Testes rápidos no banco de produção (telas Fila, Logs, Memória e Configurações)
 
-Para detalhes do processo de validação, veja [`docs/validacao-telas-producao.md`](docs/validacao-telas-producao.md).
+Para detalhes do processo de validação, veja [`tasks/historico/docs/validacao-telas-producao.md`](tasks/historico/docs/validacao-telas-producao.md).
 
 ---
 

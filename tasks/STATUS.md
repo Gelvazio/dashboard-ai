@@ -12,7 +12,7 @@ Prioridade: 🔴 Máxima · 🟠 Alta · 🟡 Média · 🟢 Baixa
 
 | Frente | Tarefa (etapa) | Situação | Atualizado em |
 |---|---|---|---|
-| Claude Code (local · main) | MIGRA-QUADRO ([ETAPA-001](etapas/ETAPA-001-ef019419-MIGRACAO-QUADRO.md)) | 🔄 Ativa | 2026-10-13 14:40 |
+| Claude Code (Opus 5.5) (local · main) | MIGRA-QUADRO ([ETAPA-001](etapas/ETAPA-001-ef019419-MIGRACAO-QUADRO.md)) | 👀 Aguardando o usuário (aceite) | 2026-10-13 15:30 |
 
 ## 📌 Tarefas
 
@@ -21,7 +21,7 @@ Cada **subtarefa** é uma linha própria e pode ser reservada por **qualquer IA*
 
 | Tarefa | Título | Prioridade | Depende de | Status | Em uso por | Etapa |
 |---|---|---|---|---|---|---|
-| MIGRA-QUADRO | **Migrar o quadro para o modelo novo e eliminar regras duplicadas** | 🔴 Máxima | Nenhuma | 🔄 Em execução | Claude Code (local · main) (desde 2026-10-13 14:27) | [ETAPA-001](etapas/ETAPA-001-ef019419-MIGRACAO-QUADRO.md) |
+| MIGRA-QUADRO | **Migrar o quadro para o modelo novo e eliminar regras duplicadas** | 🔴 Máxima | Nenhuma | 👀 Aguardando aceite do usuário | — | [ETAPA-001](etapas/ETAPA-001-ef019419-MIGRACAO-QUADRO.md) |
 | SUB-38 | **Verificação geral de todas as tarefas (marcador `VERIFICADOR-CLAUDE`)** | 🔴 Máxima | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-002](etapas/ETAPA-002-90cd9004-VERIFICACAO-GERAL.md) |
 | SUB-38.1 | Verificação geral de todas as tarefas (marcador `VERIFICADOR-CLAUDE`) | 🔴 Máxima | Nenhuma | ⬜ Pendente | — | [ETAPA-002](etapas/ETAPA-002-90cd9004-VERIFICACAO-GERAL.md) |
 | SUB-28 | **Integração LangChain/LangGraph para Execução de Tasks** | 🟡 Média | SUB-01 a SUB-27, SUB-29, SUB-30 (todas as tasks anteriores concluídas) | 👀 Todas as filhas concluídas: aguardando o usuário fechar | — (não reservável) | [ETAPA-003](etapas/ETAPA-003-6df4b821-LANGGRAPH.md) |
@@ -170,7 +170,7 @@ Decisões de 2026-10-12 a 2026-10-13 12:10: ver `historico/STATUS-antigo.md`. Da
 |---|---|---|
 | Aceites de etapas antigas (1 a 9 do `historico/STATUS-antigo.md`) | Aguardam o usuário desde 2026-10-12 | Quando o usuário revisar |
 | SUB-28 e SUB-38: decidir o fechamento da SUB-28 (todas as filhas concluídas, com a ressalva do commit `76f243e`) | Fechar mãe é decisão do usuário | Quando o usuário revisar |
-| Link quebrado no `README.md` para `dashboard-task-principal.html` (apagado em 2026-10-13) | Achado ao fechar a SUB-26 | Tarefa nova |
+| ~~Link quebrado no `README.md` para `dashboard-task-principal.html`~~ | ✅ Resolvido na ETAPA-001 (item 001.9): o README aponta para o `index.html` | — |
 
 ## Lições aprendidas
 
