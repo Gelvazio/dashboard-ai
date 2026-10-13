@@ -35,10 +35,11 @@ no mesmo commit; commit sem `.agents/` não roda o sincronizador; `pre-push` pas
 | Data | Decisão | Quem | Por quê |
 |---|---|---|---|
 | 2026-10-13 20:08 | `GEMINI.md` apontando para o `AGENTS.md` (em vez de `context.fileName`), igual ao `CLAUDE.md` | Claude Code (Opus 5.5) | Mesmo padrão já usado; o Gemini CLI aceita `@arquivo` |
+| 2026-10-13 20:10 | Plano da SUB-61 **aprovado** | Gelvazio | Resposta no chat: "Sim, pode executar" |
 
 ### SUB-61.1 — Hook `pre-commit` que sincroniza as skills
 
-**Próximo passo:** aguardar a aprovação do plano.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:10).
 
 - **Descrição:** criar `.githooks/pre-commit` e a linha na tabela de hooks do `git-quick.md`.
 - **Critérios de Aceitação:** casos do critério de pronto conferidos num clone de teste.
