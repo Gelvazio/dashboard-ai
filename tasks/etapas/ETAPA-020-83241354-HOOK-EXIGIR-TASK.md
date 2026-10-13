@@ -43,10 +43,11 @@ Com reserva de Claude Code: `Edit` em `src/` passa. Qualquer erro do próprio ho
 | Data | Decisão | Quem | Por quê |
 |---|---|---|---|
 | 2026-10-13 19:49 | Trava antes de editar + lembrete; sem hook `Stop` | Gelvazio | "Faça isso" sobre a recomendação |
+| 2026-10-13 19:51 | Plano da SUB-59 **aprovado** | Gelvazio | Resposta no chat: "Sim, pode executar" |
 
 ### SUB-59.1 — Hook `exigir-reserva.mjs` (trava antes de editar)
 
-**Próximo passo:** aguardar a aprovação do plano.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 19:51).
 
 - **Descrição:** script Node e entrada `PreToolUse` no `.claude/settings.json`, como no escopo.
 - **Critérios de Aceitação:** os 5 casos do critério de pronto conferidos à mão, com JSON no stdin.
