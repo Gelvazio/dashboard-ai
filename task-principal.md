@@ -73,16 +73,16 @@
 
 
 ## 📊 Resumo de Progresso
-- **Total de Tasks Principais:** 49
-- **Subtarefas atômicas (~3 min):** 284
+- **Total de Tasks Principais:** 50
+- **Subtarefas atômicas (~3 min):** 291
 - **Em Execução:** 1 (SUB-38)
-- **Pendentes:** 10 principais (SUB-38, 28, 35, 41, 42, 45, 47, 48, 49, KIRO-DEV-CLONE) + 71 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 3 — SUB-35.46, SUB-48 e SUB-49.1 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
-  - bloqueadas por dependência: 21 — SUB-45.2 a SUB-45.19 (cadeia da SUB-45; tarefas de banco só Claude Code local; frontend depende de banco) e SUB-41.2, SUB-41.3, SUB-42 (cadeia da SUB-41) e SUB-49.2 a SUB-49.4 (cadeia da SUB-49)
+- **Pendentes:** 11 principais (SUB-38, 28, 35, 41, 42, 45, 47, 48, 49, 50, KIRO-DEV-CLONE) + 78 subtarefas
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 4 — SUB-35.46, SUB-48, SUB-49.1 e SUB-50.1 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - bloqueadas por dependência: 28 — SUB-45.2 a SUB-45.19 (cadeia da SUB-45; tarefas de banco só Claude Code local; frontend depende de banco), SUB-41.2, SUB-41.3, SUB-42 (cadeia da SUB-41), SUB-49.2 a SUB-49.4 (cadeia da SUB-49) e SUB-50.2 a SUB-50.7 (cadeia da SUB-50)
   - aguardando aprovação do plano pelo usuário: 10 — SUB-47.1 a SUB-47.10 ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md))
   - em execução: 1 — SUB-38 (DeepSeek Harness (deepseek-flash))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 252 de 333 blocos (38 principais + 214 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 252 de 340 blocos (38 principais + 214 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -1305,6 +1305,121 @@
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Atualizar `docs/backup-github-artifacts.md` (ou renomear para `docs/backup-database.md`) com: tabela comparativa (Artifacts vs R2), fluxograma de decisão (se dump < 2 GB e retenção ≤ 90 dias → Artifacts; se dump > 2 GB ou retenção > 90 dias → R2), como alternar entre os workflows (ativar/desativar o workflow R2 com `if: true/false`), como migrar backups existentes (download de Artifacts → upload para R2), e exemplos de custo real (10 GB backup: Artifacts grátis, R2 grátis 10 GB). Adicionar no `README.md` a nota de que o projeto vem configurado com Artifacts por padrão.
 - **Critérios de Aceitação:** Documentação de decisão clara; tabela comparativa; instruções de migração; `README.md` atualizado.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+---
+
+## 🐳 FASE 21: Supabase Local com Docker
+
+### [ ] SUB-50: Configurar Supabase local com Docker para desenvolvimento
+- **Status:** pendente (aguardando subtarefas)
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma; subtarefas SUB-50.1 a SUB-50.7
+- **Subtarefas:**
+  - `SUB-50.1`: Instalar e configurar o Supabase CLI (`pendente`)
+  - `SUB-50.2`: Inicializar o Supabase local no projeto (`supabase init`) (`pendente`)
+  - `SUB-50.3`: Converter scripts `database/*.sql` para `supabase/migrations/` (`pendente`)
+  - `SUB-50.4`: Configurar variáveis de ambiente para ambiente local (`pendente`)
+  - `SUB-50.5`: Rodar o Supabase local e validar (`supabase start`) (`pendente`)
+  - `SUB-50.6`: Documentar alternância entre local e nuvem (`pendente`)
+  - `SUB-50.7`: Atualizar o `README.md` com instruções de desenvolvimento local (`pendente`)
+- **Descrição:** Configurar o Supabase local com Docker para desenvolvimento e testes, permitindo trabalhar offline sem custos de nuvem e com isolamento completo do ambiente de produção. O Supabase CLI roda PostgreSQL, Studio (UI), API REST, Realtime, Storage e demais serviços via Docker containers. A tarefa instala o CLI, inicializa o projeto local, converte os scripts SQL existentes (`database/*.sql`) para o formato de migrations do Supabase, configura variáveis de ambiente para alternar entre local e nuvem, valida que tudo funciona e documenta o fluxo completo no README.
+- **Critérios de Aceitação:** Supabase CLI instalado; projeto inicializado com `supabase init`; migrations convertidas e aplicadas localmente; `supabase start` funciona sem erros; Studio acessível em `http://localhost:54323`; variáveis de ambiente configuradas (`.env.local` e script de alternância); documentação completa no README; testes de integração podem rodar contra o banco local.
+- **Commit:** pendente
+- **Anotação:** Criada em 2026-10-13 a pedido do usuário para permitir desenvolvimento local com Supabase via Docker. Vantagens: desenvolvimento offline, testes sem custos, isolamento de produção, desenvolvimento mais rápido (sem latência de rede). O projeto continua usando o Supabase na nuvem por padrão; o local é opcional para desenvolvimento.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-50.1: Instalar e configurar o Supabase CLI
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `docs/supabase-local-instalacao.md` com instruções de instalação do Supabase CLI para cada sistema operacional: Windows (via npm ou download do executável), macOS (via Homebrew `brew install supabase/tap/supabase`), Linux (via npm ou script de instalação). Incluir verificação de instalação (`supabase --version`), pré-requisitos (Docker Desktop instalado e rodando) e solução de problemas comuns (Docker não iniciado, permissões, portas ocupadas). Adicionar também instruções para instalar o Docker Desktop se não estiver presente.
+- **Critérios de Aceitação:** Documentação completa com instruções para Windows, macOS e Linux; comandos de verificação; pré-requisitos listados; solução de problemas básicos.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-50.2: Inicializar o Supabase local no projeto (`supabase init`)
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-50.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Executar `supabase init` na raiz do projeto para criar a estrutura do Supabase local. Isso cria a pasta `supabase/` com: `migrations/` (migrations SQL), `config.toml` (configuração local), `functions/` (Edge Functions, se usar), e atualiza o `.gitignore` para ignorar o estado local (`supabase/.branches/`, `supabase/.temp/`). Documentar o que cada arquivo/pasta significa e quais devem ser versionados (migrations, config.toml) vs. quais são gerados automaticamente (`.branches/`, `.temp/`).
+- **Critérios de Aceitação:** `supabase init` executado; estrutura `supabase/` criada; `.gitignore` atualizado; documentação explicando a estrutura.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-50.3: Converter scripts `database/*.sql` para `supabase/migrations/`
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-50.2
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Converter os scripts SQL existentes na pasta `database/` (00 a 08) para o formato de migrations do Supabase em `supabase/migrations/`. Cada script deve ser renomeado com timestamp prefixado (ex: `20231013_000000_00_projects_roles.sql`, `20231013_000001_01_tasks.sql`, etc.) para garantir ordem de aplicação. Remover comandos idempotentes desnecessários (IF NOT EXISTS já é padrão de migrations). Atualizar o `database/README.md` para referenciar que as migrations agora estão em `supabase/migrations/` e que a pasta `database/` pode ser mantida como referência histórica ou removida no futuro. Criar script de conversão automática (`scripts/converter-migrations.sh`) se fizer sentido.
+- **Critérios de Aceitação:** Todos os scripts `database/*.sql` convertidos para `supabase/migrations/` com timestamp; ordem correta preservada; `database/README.md` atualizado; `supabase db reset` aplica as migrations sem erro.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-50.4: Configurar variáveis de ambiente para ambiente local
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-50.3
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `.env.local.example` com as variáveis do Supabase local (que o `supabase start` gera automaticamente): `NEXT_PUBLIC_SUPABASE_URL=http://localhost:54321`, `NEXT_PUBLIC_SUPABASE_ANON_KEY=<chave_anon_local>`, `SUPABASE_SERVICE_ROLE_KEY=<chave_service_local>`, `DATABASE_URL=postgresql://postgres:postgres@localhost:54322/postgres`. Criar script `scripts/alternar-env.sh` (Windows: `.bat`) que alterna entre `.env` (nuvem) e `.env.local` (local), atualizando as variáveis de ambiente do projeto. Documentar como usar: `npm run dev:local` (com `.env.local`) vs `npm run dev` (com `.env` nuvem).
+- **Critérios de Aceitação:** `.env.local.example` criado; script de alternância funcional; instruções de uso documentadas; comandos `npm run dev:local` e `npm run dev` funcionam.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-50.5: Rodar o Supabase local e validar (`supabase start`)
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-50.4
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Executar `supabase start` para iniciar todos os serviços Docker (PostgreSQL, Studio, API, Realtime, Storage). Validar que: Studio está acessível em `http://localhost:54323`, API REST em `http://localhost:54321`, banco em `localhost:54322`, migrations foram aplicadas (`supabase db reset` funciona), e a conexão via aplicação local funciona (testar com `npm run dev:local` e uma chamada simples ao banco). Documentar os comandos úteis: `supabase start`, `supabase stop`, `supabase status`, `supabase db reset`, `supabase db diff`, `supabase gen types typescript --local`.
+- **Critérios de Aceitação:** `supabase start` funciona sem erros; todos os serviços acessíveis; migrations aplicadas; aplicação conecta ao banco local; comandos úteis documentados.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-50.6: Documentar alternância entre local e nuvem
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-50.5
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Atualizar `docs/supabase-local-instalacao.md` (ou renomear para `docs/supabase-local.md`) com seção sobre alternância entre ambientes: tabela comparativo (local vs nuvem), fluxo de trabalho (desenvolvimento em local, testes em local, deploy em nuvem), como gerar types do banco local vs nuvem (`--local` flag), como aplicar migrations em produção (via painel do Supabase ou `supabase db push`), e cuidado com dados (local é descartável, nuvem é persistente). Incluir também como resetar o banco local (`supabase db reset`) vs não fazer isso em produção.
+- **Critérios de Aceitação:** Documentação completa de alternância; tabela comparativo; fluxo de trabalho claro; avisos sobre dados.
+- **Commit:** pendente
+- **Anotação:** pendente
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-50.7: Atualizar o `README.md` com instruções de desenvolvimento local
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-50.6
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Adicionar seção "Desenvolvimento local com Supabase" no `README.md` com: link para `docs/supabase-local.md`, pré-requisitos (Docker Desktop, Supabase CLI), comandos básicos (`supabase init`, `supabase start`, `supabase stop`), como alternar entre local e nuvem (`npm run dev:local` vs `npm run dev`), e quando usar cada ambiente (local para desenvolvimento/testes, nuvem para produção/staging). Atualizar também a seção "Banco de dados" para mencionar que as migrations estão em `supabase/migrations/` e como aplicá-las localmente.
+- **Critérios de Aceitação:** README atualizado com seção de desenvolvimento local; links funcionando; comandos básicos documentados; seção de banco atualizada.
 - **Commit:** pendente
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
