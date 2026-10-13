@@ -58,12 +58,14 @@ mesmo tempo) e com a informação repetida: quem está fazendo o quê já está 
 
 ### SUB-54.3 — Remover a seção "🧭 Frentes" do `STATUS.md` e avisar as IAs
 
-**Próximo passo:** depois da 54.2.
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** apagar a seção "🧭 Frentes de trabalho" do `tasks/STATUS.md`; registro de decisão no
   `STATUS.md`; recado para `todas` no `tasks/RECADOS.md`.
 - **Critérios de Aceitação:** seção removida sem tocar nas linhas de tarefa; recado publicado.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-54.3)` · **Verificação:** seção "🧭 Frentes de trabalho" apagada do `STATUS.md`
+  (o arquivo passa do cabeçalho direto para "📌 Tarefas"; nenhuma linha de tarefa mudou); decisão já registrada no
+  "Registro de decisões" em 15:48; recado para `todas` no `RECADOS.md` (15:55).
 
 ### SUB-54.4 — Aceite do usuário
 

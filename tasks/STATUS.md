@@ -8,13 +8,6 @@ executam pelo quadro.
 Legenda: ⬜ Pendente · 🔄 Em progresso · ✅ Concluído · ⛔ Bloqueado · 👀 Aguardando o usuário ·
 Prioridade: 🔴 Máxima · 🟠 Alta · 🟡 Média · 🟢 Baixa
 
-## 🧭 Frentes de trabalho
-
-| Frente | Tarefa (etapa) | Situação | Atualizado em |
-|---|---|---|---|
-| Claude Code (Opus 5.5) (local · main) | SUB-50.2 ([ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md)) | ⏹️ Encerrada | 2026-10-13 15:42 |
-| Claude Code (Opus 5.5) (nuvem · main) | SUB-48.1 ([ETAPA-010](etapas/ETAPA-010-43fbb21f-ESTRUTURA-PROJECTS.md)) | ⏹️ Encerrada | 2026-10-13 15:42 |
-
 ## 📌 Tarefas
 
 Cada **subtarefa** é uma linha própria e pode ser reservada por **qualquer IA** (coluna "Em uso por"). A linha em
@@ -100,8 +93,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-50.6 | Documentar alternância entre local e nuvem | 🟡 Média | SUB-50.5 | ⬜ Pendente | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-50.7 | Atualizar o `README.md` com instruções de desenvolvimento local | 🟡 Média | SUB-50.6 | ⬜ Pendente | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-54 | **Tirar a tabela "🧭 Frentes" do quadro (fica só o "Em uso por")** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
-| SUB-54.3 | Remover a seção "🧭 Frentes" do `STATUS.md` e avisar as IAs | 🟡 Média | SUB-54.2 | 🔄 Em execução | Claude Code (Opus 5.5) (local · main) (desde 2026-10-13 15:56) | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
-| SUB-54.4 | Aceite do usuário | 🟡 Média | SUB-54.3 | ⬜ Pendente | — | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
+| SUB-54.4 | Aceite do usuário | 🟡 Média | SUB-54.3 | 👀 Aguardando aceite | — | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
 
 ## Escopo do projeto
 
