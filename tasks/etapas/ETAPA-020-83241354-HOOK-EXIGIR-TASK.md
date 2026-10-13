@@ -47,11 +47,11 @@ Com reserva de Claude Code: `Edit` em `src/` passa. Qualquer erro do próprio ho
 
 ### SUB-59.1 — Hook `exigir-reserva.mjs` (trava antes de editar)
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 19:51).
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** script Node e entrada `PreToolUse` no `.claude/settings.json`, como no escopo.
 - **Critérios de Aceitação:** os 5 casos do critério de pronto conferidos à mão, com JSON no stdin.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-59.1)` · **Verificação:** hook rodado com JSON no stdin em 9 casos: sem reserva de Claude Code barra `src/` (código 2, caminho absoluto e relativo); `tasks/`, fora do projeto, escape `DASHBOARD_AI_SEM_TRAVA=1`, JSON inválido e `STATUS.md` ausente liberam; com reserva de Claude Code libera; `settings.json` validado com `json.tool`
 
 ### SUB-59.2 — Hook `lembrar-task.mjs` (lembrete a cada pedido)
 

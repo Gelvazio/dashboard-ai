@@ -68,6 +68,18 @@
           }
         ]
       }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/exigir-reserva.mjs\"",
+            "timeout": 10
+          }
+        ]
+      }
     ]
   }
 }

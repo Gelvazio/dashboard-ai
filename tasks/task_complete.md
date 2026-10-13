@@ -73,6 +73,7 @@
 | SUB-58.2 | Hook de início de sessão que sincroniza a `main` | 🟡 Média | SUB-58.1 | ✅ Concluído | — | [ETAPA-019](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
 | SUB-58.3 | `CLAUDE.local.md` fora do Git | 🟡 Média | SUB-58.2 | ✅ Concluído | — | [ETAPA-019](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
 | SUB-58.4 | Tirar o caminho fixo do `.claude/settings.json` | 🟡 Média | SUB-58.3 | ✅ Concluído | — | [ETAPA-019](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
+| SUB-59.1 | Hook `exigir-reserva.mjs` (trava antes de editar) | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
 
 ---
 
