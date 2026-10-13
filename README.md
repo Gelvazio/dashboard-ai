@@ -24,6 +24,7 @@ a saúde das travas de cada projeto.
 - [Memória via MCP](#memória-via-mcp)
 - [Segurança](#segurança)
 - [Monitor em tempo real](#monitor-em-tempo-real)
+- [Classificação de tarefas (Laya Server + Opus)](#classificação-de-tarefas-laya-server--opus)
 - [Validação](#validação)
 
 ## Arquitetura
@@ -540,6 +541,16 @@ omitido. `type: "humano"` cria etapas de pessoas, que agentes não pegam:
     "type": "ia", "priority": 2, "order": 10, "dependencies": ["MEUAPP-0042"],
     "execute_after": "2026-10-13T08:00:00-03:00", "max_attempts": 3 } } }
 ```
+
+## Classificação de tarefas (Laya Server + Opus)
+
+A equipe planeja classificar tarefas com o Laya Server local como primeira opção e usar o Opus como
+revisor/fallback para decisões com score abaixo de `0.7` ou quando o Laya estiver indisponível. O
+contrato e os passos para subir o serviço estão em [`docs/laya-server.md`](docs/laya-server.md).
+
+O serviço local é iniciado com `scripts/start-laya.bat` e parado com `scripts/stop-laya.bat`.
+O classificador híbrido do Dashboard ainda depende da conclusão da SUB-47.1; até lá, a configuração
+do servidor não significa que a fila já classifica tarefas automaticamente.
 
 ## Memória via MCP
 

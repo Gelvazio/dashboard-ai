@@ -162,11 +162,14 @@ Numeração atual do quadro (14 filhas, `SUB-47.0` a `SUB-47.13`; o bloco duplic
 | 10 | `SUB-47.10` Instalação global (com autorização) | `~/.agents/`, `~/.claude/agents/`, `~/.claude/skills/` | Arquivos presentes; outro projeto lista os agentes | ⬜ Pendente |
 | 11 | `SUB-47.11` Piloto da equipe em 1 item livre + aceite do usuário | quadro + arquivos do item | Item entregue pela equipe; consumo anotado | ⬜ Pendente |
 | 12 | `SUB-47.12` Classificação Laya no worker LangGraph (**banco**) | `worker/`, `database/` | Worker usa o nível; SQL aplicado com autorização | ⬜ Pendente |
-| 13 | `SUB-47.13` Documentar Laya + Opus no README e em `docs/laya-server.md` | `README.md`, `docs/laya-server.md` | Seção e doc citam a fonte oficial | ⬜ Pendente |
+| 13 | `SUB-47.13` Documentar Laya + Opus no README e em `docs/laya-server.md` | `README.md`, `docs/laya-server.md` | Seção e doc citam a fonte oficial | ✅ Concluído |
 
 #### Conclusão
 
-_A preencher ao final: resultado, commits, pendências e tempo decorrido._
+SUB-47.13 concluída: README aponta para o guia técnico, que documenta o Compose real do projeto,
+a API e a configuração oficial do Laya 0.4.6, o contrato híbrido aprovado, o cuidado com segredos,
+custos/latência sem números não medidos e passos de diagnóstico. O guia informa que a classificação
+automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.0 — Configurar Laya Server via Docker Compose
 
@@ -317,11 +320,12 @@ _A preencher ao final: resultado, commits, pendências e tempo decorrido._
 
 ### SUB-47.13 — Documentar Laya Server e Opus no README
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** concluída; classificação automática continua dependendo das SUB-47.1 e SUB-47.12.
 
 - **Descrição:** Atualizar o `README.md` com seção "Laya Server + Opus (Classificação Híbrida)" descrevendo: o que é o Laya Server (System-One control), como iniciar (Docker Compose), variáveis de ambiente (`LAYA_SERVER_URL`, `ANTHROPIC_API_KEY`, `CLASSIFICADOR_MODE`), modo híbrido (Laya primário, Opus revisor/fallback quando score < 0.7), quando cada classificador é usado, custo e velocidade comparativos, e monitoramento. Adicionar também instruções de troubleshooting (servidor não inicia, timeouts, erros de conexão, API key do Opus). Criar `docs/laya-server.md` com documentação técnica detalhada incluindo a integração com Opus. A documentação deve citar e seguir a fonte oficial <https://github.com/NandhaKishorM/laya>.
 - **Critérios de Aceitação:** README atualizado com seção do Laya + Opus; instruções completas; modo híbrido documentado; troubleshooting documentado; `docs/laya-server.md` criado.
-- **Commit:** pendente
-- **Anotação:** Integrado da SUB-51 para documentação do Laya Server com Opus como revisor/fallback.
+- **Entrega:** `README.md` e `docs/laya-server.md` (incluídos no commit desta conclusão).
+- **Verificação:** releitura dos documentos e conferência dos comandos, porta, serviço, health check, variáveis e endpoint contra `docker-compose.laya.yml`, scripts locais e a fonte oficial Laya 0.4.6. Nenhum teste executado, conforme a regra do usuário.
+- **Anotação:** Integrado da SUB-51 para documentação do Laya Server com Opus como revisor/fallback. Como as SUB-47.1 e SUB-47.12 seguem abertas, o texto distingue o servidor já configurado do fluxo automático ainda planejado. A chave Anthropic é documentada como segredo exclusivamente de backend.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
