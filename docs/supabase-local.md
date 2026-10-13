@@ -1,9 +1,10 @@
-# Supabase local — instalação do Supabase CLI e do Docker (SUB-50.1)
+# Supabase local — instalação, uso e alternância entre local e nuvem
 
-Guia para instalar o **Supabase CLI** e o **Docker**, que juntos rodam o Supabase na sua máquina
-(Postgres, Auth, API REST, Realtime, Storage e o Studio). É o primeiro passo da SUB-50; os próximos
-(iniciar o projeto local em `database/configlocal`, migrações, variáveis e `supabase start`) ficam
-nas subtarefas SUB-50.2 a SUB-50.7 ([ETAPA-012](../tasks/etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md)).
+Guia para instalar o **Supabase CLI** e o **Docker** e para rodar o Supabase na sua máquina
+(Postgres, Auth, API REST, Realtime, Storage e o Studio), alternando entre o banco local e o da
+nuvem. Cobre as subtarefas SUB-50.1 a SUB-50.7 da
+[ETAPA-012](../tasks/etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md): instalação, projeto local em
+`database/configlocal`, migrations, variáveis, `supabase start`, validação e alternância.
 
 > O projeto continua usando o **Supabase na nuvem por padrão**. O local é opcional, para
 > desenvolver e testar sem custo e sem tocar no banco de produção.
@@ -137,8 +138,75 @@ As chaves locais são de desenvolvimento e **não** servem para o projeto da nuv
 | Primeiro `supabase start` muito lento ou falha ao baixar imagens | Download grande ou rede instável | Esperar e rodar de novo; conferir espaço em disco e memória do Docker |
 | Containers caem por falta de memória | Docker com pouca RAM | Docker Desktop → *Settings → Resources*: aumentar a memória e reiniciar o Docker |
 
-## Próximos passos
+## 7. Alternar entre local e nuvem
 
-- **SUB-50.2:** iniciar o projeto local em `database/configlocal`.
-- **SUB-50.3 a SUB-50.5:** migrações, variáveis de ambiente e `supabase start`.
-- **SUB-50.6 e SUB-50.7:** alternar entre local e nuvem e documentar no `README.md`.
+O frontend (Vite) lê o `.env.local` **em qualquer modo** e ele vence o `.env` (que tem as credenciais
+da nuvem). Então alternar é ligar/desligar o `.env.local`, e quem faz isso é
+[`scripts/alternar-env.mjs`](../scripts/alternar-env.mjs) — detalhes em
+[`database/configlocal/README.md`](../database/configlocal/README.md).
+
+| Comando | Ambiente | O que faz |
+|---|---|---|
+| `npm run dev:local` | **Local** | ativa o `.env.local` (cria a partir do `.env.local.example` se faltar) e sobe o Vite |
+| `npm run dev` | **Nuvem** | guarda o `.env.local` como `.env.local.off` e sobe o Vite |
+| `node scripts/alternar-env.mjs status` | — | mostra qual está ativo e quais chaves faltam preencher |
+
+### Local × nuvem, lado a lado
+
+| | **Local** (`database/configlocal/`) | **Nuvem** (projeto Supabase) |
+|---|---|---|
+| O que é | Contêineres Docker na sua máquina | Projeto hospedado no Supabase |
+| Para quê | Desenvolver e testar sem custo e sem risco | Produção/staging, com dados reais |
+| Custo | Zero (usa CPU/RAM da máquina) | Plano do Supabase |
+| **Dados** | **Descartáveis** — recriados do zero a qualquer momento | **Persistentes** — apagar não tem volta |
+| Schema | Aplicado pelas migrations no `start`/`db reset` | Scripts `database/*.sql` (painel, ou `db push`) |
+| Chaves | `anon`/`service_role` locais (de demonstração; só valem em `localhost`) | Chaves do projeto (*Settings → API*) |
+| Endereços | API `http://localhost:54321` · Studio `:54323` · banco `:54322` | `https://<projeto>.supabase.co` |
+| Internet | Funciona offline (depois de baixar as imagens) | Exige conexão |
+| Velocidade | Sem latência de rede | Latência da rede |
+
+### Fluxo de trabalho
+
+1. **Desenvolver no local:** `npm run dev:local`.
+2. **Testar no local:** o que toca banco roda contra os contêineres — `npm run test:integration`
+   sobe o próprio PostgREST, e o worker usa o `DATABASE_URL` local do `.env.local`.
+3. **Mudou o schema?** Escreva o script em `database/*.sql` **e** a migration correspondente em
+   `database/configlocal/supabase/migrations/` — as duas cópias andam juntas
+   ([`database/README.md`](../database/README.md)).
+4. **Antes de publicar:** `npm run typecheck`, `npm test` e `npm run build` verdes.
+
+### Gerar os tipos TypeScript
+
+```bash
+# Do banco LOCAL (usa os contêineres)
+npx supabase --workdir database/configlocal gen types typescript --local
+
+# Do banco da NUVEM (projeto vinculado)
+npx supabase gen types typescript --project-id <id-do-projeto>
+```
+> Os tipos usados hoje são escritos à mão em `src/types/database.ts`; o comando serve para conferir
+> se eles continuam iguais ao banco.
+
+### Aplicar migrations em produção
+
+⚠️ **Isso altera o banco de produção: só com autorização explícita do usuário** (regra do projeto).
+
+- **Painel do Supabase (caminho usado hoje):** *SQL Editor* → executar `database/*.sql` na ordem
+  (`00` → `08`).
+- **CLI:** `npx supabase link --project-ref <ref>` e depois, como as migrations ficam em
+  `database/configlocal/supabase/`, `npx supabase --workdir database/configlocal db push`.
+
+### Resetar o banco local (e **nunca** em produção)
+
+```bash
+npx supabase --workdir database/configlocal db reset   # apaga e recria o local, aplicando as 9 migrations
+npx supabase --workdir database/configlocal stop       # para os contêineres
+```
+
+⛔ **Nunca** rode `db reset`, `drop` ou `truncate` contra a nuvem: lá os dados são reais e não há
+volta. O banco local é descartável **de propósito** — é isso que permite recomeçar limpo.
+
+## 8. Próximos passos
+
+- **SUB-50.7:** seção de desenvolvimento local no [`README.md`](../README.md).
+- No dia a dia: [`database/configlocal/README.md`](../database/configlocal/README.md).
