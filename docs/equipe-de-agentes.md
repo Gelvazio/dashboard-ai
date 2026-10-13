@@ -48,7 +48,7 @@ A regra mais restritiva vence. Exemplo: "1 arquivo, mas é SQL" = `PESADO`.
 
 Em linguagem simples: `LEVE` = **tarefa fácil**, `MEDIO` = **tarefa média**, `PESADO` = **tarefa difícil**. As tarefas
 fáceis são as que vão para os modelos rápidos e baratos (ex.: **DeepSeek V4.1 Flash**, Haiku, Gemini Flash) e
-para o **Grok Bot** e o **Devin** (plano Free), que só pegam tarefa fácil.
+para o **Grok Bot**, o **Devin** (plano Free) e o **Antigravity** (Starter Quota), que só pegam tarefa fácil.
 
 ### Matriz ferramenta × modelo × nível (proposta — o usuário confirma no passo 47.1)
 
@@ -56,7 +56,8 @@ para o **Grok Bot** e o **Devin** (plano Free), que só pegam tarefa fácil.
 |---|---|---|---|---|
 | **Claude Code local** | Haiku | Sonnet | Opus | Único que pega tarefa de banco (regra 11) |
 | **Claude Code na nuvem** | Haiku | Sonnet | Opus (sem banco) | Regra 11: banco nunca |
-| **Gemini** (CLI / Antigravity) | modelo Flash | modelo Pro | modelo Pro (sem banco) | — |
+| **Gemini CLI** | modelo Flash | modelo Pro | modelo Pro (sem banco) | — |
+| **Antigravity** (Starter Quota) | Gemini 3.8 Flash | ⛔ não pega | ⛔ não pega | Só tarefa fácil (`LEVE`): cota de entrada pequena; definido pelo usuário em 2026-10-13 |
 | **Grok** | modelo rápido | modelo principal | modelo principal (sem banco) | — |
 | **DeepSeek** | **DeepSeek V4.1 Flash** | modelo de raciocínio | ⛔ não pega | Flash definido pelo usuário em 2026-10-13 para tarefa fácil (`LEVE`) |
 | **Devin** | ✅ | ⛔ não pega | ⛔ não pega | Só tarefa fácil (`LEVE`): plano Free, com modelos limitados; definido pelo usuário em 2026-10-13. Não escolhe o modelo por tarefa |
