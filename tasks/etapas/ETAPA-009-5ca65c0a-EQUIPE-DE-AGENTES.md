@@ -244,7 +244,7 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.2 — Skill `classificar-tarefa` (níveis, sinais, matriz ferramenta × modelo)
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** confirmar a matriz com o usuário e escrever `.agents/skills/classificar-tarefa/SKILL.md` (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:57).
 
 - **Descrição:** Criar `.agents/skills/classificar-tarefa/SKILL.md`: níveis `LEVE` (tarefa fácil) / `MEDIO` (média) / `PESADO` (difícil) com sinais concretos, ordem de decisão (a regra mais restritiva vence; na dúvida, sobe o nível), **matriz ferramenta × modelo × nível** (Claude Code local/nuvem, Gemini, Grok, DeepSeek, Devin), exemplos reais do quadro e o formato de saída (`- **Nível:** X` abaixo de `Prioridade:` + justificativa curta na anotação). A skill usa o wrapper do Laya (`src/lib/laya.ts`) para classificação automática em vez de chamada manual Opus. Proibido: mudar `Prioridade`, reclassificar bloco travado por outro agente ou sob 🔒 trava especial.
 - **Critérios de Aceitação:** Skill com frontmatter válido; matriz **confirmada pelo usuário** e registrada na anotação; integração com Laya funcional.
