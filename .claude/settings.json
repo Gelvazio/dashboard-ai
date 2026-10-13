@@ -1,0 +1,44 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git fetch *)",
+      "Bash(git pull *)",
+      "Bash(git push *)",
+      "Bash(git mv *)",
+      "Bash(cd /c/fontes/dashboard-ai-claude-code-senai)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git log *)",
+      "Bash(git diff *)",
+      "Bash(git show *)",
+      "Bash(git grep *)",
+      "Bash(git ls-files *)",
+      "Bash(git check-ignore *)",
+      "Bash(git rebase --continue)",
+      "Bash(GIT_EDITOR=true git rebase --continue)",
+      "Bash(python -)",
+      "Bash(grep *)",
+      "Bash(sed -n *)",
+      "Bash(head *)",
+      "Bash(tail *)",
+      "Bash(wc *)",
+      "Bash(ls *)",
+      "Bash(cut *)",
+      "Bash(date *)",
+      "Bash(npm run validar)",
+      "Bash(npm run typecheck)",
+      "Bash(npm run build)",
+      "Bash(npm test)",
+      "PowerShell(git fetch --all --prune)",
+      "PowerShell(git pull --rebase origin main)",
+      "PowerShell(git push origin main)"
+    ],
+    "deny": [
+      "Bash(git push --force*)",
+      "Bash(git push -f*)",
+      "Bash(git push * --force*)",
+      "Bash(git add .)",
+      "Bash(git add -A*)"
+    ]
+  }
+}
