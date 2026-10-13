@@ -28,7 +28,8 @@ o quadro; para pegar uma subtarefa, siga `.claude/rules/tasks/frentes-e-reserva.
    - todas as dependências estão `✅` (procurar cada código na tabela; código que não aparece está
      concluído no histórico).
    🟢 Baixa só entra se o usuário tiver orientado. Marcar **(banco)** nas subtarefas de banco de
-   dados: só o Claude Code local pode pegá-las (`.claude/rules/multiplas-ias.md`).
+   dados — qualquer IA pode pegá-las; o acesso ao banco depende da sessão
+   (`.claude/rules/multiplas-ias.md`).
 5. **Aguardando o usuário:** linhas `👀` e itens `👀` das etapas (aprovações, aceites).
 6. **Mostrar** no formato abaixo. Não reservar nada sem o usuário pedir.
 

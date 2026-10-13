@@ -10,7 +10,7 @@
 - **Descrição:** Cada tarefa do quadro passa a ter `Nível` (`LEVE`, `MEDIO`, `PESADO`), definido automaticamente pelo **Laya Server** (System-One control, Jev-compatible) com **Opus 5.5 como revisor/fallback**. O Laya Server roda como serviço em background via Docker, expõe endpoint HTTP `/v1/systemone` e fornece decisões estruturadas rápidas (< 1s, sem custo de LLM). Quando o score do Laya é baixo (< 0.7) ou o servidor está indisponível, o Opus revisa a decisão (modo híbrido). Cada ferramenta de IA (Claude Code, Grok, DeepSeek, Gemini, Devin) pega só o que o seu modelo dá conta, conforme uma matriz ferramenta × modelo × nível. No Claude Code, uma equipe de subagentes (líder + classificador Laya/Opus + executores Haiku/Sonnet/Opus) trabalha em paralelo, com só o líder mexendo no Git e no quadro. Plano completo: plano nesta etapa + integração Laya em `docs/laya-server.md`.
 - **Critérios de Aceitação:** Todas as subtarefas `concluido`; Laya Server rodando e acessível; classificação automática funciona; piloto (SUB-47.11) aceito pelo usuário.
 - **Commit:** pendente
-- **Anotação:** Criada em 2026-10-13 12:10 por Claude Code (Opus 5.5), a pedido do usuário. **Atualizada em 2026-10-13 para integrar Laya Server com Opus como revisor/fallback:** o classificador manual Opus foi substituído pelo Laya Server (System-One control) como primário, com Opus 5.5 como revisor quando o score do Laya é baixo (< 0.7) ou quando o servidor está indisponível. Vantagens: < 1s por classificação na maioria dos casos (Laya), custo zero (local), precisão garantida em casos complexos (Opus fallback). Configurável via `CLASSIFICADOR_MODE` (laya/opus/hybrid). Prioridade `MEDIA` (padrão da seção 1.2). **Revisão de 2026-10-13 14:22 (Claude Code (Opus 5.5), a pedido do usuário — opção C: manter o Laya e ajustar):** (1) apagado o bloco duplicado `SUB-47.2` (script de sincronização), cópia idêntica da `SUB-47.3`; (2) contagem corrigida para 14 filhas (47.0 a 47.13); (3) plano `docs/equipe-de-agentes.md` atualizado com o Laya; (4) **fonte oficial do Laya Server: <https://github.com/NandhaKishorM/laya>** — toda informação de instalação, configuração, endpoints e variáveis deve ser buscada lá (README e docs do repositório), nunca deduzida; o que estiver nos blocos e não bater com a fonte oficial vale a fonte oficial; (5) critérios sem "testes unitários" (regra do usuário: nunca escrever testes); (6) SUB-47.12 marcada como tarefa de banco (regra 11); (7) SUB-47.0 depende do Docker rodando; (8) o modo de execução da equipe (1 tarefa por vez, 3 clones ou paralelo) **ainda depende de decisão do usuário**. **Nenhuma subtarefa pode ser pega antes de o usuário aprovar o plano** em `docs/equipe-de-agentes.md`; quando aprovar, a dependência de aprovação sai dos blocos e o resumo é atualizado.
+- **Anotação:** Criada em 2026-10-13 12:10 por Claude Code (Opus 5.5), a pedido do usuário. **Atualizada em 2026-10-13 para integrar Laya Server com Opus como revisor/fallback:** o classificador manual Opus foi substituído pelo Laya Server (System-One control) como primário, com Opus 5.5 como revisor quando o score do Laya é baixo (< 0.7) ou quando o servidor está indisponível. Vantagens: < 1s por classificação na maioria dos casos (Laya), custo zero (local), precisão garantida em casos complexos (Opus fallback). Configurável via `CLASSIFICADOR_MODE` (laya/opus/hybrid). Prioridade `MEDIA` (padrão da seção 1.2). **Revisão de 2026-10-13 14:22 (Claude Code (Opus 5.5), a pedido do usuário — opção C: manter o Laya e ajustar):** (1) apagado o bloco duplicado `SUB-47.2` (script de sincronização), cópia idêntica da `SUB-47.3`; (2) contagem corrigida para 14 filhas (47.0 a 47.13); (3) plano `docs/equipe-de-agentes.md` atualizado com o Laya; (4) **fonte oficial do Laya Server: <https://github.com/NandhaKishorM/laya>** — toda informação de instalação, configuração, endpoints e variáveis deve ser buscada lá (README e docs do repositório), nunca deduzida; o que estiver nos blocos e não bater com a fonte oficial vale a fonte oficial; (5) critérios sem "testes unitários" (regra do usuário: nunca escrever testes); (6) SUB-47.12 marcada como tarefa de banco; (7) SUB-47.0 depende do Docker rodando; (8) o modo de execução da equipe (1 tarefa por vez, 3 clones ou paralelo) **ainda depende de decisão do usuário**. **Nenhuma subtarefa pode ser pega antes de o usuário aprovar o plano** em `docs/equipe-de-agentes.md`; quando aprovar, a dependência de aprovação sai dos blocos e o resumo é atualizado.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
@@ -75,8 +75,8 @@ para o **Grok Bot**, o **Devin** (plano Free) e o **Antigravity** (Starter Quota
 
 | Ferramenta | `LEVE` | `MEDIO` | `PESADO` | Observação |
 |---|---|---|---|---|
-| **Claude Code local** | Haiku | Sonnet | Opus 5.5 ou superior, ou Fable | Único que pega tarefa de banco (regra 11) |
-| **Claude Code na nuvem** | Haiku | Sonnet | Opus 5.5 ou superior, ou Fable (sem banco) | Regra 11: banco nunca |
+| **Claude Code local** | Haiku | Sonnet | Opus 5.5 ou superior, ou Fable | Sessão com MCP do Supabase e Docker local (acesso a banco) |
+| **Claude Code na nuvem** | Haiku | Sonnet | Opus 5.5 ou superior, ou Fable (sem banco) | Banco: depende do acesso da sessão |
 | **Gemini CLI** | modelo Flash | modelo Pro | ⛔ não pega | — |
 | **Antigravity** (Starter Quota) | Gemini 3.8 Flash | ⛔ não pega | ⛔ não pega | Só tarefa fácil (`LEVE`): cota de entrada pequena; definido pelo usuário em 2026-10-13 |
 | **Grok** (SuperGrok) | modelo rápido | Grok 4.7 | ⛔ não pega | Só até tarefa média (`MEDIO`), por cautela com a cota do plano; definido pelo usuário em 2026-10-13 |
@@ -103,7 +103,7 @@ LÍDER (sessão principal, Opus) — skill liderar-equipe
   Motivo: todos trabalham na mesma pasta da `main` (sem worktree, por regra), e dois `git commit` simultâneos se atropelam.
 - **Cada executor conta como um agente** no quadro, com nome próprio (ex.: `Claude Code — executor-medio (Sonnet)`), e
   segue o limite de 1 item por agente. O líder grava a trava em nome dele.
-- **Tarefa de banco** (regra 11) não vai para executor: o líder faz direto, e só na sessão local.
+- **Tarefa de banco** não vai para executor: o líder faz direto, na sessão que tiver acesso a banco.
 
 ##### Onde os arquivos ficam
 
@@ -138,7 +138,7 @@ escolheu **manter o Laya** (opção C), com estes ajustes:
   estiver fora, o **Opus 5.5 ou superior** revisa. Configurável por `CLASSIFICADOR_MODE` (`laya`, `opus`, `hybrid`).
 - **Pré-requisito:** Docker rodando na máquina (SUB-47.0). Sem Docker, o modo `opus` continua funcionando.
 - **Sem testes novos** nos critérios (regra do usuário).
-- **SUB-47.12** cria coluna no banco (`tasks.nivel_tarefa`): tarefa de banco, só Claude Code local (regra 11), aplicar
+- **SUB-47.12** cria coluna no banco (`tasks.nivel_tarefa`): tarefa de banco, qualquer IA, aplicar
   só com autorização do usuário.
 - **Modo de execução da equipe** (1 tarefa por vez em pasta única, 3 clones independentes, ou paralelo): **pendente de
   decisão do usuário**; o fluxo da seção "Equipe no Claude Code" acima ainda descreve o paralelo.
@@ -161,7 +161,7 @@ Numeração atual do quadro (14 filhas, `SUB-47.0` a `SUB-47.13`; o bloco duplic
 | 9 | `SUB-47.9` Classificar os blocos pendentes do quadro | `task-principal.md` | Todo bloco pendente tem `Nível:` | ⬜ Pendente |
 | 10 | `SUB-47.10` Instalação global (com autorização) | `~/.agents/`, `~/.claude/agents/`, `~/.claude/skills/` | Arquivos presentes; outro projeto lista os agentes | ⬜ Pendente |
 | 11 | `SUB-47.11` Piloto da equipe em 1 item livre + aceite do usuário | quadro + arquivos do item | Item entregue pela equipe; consumo anotado | ⬜ Pendente |
-| 12 | `SUB-47.12` Classificação Laya no worker LangGraph (**banco**, só Claude Code local) | `worker/`, `database/` | Worker usa o nível; SQL aplicado com autorização | ⬜ Pendente |
+| 12 | `SUB-47.12` Classificação Laya no worker LangGraph (**banco**) | `worker/`, `database/` | Worker usa o nível; SQL aplicado com autorização | ⬜ Pendente |
 | 13 | `SUB-47.13` Documentar Laya + Opus no README e em `docs/laya-server.md` | `README.md`, `docs/laya-server.md` | Seção e doc citam a fonte oficial | ⬜ Pendente |
 
 #### Conclusão
@@ -242,7 +242,7 @@ _A preencher ao final: resultado, commits, pendências e tempo decorrido._
 
 **Próximo passo:** executar conforme a descrição.
 
-- **Descrição:** ⚠️ O modo de execução (1 tarefa por vez em pasta única, 3 clones independentes, ou até 3 em paralelo) **depende de decisão do usuário**; ajustar este bloco antes de começar. Texto original: criar `.agents/skills/liderar-equipe/SKILL.md`: fetch + pull, chamar o classificador nos blocos sem nível, escolher até 3 itens livres por prioridade e com arquivos diferentes, travar (commit + push), disparar os executores em paralelo pelo nível, validar cada entrega (`npm run validar`), commit por tarefa, mover para `task_complete.md`, push. Tarefa de banco: o próprio líder, só na sessão local (regra 11). Rodar `npm run sync:agentes`.
+- **Descrição:** ⚠️ O modo de execução (1 tarefa por vez em pasta única, 3 clones independentes, ou até 3 em paralelo) **depende de decisão do usuário**; ajustar este bloco antes de começar. Texto original: criar `.agents/skills/liderar-equipe/SKILL.md`: fetch + pull, chamar o classificador nos blocos sem nível, escolher até 3 itens livres por prioridade e com arquivos diferentes, travar (commit + push), disparar os executores em paralelo pelo nível, validar cada entrega (`npm run validar`), commit por tarefa, mover para `task_complete.md`, push. Tarefa de banco: o próprio líder, na sessão que tiver acesso a banco. Rodar `npm run sync:agentes`.
 - **Critérios de Aceitação:** Fluxo coerente com as seções 1, 1.1 e 1.2 do `AGENTS.md`; cópia em `.claude/skills/`.
 - **Commit:** pendente
 - **Anotação:** Plano em `docs/equipe-de-agentes.md`.
@@ -311,7 +311,7 @@ _A preencher ao final: resultado, commits, pendências e tempo decorrido._
 - **Descrição:** Integrar a classificação do Laya no worker LangGraph: ao criar uma tarefa via `pegar_proxima_task` ou manualmente, chamar o wrapper do Laya para definir o nível automaticamente. Adicionar campo `nivel_tarefa` na tabela `tasks` (se não existir) ou usar o campo existente. Atualizar o nó `planejar` do worker para considerar o nível na distribuição por modelo (LEVE → modelos pequenos, MEDIO → modelos médios, PESADO → modelos grandes).
 - **Critérios de Aceitação:** Classificação automática integrada; campo `nivel_tarefa` presente; nó `planejar` atualizado; testes do worker passam.
 - **Commit:** pendente
-- **Anotação:** Integrado da SUB-51 para que o worker LangGraph também use o Laya Server. ⚠️ **Tarefa de banco** (coluna `nivel_tarefa` na tabela `tasks`): só o **Claude Code local** com MCP do Supabase pode pegar (regra 11 do `AGENTS.md`); SQL idempotente em `database/`; aplicar no Supabase **só com autorização explícita do usuário**. Nível `PESADO`. Se quiser separar a parte do worker (sem banco), subdividir antes de começar.
+- **Anotação:** Integrado da SUB-51 para que o worker LangGraph também use o Laya Server. ⚠️ **Tarefa de banco** (coluna `nivel_tarefa` na tabela `tasks`): **qualquer IA pode pegar** (o acesso ao banco depende da sessão); SQL idempotente em `database/`; aplicar no Supabase **só com autorização explícita do usuário**. Nível `PESADO`. Se quiser separar a parte do worker (sem banco), subdividir antes de começar.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 

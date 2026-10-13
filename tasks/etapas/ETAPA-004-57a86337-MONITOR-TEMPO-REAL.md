@@ -45,13 +45,13 @@
   | `npm run build` | ✅ OK | 12 s |
   | `python3 -m unittest scripts/test_espelhar_quadro_eventos.py scripts/test_sincronizar_tasks.py` | ✅ 13 testes OK | < 1 s |
 
-  Os itens pulados do Vitest são os que dependem de variáveis de ambiente/banco (sem `.env` na nuvem); eles são cobertos pela SUB-35.46.2 (`npm run test:integration`, só Claude Code local). Nada foi alterado no código.
+  Os itens pulados do Vitest são os que dependem de variáveis de ambiente/banco (sem `.env` na nuvem); eles são cobertos pela SUB-35.46.2 (`npm run test:integration`). Nada foi alterado no código.
 
 ### SUB-35.46.2 — Validação de banco (`npm run test:integration`)
 
 **Próximo passo:** cancelada em 2026-10-13 por pedido do usuário; a validação não foi executada.
 
-- **Descrição:** Parte de banco da SUB-35.46 (separada em 2026-10-13 15:19): rodar `npm run test:integration` e registrar o resultado. **Só o Claude Code local** (`multiplas-ias.md`).
+- **Descrição:** Parte de banco da SUB-35.46 (separada em 2026-10-13 15:19): rodar `npm run test:integration` e registrar o resultado. Qualquer IA pode pegar; o acesso ao banco depende da sessão (`multiplas-ias.md`).
 - **Critérios de Aceitação:** Tudo verde, ou cada falha registrada com o comando e a saída.
 - **Entrega:** — · **Verificação:** —
 - **Anotação:** Cancelada a pedido explícito de Gelvazio em 2026-10-13. Removida do quadro ativo;

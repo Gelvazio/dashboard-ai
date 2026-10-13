@@ -9,19 +9,20 @@ Regras **deste projeto** que completam `tasks/frentes-e-reserva.md` (genérico).
 - Percebeu que é maior → **dividir** antes de codificar (novas linhas no `STATUS.md`), em vez de
   entregar pela metade.
 
-## Tarefas de banco de dados: só o Claude Code local
+## Tarefas de banco de dados: qualquer IA pode pegar
 
-- Só o **Claude Code rodando localmente** (máquina do usuário, com o **MCP do Supabase**) pega
-  subtarefa de banco.
+- **Não existe reserva por IA:** desde **2026-10-13**, a pedido do usuário, caiu a regra que dava as
+  tarefas de banco só ao Claude Code local. Qualquer frente pega qualquer subtarefa de banco.
 - É "de banco": criar ou alterar SQL, schema, trigger, função, RLS ou migração (`database/*.sql`);
   consultas; suítes do banco (`database/tests/`); `npm run test:integration`; aplicar scripts no
   Supabase; validar telas contra um banco real.
-- ⛔ Claude Code em **sessão na nuvem** não pega, mesmo tendo o MCP do Supabase. ⛔ As outras IAs
-  (Gemini, Grok, Copilot, Devin, DeepSeek, Antigravity…) também não.
-- Subtarefa com parte sem banco (frontend, documentação) → dividir: a parte sem banco fica livre
-  para qualquer IA.
-- Isso não libera nada: aplicar SQL, criar usuário ou gravar dados em produção continua exigindo
-  **autorização explícita do usuário**.
+- **O que muda é o acesso, não a permissão:** a sessão que não conseguir falar com o banco (MCP do
+  Supabase, Supabase local em Docker, `psql`, `docker exec`) entrega o que der, registra na seção da
+  subtarefa o que não conseguiu conferir e deixa o resto para quem tiver — ou pede ajuda ao usuário.
+- ⚠️ **Produção continua protegida:** aplicar SQL, criar usuário ou gravar dados no Supabase da
+  **nuvem** exige **autorização explícita do usuário**, qualquer que seja a IA.
+- Dá para dividir: quando a subtarefa tiver uma parte sem banco (frontend, documentação), separar em
+  subtarefas menores deixa as duas partes mais fáceis de pegar.
 
 ## Trava especial
 

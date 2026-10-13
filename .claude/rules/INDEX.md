@@ -23,7 +23,7 @@ só apontam para ele. Porta de entrada para todas as IAs: [`AGENTS.md`](../../AG
 
 | Arquivo | Assunto |
 |---------|---------|
-| `multiplas-ias.md` | Tamanho das subtarefas; banco só pelo Claude Code local; trava especial; marcadores antigos |
+| `multiplas-ias.md` | Tamanho das subtarefas; tarefa de banco (qualquer IA; produção exige autorização do usuário); trava especial; marcadores antigos |
 | `reporte-progresso.md` | Ferramenta MCP `agent_event` (opcional) |
 
 ## 🟡 Código e validação

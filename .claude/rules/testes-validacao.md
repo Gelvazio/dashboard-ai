@@ -7,7 +7,7 @@ Vale para todas as IAs.
 - ⛔ Não abrir navegador para validar ou mostrar nada (preview, Playwright, Puppeteer, computer-use,
   `start chrome`…) e não subir servidor de desenvolvimento para isso.
 - Validar por leitura do código, `npm run typecheck`, `npm run build`, `npm test`,
-  `npm run validar`, consultas ao banco (só quem pode, ver `multiplas-ias.md`) e terminal.
+  `npm run validar`, consultas ao banco (ver `multiplas-ias.md`) e terminal.
 - Se algo só pode ser confirmado no navegador: avisar o usuário para testar. Exceção só quando o
   usuário liberar explicitamente para uma subtarefa (registrar na seção da subtarefa).
 

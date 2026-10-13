@@ -24,7 +24,7 @@ main` (comandos, hooks e proibições: `git-quick.md`).
 ☐ Trouxe a main (fetch + pull --rebase)?
 ☐ Li o STATUS.md, a etapa da minha subtarefa e os recados?
 ☐ A subtarefa está livre, com dependências ✅ e sem trava especial?
-☐ É tarefa de banco? Então só se eu for o Claude Code local (multiplas-ias.md).
+☐ Se for tarefa de banco, eu tenho como falar com o banco nesta sessão (multiplas-ias.md)?
 ☐ Sei se a tarefa é pequena ou grande (tasks/ciclo-da-task.md)?
 ```
 
