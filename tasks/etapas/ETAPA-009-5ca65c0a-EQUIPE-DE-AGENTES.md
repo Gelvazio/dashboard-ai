@@ -226,12 +226,12 @@ _A preencher ao final: resultado, commits, pendências e tempo decorrido._
 
 ### SUB-47.5 — Executores `executor-leve` (Haiku), `executor-medio` (Sonnet), `executor-pesado` (Opus)
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** nenhum — entregue. Os executores serão usados pela skill `liderar-equipe` (SUB-47.6).
 
 - **Descrição:** Criar `.agents/agents/executor-leve.md`, `executor-medio.md` e `executor-pesado.md`. Cada um recebe do líder um item já travado, edita **só** os arquivos da tarefa, segue as regras de código do projeto e devolve relatório (arquivos alterados, o que foi feito, pendências). **Proibido** usar Git e editar o quadro. Rodar `npm run sync:agentes`.
 - **Critérios de Aceitação:** Frontmatter válido; instruções proíbem Git e edição do quadro; cópias em `.claude/agents/`.
-- **Commit:** pendente
-- **Anotação:** Plano em `docs/equipe-de-agentes.md`.
+- **Entrega:** commit desta entrega (`feat(SUB-47.5)`) · **Verificação:** frontmatter lido por script Node nos 3 arquivos (`name`, `description`, `tools`, `model` = `haiku`/`sonnet`/`opus`); `npm run sync:agentes` copiou os 3 para `.claude/agents/` e `diff -r .agents/agents .claude/agents` sem diferenças; linhas do corpo ≤ 100 caracteres
+- **Anotação:** Plano em `docs/equipe-de-agentes.md`. **Entrega (2026-10-13 15:25, Claude Code (Opus 5.5) (nuvem · main)):** criados `.agents/agents/executor-leve.md` (Haiku), `executor-medio.md` (Sonnet) e `executor-pesado.md` (Opus), com as cópias em `.claude/agents/`. Cada um: recebe do líder a subtarefa já reservada (código, critérios, lista de arquivos), para e pede o que falta se a tarefa parecer acima do nível, segue `codigo-solid.md`, `codigo-limites-nomes.md` e `testes-validacao.md`, e devolve um relatório padrão (arquivos, o que foi feito, validação, pendências). **Proibido** qualquer comando `git`, editar o quadro (`tasks/`) e arquivos fora da lista; tarefa de banco volta para o líder. Ferramentas: `Read, Edit, Write, Glob, Grep, Bash` (o Bash fica para a validação com `npm`; o Git é proibido pelas instruções).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
