@@ -72,16 +72,18 @@ JSON válido e com as mesmas permissões, menos a linha do caminho fixo; `npm ru
 
 ### SUB-58.4 — Tirar o caminho fixo do `settings.json`
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 19:42).
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** remover `Bash(cd /c/fontes/dashboard-ai-claude-code-senai)` (caminho de uma
   máquina; pela decisão de 2026-10-13 15:16, caminhos de sessão ficam no `settings.local.json`).
 - **Critérios de Aceitação:** JSON válido; demais permissões iguais.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-58.4)` · **Verificação:** comparação com `json` antes/depois: só saiu a linha do `cd`; `deny` e `hooks` iguais. `npm run validar` na nuvem: `env` e `python` OK; `typecheck`, `testes`, `build`, `chunks` e `audit` não rodaram porque esta sessão não alcança o registro do npm (sem `node_modules`). A SUB-58 não mexe em TypeScript; rodar `npm run validar` local no aceite (SUB-58.5)
 
 ### SUB-58.5 — Aceite do usuário
 
-**Próximo passo:** depende da SUB-58.4.
+**Próximo passo:** 👀 o usuário, no Claude Code local: (1) exportar `DASHBOARD_AI_MCP_URL` e
+`MCP_AUTH_TOKEN` e ver o `dashboard-ai` em `/mcp`; (2) abrir uma sessão nova e ver a mensagem
+`[hook sincronizar-main]`; (3) rodar `npm run validar`; (4) responder "sim".
 
 - **Descrição:** o usuário confere no Claude Code local se o MCP aparece e o hook roda ao abrir.
 - **Critérios de Aceitação:** "sim" do usuário.

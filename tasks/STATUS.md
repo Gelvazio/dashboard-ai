@@ -77,8 +77,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-55.5 | Documentar no `README.md` como abrir o visualizador | 🟡 Média | SUB-55.4 | 🔄 Em execução | Claude Code (Opus 5.5) (local · main) (desde 2026-10-13 16:17) | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-55.6 | Aceite do usuário | 🟡 Média | SUB-55.5 | ⬜ Pendente | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-58 | **Completar a estrutura do Claude Code (`.mcp.json`, hook de início, `CLAUDE.local.md`, `settings.json` limpo)** | 🟡 Média | Nenhuma | 🔄 Em andamento | — (não reservável) | [ETAPA-019](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
-| SUB-58.4 | Tirar o caminho fixo do `.claude/settings.json` | 🟡 Média | SUB-58.3 | 🔄 Em execução | Claude Code (Opus 5.5) (nuvem · main) (desde 2026-10-13 19:42) | [ETAPA-019](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
-| SUB-58.5 | Aceite do usuário | 🟡 Média | SUB-58.4 | ⬜ Pendente | — | [ETAPA-019](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
+| SUB-58.5 | Aceite do usuário | 🟡 Média | SUB-58.4 | 👀 Aguardando o usuário | — | [ETAPA-019](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
 
 ## Escopo do projeto
 

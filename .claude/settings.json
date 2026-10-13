@@ -5,7 +5,6 @@
       "Bash(git pull *)",
       "Bash(git push *)",
       "Bash(git mv *)",
-      "Bash(cd /c/fontes/dashboard-ai-claude-code-senai)",
       "Bash(git add *)",
       "Bash(git commit *)",
       "Bash(git log *)",
