@@ -82,6 +82,10 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-59.4 | Aceite do usuário | 🟡 Média | SUB-59.3 | 👀 Aguardando o usuário | — | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
 | SUB-60 | **Comandos (skills) para todas as IAs, sempre sincronizados** | 🟡 Média | Nenhuma | 🔄 Em andamento | — (não reservável) | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
 | SUB-60.5 | Aceite do usuário | 🟡 Média | SUB-60.4 | 👀 Aguardando o usuário | — | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
+| SUB-61 | **Sincronia automática das skills no commit e Gemini CLI lendo o `AGENTS.md`** | 🟡 Média | Nenhuma | 👀 Plano aguardando aprovação | — (não reservável) | [ETAPA-022](etapas/ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md) |
+| SUB-61.1 | Hook `pre-commit` que sincroniza as skills | 🟡 Média | Aprovação do plano | ⬜ Pendente | — | [ETAPA-022](etapas/ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md) |
+| SUB-61.2 | `GEMINI.md` apontando para o `AGENTS.md` | 🟡 Média | SUB-61.1 | ⬜ Pendente | — | [ETAPA-022](etapas/ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md) |
+| SUB-61.3 | Aceite do usuário | 🟡 Média | SUB-61.2 | ⬜ Pendente | — | [ETAPA-022](etapas/ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md) |
 
 ## Escopo do projeto
 
@@ -114,6 +118,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | 019-5280d730 | SUB-58: Completar a estrutura do Claude Code (`.mcp.json`, hook de início, `CLAUDE.local.md`, `settings.json` limpo) | [ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
 | 020-83241354 | SUB-59: Hooks que obrigam o Claude Code a registrar a tarefa no quadro antes de editar | [ETAPA-020-83241354-HOOK-EXIGIR-TASK.md](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
 | 021-1181a9a3 | SUB-60: Comandos (skills) para todas as IAs, sempre sincronizados | [ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
+| 022-c00b3c7f | SUB-61: Sincronia automática das skills no commit e Gemini CLI lendo o `AGENTS.md` | [ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md](etapas/ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md) |
 
 **Histórico (antes de 2026-10-13, congelado — não editar):** quadro antigo, concluídas e etapas 1 a 9 do
 `STATUS.md` antigo estão em [`historico/`](historico/).
