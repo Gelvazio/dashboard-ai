@@ -1,0 +1,174 @@
+name: Backup Supabase para Cloudflare R2
+
+# SUB-49.3. Alternativa ao backup-supabase-artifacts.yml para guardar mais de 90 dias.
+# O agendamento só roda com a variável SUPABASE_BACKUP_R2_ENABLED = true; o disparo manual
+# (Run workflow) roda sempre, para testar antes de ligar. Configuração:
+# docs/backup-cloudflare-r2.md.
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: backup-supabase-r2
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    name: Criar backup do Supabase no R2
+    if: github.event_name == 'workflow_dispatch' || vars.SUPABASE_BACKUP_R2_ENABLED == 'true'
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 30
+    steps:
+      # Mesmo motivo da SUB-49.5: sem a senha o job para antes de gerar qualquer dump.
+      - name: Conferir senha de criptografia do backup
+        env:
+          SUPABASE_BACKUP_PASSPHRASE: ${{ secrets.SUPABASE_BACKUP_PASSPHRASE }}
+        run: |
+          $tamanhoMinimoSenha = 20
+          if ([string]::IsNullOrWhiteSpace($env:SUPABASE_BACKUP_PASSPHRASE)) {
+            throw "Configure o secret SUPABASE_BACKUP_PASSPHRASE: sem ele o backup não é gerado."
+          }
+          if ($env:SUPABASE_BACKUP_PASSPHRASE.Length -lt $tamanhoMinimoSenha) {
+            throw "SUPABASE_BACKUP_PASSPHRASE precisa ter pelo menos $tamanhoMinimoSenha caracteres."
+          }
+
+      - name: Conferir secrets do Cloudflare R2
+        env:
+          CLOUDFLARE_R2_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}
+          CLOUDFLARE_R2_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY }}
+          CLOUDFLARE_R2_SECRET_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_KEY }}
+          CLOUDFLARE_R2_BUCKET: ${{ secrets.CLOUDFLARE_R2_BUCKET }}
+        run: |
+          $secretsObrigatorios = @(
+            "CLOUDFLARE_R2_ACCOUNT_ID"
+            "CLOUDFLARE_R2_ACCESS_KEY"
+            "CLOUDFLARE_R2_SECRET_KEY"
+            "CLOUDFLARE_R2_BUCKET"
+          )
+          $faltando = $secretsObrigatorios | Where-Object {
+            [string]::IsNullOrWhiteSpace([Environment]::GetEnvironmentVariable($_))
+          }
+          if ($faltando) {
+            throw "Configure os secrets do R2: $($faltando -join ', ')."
+          }
+
+      - name: Conferir URL do Supabase local
+        env:
+          SUPABASE_LOCAL_DATABASE_URL: ${{ secrets.SUPABASE_LOCAL_DATABASE_URL }}
+        run: |
+          if ([string]::IsNullOrWhiteSpace($env:SUPABASE_LOCAL_DATABASE_URL)) {
+            throw "Configure o secret SUPABASE_LOCAL_DATABASE_URL no repositório."
+          }
+
+          try {
+            $databaseUrl = [System.Uri]::new($env:SUPABASE_LOCAL_DATABASE_URL)
+          } catch {
+            throw "SUPABASE_LOCAL_DATABASE_URL precisa ser uma URL PostgreSQL válida."
+          }
+
+          $isPostgresUrl = $databaseUrl.Scheme -in @("postgres", "postgresql")
+          $isDatabaseLocal = (
+            $isPostgresUrl -and
+            $databaseUrl.Host -eq "host.docker.internal" -and
+            $databaseUrl.Port -eq 54322 -and
+            $databaseUrl.AbsolutePath -eq "/postgres"
+          )
+
+          if (-not $isDatabaseLocal) {
+            throw "Use host.docker.internal:54322/postgres para apontar ao Supabase local."
+          }
+
+      - name: Gerar dump SQL comprimido e criptografado
+        env:
+          SUPABASE_LOCAL_DATABASE_URL: ${{ secrets.SUPABASE_LOCAL_DATABASE_URL }}
+          SUPABASE_BACKUP_PASSPHRASE: ${{ secrets.SUPABASE_BACKUP_PASSPHRASE }}
+        run: |
+          $mountDirectory = "type=bind,source=$env:RUNNER_TEMP,target=/backup"
+          # gpg já vem na imagem postgres:17; a senha entra por arquivo (não aparece no comando).
+          $dumpCommand = 'pg_dump "$SUPABASE_LOCAL_DATABASE_URL" --no-owner --no-privileges | gzip -c | gpg --batch --yes --pinentry-mode loopback --symmetric --cipher-algo AES256 --passphrase-file <(printf "%s" "$SUPABASE_BACKUP_PASSPHRASE") --output /backup/supabase-backup.sql.gz.gpg'
+          $dockerArguments = @(
+            "run"
+            "--rm"
+            "--add-host=host.docker.internal:host-gateway"
+            "--mount=$mountDirectory"
+            "-e"
+            "SUPABASE_LOCAL_DATABASE_URL"
+            "-e"
+            "SUPABASE_BACKUP_PASSPHRASE"
+            "postgres:17"
+            "bash"
+            "-o"
+            "pipefail"
+            "-c"
+            $dumpCommand
+          )
+          docker @dockerArguments
+          if ($LASTEXITCODE -ne 0) { throw "O dump falhou (código $LASTEXITCODE)." }
+
+      - name: Enviar backup para o Cloudflare R2
+        id: envio
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_KEY }}
+          CLOUDFLARE_R2_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_R2_ACCOUNT_ID }}
+          CLOUDFLARE_R2_BUCKET: ${{ secrets.CLOUDFLARE_R2_BUCKET }}
+          # R2 usa região "auto"; checksums só quando exigidos, por compatibilidade com o R2.
+          AWS_DEFAULT_REGION: auto
+          AWS_REQUEST_CHECKSUM_CALCULATION: WHEN_REQUIRED
+          AWS_RESPONSE_CHECKSUM_VALIDATION: WHEN_REQUIRED
+        run: |
+          $dataUtc = (Get-Date).ToUniversalTime().ToString("yyyy/MM/dd")
+          $chaveObjeto = "supabase/$dataUtc/supabase-backup-${env:GITHUB_RUN_NUMBER}.sql.gz.gpg"
+          $endpoint = "https://${env:CLOUDFLARE_R2_ACCOUNT_ID}.r2.cloudflarestorage.com"
+          $mountDirectory = "type=bind,source=$env:RUNNER_TEMP,target=/backup"
+          $dockerArguments = @(
+            "run"
+            "--rm"
+            "--mount=$mountDirectory"
+            "-e"
+            "AWS_ACCESS_KEY_ID"
+            "-e"
+            "AWS_SECRET_ACCESS_KEY"
+            "-e"
+            "AWS_DEFAULT_REGION"
+            "-e"
+            "AWS_REQUEST_CHECKSUM_CALCULATION"
+            "-e"
+            "AWS_RESPONSE_CHECKSUM_VALIDATION"
+            "amazon/aws-cli"
+            "s3"
+            "cp"
+            "/backup/supabase-backup.sql.gz.gpg"
+            "s3://${env:CLOUDFLARE_R2_BUCKET}/$chaveObjeto"
+            "--endpoint-url"
+            $endpoint
+            "--only-show-errors"
+          )
+          docker @dockerArguments
+          if ($LASTEXITCODE -ne 0) { throw "O envio para o R2 falhou (código $LASTEXITCODE)." }
+          "chave=$chaveObjeto" | Add-Content -Path $env:GITHUB_OUTPUT -Encoding utf8
+
+      - name: Instruções para baixar
+        env:
+          CHAVE_OBJETO: ${{ steps.envio.outputs.chave }}
+        run: |
+          @"
+          ## Backup Supabase local enviado ao Cloudflare R2
+
+          Objeto: **${env:CHAVE_OBJETO}** (no bucket do secret CLOUDFLARE_R2_BUCKET).
+          O arquivo está **criptografado** (AES-256) e só abre com a senha do secret
+          SUPABASE_BACKUP_PASSPHRASE. Guarde a senha fora do GitHub: sem ela o backup se perde.
+          A retenção é a regra de ciclo de vida do bucket (sem regra, o objeto fica guardado).
+
+          Para baixar e restaurar (passo a passo em docs/backup-cloudflare-r2.md):
+
+          ``````bash
+          aws s3 cp "s3://<bucket>/${env:CHAVE_OBJETO}" . --endpoint-url "https://<conta>.r2.cloudflarestorage.com"
+          gpg --decrypt supabase-backup-${env:GITHUB_RUN_NUMBER}.sql.gz.gpg | gunzip | psql "<URL do banco de destino>"
+          ``````
+          "@ | Add-Content -Path $env:GITHUB_STEP_SUMMARY -Encoding utf8

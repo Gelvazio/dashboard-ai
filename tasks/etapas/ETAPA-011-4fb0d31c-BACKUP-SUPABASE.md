@@ -59,7 +59,7 @@
 
 ### SUB-49.3 — Criar workflow alternativo para Cloudflare R2 (retenção > 90 dias)
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:27).
+**Próximo passo:** nenhum (concluída).
 
 - **Plano (Claude Code (Opus 5.5) (nuvem · main), 2026-10-13 20:23; aprovado pelo usuário (Gelvazio) em 2026-10-13 20:27: "Sim, pode executar"):**
   - Arquivo novo `.github/workflows/backup-supabase-r2.yml`, mesmo runner `[self-hosted, Windows,

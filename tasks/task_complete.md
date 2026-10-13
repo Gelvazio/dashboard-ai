@@ -92,6 +92,7 @@
 | SUB-61 | **Sincronia automática das skills no commit e Gemini CLI lendo o `AGENTS.md`** | 🟡 Média | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-022](etapas/ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md) |
 | SUB-49.5 | Criptografar o dump no workflow (falha se faltar a senha) | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
 | SUB-49.2 | Documentar uso de GitHub Artifacts (limites, retenção, download) | 🟡 Média | SUB-49.1, SUB-49.5 | ✅ Concluído | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
+| SUB-49.3 | Criar workflow alternativo para Cloudflare R2 (retenção > 90 dias) | 🟡 Média | SUB-49.2 | ✅ Concluído | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
 
 ---
 
