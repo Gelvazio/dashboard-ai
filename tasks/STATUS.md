@@ -12,13 +12,8 @@ Prioridade: 🔴 Máxima · 🟠 Alta · 🟡 Média · 🟢 Baixa
 
 | Frente | Tarefa (etapa) | Situação | Atualizado em |
 |---|---|---|---|
-<<<<<<< Updated upstream
-| Claude Code (Opus 5.5) (local · main) | SUB-47.3 ([ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md)) | 🔄 Em execução | 2026-10-13 15:33 |
-| Claude Code (Opus 5.5) (nuvem · main) | SUB-35.46.1 ([ETAPA-004](etapas/ETAPA-004-57a86337-MONITOR-TEMPO-REAL.md)) | ⏹️ Encerrada | 2026-10-13 15:20 |
-=======
 | Claude Code (Opus 5.5) (local · main) | SUB-47.3 ([ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md)) | ✅ Entregue | 2026-10-13 15:40 |
-| Claude Code (Opus 5.5) (nuvem · main) | SUB-35.46.1 ([ETAPA-004](etapas/ETAPA-004-57a86337-MONITOR-TEMPO-REAL.md)) | 🔄 Em execução | 2026-10-13 15:19 |
->>>>>>> Stashed changes
+| Claude Code (Opus 5.5) (nuvem · main) | SUB-35.46.1 ([ETAPA-004](etapas/ETAPA-004-57a86337-MONITOR-TEMPO-REAL.md)) | ⏹️ Encerrada | 2026-10-13 15:20 |
 
 ## 📌 Tarefas
 
