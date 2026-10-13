@@ -20,7 +20,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-45.6 | Aplicar o `database/08_projects_campos.sql` no Supabase (só com autorização do usuário) | 🟡 Média | SUB-45.4 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.8 | `validarProjeto()` em `src/lib/projeto.ts` | 🟡 Média | SUB-45.7 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.9 | `criarProjeto()` em `src/services/projectService.ts` | 🟡 Média | SUB-45.7 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
-| SUB-45.10 | `atualizarProjeto()` e `definirProjetoAtivo()` em `src/services/projectService.ts` | 🟡 Média | SUB-45.9 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
+| SUB-45.10 | `atualizarProjeto()` e `definirProjetoAtivo()` em `src/services/projectService.ts` | 🟡 Média | SUB-45.9 | 🔄 Em execução | Codex (GPT-6) (local · main) (desde 2026-10-13 17:59) | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.11 | Componente `src/components/projetos/StatusProjetoBadge.tsx` | 🟡 Média | SUB-45.7 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.12 | `ProjetoForm.tsx`: campos básicos | 🟡 Média | SUB-45.8, SUB-45.9 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.13 | `ProjetoForm.tsx`: campos novos | 🟡 Média | SUB-45.12, SUB-45.10 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
