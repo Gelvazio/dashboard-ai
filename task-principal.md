@@ -59,6 +59,7 @@
 
 > **ATENÇÃO:** A tarefa `KIRO-DEV-CLONE` está **TRAVADA PARA TODAS AS IAS**.
 > Nenhuma IA pode assumir suas subtarefas sem autorização explícita do usuário.
+> O projeto agora está em `projects/kiro-dev-clone/` como projeto filho autônomo (Opção B da SUB-48).
 > Para liberar, o usuário deve remover esta trava manualmente no quadro.
 
 | Propriedade | Valor Atual |
