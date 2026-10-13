@@ -10,6 +10,9 @@ só**, dentro de [`.claude/rules/`](.claude/rules/INDEX.md).
   apontam para este `AGENTS.md`.
 - **Tarefas** ficam no quadro [`tasks/STATUS.md`](tasks/STATUS.md) (etapas em
   [`tasks/etapas/`](tasks/etapas/)). Nunca neste arquivo e nunca em `docs/`.
+- Antes de informar o status, a conclusão ou as dependências de uma tarefa, consulte tanto o
+  [`tasks/STATUS.md`](tasks/STATUS.md) quanto o [`tasks/task_complete.md`](tasks/task_complete.md).
+  Se a tarefa não estiver no quadro ativo, confira as concluídas antes de dizer que está pendente.
 
 ## ⛔ Antes de qualquer tarefa, leia (nesta ordem)
 

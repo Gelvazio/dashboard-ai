@@ -97,8 +97,6 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-55 | **Visualizador de regras e tarefas lendo os `.md` direto (`.claude/rules/index.html`)** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-55.5 | Documentar no `README.md` como abrir o visualizador | 🟡 Média | SUB-55.4 | 🔄 Em execução | Claude Code (Opus 5.5) (local · main) (desde 2026-10-13 16:17) | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-55.6 | Aceite do usuário | 🟡 Média | SUB-55.5 | ⬜ Pendente | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
-| SUB-56 | **Consultar tarefas concluídas antes de afirmar status ou dependências** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-017](etapas/ETAPA-017-c31f8a42-CONSULTAR-TASK-COMPLETE.md) |
-| SUB-56.1 | Instruir no `AGENTS.md` a consulta ao `tasks/task_complete.md` | 🟡 Média | Nenhuma | 🔄 Em execução | Codex (GPT-6) (local · main) (desde 2026-10-13 16:37) | [ETAPA-017](etapas/ETAPA-017-c31f8a42-CONSULTAR-TASK-COMPLETE.md) |
 
 ## Escopo do projeto
 
