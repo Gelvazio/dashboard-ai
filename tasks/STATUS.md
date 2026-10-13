@@ -79,8 +79,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-58 | **Completar a estrutura do Claude Code (`.mcp.json`, hook de início, `CLAUDE.local.md`, `settings.json` limpo)** | 🟡 Média | Nenhuma | 🔄 Em andamento | — (não reservável) | [ETAPA-019](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
 | SUB-58.5 | Aceite do usuário | 🟡 Média | SUB-58.4 | 👀 Aguardando o usuário | — | [ETAPA-019](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
 | SUB-59 | **Hooks que obrigam o Claude Code a registrar a tarefa no quadro antes de editar** | 🟡 Média | Nenhuma | 🔄 Em andamento | — (não reservável) | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
-| SUB-59.3 | Documentar a trava em `.claude/rules/multiplas-ias.md` | 🟡 Média | SUB-59.2 | 🔄 Em execução | Claude Code (Opus 5.5) (nuvem · main) (desde 2026-10-13 19:53) | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
-| SUB-59.4 | Aceite do usuário | 🟡 Média | SUB-59.3 | ⬜ Pendente | — | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
+| SUB-59.4 | Aceite do usuário | 🟡 Média | SUB-59.3 | 👀 Aguardando o usuário | — | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
 
 ## Escopo do projeto
 
@@ -134,6 +133,7 @@ Decisões de 2026-10-12 a 2026-10-13 12:10: ver `historico/STATUS-antigo.md`. Da
 
 | Data | Decisão | Quem | Por quê |
 |---|---|---|---|
+| 2026-10-13 19:51 | Hooks do Claude Code exigem subtarefa reservada antes de editar arquivo fora de `tasks/` e lembram a regra a cada pedido (SUB-59; regra em `.claude/rules/multiplas-ias.md`) | Gelvazio | Pedido no chat: "E o hook pra gravar a task no quadro" → "Faça isso"; plano aprovado |
 | 2026-10-13 14:27 | Quadro migrado para `tasks/STATUS.md` + `tasks/etapas/`; `task-principal.md`, `task_complete.md` e `STATUS.md` antigos congelados em `tasks/historico/` | Gelvazio | Pedido no chat: "migre tudo pro modelo novo e evite duplicatas de regras" |
 | 2026-10-13 14:30 | Toda subtarefa continua podendo ser assumida por qualquer IA (uma linha por subtarefa) | Gelvazio | Pedido no chat |
 | 2026-10-13 14:32 | Toda tarefa-mãe tem no mínimo 1 subtarefa | Gelvazio | Pedido no chat |

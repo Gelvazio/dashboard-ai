@@ -29,6 +29,17 @@ Regras **deste projeto** que completam `tasks/frentes-e-reserva.md` (genérico).
 - Linha com `🔒 Trava especial (só o usuário libera)` em "Em uso por": nenhuma IA pega a tarefa nem
   as subtarefas, qualquer que seja a prioridade. Só o usuário cria ou remove.
 
+## Hooks do Claude Code que exigem a tarefa (SUB-59)
+
+- `exigir-reserva.mjs` (antes de `Edit`/`Write`): barra a edição de arquivo do projeto fora de
+  `tasks/` quando não há no `STATUS.md` subtarefa `🔄 Em execução` de **Claude Code**. Abrir e
+  reservar a tarefa (`tasks/ciclo-da-task.md`) libera; `tasks/` fica sempre livre para isso.
+- `lembrar-task.mjs` (a cada pedido): lembrete curto da regra no contexto.
+- **Não pegam:** outras IAs (o hook é só do Claude Code), edição por comando no terminal
+  (`sed -i`, `>`) e qual sessão Claude Code reservou. A regra continua valendo para todos.
+- Erro do hook libera a edição. `DASHBOARD_AI_SEM_TRAVA=1` desliga a trava, só com pedido do
+  usuário (registrar na seção da subtarefa).
+
 ## Marcadores do quadro antigo
 
 - `STATUS-TAREFA-CONFIRMADO-CONCLUIDO` e `VERIFICADOR-CLAUDE` existem nos blocos migrados e no

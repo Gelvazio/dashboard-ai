@@ -63,15 +63,16 @@ Com reserva de Claude Code: `Edit` em `src/` passa. Qualquer erro do próprio ho
 
 ### SUB-59.3 — Documentar a trava em `.claude/rules/multiplas-ias.md`
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 19:53).
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** seção curta: o que os hooks fazem, o que não pegam, o escape.
 - **Critérios de Aceitação:** arquivo < 5 KB; nada repetido de outra regra.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `docs(SUB-59.3)` · **Verificação:** seção nova em `multiplas-ias.md` (< 5 KB, linhas ≤ 100 caracteres); `INDEX.md` e "Registro de decisões" do `STATUS.md` atualizados; nada repetido de outra regra (aponta para `ciclo-da-task.md`)
 
 ### SUB-59.4 — Aceite do usuário
 
-**Próximo passo:** depende da SUB-59.3.
+**Próximo passo:** 👀 o usuário, no Claude Code local, abre uma sessão sem reserva, pede uma
+edição em `src/` e confere que ela é barrada; depois responde "sim".
 
 - **Descrição:** o usuário confere no Claude Code local que, sem reserva, a edição é barrada.
 - **Critérios de Aceitação:** "sim" do usuário.
