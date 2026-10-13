@@ -81,8 +81,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-59 | **Hooks que obrigam o Claude Code a registrar a tarefa no quadro antes de editar** | 🟡 Média | Nenhuma | 🔄 Em andamento | — (não reservável) | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
 | SUB-59.4 | Aceite do usuário | 🟡 Média | SUB-59.3 | 👀 Aguardando o usuário | — | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
 | SUB-60 | **Comandos (skills) para todas as IAs, sempre sincronizados** | 🟡 Média | Nenhuma | 🔄 Em andamento | — (não reservável) | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
-| SUB-60.4 | Gerar as cópias e documentar | 🟡 Média | SUB-60.3 | 🔄 Em execução | Claude Code (Opus 5.5) (nuvem · main) (desde 2026-10-13 20:01) | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
-| SUB-60.5 | Aceite do usuário | 🟡 Média | SUB-60.4 | ⬜ Pendente | — | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
+| SUB-60.5 | Aceite do usuário | 🟡 Média | SUB-60.4 | 👀 Aguardando o usuário | — | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
 
 ## Escopo do projeto
 
@@ -137,6 +136,7 @@ Decisões de 2026-10-12 a 2026-10-13 12:10: ver `historico/STATUS-antigo.md`. Da
 
 | Data | Decisão | Quem | Por quê |
 |---|---|---|---|
+| 2026-10-13 20:05 | Skills/comandos com fonte única em `.agents/skills/`; cópias geradas em `.claude/`, `.grok/` e `.gemini/commands/` por `npm run sync:agentes`; o `pre-push` recusa push com cópia desatualizada (SUB-60) | Gelvazio | Pedido no chat: "crie versões de comandos pra todas e deixe eles sincronizados"; plano aprovado |
 | 2026-10-13 19:51 | Hooks do Claude Code exigem subtarefa reservada antes de editar arquivo fora de `tasks/` e lembram a regra a cada pedido (SUB-59; regra em `.claude/rules/multiplas-ias.md`) | Gelvazio | Pedido no chat: "E o hook pra gravar a task no quadro" → "Faça isso"; plano aprovado |
 | 2026-10-13 14:27 | Quadro migrado para `tasks/STATUS.md` + `tasks/etapas/`; `task-principal.md`, `task_complete.md` e `STATUS.md` antigos congelados em `tasks/historico/` | Gelvazio | Pedido no chat: "migre tudo pro modelo novo e evite duplicatas de regras" |
 | 2026-10-13 14:30 | Toda subtarefa continua podendo ser assumida por qualquer IA (uma linha por subtarefa) | Gelvazio | Pedido no chat |

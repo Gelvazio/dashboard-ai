@@ -161,6 +161,8 @@ demonstração e **não** servem para o projeto da nuvem — nem o contrário.
 | `npm run check:chunks` | Tamanho dos chunks do build (limite `CHUNK_LIMITE_KB`, padrão 500) |
 | `npm run validar` | Validação completa (ver abaixo) |
 | `npm run worker` | Worker LangGraph (`tsx worker/index.ts`) |
+| `npm run sync:agentes` | Copia as skills de `.agents/` para `.claude/` e `.grok/` e gera `.gemini/commands/` |
+| `npm run check:agentes` | Só confere as cópias das skills (falha se alguma estiver desatualizada) |
 
 ### Testes
 
@@ -469,6 +471,23 @@ nunca mexer na reserva de outra); a etapa de cada tarefa, em [`tasks/etapas/`](t
 plano, descrição e entrega. O quadro antigo e as concluídas até 2026-10-13 estão em
 [`tasks/historico/`](tasks/historico/README.md). O passo a passo está na skill
 [`proxima-task`](.agents/skills/proxima-task/SKILL.md). A raiz `/` é o **app React** (entry do Vite em `index.html` → `src/main.tsx`); o painel do quadro é [`public/painel.html`](public/painel.html) (servido em `/painel.html`) e lê o quadro e o histórico.
+
+### Comandos (skills) em cada IA
+
+A fonte única das skills é [`.agents/skills/`](.agents/skills/) (padrão aberto `SKILL.md`). Para
+criar ou mudar uma skill, edite só ali e rode `npm run sync:agentes`; o `pre-push` recusa o push se
+as cópias estiverem desatualizadas.
+
+| Ferramenta | Onde lê | Como chamar |
+|---|---|---|
+| Codex | `.agents/skills/` (fonte) | `$proxima-task` ou `/skills` |
+| Google Antigravity | `.agents/skills/` (fonte) | `/proxima-task` |
+| Cursor | `.agents/skills/` (fonte) | `/proxima-task` |
+| GitHub Copilot (VS Code) | `.agents/skills/` (fonte) | `/proxima-task` |
+| Claude Code | `.claude/skills/` (cópia) | `/proxima-task` |
+| Grok Build | `.grok/skills/` (cópia) | `/proxima-task` |
+| Gemini CLI | `.gemini/commands/proxima-task.toml` (gerado) | `/proxima-task` |
+| Outras (DeepSeek, Devin, OpenRouter) | sem formato de comando | "siga a skill `proxima-task`" |
 
 ### Ciclo da fila (exemplos)
 

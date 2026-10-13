@@ -75,16 +75,17 @@ cópia desatualizada é recusado pelo `pre-push` com instrução de rodar `npm r
 
 ### SUB-60.4 — Gerar as cópias e documentar
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:01).
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** rodar `npm run sync:agentes`, versionar as cópias; uma linha no `AGENTS.md`
   (onde cada IA acha os comandos) e a tabela do levantamento no `README.md`.
 - **Critérios de Aceitação:** `--checar` sai 0 na `main`.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `docs(SUB-60.4)` · **Verificação:** cópias `.grok/skills/` e `.gemini/commands/proxima-task.toml` já versionadas nas SUB-60.1/60.2; `npm run check:agentes` (`--checar`) sai 0 na `main`; tabela por IA no `README.md` (seção "Comandos (skills) em cada IA") e scripts novos na tabela do `package.json`; `AGENTS.md` aponta a fonte única e as cópias
 
 ### SUB-60.5 — Aceite do usuário
 
-**Próximo passo:** depende da SUB-60.4.
+**Próximo passo:** 👀 o usuário chama `/proxima-task` (no Codex, `$proxima-task`) em pelo menos
+uma ferramenta além do Claude Code (Antigravity, Cursor, Codex, Grok ou Gemini CLI) e responde "sim".
 
 - **Descrição:** o usuário chama `/proxima-task` (ou `$proxima-task` no Codex) em pelo menos uma
   ferramenta além do Claude Code.

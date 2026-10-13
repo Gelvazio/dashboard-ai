@@ -28,7 +28,9 @@ só**, dentro de [`.claude/rules/`](.claude/rules/INDEX.md).
 | 8 | [`.claude/rules/codigo-solid.md`](.claude/rules/codigo-solid.md) e [`codigo-limites-nomes.md`](.claude/rules/codigo-limites-nomes.md) | Como escrever código |
 
 Opcional: [`.claude/rules/reporte-progresso.md`](.claude/rules/reporte-progresso.md) (eventos no
-monitor). Skill do fluxo: [`proxima-task`](.agents/skills/proxima-task/SKILL.md) (cópia para o Claude Code em
-`.claude/skills/`; não editar a cópia).
+monitor). Skill do fluxo: [`proxima-task`](.agents/skills/proxima-task/SKILL.md). Skills e
+comandos: fonte única em `.agents/skills/` (Codex, Antigravity, Cursor e Copilot leem direto);
+cópias geradas por `npm run sync:agentes` em `.claude/`, `.grok/` e `.gemini/commands/` — não
+editar as cópias (tabela por IA no [`README.md`](README.md#comandos-skills-em-cada-ia)).
 
 **Se uma regra daqui parecer contradizer outra, vale a do arquivo do assunto; avise o usuário.**
