@@ -59,7 +59,7 @@
 
 > **ATENÇÃO:** A tarefa `KIRO-DEV-CLONE` está **TRAVADA PARA TODAS AS IAS**.
 > Nenhuma IA pode assumir suas subtarefas sem autorização explícita do usuário.
-> O projeto agora está em `projects/kiro-dev-clone/` como projeto filho autônomo (Opção B da SUB-48).
+> O projeto agora está em `projects/kiro-dev-clone/` como projeto filho que **compartilha infraestrutura central** do Dashboard AI (Opção A da SUB-48): banco, MCP e embeddings compartilhados, com isolamento por `project_id` + RLS.
 > Para liberar, o usuário deve remover esta trava manualmente no quadro.
 
 | Propriedade | Valor Atual |
@@ -1222,18 +1222,18 @@
 - **Executor:** nenhum
 - **Depende de:** Nenhuma
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** A pasta `projects/` (já criada na raiz) é onde serão colocados todos os projetos de IA independentes. Cada subpasta dentro de `projects/` (ex: `projects/meu-app-ia/`, `projects/analise-dados-ai/`) é um projeto de IA **totalmente autônomo**, com sua própria infraestrutura. **Opção B (Independência Total):**
-  - Cada projeto filho tem seu **próprio banco de dados Supabase** (ou outro banco) - não compartilha com o Dashboard AI
-  - Cada projeto filho tem seu **próprio MCP server** (se precisar de integração com agentes) - não usa o MCP central do Dashboard AI
-  - Cada projeto filho tem suas **próprias embeddings** (se precisar de memória semântica) - não compartilha a tabela `ai_memories` do Dashboard AI
-  - Cada projeto filho tem seu **próprio repositório Git** (ou estrutura de código separada)
-  - Cada projeto filho tem suas **próprias regras em `AGENTS.md`** (específicas daquele projeto)
-  - O Dashboard AI serve apenas como **visualizador de quadros de tarefas** (index.html) e compartilha a **lógica de classificação de tarefas por nível** (LEVE/MEDIO/PESADO) e **distribuição por modelo** (SUB-47) - isso pode ser reutilizado nos projetos filhos
-  - Cada projeto filho tem seu **próprio quadro de tarefas** (task-principal.md na pasta do projeto) ou pode usar o quadro central apenas como referência
-  - O Dashboard AI não interfere na execução dos projetos filhos - só fornece o framework de gestão de tasks e distribuição por modelos
-- **Critérios de Aceitação:** Pasta `projects/` criada com esta documentação; estrutura clara definindo que cada projeto filho é totalmente autônomo (banco próprio, MCP próprio, embeddings próprios); Dashboard AI só compartilha lógica de gestão de tasks e distribuição por modelos (SUB-47).
+- **Descrição:** A pasta `projects/` (já criada na raiz) é onde serão colocados todos os projetos de IA independentes. Cada subpasta dentro de `projects/` (ex: `projects/meu-app-ia/`, `projects/analise-dados-ai/`) é um projeto de IA com seu próprio código, mas **compartilha a infraestrutura central do Dashboard AI** (banco, MCP, embeddings). **Opção A (Compartilhamento):**
+  - **Banco de dados central compartilhado:** Todos os projetos usam o mesmo banco Supabase do Dashboard AI (8GB no plano Pro = muito mais econômico que múltiplas contas Free). Cada projeto tem seu registro na tabela `projects` e seus dados são isolados por `project_id` + RLS.
+  - **MCP central compartilhado:** Todos os projetos usam o mesmo endpoint `/api/mcp` do Dashboard AI. As ferramentas MCP (`task_next`, `brain_store`, etc.) aceitam parâmetro `project` (slug) para operar nos dados do projeto específico.
+  - **Embeddings central compartilhados:** Todos os projetos usam a mesma tabela `ai_memories` com `project_id`. O endpoint `/api/embedding` gera embeddings que ficam centralizados, com filtragem por projeto.
+  - Cada projeto filho tem seu **próprio código** (src/, componentes, etc.) na pasta `projects/<nome>/`
+  - Cada projeto filho pode ter suas **próprias regras em `AGENTS.md`** (específicas daquele projeto)
+  - O Dashboard AI serve como **agregador central**: visualizador de quadros, banco compartilhado, MCP compartilhado, embeddings compartilhados, e compartilha a **lógica de classificação de tarefas por nível** (LEVE/MEDIO/PESADO) e **distribuição por modelo** (SUB-47)
+  - Cada projeto filho pode ter seu **próprio quadro de tarefas** (task-principal.md na pasta do projeto) ou usar o quadro central (a definir em cada caso)
+  - Isolamento é garantido por **RLS** e **project_id** - projeto A não vê dados do projeto B
+- **Critérios de Aceitação:** Pasta `projects/` criada com esta documentação; estrutura clara definindo que cada projeto filho compartilha infraestrutura central (banco, MCP, embeddings) do Dashboard AI, com isolamento garantido por `project_id` + RLS. Dashboard AI é agregador central com banco compartilhado (mais econômico que múltiplas contas Free).
 - **Commit:** pendente
-- **Anotação:** Criada em 2026-10-13 a pedido do usuário para definir a estrutura multi-projeto. **Opção B definida (2026-10-13):** cada projeto filho é totalmente autônomo (banco próprio, MCP próprio, embeddings próprios, repositório próprio). O Dashboard AI serve apenas como visualizador de quadros e compartilha a lógica de gestão de tasks e distribuição por modelos (SUB-47).
+- **Anotação:** Criada em 2026-10-13 a pedido do usuário para definir a estrutura multi-projeto. **Opção A definida (2026-10-13):** cada projeto filho compartilha infraestrutura central do Dashboard AI (banco, MCP, embeddings) com isolamento por `project_id` + RLS. Mais econômico que múltiplas contas Supabase Free (500MB cada). Dashboard AI é agregador central.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
