@@ -91,7 +91,7 @@
 
 ### SUB-49.6 — Documentar o backup no Cloudflare R2 (`docs/backup-cloudflare-r2.md`)
 
-**Próximo passo:** depende da SUB-49.3.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:28).
 
 - **Descrição:** criar o bucket, o token só daquele bucket (Object Read & Write), os 4 secrets, a
   variável `SUPABASE_BACKUP_R2_ENABLED`, a regra de ciclo de vida (apagar depois de N dias), baixar
