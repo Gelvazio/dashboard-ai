@@ -80,6 +80,12 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-58.5 | Aceite do usuário | 🟡 Média | SUB-58.4 | 👀 Aguardando o usuário | — | [ETAPA-019](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
 | SUB-59 | **Hooks que obrigam o Claude Code a registrar a tarefa no quadro antes de editar** | 🟡 Média | Nenhuma | 🔄 Em andamento | — (não reservável) | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
 | SUB-59.4 | Aceite do usuário | 🟡 Média | SUB-59.3 | 👀 Aguardando o usuário | — | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
+| SUB-60 | **Comandos (skills) para todas as IAs, sempre sincronizados** | 🟡 Média | Nenhuma | 👀 Plano aguardando aprovação | — (não reservável) | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
+| SUB-60.1 | Sincronizador com destinos em mapa + cópia para `.grok/skills/` | 🟡 Média | Aprovação do plano | ⬜ Pendente | — | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
+| SUB-60.2 | Gerar `.gemini/commands/<skill>.toml` | 🟡 Média | SUB-60.1 | ⬜ Pendente | — | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
+| SUB-60.3 | Modo `--checar` no `pre-push` e no `validar.sh` | 🟡 Média | SUB-60.2 | ⬜ Pendente | — | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
+| SUB-60.4 | Gerar as cópias e documentar | 🟡 Média | SUB-60.3 | ⬜ Pendente | — | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
+| SUB-60.5 | Aceite do usuário | 🟡 Média | SUB-60.4 | ⬜ Pendente | — | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
 
 ## Escopo do projeto
 
@@ -111,6 +117,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | 018-a9bba1c3 | SUB-57: Remover a validação de integração SUB-35.46.2 por decisão do usuário | [ETAPA-018-a9bba1c3-REMOVER-SUB35-46-2.md](etapas/ETAPA-018-a9bba1c3-REMOVER-SUB35-46-2.md) |
 | 019-5280d730 | SUB-58: Completar a estrutura do Claude Code (`.mcp.json`, hook de início, `CLAUDE.local.md`, `settings.json` limpo) | [ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
 | 020-83241354 | SUB-59: Hooks que obrigam o Claude Code a registrar a tarefa no quadro antes de editar | [ETAPA-020-83241354-HOOK-EXIGIR-TASK.md](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
+| 021-1181a9a3 | SUB-60: Comandos (skills) para todas as IAs, sempre sincronizados | [ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
 
 **Histórico (antes de 2026-10-13, congelado — não editar):** quadro antigo, concluídas e etapas 1 a 9 do
 `STATUS.md` antigo estão em [`historico/`](historico/).
