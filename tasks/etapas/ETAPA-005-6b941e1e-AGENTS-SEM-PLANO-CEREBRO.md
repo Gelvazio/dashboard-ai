@@ -22,12 +22,12 @@
 
 ### SUB-41.1 — Criar `docs/plano-cerebro-memoria-persistente.md` e mover a seção "1. Arquitetura do Banco de Dados (Supabase)"
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** Criar `docs/plano-cerebro-memoria-persistente.md` com: o título `# 🧠 Plano de Implementação: Cérebro de Memória Persistente (Estilo Jev-Mem)` e as linhas **Foco** e **Stack** (copiadas do `AGENTS.md`); um parágrafo inicial dizendo que o plano **já foi implementado** (SQL consolidado e idempotente em [`database/`](../../database/README.md), scripts `01` a `04`; servidor em [`api/mcp.ts`](../../api/mcp.ts) e [`api/_lib/`](../../api/_lib/)) e que o SQL e o código do plano são a referência original; e a seção `## 1. Arquitetura do Banco de Dados (Supabase)` inteira (texto, nota sobre a pasta `database/` e bloco SQL), **sem alterar o conteúdo**, só corrigindo o link `database/README.md` → `../database/README.md`. No `AGENTS.md`, apagar o título do plano, as linhas Foco/Stack e a seção 1 (com os `---` correspondentes). As seções 2 e 3 continuam no `AGENTS.md` até as filhas seguintes.
 - **Critérios de Aceitação:** Arquivo novo com título, introdução e seção 1 completos; seção 1 e cabeçalho do plano fora do `AGENTS.md`; links relativos do novo arquivo funcionando; `npm run validar` verde.
-- **Commit:** pendente
-- **Anotação:** Trava de Devin (Cognition AI) (lock `74e061f`, 2026-10-12 18:40) liberada pelo usuário em 2026-10-13 14:18 (registro por Claude Code (Opus 5.5)). Nada tinha sido entregue: `docs/plano-cerebro-memoria-persistente.md` não existe e não há commit da entrega. Livre para qualquer IA.
+- **Commit:** `feat(SUB-41.1)` (Claude Code (Opus 5.5) (local · main), 2026-10-13)
+- **Anotação:** Trava de Devin (Cognition AI) (lock `74e061f`, 2026-10-12 18:40) liberada pelo usuário em 2026-10-13 14:18 (registro por Claude Code (Opus 5.5)). Nada tinha sido entregue: `docs/plano-cerebro-memoria-persistente.md` não existe e não há commit da entrega. Livre para qualquer IA. **Entrega (2026-10-13 15:10, Claude Code (Opus 5.5) (local · main)):** criado `docs/plano-cerebro-memoria-persistente.md` com título, Foco/Stack, aviso de "já implementado" e a seção 1 copiados sem alterar o texto (só o link `database/README.md` → `../database/README.md`); apagados do `AGENTS.md` o título do plano, Foco/Stack e a seção 1. **Verificação:** links do arquivo novo conferidos (`database/README.md`, `api/mcp.ts`, `api/_lib/` existem); `npm run validar`: typecheck, testes, build, env, python e audit OK; `chunks` FALHOU por problema anterior e sem relação (o build gera só `dist/index.html`, porque o `index.html` da raiz virou o painel estático no commit `62e215d`).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
