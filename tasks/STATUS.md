@@ -78,6 +78,11 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-55.6 | Aceite do usuário | 🟡 Média | SUB-55.5 | ⬜ Pendente | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-58 | **Completar a estrutura do Claude Code (`.mcp.json`, hook de início, `CLAUDE.local.md`, `settings.json` limpo)** | 🟡 Média | Nenhuma | 🔄 Em andamento | — (não reservável) | [ETAPA-019](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
 | SUB-58.5 | Aceite do usuário | 🟡 Média | SUB-58.4 | 👀 Aguardando o usuário | — | [ETAPA-019](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
+| SUB-59 | **Hooks que obrigam o Claude Code a registrar a tarefa no quadro antes de editar** | 🟡 Média | Nenhuma | 👀 Plano aguardando aprovação | — (não reservável) | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
+| SUB-59.1 | Hook `exigir-reserva.mjs` (trava antes de editar) | 🟡 Média | Aprovação do plano | ⬜ Pendente | — | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
+| SUB-59.2 | Hook `lembrar-task.mjs` (lembrete a cada pedido) | 🟡 Média | SUB-59.1 | ⬜ Pendente | — | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
+| SUB-59.3 | Documentar a trava em `.claude/rules/multiplas-ias.md` | 🟡 Média | SUB-59.2 | ⬜ Pendente | — | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
+| SUB-59.4 | Aceite do usuário | 🟡 Média | SUB-59.3 | ⬜ Pendente | — | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
 
 ## Escopo do projeto
 
@@ -108,6 +113,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | 017-c31f8a42 | SUB-56: Consultar tarefas concluídas antes de afirmar status ou dependências | [ETAPA-017-c31f8a42-CONSULTAR-TASK-COMPLETE.md](etapas/ETAPA-017-c31f8a42-CONSULTAR-TASK-COMPLETE.md) |
 | 018-a9bba1c3 | SUB-57: Remover a validação de integração SUB-35.46.2 por decisão do usuário | [ETAPA-018-a9bba1c3-REMOVER-SUB35-46-2.md](etapas/ETAPA-018-a9bba1c3-REMOVER-SUB35-46-2.md) |
 | 019-5280d730 | SUB-58: Completar a estrutura do Claude Code (`.mcp.json`, hook de início, `CLAUDE.local.md`, `settings.json` limpo) | [ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
+| 020-83241354 | SUB-59: Hooks que obrigam o Claude Code a registrar a tarefa no quadro antes de editar | [ETAPA-020-83241354-HOOK-EXIGIR-TASK.md](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
 
 **Histórico (antes de 2026-10-13, congelado — não editar):** quadro antigo, concluídas e etapas 1 a 9 do
 `STATUS.md` antigo estão em [`historico/`](historico/).
