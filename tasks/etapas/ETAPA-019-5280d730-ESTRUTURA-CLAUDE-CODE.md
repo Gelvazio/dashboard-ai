@@ -72,7 +72,7 @@ JSON válido e com as mesmas permissões, menos a linha do caminho fixo; `npm ru
 
 ### SUB-58.4 — Tirar o caminho fixo do `settings.json`
 
-**Próximo passo:** depende da SUB-58.3.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 19:42).
 
 - **Descrição:** remover `Bash(cd /c/fontes/dashboard-ai-claude-code-senai)` (caminho de uma
   máquina; pela decisão de 2026-10-13 15:16, caminhos de sessão ficam no `settings.local.json`).
