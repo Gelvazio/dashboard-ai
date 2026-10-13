@@ -55,7 +55,7 @@ no mesmo commit; commit sem `.agents/` não roda o sincronizador; `pre-push` pas
 
 ### SUB-61.3 — Aceite do usuário
 
-**Próximo passo:** 👀 o usuário edita uma skill em `.agents/skills/`, commita e vê as cópias no
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:14).
 mesmo commit; no Gemini CLI, `/memory show` mostra o `AGENTS.md`; depois responde "sim".
 
 - **Descrição:** o usuário edita uma skill em `.agents/skills/`, commita e vê as cópias no mesmo

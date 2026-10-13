@@ -77,7 +77,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-55.5 | Documentar no `README.md` como abrir o visualizador | 🟡 Média | SUB-55.4 | 🔄 Em execução | Claude Code (Opus 5.5) (local · main) (desde 2026-10-13 16:17) | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-55.6 | Aceite do usuário | 🟡 Média | SUB-55.5 | ⬜ Pendente | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-61 | **Sincronia automática das skills no commit e Gemini CLI lendo o `AGENTS.md`** | 🟡 Média | Nenhuma | 🔄 Em andamento | — (não reservável) | [ETAPA-022](etapas/ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md) |
-| SUB-61.3 | Aceite do usuário | 🟡 Média | SUB-61.2 | 👀 Aguardando o usuário | — | [ETAPA-022](etapas/ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md) |
+| SUB-61.3 | Aceite do usuário | 🟡 Média | SUB-61.2 | 🔄 Em execução | Claude Code (Opus 5.5) (nuvem · main) (desde 2026-10-13 20:14) | [ETAPA-022](etapas/ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md) |
 
 ## Escopo do projeto
 
