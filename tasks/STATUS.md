@@ -97,6 +97,8 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-55 | **Visualizador de regras e tarefas lendo os `.md` direto (`.claude/rules/index.html`)** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-55.5 | Documentar no `README.md` como abrir o visualizador | 🟡 Média | SUB-55.4 | 🔄 Em execução | Claude Code (Opus 5.5) (local · main) (desde 2026-10-13 16:17) | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-55.6 | Aceite do usuário | 🟡 Média | SUB-55.5 | ⬜ Pendente | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
+| SUB-56 | **Consultar tarefas concluídas antes de afirmar status ou dependências** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-017](etapas/ETAPA-017-c31f8a42-CONSULTAR-TASK-COMPLETE.md) |
+| SUB-56.1 | Instruir no `AGENTS.md` a consulta ao `tasks/task_complete.md` | 🟡 Média | Nenhuma | 🔄 Em execução | Codex (GPT-6) (local · main) (desde 2026-10-13 16:37) | [ETAPA-017](etapas/ETAPA-017-c31f8a42-CONSULTAR-TASK-COMPLETE.md) |
 
 ## Escopo do projeto
 
@@ -124,6 +126,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | 014-7d3c51e9 | SUB-53: Listar as tarefas pendentes depois de cada push na `main` | [ETAPA-014-7d3c51e9-LISTAR-PENDENTES-APOS-PUSH.md](etapas/ETAPA-014-7d3c51e9-LISTAR-PENDENTES-APOS-PUSH.md) |
 | 015-074d37b0 | SUB-54: Tirar a tabela "🧭 Frentes" do quadro (fica só o "Em uso por") | [ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
 | 016-95657172 | SUB-55: Visualizador de regras e tarefas lendo os `.md` direto | [ETAPA-016-95657172-VISUALIZADOR-REGRAS.md](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
+| 017-c31f8a42 | SUB-56: Consultar tarefas concluídas antes de afirmar status ou dependências | [ETAPA-017-c31f8a42-CONSULTAR-TASK-COMPLETE.md](etapas/ETAPA-017-c31f8a42-CONSULTAR-TASK-COMPLETE.md) |
 
 **Histórico (antes de 2026-10-13, congelado — não editar):** quadro antigo, concluídas e etapas 1 a 9 do
 `STATUS.md` antigo estão em [`historico/`](historico/).
