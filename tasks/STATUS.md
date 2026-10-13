@@ -12,9 +12,7 @@ Prioridade: 🔴 Máxima · 🟠 Alta · 🟡 Média · 🟢 Baixa
 
 | Frente | Tarefa (etapa) | Situação | Atualizado em |
 |---|---|---|---|
-| Claude Code (Opus 5.5) (local · main) | SUB-52.1 ([ETAPA-013](etapas/ETAPA-013-2aa270f6-TASK-COMPLETE.md)) | ⏹️ Encerrada | 2026-10-13 15:03 | SUB-38 (verificação geral, marcador `VERIFICADOR-CLAUDE`) **excluída** do quadro; etapa mantida como histórico. Os marcadores já gravados ficam como estão e ninguém preenche os `PENDENTE` | Gelvazio | Pedido no chat: "exclua ela" |
-| 2026-10-13 15:03 | Tarefa do `task_complete.md` renumerada de `SUB-51` para `SUB-52` (`SUB-51` já tinha sido usado pelo Laya Server, fundido na SUB-47) | Claude Code (Opus 5.5) | Evitar código repetido |
-| 2026-10-13 15:05 |
+| Claude Code (Opus 5.5) (local · main) | SUB-52.1 ([ETAPA-013](etapas/ETAPA-013-2aa270f6-TASK-COMPLETE.md)) | ⏹️ Encerrada | 2026-10-13 15:05 |
 
 ## 📌 Tarefas
 
@@ -163,6 +161,8 @@ Decisões de 2026-10-12 a 2026-10-13 12:10: ver `historico/STATUS-antigo.md`. Da
 | 2026-10-13 14:22 | SUB-47 mantém o Laya Server; fonte oficial <https://github.com/NandhaKishorM/laya> | Gelvazio | Pedido no chat (opção C) |
 | 2026-10-13 14:49 | Migração do quadro aceita (ETAPA-001) | Gelvazio | Aceite no chat |
 | 2026-10-13 14:49 | SUB-45.5 (teste SQL novo) removida; SUB-45.6 passa a depender da SUB-45.4 | Gelvazio | Regra "nunca escrever testes, exceto para corrigir bug" |
+| 2026-10-13 15:03 | SUB-38 (verificação geral, marcador `VERIFICADOR-CLAUDE`) **excluída** do quadro; etapa mantida como histórico. Os marcadores já gravados ficam como estão e ninguém preenche os `PENDENTE` | Gelvazio | Pedido no chat: "exclua ela" |
+| 2026-10-13 15:03 | Tarefa do `task_complete.md` renumerada de `SUB-51` para `SUB-52` (`SUB-51` já tinha sido usado pelo Laya Server, fundido na SUB-47) | Claude Code (Opus 5.5) | Evitar código repetido |
 | 2026-10-13 15:05 | `task_complete.md` restaurado em `tasks/`; no `STATUS.md` só ficam tarefas abertas ou em andamento e toda linha ✅ é movida para o `task_complete.md` no commit da entrega (regra em `.claude/rules/tasks/quadro.md`) | Gelvazio | Pedidos no chat: "restaure o task_complete.md…", "no quadro deve ficar apenas tarefa aberta ou em andamento" e "registre a regra também, pra evitar erros futuros" |
 | 2026-10-13 15:00 | Toda a pasta `.claude/` vai para o Git (inclusive as sobras da skill `proxima-task`), **menos** `settings.local.json` e `launch.json`, que ficam no `.gitignore` | Gelvazio | Pedidos no chat: "tudo da pasta .claude deve ir pro git" e "settings.local.json e o launch.json, estes 2 mantenha fora do git" |
 | 2026-10-13 14:49 | Não apagar `test_output.md` e `evals/` em `.claude/skills/proxima-task/` (ficam fora do Git) | Gelvazio | Pedido no chat: "não apague nada" |
