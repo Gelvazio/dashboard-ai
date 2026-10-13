@@ -1,7 +1,9 @@
 ## Etapa 002-90cd9004 — SUB-38: Verificação geral de todas as tarefas (marcador `VERIFICADOR-CLAUDE`)
 
 **Tarefa:** SUB-38 · **Migrada em:** 2026-10-13 (ETAPA-001) · **Executor:** por subtarefa (coluna "Em uso por" do `tasks/STATUS.md`)
-**Próximo passo:** escolher uma subtarefa livre no `tasks/STATUS.md` (cada subtarefa tem o próprio próximo passo abaixo).
+**Próximo passo:** nenhum. ❌ **Tarefa excluída** em 2026-10-13 15:03 a pedido do usuário ("exclua ela"): saiu do
+`tasks/STATUS.md` (mãe e SUB-38.1). Esta etapa fica só como histórico; os marcadores `VERIFICADOR-CLAUDE` já
+gravados ficam como estão e os `PENDENTE` não serão mais preenchidos.
 
 > Bloco migrado do `task-principal.md` sem alterar o texto. **Status, prioridade, dependências e reserva** de cada subtarefa ficam só no [`tasks/STATUS.md`](../STATUS.md); aqui ficam descrição, critérios, entrega e anotações. Quem reserva uma subtarefa edita só a seção dela.
 

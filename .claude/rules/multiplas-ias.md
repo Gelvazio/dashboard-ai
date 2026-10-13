@@ -32,7 +32,7 @@ Regras **deste projeto** que completam `tasks/frentes-e-reserva.md` (genérico).
 
 - `STATUS-TAREFA-CONFIRMADO-CONCLUIDO` e `VERIFICADOR-CLAUDE` existem nos blocos migrados e no
   histórico. Em subtarefas novas, a conferência fica no campo **Verificação** da seção.
-  `VERIFICADOR-CLAUDE` só é preenchido pela tarefa de verificação geral (SUB-38).
+  `VERIFICADOR-CLAUDE` não é mais preenchido (a verificação geral foi excluída em 2026-10-13).
 
 ## Reporte de progresso (opcional)
 
