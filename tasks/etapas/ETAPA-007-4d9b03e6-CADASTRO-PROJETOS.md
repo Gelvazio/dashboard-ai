@@ -54,16 +54,16 @@ Completar a tabela `public.projects` com os campos que o usuário escolheu e cri
 | # | Subtarefa | Arquivos | Verificação | Status |
 |---|---|---|---|---|
 | 1 | SUB-45.1 — `responsavel_id` e `data_prevista_fim` | `database/08_projects_campos.sql` | SQL relido; idempotente | ✅ Concluído (`a4c068f`) |
-| 2 | SUB-45.2 — `cor` e `icone` | `database/08_projects_campos.sql` | checks idempotentes | ⬜ Pendente |
-| 3 | SUB-45.3 — `url_producao` e `url_documentacao` | `database/08_projects_campos.sql` | checks idempotentes | ⬜ Pendente |
-| 4 | SUB-45.4 — `prioridade` e `tags` | `database/08_projects_campos.sql` | check e índice GIN | ⬜ Pendente |
+| 2 | SUB-45.2 — `cor` e `icone` | `database/08_projects_campos.sql` | checks idempotentes | ✅ Concluído |
+| 3 | SUB-45.3 — `url_producao` e `url_documentacao` | `database/08_projects_campos.sql` | checks idempotentes | ✅ Concluído |
+| 4 | SUB-45.4 — `prioridade` e `tags` | `database/08_projects_campos.sql` | check e índice GIN | ✅ Concluído |
 | 5 | ~~SUB-45.5 — teste SQL~~ | — | — | ❌ Removida pelo usuário (2026-10-13) |
 | 6 | SUB-45.6 — aplicar no Supabase | — | consultas só de leitura | ⬜ Pendente |
-| 7 | SUB-45.7 — tipos | `src/types/database.ts` | `typecheck` e `test` | ⬜ Pendente |
-| 8 | SUB-45.8 — `validarProjeto()` | `src/lib/projeto.ts` | `typecheck` e `lint` | ⬜ Pendente |
-| 9 | SUB-45.9 — `criarProjeto()` | `src/services/projectService.ts` | `typecheck` | ⬜ Pendente |
-| 10 | SUB-45.10 — `atualizarProjeto()` e `definirProjetoAtivo()` | `src/services/projectService.ts` | `typecheck` | ⬜ Pendente |
-| 11 | SUB-45.11 — `StatusProjetoBadge` | `src/components/projetos/` | `typecheck` e `lint` | ⬜ Pendente |
+| 7 | SUB-45.7 — tipos | `src/types/database.ts` | `typecheck` e `test` | ✅ Concluído |
+| 8 | SUB-45.8 — `validarProjeto()` | `src/lib/projeto.ts` | `typecheck` e `lint` | ✅ Concluído |
+| 9 | SUB-45.9 — `criarProjeto()` | `src/services/projectService.ts` | `typecheck` | ✅ Concluído |
+| 10 | SUB-45.10 — `atualizarProjeto()` e `definirProjetoAtivo()` | `src/services/projectService.ts` | `typecheck` | ✅ Concluído |
+| 11 | SUB-45.11 — `StatusProjetoBadge` | `src/components/projetos/` | `typecheck` e `lint` | ✅ Concluído |
 | 12 | SUB-45.12 — `ProjetoForm`: campos básicos | `src/components/projetos/ProjetoForm.tsx` | `typecheck`, `lint`, `build` | ⬜ Pendente |
 | 13 | SUB-45.13 — `ProjetoForm`: campos novos | `src/components/projetos/ProjetoForm.tsx` | `typecheck`, `lint`, `build` | ⬜ Pendente |
 | 14 | SUB-45.14 — `ProjetosLista` | `src/components/projetos/ProjetosLista.tsx` | `typecheck`, `lint`, `build` | ⬜ Pendente |
@@ -148,157 +148,13 @@ mantido abaixo só como histórico.
 
 **Próximo passo:** nenhum — entregue. Seguir na SUB-45.9.
 
-- **Descrição:** Função pura que recebe os campos do formulário e devolve `{ campo: mensagem }` só com os erros: `nome` obrigatório; `slug` e `prefixo_codigo` com as mesmas regex do `00_projects_roles.sql`; `cor` hex `#RRGGBB`; `icone` `^[a-z0-9-]{1,64}## Etapa 007-4d9b03e6 — SUB-45: Cadastro de projetos (campos novos na tabela `projects` e tela `#/projetos`)
-
-**Tarefa:** SUB-45 · **Migrada em:** 2026-10-13 (ETAPA-001) · **Executor:** por subtarefa (coluna "Em uso por" do `tasks/STATUS.md`)
-**Próximo passo:** escolher uma subtarefa livre no `tasks/STATUS.md` (cada subtarefa tem o próprio próximo passo abaixo).
-
-> Bloco migrado do `task-principal.md` sem alterar o texto. **Status, prioridade, dependências e reserva** de cada subtarefa ficam só no [`tasks/STATUS.md`](../STATUS.md); aqui ficam descrição, critérios, entrega e anotações. Quem reserva uma subtarefa edita só a seção dela.
-
-### Tarefa-mãe
-
-- **Descrição:** Pedido do usuário: "criar os projetos; cada task deve ser ligada a um projeto; tabela no banco com descrição do projeto, status (1-ATIVO, 0-INATIVO) e data de criação". **O que já existe (SUB-29, `database/00_projects_roles.sql`):** a tabela `public.projects` com `nome`, `slug`, `descricao`, `repositorio`, `branch_padrao`, `prefixo_codigo`, `ativo` (boolean), `excluido`, `criado_por`, `created_at` e `updated_at`; e `tasks.project_id` já é `not null` com chave estrangeira para `projects` (toda task já pertence a um projeto). A RLS já deixa só o administrador criar projeto e só o owner (ou admin) editar. **O que falta:** os campos novos escolhidos pelo usuário (responsável, prazo, cor, ícone, URL de produção, URL de documentação, prioridade e tags) e a tela para listar, criar, editar e ativar/inativar projetos (no frontend só existe `listarProjetos()`).
-- **Decisões do usuário (2026-10-12):** (1) o status **continua** sendo a coluna `ativo boolean` (as RPCs da fila já usam), exibido na tela como **1-ATIVO / 0-INATIVO**; (2) campos novos: `responsavel_id`, `data_prevista_fim`, `cor`, `icone`, `url_producao`, `url_documentacao`, `prioridade` e `tags`; (3) escopo: banco **e** tela de cadastro.
-- **Critérios de Aceitação:** Todas as filhas `concluido`; `database/08_projects_campos.sql` idempotente e aplicado (com autorização); tela `#/projetos` funcionando (admin cria; owner edita; ativar/inativar); `npm run validar` verde.
-- **Commit:** pendente
-- **Anotação:** Tarefa grande (banco + várias partes): pela seção 6 do `AGENTS.md`, quem pegar a primeira subtarefa cria o plano em `docs/cadastro-de-projetos.md`. As filhas SUB-45.2 a SUB-45.6 (SQL, teste e aplicação no banco) e a SUB-45.18 (tela contra banco real) são tarefas de banco — **qualquer IA pode pegar** (a reserva por IA caiu em 2026-10-13, a pedido do usuário); aplicar no Supabase da nuvem exige **autorização explícita do usuário**. As demais (frontend e documentação) seguem livres. O número do script (`08_`) é o próximo livre em `database/` depois da remoção do `08_admin_inicial.sql` na SUB-44 (`4f4c443`); se outro script ocupar o `08_` antes, usar o próximo número livre e corrigir as filhas. Sem testes unitários novos no frontend, seguindo a mesma orientação registrada na SUB-40 (só para correção de bug); o teste SQL da SUB-45.5 cobre os checks do banco.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-
-### Plano (vindo de `docs/cadastro-de-projetos.md` em 2026-10-13)
-
-- **Criado em:** 2026-10-12
-- **Executor:** Claude Code (Opus 5.5, sessão em nuvem)
-- **Tarefa no quadro:** [`SUB-45`](../../task-principal.md) (subtarefas SUB-45.1 a SUB-45.18)
-
-#### Objetivo
-
-Completar a tabela `public.projects` com os campos que o usuário escolheu e criar a tela `#/projetos` para listar, criar, editar e ativar/inativar projetos.
-
-#### Escopo
-
-**Entra:**
-- `database/08_projects_campos.sql`, idempotente, com 8 colunas novas: `responsavel_id`, `data_prevista_fim`, `cor`, `icone`, `url_producao`, `url_documentacao`, `prioridade` e `tags`, cada uma com o seu `check`;
-- teste SQL dos campos novos e aplicação no Supabase (só com autorização do usuário);
-- tipos, validação (`validarProjeto`), serviço (`criarProjeto`, `atualizarProjeto`, `definirProjetoAtivo`), componentes e a tela `ProjetosView`, com rota e menu;
-- documentação no `README.md` e no `database/README.md`.
-
-**Não entra:**
-- trocar `ativo boolean` por `status smallint`: o usuário decidiu manter o boolean, exibido como 1-ATIVO / 0-INATIVO;
-- mudar a RLS de `projects`: hoje só o administrador cria e só o owner (ou admin) edita, o que já atende;
-- mudar a ligação task → projeto: `tasks.project_id` já é `not null` com chave estrangeira;
-- testes unitários novos no frontend (orientação registrada na SUB-40).
-
-#### Riscos e plano B
-
-| Risco | Plano B |
-|---|---|
-| Outro script ocupa o número `08_` antes da entrega | Usar o próximo número livre em `database/` e corrigir as filhas no quadro |
-| Não existe projeto Supabase com o schema do Dashboard AI (visto na SUB-25.4) | A SUB-45.6 para e pergunta ao usuário qual é o projeto; nada é aplicado sem autorização |
-| `on delete set null` em `responsavel_id` falha se `auth.users` não existir no banco de teste | O `database/tests/supabase_stub.sql` já cria `auth.users`; conferir na SUB-45.5 |
-| Script aplicado duas vezes quebra | Tudo com `add column if not exists` e constraints criadas só se não existirem; o teste aplica 2x |
-
-#### Passos
-
-| # | Subtarefa | Arquivos | Verificação | Status |
-|---|---|---|---|---|
-| 1 | SUB-45.1 — `responsavel_id` e `data_prevista_fim` | `database/08_projects_campos.sql` | SQL relido; idempotente | ✅ Concluído (`a4c068f`) |
-| 2 | SUB-45.2 — `cor` e `icone` | `database/08_projects_campos.sql` | checks idempotentes | ⬜ Pendente |
-| 3 | SUB-45.3 — `url_producao` e `url_documentacao` | `database/08_projects_campos.sql` | checks idempotentes | ⬜ Pendente |
-| 4 | SUB-45.4 — `prioridade` e `tags` | `database/08_projects_campos.sql` | check e índice GIN | ⬜ Pendente |
-| 5 | ~~SUB-45.5 — teste SQL~~ | — | — | ❌ Removida pelo usuário (2026-10-13) |
-| 6 | SUB-45.6 — aplicar no Supabase | — | consultas só de leitura | ⬜ Pendente |
-| 7 | SUB-45.7 — tipos | `src/types/database.ts` | `typecheck` e `test` | ⬜ Pendente |
-| 8 | SUB-45.8 — `validarProjeto()` | `src/lib/projeto.ts` | `typecheck` e `lint` | ⬜ Pendente |
-| 9 | SUB-45.9 — `criarProjeto()` | `src/services/projectService.ts` | `typecheck` | ⬜ Pendente |
-| 10 | SUB-45.10 — `atualizarProjeto()` e `definirProjetoAtivo()` | `src/services/projectService.ts` | `typecheck` | ⬜ Pendente |
-| 11 | SUB-45.11 — `StatusProjetoBadge` | `src/components/projetos/` | `typecheck` e `lint` | ⬜ Pendente |
-| 12 | SUB-45.12 — `ProjetoForm`: campos básicos | `src/components/projetos/ProjetoForm.tsx` | `typecheck`, `lint`, `build` | ⬜ Pendente |
-| 13 | SUB-45.13 — `ProjetoForm`: campos novos | `src/components/projetos/ProjetoForm.tsx` | `typecheck`, `lint`, `build` | ⬜ Pendente |
-| 14 | SUB-45.14 — `ProjetosLista` | `src/components/projetos/ProjetosLista.tsx` | `typecheck`, `lint`, `build` | ⬜ Pendente |
-| 15 | SUB-45.15 — `ProjetosView` | `src/views/ProjetosView.tsx` | `build` e `check:chunks` | ⬜ Pendente |
-| 16 | SUB-45.16 — rota `#/projetos` e menu | `src/views/meta.ts`, `src/views/index.ts` | `npm run validar` | ⬜ Pendente |
-| 17 | SUB-45.17 — documentação | `README.md`, `database/README.md` | `npm run validar` | ⬜ Pendente |
-| 18 | SUB-45.18 — validação visual | `docs/VALIDACAO.md` | checklist sem erros no console | ⬜ Pendente |
-
-#### Conclusão
-
-Pendente (preencher ao fechar a SUB-45, com o tempo decorrido).
-
-### SUB-45.2 — Colunas `cor` e `icone` em `database/08_projects_campos.sql`
-
-**Próximo passo:** nenhum — entregue. Seguir na SUB-45.3.
-
-- **Descrição:** No mesmo arquivo: `cor text` com `check (cor is null or cor ~ '^#[0-9a-fA-F]{6}$')` e `icone text` (nome de ícone do lucide-react, ex.: `folder-kanban`) com `check (icone is null or icone ~ '^[a-z0-9-]{1,64}$')`. Constraints criadas de forma idempotente (bloco `do $$ ... if not exists (select 1 from pg_constraint ...)`). Comentários nas colunas.
-- **Critérios de Aceitação:** Colunas e checks no arquivo, idempotentes.
-- **Entrega:** commit desta entrega (`feat(SUB-45.2)`) · **Verificação:** bloco "Personalização visual (SUB-45.2)" acrescentado a `database/08_projects_campos.sql` (e à cópia de migration `20261013000008_08_projects_campos.sql`, **hash idêntico** conferido); **aplicado 2× no Supabase local** (`psql -v ON_ERROR_STOP=1`) sem erro nem conflito; colunas `cor text` e `icone text` e as constraints `projects_cor_check` (`CHECK (((cor IS NULL) OR (cor ~ '^#[0-9a-fA-F]{6}$'::text)))`) e `projects_icone_check` (`CHECK (((icone IS NULL) OR (icone ~ '^[a-z0-9-]{1,64}$'::text)))`) presentes; **os checks foram testados** em transações com `rollback` (nenhum dado ficou no banco — o `projects` seguiu com 1 linha): aceitos `#1A2b3C` + `folder-kanban` e os dois nulos; recusados `vermelho`, `1A2b3C` (sem `#`) e `Folder_Kanban` (maiúscula/underscore).
-- **Anotação:** O bloco segue o padrão da SUB-45.1, inclusive o filtro `conrelid = 'public.projects'::regclass` em cada teste de existência de constraint (a lição registrada na 45.1: sem o filtro, uma constraint de mesmo nome em outra tabela faria a criação ser pulada em silêncio). As constraints foram nomeadas `projects_cor_check` e `projects_icone_check`. Nada foi aplicado no Supabase da **nuvem** (isso é a SUB-45.6, que exige autorização explícita do usuário).
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-13 17:40 — confirmado por DeepSeek Harness (deepseek-flash): idempotência 2× e os 5 casos de teste dos checks
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-### SUB-45.3 — Colunas `url_producao` e `url_documentacao` em `database/08_projects_campos.sql`
-
-**Próximo passo:** nenhum — entregue. Seguir na SUB-45.4.
-
-- **Descrição:** No mesmo arquivo: `url_producao text` e `url_documentacao text`, cada uma com `check (<col> is null or <col> ~ '^https?://')`, idempotentes. Comentários nas colunas.
-- **Critérios de Aceitação:** Colunas e checks no arquivo, idempotentes.
-- **Entrega:** `b1c207e` (script + migration + quadro) e este commit de complemento (etapa + histórico) · **Verificação:** bloco "URLs do projeto (SUB-45.3)" em `database/08_projects_campos.sql` (e na cópia de migration, **hash idêntico**); aplicado **2× no Supabase local** sem erro; colunas `url_producao text` e `url_documentacao text` com as constraints `projects_url_producao_check` (`CHECK (((url_producao IS NULL) OR (url_producao ~ '^https?://'::text)))`) e `projects_url_documentacao_check` (idem); **4 casos testados** em transação com `rollback` (o banco seguiu com 1 projeto): aceitos `https://exemplo.com` + `http://docs.exemplo.com` e os nulos; recusados `ftp://x` e `docs.exemplo.com` (sem esquema).
-- **Anotação:** Mesmo padrão da SUB-45.2, incluindo o filtro `conrelid` nos testes de existência das constraints; nomes `projects_url_producao_check` e `projects_url_documentacao_check` (coerentes com o padrão `<tabela>_<coluna>_check` do Postgres). Nada aplicado no Supabase da **nuvem** (SUB-45.6). **Deslize registrado:** as seções da etapa e a linha do `task_complete.md` ficaram fora do commit `b1c207e` porque eu editei sem reler os arquivos e o guard recusou as duas edições; corrigido neste commit, sem perder nada.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-13 17:42 — confirmado por DeepSeek Harness (deepseek-flash): idempotência 2× e os 4 casos dos checks de URL
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-### SUB-45.4 — Colunas `prioridade` e `tags` em `database/08_projects_campos.sql`
-
-**Próximo passo:** nenhum — entregue. Seguir na SUB-45.6 (exige autorização do usuário) ou na SUB-45.7.
-
-- **Descrição:** No mesmo arquivo: `prioridade text not null default 'MEDIA'` com `check (prioridade in ('MAXIMA','ALTA','MEDIA','BAIXA'))` (mesmos valores da seção 1.2 do `AGENTS.md`) e `tags text[] not null default '{}'`. Índice GIN em `tags` (`create index if not exists`). Comentários. **Status continua sendo a coluna `ativo boolean`** (decisão do usuário): na tela aparece como 1-ATIVO / 0-INATIVO.
-- **Critérios de Aceitação:** Colunas, check e índice no arquivo, idempotentes.
-- **Entrega:** commit desta entrega (`feat(SUB-45.4)`) · **Verificação:** bloco "Prioridade e tags (SUB-45.4)" em `database/08_projects_campos.sql` (e na cópia de migration, **hash idêntico**); aplicado **2× no Supabase local** sem erro; colunas confirmadas no banco como `prioridade text NOT NULL DEFAULT 'MEDIA'::text` e `tags ARRAY NOT NULL DEFAULT '{}'::text[]`; constraint `projects_prioridade_check` = `CHECK ((prioridade = ANY (ARRAY['MAXIMA','ALTA','MEDIA','BAIXA'])))`; **índice GIN** `projects_tags_gin` = `CREATE INDEX projects_tags_gin ON public.projects USING gin (tags)`; **3 casos testados** em transação com `rollback` (o banco seguiu com 1 projeto): sem informar nada → `padrao=MEDIA tags={}`; `MAXIMA` com `tags '{a,b}'` → aceito e `tags @> array['a']` achou **1** linha (índice em uso); `URGENTE` → recusado.
-- **Anotação:** `prioridade` usa os mesmos valores da seção 1.2 do `AGENTS.md` (MAXIMA/ALTA/MEDIA/BAIXA) e o **status continua sendo a coluna `ativo boolean`** (decisão do usuário: a tela mostra 1-ATIVO / 0-INATIVO) — nada de coluna de status nova. O índice GIN usa `create index if not exists` (idempotente) e o filtro `conrelid` foi mantido no teste da constraint. Nada aplicado no Supabase da **nuvem** (SUB-45.6).
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-13 17:43 — confirmado por DeepSeek Harness (deepseek-flash): idempotência 2×, defaults, check e índice GIN conferidos com 3 casos
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-### ~~SUB-45.5 — Teste SQL `database/tests/test_projects_campos.sql`~~ (removida)
-
-**Próximo passo:** nenhum — ❌ **removida a pedido do usuário em 2026-10-13 14:49** (regra "nunca escrever testes,
-exceto para corrigir bug"). Saiu do `tasks/STATUS.md`; a SUB-45.6 passou a depender da SUB-45.4. Texto original
-mantido abaixo só como histórico.
-
-- **Descrição:** Teste no padrão de `database/tests/test_multi_projeto.sql` (`raise notice 'ok: ...'` e `TODOS_OS_TESTES_PASSARAM`): defaults de `prioridade` e `tags`; checks recusam cor `azul`, ícone `Folder Kanban`, URL `ftp://x` e prioridade `URGENTE`; aceitam valores válidos; `responsavel_id` vira `null` quando o usuário é apagado. Incluir o arquivo no `database/tests/run_tests.sh` e corrigir a mensagem "schema 00-06" para o intervalo real.
-- **Critérios de Aceitação:** `database/tests/run_tests.sh` verde contra um Postgres com pgvector descartável (nunca o Supabase de produção).
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-### SUB-45.6 — Aplicar o `database/08_projects_campos.sql` no Supabase (só com autorização do usuário)
-
-**Próximo passo:** executar conforme a descrição.
-
-- **Descrição:** **Pedir autorização explícita do usuário no chat antes de qualquer comando no banco remoto** e confirmar com ele qual é o projeto Supabase do Dashboard AI. Com a autorização, aplicar o script e conferir com consultas só de leitura que as 8 colunas e os checks existem (`information_schema.columns`, `pg_constraint`).
-- **Critérios de Aceitação:** Script aplicado sem erro; conferências registradas na anotação (sem chaves, tokens ou dados de usuários).
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-### SUB-45.7 — Tipos novos de `Project` em `src/types/database.ts`
-
-**Próximo passo:** nenhum — entregue. Seguir na SUB-45.8.
-
-- **Descrição:** Acrescentar ao tipo `Project` os campos `responsavel_id: string | null`, `data_prevista_fim: string | null`, `cor: string | null`, `icone: string | null`, `url_producao: string | null`, `url_documentacao: string | null`, `prioridade: PrioridadeProjeto` e `tags: string[]`, e exportar `type PrioridadeProjeto = 'MAXIMA' | 'ALTA' | 'MEDIA' | 'BAIXA'`. Ajustar `ProjectInsert`/`ProjectUpdate` se precisar e corrigir mocks de teste que montam `Project`.
-- **Critérios de Aceitação:** `npm run typecheck` e `npm test` verdes.
-- **Entrega:** commit desta entrega (`feat(SUB-45.7)`) · **Verificação:** `npm run typecheck` **exit 0** (`tsc -b` + `tsc -p api/tsconfig.json`) e `npm test` **verde — 44 arquivos / 301 testes passando, 30 pulados**; o `type Project` ganhou os 8 campos, o `PrioridadeProjeto` foi exportado e `src/types/index.ts` (que faz `export * from './database'`) reexporta tudo.
-- **Anotação:** `PrioridadeProjeto` ficou junto das outras uniões de coluna (`TaskStatus`, `ProjectRole`, …). Os 8 campos entraram em `Project` com um comentário apontando o `database/08_projects_campos.sql`; no `ProjectInsert` todos foram marcados como **opcionais** (no banco são nulos — `responsavel_id`, `data_prevista_fim`, `cor`, `icone`, `url_producao`, `url_documentacao` — ou têm default: `prioridade` = MEDIA, `tags` = {}); `ProjectUpdate` já era `Partial<Project>` e não precisou mudar. **Nenhum mock precisou de correção:** os testes de integração criam projeto por `criarProjeto()` (`tests/helpers/postgrest.ts`), que insere só `slug`, `nome` e `prefixo_codigo` no tipo de insert (onde os novos campos são opcionais), e **não existe literal tipado como `Project`** em `src/` (conferido por busca).
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-13 17:53 — confirmado por DeepSeek Harness (deepseek-flash): `typecheck` exit 0 e suíte verde (301 testes)
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-; URLs `http(s)://`; `prioridade` na lista; `data_prevista_fim` data válida. Mensagens em português, no estilo de `src/lib/auth.ts`. Exportar em `src/lib/index.ts`, se existir.
-- **Critérios de Aceitação:** validação implementada e comparada por leitura com as regras do banco; não executar testes por regra do projeto.
+- **Descrição:** Função pura que recebe os campos do formulário e devolve `{ campo: mensagem }` só com os erros: `nome` obrigatório; `slug` e `prefixo_codigo` com as mesmas regex do `00_projects_roles.sql`; `cor` hex `#RRGGBB`; `icone` `^[a-z0-9-]{1,64}$`; URLs `http(s)://`; `prioridade` na lista; `data_prevista_fim` data válida. Mensagens em português, no estilo de `src/lib/auth.ts`. Exportar em `src/lib/index.ts`, se existir.
+- **Critérios de Aceitação:** `npm run typecheck` e `npm run lint` verdes.
 - **Entrega:** commit `bce843b` · **Verificação:** leitura de `src/lib/projeto.ts` e comparação manual das expressões com `00_projects_roles.sql` e `08_projects_campos.sql`; testes não executados conforme regra do projeto.
 - **Anotação:** `validarProjeto()` implementada em `src/lib/projeto.ts`, incluindo validação de data ISO com calendário real. O primeiro commit não atualizou esta seção; correção registrada junto à entrega da SUB-45.9.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-13 17:55 — conferida por leitura do código (Codex GPT-6).
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
 ### SUB-45.9 — `criarProjeto()` em `src/services/projectService.ts`
 
 **Próximo passo:** nenhum — entregue. Seguir na SUB-45.10.
@@ -326,6 +182,7 @@ mantido abaixo só como histórico.
 - **Entrega:** commit desta entrega · **Verificação:** leitura do componente, textos, classes e export do módulo; nenhuma verificação visual ou teste executado.
 - **Anotação:** badge implementado com cores coerentes com os estados existentes e rótulo acessível por `aria-label`.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-13 18:03 — conferido por leitura do código (Codex GPT-6).
+
 ### SUB-45.12 — `ProjetoForm.tsx`: campos básicos
 
 **Próximo passo:** nenhum — entregue. Seguir na SUB-45.13.
