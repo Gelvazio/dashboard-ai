@@ -204,12 +204,12 @@ _A preencher ao final: resultado, commits, pendências e tempo decorrido._
 
 ### SUB-47.3 — Script `scripts/sincronizar-agentes.mjs` (`.agents/` → `.claude/`)
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** Script Node que copia `.agents/skills/*` para `.claude/skills/*` e `.agents/agents/*` para `.claude/agents/*` (o Claude Code só lê `.claude/`, local e nuvem). Script `npm run sync:agentes` no `package.json`. Não toca em `.claude/settings.local.json` nem em `.claude/launch.json`.
 - **Critérios de Aceitação:** `node --check` sem erro; execução copia os arquivos; nada fora de `skills/` e `agents/` é alterado.
-- **Commit:** pendente
-- **Anotação:** Plano em `docs/equipe-de-agentes.md`.
+- **Commit:** `feat(SUB-47.3)` (Claude Code (Opus 5.5) (local · main), 2026-10-13)
+- **Anotação:** Plano em `docs/equipe-de-agentes.md`. **Entrega (2026-10-13 15:40):** `scripts/sincronizar-agentes.mjs` (Node, sem dependências) copia `.agents/skills/**` e `.agents/agents/**` para `.claude/` só quando o conteúdo mudou, e **nunca apaga** nada em `.claude/` (a cópia da `proxima-task` tem `evals/` e `test_output.md` próprios, que o usuário pediu para manter); `npm run sync:agentes` no `package.json`. **Verificação:** `node --check` ok; linhas ≤ 100; execução numa pasta temporária: 3 arquivos copiados (inclusive subpasta), `evals.md` e `settings.local.json` preexistentes intactos, segunda execução sem cópias; no projeto, `skills: 0 copiado(s), 1 já igual(is)` (a `proxima-task` já estava sincronizada).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 

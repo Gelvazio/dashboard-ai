@@ -23,7 +23,11 @@
 | SUB-41.3 | Mover a seção "3. Ativação no Terminal (Claude Code)" e fechar a limpeza do `AGENTS.md` | 🟡 Média | SUB-41.2 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-6b941e1e-AGENTS-SEM-PLANO-CEREBRO.md) |
 | SUB-41 | **Tirar do `AGENTS.md` o plano "🧠 Cérebro de Memória Persistente" (o `AGENTS.md` fica só com regras)** | 🟡 Média | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-005](etapas/ETAPA-005-6b941e1e-AGENTS-SEM-PLANO-CEREBRO.md) |
 | SUB-50.1 | Instalar e configurar o Supabase CLI | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
+<<<<<<< Updated upstream
 | SUB-35.46.1 | Validação sem banco: `npm run typecheck`, `npm test`, `npm run build` e testes Python | 🟡 Média | SUB-35.7, SUB-35.12, SUB-35.13, SUB-35.32, SUB-35.34, SUB-35.38, SUB-35.39, SUB-35.41, SUB-35.43, SUB-35.44, SUB-35.45 | ✅ Concluído | — | [ETAPA-004](etapas/ETAPA-004-57a86337-MONITOR-TEMPO-REAL.md) |
+=======
+| SUB-47.3 | Script `scripts/sincronizar-agentes.mjs` (`.agents/` → `.claude/`) | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+>>>>>>> Stashed changes
 
 ---
 
