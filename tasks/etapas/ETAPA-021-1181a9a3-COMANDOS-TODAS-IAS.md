@@ -59,7 +59,7 @@ cópia desatualizada é recusado pelo `pre-push` com instrução de rodar `npm r
 
 ### SUB-60.2 — Gerar `.gemini/commands/<skill>.toml`
 
-**Próximo passo:** depende da SUB-60.1.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 19:59).
 
 - **Descrição:** ler `name`/`description` do frontmatter de cada `SKILL.md` e escrever o TOML.
 - **Critérios de Aceitação:** TOML válido (conferido com parser); só reescreve se mudou.
