@@ -115,6 +115,36 @@ Os dois arquivos estão no `.gitignore`.
 > O `npm run dev` sobe **só o frontend** (Vite). As funções de [`api/`](api/) (MCP e
 > embeddings) rodam na Vercel — veja [Deploy na Vercel](#deploy-na-vercel).
 
+### Desenvolvimento local com Supabase (opcional)
+
+Dá para rodar **o Supabase inteiro na sua máquina**, em contêineres Docker — sem custo e sem tocar no
+banco de produção. Guia completo (instalação, portas, problemas comuns): [`docs/supabase-local.md`](docs/supabase-local.md).
+
+**Pré-requisitos:** **Docker Desktop** instalado e rodando, e o **Supabase CLI**, que já vem como
+dependência de desenvolvimento do projeto (por isso se usa com `npx`, sem instalar nada global).
+
+**Subir, conferir e parar** — todo comando leva `--workdir database/configlocal`, porque a
+configuração local mora nessa pasta:
+
+```bash
+npx supabase --workdir database/configlocal start    # sobe os contêineres (1ª vez baixa as imagens)
+npx supabase --workdir database/configlocal status   # portas e chaves locais
+npx supabase --workdir database/configlocal stop     # para os contêineres
+```
+
+Studio em <http://localhost:54323>, API em `http://localhost:54321` e banco em `localhost:54322`.
+
+**Alternar entre local e nuvem** — o `.env.local` liga o local; o `.env` tem as credenciais da nuvem:
+
+| Comando | Ambiente |
+|---|---|
+| `npm run dev:local` | **Local** — cria/ativa o `.env.local` a partir do [`.env.local.example`](.env.local.example) e sobe o Vite |
+| `npm run dev` | **Nuvem** — guarda o `.env.local` como `.env.local.off` e sobe o Vite |
+
+**Quando usar cada um:** **local** para desenvolver e testar (dados descartáveis, funciona offline e
+não custa nada); **nuvem** para produção/staging (dados reais e persistentes). As chaves locais são de
+demonstração e **não** servem para o projeto da nuvem — nem o contrário.
+
 ### Scripts do `package.json`
 
 | Comando | O que faz |
@@ -165,7 +195,7 @@ funções, papéis e RLS está no [`database/README.md`](database/README.md).
 
 ### 1. Aplicar os scripts
 
-Aplique **em ordem numérica** (`00` → `07`):
+Aplique **em ordem numérica** (`00` → `08`):
 
 | Arquivo | Conteúdo |
 |---|---|
@@ -177,6 +207,7 @@ Aplique **em ordem numérica** (`00` → `07`):
 | `05_rls_policies.sql` | RLS e permissões das tabelas e funções de 00–04 |
 | `06_messages_rules.sql` | Recados entre agentes e regras por projeto |
 | `07_agent_events.sql` | Eventos dos agentes para o monitor em tempo real |
+| `08_projects_campos.sql` | Campos do perfil do projeto (cor, ícone, URLs, prioridade, tags) |
 
 - **SQL Editor do Supabase:** abra cada arquivo, cole e execute, na ordem da tabela.
 - **psql** (use a *connection string* do painel do Supabase, em *Project Settings > Database*):
@@ -185,6 +216,12 @@ Aplique **em ordem numérica** (`00` → `07`):
 export DATABASE_URL='postgresql://postgres:<senha>@<host>:5432/postgres'
 for f in database/0*.sql; do psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f "$f"; done
 ```
+
+- **Local (Docker):** os mesmos scripts existem como **migrations** em
+  [`database/configlocal/supabase/migrations/`](database/configlocal/supabase/migrations/) e são
+  aplicadas por `npx supabase --workdir database/configlocal db reset` — veja
+  [Desenvolvimento local com Supabase](#desenvolvimento-local-com-supabase-opcional). Mudou um script?
+  Atualize as **duas cópias** ([`database/README.md`](database/README.md) explica).
 
 ### 2. Criar o projeto e os membros
 
