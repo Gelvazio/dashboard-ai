@@ -48,7 +48,7 @@
 
 ### SUB-49.2 — Documentar uso de GitHub Artifacts (limites, retenção, download)
 
-**Próximo passo:** depende da SUB-49.5 (criptografia). Liberada em 2026-10-13 20:19 por Claude Code (Opus 5.5) (nuvem · main): ao levantar a documentação, achado que o repositório é **público** e o artifact (dump completo do banco) poderia ser baixado por qualquer conta do GitHub; o usuário escolheu criptografar o dump antes de documentar. Corrigir na documentação: plano gratuito tem **500 MB** de armazenamento em repositório privado (dividido com Packages), não 2 GB; repositório público tem retenção máxima de 90 dias; o artifact **não** é privado em repositório público.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:20).
 
 - **Descrição:** Criar `docs/backup-github-artifacts.md` com: descrição do GitHub Artifacts (armazenamento temporário, privado), limites do plano gratuito (2 GB armazenamento, 100 GB download/mês, retenção até 90 dias), quando usar (dumps SQL < 2 GB, retenção até 90 dias), como baixar o backup (UI do GitHub Actions, ou API), como restaurar (psql com o dump), como ajustar a retenção (parâmetro `retention-days`), e como monitorar o uso (aba Actions → Usage). Adicionar seção "Backup" no `README.md` referenciando este documento.
 - **Critérios de Aceitação:** Documentação completa e clara; links para Actions e uso; exemplo de comando de restore; `README.md` com seção de backup.
