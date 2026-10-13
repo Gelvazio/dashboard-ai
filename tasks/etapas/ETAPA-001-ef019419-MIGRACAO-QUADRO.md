@@ -5,7 +5,7 @@
 OPCAO DE SER ASSUMIDA POR QUALQUER IA, ISSO DEVE SER MANTIDO"
 **Objetivo:** trocar o quadro antigo (`task-principal.md` + `task_complete.md` + `STATUS.md` da raiz) pelo modelo de
 `.claude/rules/tasks/quadro.md` (`tasks/STATUS.md` + `tasks/etapas/`), com cada regra escrita em um lugar só.
-**Próximo passo:** 001.3 — criar `tasks/STATUS.md`.
+**Próximo passo:** 001.6 — reescrever o `AGENTS.md` como porta de entrada curta e versionar `.claude/rules/` sem duplicatas.
 
 ### Escopo
 
@@ -49,10 +49,10 @@ OPCAO DE SER ASSUMIDA POR QUALQUER IA, ISSO DEVE SER MANTIDO"
 |------|-----------|--------|--------------|-------------|
 | 001.1 | Aprovação do plano pelo usuário | ✅ Concluído | 2026-10-13 14:27 | Respostas no chat (4 perguntas) + regra das subtarefas às 14:30 |
 | 001.2 | Congelar o quadro antigo (recado + aviso) | ✅ Concluído | 2026-10-13 14:31 | Aviso no topo do `task-principal.md` + recado em `tasks/RECADOS.md`; nenhuma trava ativa no momento |
-| 001.3 | `tasks/STATUS.md` (absorve o `STATUS.md` da raiz) | 🔄 Em progresso | — | — |
-| 001.4 | Etapas das tarefas pendentes (uma linha por subtarefa no `STATUS.md`) | ⬜ Pendente | — | — |
-| 001.5 | Histórico em `tasks/historico/` (sem alterar texto) | ⬜ Pendente | — | — |
-| 001.6 | Regras sem duplicata (`AGENTS.md` curto + `.claude/rules/` no Git) | ⬜ Pendente | — | — |
+| 001.3 | `tasks/STATUS.md` (absorve o `STATUS.md` da raiz) | ✅ Concluído | 2026-10-13 14:45 | Riscos, decisões, pendências e lições trazidos do `STATUS.md` antigo; aceites antigos listados em Pendências |
+| 001.4 | Etapas das tarefas pendentes (uma linha por subtarefa no `STATUS.md`) | ✅ Concluído | 2026-10-13 14:45 | Script copia os blocos literalmente: 88 blocos pendentes (11 mães + 77 subtarefas) → 11 etapas (002 a 012) + 91 linhas (77 + 3 subtarefas `.1` novas: SUB-38.1, SUB-42.1, SUB-48.1); 80 seções de subtarefa; planos de `docs/` de SUB-38, SUB-45 e SUB-47 embutidos nas etapas |
+| 001.5 | Histórico em `tasks/historico/` (sem alterar texto) | ✅ Concluído | 2026-10-13 14:50 | `git mv` de `task-principal.md`, `task_complete.md`, `STATUS.md` (→ `STATUS-antigo.md`) e dos planos de SUB-40 e validação de telas; planos de SUB-38/45/47 removidos de `docs/` (conteúdo já nas etapas); `task-principal.md` da raiz virou aviso de uma linha; `tasks/historico/README.md` explica o conteúdo |
+| 001.6 | Regras sem duplicata (`AGENTS.md` curto + `.claude/rules/` no Git) | 🔄 Em progresso | — | — |
 | 001.7 | Skill `proxima-task` única; tirar `documentacao-padrao` | ⬜ Pendente | — | — |
 | 001.8 | Painel `index.html` lendo o modelo novo | ⬜ Pendente | — | — |
 | 001.9 | Links (README, `docs/`, espelho de eventos) | ⬜ Pendente | — | — |
