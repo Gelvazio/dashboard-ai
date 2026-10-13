@@ -81,7 +81,7 @@ JSON válido e com as mesmas permissões, menos a linha do caminho fixo; `npm ru
 
 ### SUB-58.5 — Aceite do usuário
 
-**Próximo passo:** 👀 o usuário, no Claude Code local: (1) exportar `DASHBOARD_AI_MCP_URL` e
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:14).
 `MCP_AUTH_TOKEN` e ver o `dashboard-ai` em `/mcp`; (2) abrir uma sessão nova e ver a mensagem
 `[hook sincronizar-main]`; (3) rodar `npm run validar`; (4) responder "sim".
 
