@@ -52,7 +52,7 @@ JSON válido e com as mesmas permissões, menos a linha do caminho fixo; `npm ru
 
 ### SUB-58.2 — Hook de início de sessão que sincroniza a `main`
 
-**Próximo passo:** depende da SUB-58.1 (um commit por vez).
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 19:39).
 
 - **Descrição:** `.claude/hooks/sincronizar-main.sh` roda `git fetch --all --prune` e, só na `main`
   com a árvore limpa, `git pull --rebase origin main`; nos outros casos só avisa. Registrar no
