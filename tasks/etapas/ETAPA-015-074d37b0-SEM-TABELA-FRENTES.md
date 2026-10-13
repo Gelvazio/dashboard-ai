@@ -47,12 +47,14 @@ mesmo tempo) e com a informação repetida: quem está fazendo o quê já está 
 
 ### SUB-54.2 — Skill `proxima-task` lendo as frentes pela coluna "Em uso por"
 
-**Próximo passo:** depois da 54.1.
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** em `.agents/skills/proxima-task/SKILL.md`, as frentes ativas passam a ser os nomes (sem o
   "(desde …)") que aparecem em "Em uso por" nas linhas 🔄; rodar `npm run sync:agentes` para a cópia em `.claude/`.
 - **Critérios de Aceitação:** skill sem menção à tabela "🧭 Frentes"; cópia em `.claude/` igual à de `.agents/`.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-54.2)` · **Verificação:** passo 3 da skill passa a montar as frentes ativas pelos
+  nomes da coluna "Em uso por" (sem `(desde …)`, `—` e trava especial) e a descrição cita a coluna; `grep` sem
+  "🧭"/"Encerrada" na skill; `npm run sync:agentes` copiou a skill e `cmp` confirma `.claude/` = `.agents/`.
 
 ### SUB-54.3 — Remover a seção "🧭 Frentes" do `STATUS.md` e avisar as IAs
 

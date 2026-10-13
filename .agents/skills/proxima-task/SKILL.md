@@ -1,6 +1,6 @@
 ---
 name: proxima-task
-description: Mostra o que fazer agora no quadro do projeto (tasks/STATUS.md) - frentes ativas e o próximo passo de cada uma, as subtarefas livres para pegar por prioridade e o que está aguardando o usuário. Use quando perguntarem "qual a próxima tarefa?", "o que tem pendente?", "o que posso pegar?" ou "/proxima-task".
+description: Mostra o que fazer agora no quadro do projeto (tasks/STATUS.md) - frentes ativas (coluna "Em uso por") e o próximo passo de cada uma, as subtarefas livres para pegar por prioridade e o que está aguardando o usuário. Use quando perguntarem "qual a próxima tarefa?", "o que tem pendente?", "o que posso pegar?" ou "/proxima-task".
 ---
 
 # Próxima tarefa (proxima-task)
@@ -16,9 +16,10 @@ o quadro; para pegar uma subtarefa, siga `.claude/rules/tasks/frentes-e-reserva.
 1. **Sincronizar:** `git fetch --all --prune` e `git pull --rebase origin main` (sem isso o quadro mente).
 2. **Ler** `tasks/STATUS.md` e `tasks/RECADOS.md` (recados para você ou `todas`, principalmente
    avisos de quadro congelado).
-3. **Frentes ativas** (tabela "🧭 Frentes", situação diferente de `⏹️ Encerrada`): para cada uma,
-   abrir a etapa da subtarefa e ler o `**Próximo passo:**` da seção da subtarefa. Marcar com ⭐ a
-   frente atual (mesma IA/ambiente/branch desta sessão, se der para saber).
+3. **Frentes ativas** (não há tabela de frentes): cada nome que aparece na coluna "Em uso por"
+   da tabela "📌 Tarefas", tirando o `(desde …)`, `—` e `🔒 Trava especial`. Para cada uma, abrir a
+   etapa da subtarefa reservada e ler o `**Próximo passo:**` da seção dela. Marcar com ⭐ a frente
+   atual (mesma IA/ambiente/branch desta sessão, se der para saber).
 4. **Subtarefas livres agora** (tabela "📌 Tarefas"), na ordem 🔴 → 🟠 → 🟡 → 🟢 e, no empate, a
    ordem do quadro. Uma linha é livre quando:
    - não está em **negrito** (negrito = tarefa-mãe, não se reserva);

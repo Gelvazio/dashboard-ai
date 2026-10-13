@@ -30,6 +30,7 @@
 | SUB-48.1 | Definir estrutura `projects/` para projetos de IA independentes | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-010](etapas/ETAPA-010-43fbb21f-ESTRUTURA-PROJECTS.md) |
 | SUB-48 | **Definir estrutura `projects/` para projetos de IA independentes** | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-010](etapas/ETAPA-010-43fbb21f-ESTRUTURA-PROJECTS.md) |
 | SUB-54.1 | Regras sem "linha da frente" (`quadro.md`, `frentes-e-reserva.md`, `ciclo-da-task.md`) | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
+| SUB-54.2 | Skill `proxima-task` lendo as frentes pela coluna "Em uso por" | 🟡 Média | SUB-54.1 | ✅ Concluído | — | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
 
 ---
 
