@@ -57,15 +57,14 @@
 | SUB-45.4 | Colunas `prioridade` e `tags` no `08_projects_campos.sql` (check dos 4 valores + índice GIN) | 🟡 Média | SUB-45.3 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-49.1 | Criar workflow GitHub Actions para backup com GitHub Artifacts | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
 | SUB-45.7 | Tipos novos de `Project` (`PrioridadeProjeto` + 8 campos) em `src/types/database.ts` | 🟡 Média | SUB-45.4 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
-
----
-
 | SUB-45.8 | `validarProjeto()` em `src/lib/projeto.ts` | 🟡 Média | SUB-45.7 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
-
 | SUB-45.9 | `criarProjeto()` em `src/services/projectService.ts` | 🟡 Média | SUB-45.7 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.10 | `atualizarProjeto()` e `definirProjetoAtivo()` em `src/services/projectService.ts` | 🟡 Média | SUB-45.9 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.11 | Componente `src/components/projetos/StatusProjetoBadge.tsx` | 🟡 Média | SUB-45.7 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.12 | `ProjetoForm.tsx`: campos básicos | 🟡 Média | SUB-45.8, SUB-45.9 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
+
+---
+
 ## 📜 Histórico do quadro antigo (blocos, até 2026-10-13)
 
 > Blocos do modelo antigo (SUB-01 a SUB-46), movidos do `task-principal.md` (hoje em
