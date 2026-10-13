@@ -63,7 +63,7 @@ Com reserva de Claude Code: `Edit` em `src/` passa. Qualquer erro do próprio ho
 
 ### SUB-59.3 — Documentar a trava em `.claude/rules/multiplas-ias.md`
 
-**Próximo passo:** depende da SUB-59.2.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 19:53).
 
 - **Descrição:** seção curta: o que os hooks fazem, o que não pegam, o escape.
 - **Critérios de Aceitação:** arquivo < 5 KB; nada repetido de outra regra.
