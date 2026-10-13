@@ -48,7 +48,7 @@
 
 ### SUB-49.2 — Documentar uso de GitHub Artifacts (limites, retenção, download)
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:20).
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** Criar `docs/backup-github-artifacts.md` com: descrição do GitHub Artifacts (armazenamento temporário, privado), limites do plano gratuito (2 GB armazenamento, 100 GB download/mês, retenção até 90 dias), quando usar (dumps SQL < 2 GB, retenção até 90 dias), como baixar o backup (UI do GitHub Actions, ou API), como restaurar (psql com o dump), como ajustar a retenção (parâmetro `retention-days`), e como monitorar o uso (aba Actions → Usage). Adicionar seção "Backup" no `README.md` referenciando este documento.
 - **Critérios de Aceitação:** Documentação completa e clara; links para Actions e uso; exemplo de comando de restore; `README.md` com seção de backup.

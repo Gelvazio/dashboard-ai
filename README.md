@@ -22,6 +22,7 @@ a saúde das travas de cada projeto.
 - [Deploy na Vercel](#deploy-na-vercel)
 - [Agentes de IA (fila via MCP)](#agentes-de-ia-fila-via-mcp)
 - [Memória via MCP](#memória-via-mcp)
+- [Backup do banco](#backup-do-banco)
 - [Segurança](#segurança)
 - [Monitor em tempo real](#monitor-em-tempo-real)
 - [Classificação de tarefas (Laya Server + Opus)](#classificação-de-tarefas-laya-server--opus)
@@ -645,6 +646,15 @@ curl -s https://<seu-app>.vercel.app/mcp \
 Boas práticas para agentes: **buscar antes de gravar** (`brain_search`) para não duplicar,
 usar títulos descritivos e estáveis (o título é a chave), e apagar (`brain_delete`) memórias
 obsoletas em vez de deixá-las contradizer as novas.
+
+## Backup do banco
+
+Backup diário do Supabase local (02:00 UTC, 23:00 de Brasília) pelo workflow
+[`backup-supabase-artifacts.yml`](.github/workflows/backup-supabase-artifacts.yml), publicado como
+GitHub Artifact por 30 dias. Como o repositório é **público**, o dump sai **criptografado** e só é
+gerado com o secret `SUPABASE_BACKUP_PASSPHRASE` (≥ 20 caracteres) — guarde a senha fora do GitHub.
+Configuração, download, restauração, retenção e limites:
+[`docs/backup-github-artifacts.md`](docs/backup-github-artifacts.md).
 
 ## Segurança
 
