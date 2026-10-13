@@ -25,3 +25,21 @@
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente`; a dependência SUB-35.32 continua `pendente` (marcador `⬜ NÃO IMPLEMENTADA`, Devin, 15:50), então a validação automatizada da SUB-35 não foi executada.
+
+### SUB-35.46.1 — Validação sem banco (typecheck, testes, build, Python)
+
+**Próximo passo:** rodar `npm ci`, `npm run typecheck`, `npm test`, `npm run build` e os testes Python; registrar o resultado.
+
+- **Descrição:** Parte sem banco da SUB-35.46, separada em 2026-10-13 15:19 por Claude Code (Opus 5.5) (nuvem · main) pela regra de `multiplas-ias.md` (o `npm run test:integration` é tarefa de banco). Rodar `npm run typecheck`, `npm test`, `npm run build` e os testes Python (`scripts/test_*.py`) e registrar o resultado.
+- **Critérios de Aceitação:** Tudo verde, ou cada falha registrada com o comando e a saída.
+- **Entrega:** — · **Verificação:** —
+- **Anotação:** —
+
+### SUB-35.46.2 — Validação de banco (`npm run test:integration`)
+
+**Próximo passo:** rodar `npm run test:integration` contra o banco e registrar o resultado.
+
+- **Descrição:** Parte de banco da SUB-35.46 (separada em 2026-10-13 15:19): rodar `npm run test:integration` e registrar o resultado. **Só o Claude Code local** (`multiplas-ias.md`).
+- **Critérios de Aceitação:** Tudo verde, ou cada falha registrada com o comando e a saída.
+- **Entrega:** — · **Verificação:** —
+- **Anotação:** —
