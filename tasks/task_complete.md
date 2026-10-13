@@ -50,6 +50,7 @@
 | SUB-50.6 | Documentar alternância entre local e nuvem (`docs/supabase-local.md`) | 🟡 Média | SUB-50.5 | ✅ Concluído | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-50.7 | Atualizar o `README.md` com instruções de desenvolvimento local | 🟡 Média | SUB-50.6 | ✅ Concluído | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-50 | **Configurar Supabase local com Docker para desenvolvimento** | 🟡 Média | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
+| SUB-45.19 | Revisar a SUB-45.1 (`database/08_projects_campos.sql`) — 4 itens conferidos no Supabase local | 🟡 Média | SUB-45.1, SUB-50 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 
 ---
 
@@ -3629,5 +3630,5 @@
 - **Critérios de Aceitação:** Arquivo criado; SQL relido (sintaxe, idempotência com `if not exists`); nada aplicado no banco nesta subtarefa.
 - **Commit:** a4c068f
 - **Anotação:** Criado `database/08_projects_campos.sql` no padrão dos scripts `00`–`07` (cabeçalho com as partes SUB-45.1 a 45.4, idempotente, depende de 00 a 07). Colunas `responsavel_id uuid` e `data_prevista_fim date` com `add column if not exists` e `comment on column`. **Desvio justificado:** a chave estrangeira `projects_responsavel_id_fkey` (`references auth.users (id) on delete set null`) só é criada quando `auth.users` existe (`to_regclass`) e ainda não há a constraint, porque o banco de teste (`database/tests/supabase_stub.sql`) não tem o schema `auth` e nenhum script atual referencia `auth.users` (ex.: `user_roles.user_id` é uuid sem FK); uma FK direta quebraria o `run_tests.sh`. No Supabase a FK é criada e o `on delete set null` vale. Nada aplicado em banco (critério da subtarefa). Plano em `docs/cadastro-de-projetos.md` (criado no lock, `7105129`).
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE — em revisão pelo Claude Code local com o MCP do Supabase (SUB-45.19), a pedido do usuário; a autoconferência de 21:53 foi feita em sessão na nuvem, antes da regra 11
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-13 17:39 — **reconfirmado** por DeepSeek Harness (deepseek-flash) na revisão da SUB-45.19 (autorizado pelo usuário: "faça todas da SUB-45"): 4 itens conferidos no Supabase local — tipos/nomes coerentes com o `00_projects_roles.sql`, idempotência provada aplicando o script 2× sem erro, `auth.users` presente e a FK criada com `ON DELETE SET NULL`, comentários presentes; arquivo sem correção. *(Antes: `PENDENTE — em revisão pelo Claude Code local com o MCP do Supabase (SUB-45.19); a autoconferência de 21:53 foi feita em sessão na nuvem, antes da regra 11`.)*
 - **VERIFICADOR-CLAUDE:** PENDENTE
