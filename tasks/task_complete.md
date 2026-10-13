@@ -86,6 +86,8 @@
 | SUB-58 | **Completar a estrutura do Claude Code (`.mcp.json`, hook de início, `CLAUDE.local.md`, `settings.json` limpo)** | 🟡 Média | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-019](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
 | SUB-59.4 | Aceite do usuário | 🟡 Média | SUB-59.3 | ✅ Concluído | — | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
 | SUB-59 | **Hooks que obrigam o Claude Code a registrar a tarefa no quadro antes de editar** | 🟡 Média | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
+| SUB-60.5 | Aceite do usuário | 🟡 Média | SUB-60.4 | ✅ Concluído | — | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
+| SUB-60 | **Comandos (skills) para todas as IAs, sempre sincronizados** | 🟡 Média | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
 
 ---
 

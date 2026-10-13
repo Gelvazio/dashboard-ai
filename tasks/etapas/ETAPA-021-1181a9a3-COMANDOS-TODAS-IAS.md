@@ -84,10 +84,10 @@ cópia desatualizada é recusado pelo `pre-push` com instrução de rodar `npm r
 
 ### SUB-60.5 — Aceite do usuário
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:14).
+**Próximo passo:** nenhum (concluída).
 uma ferramenta além do Claude Code (Antigravity, Cursor, Codex, Grok ou Gemini CLI) e responde "sim".
 
 - **Descrição:** o usuário chama `/proxima-task` (ou `$proxima-task` no Codex) em pelo menos uma
   ferramenta além do Claude Code.
 - **Critérios de Aceitação:** "sim" do usuário.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `docs(SUB-60.5)` · **Verificação:** aceite do usuário no chat em 2026-10-13 20:14 (resposta "Sim" ao roteiro de testes locais dos aceites 58.5, 59.4, 60.5 e 61.3)
