@@ -244,11 +244,23 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.2 — Skill `classificar-tarefa` (níveis, sinais, matriz ferramenta × modelo)
 
-**Próximo passo:** confirmar a matriz com o usuário e escrever `.agents/skills/classificar-tarefa/SKILL.md` (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:57).
+**Próximo passo:** nenhum (concluída). Destrava a SUB-47.7 (regra no `AGENTS.md`).
 
 - **Descrição:** Criar `.agents/skills/classificar-tarefa/SKILL.md`: níveis `LEVE` (tarefa fácil) / `MEDIO` (média) / `PESADO` (difícil) com sinais concretos, ordem de decisão (a regra mais restritiva vence; na dúvida, sobe o nível), **matriz ferramenta × modelo × nível** (Claude Code local/nuvem, Gemini, Grok, DeepSeek, Devin), exemplos reais do quadro e o formato de saída (`- **Nível:** X` abaixo de `Prioridade:` + justificativa curta na anotação). A skill usa o wrapper do Laya (`src/lib/laya.ts`) para classificação automática em vez de chamada manual Opus. Proibido: mudar `Prioridade`, reclassificar bloco travado por outro agente ou sob 🔒 trava especial.
 - **Critérios de Aceitação:** Skill com frontmatter válido; matriz **confirmada pelo usuário** e registrada na anotação; integração com Laya funcional.
-- **Commit:** pendente
+- **Commit:** `feat(SUB-47.2)` — `.agents/skills/classificar-tarefa/SKILL.md` (cópias geradas pelo `pre-commit`).
+- **Matriz confirmada pelo usuário (2026-10-13 20:59):** "Sim, confirmado" para a matriz proposta, e **Codex (Free) e
+  Cursor (free) até `MEDIO`** ("Os dois até média"), que não estavam nela (constam do
+  `FERRAMENTAS-DE-IA.md`). `PESADO` segue só do Claude Code com Opus 5.5+ ou Fable.
+- **Adaptações:** (1) o nível vai como 1º item da **seção da subtarefa** na etapa, porque no quadro
+  novo a prioridade fica na linha do `STATUS.md` (a descrição falava em "abaixo de `Prioridade:`",
+  do formato antigo); a regra geral é da SUB-47.7. (2) a integração com o Laya é um `curl` ao
+  `/v1/systemone` (qualquer IA roda), e o worker usa `classificar()` de `worker/classificador.ts`
+  (não `src/lib/laya.ts`, que mudou na SUB-47.1).
+- **Verificação:** frontmatter lido pelo PyYAML; JSON do `--data` válido e no contrato conferido na
+  SUB-47.1 (`state` + `questions`, `choice` com `criteria`); montagem do cabeçalho `Authorization`
+  conferida com e sem `LAYA_API_KEY`; exemplos tirados de subtarefas reais. Não chamado contra o Laya
+  real (sem Docker nesta sessão).
 - **Anotação:** Plano em `docs/equipe-de-agentes.md`. Atualizado para usar Laya Server. Em 2026-10-13 12:25 o usuário definiu: **DeepSeek V4.1 Flash** pega tarefa fácil (`LEVE`); já está na matriz do plano. Em 2026-10-13 12:27 o usuário definiu: **Grok Bot** pega **só** tarefa fácil (`LEVE`); linha própria na matriz do plano. Em 2026-10-13 12:29 o usuário definiu: **Devin** (plano Free) pega **só** tarefa fácil (`LEVE`). Em 2026-10-13 12:31 o usuário definiu: **Antigravity** (Starter Quota) pega **só** tarefa fácil (`LEVE`), em linha separada do Gemini CLI. Em 2026-10-13 12:34 o usuário definiu: **Grok (SuperGrok)** pega só até tarefa média (`LEVE` com modelo rápido, `MEDIO` com Grok 4.7); não pega `PESADO`. Em 2026-10-13 12:35 o usuário definiu: **tarefa difícil (`PESADO`) só para o Claude Code com Opus 5.5 ou superior, ou Fable**; nenhuma outra ferramenta ou modelo pega `PESADO` (Gemini CLI passa a ir só até `MEDIO`).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
