@@ -64,14 +64,12 @@
 | SUB-45.12 | `ProjetoForm.tsx`: campos básicos | 🟡 Média | SUB-45.8, SUB-45.9 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.14 | Componente `ProjetosLista.tsx` (tabela no desktop, cards no celular) | 🟡 Média | SUB-45.10, SUB-45.11 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.13 | `ProjetoForm.tsx`: campos novos | 🟡 Média | SUB-45.12, SUB-45.10 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
-
 | SUB-45.15 | Tela `src/views/ProjetosView.tsx` | 🟡 Média | SUB-45.13, SUB-45.14 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
-
----
 | SUB-45.16 | Registrar a tela `projetos` (rota `#/projetos` e menu) | 🟡 Média | SUB-45.15 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
-
 | SUB-45.17 | Documentar projetos no `README.md` e no `database/README.md` | 🟡 Média | SUB-45.4, SUB-45.16 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-47.13 | Documentar Laya Server e Opus no README | 🟡 Média | SUB-47.0 | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+
+---
 
 ## 📜 Histórico do quadro antigo (blocos, até 2026-10-13)
 
