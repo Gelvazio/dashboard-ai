@@ -28,12 +28,21 @@
 
 ### SUB-35.46.1 — Validação sem banco (typecheck, testes, build, Python)
 
-**Próximo passo:** rodar `npm ci`, `npm run typecheck`, `npm test`, `npm run build` e os testes Python; registrar o resultado.
+**Próximo passo:** nenhum — entregue. Falta a SUB-35.46.2 (banco).
 
 - **Descrição:** Parte sem banco da SUB-35.46, separada em 2026-10-13 15:19 por Claude Code (Opus 5.5) (nuvem · main) pela regra de `multiplas-ias.md` (o `npm run test:integration` é tarefa de banco). Rodar `npm run typecheck`, `npm test`, `npm run build` e os testes Python (`scripts/test_*.py`) e registrar o resultado.
 - **Critérios de Aceitação:** Tudo verde, ou cada falha registrada com o comando e a saída.
-- **Entrega:** — · **Verificação:** —
-- **Anotação:** —
+- **Entrega:** commit desta entrega (`feat(SUB-35.46.1)`), validação feita sobre a `main` em `ae50c56` · **Verificação:** comandos rodados em sessão na nuvem (Node v22.22.0, npm 10.9.4) depois de `npm ci` (163 pacotes)
+- **Anotação:** 2026-10-13 15:20 — Claude Code (Opus 5.5) (nuvem · main). Resultado, tudo verde:
+
+  | Comando | Resultado | Tempo |
+  |---|---|---|
+  | `npm run typecheck` | ✅ OK | 13 s |
+  | `npm test` (Vitest) | ✅ 44 arquivos OK, 8 pulados · 301 testes OK, 30 pulados (331) | 6 s |
+  | `npm run build` | ✅ OK | 12 s |
+  | `python3 -m unittest scripts/test_espelhar_quadro_eventos.py scripts/test_sincronizar_tasks.py` | ✅ 13 testes OK | < 1 s |
+
+  Os itens pulados do Vitest são os que dependem de variáveis de ambiente/banco (sem `.env` na nuvem); eles são cobertos pela SUB-35.46.2 (`npm run test:integration`, só Claude Code local). Nada foi alterado no código.
 
 ### SUB-35.46.2 — Validação de banco (`npm run test:integration`)
 
