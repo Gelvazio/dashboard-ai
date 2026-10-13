@@ -59,11 +59,11 @@ cópia desatualizada é recusado pelo `pre-push` com instrução de rodar `npm r
 
 ### SUB-60.2 — Gerar `.gemini/commands/<skill>.toml`
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 19:59).
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** ler `name`/`description` do frontmatter de cada `SKILL.md` e escrever o TOML.
 - **Critérios de Aceitação:** TOML válido (conferido com parser); só reescreve se mudou.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-60.2)` · **Verificação:** `node --check` ok; `.gemini/commands/proxima-task.toml` gerado e lido sem erro pelo `tomllib` do Python (campos `description` e `prompt`, com `@{.agents/skills/proxima-task/SKILL.md}` e `{{args}}`); segunda execução não regrava; funções ≤ 45 linhas e linhas ≤ 100
 
 ### SUB-60.3 — Modo `--checar` no `pre-push` e no `validar.sh`
 

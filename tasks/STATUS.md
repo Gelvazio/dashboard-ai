@@ -81,7 +81,6 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-59 | **Hooks que obrigam o Claude Code a registrar a tarefa no quadro antes de editar** | 🟡 Média | Nenhuma | 🔄 Em andamento | — (não reservável) | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
 | SUB-59.4 | Aceite do usuário | 🟡 Média | SUB-59.3 | 👀 Aguardando o usuário | — | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
 | SUB-60 | **Comandos (skills) para todas as IAs, sempre sincronizados** | 🟡 Média | Nenhuma | 🔄 Em andamento | — (não reservável) | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
-| SUB-60.2 | Gerar `.gemini/commands/<skill>.toml` | 🟡 Média | SUB-60.1 | 🔄 Em execução | Claude Code (Opus 5.5) (nuvem · main) (desde 2026-10-13 19:59) | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
 | SUB-60.3 | Modo `--checar` no `pre-push` e no `validar.sh` | 🟡 Média | SUB-60.2 | ⬜ Pendente | — | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
 | SUB-60.4 | Gerar as cópias e documentar | 🟡 Média | SUB-60.3 | ⬜ Pendente | — | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
 | SUB-60.5 | Aceite do usuário | 🟡 Média | SUB-60.4 | ⬜ Pendente | — | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
