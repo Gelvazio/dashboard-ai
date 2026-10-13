@@ -89,13 +89,13 @@ Pendente (preencher ao fechar a SUB-45, com o tempo decorrido).
 
 ### SUB-45.3 — Colunas `url_producao` e `url_documentacao` em `database/08_projects_campos.sql`
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** nenhum — entregue. Seguir na SUB-45.4.
 
 - **Descrição:** No mesmo arquivo: `url_producao text` e `url_documentacao text`, cada uma com `check (<col> is null or <col> ~ '^https?://')`, idempotentes. Comentários nas colunas. ⚠️ Tarefa de banco: pela regra 11 da seção 1.1 do `AGENTS.md`, só o Claude Code local executa (não em sessão na nuvem).
 - **Critérios de Aceitação:** Colunas e checks no arquivo, idempotentes.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **Entrega:** `b1c207e` (script + migration + quadro) e este commit de complemento (etapa + histórico) · **Verificação:** bloco "URLs do projeto (SUB-45.3)" em `database/08_projects_campos.sql` (e na cópia de migration, **hash idêntico**); aplicado **2× no Supabase local** sem erro; colunas `url_producao text` e `url_documentacao text` com as constraints `projects_url_producao_check` (`CHECK (((url_producao IS NULL) OR (url_producao ~ '^https?://'::text)))`) e `projects_url_documentacao_check` (idem); **4 casos testados** em transação com `rollback` (o banco seguiu com 1 projeto): aceitos `https://exemplo.com` + `http://docs.exemplo.com` e os nulos; recusados `ftp://x` e `docs.exemplo.com` (sem esquema).
+- **Anotação:** Mesmo padrão da SUB-45.2, incluindo o filtro `conrelid` nos testes de existência das constraints; nomes `projects_url_producao_check` e `projects_url_documentacao_check` (coerentes com o padrão `<tabela>_<coluna>_check` do Postgres). Nada aplicado no Supabase da **nuvem** (SUB-45.6). **Deslize registrado:** as seções da etapa e a linha do `task_complete.md` ficaram fora do commit `b1c207e` porque eu editei sem reler os arquivos e o guard recusou as duas edições; corrigido neste commit, sem perder nada.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-13 17:42 — confirmado por DeepSeek Harness (deepseek-flash): idempotência 2× e os 4 casos dos checks de URL
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
 ### SUB-45.4 — Colunas `prioridade` e `tags` em `database/08_projects_campos.sql`
