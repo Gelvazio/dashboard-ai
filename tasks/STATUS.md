@@ -12,7 +12,7 @@ Prioridade: 🔴 Máxima · 🟠 Alta · 🟡 Média · 🟢 Baixa
 
 | Frente | Tarefa (etapa) | Situação | Atualizado em |
 |---|---|---|---|
-| Claude Code (Opus 5.5) (local · main) | MIGRA-QUADRO ([ETAPA-001](etapas/ETAPA-001-ef019419-MIGRACAO-QUADRO.md)) | ⏹️ Encerrada | 2026-10-13 14:49 |
+| Claude Code (Opus 5.5) (local · main) | SUB-51.1 ([ETAPA-013](etapas/ETAPA-013-2aa270f6-TASK-COMPLETE.md)) | 🔄 Em execução | 2026-10-13 14:59 |
 
 ## 📌 Tarefas
 
@@ -22,6 +22,8 @@ Cada **subtarefa** é uma linha própria e pode ser reservada por **qualquer IA*
 | Tarefa | Título | Prioridade | Depende de | Status | Em uso por | Etapa |
 |---|---|---|---|---|---|---|
 | MIGRA-QUADRO | **Migrar o quadro para o modelo novo e eliminar regras duplicadas** | 🔴 Máxima | Nenhuma | ✅ Concluído | — | [ETAPA-001](etapas/ETAPA-001-ef019419-MIGRACAO-QUADRO.md) |
+| SUB-51 | **Restaurar o `task_complete.md` e mover para ele toda tarefa concluída** | 🔴 Máxima | Nenhuma | 🔄 Em execução | — (não reservável) | [ETAPA-013](etapas/ETAPA-013-2aa270f6-TASK-COMPLETE.md) |
+| SUB-51.1 | Restaurar `tasks/task_complete.md`, regra de mudança e mover as linhas ✅ | 🔴 Máxima | Nenhuma | 🔄 Em execução | Claude Code (Opus 5.5) (local · main) (desde 2026-10-13 14:59) | [ETAPA-013](etapas/ETAPA-013-2aa270f6-TASK-COMPLETE.md) |
 | SUB-38 | **Verificação geral de todas as tarefas (marcador `VERIFICADOR-CLAUDE`)** | 🔴 Máxima | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-002](etapas/ETAPA-002-90cd9004-VERIFICACAO-GERAL.md) |
 | SUB-38.1 | Verificação geral de todas as tarefas (marcador `VERIFICADOR-CLAUDE`) | 🔴 Máxima | Nenhuma | ⬜ Pendente | — | [ETAPA-002](etapas/ETAPA-002-90cd9004-VERIFICACAO-GERAL.md) |
 | SUB-28 | **Integração LangChain/LangGraph para Execução de Tasks** | 🟡 Média | SUB-01 a SUB-27, SUB-29, SUB-30 (todas as tasks anteriores concluídas) | 👀 Todas as filhas concluídas: aguardando o usuário fechar | — (não reservável) | [ETAPA-003](etapas/ETAPA-003-6df4b821-LANGGRAPH.md) |
@@ -135,6 +137,7 @@ Cada **subtarefa** é uma linha própria e pode ser reservada por **qualquer IA*
 | 010-43fbb21f | SUB-48: Definir estrutura `projects/` para projetos de IA independentes | [ETAPA-010-43fbb21f-ESTRUTURA-PROJECTS.md](etapas/ETAPA-010-43fbb21f-ESTRUTURA-PROJECTS.md) |
 | 011-4fb0d31c | SUB-49: Configurar backup diário do Supabase (GitHub Artifacts e Cloudflare R2) | [ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
 | 012-f73bee11 | SUB-50: Configurar Supabase local com Docker para desenvolvimento | [ETAPA-012-f73bee11-SUPABASE-LOCAL.md](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
+| 013-2aa270f6 | SUB-51: Restaurar o `task_complete.md` e mover para ele toda tarefa concluída | [ETAPA-013-2aa270f6-TASK-COMPLETE.md](etapas/ETAPA-013-2aa270f6-TASK-COMPLETE.md) |
 
 **Histórico (antes de 2026-10-13, congelado — não editar):** quadro antigo, concluídas e etapas 1 a 9 do
 `STATUS.md` antigo estão em [`historico/`](historico/).
