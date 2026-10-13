@@ -56,5 +56,19 @@
       "Bash(git add .)",
       "Bash(git add -A*)"
     ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/sincronizar-main.sh\"",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
   }
 }

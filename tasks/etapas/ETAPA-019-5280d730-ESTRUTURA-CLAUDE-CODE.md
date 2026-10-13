@@ -52,14 +52,14 @@ JSON válido e com as mesmas permissões, menos a linha do caminho fixo; `npm ru
 
 ### SUB-58.2 — Hook de início de sessão que sincroniza a `main`
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 19:39).
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** `.claude/hooks/sincronizar-main.sh` roda `git fetch --all --prune` e, só na `main`
   com a árvore limpa, `git pull --rebase origin main`; nos outros casos só avisa. Registrar no
   `.claude/settings.json` (`hooks.SessionStart`) e pôr `.claude/hooks/* text eol=lf` no
   `.gitattributes`.
 - **Critérios de Aceitação:** sai sempre com código 0; testado com árvore limpa, árvore suja e sem rede.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-58.2)` · **Verificação:** hook rodado em clone de teste em 6 casos (árvore limpa, suja, outra branch, sem rede, fora de repositório, remoto com commit novo): todos saem com código 0 e só puxam no caso seguro; `settings.json` validado com `json.tool`
 
 ### SUB-58.3 — `CLAUDE.local.md` fora do Git
 

@@ -5,3 +5,5 @@
 .githooks/* text eol=lf
 # O próprio .gitattributes em LF: com CRLF a última regra poderia ser lida errado.
 .gitattributes text eol=lf
+# Hooks do Claude Code (SUB-58.2): mesmo motivo dos hooks do Git — script bash precisa de LF.
+.claude/hooks/* text eol=lf

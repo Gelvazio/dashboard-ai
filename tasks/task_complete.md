@@ -70,6 +70,7 @@
 | SUB-47.13 | Documentar Laya Server e Opus no README | 🟡 Média | SUB-47.0 | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-45.6 | Aplicar o `08_projects_campos.sql` no Supabase da nuvem (8 colunas, 6 constraints, índice GIN; idempotente) | 🟡 Média | SUB-45.4 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-58.1 | `.mcp.json` apontando para o MCP do projeto | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-019](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
+| SUB-58.2 | Hook de início de sessão que sincroniza a `main` | 🟡 Média | SUB-58.1 | ✅ Concluído | — | [ETAPA-019](etapas/ETAPA-019-5280d730-ESTRUTURA-CLAUDE-CODE.md) |
 
 ---
 
