@@ -69,7 +69,7 @@
   - aguardando aprovação do plano pelo usuário: 14 — SUB-47.0 a SUB-47.13 ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md), agora integrando Laya Server)
   - em execução: 0
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 252 de 353 blocos (38 principais + 214 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 253 de 353 blocos (39 principais + 214 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -87,45 +87,6 @@
 - **Commit:** pendente
 - **Anotação:** **Restaurada ao quadro (2026-10-12 16:25, DeepSeek Harness (deepseek-flash), a pedido do usuário):** o bloco desta tarefa foi **apagado** do `task-principal.md` pelo commit `32d6f58` ("concluir SUB-38 (verificação parcial) e liberar trava de Devin") e **nunca foi registrado no `task_complete.md`** — ficou fora dos **dois** quadros, deixando a seção `⭐ PRIORIDADE MÁXIMA` vazia e o resumo contando uma pendente que não existia como bloco. Conferido no histórico: `SUB-38:` existe em `32d6f58^`, não existe em `32d6f58` e não aparece no `task_complete.md` daquele commit. Como o critério de aceitação **não** foi atendido — há **268 marcadores `VERIFICADOR-CLAUDE: PENDENTE`** (36 no quadro ativo + 232 no histórico) contra 9 verificados — a tarefa volta como pendente e é assumida na mesma hora pela trava normal. **Estado herdado:** marcador inserido em 246 blocos (`5fb92f7`, hoje 277 por causa das 30 filhas do KIRO e da SUB-25.8); validação geral registrada em [`docs/verificador-claude.md`](docs/verificador-claude.md) (`npm run typecheck`/`build` falhavam com TS6133, corrigido na SUB-25.8); **Progresso (2026-10-12 16:40): 45 de 297 blocos verificados.** Herdados 9 (SUB-25, SUB-25.4, SUB-25.7, SUB-26, SUB-26.3, SUB-26.9 e a mãe SUB-28 com `⚠️ RESSALVA` — esta por citar o commit inexistente `76f243e` na SUB-28.33; confirmado: `cfe88af` existe, `76f243e` não). Meus 36: **4 com evidência real** (`✅ OK` — SUB-28.18, 28.23, 28.25 e 28.32: commits, arquivos e funções conferidos, `npm run typecheck:api` exit 0) e **32 factuais** (`⬜ NÃO IMPLEMENTADA` — SUB-35.46, `KIRO-DEV-CLONE` e as 30 filhas: nada do escopo existe no repositório). Com isso o quadro ativo chegou a **0 pendentes**; depois entraram tarefas novas de outros agentes (SUB-39/40/41/42), então a fila ativa voltou a ter pendentes. **Falta o histórico: ~237 blocos em `task_complete.md`**, na ordem, começando pela `SUB-01` (linha 27). A contagem ao vivo é `grep -c 'VERIFICADOR-CLAUDE: PENDENTE'` nos dois quadros — este texto é um retrato do momento. Sem navegador e sem Docker/Postgres local (restrição registrada em `STATUS.md`). **Liberação e novo método (2026-10-13 13:57, Claude Code (Opus 5.5), a pedido do usuário):** o usuário liberou a trava de DeepSeek Harness (deepseek-flash) para que outra IA assuma e aprovou a mudança de escopo para o método econômico (script para a parte mecânica + IA só nos duvidosos + validação única + commit por lote), por causa do custo estimado de 3 a 7 milhões de tokens no método bloco a bloco. Os marcadores já gravados continuam valendo. Recomendação: quem assumir deve ser um modelo capaz de tarefa média (escrever o script e julgar critérios), não um modelo só de tarefa fácil.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-
----
-
-## 🚀 FASE 10: Build, Validação e Documentação
-
-### [ ] SUB-26: Documentação Completa e Manual Operacional no `README.md`
-- **Status:** pendente (aguardando subtarefas)
-- **Prioridade:** MEDIA
-- **Executor:** nenhum
-- **Depende de:** SUB-25; subtarefas SUB-26.1 a SUB-26.10
-- **Subtarefas:** (subdividida em 9 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 10 em 2026-10-11 23:51)
-  - `SUB-26.1`: Esqueleto do `README.md` (`concluido`, `67e13c2`)
-  - `SUB-26.2`: Seção Arquitetura (`concluido`, `b3f4c36`)
-  - `SUB-26.3`: Seção Execução local (`concluido`, `b18d9c9`)
-  - `SUB-26.4`: Seção Banco de dados (`concluido`, `62ea6c0`)
-  - `SUB-26.5`: Seção Deploy na Vercel (`concluido`, a5c2a8a)
-  - `SUB-26.6`: Seção Agentes de IA: configurar clientes MCP (`concluido`, `d7f05f6`)
-  - `SUB-26.7`: Seção Memória via MCP (`concluido`, `7fa647b`)
-  - `SUB-26.8`: Seção Segurança (`concluido`, `f48b2de`)
-  - `SUB-26.9`: Revisão final do README (`concluido`, 483a29e)
-  - `SUB-26.10`: Seção Agentes de IA: exemplos do ciclo da fila (`concluido`, `23153af`)
-- **Descrição:** Documentar no `README.md` a arquitetura da solução, guia de execução local, deploy na Vercel e instruções para agentes de IA operarem a fila e a memória.
-- **Critérios de Aceitação:** Documentação clara, completa e em conformidade com as regras do projeto.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:25 (Claude Code): tarefa-mãe pendente: o `README.md` já tem Arquitetura, Banco de dados, Deploy na Vercel, Agentes de IA, Memória via MCP, Segurança e Monitor; faltam as filhas 26.3 (Execução local, linha 90 ainda diz "Seção provisória") e 26.9 (Validação, linha 535 "Seção provisória").
-
-#### [x] SUB-26.9: Revisão final do README
-- **Status:** concluido
-- **Prioridade:** MEDIA
-- **Executor:** Devin (Cognition AI) (início: 2026-10-12 22:05, conclusão: 2026-10-12 22:15)
-- **Depende de:** SUB-26.2, SUB-26.3, SUB-26.4, SUB-26.5, SUB-26.6, SUB-26.7, SUB-26.8, SUB-26.10, SUB-25
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Remover placeholders, conferir links e comandos, incluir a seção Validação com o resultado da SUB-25.
-- **Critérios de Aceitação:** Nenhum placeholder; links válidos.
-- **Commit:** 483a29e
-- **Anotação:** Removidos os 2 placeholders "Seção provisória" do README.md (Monitor em tempo real e Validação). Seção "Monitor em tempo real" deixada sem placeholder (o monitor está implementado na SUB-35). Seção "Validação" expandida com descrição completa do `npm run validar` e referências aos documentos `docs/VALIDACAO.md` e `docs/validacao-telas-producao.md`. Validação: `npm run typecheck` verde, `npm run build` verde (16 chunks gerados, todos ≤ 500 kB).
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 22:15 — Devin (Cognition AI): README revisado (placeholders removidos, seção Validação documentada, typecheck e build verdes)
-- **VERIFICADOR-CLAUDE:** PENDENTE
 
 ---
 
@@ -1050,8 +1011,8 @@
 - **Status:** pendente (aguardando subtarefas)
 - **Prioridade:** MEDIA
 - **Executor:** nenhum
-- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); subtarefas SUB-47.1 a SUB-47.13
-- **Subtarefas:** (subdividida em 13 em 2026-10-13, integrando Laya Server; a mãe só é concluída quando todas estiverem `concluido`)
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); subtarefas SUB-47.0 a SUB-47.13
+- **Subtarefas:** (subdividida em 14 — SUB-47.0 a SUB-47.13 — em 2026-10-13, integrando Laya Server; a mãe só é concluída quando todas estiverem `concluido`)
   - `SUB-47.0`: Configurar Laya Server via Docker Compose (`pendente`)
   - `SUB-47.1`: Criar wrapper TypeScript para API do Laya (`src/lib/laya.ts`) (`pendente`)
   - `SUB-47.2`: Skill `classificar-tarefa` (níveis, sinais, matriz ferramenta × modelo) (`pendente`)
@@ -1069,7 +1030,7 @@
 - **Descrição:** Cada tarefa do quadro passa a ter `Nível` (`LEVE`, `MEDIO`, `PESADO`), definido automaticamente pelo **Laya Server** (System-One control, Jev-compatible) com **Opus 5.5 como revisor/fallback**. O Laya Server roda como serviço em background via Docker, expõe endpoint HTTP `/v1/systemone` e fornece decisões estruturadas rápidas (< 1s, sem custo de LLM). Quando o score do Laya é baixo (< 0.7) ou o servidor está indisponível, o Opus revisa a decisão (modo híbrido). Cada ferramenta de IA (Claude Code, Grok, DeepSeek, Gemini, Devin) pega só o que o seu modelo dá conta, conforme uma matriz ferramenta × modelo × nível. No Claude Code, uma equipe de subagentes (líder + classificador Laya/Opus + executores Haiku/Sonnet/Opus) trabalha em paralelo, com só o líder mexendo no Git e no quadro. Plano completo: [`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md) + integração Laya em `docs/laya-server.md`.
 - **Critérios de Aceitação:** Todas as subtarefas `concluido`; Laya Server rodando e acessível; classificação automática funciona; piloto (SUB-47.11) aceito pelo usuário.
 - **Commit:** pendente
-- **Anotação:** Criada em 2026-10-13 12:10 por Claude Code (Opus 5.5), a pedido do usuário. **Atualizada em 2026-10-13 para integrar Laya Server com Opus como revisor/fallback:** o classificador manual Opus foi substituído pelo Laya Server (System-One control) como primário, com Opus 5.5 como revisor quando o score do Laya é baixo (< 0.7) ou quando o servidor está indisponível. Vantagens: < 1s por classificação na maioria dos casos (Laya), custo zero (local), precisão garantida em casos complexos (Opus fallback). Configurável via `CLASSIFICADOR_MODE` (laya/opus/hybrid). Prioridade `MEDIA` (padrão da seção 1.2). **Nenhuma subtarefa pode ser pega antes de o usuário aprovar o plano** em `docs/equipe-de-agentes.md`; quando aprovar, a dependência de aprovação sai dos blocos e o resumo é atualizado.
+- **Anotação:** Criada em 2026-10-13 12:10 por Claude Code (Opus 5.5), a pedido do usuário. **Atualizada em 2026-10-13 para integrar Laya Server com Opus como revisor/fallback:** o classificador manual Opus foi substituído pelo Laya Server (System-One control) como primário, com Opus 5.5 como revisor quando o score do Laya é baixo (< 0.7) ou quando o servidor está indisponível. Vantagens: < 1s por classificação na maioria dos casos (Laya), custo zero (local), precisão garantida em casos complexos (Opus fallback). Configurável via `CLASSIFICADOR_MODE` (laya/opus/hybrid). Prioridade `MEDIA` (padrão da seção 1.2). **Revisão de 2026-10-13 14:22 (Claude Code (Opus 5.5), a pedido do usuário — opção C: manter o Laya e ajustar):** (1) apagado o bloco duplicado `SUB-47.2` (script de sincronização), cópia idêntica da `SUB-47.3`; (2) contagem corrigida para 14 filhas (47.0 a 47.13); (3) plano `docs/equipe-de-agentes.md` atualizado com o Laya; (4) **fonte oficial do Laya Server: <https://github.com/NandhaKishorM/laya>** — toda informação de instalação, configuração, endpoints e variáveis deve ser buscada lá (README e docs do repositório), nunca deduzida; o que estiver nos blocos e não bater com a fonte oficial vale a fonte oficial; (5) critérios sem "testes unitários" (regra do usuário: nunca escrever testes); (6) SUB-47.12 marcada como tarefa de banco (regra 11); (7) SUB-47.0 depende do Docker rodando; (8) o modo de execução da equipe (1 tarefa por vez, 3 clones ou paralelo) **ainda depende de decisão do usuário**. **Nenhuma subtarefa pode ser pega antes de o usuário aprovar o plano** em `docs/equipe-de-agentes.md`; quando aprovar, a dependência de aprovação sai dos blocos e o resumo é atualizado.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
@@ -1080,9 +1041,9 @@
 - **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md))
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `docker-compose.laya.yml` na raiz do projeto com serviço `laya-serve` baseado na configuração oficial do Laya. Configurar variáveis de ambiente: `LAYA_SERVE_BACKEND=laya`, `LAYA_SERVE_PRELOAD=true`, `LAYA_SERVE_DEVICE=cpu` (ou `cuda` se GPU disponível), `LAYA_API_KEY` (opcional, para proteção), `LAYA_BIND_ADDRESS=127.0.0.1` (só localhost). Publicar porta `8000` e adicionar health check. Criar script `scripts/start-laya.sh` (Windows: `.bat`) para iniciar/parar o serviço. Documentar como rodar: `docker compose -f docker-compose.laya.yml up -d laya-serve`.
-- **Critérios de Aceitação:** Docker Compose funcional; serviço inicia sem erros; health check passa; portas corretas; script de start/stop funcional.
+- **Critérios de Aceitação:** Docker Compose funcional; serviço inicia sem erros; health check passa; portas corretas; script de start/stop funcional; configuração conferida contra a fonte oficial.
 - **Commit:** pendente
-- **Anotação:** Integrado da SUB-51 para usar Laya Server como classificador automático (System-One control) em vez de classificador manual Opus.
+- **Anotação:** Integrado da SUB-51 para usar Laya Server como classificador automático (System-One control) em vez de classificador manual Opus. **Fonte oficial obrigatória:** <https://github.com/NandhaKishorM/laya> — imagem, serviço, variáveis (`LAYA_SERVE_*`, `LAYA_API_KEY`, `LAYA_BIND_ADDRESS`), porta e health check acima são **suposições a conferir** no README/docs do repositório antes de escrever o `docker-compose.laya.yml`. **Pré-requisito:** Docker Desktop instalado e rodando nesta máquina (em 2026-10-12 o Docker estava parado — ver SUB-38); sem Docker, o item fica ⛔ com esse motivo.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
@@ -1092,10 +1053,10 @@
 - **Executor:** nenhum
 - **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.0
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Criar `src/lib/laya.ts` com: tipos TypeScript para request/response do endpoint `/v1/systemone` (baseado na especificação Jev), função `classificarLaya(estado, perguntas)` que faz POST para o Laya Server e devolve `{ choice, score, noul }`, função `classificarComOpus(estado, perguntas)` que usa Anthropic API (Opus 5.5 ou Sonnet 3.5) para classificação, e função `classificar(estado, perguntas)` que implementa o modo híbrido: (1) tenta Laya Server; (2) se score < 0.7 (baixa confiança) ou erro, usa Opus como revisor/fallback; (3) retorna a decisão com metadados (qual classificador usou, score, tempo). Configurar variáveis de ambiente: `LAYA_SERVER_URL` (padrão: `http://localhost:8000`), `ANTHROPIC_API_KEY` (para Opus), `CLASSIFICADOR_MODE` (padrão: `hybrid`; opções: `laya`, `opus`, `hybrid`). Função `status()` para health check do Laya. Tratar erros de conexão e timeouts. Exportar em `src/lib/index.ts`.
-- **Critérios de Aceitação:** Wrapper TypeScript funcional; tipos corretos; modo híbrido implementado; Opus integrado como fallback; testes unitários passando; `npm run typecheck` verde.
+- **Descrição:** Criar `src/lib/laya.ts` com: tipos TypeScript para request/response do endpoint `/v1/systemone` (baseado na especificação Jev), função `classificarLaya(estado, perguntas)` que faz POST para o Laya Server e devolve `{ choice, score, noul }`, função `classificarComOpus(estado, perguntas)` que usa Anthropic API (Opus 5.5 ou superior) para classificação, e função `classificar(estado, perguntas)` que implementa o modo híbrido: (1) tenta Laya Server; (2) se score < 0.7 (baixa confiança) ou erro, usa Opus como revisor/fallback; (3) retorna a decisão com metadados (qual classificador usou, score, tempo). Configurar variáveis de ambiente: `LAYA_SERVER_URL` (padrão: `http://localhost:8000`), `ANTHROPIC_API_KEY` (para Opus), `CLASSIFICADOR_MODE` (padrão: `hybrid`; opções: `laya`, `opus`, `hybrid`). Função `status()` para health check do Laya. Tratar erros de conexão e timeouts. Exportar em `src/lib/index.ts`.
+- **Critérios de Aceitação:** Wrapper TypeScript funcional; tipos conferidos contra a especificação da fonte oficial; modo híbrido implementado; Opus integrado como fallback; `npm run typecheck` verde. **Sem testes novos** (regra do usuário: nunca escrever testes, exceto para corrigir bug).
 - **Commit:** pendente
-- **Anotação:** Integrado da SUB-51 para usar Laya Server como classificador primário e Opus como revisor/fallback. Vantagens: Laya < 1s e grátis na maioria dos casos; Opus garante precisão em casos complexos ou quando Laya tem baixa confiança (score < 0.7). Configurável via `CLASSIFICADOR_MODE`.
+- **Anotação:** Formato de request/response do `/v1/systemone` deve ser tirado da fonte oficial <https://github.com/NandhaKishorM/laya>, não deduzido. Integrado da SUB-51 para usar Laya Server como classificador primário e Opus como revisor/fallback. Vantagens: Laya < 1s e grátis na maioria dos casos; Opus garante precisão em casos complexos ou quando Laya tem baixa confiança (score < 0.7). Configurável via `CLASSIFICADOR_MODE`.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
@@ -1109,19 +1070,6 @@
 - **Critérios de Aceitação:** Skill com frontmatter válido; matriz **confirmada pelo usuário** e registrada na anotação; integração com Laya funcional.
 - **Commit:** pendente
 - **Anotação:** Plano em `docs/equipe-de-agentes.md`. Atualizado para usar Laya Server. Em 2026-10-13 12:25 o usuário definiu: **DeepSeek V4.1 Flash** pega tarefa fácil (`LEVE`); já está na matriz do plano. Em 2026-10-13 12:27 o usuário definiu: **Grok Bot** pega **só** tarefa fácil (`LEVE`); linha própria na matriz do plano. Em 2026-10-13 12:29 o usuário definiu: **Devin** (plano Free) pega **só** tarefa fácil (`LEVE`). Em 2026-10-13 12:31 o usuário definiu: **Antigravity** (Starter Quota) pega **só** tarefa fácil (`LEVE`), em linha separada do Gemini CLI. Em 2026-10-13 12:34 o usuário definiu: **Grok (SuperGrok)** pega só até tarefa média (`LEVE` com modelo rápido, `MEDIO` com Grok 4.7); não pega `PESADO`. Em 2026-10-13 12:35 o usuário definiu: **tarefa difícil (`PESADO`) só para o Claude Code com Opus 5.5 ou superior, ou Fable**; nenhuma outra ferramenta ou modelo pega `PESADO` (Gemini CLI passa a ir só até `MEDIO`).
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-#### [ ] SUB-47.2: Script `scripts/sincronizar-agentes.mjs` (`.agents/` → `.claude/`)
-- **Status:** pendente
-- **Prioridade:** MEDIA
-- **Executor:** nenhum
-- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md))
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Script Node que copia `.agents/skills/*` para `.claude/skills/*` e `.agents/agents/*` para `.claude/agents/*` (o Claude Code só lê `.claude/`, local e nuvem). Script `npm run sync:agentes` no `package.json`. Não toca em `.claude/settings.local.json` nem em `.claude/launch.json`.
-- **Critérios de Aceitação:** `node --check` sem erro; execução copia os arquivos; nada fora de `skills/` e `agents/` é alterado.
-- **Commit:** pendente
-- **Anotação:** Plano em `docs/equipe-de-agentes.md`.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
@@ -1170,7 +1118,7 @@
 - **Executor:** nenhum
 - **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.4, SUB-47.5
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Criar `.agents/skills/liderar-equipe/SKILL.md`: fetch + pull, chamar o classificador nos blocos sem nível, escolher até 3 itens livres por prioridade e com arquivos diferentes, travar (commit + push), disparar os executores em paralelo pelo nível, validar cada entrega (`npm run validar`), commit por tarefa, mover para `task_complete.md`, push. Tarefa de banco: o próprio líder, só na sessão local (regra 11). Rodar `npm run sync:agentes`.
+- **Descrição:** ⚠️ O modo de execução (1 tarefa por vez em pasta única, 3 clones independentes, ou até 3 em paralelo) **depende de decisão do usuário**; ajustar este bloco antes de começar. Texto original: criar `.agents/skills/liderar-equipe/SKILL.md`: fetch + pull, chamar o classificador nos blocos sem nível, escolher até 3 itens livres por prioridade e com arquivos diferentes, travar (commit + push), disparar os executores em paralelo pelo nível, validar cada entrega (`npm run validar`), commit por tarefa, mover para `task_complete.md`, push. Tarefa de banco: o próprio líder, só na sessão local (regra 11). Rodar `npm run sync:agentes`.
 - **Critérios de Aceitação:** Fluxo coerente com as seções 1, 1.1 e 1.2 do `AGENTS.md`; cópia em `.claude/skills/`.
 - **Commit:** pendente
 - **Anotação:** Plano em `docs/equipe-de-agentes.md`.
@@ -1251,7 +1199,7 @@
 - **Descrição:** Integrar a classificação do Laya no worker LangGraph: ao criar uma tarefa via `pegar_proxima_task` ou manualmente, chamar o wrapper do Laya para definir o nível automaticamente. Adicionar campo `nivel_tarefa` na tabela `tasks` (se não existir) ou usar o campo existente. Atualizar o nó `planejar` do worker para considerar o nível na distribuição por modelo (LEVE → modelos pequenos, MEDIO → modelos médios, PESADO → modelos grandes).
 - **Critérios de Aceitação:** Classificação automática integrada; campo `nivel_tarefa` presente; nó `planejar` atualizado; testes do worker passam.
 - **Commit:** pendente
-- **Anotação:** Integrado da SUB-51 para que o worker LangGraph também use o Laya Server.
+- **Anotação:** Integrado da SUB-51 para que o worker LangGraph também use o Laya Server. ⚠️ **Tarefa de banco** (coluna `nivel_tarefa` na tabela `tasks`): só o **Claude Code local** com MCP do Supabase pode pegar (regra 11 do `AGENTS.md`); SQL idempotente em `database/`; aplicar no Supabase **só com autorização explícita do usuário**. Nível `PESADO`. Se quiser separar a parte do worker (sem banco), subdividir antes de começar.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
@@ -1261,7 +1209,7 @@
 - **Executor:** nenhum
 - **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.0
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Atualizar o `README.md` com seção "Laya Server + Opus (Classificação Híbrida)" descrevendo: o que é o Laya Server (System-One control), como iniciar (Docker Compose), variáveis de ambiente (`LAYA_SERVER_URL`, `ANTHROPIC_API_KEY`, `CLASSIFICADOR_MODE`), modo híbrido (Laya primário, Opus revisor/fallback quando score < 0.7), quando cada classificador é usado, custo e velocidade comparativos, e monitoramento. Adicionar também instruções de troubleshooting (servidor não inicia, timeouts, erros de conexão, API key do Opus). Criar `docs/laya-server.md` com documentação técnica detalhada incluindo a integração com Opus.
+- **Descrição:** Atualizar o `README.md` com seção "Laya Server + Opus (Classificação Híbrida)" descrevendo: o que é o Laya Server (System-One control), como iniciar (Docker Compose), variáveis de ambiente (`LAYA_SERVER_URL`, `ANTHROPIC_API_KEY`, `CLASSIFICADOR_MODE`), modo híbrido (Laya primário, Opus revisor/fallback quando score < 0.7), quando cada classificador é usado, custo e velocidade comparativos, e monitoramento. Adicionar também instruções de troubleshooting (servidor não inicia, timeouts, erros de conexão, API key do Opus). Criar `docs/laya-server.md` com documentação técnica detalhada incluindo a integração com Opus. A documentação deve citar e seguir a fonte oficial <https://github.com/NandhaKishorM/laya>.
 - **Critérios de Aceitação:** README atualizado com seção do Laya + Opus; instruções completas; modo híbrido documentado; troubleshooting documentado; `docs/laya-server.md` criado.
 - **Commit:** pendente
 - **Anotação:** Integrado da SUB-51 para documentação do Laya Server com Opus como revisor/fallback.

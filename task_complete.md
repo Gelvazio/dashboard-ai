@@ -2217,6 +2217,28 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-12 19:10 — Claude Code (Opus 5.5, nuvem): seção conferida no `README.md` e comandos contra o `package.json`
 - **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:25 (Claude Code): pendente (bloqueada pela SUB-25). `README.md` linha 88-95: seção "Execução local" ainda provisória; `.nvmrc` existe.
 
+### [x] SUB-26: Documentação Completa e Manual Operacional no `README.md`
+- **Status:** concluido
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** SUB-25; subtarefas SUB-26.1 a SUB-26.10
+- **Subtarefas:** (subdividida em 9 em 2026-10-11 23:38 por DashboardAI (Grok Bot); a mãe só é concluída quando todas estiverem `concluido`; refinada para 10 em 2026-10-11 23:51)
+  - `SUB-26.1`: Esqueleto do `README.md` (`concluido`, `67e13c2`)
+  - `SUB-26.2`: Seção Arquitetura (`concluido`, `b3f4c36`)
+  - `SUB-26.3`: Seção Execução local (`concluido`, `b18d9c9`)
+  - `SUB-26.4`: Seção Banco de dados (`concluido`, `62ea6c0`)
+  - `SUB-26.5`: Seção Deploy na Vercel (`concluido`, a5c2a8a)
+  - `SUB-26.6`: Seção Agentes de IA: configurar clientes MCP (`concluido`, `d7f05f6`)
+  - `SUB-26.7`: Seção Memória via MCP (`concluido`, `7fa647b`)
+  - `SUB-26.8`: Seção Segurança (`concluido`, `f48b2de`)
+  - `SUB-26.9`: Revisão final do README (`concluido`, 483a29e)
+  - `SUB-26.10`: Seção Agentes de IA: exemplos do ciclo da fila (`concluido`, `23153af`)
+- **Descrição:** Documentar no `README.md` a arquitetura da solução, guia de execução local, deploy na Vercel e instruções para agentes de IA operarem a fila e a memória.
+- **Critérios de Aceitação:** Documentação clara, completa e em conformidade com as regras do projeto.
+- **Commit:** sem commit próprio (mãe fechada pelas 10 filhas `concluido`)
+- **Anotação:** Fechada em 2026-10-13 14:22 por Claude Code (Opus 5.5), a pedido do usuário: as 10 filhas estão `concluido` com commit. Conferido: `483a29e` (SUB-26.9) existe; o `README.md` não tem mais "Seção provisória" e tem as seções Arquitetura, Execução local, Banco de dados, Deploy na Vercel, Agentes de IA, Memória via MCP, Segurança, Monitor em tempo real e Validação. **Ressalva:** 1 dos 23 links relativos do README aponta para `dashboard-task-principal.html`, apagado depois da entrega (o painel passou para o `index.html`); a correção do link fica para uma tarefa nova. O marcador `VERIFICADOR-CLAUDE` abaixo é de 2026-10-12 15:25, anterior à conclusão das filhas 26.3 e 26.9. O bloco da SUB-26.9 que restava no quadro ativo era **cópia idêntica** do que já estava aqui no `task_complete.md` (FASE 10); a cópia foi apagada, sem perda de conteúdo.
+- **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 15:25 (Claude Code): tarefa-mãe pendente: o `README.md` já tem Arquitetura, Banco de dados, Deploy na Vercel, Agentes de IA, Memória via MCP, Segurança e Monitor; faltam as filhas 26.3 (Execução local, linha 90 ainda diz "Seção provisória") e 26.9 (Validação, linha 535 "Seção provisória").
+
 ---
 
 ## 🚀 FASE 11: Orquestração de Tasks com LangChain/LangGraph (última fase)

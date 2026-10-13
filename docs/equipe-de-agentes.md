@@ -2,7 +2,7 @@
 
 - **Criado em:** 2026-10-13 12:10
 - **Executor do plano:** Claude Code (Opus 5.5)
-- **Tarefa no quadro:** `SUB-47` (subtarefas `SUB-47.1` a `SUB-47.10`)
+- **Tarefa no quadro:** `SUB-47` (subtarefas `SUB-47.0` a `SUB-47.13`; classificador Laya Server + Opus desde 2026-10-13)
 - **Status:** ⬜ Aguardando aprovação do usuário
 - **Concluído em / tempo decorrido:** —
 
@@ -16,7 +16,9 @@ ferramenta de IA (Claude Code, Grok, DeepSeek, Gemini, Devin) pega só o que o s
 
 **Entra:**
 - skill `classificar-tarefa`: critérios dos níveis + **matriz ferramenta × modelo × nível**, válida para todas as IAs;
-- agente `classificador-tarefas` (Claude Code, `model: opus`);
+- Laya Server (Docker) + wrapper `src/lib/laya.ts`, com Opus como revisor/fallback (fonte oficial:
+  <https://github.com/NandhaKishorM/laya>);
+- agente `classificador-tarefas` (usa a skill `classificar-tarefa`, que chama o Laya);
 - agentes executores `executor-leve` (Haiku), `executor-medio` (Sonnet) e `executor-pesado` (Opus);
 - skill `liderar-equipe`: o fluxo do líder (sessão principal);
 - script `scripts/sincronizar-agentes.mjs`: copia a fonte `.agents/` para `.claude/`, que é onde o Claude Code lê (local e nuvem);
@@ -52,7 +54,7 @@ para o **Grok Bot**, o **Devin** (plano Free) e o **Antigravity** (Starter Quota
 **Tarefa difícil (`PESADO`) é só do Claude Code com Opus 5.5 ou superior, ou Fable** (definido pelo usuário em
 2026-10-13); nenhuma outra ferramenta ou modelo pega `PESADO`.
 
-### Matriz ferramenta × modelo × nível (proposta — o usuário confirma no passo 47.1)
+### Matriz ferramenta × modelo × nível (proposta — o usuário confirma no passo 47.2)
 
 | Ferramenta | `LEVE` | `MEDIO` | `PESADO` | Observação |
 |---|---|---|---|---|
@@ -92,7 +94,7 @@ LÍDER (sessão principal, Opus) — skill liderar-equipe
 |---|---|---|
 | `.agents/skills/<skill>/SKILL.md` | `.claude/skills/<skill>/SKILL.md` | Todas as IAs / Claude Code |
 | `.agents/agents/<agente>.md` | `.claude/agents/<agente>.md` | Claude Code (local e nuvem) |
-| `~/.agents/...` (global, passo 47.9) | `~/.claude/...` | Claude Code local em qualquer projeto |
+| `~/.agents/...` (global, passo 47.10) | `~/.claude/...` | Claude Code local em qualquer projeto |
 
 O Claude Code **não lê** `.agents/` e a nuvem **não enxerga** `~/.claude/`. Por isso a cópia em `.claude/` vai
 commitada no repositório. O `settings.local.json` de `.claude/` é pessoal e **não** entra no commit.
@@ -107,20 +109,43 @@ commitada no repositório. O `settings.local.json` de `.claude/` é pessoal e **
 | Mudança de regra do `AGENTS.md` conflita com agentes em execução | Baixa | Médio | A regra vale só para itens travados depois do commit dela; travas atuais não mudam |
 | Nomes de modelos das outras ferramentas mudam | Alta | Baixo | A matriz fica só na skill (um lugar); o usuário revisa quando trocar de plano ou de modelo |
 
+## Classificador: Laya Server + Opus (revisão de 2026-10-13)
+
+Em 2026-10-13 13:40–13:48, outra sessão fundiu a `SUB-51` (Laya Server) nesta tarefa. Em 2026-10-13 14:22 o usuário
+escolheu **manter o Laya** (opção C), com estes ajustes:
+
+- **Fonte oficial do Laya Server: <https://github.com/NandhaKishorM/laya>.** Instalação, imagem Docker, variáveis,
+  endpoints (ex.: `/v1/systemone`), formato de request/response e health check são buscados **lá** (README e docs do
+  repositório). O que estiver no quadro e não bater com a fonte oficial vale a fonte oficial; nada é deduzido.
+- **Modo híbrido:** o Laya classifica primeiro (local, sem custo de LLM); se o score for baixo (< 0.7) ou o servidor
+  estiver fora, o **Opus 5.5 ou superior** revisa. Configurável por `CLASSIFICADOR_MODE` (`laya`, `opus`, `hybrid`).
+- **Pré-requisito:** Docker rodando na máquina (SUB-47.0). Sem Docker, o modo `opus` continua funcionando.
+- **Sem testes novos** nos critérios (regra do usuário).
+- **SUB-47.12** cria coluna no banco (`tasks.nivel_tarefa`): tarefa de banco, só Claude Code local (regra 11), aplicar
+  só com autorização do usuário.
+- **Modo de execução da equipe** (1 tarefa por vez em pasta única, 3 clones independentes, ou paralelo): **pendente de
+  decisão do usuário**; o fluxo da seção "Equipe no Claude Code" acima ainda descreve o paralelo.
+
 ## Passos
+
+Numeração atual do quadro (14 filhas, `SUB-47.0` a `SUB-47.13`; o bloco duplicado `SUB-47.2` foi apagado em 2026-10-13).
 
 | # | Subtarefa | Arquivos | Verificação | Status |
 |---|---|---|---|---|
-| 1 | `SUB-47.1` Skill `classificar-tarefa` (níveis, sinais, matriz, exemplos reais) | `.agents/skills/classificar-tarefa/SKILL.md` | Usuário confirma a matriz | ⬜ Pendente |
-| 2 | `SUB-47.2` Script de sincronização `.agents/` → `.claude/` | `scripts/sincronizar-agentes.mjs`, `package.json` (`npm run sync:agentes`) | `node --check` + execução copia os arquivos | ⬜ Pendente |
-| 3 | `SUB-47.3` Agente `classificador-tarefas` (Opus, só lê o quadro e grava `Nível`) | `.agents/agents/classificador-tarefas.md` (+ cópia) | Frontmatter válido; sincronizado | ⬜ Pendente |
-| 4 | `SUB-47.4` Executores `executor-leve`, `executor-medio`, `executor-pesado` | `.agents/agents/executor-*.md` (+ cópias) | Frontmatter válido; sem permissão de Git | ⬜ Pendente |
-| 5 | `SUB-47.5` Skill `liderar-equipe` (fluxo do líder) | `.agents/skills/liderar-equipe/SKILL.md` (+ cópia) | Fluxo coerente com o `AGENTS.md` | ⬜ Pendente |
-| 6 | `SUB-47.6` Regra nova no `AGENTS.md` (campo `Nível`, matriz, equipe) | `AGENTS.md` | Leitura; sem contradição com as seções 1, 1.1 e 1.2 | ⬜ Pendente |
-| 7 | `SUB-47.7` `proxima-task` filtra por nível | `.agents/skills/proxima-task/SKILL.md` | Passo 3 da skill cita o nível | ⬜ Pendente |
-| 8 | `SUB-47.8` Classificar os blocos pendentes do quadro | `task-principal.md` | Todo bloco pendente tem `Nível:` | ⬜ Pendente |
-| 9 | `SUB-47.9` Instalação global (com autorização) | `~/.agents/`, `~/.claude/agents/`, `~/.claude/skills/` | Arquivos presentes; outro projeto lista os agentes | ⬜ Pendente |
-| 10 | `SUB-47.10` Piloto da equipe em 1 item livre + aceite do usuário | quadro + arquivos do item | Item entregue pela equipe; consumo anotado | ⬜ Pendente |
+| 0 | `SUB-47.0` Laya Server via Docker Compose (config da fonte oficial) | `docker-compose.laya.yml`, `scripts/start-laya.*` | Serviço sobe; health check passa | ⬜ Pendente |
+| 1 | `SUB-47.1` Wrapper `src/lib/laya.ts` (Laya + Opus fallback) | `src/lib/laya.ts`, `src/lib/index.ts` | `npm run typecheck` verde | ⬜ Pendente |
+| 2 | `SUB-47.2` Skill `classificar-tarefa` (níveis, sinais, matriz, exemplos reais) | `.agents/skills/classificar-tarefa/SKILL.md` | Usuário confirma a matriz | ⬜ Pendente |
+| 3 | `SUB-47.3` Script de sincronização `.agents/` → `.claude/` | `scripts/sincronizar-agentes.mjs`, `package.json` (`npm run sync:agentes`) | `node --check` + execução copia os arquivos | ⬜ Pendente |
+| 4 | `SUB-47.4` Agente `classificador-tarefas` (usa a skill com Laya) | `.agents/agents/classificador-tarefas.md` (+ cópia) | Frontmatter válido; sincronizado | ⬜ Pendente |
+| 5 | `SUB-47.5` Executores `executor-leve`, `executor-medio`, `executor-pesado` | `.agents/agents/executor-*.md` (+ cópias) | Frontmatter válido; sem permissão de Git | ⬜ Pendente |
+| 6 | `SUB-47.6` Skill `liderar-equipe` (fluxo do líder; modo de execução a decidir) | `.agents/skills/liderar-equipe/SKILL.md` (+ cópia) | Fluxo coerente com o `AGENTS.md` | ⬜ Pendente |
+| 7 | `SUB-47.7` Regra nova no `AGENTS.md` (campo `Nível`, matriz, equipe) | `AGENTS.md` | Leitura; sem contradição com as seções 1, 1.1 e 1.2 | ⬜ Pendente |
+| 8 | `SUB-47.8` `proxima-task` filtra por nível | `.agents/skills/proxima-task/SKILL.md` | Passo 3 da skill cita o nível | ⬜ Pendente |
+| 9 | `SUB-47.9` Classificar os blocos pendentes do quadro | `task-principal.md` | Todo bloco pendente tem `Nível:` | ⬜ Pendente |
+| 10 | `SUB-47.10` Instalação global (com autorização) | `~/.agents/`, `~/.claude/agents/`, `~/.claude/skills/` | Arquivos presentes; outro projeto lista os agentes | ⬜ Pendente |
+| 11 | `SUB-47.11` Piloto da equipe em 1 item livre + aceite do usuário | quadro + arquivos do item | Item entregue pela equipe; consumo anotado | ⬜ Pendente |
+| 12 | `SUB-47.12` Classificação Laya no worker LangGraph (**banco**, só Claude Code local) | `worker/`, `database/` | Worker usa o nível; SQL aplicado com autorização | ⬜ Pendente |
+| 13 | `SUB-47.13` Documentar Laya + Opus no README e em `docs/laya-server.md` | `README.md`, `docs/laya-server.md` | Seção e doc citam a fonte oficial | ⬜ Pendente |
 
 ## Conclusão
 
