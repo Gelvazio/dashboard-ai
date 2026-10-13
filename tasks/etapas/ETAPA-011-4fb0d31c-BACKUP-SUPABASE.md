@@ -112,7 +112,7 @@
 
 ### SUB-49.7 — Aceite do usuário: 1º disparo manual dos dois workflows de backup
 
-**Próximo passo:** 👀 o usuário (1) cria o secret `SUPABASE_BACKUP_PASSPHRASE` e guarda a senha fora
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:46).
 do GitHub; (2) roda **Run workflow** no *Backup Supabase para GitHub Artifacts* e confere o artifact
 `.gpg`; (3) se for usar o R2, cria bucket, token e secrets (`docs/backup-cloudflare-r2.md`) e roda o
 manual do R2; (4) restaura um dos backups num banco de teste; (5) responde "sim".
