@@ -33,7 +33,7 @@ a documentação de cobrança diz que o Actions é gratuito com runners padrão,
 armazenamento de artifacts; acompanhe pelo uso da conta (abaixo).
 
 **Quando usar:** dump comprimido pequeno e histórico de até 90 dias. Precisa de mais tempo ou mais
-espaço → Cloudflare R2 (SUB-49.3).
+espaço → [Cloudflare R2](backup-cloudflare-r2.md).
 
 ## Configurar (1x)
 

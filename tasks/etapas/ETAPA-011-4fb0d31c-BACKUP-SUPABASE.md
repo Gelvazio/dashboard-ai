@@ -91,13 +91,13 @@
 
 ### SUB-49.6 — Documentar o backup no Cloudflare R2 (`docs/backup-cloudflare-r2.md`)
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:28).
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** criar o bucket, o token só daquele bucket (Object Read & Write), os 4 secrets, a
   variável `SUPABASE_BACKUP_R2_ENABLED`, a regra de ciclo de vida (apagar depois de N dias), baixar
   com `aws s3 cp`, restaurar e custos acima do grátis. Criada em 2026-10-13 20:23 ao dividir a SUB-49.3.
 - **Critérios de Aceitação:** passo a passo completo; custos com fonte; restauração com o comando.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `docs(SUB-49.6)` · **Verificação:** passo a passo do bucket, do token (Object Read & Write limitado ao bucket; secret mostrado uma vez), secrets, teste manual, variável de liga/desliga e regra de ciclo de vida conferidos na documentação da Cloudflare (fontes no fim do doc); custos com a tabela oficial e exemplo calculado (50 MB/dia por 1 ano ≈ 18 GB → ≈ US$ 0,12/mês); comandos de baixar e restaurar seguem o pipeline testado na SUB-49.5; links cruzados com o doc de Artifacts e o `README.md`; linhas ≤ 100 (exceto tabelas e o link longo do secret)
 
 ### SUB-49.4 — Documentar escolha entre as 2 opções e migração
 

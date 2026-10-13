@@ -655,6 +655,9 @@ GitHub Artifact por 30 dias. Como o repositório é **público**, o dump sai **c
 gerado com o secret `SUPABASE_BACKUP_PASSPHRASE` (≥ 20 caracteres) — guarde a senha fora do GitHub.
 Configuração, download, restauração, retenção e limites:
 [`docs/backup-github-artifacts.md`](docs/backup-github-artifacts.md).
+Para guardar mais de 90 dias, há o workflow alternativo no **Cloudflare R2** (desligado por
+padrão, liga pela variável `SUPABASE_BACKUP_R2_ENABLED`):
+[`docs/backup-cloudflare-r2.md`](docs/backup-cloudflare-r2.md).
 
 ## Segurança
 
