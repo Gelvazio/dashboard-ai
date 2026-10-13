@@ -97,6 +97,8 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-55 | **Visualizador de regras e tarefas lendo os `.md` direto (`.claude/rules/index.html`)** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-55.5 | Documentar no `README.md` como abrir o visualizador | 🟡 Média | SUB-55.4 | 🔄 Em execução | Claude Code (Opus 5.5) (local · main) (desde 2026-10-13 16:17) | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-55.6 | Aceite do usuário | 🟡 Média | SUB-55.5 | ⬜ Pendente | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
+| SUB-57 | **Remover a validação de integração SUB-35.46.2 por decisão do usuário** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-018](etapas/ETAPA-018-a9bba1c3-REMOVER-SUB35-46-2.md) |
+| SUB-57.1 | Registrar o cancelamento da SUB-35.46.2 e atualizar o quadro | 🟡 Média | Nenhuma | 🔄 Em execução | Codex (GPT-6) (local · main) (desde 2026-10-13 16:45) | [ETAPA-018](etapas/ETAPA-018-a9bba1c3-REMOVER-SUB35-46-2.md) |
 
 ## Escopo do projeto
 
@@ -125,6 +127,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | 015-074d37b0 | SUB-54: Tirar a tabela "🧭 Frentes" do quadro (fica só o "Em uso por") | [ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
 | 016-95657172 | SUB-55: Visualizador de regras e tarefas lendo os `.md` direto | [ETAPA-016-95657172-VISUALIZADOR-REGRAS.md](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | 017-c31f8a42 | SUB-56: Consultar tarefas concluídas antes de afirmar status ou dependências | [ETAPA-017-c31f8a42-CONSULTAR-TASK-COMPLETE.md](etapas/ETAPA-017-c31f8a42-CONSULTAR-TASK-COMPLETE.md) |
+| 018-a9bba1c3 | SUB-57: Remover a validação de integração SUB-35.46.2 por decisão do usuário | [ETAPA-018-a9bba1c3-REMOVER-SUB35-46-2.md](etapas/ETAPA-018-a9bba1c3-REMOVER-SUB35-46-2.md) |
 
 **Histórico (antes de 2026-10-13, congelado — não editar):** quadro antigo, concluídas e etapas 1 a 9 do
 `STATUS.md` antigo estão em [`historico/`](historico/).
