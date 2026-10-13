@@ -233,7 +233,7 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.15 — Modo híbrido (`worker/classificador.ts`: `classificar`, `CLASSIFICADOR_MODE`)
 
-**Próximo passo:** depende da SUB-47.1 e da SUB-47.14.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:53).
 
 - **Descrição:** `classificar(estado, perguntas)` com `CLASSIFICADOR_MODE` = `laya` | `opus` | `hybrid`
   (padrão): tenta o Laya; se alguma `answer_confidence` < 0,7 ou o Laya falhar, usa o Opus; devolve a
