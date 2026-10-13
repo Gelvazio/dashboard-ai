@@ -16,12 +16,12 @@
 
 ### SUB-49.1 — Criar workflow GitHub Actions para backup com GitHub Artifacts
 
-**Próximo passo:** após o secret `SUPABASE_DATABASE_URL` estar configurado no GitHub, executar o workflow manualmente e conferir o artifact e seu tamanho. Não disparar nesta sessão por causa da regra global de não executar testes/validações.
+**Próximo passo:** configurar no GitHub um runner self-hosted Windows na mesma máquina do Supabase local e o secret `SUPABASE_LOCAL_DATABASE_URL`; depois executar o workflow manualmente e conferir o artifact e seu tamanho. Não disparar nesta sessão por causa da regra global de não executar testes/validações.
 
-- **Descrição:** Criar `.github/workflows/backup-supabase-artifacts.yml` com: agendamento cron diário (2h UTC), gatilho manual (`workflow_dispatch`), passo de dump do banco usando `pg_dump` com a connection string do Supabase (secret `SUPABASE_DATABASE_URL`), compressão do dump (`gzip`), upload como artifact com nome `supabase-backup-${{ github.run_number }}`, retenção de 30 dias (configurável), e documentação de como baixar o artifact (aba Actions → run → Artifacts). Variáveis de ambiente: `SUPABASE_DATABASE_URL` (obrigatória, secret).
-- **Critérios de Aceitação:** Workflow criado; sintaxe YAML válida; dry-run (workflow_dispatch) funciona; artifact gerado com tamanho aceitável (< 2 GB); documentação de download presente.
-- **Commit:** `feat(SUB-49.1): criar workflow de backup por Codex GPT-6 (local · main)`
-- **Anotação:** Criado `.github/workflows/backup-supabase-artifacts.yml` com agendamento diário às 02:00 UTC, `workflow_dispatch`, dump com `pg_dump` 17, compressão gzip, upload como artifact por 30 dias (configurável pela variável `SUPABASE_BACKUP_RETENTION_DAYS`) e instruções no resumo da execução. O workflow exige o secret `SUPABASE_DATABASE_URL`. A execução manual e a confirmação do tamanho do artifact ficaram pendentes por causa da regra global do usuário que proíbe testes e validações nesta sessão.
+- **Descrição:** Criar `.github/workflows/backup-supabase-artifacts.yml` com agendamento diário às 02:00 UTC e `workflow_dispatch`; executar em runner self-hosted Windows na máquina do Supabase local; usar o secret `SUPABASE_LOCAL_DATABASE_URL` (host `host.docker.internal`, porta 54322, banco `postgres`); gerar dump com `pg_dump` 17, comprimir com `gzip` e publicar artifact `supabase-backup-${{ github.run_number }}` por 30 dias (configurável). Incluir instruções para baixar o artifact.
+- **Critérios de Aceitação:** Workflow direcionado ao runner self-hosted Windows; URL restrita ao host e porta local 54322; workflow manual produz artifact menor que 2 GB; instruções de download aparecem no resumo da execução.
+- **Commit:** `feat(SUB-49.1): ajustar workflow para Supabase local`
+- **Anotação:** A pedido do usuário, o workflow foi ajustado para executar em `[self-hosted, Windows, X64]` na máquina do Supabase local. O secret `SUPABASE_LOCAL_DATABASE_URL` deve apontar para `postgresql://postgres:<senha-local>@host.docker.internal:54322/postgres`; a checagem rejeita URLs com outro host, porta ou banco. O dump usa Docker com `postgres:17` e grava no diretório temporário do runner. Manter runner, Docker Desktop e Supabase local ativos no horário agendado. Execução manual e confirmação do tamanho do artifact pendentes; não foram feitas nesta sessão devido à regra global do usuário contra testes e validações.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 

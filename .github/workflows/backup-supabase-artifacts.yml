@@ -15,29 +15,56 @@ concurrency:
 jobs:
   backup:
     name: Criar backup do Supabase
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Windows, X64]
     timeout-minutes: 30
     steps:
-      - name: Conferir configuração do banco
+      - name: Conferir URL do Supabase local
         env:
-          SUPABASE_DATABASE_URL: ${{ secrets.SUPABASE_DATABASE_URL }}
+          SUPABASE_LOCAL_DATABASE_URL: ${{ secrets.SUPABASE_LOCAL_DATABASE_URL }}
         run: |
-          if [ -z "$SUPABASE_DATABASE_URL" ]; then
-            echo "::error::Configure o secret SUPABASE_DATABASE_URL no repositório."
-            exit 1
-          fi
+          if ([string]::IsNullOrWhiteSpace($env:SUPABASE_LOCAL_DATABASE_URL)) {
+            throw "Configure o secret SUPABASE_LOCAL_DATABASE_URL no repositório."
+          }
+
+          try {
+            $databaseUrl = [System.Uri]::new($env:SUPABASE_LOCAL_DATABASE_URL)
+          } catch {
+            throw "SUPABASE_LOCAL_DATABASE_URL precisa ser uma URL PostgreSQL válida."
+          }
+
+          $isPostgresUrl = $databaseUrl.Scheme -in @("postgres", "postgresql")
+          $isDatabaseLocal = (
+            $isPostgresUrl -and
+            $databaseUrl.Host -eq "host.docker.internal" -and
+            $databaseUrl.Port -eq 54322 -and
+            $databaseUrl.AbsolutePath -eq "/postgres"
+          )
+
+          if (-not $isDatabaseLocal) {
+            throw "Use host.docker.internal:54322/postgres para apontar ao Supabase local."
+          }
 
       - name: Gerar dump SQL comprimido
         env:
-          SUPABASE_DATABASE_URL: ${{ secrets.SUPABASE_DATABASE_URL }}
+          SUPABASE_LOCAL_DATABASE_URL: ${{ secrets.SUPABASE_LOCAL_DATABASE_URL }}
         run: |
-          set -euo pipefail
-          docker run --rm \
-            -e SUPABASE_DATABASE_URL \
-            postgres:17 \
-            bash -o pipefail -c \
-            'pg_dump "$SUPABASE_DATABASE_URL" --no-owner --no-privileges | gzip -c' \
-            > "$RUNNER_TEMP/supabase-backup.sql.gz"
+          $mountDirectory = "type=bind,source=$env:RUNNER_TEMP,target=/backup"
+          $dumpCommand = 'pg_dump "$SUPABASE_LOCAL_DATABASE_URL" --no-owner --no-privileges | gzip -c > /backup/supabase-backup.sql.gz'
+          $dockerArguments = @(
+            "run"
+            "--rm"
+            "--add-host=host.docker.internal:host-gateway"
+            "--mount=$mountDirectory"
+            "-e"
+            "SUPABASE_LOCAL_DATABASE_URL"
+            "postgres:17"
+            "bash"
+            "-o"
+            "pipefail"
+            "-c"
+            $dumpCommand
+          )
+          docker @dockerArguments
 
       - name: Publicar backup como artifact
         uses: actions/upload-artifact@v4
@@ -49,11 +76,11 @@ jobs:
 
       - name: Instruções para baixar
         run: |
-          {
-            echo '## Backup Supabase concluído'
-            echo
-            echo 'Baixe o arquivo em **Actions → execução deste workflow → Artifacts**.'
-            echo 'O artifact chama-se `supabase-backup-${GITHUB_RUN_NUMBER}`.'
-            echo 'Retenção padrão: 30 dias. Ajuste pela variável de repositório'
-            echo '`SUPABASE_BACKUP_RETENTION_DAYS`.'
-          } >> "$GITHUB_STEP_SUMMARY"
+          @"
+          ## Backup Supabase local concluído
+
+          Baixe o artifact em **Actions → execução deste workflow → Artifacts**.
+          O artifact chama-se supabase-backup-$env:GITHUB_RUN_NUMBER.
+          Retenção padrão: 30 dias. Ajuste pela variável SUPABASE_BACKUP_RETENTION_DAYS.
+          O runner Windows e o Supabase local precisam estar ligados durante o backup.
+          "@ | Add-Content -Path $env:GITHUB_STEP_SUMMARY -Encoding utf8
