@@ -1056,7 +1056,7 @@
 ---
 
 
-## 🤝 FASE 17: Equipe de Agentes e Classificação de Tarefas por Nível
+## 🤝 FASE 18: Equipe de Agentes e Classificação de Tarefas por Nível
 
 ### [ ] SUB-47: Equipe de agentes: classificar tarefas por nível e modelo de cada ferramenta de IA
 - **Status:** pendente (aguardando subtarefas)
@@ -1213,7 +1213,7 @@
 
 ---
 
-## 📁 FASE 18: Estrutura de Projetos de IA (Multi-Projeto)
+## 📁 FASE 19: Estrutura de Projetos de IA (Multi-Projeto)
 
 ### [ ] SUB-48: Definir estrutura `projects/` para projetos de IA independentes
 - **Status:** pendente
@@ -1234,7 +1234,7 @@
 
 ---
 
-## 🔄 FASE 19: Refatoração - Projeto como Visualizador de Tasks (sem banco próprio)
+## 🔄 FASE 20: Refatoração - Projeto como Visualizador de Tasks (sem banco próprio)
 
 ### [ ] SUB-49: Refatorar `dashboard-ai-devin` para ser apenas visualizador de tasks com distribuição por modelos
 - **Status:** pendente
