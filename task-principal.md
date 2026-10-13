@@ -1123,10 +1123,10 @@
 - **Executor:** nenhum
 - **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md))
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Criar `.agents/skills/classificar-tarefa/SKILL.md`: níveis `LEVE`/`MEDIO`/`PESADO` com sinais concretos, ordem de decisão (a regra mais restritiva vence; na dúvida, sobe o nível), **matriz ferramenta × modelo × nível** (Claude Code local/nuvem, Gemini, Grok, DeepSeek, Devin), exemplos reais do quadro e o formato de saída (`- **Nível:** X` abaixo de `Prioridade:` + justificativa curta na anotação). Proibido: mudar `Prioridade`, reclassificar bloco travado por outro agente ou sob 🔒 trava especial.
+- **Descrição:** Criar `.agents/skills/classificar-tarefa/SKILL.md`: níveis `LEVE` (tarefa fácil) / `MEDIO` (média) / `PESADO` (difícil) com sinais concretos, ordem de decisão (a regra mais restritiva vence; na dúvida, sobe o nível), **matriz ferramenta × modelo × nível** (Claude Code local/nuvem, Gemini, Grok, DeepSeek, Devin), exemplos reais do quadro e o formato de saída (`- **Nível:** X` abaixo de `Prioridade:` + justificativa curta na anotação). Proibido: mudar `Prioridade`, reclassificar bloco travado por outro agente ou sob 🔒 trava especial.
 - **Critérios de Aceitação:** Skill com frontmatter válido; matriz **confirmada pelo usuário** e registrada na anotação.
 - **Commit:** pendente
-- **Anotação:** Plano em `docs/equipe-de-agentes.md`.
+- **Anotação:** Plano em `docs/equipe-de-agentes.md`. Em 2026-10-13 12:25 o usuário definiu: **DeepSeek V4.1 Flash** pega tarefa fácil (`LEVE`); já está na matriz do plano.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 

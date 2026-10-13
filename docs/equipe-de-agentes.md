@@ -46,6 +46,9 @@ ferramenta de IA (Claude Code, Grok, DeepSeek, Gemini, Devin) pega só o que o s
 
 A regra mais restritiva vence. Exemplo: "1 arquivo, mas é SQL" = `PESADO`.
 
+Em linguagem simples: `LEVE` = **tarefa fácil**, `MEDIO` = **tarefa média**, `PESADO` = **tarefa difícil**. As tarefas
+fáceis são as que vão para os modelos rápidos e baratos (ex.: **DeepSeek V4.1 Flash**, Haiku, Gemini Flash).
+
 ### Matriz ferramenta × modelo × nível (proposta — o usuário confirma no passo 47.1)
 
 | Ferramenta | `LEVE` | `MEDIO` | `PESADO` | Observação |
@@ -54,7 +57,7 @@ A regra mais restritiva vence. Exemplo: "1 arquivo, mas é SQL" = `PESADO`.
 | **Claude Code na nuvem** | Haiku | Sonnet | Opus (sem banco) | Regra 11: banco nunca |
 | **Gemini** (CLI / Antigravity) | modelo Flash | modelo Pro | modelo Pro (sem banco) | — |
 | **Grok** | modelo rápido | modelo principal | modelo principal (sem banco) | — |
-| **DeepSeek** | `deepseek-flash` | modelo de raciocínio | ⛔ não pega | — |
+| **DeepSeek** | **DeepSeek V4.1 Flash** | modelo de raciocínio | ⛔ não pega | Flash definido pelo usuário em 2026-10-13 para tarefa fácil (`LEVE`) |
 | **Devin** | ✅ | ✅ | ⛔ não pega | Não escolhe o modelo por tarefa |
 
 Cada agente se identifica no quadro como **ferramenta + modelo** (ex.: `Grok (modelo rápido)`) e só pega item com
