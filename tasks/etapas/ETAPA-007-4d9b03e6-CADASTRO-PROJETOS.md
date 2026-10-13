@@ -124,14 +124,19 @@ mantido abaixo só como histórico.
 
 ### SUB-45.6 — Aplicar o `database/08_projects_campos.sql` no Supabase (só com autorização do usuário)
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** ⏸️ **aguardando a autorização do usuário para aplicar no banco da nuvem** — nenhum comando remoto foi executado (a descrição proíbe antes do OK). Com o "pode aplicar": rodar o comando do plano abaixo, conferir com consultas **só de leitura** e fechar a subtarefa.
 
 - **Descrição:** **Pedir autorização explícita do usuário no chat antes de qualquer comando no banco remoto** e confirmar com ele qual é o projeto Supabase do Dashboard AI. Com a autorização, aplicar o script e conferir com consultas só de leitura que as 8 colunas e os checks existem (`information_schema.columns`, `pg_constraint`).
 - **Critérios de Aceitação:** Script aplicado sem erro; conferências registradas na anotação (sem chaves, tokens ou dados de usuários).
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
+- **Plano de aplicação (preparado em 2026-10-13 18:07 por DeepSeek Harness (deepseek-flash)):**
+  1. **Confirmar com o usuário o projeto Supabase** antes de qualquer comando (o do `.env` do Dashboard AI). A senha fica no `.env` local e **nunca** vai para o chat nem para arquivo do repositório.
+  2. **Aplicar uma única vez** (o script é idempotente): `psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f database/08_projects_campos.sql` — ou, mais simples, colar o conteúdo de `database/08_projects_campos.sql` no **SQL Editor** do projeto.
+  3. **Conferir depois, só com leitura:** colunas de `information_schema.columns` em `public.projects`; `pg_constraint` (`projects_responsavel_id_fkey`, `projects_cor_check`, `projects_icone_check`, `projects_url_producao_check`, `projects_url_documentacao_check`, `projects_prioridade_check`); `pg_indexes` (`projects_tags_gin`); `col_description` das 8 colunas.
+  4. **Efeito esperado:** o script **só acrescenta** — 8 colunas (`responsavel_id uuid`, `data_prevista_fim date`, `cor text`, `icone text`, `url_producao text`, `url_documentacao text`, `prioridade text NOT NULL DEFAULT 'MEDIA'`, `tags text[] NOT NULL DEFAULT '{}'`), **6 constraints** (1 FK + 5 checks) e **1 índice GIN**. Não apaga nem altera coluna existente, não mexe em RLS e preenche as linhas atuais com os defaults.
+  5. **Se precisar desfazer:** `alter table public.projects drop constraint <nome>;` e `alter table public.projects drop column <nome>;` — nenhuma linha de dados é perdida.
+- **Anotação:** **Preparação (2026-10-13 18:07, DeepSeek Harness (deepseek-flash) (local · main), no escopo da autorização do usuário para as tarefas de banco da SUB-45):** **nada foi executado no banco da nuvem** — a própria subtarefa proíbe qualquer comando remoto antes da autorização, então nem consulta de leitura foi feita lá. O que ficou pronto: (1) o script foi **aplicado 2× no Supabase local** sem erro (idempotência provada) e o resultado conferido — as 8 colunas com tipo/nulo/default corretos (`prioridade text NOT NULL DEFAULT 'MEDIA'`, `tags ARRAY NOT NULL DEFAULT '{}'`), as 6 constraints (a FK `projects_responsavel_id_fkey` com `ON DELETE SET NULL` e os checks de `cor`, `icone`, `url_producao`, `url_documentacao` e `prioridade`) e o índice `projects_tags_gin`; (2) a cópia de migration `20261013000008_08_projects_campos.sql` está **idêntica** ao script de produção (hash conferido); (3) o plano de aplicação acima, com efeito esperado e rollback. **Falta só o "pode aplicar" do usuário.**
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE — ⏸️ aguardando a autorização do usuário para aplicar no banco da nuvem
+- **VERIFICADOR-CLAUDE:** PENDENTE (campo não é mais preenchido — `.claude/rules/multiplas-ias.md`)
 
 ### SUB-45.7 — Tipos novos de `Project` em `src/types/database.ts`
 
