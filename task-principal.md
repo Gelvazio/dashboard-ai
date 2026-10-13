@@ -73,16 +73,16 @@
 
 
 ## 📊 Resumo de Progresso
-- **Total de Tasks Principais:** 51
-- **Subtarefas atômicas (~3 min):** 299
+- **Total de Tasks Principais:** 50
+- **Subtarefas atômicas (~3 min):** 304
 - **Em Execução:** 1 (SUB-38)
-- **Pendentes:** 12 principais (SUB-38, 28, 35, 41, 42, 45, 47, 48, 49, 50, 51, KIRO-DEV-CLONE) + 86 subtarefas
-  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 4 — SUB-35.46, SUB-48, SUB-49.1 e SUB-50.1 (`MEDIA`). SUB-51.1 bloqueada por SUB-47 (equipe de agentes ainda não aprovada). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
-  - bloqueadas por dependência: 35 — SUB-45.2 a SUB-45.19 (cadeia da SUB-45; tarefas de banco só Claude Code local; frontend depende de banco), SUB-41.2, SUB-41.3, SUB-42 (cadeia da SUB-41), SUB-49.2 a SUB-49.4 (cadeia da SUB-49), SUB-50.2 a SUB-50.7 (cadeia da SUB-50) e SUB-51.2 a SUB-51.8 (cadeia da SUB-51)
-  - aguardando aprovação do plano pelo usuário: 10 — SUB-47.1 a SUB-47.10 ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md))
+- **Pendentes:** 11 principais (SUB-38, 28, 35, 41, 42, 45, 47, 48, 49, 50, KIRO-DEV-CLONE) + 91 subtarefas
+  - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 4 — SUB-35.46, SUB-48, SUB-49.1 e SUB-50.1 (`MEDIA`). SUB-47.0 bloqueada por aprovação do plano (equipe de agentes ainda não aprovada). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
+  - bloqueadas por dependência: 39 — SUB-45.2 a SUB-45.19 (cadeia da SUB-45; tarefas de banco só Claude Code local; frontend depende de banco), SUB-41.2, SUB-41.3, SUB-42 (cadeia da SUB-41), SUB-47.1 a SUB-47.13 (cadeia da SUB-47, aguardando aprovação), SUB-49.2 a SUB-49.4 (cadeia da SUB-49) e SUB-50.2 a SUB-50.7 (cadeia da SUB-50)
+  - aguardando aprovação do plano pelo usuário: 14 — SUB-47.0 a SUB-47.13 ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md), agora integrando Laya Server)
   - em execução: 1 — SUB-38 (DeepSeek Harness (deepseek-flash))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 252 de 348 blocos (38 principais + 214 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+- **Concluídas:** 252 de 353 blocos (38 principais + 214 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -1059,39 +1059,69 @@
 
 ## 🤝 FASE 18: Equipe de Agentes e Classificação de Tarefas por Nível
 
-### [ ] SUB-47: Equipe de agentes: classificar tarefas por nível e modelo de cada ferramenta de IA
+### [ ] SUB-47: Equipe de agentes: classificar tarefas por nível com Laya Server (System-One)
 - **Status:** pendente (aguardando subtarefas)
 - **Prioridade:** MEDIA
 - **Executor:** nenhum
-- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); subtarefas SUB-47.1 a SUB-47.10
-- **Subtarefas:** (subdividida em 10 em 2026-10-13 12:10 por Claude Code (Opus 5.5), a pedido do usuário; a mãe só é concluída quando todas estiverem `concluido`)
-  - `SUB-47.1`: Skill `classificar-tarefa` (níveis, sinais, matriz ferramenta × modelo) (`pendente`)
-  - `SUB-47.2`: Script `scripts/sincronizar-agentes.mjs` (`.agents/` → `.claude/`) (`pendente`)
-  - `SUB-47.3`: Agente `classificador-tarefas` (Opus) (`pendente`)
-  - `SUB-47.4`: Executores `executor-leve` (Haiku), `executor-medio` (Sonnet), `executor-pesado` (Opus) (`pendente`)
-  - `SUB-47.5`: Skill `liderar-equipe` (fluxo do líder) (`pendente`)
-  - `SUB-47.6`: Regra nova no `AGENTS.md`: campo `Nível`, matriz e equipe (`pendente`)
-  - `SUB-47.7`: `proxima-task` filtra por nível (`pendente`)
-  - `SUB-47.8`: Classificar os blocos pendentes do quadro (`pendente`)
-  - `SUB-47.9`: Instalação global em `~/.agents/` e `~/.claude/` (só com autorização) (`pendente`)
-  - `SUB-47.10`: Piloto da equipe em 1 item livre + aceite do usuário (`pendente`)
-- **Descrição:** Cada tarefa do quadro passa a ter `Nível` (`LEVE`, `MEDIO`, `PESADO`), definido por um classificador especialista (Opus). Cada ferramenta de IA (Claude Code, Grok, DeepSeek, Gemini, Devin) pega só o que o seu modelo dá conta, conforme uma matriz ferramenta × modelo × nível. No Claude Code, uma equipe de subagentes (líder + classificador + executores Haiku/Sonnet/Opus) trabalha em paralelo, com só o líder mexendo no Git e no quadro. Plano completo: [`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md).
-- **Critérios de Aceitação:** Todas as subtarefas `concluido`; piloto (SUB-47.10) aceito pelo usuário.
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); subtarefas SUB-47.1 a SUB-47.13
+- **Subtarefas:** (subdividida em 13 em 2026-10-13, integrando Laya Server; a mãe só é concluída quando todas estiverem `concluido`)
+  - `SUB-47.0`: Configurar Laya Server via Docker Compose (`pendente`)
+  - `SUB-47.1`: Criar wrapper TypeScript para API do Laya (`src/lib/laya.ts`) (`pendente`)
+  - `SUB-47.2`: Skill `classificar-tarefa` (níveis, sinais, matriz ferramenta × modelo) (`pendente`)
+  - `SUB-47.3`: Script `scripts/sincronizar-agentes.mjs` (`.agents/` → `.claude/`) (`pendente`)
+  - `SUB-47.4`: Agente `classificador-tarefas` (usa Laya, não Opus) (`pendente`)
+  - `SUB-47.5`: Executores `executor-leve` (Haiku), `executor-medio` (Sonnet), `executor-pesado` (Opus) (`pendente`)
+  - `SUB-47.6`: Skill `liderar-equipe` (fluxo do líder) (`pendente`)
+  - `SUB-47.7`: Regra nova no `AGENTS.md`: campo `Nível`, matriz e equipe (`pendente`)
+  - `SUB-47.8`: `proxima-task` filtra por nível (`pendente`)
+  - `SUB-47.9`: Classificar os blocos pendentes do quadro (`pendente`)
+  - `SUB-47.10`: Instalação global em `~/.agents/` e `~/.claude/` (só com autorização) (`pendente`)
+  - `SUB-47.11`: Piloto da equipe em 1 item livre + aceite do usuário (`pendente`)
+  - `SUB-47.12`: Integrar classificação Laya no worker LangGraph (`pendente`)
+  - `SUB-47.13`: Documentar Laya Server no README (`pendente`)
+- **Descrição:** Cada tarefa do quadro passa a ter `Nível` (`LEVE`, `MEDIO`, `PESADO`), definido automaticamente pelo **Laya Server** (System-One control, Jev-compatible) em vez de um classificador manual Opus. O Laya Server roda como serviço em background via Docker, expõe endpoint HTTP `/v1/systemone` e fornece decisões estruturadas rápidas (< 1s, sem custo de LLM). Cada ferramenta de IA (Claude Code, Grok, DeepSeek, Gemini, Devin) pega só o que o seu modelo dá conta, conforme uma matriz ferramenta × modelo × nível. No Claude Code, uma equipe de subagentes (líder + classificador Laya + executores Haiku/Sonnet/Opus) trabalha em paralelo, com só o líder mexendo no Git e no quadro. Plano completo: [`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md) + integração Laya em `docs/laya-server.md`.
+- **Critérios de Aceitação:** Todas as subtarefas `concluido`; Laya Server rodando e acessível; classificação automática funciona; piloto (SUB-47.11) aceito pelo usuário.
 - **Commit:** pendente
-- **Anotação:** Criada em 2026-10-13 12:10 por Claude Code (Opus 5.5), a pedido do usuário. Prioridade `MEDIA` (padrão da seção 1.2, o usuário não definiu outra). **Nenhuma subtarefa pode ser pega antes de o usuário aprovar o plano** em `docs/equipe-de-agentes.md`; quando aprovar, a dependência de aprovação sai dos blocos e o resumo é atualizado.
+- **Anotação:** Criada em 2026-10-13 12:10 por Claude Code (Opus 5.5), a pedido do usuário. **Atualizada em 2026-10-13 para integrar Laya Server:** o classificador manual Opus foi substituído pelo Laya Server (System-One control), que fornece decisões estruturadas rápidas sem custo de LLM. Vantagens: < 1s por classificação, custo zero (local), precisão em decisões estruturadas. Prioridade `MEDIA` (padrão da seção 1.2). **Nenhuma subtarefa pode ser pega antes de o usuário aprovar o plano** em `docs/equipe-de-agentes.md`; quando aprovar, a dependência de aprovação sai dos blocos e o resumo é atualizado.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
-#### [ ] SUB-47.1: Skill `classificar-tarefa` (níveis, sinais, matriz ferramenta × modelo)
+#### [ ] SUB-47.0: Configurar Laya Server via Docker Compose
 - **Status:** pendente
 - **Prioridade:** MEDIA
 - **Executor:** nenhum
 - **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md))
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Criar `.agents/skills/classificar-tarefa/SKILL.md`: níveis `LEVE` (tarefa fácil) / `MEDIO` (média) / `PESADO` (difícil) com sinais concretos, ordem de decisão (a regra mais restritiva vence; na dúvida, sobe o nível), **matriz ferramenta × modelo × nível** (Claude Code local/nuvem, Gemini, Grok, DeepSeek, Devin), exemplos reais do quadro e o formato de saída (`- **Nível:** X` abaixo de `Prioridade:` + justificativa curta na anotação). Proibido: mudar `Prioridade`, reclassificar bloco travado por outro agente ou sob 🔒 trava especial.
-- **Critérios de Aceitação:** Skill com frontmatter válido; matriz **confirmada pelo usuário** e registrada na anotação.
+- **Descrição:** Criar `docker-compose.laya.yml` na raiz do projeto com serviço `laya-serve` baseado na configuração oficial do Laya. Configurar variáveis de ambiente: `LAYA_SERVE_BACKEND=laya`, `LAYA_SERVE_PRELOAD=true`, `LAYA_SERVE_DEVICE=cpu` (ou `cuda` se GPU disponível), `LAYA_API_KEY` (opcional, para proteção), `LAYA_BIND_ADDRESS=127.0.0.1` (só localhost). Publicar porta `8000` e adicionar health check. Criar script `scripts/start-laya.sh` (Windows: `.bat`) para iniciar/parar o serviço. Documentar como rodar: `docker compose -f docker-compose.laya.yml up -d laya-serve`.
+- **Critérios de Aceitação:** Docker Compose funcional; serviço inicia sem erros; health check passa; portas corretas; script de start/stop funcional.
 - **Commit:** pendente
-- **Anotação:** Plano em `docs/equipe-de-agentes.md`. Em 2026-10-13 12:25 o usuário definiu: **DeepSeek V4.1 Flash** pega tarefa fácil (`LEVE`); já está na matriz do plano. Em 2026-10-13 12:27 o usuário definiu: **Grok Bot** pega **só** tarefa fácil (`LEVE`); linha própria na matriz do plano. Em 2026-10-13 12:29 o usuário definiu: **Devin** (plano Free) pega **só** tarefa fácil (`LEVE`). Em 2026-10-13 12:31 o usuário definiu: **Antigravity** (Starter Quota) pega **só** tarefa fácil (`LEVE`), em linha separada do Gemini CLI. Em 2026-10-13 12:34 o usuário definiu: **Grok (SuperGrok)** pega só até tarefa média (`LEVE` com modelo rápido, `MEDIO` com Grok 4.7); não pega `PESADO`. Em 2026-10-13 12:35 o usuário definiu: **tarefa difícil (`PESADO`) só para o Claude Code com Opus 5.5 ou superior, ou Fable**; nenhuma outra ferramenta ou modelo pega `PESADO` (Gemini CLI passa a ir só até `MEDIO`).
+- **Anotação:** Integrado da SUB-51 para usar Laya Server como classificador automático (System-One control) em vez de classificador manual Opus.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-47.1: Criar wrapper TypeScript para API do Laya (`src/lib/laya.ts`)
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.0
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `src/lib/laya.ts` com: tipos TypeScript para request/response do endpoint `/v1/systemone` (baseado na especificação Jev), função `classificar(estado, perguntas)` que faz POST para o Laya Server e devolve `{ choice, score, noul }`, função `status()` para health check. Configurar URL base via variável de ambiente `LAYA_SERVER_URL` (padrão: `http://localhost:8000`). Tratar erros de conexão e timeouts. Exportar em `src/lib/index.ts`.
+- **Critérios de Aceitação:** Wrapper TypeScript funcional; tipos corretos; testes unitários passando; `npm run typecheck` verde.
+- **Commit:** pendente
+- **Anotação:** Integrado da SUB-51 para que o classificador use o Laya Server.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-47.2: Skill `classificar-tarefa` (níveis, sinais, matriz ferramenta × modelo)
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `.agents/skills/classificar-tarefa/SKILL.md`: níveis `LEVE` (tarefa fácil) / `MEDIO` (média) / `PESADO` (difícil) com sinais concretos, ordem de decisão (a regra mais restritiva vence; na dúvida, sobe o nível), **matriz ferramenta × modelo × nível** (Claude Code local/nuvem, Gemini, Grok, DeepSeek, Devin), exemplos reais do quadro e o formato de saída (`- **Nível:** X` abaixo de `Prioridade:` + justificativa curta na anotação). A skill usa o wrapper do Laya (`src/lib/laya.ts`) para classificação automática em vez de chamada manual Opus. Proibido: mudar `Prioridade`, reclassificar bloco travado por outro agente ou sob 🔒 trava especial.
+- **Critérios de Aceitação:** Skill com frontmatter válido; matriz **confirmada pelo usuário** e registrada na anotação; integração com Laya funcional.
+- **Commit:** pendente
+- **Anotação:** Plano em `docs/equipe-de-agentes.md`. Atualizado para usar Laya Server. Em 2026-10-13 12:25 o usuário definiu: **DeepSeek V4.1 Flash** pega tarefa fácil (`LEVE`); já está na matriz do plano. Em 2026-10-13 12:27 o usuário definiu: **Grok Bot** pega **só** tarefa fácil (`LEVE`); linha própria na matriz do plano. Em 2026-10-13 12:29 o usuário definiu: **Devin** (plano Free) pega **só** tarefa fácil (`LEVE`). Em 2026-10-13 12:31 o usuário definiu: **Antigravity** (Starter Quota) pega **só** tarefa fácil (`LEVE`), em linha separada do Gemini CLI. Em 2026-10-13 12:34 o usuário definiu: **Grok (SuperGrok)** pega só até tarefa média (`LEVE` com modelo rápido, `MEDIO` com Grok 4.7); não pega `PESADO`. Em 2026-10-13 12:35 o usuário definiu: **tarefa difícil (`PESADO`) só para o Claude Code com Opus 5.5 ou superior, ou Fable**; nenhuma outra ferramenta ou modelo pega `PESADO` (Gemini CLI passa a ir só até `MEDIO`).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
@@ -1108,24 +1138,37 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
-#### [ ] SUB-47.3: Agente `classificador-tarefas` (Opus)
+#### [ ] SUB-47.3: Script `scripts/sincronizar-agentes.mjs` (`.agents/` → `.claude/`)
 - **Status:** pendente
 - **Prioridade:** MEDIA
 - **Executor:** nenhum
-- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.1, SUB-47.2
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md))
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Criar `.agents/agents/classificador-tarefas.md` (`model: opus`, `skills: [classificar-tarefa]`, ferramentas só de leitura + edição do quadro). Ele lê os blocos sem `Nível`, grava o nível com justificativa e devolve a lista ao líder. Não faz Git. Rodar `npm run sync:agentes`.
-- **Critérios de Aceitação:** Frontmatter válido; cópia em `.claude/agents/`.
+- **Descrição:** Script Node que copia `.agents/skills/*` para `.claude/skills/*` e `.agents/agents/*` para `.claude/agents/*` (o Claude Code só lê `.claude/`, local e nuvem). Script `npm run sync:agentes` no `package.json`. Não toca em `.claude/settings.local.json` nem em `.claude/launch.json`.
+- **Critérios de Aceitação:** `node --check` sem erro; execução copia os arquivos; nada fora de `skills/` e `agents/` é alterado.
 - **Commit:** pendente
 - **Anotação:** Plano em `docs/equipe-de-agentes.md`.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
-#### [ ] SUB-47.4: Executores `executor-leve` (Haiku), `executor-medio` (Sonnet), `executor-pesado` (Opus)
+#### [ ] SUB-47.4: Agente `classificador-tarefas` (usa Laya, não Opus)
 - **Status:** pendente
 - **Prioridade:** MEDIA
 - **Executor:** nenhum
-- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.2
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.2, SUB-47.3
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Criar `.agents/agents/classificador-tarefas.md` (`model: any`, `skills: [classificar-tarefa]`, ferramentas só de leitura + edição do quadro). Ele lê os blocos sem `Nível`, usa a skill `classificar-tarefa` (que chama o Laya Server) para definir o nível, grava o nível com justificativa e devolve a lista ao líder. Não faz Git. Rodar `npm run sync:agentes`.
+- **Critérios de Aceitação:** Frontmatter válido; cópia em `.claude/agents/`; integração com Laya funcional.
+- **Commit:** pendente
+- **Anotação:** Plano em `docs/equipe-de-agentes.md`. Atualizado para usar Laya Server em vez de Opus (custo zero, < 1s).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-47.5: Executores `executor-leve` (Haiku), `executor-medio` (Sonnet), `executor-pesado` (Opus)
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.3
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `.agents/agents/executor-leve.md`, `executor-medio.md` e `executor-pesado.md`. Cada um recebe do líder um item já travado, edita **só** os arquivos da tarefa, segue as regras de código do projeto e devolve relatório (arquivos alterados, o que foi feito, pendências). **Proibido** usar Git e editar o quadro. Rodar `npm run sync:agentes`.
 - **Critérios de Aceitação:** Frontmatter válido; instruções proíbem Git e edição do quadro; cópias em `.claude/agents/`.
@@ -1134,11 +1177,11 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
-#### [ ] SUB-47.5: Skill `liderar-equipe` (fluxo do líder)
+#### [ ] SUB-47.6: Skill `liderar-equipe` (fluxo do líder)
 - **Status:** pendente
 - **Prioridade:** MEDIA
 - **Executor:** nenhum
-- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.3, SUB-47.4
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.4, SUB-47.5
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Criar `.agents/skills/liderar-equipe/SKILL.md`: fetch + pull, chamar o classificador nos blocos sem nível, escolher até 3 itens livres por prioridade e com arquivos diferentes, travar (commit + push), disparar os executores em paralelo pelo nível, validar cada entrega (`npm run validar`), commit por tarefa, mover para `task_complete.md`, push. Tarefa de banco: o próprio líder, só na sessão local (regra 11). Rodar `npm run sync:agentes`.
 - **Critérios de Aceitação:** Fluxo coerente com as seções 1, 1.1 e 1.2 do `AGENTS.md`; cópia em `.claude/skills/`.
@@ -1147,24 +1190,24 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
-#### [ ] SUB-47.6: Regra nova no `AGENTS.md`: campo `Nível`, matriz e equipe
+#### [ ] SUB-47.7: Regra nova no `AGENTS.md`: campo `Nível`, matriz e equipe
 - **Status:** pendente
 - **Prioridade:** MEDIA
 - **Executor:** nenhum
-- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.1
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.2
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Acrescentar ao `AGENTS.md` (seção nova 1.4): todo bloco tem `Nível:` abaixo de `Prioridade:`; quem cria ou subdivide classifica pela skill `classificar-tarefa`; cada agente se identifica como ferramenta + modelo e só pega item até o nível máximo da sua linha na matriz (modelo forte pega item mais leve só se não houver item livre do seu nível); equipe do Claude Code: cada executor conta como um agente com nome próprio, e só o líder mexe no Git e no quadro.
+- **Descrição:** Acrescentar ao `AGENTS.md` (seção nova 1.4): todo bloco tem `Nível:` abaixo de `Prioridade:`; quem cria ou subdivide classifica pela skill `classificar-tarefa` (que usa Laya Server); cada agente se identifica como ferramenta + modelo e só pega item até o nível máximo da sua linha na matriz (modelo forte pega item mais leve só se não houver item livre do seu nível); equipe do Claude Code: cada executor conta como um agente com nome próprio, e só o líder mexe no Git e no quadro.
 - **Critérios de Aceitação:** Sem contradição com as regras existentes; `npm run validar` verde.
 - **Commit:** pendente
-- **Anotação:** Plano em `docs/equipe-de-agentes.md`.
+- **Anotação:** Plano em `docs/equipe-de-agentes.md`. Atualizado para mencionar Laya Server.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
-#### [ ] SUB-47.7: `proxima-task` filtra por nível
+#### [ ] SUB-47.8: `proxima-task` filtra por nível
 - **Status:** pendente
 - **Prioridade:** MEDIA
 - **Executor:** nenhum
-- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.6
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.7
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Ajustar o passo 3 de `.agents/skills/proxima-task/SKILL.md` para considerar o `Nível` e a matriz da skill `classificar-tarefa`. Rodar `npm run sync:agentes`.
 - **Critérios de Aceitação:** Passo 3 cita o nível; cópia atualizada.
@@ -1173,11 +1216,11 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
-#### [ ] SUB-47.8: Classificar os blocos pendentes do quadro
+#### [ ] SUB-47.9: Classificar os blocos pendentes do quadro
 - **Status:** pendente
 - **Prioridade:** MEDIA
 - **Executor:** nenhum
-- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.3, SUB-47.6
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.4, SUB-47.7
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Rodar o `classificador-tarefas` em todos os blocos pendentes do `task-principal.md` (exceto os sob 🔒 trava especial e os travados por outro agente) e gravar `Nível:` + justificativa.
 - **Critérios de Aceitação:** Todo bloco pendente elegível tem `Nível:`; o diff só acrescenta linhas de nível e justificativa.
@@ -1186,11 +1229,11 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
-#### [ ] SUB-47.9: Instalação global em `~/.agents/` e `~/.claude/` (só com autorização)
+#### [ ] SUB-47.10: Instalação global em `~/.agents/` e `~/.claude/` (só com autorização)
 - **Status:** pendente
 - **Prioridade:** MEDIA
 - **Executor:** nenhum
-- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.5
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.6
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Com **autorização explícita do usuário no passo**, copiar as skills e os agentes para `~/.agents/` (fonte global) e `~/.claude/skills/` + `~/.claude/agents/` (uso local em qualquer projeto). Para projetos na nuvem, documentar o uso do `npm run sync:agentes` (ou a cópia manual) em cada repositório.
 - **Critérios de Aceitação:** Arquivos presentes nas pastas globais; o procedimento para outros projetos fica descrito no plano.
@@ -1199,16 +1242,42 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
-#### [ ] SUB-47.10: Piloto da equipe em 1 item livre + aceite do usuário
+#### [ ] SUB-47.11: Piloto da equipe em 1 item livre + aceite do usuário
 - **Status:** pendente
 - **Prioridade:** MEDIA
 - **Executor:** nenhum
-- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.5, SUB-47.7, SUB-47.8
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.6, SUB-47.8, SUB-47.9
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Rodar a equipe (skill `liderar-equipe`) em 1 item livre do quadro, de ponta a ponta. Anotar o consumo, os problemas e os ajustes. Pedir o aceite do usuário.
 - **Critérios de Aceitação:** Item entregue pela equipe com o protocolo completo; aceite do usuário registrado.
 - **Commit:** pendente
 - **Anotação:** Plano em `docs/equipe-de-agentes.md`.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-47.12: Integrar classificação Laya no worker LangGraph
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.1
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Integrar a classificação do Laya no worker LangGraph: ao criar uma tarefa via `pegar_proxima_task` ou manualmente, chamar o wrapper do Laya para definir o nível automaticamente. Adicionar campo `nivel_tarefa` na tabela `tasks` (se não existir) ou usar o campo existente. Atualizar o nó `planejar` do worker para considerar o nível na distribuição por modelo (LEVE → modelos pequenos, MEDIO → modelos médios, PESADO → modelos grandes).
+- **Critérios de Aceitação:** Classificação automática integrada; campo `nivel_tarefa` presente; nó `planejar` atualizado; testes do worker passam.
+- **Commit:** pendente
+- **Anotação:** Integrado da SUB-51 para que o worker LangGraph também use o Laya Server.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
+
+#### [ ] SUB-47.13: Documentar Laya Server no README
+- **Status:** pendente
+- **Prioridade:** MEDIA
+- **Executor:** nenhum
+- **Depende de:** aprovação do plano pelo usuário ([`docs/equipe-de-agentes.md`](docs/equipe-de-agentes.md)); SUB-47.0
+- **Subtarefas:** Nenhuma (atômica)
+- **Descrição:** Atualizar o `README.md` com seção "Laya Server (System-One Control)" descrevendo: o que é o Laya Server, como iniciar (Docker Compose), variáveis de ambiente, endpoints disponíveis, integração na classificação de tarefas, e monitoramento. Adicionar também instruções de troubleshooting (servidor não inicia, timeouts, erros de conexão). Criar `docs/laya-server.md` com documentação técnica detalhada.
+- **Critérios de Aceitação:** README atualizado com seção do Laya; instruções completas; troubleshooting documentado; `docs/laya-server.md` criado.
+- **Commit:** pendente
+- **Anotação:** Integrado da SUB-51 para documentação do Laya Server.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
@@ -1420,135 +1489,6 @@
 - **Subtarefas:** Nenhuma (atômica)
 - **Descrição:** Adicionar seção "Desenvolvimento local com Supabase" no `README.md` com: link para `docs/supabase-local.md`, pré-requisitos (Docker Desktop, Supabase CLI), comandos básicos (`supabase init`, `supabase start`, `supabase stop`), como alternar entre local e nuvem (`npm run dev:local` vs `npm run dev`), e quando usar cada ambiente (local para desenvolvimento/testes, nuvem para produção/staging). Atualizar também a seção "Banco de dados" para mencionar que as migrations estão em `supabase/migrations/` e como aplicá-las localmente.
 - **Critérios de Aceitação:** README atualizado com seção de desenvolvimento local; links funcionando; comandos básicos documentados; seção de banco atualizada.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
----
-
-## 🧠 FASE 22: Integração do Laya Server (System-One Control)
-
-### [ ] SUB-51: Integrar Laya Server para decisões estruturadas e classificação de tarefas
-- **Status:** pendente (aguardando subtarefas)
-- **Prioridade:** MEDIA
-- **Executor:** nenhum
-- **Depende de:** SUB-47 (equipe de agentes); subtarefas SUB-51.1 a SUB-51.8
-- **Subtarefas:**
-  - `SUB-51.1`: Criar documentação do Laya Server e arquitetura de integração (`pendente`)
-  - `SUB-51.2`: Configurar Laya Server via Docker Compose (`pendente`)
-  - `SUB-51.3`: Criar wrapper TypeScript para API do Laya (`src/lib/laya.ts`) (`pendente`)
-  - `SUB-51.4`: Implementar MCP tool `laya_classify` para classificação de tarefas (`pendente`)
-  - `SUB-51.5`: Integrar classificação de tarefas no worker LangGraph (`pendente`)
-  - `SUB-51.6`: Implementar MCP tool `laya_route` para roteamento de modelos (`pendente`)
-  - `SUB-51.7`: Criar dashboard de monitoramento do Laya Server (`pendente`)
-  - `SUB-51.8`: Documentar uso e atualizar o README (`pendente`)
-- **Descrição:** Integrar o Laya Server (System-One control plane compatível com Jev API) no Dashboard AI para decisões estruturadas rápidas: classificação de tarefas por nível (LEVE/MEDIO/PESADO), roteamento automático de modelos por tipo de tarefa, e julgamento de comandos perigosos antes de execução. O Laya Server roda como serviço em background via Docker, expõe endpoint HTTP `/v1/systemone` (Jev-compatible), e é acessado via MCP tools (`laya_classify`, `laya_route`, `laya_judge`). A tarefa configura o servidor, cria wrapper TypeScript, integra no worker LangGraph, adiciona ferramentas MCP e documenta o fluxo completo.
-- **Critérios de Aceitação:** Laya Server rodando via Docker e acessível; wrapper TypeScript funcional; MCP tools implementadas e testadas; classificação de tarefas integrada no worker; dashboard de monitoramento funcionando; documentação completa no README.
-- **Commit:** pendente
-- **Anotação:** Criada em 2026-10-13 a pedido do usuário para adicionar System-One control ao Dashboard AI. O Laya Server fornece decisões estruturadas rápidas (choice/score/noul) sem chamar LLM caro, substituindo o classificador manual de tarefas e permitindo roteamento inteligente de modelos. Compatível com Jev API, pode ser usado como substituto local do TypeSafe Jev. Vantagens: decisões rápidas (< 1s), custo baixo (sem chamadas de LLM), precisão em classificação estruturada.
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-#### [ ] SUB-51.1: Criar documentação do Laya Server e arquitetura de integração
-- **Status:** pendente
-- **Prioridade:** MEDIA
-- **Executor:** nenhum
-- **Depende de:** Nenhuma
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Criar `docs/laya-server.md` com: descrição do Laya Server (System-One control, Jev-compatible), arquitetura de integração no Dashboard AI (Docker, wrapper TypeScript, MCP tools, worker LangGraph), casos de uso (classificação de tarefas, roteamento de modelos, julgamento de comandos), comparação com classificador manual (custo, velocidade, precisão), e pré-requisitos (Docker, Python, GPU opcional). Incluir também referências à documentação oficial do Laya (https://laya-ai.com/guides/self-host-laya, https://laya-model.com/guides/serve-docker).
-- **Critérios de Aceitação:** Documentação completa com arquitetura; casos de uso claros; pré-requisitos listados; links para docs oficiais.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-#### [ ] SUB-51.2: Configurar Laya Server via Docker Compose
-- **Status:** pendente
-- **Prioridade:** MEDIA
-- **Executor:** nenhum
-- **Depende de:** SUB-51.1
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Criar `docker-compose.laya.yml` na raiz do projeto com serviço `laya-serve` baseado na configuração oficial do Laya. Configurar variáveis de ambiente: `LAYA_SERVE_BACKEND=laya`, `LAYA_SERVE_PRELOAD=true`, `LAYA_SERVE_DEVICE=cpu` (ou `cuda` se GPU disponível), `LAYA_API_KEY` (opcional, para proteção), `LAYA_BIND_ADDRESS=127.0.0.1` (só localhost). Publicar porta `8000` e adicionar health check. Criar script `scripts/start-laya.sh` (Windows: `.bat`) para iniciar/parar o serviço. Documentar como rodar: `docker compose -f docker-compose.laya.yml up -d laya-serve`.
-- **Critérios de Aceitação:** Docker Compose funcional; serviço inicia sem erros; health check passa; portas corretas; script de start/stop funcional.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-#### [ ] SUB-51.3: Criar wrapper TypeScript para API do Laya (`src/lib/laya.ts`)
-- **Status:** pendente
-- **Prioridade:** MEDIA
-- **Executor:** nenhum
-- **Depende de:** SUB-51.2
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Criar `src/lib/laya.ts` com: tipos TypeScript para request/response do endpoint `/v1/systemone` (baseado na especificação Jev), função `classificar(estado, perguntas)` que faz POST para o Laya Server e devolve `{ choice, score, noul }`, função `rotear(modelo, script, idioma)` para escolher checkpoint, e função `status()` para health check. Configurar URL base via variável de ambiente `LAYA_SERVER_URL` (padrão: `http://localhost:8000`). Tratar erros de conexão e timeouts. Exportar em `src/lib/index.ts`.
-- **Critérios de Aceitação:** Wrapper TypeScript funcional; tipos corretos; testes unitários passando; `npm run typecheck` verde.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-#### [ ] SUB-51.4: Implementar MCP tool `laya_classify` para classificação de tarefas
-- **Status:** pendente
-- **Prioridade:** MEDIA
-- **Executor:** nenhum
-- **Depende de:** SUB-51.3
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Criar ferramenta MCP `laya_classify` em `api/_lib/laya-tools.ts` (ou adicionar ao `api/_lib/brain-tools.ts`) que recebe `{ descricao_tarefa, contexto }` e usa o wrapper do Laya para classificar a tarefa em LEVE/MEDIO/PESADO. Definir o schema de pergunta Laya com as 3 opções e critérios (LEVE: < 3 min, 1 arquivo; MEDIO: 3-15 min, 3-5 arquivos; PESADO: > 15 min, banco, segurança). Registrar a ferramenta no registro de ferramentas MCP (`api/_lib/`).
-- **Critérios de Aceitação:** MCP tool implementada; schema de pergunta definido; classificação funciona; registrada no MCP; testes passam.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-#### [ ] SUB-51.5: Integrar classificação de tarefas no worker LangGraph
-- **Status:** pendente
-- **Prioridade:** MEDIA
-- **Executor:** nenhum
-- **Depende de:** SUB-51.4
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Integrar a classificação do Laya no worker LangGraph: ao criar uma tarefa via `pegar_proxima_task` ou manualmente, chamar `laya_classify` para definir o nível automaticamente, substituindo o classificador manual de Opus da SUB-47. Adicionar campo `nivel_tarefa` na tabela `tasks` (se não existir) ou usar o campo existente. Atualizar o nó `planejar` do worker para considerar o nível na distribuição por modelo (LEVE → modelos pequenos, MEDIO → modelos médios, PESADO → modelos grandes).
-- **Critérios de Aceitação:** Classificação automática integrada; campo `nivel_tarefa` presente; nó `planejar` atualizado; testes do worker passam.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-#### [ ] SUB-51.6: Implementar MCP tool `laya_route` para roteamento de modelos
-- **Status:** pendente
-- **Prioridade:** MEDIA
-- **Executor:** nenhum
-- **Depende de:** SUB-51.3
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Criar ferramenta MCP `laya_route` em `api/_lib/laya-tools.ts` que recebe `{ tipo_tarefa, idioma, script }` e usa o Laya para escolher o modelo ideal (ex: Claude Haiku/GPT-4o-mini para LEVE, Claude Sonnet/GPT-4o para MEDIO, Claude Opus/GPT-4-turbo para PESADO). Definir schema de pergunta com mapeamento de tipo→modelo. Integrar no worker LangGraph no nó `executar` para escolher o modelo antes de chamar a ferramenta.
-- **Critérios de Aceitação:** MCP tool implementada; mapeamento de modelos definido; integração no worker funciona; testes passam.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-#### [ ] SUB-51.7: Criar dashboard de monitoramento do Laya Server
-- **Status:** pendente
-- **Prioridade:** MEDIA
-- **Executor:** nenhum
-- **Depende de:** SUB-51.2
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Criar tela `src/views/LayaView.tsx` com monitoramento do Laya Server: status (health check), modelos carregados, métricas (latência média, requests/s, taxa de erro), log de decisões recentes (classificações, roteamentos) e gráficos de uso por tipo de decisão. Usar a API `/health` do Laya Server para dados em tempo real. Adicionar rota `#/laya` e item de menu. Apenas administradores veem a tela.
-- **Critérios de Aceitação:** Tela criada; dados do Laya Server exibidos; gráficos funcionam; `npm run build` verde; chunk da tela ≤ 500 kB.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
-#### [ ] SUB-51.8: Documentar uso e atualizar o README
-- **Status:** pendente
-- **Prioridade:** MEDIA
-- **Executor:** nenhum
-- **Depende de:** SUB-51.7
-- **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Atualizar o `README.md` com seção "Laya Server (System-One Control)" descrevendo: o que é o Laya Server, como iniciar (Docker Compose), variáveis de ambiente, endpoints disponíveis, MCP tools (`laya_classify`, `laya_route`), integração no worker LangGraph, e monitoramento. Adicionar também instruções de troubleshooting (servidor não inicia, timeouts, erros de conexão). Atualizar `docs/laya-server.md` com notas de integração específicas do Dashboard AI.
-- **Critérios de Aceitação:** README atualizado com seção do Laya; instruções completas; troubleshooting documentado; links funcionando.
 - **Commit:** pendente
 - **Anotação:** pendente
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
