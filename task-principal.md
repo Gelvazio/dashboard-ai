@@ -72,16 +72,35 @@
 
 ---
 
+### 🔒 TRAVA ESPECIAL: SUB-46
+
+> **ATENÇÃO:** A tarefa `SUB-46` (Orquestrador de IA multimodelo) está **TRAVADA PARA TODAS AS IAS**.
+> O usuário ainda vai decidir se ela será feita. Nenhuma IA pode assumi-la, subdividi-la ou
+> criar subtarefas nela sem autorização explícita do usuário.
+> Para liberar, o usuário deve remover esta trava manualmente no quadro.
+
+| Propriedade | Valor Atual |
+|---|---|
+| **Status da Trava:** | 🔴 **TRAVADO PARA TODAS AS IAS** |
+| **Tarefa:** | SUB-46 |
+| **Motivo:** | Aguardando decisão do usuário sobre fazer ou não a tarefa |
+| **Agente Responsável:** | — (usuário) |
+| **Data e Hora de Início:** | 2026-10-13 |
+| **Bloqueio para Outras IAs:** | **ATIVADO** |
+
+---
+
 ## 📊 Resumo de Progresso
-- **Total de Tasks Principais:** 46
+- **Total de Tasks Principais:** 47
 - **Subtarefas atômicas (~3 min):** 270
 - **Em Execução:** 1 (SUB-38)
-- **Pendentes:** 7 principais (SUB-38, 28, 35, 41, 42, 45, KIRO-DEV-CLONE) + 52 subtarefas
+- **Pendentes:** 8 principais (SUB-38, 28, 35, 41, 42, 45, 46, KIRO-DEV-CLONE) + 52 subtarefas
   - livres agora, pela prioridade (seção 1.2 do [`AGENTS.md`](AGENTS.md)): 1 — SUB-35.46 (`MEDIA`). As 30 filhas de `KIRO-DEV-CLONE` (`BAIXA`) estão 🔒 travadas para todas as IAs
   - bloqueadas por dependência: 21 — SUB-45.2 a SUB-45.19 (cadeia da SUB-45; tarefas de banco só Claude Code local; frontend depende de banco) e SUB-41.2, SUB-41.3, SUB-42 (cadeia da SUB-41)
   - em execução: 1 — SUB-38 (DeepSeek Harness (deepseek-flash))
   - reservadas: 30 — `KIRO-DEV-CLONE.1` a `KIRO-DEV-CLONE.30`, sob a 🔒 TRAVA ESPECIAL (só o usuário libera)
-- **Concluídas:** 252 de 316 blocos (38 principais + 214 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
+  - travada para todas as IAs: 1 — SUB-46 (`BAIXA`, atômica), sob a 🔒 TRAVA ESPECIAL (aguarda decisão do usuário)
+- **Concluídas:** 252 de 317 blocos (38 principais + 214 subtarefas) — blocos em [`task_complete.md`](task_complete.md)
 - **Canceladas:** 0
 
 ---
@@ -1052,3 +1071,20 @@
 - **Anotação:** Filha criada na subdivisão de 2026-10-12 16:11 (DeepSeek Harness (deepseek-flash), a pedido do usuário); 🔒 sob a TRAVA ESPECIAL — só o usuário libera.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** ⬜ NÃO IMPLEMENTADA — 2026-10-12 16:30 (DeepSeek Harness (deepseek-flash)): bloco `pendente` e 🔒 reservado pela TRAVA ESPECIAL do KIRO-DEV-CLONE; nada do escopo existe no repositório (sem `src/components/kiro/`, `src/lib/kiro/` e `src/views/KiroDevClone.tsx`) — não há entrega a conferir.
+
+---
+
+## 🧭 FASE 17: Orquestrador de IA Multimodelo
+
+### [ ] SUB-46: Orquestrador de IA multimodelo (roteamento por custo + guardrail)
+- **Status:** pendente
+- **Prioridade:** BAIXA
+- **Executor:** nenhum
+- **Depende de:** Nenhuma
+- **Subtarefas:** Nenhuma (atômica até o usuário decidir fazer; subdividir só com autorização dele)
+- **Descrição:** Avaliar e, se o usuário aprovar, implementar a camada descrita em [`ORQUESTRADOR-DE-IA.md`](ORQUESTRADOR-DE-IA.md): um "despachante" que fica **por cima** do Dashboard AI. Ele recebe a tarefa, busca o contexto na memória que já existe (`ai_memories` + RPC `match_memories`), classifica a complexidade (Jev AI, pergunta `is_complex`), manda para o worker barato (Gemini Flash) ou caro (Claude), valida a saída (guardrail Jev AI, pergunta `is_valid`) e registra a entrega (GitHub/quadro). Pontos de adaptação já identificados: (1) o documento usa a RPC `match_project_context` com `filter_project_id`, que **não existe** no banco; o equivalente é `match_memories` ([`database/04_rpc_functions.sql`](database/04_rpc_functions.sql)); (2) o documento usa Google Cloud Workflows (YAML) + FastAPI (Python), e o projeto roda em Vercel Serverless/TypeScript ([`api/mcp.ts`](api/mcp.ts)): decidir a stack antes de começar; (3) hoje o projeto não chama nenhuma IA (os agentes é que chamam o MCP), então seria a primeira chamada a LLM feita pelo próprio projeto (custo e chaves novas); (4) o endpoint do Jev AI no documento (`https://typesafe.ai`) está marcado como `TODO` e precisa ser confirmado.
+- **Critérios de Aceitação:** A definir pelo usuário ao liberar a trava (stack escolhida, escopo e subdivisão em subtarefas de ~3 min). Por ser tarefa grande (várias partes, chaves de API), exige plano em `docs/` (seção 6 do `AGENTS.md`).
+- **Commit:** pendente
+- **Anotação:** ⛔ **TRAVADO PARA TODAS AS IAS** (2026-10-13, criada por Claude Code (Opus 5.5) a pedido do usuário): o usuário ainda vai decidir se quer fazer esta tarefa. Nenhuma IA pode assumi-la nem subdividi-la sem autorização explícita — ver a **🔒 TRAVA ESPECIAL: SUB-46** no início do quadro. Prioridade `BAIXA` definida pelo usuário.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **VERIFICADOR-CLAUDE:** PENDENTE
