@@ -89,8 +89,6 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-50.5 | Rodar o Supabase local e validar (`supabase start --config database/configlocal`) | 🟡 Média | SUB-50.4 | ⬜ Pendente | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-50.6 | Documentar alternância entre local e nuvem | 🟡 Média | SUB-50.5 | ⬜ Pendente | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-50.7 | Atualizar o `README.md` com instruções de desenvolvimento local | 🟡 Média | SUB-50.6 | ⬜ Pendente | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
-| SUB-54 | **Tirar a tabela "🧭 Frentes" do quadro (fica só o "Em uso por")** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
-| SUB-54.4 | Aceite do usuário | 🟡 Média | SUB-54.3 | 👀 Aguardando aceite | — | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
 | SUB-55 | **Visualizador de regras e tarefas lendo os `.md` direto (`.claude/rules/index.html`)** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-55.5 | Documentar no `README.md` como abrir o visualizador | 🟡 Média | SUB-55.4 | 🔄 Em execução | Claude Code (Opus 5.5) (local · main) (desde 2026-10-13 16:17) | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-55.6 | Aceite do usuário | 🟡 Média | SUB-55.5 | ⬜ Pendente | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |

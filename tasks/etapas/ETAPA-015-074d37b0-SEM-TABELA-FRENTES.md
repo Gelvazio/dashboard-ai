@@ -28,6 +28,7 @@ mesmo tempo) e com a informação repetida: quem está fazendo o quê já está 
 | Data | Quem | Decisão |
 |---|---|---|
 | 2026-10-13 15:48 | Gelvazio | Aprovado no chat ("sim"): apagar a tabela "🧭 Frentes" em vez de criar um arquivo por frente (opção 3) |
+| 2026-10-13 16:52 | Gelvazio | Aceite da alteração: remoção da tabela "🧭 Frentes" e uso da coluna "Em uso por" |
 
 ### SUB-54.1 — Regras sem "linha da frente" (`quadro.md`, `frentes-e-reserva.md`, `ciclo-da-task.md`)
 
@@ -69,8 +70,9 @@ mesmo tempo) e com a informação repetida: quem está fazendo o quê já está 
 
 ### SUB-54.4 — Aceite do usuário
 
-**Próximo passo:** depois da 54.3, mostrar o resultado ao usuário e esperar o aceite.
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** o usuário confere o quadro sem a tabela e as regras novas.
 - **Critérios de Aceitação:** aceite do usuário registrado nas Decisões desta etapa.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-54.4)` · **Verificação:** aceite explícito do usuário no chat em
+  2026-10-13 16:52, registrado nas Decisões desta etapa.
