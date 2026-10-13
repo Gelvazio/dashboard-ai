@@ -47,15 +47,16 @@ no mesmo commit; commit sem `.agents/` não roda o sincronizador; `pre-push` pas
 
 ### SUB-61.2 — `GEMINI.md` apontando para o `AGENTS.md`
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:11).
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** arquivo curto no padrão do `CLAUDE.md`.
 - **Critérios de Aceitação:** `@./AGENTS.md` numa linha própria; nenhuma regra no arquivo.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-61.2)` · **Verificação:** `@./AGENTS.md` em linha própria (sintaxe de importação do Gemini CLI); arquivo sem regras, no padrão do `CLAUDE.md`; linhas ≤ 100
 
 ### SUB-61.3 — Aceite do usuário
 
-**Próximo passo:** depende da SUB-61.2.
+**Próximo passo:** 👀 o usuário edita uma skill em `.agents/skills/`, commita e vê as cópias no
+mesmo commit; no Gemini CLI, `/memory show` mostra o `AGENTS.md`; depois responde "sim".
 
 - **Descrição:** o usuário edita uma skill em `.agents/skills/`, commita e vê as cópias no mesmo
   commit; se usar o Gemini CLI, confere com `/memory show` que o `AGENTS.md` foi carregado.
