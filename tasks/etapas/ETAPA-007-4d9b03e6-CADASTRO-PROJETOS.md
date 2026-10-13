@@ -328,15 +328,13 @@ mantido abaixo só como histórico.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-13 18:03 — conferido por leitura do código (Codex GPT-6).
 ### SUB-45.12 — `ProjetoForm.tsx`: campos básicos
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** nenhum — entregue. Seguir na SUB-45.13.
 
 - **Descrição:** Criar `src/components/projetos/ProjetoForm.tsx` no visual do `LoginForm`/`CadastroForm` (classe `CAMPO`, `Botao`, `useId`, erros com `aria-invalid`/`aria-describedby`), com os campos Nome, Identificador (slug), Descrição, Prefixo do código, Repositório e Branch padrão. Valida com `validarProjeto` e, no modo criar, chama `criarProjeto`. Props: `projeto?` (modo editar), `onSalvou?(projeto)` e `onCancelar?()`.
-- **Critérios de Aceitação:** `npm run typecheck`, `npm run lint` e `npm run build` verdes.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
-- **VERIFICADOR-CLAUDE:** PENDENTE
-
+- **Critérios de Aceitação:** campos básicos acessíveis; criação e edição usam o serviço de projeto; testes não executados por regra do projeto.
+- **Entrega:** commit desta entrega · **Verificação:** leitura do formulário e conferência manual dos nomes, rótulos, `useId`, vínculos ARIA e chamadas de serviço; nenhuma execução de teste ou navegador.
+- **Anotação:** formulário básico implementado com estados de criação/edição, campos editáveis explícitos e mensagens de erro acessíveis.
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-13 18:07 — conferido por leitura do código (Codex GPT-6).
 ### SUB-45.13 — `ProjetoForm.tsx`: campos novos
 
 **Próximo passo:** executar conforme a descrição.

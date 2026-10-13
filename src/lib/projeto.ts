@@ -4,7 +4,7 @@ const SLUG_PROJETO_RE = /^[a-z0-9][a-z0-9_-]{0,62}$/;
 const PREFIXO_PROJETO_RE = /^[A-Z][A-Z0-9]{0,15}$/;
 const COR_PROJETO_RE = /^#[0-9a-fA-F]{6}$/;
 const ICONE_PROJETO_RE = /^[a-z0-9-]{1,64}$/;
-const URL_PROJETO_RE = /^https?:\/\//i;
+const URL_PROJETO_RE = /^https?:\/\//;
 const PRIORIDADES_PROJETO: readonly PrioridadeProjeto[] = ['MAXIMA', 'ALTA', 'MEDIA', 'BAIXA'];
 
 /** Campos editáveis necessários para validar o formulário de projeto. */
