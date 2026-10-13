@@ -27,6 +27,7 @@ a saúde das travas de cada projeto.
 - [Monitor em tempo real](#monitor-em-tempo-real)
 - [Classificação de tarefas (Laya Server + Opus)](#classificação-de-tarefas-laya-server--opus)
 - [Validação](#validação)
+- [Visualizador de regras e tarefas](#visualizador-de-regras-e-tarefas)
 
 ## Arquitetura
 
@@ -722,6 +723,30 @@ O resultado da validação é registrado em [`docs/VALIDACAO.md`](docs/VALIDACAO
 - Testes rápidos no banco de produção (telas Fila, Logs, Memória e Configurações)
 
 Para detalhes do processo de validação, veja [`tasks/historico/docs/validacao-telas-producao.md`](tasks/historico/docs/validacao-telas-producao.md).
+
+## Visualizador de regras e tarefas
+
+A página [`.claude/rules/index.html`](.claude/rules/index.html) mostra, em duas abas:
+
+- **REGRAS:** as regras de `.claude/rules/`, divididas em cartões por assunto, com busca e filtros. A
+  lista de arquivos vem do [`INDEX.md`](.claude/rules/INDEX.md): regra nova só aparece se estiver no índice.
+- **TASKS:** as tarefas abertas ([`tasks/STATUS.md`](tasks/STATUS.md)) e concluídas
+  ([`tasks/task_complete.md`](tasks/task_complete.md)), com o próximo passo de cada uma (da etapa), as
+  frentes que estão trabalhando (coluna "Em uso por") e o que aguarda o usuário (👀).
+
+A página não guarda dados: ela lê os `.md` na hora em que abre, então mostra sempre o quadro atual.
+O topo diz de onde os arquivos foram lidos e a que horas.
+
+**Como abrir:**
+
+1. **Duplo clique** no `index.html`: lê os arquivos da `main` no GitHub (precisa de internet). Mudança
+   ainda sem push não aparece.
+2. **Por um servidor** na raiz do repositório (lê os arquivos locais, inclusive o que ainda não foi
+   enviado), por exemplo `npx serve .` e abrir `http://localhost:3000/.claude/rules/`.
+
+Para atualizar, recarregue a página (Ctrl+F5). O código fica em
+[`.claude/rules/visualizador/`](.claude/rules/visualizador/) (`fonte.js` lê os arquivos,
+`leitor-regras.js` e `leitor-tarefas.js` montam os dados, `aba-*.js` desenham as telas).
 
 ---
 

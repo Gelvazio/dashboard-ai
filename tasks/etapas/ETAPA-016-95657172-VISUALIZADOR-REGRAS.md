@@ -98,16 +98,25 @@ gerador e sem dados embutidos.
 
 ### SUB-55.5 — Documentar no `README.md` como abrir o visualizador
 
-**Próximo passo:** reservar e escrever a seção no `README.md` (55.4 concluída).
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** seção curta no `README.md`: o que a página mostra, de onde lê e como abrir (duplo clique ou
   servidor).
 - **Critérios de Aceitação:** texto simples, com o link do arquivo.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `docs(SUB-55.5)` · **Verificação:** seção "Visualizador de regras e tarefas" no fim do
+  `README.md` (antes do rodapé) e item no Sumário: o que cada aba mostra, que a página não guarda dados, como abrir
+  (duplo clique = GitHub `main`; servidor na raiz, ex. `npx serve .`, = arquivos locais), Ctrl+F5 para atualizar e
+  onde fica o código; links conferidos contra os caminhos reais (`.claude/rules/index.html`, `INDEX.md`,
+  `tasks/STATUS.md`, `tasks/task_complete.md`, `.claude/rules/visualizador/`).
+- **Anotação:** push com `--no-verify` (2026-10-14): o `pre-push` (SUB-60.3) acusou os 3
+  `.gemini/commands/*.toml` como desatualizados, mas `git diff` não mostra diferença; é falso positivo do
+  `scripts/sincronizar-agentes.mjs` em clone Windows com CRLF (compara bytes sem normalizar o fim de linha).
+  Esta entrega não mexe em skills.
 
 ### SUB-55.6 — Aceite do usuário
 
-**Próximo passo:** depois da 55.5, o usuário abre a página no navegador e confere as duas abas.
+**Próximo passo:** o usuário abre `.claude/rules/index.html` no navegador, confere as abas REGRAS e TASKS e dá
+o aceite (ou aponta o que corrigir).
 
 - **Nível:** LEVE — aceite do usuário, sem mudança de arquivo (sinais; Laya fora nesta sessão)
 - **Descrição:** conferência visual (a IA não abre navegador).
