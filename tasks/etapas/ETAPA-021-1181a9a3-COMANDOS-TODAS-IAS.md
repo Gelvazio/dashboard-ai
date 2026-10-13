@@ -50,12 +50,12 @@ cópia desatualizada é recusado pelo `pre-push` com instrução de rodar `npm r
 
 ### SUB-60.1 — Sincronizador com destinos em mapa + cópia para `.grok/skills/`
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 19:59).
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** refatorar `scripts/sincronizar-agentes.mjs` para uma lista de destinos
   (`{ pasta, subpastas }`) e acrescentar o Grok.
 - **Critérios de Aceitação:** saída do Claude Code igual à de antes; `.grok/skills/` criado.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-60.1)` · **Verificação:** `node --check` ok; execução: Claude Code igual a antes (skills 1 e agents 3 já iguais), `.grok/skills/proxima-task/SKILL.md` copiado e idêntico (`cmp`); segunda execução sem cópias; linhas ≤ 100
 
 ### SUB-60.2 — Gerar `.gemini/commands/<skill>.toml`
 

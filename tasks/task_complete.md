@@ -76,6 +76,7 @@
 | SUB-59.1 | Hook `exigir-reserva.mjs` (trava antes de editar) | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
 | SUB-59.2 | Hook `lembrar-task.mjs` (lembrete a cada pedido) | 🟡 Média | SUB-59.1 | ✅ Concluído | — | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
 | SUB-59.3 | Documentar a trava em `.claude/rules/multiplas-ias.md` | 🟡 Média | SUB-59.2 | ✅ Concluído | — | [ETAPA-020](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
+| SUB-60.1 | Sincronizador com destinos em mapa + cópia para `.grok/skills/` | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
 
 ---
 
