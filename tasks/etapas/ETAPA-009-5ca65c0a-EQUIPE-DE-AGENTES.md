@@ -221,7 +221,7 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.14 — Fallback com Opus (`worker/opus.ts`: `classificarComOpus`)
 
-**Próximo passo:** depende da SUB-47.1.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:50).
 
 - **Descrição:** `classificarComOpus(estado, perguntas)` chama a API de Mensagens da Anthropic
   (modelo Opus 5.5 ou superior, configurável) só no servidor, com a `ANTHROPIC_API_KEY`, e devolve as
