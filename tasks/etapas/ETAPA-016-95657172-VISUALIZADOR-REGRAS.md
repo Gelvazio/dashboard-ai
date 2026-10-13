@@ -57,12 +57,15 @@ gerador e sem dados embutidos.
 
 ### SUB-55.2 — `fonte.js`: ler um arquivo do repositório (local, raw ou jsDelivr)
 
-**Próximo passo:** depois da 55.1.
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** constantes do repositório e da branch; `lerArquivo(caminho)` tenta o arquivo local (página
   servida por HTTP), depois `raw.githubusercontent.com`, depois jsDelivr, sem cache; devolve texto e fonte usada.
 - **Critérios de Aceitação:** `node --check`; no Node, lê `tasks/STATUS.md` do GitHub e devolve a fonte.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-55.2)` · **Verificação:** `visualizador/fonte.js` com `lerArquivo`,
+  `lerArquivoOpcional` e `ultimaFonteUsada` (fontes: local só por HTTP, GitHub raw e jsDelivr da `main`, sem cache);
+  `node --check` ok; rodado no Node (`vm`): `lerArquivo("tasks/STATUS.md")` leu 189 linhas com fonte
+  "GitHub (main)" e `lerArquivoOpcional("nao/existe.md")` devolveu ""; linhas ≤ 100; `<script>` no `index.html`.
 
 ### SUB-55.3 — `leitor-regras.js`: regras do `INDEX.md` divididas em seções
 
