@@ -24,7 +24,9 @@ alter table public.projects add column if not exists data_prevista_fim date;
 do $$
 begin
   if to_regclass('auth.users') is not null
-     and not exists (select 1 from pg_constraint where conname = 'projects_responsavel_id_fkey') then
+     and not exists (select 1 from pg_constraint
+                     where conname = 'projects_responsavel_id_fkey'
+                       and conrelid = 'public.projects'::regclass) then
     alter table public.projects add constraint projects_responsavel_id_fkey
       foreign key (responsavel_id) references auth.users (id) on delete set null;
   end if;

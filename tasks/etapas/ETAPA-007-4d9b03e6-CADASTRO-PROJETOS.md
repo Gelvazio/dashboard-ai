@@ -267,11 +267,15 @@ mantido abaixo só como histórico.
 
 ### SUB-45.19 — Revisar a SUB-45.1 (`database/08_projects_campos.sql`) com o MCP do Supabase — só Claude Code local
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** ⛔ bloqueada. Quando o MCP do Supabase tiver acesso ao projeto do Dashboard AI (`fcmntkzpjoetdabllabn`), rodar só as consultas de leitura do item (3) e fechar a subtarefa.
 
 - **Descrição:** Pedido do usuário (2026-10-12): a SUB-45.1 (`a4c068f`) foi feita por Claude Code (Opus 5.5, sessão em nuvem), antes da regra 11 da seção 1.1 do `AGENTS.md` proibir tarefas de banco em sessão na nuvem, e deve ser **revisada pelo Claude Code local usando o MCP do Supabase**. Revisar o bloco "Responsável e prazo (SUB-45.1)" de `database/08_projects_campos.sql`: (1) tipos e nomes das colunas `responsavel_id uuid` e `data_prevista_fim date` coerentes com o `00_projects_roles.sql`; (2) idempotência (`add column if not exists`, constraint só se não existir); (3) a FK condicional para `auth.users` (`to_regclass('auth.users')`, `on delete set null`) — confirmar com o MCP do Supabase, **só com consultas de leitura** (`information_schema`, `pg_constraint`, `to_regclass`), que o projeto do Dashboard AI tem `auth.users` e que nada conflita com colunas/constraints já existentes em `public.projects`; (4) comentários. Corrigir o arquivo se achar problema. **Não aplicar** o script nesta subtarefa (a aplicação é a SUB-45.6, com autorização do usuário). ⚠️ Tarefa de banco: pela regra 11 da seção 1.1 do `AGENTS.md`, só o Claude Code local executa (não em sessão na nuvem).
 - **Critérios de Aceitação:** Revisão registrada na anotação (o que foi conferido e as consultas de leitura usadas, sem chaves ou dados de usuários); arquivo corrigido, se preciso, com commit; `STATUS-TAREFA-CONFIRMADO-CONCLUIDO` da SUB-45.1 (no `task_complete.md`) atualizado com o resultado.
 - **Commit:** pendente
-- **Anotação:** pendente
+- **Anotação:** **Revisão parcial (2026-10-13 15:30, Claude Code (Opus 5.5) (local · main)):**
+  (1) tipos e nomes: `responsavel_id uuid` segue o padrão de `criado_por uuid` do `00_projects_roles.sql` (o projeto não usa FK para `auth.users` nas outras colunas, por causa do banco de teste); `data_prevista_fim date` ok; nenhum outro arquivo de `database/`, `src/` ou `api/` usa esses nomes ✅.
+  (2) idempotência: `add column if not exists` ok; **corrigido** o teste da constraint, que procurava `conname` no banco inteiro e agora também filtra `conrelid = 'public.projects'::regclass` (outra tabela com o mesmo nome de constraint faria a FK ser pulada sem aviso) ✅.
+  (3) FK condicional para `auth.users`: **não conferida no banco**. O MCP do Supabase desta máquina está ligado à organização "Sistemas" (projetos "Canil Doce Lar" e "AULAS SENAI"); o projeto do Dashboard AI do `.env` (`fcmntkzpjoetdabllabn`) responde "You do not have permission" ao `get_project`. ⛔ **Destrava:** o usuário conectar o MCP do Supabase à conta/organização dona desse projeto (ou dar acesso a ela). Consultas previstas, só leitura: `select to_regclass('auth.users')`; colunas de `information_schema.columns` em `public.projects`; `select conname from pg_constraint where conrelid = 'public.projects'::regclass`.
+  (4) comentários `comment on column` ok ✅. Nada aplicado no banco.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
