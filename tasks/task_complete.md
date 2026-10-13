@@ -80,6 +80,7 @@
 | SUB-60.2 | Gerar `.gemini/commands/<skill>.toml` | 🟡 Média | SUB-60.1 | ✅ Concluído | — | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
 | SUB-60.3 | Modo `--checar` no `pre-push` e no `validar.sh` | 🟡 Média | SUB-60.2 | ✅ Concluído | — | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
 | SUB-60.4 | Gerar as cópias e documentar | 🟡 Média | SUB-60.3 | ✅ Concluído | — | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
+| SUB-61.1 | Hook `pre-commit` que sincroniza as skills | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-022](etapas/ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md) |
 
 ---
 

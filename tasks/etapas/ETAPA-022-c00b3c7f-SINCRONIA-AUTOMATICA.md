@@ -39,11 +39,11 @@ no mesmo commit; commit sem `.agents/` não roda o sincronizador; `pre-push` pas
 
 ### SUB-61.1 — Hook `pre-commit` que sincroniza as skills
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:10).
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** criar `.githooks/pre-commit` e a linha na tabela de hooks do `git-quick.md`.
 - **Critérios de Aceitação:** casos do critério de pronto conferidos num clone de teste.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-61.1)` · **Verificação:** `sh -n` ok; em clone de teste: commit sem `.agents/` não roda nada; commit com skill alterada leva junto `.claude/` e `.grok/` (o TOML só muda quando muda a descrição); `--checar` 0 e push aceito logo depois; com mudança em `.agents/` fora do commit, avisa e inclui (skill nova gerou também `.gemini/commands/nova.toml`). Linha no `git-quick.md`
 
 ### SUB-61.2 — `GEMINI.md` apontando para o `AGENTS.md`
 

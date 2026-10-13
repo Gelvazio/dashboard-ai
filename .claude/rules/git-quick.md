@@ -21,6 +21,8 @@ git config pull.rebase true           # git pull simples já usa rebase
 |------|-----------|
 | `.githooks/pre-push` | `git fetch --all --prune` e **recusa** o push se o remoto tem commits que você não tem |
 | `.githooks/post-checkout` | Avisa quantos commits você está atrás ao trocar de branch |
+| `.githooks/pre-commit` | Commit com arquivo de `.agents/` → roda `npm run sync:agentes` e põe as cópias no mesmo commit |
+| `.githooks/pre-push` (2) | **Recusa** o push se as cópias das skills estiverem diferentes de `.agents/` |
 | `.githooks/pre-merge-commit` | **Recusa** commit de merge; recuperar com `git merge --abort` |
 
 - Hook não roda → quase sempre fim de linha: `git ls-files --eol .githooks` deve mostrar `lf`.
