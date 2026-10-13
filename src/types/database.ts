@@ -14,6 +14,8 @@ export type LogStatus = 'concluida' | 'recusada' | 'erro' | 'sem_tarefa';
 export type ProjectRole = 'owner' | 'editor' | 'viewer';
 export type UserRole = 'admin' | 'member';
 export type MessageTipo = 'recado' | 'pergunta' | 'resposta' | 'alerta' | 'handoff';
+/** Prioridade do projeto (seção 1.2 do `AGENTS.md`); no banco tem check + default `MEDIA`. */
+export type PrioridadeProjeto = 'MAXIMA' | 'ALTA' | 'MEDIA' | 'BAIXA';
 
 export const TASK_STATUS: readonly TaskStatus[] = ['pendente', 'em_execucao', 'concluida', 'recusada', 'erro', 'cancelada'];
 export const LOG_STATUS: readonly LogStatus[] = ['concluida', 'recusada', 'erro', 'sem_tarefa'];
@@ -33,6 +35,15 @@ export type Project = {
   criado_por: string | null;
   created_at: string;
   updated_at: string;
+  // Campos do cadastro de projetos (`database/08_projects_campos.sql`, SUB-45).
+  responsavel_id: string | null;
+  data_prevista_fim: string | null;
+  cor: string | null;
+  icone: string | null;
+  url_producao: string | null;
+  url_documentacao: string | null;
+  prioridade: PrioridadeProjeto;
+  tags: string[];
 };
 
 export type ProjectMember = {
@@ -224,7 +235,10 @@ export type AiMemoryUpdate = Partial<AiMemory>;
 
 export type ProjectInsert = Opcionais<
   Project,
-  'id' | 'descricao' | 'repositorio' | 'branch_padrao' | 'prefixo_codigo' | 'proximo_numero' | 'ativo' | 'excluido' | 'criado_por' | 'created_at' | 'updated_at'
+  | 'id' | 'descricao' | 'repositorio' | 'branch_padrao' | 'prefixo_codigo' | 'proximo_numero' | 'ativo' | 'excluido' | 'criado_por' | 'created_at' | 'updated_at'
+  // SUB-45: no banco são nulos (`responsavel_id`, `data_prevista_fim`, `cor`, `icone`,
+  // `url_producao`, `url_documentacao`) ou têm default (`prioridade` = MEDIA, `tags` = {}).
+  | 'responsavel_id' | 'data_prevista_fim' | 'cor' | 'icone' | 'url_producao' | 'url_documentacao' | 'prioridade' | 'tags'
 >;
 export type ProjectUpdate = Partial<Project>;
 

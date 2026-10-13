@@ -56,6 +56,7 @@
 | SUB-45.3 | Colunas `url_producao` e `url_documentacao` em `database/08_projects_campos.sql` (com os 2 `check`) | 🟡 Média | SUB-45.2 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.4 | Colunas `prioridade` e `tags` no `08_projects_campos.sql` (check dos 4 valores + índice GIN) | 🟡 Média | SUB-45.3 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-49.1 | Criar workflow GitHub Actions para backup com GitHub Artifacts | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
+| SUB-45.7 | Tipos novos de `Project` (`PrioridadeProjeto` + 8 campos) em `src/types/database.ts` | 🟡 Média | SUB-45.4 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 
 ---
 

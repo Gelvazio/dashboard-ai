@@ -18,7 +18,6 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 |---|---|---|---|---|---|---|
 | SUB-45 | **Cadastro de projetos (campos novos na tabela `projects` e tela `#/projetos`)** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.6 | Aplicar o `database/08_projects_campos.sql` no Supabase (só com autorização do usuário) | 🟡 Média | SUB-45.4 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
-| SUB-45.7 | Tipos novos de `Project` em `src/types/database.ts` | 🟡 Média | SUB-45.4 | 🔄 Em execução | DeepSeek Harness (deepseek-flash) (local · main) (desde 2026-10-13 17:52) | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.8 | `validarProjeto()` em `src/lib/projeto.ts` | 🟡 Média | SUB-45.7 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.9 | `criarProjeto()` em `src/services/projectService.ts` | 🟡 Média | SUB-45.7 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.10 | `atualizarProjeto()` e `definirProjetoAtivo()` em `src/services/projectService.ts` | 🟡 Média | SUB-45.9 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |

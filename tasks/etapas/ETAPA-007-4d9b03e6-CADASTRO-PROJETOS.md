@@ -135,13 +135,13 @@ mantido abaixo só como histórico.
 
 ### SUB-45.7 — Tipos novos de `Project` em `src/types/database.ts`
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** nenhum — entregue. Seguir na SUB-45.8.
 
 - **Descrição:** Acrescentar ao tipo `Project` os campos `responsavel_id: string | null`, `data_prevista_fim: string | null`, `cor: string | null`, `icone: string | null`, `url_producao: string | null`, `url_documentacao: string | null`, `prioridade: PrioridadeProjeto` e `tags: string[]`, e exportar `type PrioridadeProjeto = 'MAXIMA' | 'ALTA' | 'MEDIA' | 'BAIXA'`. Ajustar `ProjectInsert`/`ProjectUpdate` se precisar e corrigir mocks de teste que montam `Project`.
 - **Critérios de Aceitação:** `npm run typecheck` e `npm test` verdes.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **Entrega:** commit desta entrega (`feat(SUB-45.7)`) · **Verificação:** `npm run typecheck` **exit 0** (`tsc -b` + `tsc -p api/tsconfig.json`) e `npm test` **verde — 44 arquivos / 301 testes passando, 30 pulados**; o `type Project` ganhou os 8 campos, o `PrioridadeProjeto` foi exportado e `src/types/index.ts` (que faz `export * from './database'`) reexporta tudo.
+- **Anotação:** `PrioridadeProjeto` ficou junto das outras uniões de coluna (`TaskStatus`, `ProjectRole`, …). Os 8 campos entraram em `Project` com um comentário apontando o `database/08_projects_campos.sql`; no `ProjectInsert` todos foram marcados como **opcionais** (no banco são nulos — `responsavel_id`, `data_prevista_fim`, `cor`, `icone`, `url_producao`, `url_documentacao` — ou têm default: `prioridade` = MEDIA, `tags` = {}); `ProjectUpdate` já era `Partial<Project>` e não precisou mudar. **Nenhum mock precisou de correção:** os testes de integração criam projeto por `criarProjeto()` (`tests/helpers/postgrest.ts`), que insere só `slug`, `nome` e `prefixo_codigo` no tipo de insert (onde os novos campos são opcionais), e **não existe literal tipado como `Project`** em `src/` (conferido por busca).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-13 17:53 — confirmado por DeepSeek Harness (deepseek-flash): `typecheck` exit 0 e suíte verde (301 testes)
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
 ### SUB-45.8 — `validarProjeto()` em `src/lib/projeto.ts`
