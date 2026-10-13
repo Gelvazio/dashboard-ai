@@ -16,12 +16,12 @@
 
 ### SUB-50.1 — Instalar e configurar o Supabase CLI
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** nenhum — entregue. Seguir na SUB-50.2.
 
 - **Descrição:** Criar `docs/supabase-local-instalacao.md` com instruções de instalação do Supabase CLI para cada sistema operacional: Windows (via npm ou download do executável), macOS (via Homebrew `brew install supabase/tap/supabase`), Linux (via npm ou script de instalação). Incluir verificação de instalação (`supabase --version`), pré-requisitos (Docker Desktop instalado e rodando) e solução de problemas comuns (Docker não iniciado, permissões, portas ocupadas). Adicionar também instruções para instalar o Docker Desktop se não estiver presente.
 - **Critérios de Aceitação:** Documentação completa com instruções para Windows, macOS e Linux; comandos de verificação; pré-requisitos listados; solução de problemas básicos.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Entrega:** commit desta entrega (`feat(SUB-50.1)`) · **Verificação:** comandos de instalação conferidos no README oficial do CLI (<https://github.com/supabase/cli>, seção *Installation*); portas padrão conferidas no modelo `config.toml` do repositório do CLI; flag global `--workdir` conferida no código do CLI (`apps/cli-go/cmd/root.go`); nada instalado nem executado (sessão na nuvem, sem Docker)
+- **Anotação:** 2026-10-13 15:14 — Claude Code (Opus 5.5) (nuvem · main): criado `docs/supabase-local-instalacao.md` com pré-requisitos, instalação do Docker (Windows com WSL 2, macOS, Linux), instalação do CLI (Scoop, Homebrew, pacotes `.deb`/`.rpm` e npm como `-D` com `npx`), verificação (`supabase --version`), comandos e portas padrão (54321 API, 54322 banco, 54323 Studio, 54324 e-mails) e tabela de problemas comuns (Docker parado, permissão do socket, comando não encontrado, porta ocupada, WSL, memória). **Achado para a SUB-50.2:** o README e o código do CLI não mostram uma flag `--config` no `supabase init`; a flag global documentada é `--workdir <pasta>`. Conferir com `supabase init --help` antes de executar `supabase init --config database/configlocal` como está na descrição da SUB-50.2.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 

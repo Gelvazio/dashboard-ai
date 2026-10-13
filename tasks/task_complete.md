@@ -22,6 +22,7 @@
 | SUB-41.2 | Mover a seção "2. Estrutura do Servidor MCP (Vercel Serverless)" | 🟡 Média | SUB-41.1 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-6b941e1e-AGENTS-SEM-PLANO-CEREBRO.md) |
 | SUB-41.3 | Mover a seção "3. Ativação no Terminal (Claude Code)" e fechar a limpeza do `AGENTS.md` | 🟡 Média | SUB-41.2 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-6b941e1e-AGENTS-SEM-PLANO-CEREBRO.md) |
 | SUB-41 | **Tirar do `AGENTS.md` o plano "🧠 Cérebro de Memória Persistente" (o `AGENTS.md` fica só com regras)** | 🟡 Média | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-005](etapas/ETAPA-005-6b941e1e-AGENTS-SEM-PLANO-CEREBRO.md) |
+| SUB-50.1 | Instalar e configurar o Supabase CLI | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 
 ---
 
