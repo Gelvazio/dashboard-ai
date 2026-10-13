@@ -28,7 +28,7 @@
 
 ### SUB-49.5 — Criptografar o dump no workflow (falha se faltar a senha)
 
-**Próximo passo:** aguardar a aprovação do plano.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:19).
 
 - **Pedido:** escolha do usuário em 2026-10-13 20:19 ("Criptografar o dump") diante do achado: repositório
   público, workflow ativo com agendamento às 02:00 UTC (23:00 de Brasília) e nenhum artifact publicado
@@ -43,6 +43,7 @@
   não abre sem ela; YAML válido; restauração documentada no resumo.
 - **Riscos:** perder a senha = perder os backups (guardar fora do GitHub, ex.: gerenciador de
   senhas); artifact cifrado continua baixável por qualquer conta, mas ilegível.
+- **Aprovação:** plano aprovado pelo usuário (Gelvazio) em 2026-10-13 20:19: "Sim, pode executar".
 - **Entrega:** — · **Verificação:** —
 
 ### SUB-49.2 — Documentar uso de GitHub Artifacts (limites, retenção, download)
