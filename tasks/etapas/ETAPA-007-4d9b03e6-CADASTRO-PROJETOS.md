@@ -58,15 +58,15 @@ Completar a tabela `public.projects` com os campos que o usuário escolheu e cri
 | 3 | SUB-45.3 — `url_producao` e `url_documentacao` | `database/08_projects_campos.sql` | checks idempotentes | ✅ Concluído |
 | 4 | SUB-45.4 — `prioridade` e `tags` | `database/08_projects_campos.sql` | check e índice GIN | ✅ Concluído |
 | 5 | ~~SUB-45.5 — teste SQL~~ | — | — | ❌ Removida pelo usuário (2026-10-13) |
-| 6 | SUB-45.6 — aplicar no Supabase | — | consultas só de leitura | ⬜ Pendente |
+| 6 | SUB-45.6 — aplicar no Supabase | — | consultas só de leitura | 👀 Aguardando a autorização do usuário (script validado 2× no local) |
 | 7 | SUB-45.7 — tipos | `src/types/database.ts` | `typecheck` e `test` | ✅ Concluído |
 | 8 | SUB-45.8 — `validarProjeto()` | `src/lib/projeto.ts` | `typecheck` e `lint` | ✅ Concluído |
 | 9 | SUB-45.9 — `criarProjeto()` | `src/services/projectService.ts` | `typecheck` | ✅ Concluído |
 | 10 | SUB-45.10 — `atualizarProjeto()` e `definirProjetoAtivo()` | `src/services/projectService.ts` | `typecheck` | ✅ Concluído |
 | 11 | SUB-45.11 — `StatusProjetoBadge` | `src/components/projetos/` | `typecheck` e `lint` | ✅ Concluído |
-| 12 | SUB-45.12 — `ProjetoForm`: campos básicos | `src/components/projetos/ProjetoForm.tsx` | `typecheck`, `lint`, `build` | ⬜ Pendente |
-| 13 | SUB-45.13 — `ProjetoForm`: campos novos | `src/components/projetos/ProjetoForm.tsx` | `typecheck`, `lint`, `build` | ⬜ Pendente |
-| 14 | SUB-45.14 — `ProjetosLista` | `src/components/projetos/ProjetosLista.tsx` | `typecheck`, `lint`, `build` | ⬜ Pendente |
+| 12 | SUB-45.12 — `ProjetoForm`: campos básicos | `src/components/projetos/ProjetoForm.tsx` | `typecheck`, `lint`, `build` | ✅ Concluído (`d1c02c3`) |
+| 13 | SUB-45.13 — `ProjetoForm`: campos novos | `src/components/projetos/ProjetoForm.tsx` | `typecheck`, `lint`, `build` | ✅ Concluído (`cdecca1`) |
+| 14 | SUB-45.14 — `ProjetosLista` | `src/components/projetos/ProjetosLista.tsx` | `typecheck`, `lint`, `build` | ✅ Concluído (`8d7902a`) |
 | 15 | SUB-45.15 — `ProjetosView` | `src/views/ProjetosView.tsx` | `build` e `check:chunks` | ⬜ Pendente |
 | 16 | SUB-45.16 — rota `#/projetos` e menu | `src/views/meta.ts`, `src/views/index.ts` | `npm run validar` | ⬜ Pendente |
 | 17 | SUB-45.17 — documentação | `README.md`, `database/README.md` | `npm run validar` | ⬜ Pendente |
