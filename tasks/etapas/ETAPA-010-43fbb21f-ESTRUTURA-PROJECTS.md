@@ -1,7 +1,7 @@
 ## Etapa 010-43fbb21f — SUB-48: Definir estrutura `projects/` para projetos de IA independentes
 
 **Tarefa:** SUB-48 · **Migrada em:** 2026-10-13 (ETAPA-001) · **Executor:** por subtarefa (coluna "Em uso por" do `tasks/STATUS.md`)
-**Próximo passo:** escolher uma subtarefa livre no `tasks/STATUS.md` (cada subtarefa tem o próprio próximo passo abaixo).
+**Próximo passo:** nenhum — tarefa concluída em 2026-10-13 15:42 (SUB-48.1).
 
 > Bloco migrado do `task-principal.md` sem alterar o texto. **Status, prioridade, dependências e reserva** de cada subtarefa ficam só no [`tasks/STATUS.md`](../STATUS.md); aqui ficam descrição, critérios, entrega e anotações. Quem reserva uma subtarefa edita só a seção dela.
 
@@ -24,6 +24,9 @@
 
 ### SUB-48.1 — Definir estrutura `projects/` para projetos de IA independentes
 
-**Próximo passo:** começar pelo escopo da tarefa-mãe.
+**Próximo passo:** nenhum — entregue.
 
 Subtarefa criada na migração (regra: toda tarefa-mãe tem no mínimo 1 subtarefa). Executa todo o escopo da tarefa-mãe: descrição e critérios na seção **Tarefa-mãe** acima.
+
+- **Entrega:** commit desta entrega (`feat(SUB-48.1)`) · **Verificação:** cada afirmação do `projects/README.md` conferida no código: argumento `project` e `MCP_DEFAULT_PROJECT`/`MCP_ALLOWED_PROJECTS` em `api/_lib/args.ts`; `PROJECT_PROP` nas ferramentas de `brain-tools.ts`, `queue-tools.ts` e `event-tools.ts`; memória global (`global: true`) em `brain-tools.ts`; tabela `projects` (`slug`, `prefixo_codigo`) e papéis `owner`/`editor`/`viewer` em `database/00_projects_roles.sql`; RLS com `tem_acesso_projeto` em `database/05_rls_policies.sql`; links relativos existem; linhas de texto ≤ 100 caracteres.
+- **Anotação:** 2026-10-13 15:42 — Claude Code (Opus 5.5) (nuvem · main): criado `projects/README.md` (a pasta `projects/` não existia no Git; a "pasta já criada" da descrição estava vazia e por isso não era versionada). Documenta a Opção A: estrutura de pastas, o que é compartilhado × próprio de cada projeto, isolamento em duas camadas, passo a passo para criar um projeto filho e regras. **Correção em relação à descrição da mãe:** o isolamento por RLS vale para as telas e usuários; o MCP usa a chave `service_role` (passa por cima do RLS), então ali o isolamento é feito no código, filtrando por `project_id`, com `MCP_ALLOWED_PROJECTS` para travar o servidor em slugs específicos. O `/api/embedding` só gera o vetor (não recebe `project`); o filtro por projeto fica no `brain_store`/`brain_search`. Registrar um projeto no banco (`projects`, `project_members`) continua sendo tarefa de banco (Claude Code local, com autorização do usuário). Tarefa-mãe SUB-48 fechada junto (única subtarefa).
