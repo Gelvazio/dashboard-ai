@@ -1396,7 +1396,7 @@
   - `SUB-50.5`: Rodar o Supabase local e validar (`supabase start`) (`pendente`)
   - `SUB-50.6`: Documentar alternância entre local e nuvem (`pendente`)
   - `SUB-50.7`: Atualizar o `README.md` com instruções de desenvolvimento local (`pendente`)
-- **Descrição:** Configurar o Supabase local com Docker para desenvolvimento e testes, permitindo trabalhar offline sem custos de nuvem e com isolamento completo do ambiente de produção. O Supabase CLI roda PostgreSQL, Studio (UI), API REST, Realtime, Storage e demais serviços via Docker containers. A tarefa instala o CLI, inicializa o projeto local, converte os scripts SQL existentes (`database/*.sql`) para o formato de migrations do Supabase, configura variáveis de ambiente para alternar entre local e nuvem, valida que tudo funciona e documenta o fluxo completo no README.
+- **Descrição:** Configurar o Supabase local com Docker para desenvolvimento e testes, permitindo trabalhar offline sem custos de nuvem e com isolamento completo do ambiente de produção. O Supabase CLI roda PostgreSQL, Studio (UI), API REST, Realtime, Storage e demais serviços via Docker containers. A configuração local fica armazenada na pasta `database/configlocal` (migrations, config.toml, etc.), separada dos scripts SQL de produção em `database/`. A tarefa instala o CLI, inicializa o projeto local em `database/configlocal`, converte os scripts SQL existentes (`database/*.sql`) para o formato de migrations do Supabase, configura variáveis de ambiente para alternar entre local e nuvem, valida que tudo funciona e documenta o fluxo completo no README.
 - **Critérios de Aceitação:** Supabase CLI instalado; projeto inicializado com `supabase init`; migrations convertidas e aplicadas localmente; `supabase start` funciona sem erros; Studio acessível em `http://localhost:54323`; variáveis de ambiente configuradas (`.env.local` e script de alternância); documentação completa no README; testes de integração podem rodar contra o banco local.
 - **Commit:** pendente
 - **Anotação:** Criada em 2026-10-13 a pedido do usuário para permitir desenvolvimento local com Supabase via Docker. Vantagens: desenvolvimento offline, testes sem custos, isolamento de produção, desenvolvimento mais rápido (sem latência de rede). O projeto continua usando o Supabase na nuvem por padrão; o local é opcional para desenvolvimento.
@@ -1416,29 +1416,29 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
-#### [ ] SUB-50.2: Inicializar o Supabase local no projeto (`supabase init`)
+#### [ ] SUB-50.2: Inicializar o Supabase local na pasta `database/configlocal` (`supabase init --config database/configlocal`)
 - **Status:** pendente
 - **Prioridade:** MEDIA
 - **Executor:** nenhum
 - **Depende de:** SUB-50.1
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Executar `supabase init` na raiz do projeto para criar a estrutura do Supabase local. Isso cria a pasta `supabase/` com: `migrations/` (migrations SQL), `config.toml` (configuração local), `functions/` (Edge Functions, se usar), e atualiza o `.gitignore` para ignorar o estado local (`supabase/.branches/`, `supabase/.temp/`). Documentar o que cada arquivo/pasta significa e quais devem ser versionados (migrations, config.toml) vs. quais são gerados automaticamente (`.branches/`, `.temp/`).
-- **Critérios de Aceitação:** `supabase init` executado; estrutura `supabase/` criada; `.gitignore` atualizado; documentação explicando a estrutura.
+- **Descrição:** Executar `supabase init --config database/configlocal` na raiz do projeto para criar a estrutura do Supabase local dentro da pasta `database/configlocal`. Isso cria: `database/configlocal/migrations/` (migrations SQL), `database/configlocal/config.toml` (configuração local), `database/configlocal/functions/` (Edge Functions, se usar), e atualiza o `.gitignore` para ignorar o estado local (`database/configlocal/.branches/`, `database/configlocal/.temp/`). Documentar o que cada arquivo/pasta significa e quais devem ser versionados (migrations, config.toml) vs. quais são gerados automaticamente (`.branches/`, `.temp/`). A pasta `database/configlocal` mantém toda a configuração do Docker local separada do SQL da produção.
+- **Critérios de Aceitação:** `supabase init --config database/configlocal` executado; estrutura `database/configlocal/` criada; `.gitignore` atualizado; documentação explicando a estrutura.
 - **Commit:** pendente
-- **Anotação:** pendente
+- **Anotação:** Ajustado para usar `database/configlocal` em vez de `supabase/` (padrão).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
-#### [ ] SUB-50.3: Converter scripts `database/*.sql` para `supabase/migrations/`
+#### [ ] SUB-50.3: Converter scripts `database/*.sql` para `database/configlocal/migrations/`
 - **Status:** pendente
 - **Prioridade:** MEDIA
 - **Executor:** nenhum
 - **Depende de:** SUB-50.2
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Converter os scripts SQL existentes na pasta `database/` (00 a 08) para o formato de migrations do Supabase em `supabase/migrations/`. Cada script deve ser renomeado com timestamp prefixado (ex: `20231013_000000_00_projects_roles.sql`, `20231013_000001_01_tasks.sql`, etc.) para garantir ordem de aplicação. Remover comandos idempotentes desnecessários (IF NOT EXISTS já é padrão de migrations). Atualizar o `database/README.md` para referenciar que as migrations agora estão em `supabase/migrations/` e que a pasta `database/` pode ser mantida como referência histórica ou removida no futuro. Criar script de conversão automática (`scripts/converter-migrations.sh`) se fizer sentido.
-- **Critérios de Aceitação:** Todos os scripts `database/*.sql` convertidos para `supabase/migrations/` com timestamp; ordem correta preservada; `database/README.md` atualizado; `supabase db reset` aplica as migrations sem erro.
+- **Descrição:** Converter os scripts SQL existentes na pasta `database/` (00 a 08) para o formato de migrations do Supabase em `database/configlocal/migrations/`. Cada script deve ser renomeado com timestamp prefixado (ex: `20231013_000000_00_projects_roles.sql`, `20231013_000001_01_tasks.sql`, etc.) para garantir ordem de aplicação. Remover comandos idempotentes desnecessários (IF NOT EXISTS já é padrão de migrations). Atualizar o `database/README.md` para referenciar que as migrations locais estão em `database/configlocal/migrations/` e que a pasta `database/` contém os scripts de produção. Criar script de conversão automática (`scripts/converter-migrations-local.sh`) se fizer sentido.
+- **Critérios de Aceitação:** Todos os scripts `database/*.sql` convertidos para `database/configlocal/migrations/` com timestamp; ordem correta preservada; `database/README.md` atualizado; `supabase db reset --config database/configlocal` aplica as migrations sem erro.
 - **Commit:** pendente
-- **Anotação:** pendente
+- **Anotação:** Ajustado para usar `database/configlocal/migrations/` em vez de `supabase/migrations/`.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
@@ -1455,16 +1455,16 @@
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
-#### [ ] SUB-50.5: Rodar o Supabase local e validar (`supabase start`)
+#### [ ] SUB-50.5: Rodar o Supabase local e validar (`supabase start --config database/configlocal`)
 - **Status:** pendente
 - **Prioridade:** MEDIA
 - **Executor:** nenhum
 - **Depende de:** SUB-50.4
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Executar `supabase start` para iniciar todos os serviços Docker (PostgreSQL, Studio, API, Realtime, Storage). Validar que: Studio está acessível em `http://localhost:54323`, API REST em `http://localhost:54321`, banco em `localhost:54322`, migrations foram aplicadas (`supabase db reset` funciona), e a conexão via aplicação local funciona (testar com `npm run dev:local` e uma chamada simples ao banco). Documentar os comandos úteis: `supabase start`, `supabase stop`, `supabase status`, `supabase db reset`, `supabase db diff`, `supabase gen types typescript --local`.
-- **Critérios de Aceitação:** `supabase start` funciona sem erros; todos os serviços acessíveis; migrations aplicadas; aplicação conecta ao banco local; comandos úteis documentados.
+- **Descrição:** Executar `supabase start --config database/configlocal` para iniciar todos os serviços Docker (PostgreSQL, Studio, API, Realtime, Storage). Validar que: Studio está acessível em `http://localhost:54323`, API REST em `http://localhost:54321`, banco em `localhost:54322`, migrations foram aplicadas (`supabase db reset --config database/configlocal` funciona), e a conexão via aplicação local funciona (testar com `npm run dev:local` e uma chamada simples ao banco). Documentar os comandos úteis com a flag `--config database/configlocal`: `supabase start`, `supabase stop`, `supabase status`, `supabase db reset`, `supabase db diff`, `supabase gen types typescript --local`.
+- **Critérios de Aceitação:** `supabase start --config database/configlocal` funciona sem erros; todos os serviços acessíveis; migrations aplicadas; aplicação conecta ao banco local; comandos úteis documentados.
 - **Commit:** pendente
-- **Anotação:** pendente
+- **Anotação:** Ajustado para usar `--config database/configlocal` em todos os comandos.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
@@ -1474,7 +1474,8 @@
 - **Executor:** nenhum
 - **Depende de:** SUB-50.5
 - **Subtarefas:** Nenhuma (atômica)
-- **Descrição:** Atualizar `docs/supabase-local-instalacao.md` (ou renomear para `docs/supabase-local.md`) com seção sobre alternância entre ambientes: tabela comparativo (local vs nuvem), fluxo de trabalho (desenvolvimento em local, testes em local, deploy em nuvem), como gerar types do banco local vs nuvem (`--local` flag), como aplicar migrations em produção (via painel do Supabase ou `supabase db push`), e cuidado com dados (local é descartável, nuvem é persistente). Incluir também como resetar o banco local (`supabase db reset`) vs não fazer isso em produção.
+- **Descrição:** Atualizar `docs/supabase-local-instalacao.md` (ou renomear para `docs/supabase-local.md`) com seção sobre alternância entre ambientes: tabela comparativo (local vs nuvem), fluxo de trabalho (desenvolvimento em local, testes em local, deploy em nuvem), como gerar types do banco local vs nuvem (`--local` flag), como aplicar migrations em produção (via painel do Supabase ou `supabase db push`), e cuidado com dados (local é descartável, nuvem é persistente). Incluir também como resetar o banco local (`supabase db reset --config database/configlocal`) vs não fazer isso em produção. Documentar que todos os comandos do Supabase CLI devem usar a flag `--config database/configlocal` para apontar para a pasta de configuração local.
+- **Critérios de Aceitação:** Documentação completa de alternância; tabela comparativo; fluxo de trabalho claro; avisos sobre dados; todos os comandos documentados com `--config database/configlocal`.
 - **Critérios de Aceitação:** Documentação completa de alternância; tabela comparativo; fluxo de trabalho claro; avisos sobre dados.
 - **Commit:** pendente
 - **Anotação:** pendente
