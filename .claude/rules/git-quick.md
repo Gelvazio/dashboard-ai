@@ -67,6 +67,5 @@ git push origin main
 
 ## O que nunca vai para o Git
 
-`.env`, chaves e tokens (já no `.gitignore`). A pasta `.claude/` vai **inteira** para o Git
-(regras, skills, `settings.local.json`, `launch.json`) — por isso nunca colocar chave ou token
-nesses arquivos.
+`.env`, chaves, tokens, `.claude/settings.local.json` e `.claude/launch.json` (já no
+`.gitignore`). O resto da pasta `.claude/` (regras e skills) vai para o Git.
