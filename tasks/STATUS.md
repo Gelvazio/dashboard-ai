@@ -12,7 +12,7 @@ Prioridade: 🔴 Máxima · 🟠 Alta · 🟡 Média · 🟢 Baixa
 
 | Frente | Tarefa (etapa) | Situação | Atualizado em |
 |---|---|---|---|
-| Claude Code (Opus 5.5) (local · main) | SUB-47.3 ([ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md)) | ✅ Entregue | 2026-10-13 15:40 |
+| Claude Code (Opus 5.5) (local · main) | SUB-47.3 ([ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md)) | ⏹️ Encerrada | 2026-10-13 15:50 |
 | Claude Code (Opus 5.5) (nuvem · main) | SUB-47.5 ([ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md)) | 🔄 Em execução | 2026-10-13 15:24 |
 
 ## 📌 Tarefas
@@ -43,7 +43,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-45.16 | Registrar a tela `projetos` (rota `#/projetos` e menu) | 🟡 Média | SUB-45.15 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.17 | Documentar projetos no `README.md` e no `database/README.md` | 🟡 Média | SUB-45.4, SUB-45.16 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.18 | Validação visual da tela Projetos | 🟡 Média | SUB-45.6, SUB-45.16 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
-| SUB-45.19 | Revisar a SUB-45.1 (`database/08_projects_campos.sql`) com o MCP do Supabase — só Claude Code local | 🟡 Média | SUB-45.1 | ⛔ Bloqueado (MCP sem acesso ao projeto) | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
+| SUB-45.19 | Revisar a SUB-45.1 (`database/08_projects_campos.sql`) com o MCP do Supabase — só Claude Code local | 🟡 Média | SUB-45.1 | ⛔ Bloqueado | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | KIRO-DEV-CLONE | **Clone do Kiro.dev** | 🟢 Baixa | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | 🔒 Trava especial (só o usuário libera) | [ETAPA-008](etapas/ETAPA-008-f301fc16-KIRO-DEV-CLONE.md) |
 | KIRO-DEV-CLONE.1 | Link "KIRO DEV CLONE" no menu | 🟢 Baixa | KIRO-DEV-CLONE.2 | ⬜ Pendente | 🔒 Trava especial (só o usuário libera) | [ETAPA-008](etapas/ETAPA-008-f301fc16-KIRO-DEV-CLONE.md) |
 | KIRO-DEV-CLONE.2 | Rota `/kiro-dev-clone` | 🟢 Baixa | KIRO-DEV-CLONE.3 | ⬜ Pendente | 🔒 Trava especial (só o usuário libera) | [ETAPA-008](etapas/ETAPA-008-f301fc16-KIRO-DEV-CLONE.md) |
@@ -76,7 +76,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | KIRO-DEV-CLONE.29 | `projects/kiro-dev-clone/STATUS.md` | 🟢 Baixa | Nenhuma | ⬜ Pendente | 🔒 Trava especial (só o usuário libera) | [ETAPA-008](etapas/ETAPA-008-f301fc16-KIRO-DEV-CLONE.md) |
 | KIRO-DEV-CLONE.30 | Pasta `projects/kiro-dev-clone/docs/` | 🟢 Baixa | Nenhuma | ⬜ Pendente | 🔒 Trava especial (só o usuário libera) | [ETAPA-008](etapas/ETAPA-008-f301fc16-KIRO-DEV-CLONE.md) |
 | SUB-47 | **Equipe de agentes: classificar tarefas por nível com Laya Server (System-One)** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
-| SUB-47.0 | Configurar Laya Server via Docker Compose | 🟡 Média | Nenhuma | ⛔ Bloqueado (autorização para baixar o Laya) | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+| SUB-47.0 | Configurar Laya Server via Docker Compose | 🟡 Média | Nenhuma | ⛔ Bloqueado | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-47.1 | Criar wrapper TypeScript para API do Laya com Opus como revisor/fallback (`src/lib/laya.ts`) | 🟡 Média | SUB-47.0 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-47.2 | Skill `classificar-tarefa` (níveis, sinais, matriz ferramenta × modelo) | 🟡 Média | SUB-47.1 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-47.4 | Agente `classificador-tarefas` (usa Laya, não Opus) | 🟡 Média | SUB-47.2, SUB-47.3 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
@@ -182,3 +182,6 @@ Decisões de 2026-10-12 a 2026-10-13 12:10: ver `historico/STATUS-antigo.md`. Da
 |---|---|---|
 | 2026-10-12 | Um resumo do quadro reescrito por inteiro apagou itens criados por outro agente | Cada frente edita só as próprias linhas; nada de contagens mantidas à mão (o modelo novo não tem resumo) |
 | 2026-10-13 | O mesmo bloco ficou no quadro ativo e no de concluídas (SUB-26.9), e a SUB-47 ficou com código duplicado | Fonte única: cada informação em um lugar só |
+| 2026-10-13 | Claude Code (local) publicou duas vezes marcas de conflito (`<<<<<<<`) na `main` (`5d885d1`, `8b1402b`): editou antes de sincronizar, usou `git pull --autostash` (fora da regra) e encadeou comandos com `;`, então o commit saiu com o conflito aberto | Seguir o `git-quick.md` à risca: sincronizar antes de editar; commitar e só então `pull --rebase`; encadear com `&&`; conflito → parar, resolver, procurar `<<<<<<<` e só então push. Nunca `--autostash` |
+| 2026-10-13 | Reserva fora da regra: SUB-53 reservada e entregue no mesmo commit; o `lock:` da SUB-47.3 (`ae50c56`) levou também a etapa; liberação de permissões (`31084ef`, `b8057ae`) feita sem tarefa no quadro; SUB-52 (7 arquivos, regras) tratada como pequena | Reserva = commit `lock:` só com o `tasks/STATUS.md` + push **antes** do trabalho; todo pedido que muda arquivo vira tarefa antes; mais de ~3 arquivos ou regra nova = tarefa grande (plano na etapa + aprovação) |
+| 2026-10-13 | Código SUB-51 reaproveitado (já usado pelo Laya, fundido na SUB-47) | Antes de criar código novo, procurar o código em `tasks/`, `tasks/historico/` e no `git log` |
