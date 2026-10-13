@@ -101,7 +101,7 @@
 
 ### SUB-49.4 — Documentar escolha entre as 2 opções e migração
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:29).
 
 - **Descrição:** Atualizar `docs/backup-github-artifacts.md` (ou renomear para `docs/backup-database.md`) com: tabela comparativa (Artifacts vs R2), fluxograma de decisão (se dump < 2 GB e retenção ≤ 90 dias → Artifacts; se dump > 2 GB ou retenção > 90 dias → R2), como alternar entre os workflows (ativar/desativar o workflow R2 com `if: true/false`), como migrar backups existentes (download de Artifacts → upload para R2), e exemplos de custo real (10 GB backup: Artifacts grátis, R2 grátis 10 GB). Adicionar no `README.md` a nota de que o projeto vem configurado com Artifacts por padrão.
 - **Critérios de Aceitação:** Documentação de decisão clara; tabela comparativa; instruções de migração; `README.md` atualizado.
