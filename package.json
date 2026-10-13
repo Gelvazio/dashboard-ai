@@ -8,7 +8,8 @@
     "node": ">=22.12"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "node scripts/alternar-env.mjs nuvem && vite",
+    "dev:local": "node scripts/alternar-env.mjs local && vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "typecheck": "tsc -b && tsc -p api/tsconfig.json",

@@ -16,11 +16,12 @@ dist/
 .vite/
 
 # --- Variáveis de ambiente ---
-# O .env.example É versionado: esta negação precisa ser a ÚLTIMA regra
-# que casa com ele (a última regra que casa vence).
+# Os MODELOS (.env.example e .env.local.example) É versionado: estas negações
+# precisam ser as ÚLTIMAS regras que casam com eles (a última regra que casa vence).
 .env
 .env.*
 !.env.example
+!.env.local.example
 
 # --- Python ---
 # scripts/validar.sh roda `python3 -m unittest discover -s scripts`.
