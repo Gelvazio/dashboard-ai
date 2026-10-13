@@ -1,5 +1,7 @@
 # 📋 TASK-PRINCIPAL: Projeto Dashboard AI
 
+> ⛔ **QUADRO CONGELADO (2026-10-13 14:30):** migração para o modelo novo (`tasks/STATUS.md` + `tasks/etapas/`) em andamento — [ETAPA-001](tasks/etapas/ETAPA-001-ef019419-MIGRACAO-QUADRO.md). **Não pegue nem trave tarefas aqui.** Recados: [`tasks/RECADOS.md`](tasks/RECADOS.md).
+
 > 📦 **Tarefas concluídas:** os blocos `[x]` ficam em [`task_complete.md`](task_complete.md) e não precisam ser lidos. Dependência que não aparece neste quadro está `concluido` lá. Ao concluir uma tarefa, mova o bloco para lá no mesmo commit; para reabrir, traga o bloco de volta.
 
 > **Objetivo:** Construção da solução unificada do **Dashboard AI**, integrando o controle e fila de tarefas da IA (`tasks`), a base de memória persistente vetorial (`ai_memories` / Jev-Mem) e o monitoramento em tempo real do agendador autônomo.
