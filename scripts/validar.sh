@@ -37,6 +37,7 @@ etapa "testes" npm test
 etapa "build" npm run build
 if tem_script check:chunks; then etapa "chunks" npm run check:chunks; else pular "chunks" "script check:chunks ainda não existe"; fi
 if tem_script check:env; then etapa "env" npm run check:env; else pular "env" "script check:env ainda não existe"; fi
+etapa "agentes" npm run check:agentes
 if command -v python3 >/dev/null 2>&1; then
   etapa "python" python3 -m unittest discover -s scripts
 else

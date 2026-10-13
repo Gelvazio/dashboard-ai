@@ -67,11 +67,11 @@ cópia desatualizada é recusado pelo `pre-push` com instrução de rodar `npm r
 
 ### SUB-60.3 — Modo `--checar` no `pre-push` e no `validar.sh`
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:00).
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** `--checar` não grava nada e sai 1 listando o que está desatualizado.
 - **Critérios de Aceitação:** os casos do critério de pronto conferidos num clone de teste.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-60.3)` · **Verificação:** `node --check`, `sh -n` e `bash -n` ok; em clone de teste com remoto local: `--checar` sai 0 com tudo igual e 1 com a fonte alterada ou com uma cópia editada à mão (lista os arquivos); push com cópia desatualizada **recusado** pelo `pre-push` com a instrução; depois de `npm run sync:agentes` + commit o push passa. `npm run check:agentes` entra no `validar.sh`. Limite: o `pre-push` confere a pasta de trabalho, não só o commit
 
 ### SUB-60.4 — Gerar as cópias e documentar
 

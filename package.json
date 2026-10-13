@@ -21,6 +21,7 @@
     "validar": "bash scripts/validar.sh",
     "check:chunks": "node scripts/checar-chunks.mjs",
     "sync:agentes": "node scripts/sincronizar-agentes.mjs",
+    "check:agentes": "node scripts/sincronizar-agentes.mjs --checar",
     "worker": "tsx worker/index.ts"
   },
   "dependencies": {

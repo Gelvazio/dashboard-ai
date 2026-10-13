@@ -59,5 +59,18 @@ while read -r local_ref local_sha remote_ref remote_sha; do
   erro=1
 done
 
+# 3) Cópias das skills para as outras IAs (SUB-60.3): fonte em .agents/, cópias em
+#    .claude/, .grok/ e .gemini/. Confere a pasta de trabalho; sem Node, só avisa.
+if command -v node >/dev/null 2>&1; then
+  if ! node scripts/sincronizar-agentes.mjs --checar >/dev/null 2>&1; then
+    echo "" >&2
+    echo "[pre-push] BLOQUEADO: cópias das skills desatualizadas em relação a .agents/." >&2
+    echo "  Rode: npm run sync:agentes   e commite as cópias (veja: npm run check:agentes)." >&2
+    erro=1
+  fi
+else
+  echo "[pre-push] AVISO: node não encontrado; cópias das skills não conferidas." >&2
+fi
+
 [ "$erro" -eq 1 ] && exit 1
 exit 0

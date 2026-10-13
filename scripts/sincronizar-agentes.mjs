@@ -2,6 +2,8 @@
 // lida direto por Codex, Antigravity, Cursor e Copilot) para as pastas das IAs que só leem a
 // própria pasta: `.claude/` (Claude Code) e `.grok/` (Grok Build); e gera, para o Gemini CLI,
 // um comando `.gemini/commands/<skill>.toml` por skill. Node, sem dependências.
+// Com `--checar` não grava nada: lista o que está desatualizado e sai com código 1 (usado no
+// `.githooks/pre-push` e no `npm run validar`, SUB-60.3).
 // Só copia: nunca apaga arquivo no destino, porque a cópia pode ter arquivos próprios
 // (ex.: `evals/` da skill `proxima-task`).
 // SUB-47.3 (Claude Code) · SUB-60 (outras IAs).
@@ -25,6 +27,9 @@ const PASTA_SKILLS = 'skills';
 const ARQUIVO_SKILL = 'SKILL.md';
 const PASTA_COMANDOS_GEMINI = join('.gemini', 'commands');
 const SEPARADOR_FRONTMATTER = '---';
+const OPCAO_CHECAR = '--checar';
+const CODIGO_DESATUALIZADO = 1;
+const COMANDO_CONSERTA = 'npm run sync:agentes';
 
 /**
  * Lista, de forma recursiva, os arquivos dentro de `pasta`.
@@ -54,12 +59,13 @@ function estaIgual(origem, destino) {
 
 /**
  * Copia os arquivos de uma subpasta de `.agents/` para a mesma subpasta de um destino.
- * @param {{raiz: string, pastaDestino: string, subpasta: string}} opcoes - Raiz do repositório,
- *   pasta do destino (ex.: `.claude`) e subpasta (ex.: `skills`).
- * @returns {{copiados: string[], iguais: number}} Arquivos copiados (relativos à raiz) e
- *   quantidade de arquivos que já estavam iguais.
+ * @param {{raiz: string, pastaDestino: string, subpasta: string, checar?: boolean}} opcoes -
+ *   Raiz do repositório, pasta do destino (ex.: `.claude`), subpasta (ex.: `skills`) e, com
+ *   `checar`, só confere sem gravar.
+ * @returns {{copiados: string[], iguais: number}} Arquivos copiados (ou, com `checar`,
+ *   desatualizados), relativos à raiz, e quantidade de arquivos que já estavam iguais.
  */
-export function sincronizarSubpasta({ raiz, pastaDestino, subpasta }) {
+export function sincronizarSubpasta({ raiz, pastaDestino, subpasta, checar = false }) {
   const origemSubpasta = join(raiz, PASTA_ORIGEM, subpasta);
   const destinoSubpasta = join(raiz, pastaDestino, subpasta);
   const copiados = [];
@@ -71,9 +77,10 @@ export function sincronizarSubpasta({ raiz, pastaDestino, subpasta }) {
       iguais += 1;
       continue;
     }
+    copiados.push(relative(raiz, destino));
+    if (checar) continue;
     mkdirSync(dirname(destino), { recursive: true });
     copyFileSync(origem, destino);
-    copiados.push(relative(raiz, destino));
   }
   return { copiados, iguais };
 }
@@ -144,9 +151,11 @@ function listarSkills(raiz) {
 /**
  * Gera `.gemini/commands/<skill>.toml` para cada skill; só grava o que mudou.
  * @param {string} raiz - Raiz do repositório.
- * @returns {{copiados: string[], iguais: number}} Arquivos gravados e quantos já estavam iguais.
+ * @param {boolean} [checar=false] - Só confere, sem gravar.
+ * @returns {{copiados: string[], iguais: number}} Arquivos gravados (ou desatualizados) e
+ *   quantos já estavam iguais.
  */
-export function gerarComandosGemini(raiz) {
+export function gerarComandosGemini(raiz, checar = false) {
   const copiados = [];
   let iguais = 0;
 
@@ -157,35 +166,58 @@ export function gerarComandosGemini(raiz) {
       iguais += 1;
       continue;
     }
+    copiados.push(relative(raiz, destino));
+    if (checar) continue;
     mkdirSync(dirname(destino), { recursive: true });
     writeFileSync(destino, conteudo);
-    copiados.push(relative(raiz, destino));
   }
   return { copiados, iguais };
 }
 
 /**
- * Sincroniza todos os destinos (cópias e comandos do Gemini) e mostra o resumo no terminal.
+ * Sincroniza (ou, com `checar`, só confere) todos os destinos e mostra o resumo no terminal.
  * @param {string} raiz - Raiz do repositório.
- * @returns {number} Total de arquivos copiados.
+ * @param {boolean} [checar=false] - Só confere, sem gravar.
+ * @returns {string[]} Arquivos copiados/gerados (ou desatualizados), relativos à raiz.
  */
-export function sincronizarAgentes(raiz) {
-  let total = 0;
+export function sincronizarAgentes(raiz, checar = false) {
+  const verbo = checar ? 'desatualizado' : 'copiado';
+  const todos = [];
   for (const { nome, pasta, subpastas } of DESTINOS_DE_COPIA) {
     for (const subpasta of subpastas) {
-      const { copiados, iguais } = sincronizarSubpasta({ raiz, pastaDestino: pasta, subpasta });
-      for (const arquivo of copiados) console.log(`copiado: ${arquivo}`);
-      console.log(`${nome} ${subpasta}: ${copiados.length} copiado(s), ${iguais} já igual(is)`);
-      total += copiados.length;
+      const resultado = sincronizarSubpasta({ raiz, pastaDestino: pasta, subpasta, checar });
+      mostrarResumo(`${nome} ${subpasta}`, verbo, resultado);
+      todos.push(...resultado.copiados);
     }
   }
-  const gemini = gerarComandosGemini(raiz);
-  for (const arquivo of gemini.copiados) console.log(`gerado: ${arquivo}`);
-  const { copiados: gerados, iguais: comandosIguais } = gemini;
-  console.log(`Gemini CLI comandos: ${gerados.length} gerado(s), ${comandosIguais} já igual(is)`);
-  return total + gemini.copiados.length;
+  const gemini = gerarComandosGemini(raiz, checar);
+  mostrarResumo('Gemini CLI comandos', verbo, gemini);
+  return [...todos, ...gemini.copiados];
+}
+
+/**
+ * Mostra os arquivos tratados e o resumo de um destino.
+ * @param {string} rotulo - Nome do destino (ex.: `Grok Build skills`).
+ * @param {string} verbo - `copiado` ou `desatualizado`.
+ * @param {{copiados: string[], iguais: number}} resultado - Resultado do destino.
+ */
+function mostrarResumo(rotulo, verbo, { copiados, iguais }) {
+  for (const arquivo of copiados) console.log(`${verbo}: ${arquivo}`);
+  console.log(`${rotulo}: ${copiados.length} ${verbo}(s), ${iguais} já igual(is)`);
+}
+
+/**
+ * Executa pela linha de comando; com `--checar`, sai 1 se houver cópia desatualizada.
+ */
+function executar() {
+  const checar = process.argv.includes(OPCAO_CHECAR);
+  const tratados = sincronizarAgentes(RAIZ, checar);
+  if (!checar || tratados.length === 0) return;
+
+  console.error(`Cópias das skills desatualizadas: rode \`${COMANDO_CONSERTA}\` e commite.`);
+  process.exitCode = CODIGO_DESATUALIZADO;
 }
 
 const caminhoChamado = process.argv[1] ? resolve(process.argv[1]) : '';
 const executadoDireto = caminhoChamado === fileURLToPath(import.meta.url);
-if (executadoDireto) sincronizarAgentes(RAIZ);
+if (executadoDireto) executar();
