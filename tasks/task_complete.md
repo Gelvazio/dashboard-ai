@@ -64,6 +64,7 @@
 
 | SUB-45.9 | `criarProjeto()` em `src/services/projectService.ts` | 🟡 Média | SUB-45.7 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.10 | `atualizarProjeto()` e `definirProjetoAtivo()` em `src/services/projectService.ts` | 🟡 Média | SUB-45.9 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
+| SUB-45.11 | Componente `src/components/projetos/StatusProjetoBadge.tsx` | 🟡 Média | SUB-45.7 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 ## 📜 Histórico do quadro antigo (blocos, até 2026-10-13)
 
 > Blocos do modelo antigo (SUB-01 a SUB-46), movidos do `task-principal.md` (hoje em
