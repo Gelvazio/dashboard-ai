@@ -174,3 +174,13 @@ async function generateEmbedding(text: string): Promise<number[]> {
   return json.data[0].embedding;
 }
 ```
+
+---
+
+## 3. Ativação no Terminal (Claude Code)
+
+Após realizar o deploy do código acima na Vercel e configurar as variáveis de ambiente (`SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` e `OPENAI_API_KEY`), ative a sua memória compartilhada direto no Claude Code rodando o comando:
+
+```bash
+claude mcp add --transport http dashboard-ai-brain https://<seu-projeto>.vercel.app/api/mcp
+```

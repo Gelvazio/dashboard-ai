@@ -1,7 +1,7 @@
 ## Etapa 005-6b941e1e — SUB-41: Tirar do `AGENTS.md` o plano "🧠 Cérebro de Memória Persistente" (o `AGENTS.md` fica só com regras)
 
 **Tarefa:** SUB-41 · **Migrada em:** 2026-10-13 (ETAPA-001) · **Executor:** por subtarefa (coluna "Em uso por" do `tasks/STATUS.md`)
-**Próximo passo:** escolher uma subtarefa livre no `tasks/STATUS.md` (cada subtarefa tem o próprio próximo passo abaixo).
+**Próximo passo:** nenhum (tarefa concluída em 2026-10-13).
 
 > Bloco migrado do `task-principal.md` sem alterar o texto. **Status, prioridade, dependências e reserva** de cada subtarefa ficam só no [`tasks/STATUS.md`](../STATUS.md); aqui ficam descrição, critérios, entrega e anotações. Quem reserva uma subtarefa edita só a seção dela.
 
@@ -15,7 +15,7 @@
 
 - **Descrição:** **Regra do usuário (2026-10-12):** o `AGENTS.md` deve conter **apenas regras de como executar tarefas**, e **nenhuma tarefa em si**. Hoje, depois da seção "✅ 5. Regra de confirmação de status", o arquivo traz o plano de implementação `# 🧠 Plano de Implementação: Cérebro de Memória Persistente (Estilo Jev-Mem)` (linhas ~345-525; números aproximados, conferir com `grep`), com as seções `## 1. Arquitetura do Banco de Dados (Supabase)` (SQL), `## 2. Estrutura do Servidor MCP (Vercel Serverless)` (nota da implementação real, estrutura de arquivos e exemplo ilustrativo de `api/mcp.ts`) e `## 3. Ativação no Terminal (Claude Code)`. Isso é tarefa/plano, não regra. O plano inteiro vai, **sem alterar o texto**, para `docs/plano-cerebro-memoria-persistente.md`, uma seção por subtarefa, ajustando os links relativos do trecho movido (`api/...` → `../api/...`, `database/...` → `../database/...`). No `AGENTS.md`, o bloco é apagado **sem deixar resumo de tarefa**.
 - **Critérios de Aceitação:** Todas as filhas `concluido`; `docs/plano-cerebro-memoria-persistente.md` com o conteúdo completo das seções 1, 2 e 3; `AGENTS.md` sem o plano e só com regras de execução de tarefas; nenhum link relativo quebrado (inclusive links de outros arquivos que apontem para esse trecho do `AGENTS.md`); `npm run validar` verde.
-- **Commit:** pendente
+- **Commit:** `feat(SUB-41.1)`, `feat(SUB-41.2)` e `feat(SUB-41.3)` (2026-10-13)
 - **Anotação:** Criada a pedido do usuário em 2026-10-12 por Claude Code (Opus 5.5). Pedido original: "isso daqui *## 2. Estrutura do Servidor MCP (Vercel Serverless)* precisa estar numa tarefa separada"; ampliado na mesma conversa: "no agents.md, devem ficar apenas regras de como executar tarefas e nenhuma tarefa em si mesmo" — por isso a tarefa cobre o plano inteiro (seções 1, 2 e 3), não só a seção 2. O plano já está implementado (SUB-07 e seguintes; o SQL consolidado está em `database/`, scripts `01` a `04`); esta tarefa só reorganiza a documentação, sem nada a aplicar no banco. Os outros trechos do `AGENTS.md` que citam tarefas específicas foram separados na SUB-42. **Subdivisão (2026-10-12, a pedido do usuário):** a mãe, antes atômica, passou a ter as filhas SUB-41.1 a SUB-41.3 (uma por seção do plano).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
@@ -44,11 +44,11 @@
 
 ### SUB-41.3 — Mover a seção "3. Ativação no Terminal (Claude Code)" e fechar a limpeza do `AGENTS.md`
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** Mover do `AGENTS.md` para o fim de `docs/plano-cerebro-memoria-persistente.md` a seção `## 3. Ativação no Terminal (Claude Code)` (texto e comando `claude mcp add --transport http dashboard-ai-brain ...`), **sem alterar o conteúdo**. Depois, conferir que o `AGENTS.md` termina na seção "✅ 5. Regra de confirmação de status" (sem `---` sobrando no fim) e que nenhum arquivo do repositório aponta para o trecho removido (procurar por "Cérebro de Memória", "Jev-Mem" e "Arquitetura do Banco de Dados" nos `.md`, fora de `node_modules`); se apontar, trocar o link para o novo arquivo. Avaliar se a ativação do MCP (`claude mcp add`) deve virar uma regra curta no `AGENTS.md` com link para o novo arquivo; registrar a decisão na anotação.
 - **Critérios de Aceitação:** Seção 3 completa no novo arquivo; o `AGENTS.md` não tem mais "Plano de Implementação" nem as seções `## 1. Arquitetura`, `## 2. Estrutura` e `## 3. Ativação`; nenhum link quebrado para o trecho removido; `npm run validar` verde.
-- **Commit:** pendente
-- **Anotação:** pendente
+- **Commit:** `feat(SUB-41.3)` (Claude Code (Opus 5.5) (local · main), 2026-10-13)
+- **Anotação:** **Entrega (2026-10-13 15:21, Claude Code (Opus 5.5) (local · main)):** seção 3 movida sem alterar o texto; apagados do `AGENTS.md` o título e o aviso do "📎 Anexo" e o `---` antes dele: o arquivo termina na frase "Se uma regra daqui parecer contradizer outra…", logo após a tabela de leitura obrigatória (a nota da migração no topo desta etapa troca "seção 5" por isso). **Decisão:** a ativação do MCP **não** vira regra no `AGENTS.md`, porque já está no `README.md` (seção do `claude mcp add`, linha ~384) e o `AGENTS.md` só aponta para regras. **Verificação:** `grep` sem "Plano de Implementação", `## 1. Arquitetura`, `## 2. Estrutura` e `## 3. Ativação` no `AGENTS.md`; o arquivo novo tem o cabeçalho e as seções 1, 2 e 3; nenhum `.md` aponta para o trecho removido (as menções a "Cérebro de Memória" no `README.md` são o nome da tela, e as do quadro e das etapas são histórico); `npm run validar` de 15:08 continua valendo (só texto mudou; mesma ressalva do `chunks`).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE

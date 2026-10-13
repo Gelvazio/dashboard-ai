@@ -29,19 +29,3 @@ monitor). Skill do fluxo: [`proxima-task`](.agents/skills/proxima-task/SKILL.md)
 `.claude/skills/`; não editar a cópia).
 
 **Se uma regra daqui parecer contradizer outra, vale a do arquivo do assunto; avise o usuário.**
-
----
-
-# 📎 Anexo — plano a ser movido (tarefa SUB-41)
-
-> O texto abaixo **não é regra**: é o plano original do "Cérebro de Memória Persistente", já
-> implementado. A tarefa **SUB-41** (ver `tasks/STATUS.md`) vai movê-lo para
-> `docs/plano-cerebro-memoria-persistente.md`. Até lá, fica aqui sem alterações.
-
-## 3. Ativação no Terminal (Claude Code)
-
-Após realizar o deploy do código acima na Vercel e configurar as variáveis de ambiente (`SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` e `OPENAI_API_KEY`), ative a sua memória compartilhada direto no Claude Code rodando o comando:
-
-```bash
-claude mcp add --transport http dashboard-ai-brain https://<seu-projeto>.vercel.app/api/mcp
-```
