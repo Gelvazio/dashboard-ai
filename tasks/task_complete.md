@@ -44,6 +44,7 @@
 | SUB-56.1 | Instruir no `AGENTS.md` a consulta ao `tasks/task_complete.md` | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-017](etapas/ETAPA-017-c31f8a42-CONSULTAR-TASK-COMPLETE.md) |
 | SUB-57 | **Remover a validação de integração SUB-35.46.2 por decisão do usuário** | 🟡 Média | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-018](etapas/ETAPA-018-a9bba1c3-REMOVER-SUB35-46-2.md) |
 | SUB-57.1 | Registrar o cancelamento da SUB-35.46.2 e atualizar o quadro | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-018](etapas/ETAPA-018-a9bba1c3-REMOVER-SUB35-46-2.md) |
+| SUB-50.3 | Converter scripts `database/*.sql` para `database/configlocal/supabase/migrations/` | 🟡 Média | SUB-50.2 | ✅ Concluído | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 
 ---
 

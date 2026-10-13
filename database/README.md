@@ -20,6 +20,7 @@ atualizam instalações da versão anterior (sem `project_id`).
 | `05_rls_policies.sql` | RLS e permissões das tabelas e funções de 00–04 |
 | `06_messages_rules.sql` | `agent_messages` (recados entre agentes, por projeto/task) e `project_rules` (regras do repositório por seção, com `md5`), `ler_recados()`, `conferir_regras()` e a RLS dessas tabelas |
 | `07_agent_events.sql` | `agent_events` (eventos dos agentes para o monitor em tempo real), trigger `validar_agent_event`, RLS, publicação no Supabase Realtime e `atividade_atual_agentes()` |
+| `08_projects_campos.sql` | Campos novos de `public.projects` (perfil do projeto: cor, ícone, URLs, prioridade e tags) |
 
 ## Modelo de acesso
 
@@ -89,7 +90,11 @@ não mexem na trava nem nas tentativas (exceto zerar ao reabrir) e só concluem 
 
 ## Como aplicar
 
-**Supabase:** abra *SQL Editor* e execute os arquivos na ordem acima (00 → 07).
+**Supabase (produção/nuvem):** abra *SQL Editor* e execute os arquivos na ordem acima
+(`00_projects_roles.sql` → `08_projects_campos.sql`).
+
+**Supabase local (Docker):** para desenvolvimento e testes offline, os mesmos scripts são aplicados
+como **migrations** — veja a seção seguinte.
 
 **psql:**
 ```bash
@@ -99,6 +104,22 @@ for f in database/0*.sql; do psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -f "$f"; do
 Requisitos: PostgreSQL 15+ (usa `unique nulls not distinct`) com `pgvector` ≥ 0.5 (índice HNSW).
 
 Depois de aplicar, cadastre o primeiro administrador (veja a seção abaixo).
+
+## Scripts de produção × migrations locais
+
+| Onde | O quê | Como se aplica |
+|---|---|---|
+| `database/*.sql` | **Produção** (Supabase na nuvem) — a fonte da verdade do schema | *SQL Editor* ou `psql`, na ordem `00` → `08` |
+| `database/configlocal/supabase/migrations/*.sql` | **Local** (Docker), para desenvolvimento e testes offline | `npx supabase --workdir database/configlocal db reset` (ou `start`) |
+
+- As migrations locais são **cópias idênticas** dos scripts de produção, com o prefixo de versão
+  `<AAAAMMDDHHMMSS>_` para o Supabase aplicar na ordem certa:
+  `20261013000000_00_projects_roles.sql` até `20261013000008_08_projects_campos.sql`.
+- Mudou um script de produção? Atualize também a migration correspondente em
+  `database/configlocal/supabase/migrations/` (ou crie uma nova); senão o banco local fica diferente
+  do de produção.
+- O banco local é **descartável** (`db reset` apaga e recria); o de produção **não**. Como alternar
+  entre os dois: `docs/supabase-local-instalacao.md` e `database/configlocal/README.md`.
 
 ## Primeiro administrador e membros
 
