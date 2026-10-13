@@ -12,7 +12,7 @@ Prioridade: 🔴 Máxima · 🟠 Alta · 🟡 Média · 🟢 Baixa
 
 | Frente | Tarefa (etapa) | Situação | Atualizado em |
 |---|---|---|---|
-| Claude Code (Opus 5.5) (local · main) | SUB-47.3 ([ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md)) | ⏹️ Encerrada | 2026-10-13 15:50 |
+| Claude Code (Opus 5.5) (local · main) | SUB-50.2 ([ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md)) | 🔄 Em execução | 2026-10-13 15:40 |
 | Claude Code (Opus 5.5) (nuvem · main) | SUB-47.5 ([ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md)) | ⏹️ Encerrada | 2026-10-13 15:25 |
 
 ## 📌 Tarefas
@@ -96,7 +96,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-49.3 | Criar workflow alternativo para Cloudflare R2 (retenção > 90 dias) | 🟡 Média | SUB-49.2 | ⬜ Pendente | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
 | SUB-49.4 | Documentar escolha entre as 2 opções e migração | 🟡 Média | SUB-49.3 | ⬜ Pendente | — | [ETAPA-011](etapas/ETAPA-011-4fb0d31c-BACKUP-SUPABASE.md) |
 | SUB-50 | **Configurar Supabase local com Docker para desenvolvimento** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
-| SUB-50.2 | Inicializar o Supabase local na pasta `database/configlocal` (`supabase init --config database/configlocal`) | 🟡 Média | SUB-50.1 | ⬜ Pendente | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
+| SUB-50.2 | Inicializar o Supabase local na pasta `database/configlocal` (`supabase init --config database/configlocal`) | 🟡 Média | SUB-50.1 | 🔄 Em execução | Claude Code (Opus 5.5) (local · main) (desde 2026-10-13 15:40) | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-50.3 | Converter scripts `database/*.sql` para `database/configlocal/migrations/` | 🟡 Média | SUB-50.2 | ⬜ Pendente | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-50.4 | Configurar variáveis de ambiente para ambiente local | 🟡 Média | SUB-50.3 | ⬜ Pendente | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
 | SUB-50.5 | Rodar o Supabase local e validar (`supabase start --config database/configlocal`) | 🟡 Média | SUB-50.4 | ⬜ Pendente | — | [ETAPA-012](etapas/ETAPA-012-f73bee11-SUPABASE-LOCAL.md) |
