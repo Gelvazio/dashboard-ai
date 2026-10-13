@@ -32,6 +32,7 @@
 | SUB-54.1 | Regras sem "linha da frente" (`quadro.md`, `frentes-e-reserva.md`, `ciclo-da-task.md`) | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
 | SUB-54.2 | Skill `proxima-task` lendo as frentes pela coluna "Em uso por" | 🟡 Média | SUB-54.1 | ✅ Concluído | — | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
 | SUB-54.3 | Remover a seção "🧭 Frentes" do `STATUS.md` e avisar as IAs | 🟡 Média | SUB-54.2 | ✅ Concluído | — | [ETAPA-015](etapas/ETAPA-015-074d37b0-SEM-TABELA-FRENTES.md) |
+| SUB-55.1 | Estrutura: `index.html`, estilo e telas sem dados embutidos | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 
 ---
 

@@ -39,15 +39,21 @@ gerador e sem dados embutidos.
 
 ### SUB-55.1 — Estrutura: `index.html`, estilo e telas (abas, cartões, modal) sem dados embutidos
 
-**Próximo passo:** reservar e copiar/adaptar `modelo.html`, `estilo.css`, `markdown.js`, `app.js`,
-`aba-regras.js`, `aba-tasks.js` e `inicio.js` do aulasenai para `.claude/rules/` e `.claude/rules/visualizador/`.
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** `index.html` só com estrutura e `<link>`/`<script src>`; título "Dashboard AI"; os dados passam
   a ser preenchidos por carregamento assíncrono (`inicio.js`), com aviso de carregamento e de erro; frentes
   montadas a partir de `{Frente, Tarefa, desde, proximo}`.
 - **Critérios de Aceitação:** sem `<style>`/`<script>` com conteúdo dentro do HTML; `node --check` em cada `.js`;
   funções ≤ 45 linhas; linhas ≤ 100 caracteres.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-55.1)` · **Verificação:** `index.html` reescrito (título "Dashboard AI", sem dados
+  embutidos, sem `<style>`/`<script>` com conteúdo, aviso de carregamento/erro, seção de frentes "coluna Em uso por");
+  `visualizador/` com `estilo.css` (token `--cor-codigo` e `--cor-fundo-modal`, estilo `.aviso`), `markdown.js`,
+  `app.js` (DADOS vazio, preenchido na leitura), `aba-regras.js`, `aba-tasks.js` (cartão de frente com
+  `Frente`/`Tarefa`/`Em uso desde`) e `inicio.js` (leitura assíncrona com aviso de erro); `node --check` sem erro;
+  nenhuma linha > 100 caracteres (medido em caracteres, não bytes); nenhuma função > 45 linhas.
+  ⚠️ A página só fica funcional com a 55.2 a 55.4: o `inicio.js` chama `lerRegras()`, `lerTarefas()` e
+  `ultimaFonteUsada()`, que nascem nelas (e os `<script>` delas entram no `index.html` em cada uma).
 
 ### SUB-55.2 — `fonte.js`: ler um arquivo do repositório (local, raw ou jsDelivr)
 
