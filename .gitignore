@@ -46,7 +46,3 @@ variaveis.js
 *.PPTX
 *.pdf
 *.PDF
-
-# Claude Code: configurações pessoais (não versionar)
-.claude/settings.local.json
-.claude/launch.json

@@ -1,0 +1,23 @@
+{
+  "skill_name": "proxima-task",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "/proxima-task",
+      "expected_output": "Mostra todas as frentes de trabalho ativas com seus próximos passos em formato legível, com a frente atual marcada com ⭐ se conseguir detectar a branch",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Qual é a próxima tarefa da sessão atual?",
+      "expected_output": "Mesmo que o test case 1 — frente atual destacada, próximos passos claros",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Quais são as tarefas pendentes?",
+      "expected_output": "Lista todas as frentes ativas (🔄 ou 👀) com próximos passos, filtrando as encerradas (⏹️)",
+      "files": []
+    }
+  ]
+}
