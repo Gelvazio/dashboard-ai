@@ -47,7 +47,7 @@ no mesmo commit; commit sem `.agents/` não roda o sincronizador; `pre-push` pas
 
 ### SUB-61.2 — `GEMINI.md` apontando para o `AGENTS.md`
 
-**Próximo passo:** depende da SUB-61.1.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:11).
 
 - **Descrição:** arquivo curto no padrão do `CLAUDE.md`.
 - **Critérios de Aceitação:** `@./AGENTS.md` numa linha própria; nenhuma regra no arquivo.

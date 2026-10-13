@@ -83,7 +83,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-60 | **Comandos (skills) para todas as IAs, sempre sincronizados** | 🟡 Média | Nenhuma | 🔄 Em andamento | — (não reservável) | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
 | SUB-60.5 | Aceite do usuário | 🟡 Média | SUB-60.4 | 👀 Aguardando o usuário | — | [ETAPA-021](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
 | SUB-61 | **Sincronia automática das skills no commit e Gemini CLI lendo o `AGENTS.md`** | 🟡 Média | Nenhuma | 🔄 Em andamento | — (não reservável) | [ETAPA-022](etapas/ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md) |
-| SUB-61.2 | `GEMINI.md` apontando para o `AGENTS.md` | 🟡 Média | SUB-61.1 | ⬜ Pendente | — | [ETAPA-022](etapas/ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md) |
+| SUB-61.2 | `GEMINI.md` apontando para o `AGENTS.md` | 🟡 Média | SUB-61.1 | 🔄 Em execução | Claude Code (Opus 5.5) (nuvem · main) (desde 2026-10-13 20:11) | [ETAPA-022](etapas/ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md) |
 | SUB-61.3 | Aceite do usuário | 🟡 Média | SUB-61.2 | ⬜ Pendente | — | [ETAPA-022](etapas/ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md) |
 
 ## Escopo do projeto
