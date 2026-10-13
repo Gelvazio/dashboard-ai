@@ -54,6 +54,7 @@
 | SUB-47.0 | Configurar Laya Server via Docker Compose | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-45.2 | Colunas `cor` e `icone` em `database/08_projects_campos.sql` (com os 2 `check`) | 🟡 Média | SUB-45.1, SUB-45.19 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.3 | Colunas `url_producao` e `url_documentacao` em `database/08_projects_campos.sql` (com os 2 `check`) | 🟡 Média | SUB-45.2 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
+| SUB-45.4 | Colunas `prioridade` e `tags` no `08_projects_campos.sql` (check dos 4 valores + índice GIN) | 🟡 Média | SUB-45.3 | ✅ Concluído | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 
 ---
 

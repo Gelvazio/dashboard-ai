@@ -100,13 +100,13 @@ Pendente (preencher ao fechar a SUB-45, com o tempo decorrido).
 
 ### SUB-45.4 — Colunas `prioridade` e `tags` em `database/08_projects_campos.sql`
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** nenhum — entregue. Seguir na SUB-45.6 (exige autorização do usuário) ou na SUB-45.7.
 
 - **Descrição:** No mesmo arquivo: `prioridade text not null default 'MEDIA'` com `check (prioridade in ('MAXIMA','ALTA','MEDIA','BAIXA'))` (mesmos valores da seção 1.2 do `AGENTS.md`) e `tags text[] not null default '{}'`. Índice GIN em `tags` (`create index if not exists`). Comentários. **Status continua sendo a coluna `ativo boolean`** (decisão do usuário): na tela aparece como 1-ATIVO / 0-INATIVO. ⚠️ Tarefa de banco: pela regra 11 da seção 1.1 do `AGENTS.md`, só o Claude Code local executa (não em sessão na nuvem).
 - **Critérios de Aceitação:** Colunas, check e índice no arquivo, idempotentes.
-- **Commit:** pendente
-- **Anotação:** pendente
-- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
+- **Entrega:** commit desta entrega (`feat(SUB-45.4)`) · **Verificação:** bloco "Prioridade e tags (SUB-45.4)" em `database/08_projects_campos.sql` (e na cópia de migration, **hash idêntico**); aplicado **2× no Supabase local** sem erro; colunas confirmadas no banco como `prioridade text NOT NULL DEFAULT 'MEDIA'::text` e `tags ARRAY NOT NULL DEFAULT '{}'::text[]`; constraint `projects_prioridade_check` = `CHECK ((prioridade = ANY (ARRAY['MAXIMA','ALTA','MEDIA','BAIXA'])))`; **índice GIN** `projects_tags_gin` = `CREATE INDEX projects_tags_gin ON public.projects USING gin (tags)`; **3 casos testados** em transação com `rollback` (o banco seguiu com 1 projeto): sem informar nada → `padrao=MEDIA tags={}`; `MAXIMA` com `tags '{a,b}'` → aceito e `tags @> array['a']` achou **1** linha (índice em uso); `URGENTE` → recusado.
+- **Anotação:** `prioridade` usa os mesmos valores da seção 1.2 do `AGENTS.md` (MAXIMA/ALTA/MEDIA/BAIXA) e o **status continua sendo a coluna `ativo boolean`** (decisão do usuário: a tela mostra 1-ATIVO / 0-INATIVO) — nada de coluna de status nova. O índice GIN usa `create index if not exists` (idempotente) e o filtro `conrelid` foi mantido no teste da constraint. Nada aplicado no Supabase da **nuvem** (SUB-45.6).
+- **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** 2026-10-13 17:43 — confirmado por DeepSeek Harness (deepseek-flash): idempotência 2×, defaults, check e índice GIN conferidos com 3 casos
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
 ### ~~SUB-45.5 — Teste SQL `database/tests/test_projects_campos.sql`~~ (removida)

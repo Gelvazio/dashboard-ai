@@ -89,3 +89,27 @@ end $$;
 
 comment on column public.projects.url_producao     is 'URL do ambiente de produção do projeto (opcional; precisa começar com http:// ou https://).';
 comment on column public.projects.url_documentacao is 'URL da documentação do projeto (opcional; precisa começar com http:// ou https://).';
+
+-- -----------------------------------------------------------------------------
+-- Prioridade e tags (SUB-45.4)
+-- -----------------------------------------------------------------------------
+-- O status continua sendo `ativo boolean` (decisão do usuário): a tela mostra
+-- 1-ATIVO / 0-INATIVO. `prioridade` usa os mesmos valores da seção 1.2 do AGENTS.md.
+alter table public.projects add column if not exists prioridade text   not null default 'MEDIA';
+alter table public.projects add column if not exists tags       text[] not null default '{}';
+
+do $$
+begin
+  if not exists (select 1 from pg_constraint
+                 where conname = 'projects_prioridade_check'
+                   and conrelid = 'public.projects'::regclass) then
+    alter table public.projects add constraint projects_prioridade_check
+      check (prioridade in ('MAXIMA','ALTA','MEDIA','BAIXA'));
+  end if;
+end $$;
+
+-- Índice GIN para consultas por tag (`tags @> array['x']`).
+create index if not exists projects_tags_gin on public.projects using gin (tags);
+
+comment on column public.projects.prioridade is 'Prioridade do projeto: MAXIMA, ALTA, MEDIA (padrão) ou BAIXA.';
+comment on column public.projects.tags       is 'Etiquetas do projeto (array de texto, vazio por padrão); índice GIN `projects_tags_gin`. Suscetível a acentos: use o mesmo texto da tag.';
