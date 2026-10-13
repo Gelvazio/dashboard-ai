@@ -39,8 +39,8 @@ espaço → Cloudflare R2 (SUB-49.3).
 
 1. **Settings → Secrets and variables → Actions → Secrets**:
    - `SUPABASE_LOCAL_DATABASE_URL` = `postgresql://postgres:<senha-local>@host.docker.internal:54322/postgres`
-   - `SUPABASE_BACKUP_PASSPHRASE` = senha longa e aleatória (≥ 20 caracteres), por exemplo a saída de
-     `openssl rand -base64 32`.
+   - `SUPABASE_BACKUP_PASSPHRASE` = senha longa e aleatória (≥ 20 caracteres), por
+     exemplo a saída de `openssl rand -base64 32`.
 2. Opcional, em **Variables**: `SUPABASE_BACKUP_RETENTION_DAYS` (1 a 90).
 3. Runner self-hosted Windows (`[self-hosted, Windows, X64]`) com Docker Desktop e o Supabase local
    ligados no horário do backup.
@@ -64,7 +64,8 @@ gh run download <ID> --name supabase-backup-<número>   # já descompacta o .zip
 gpg --decrypt supabase-backup.sql.gz.gpg | gunzip | psql "postgresql://postgres:<senha>@localhost:54322/postgres"
 ```
 
-- Restaure primeiro num banco **vazio ou de teste** (ex.: o Supabase local, `docs/supabase-local.md`).
+- Restaure primeiro num banco **vazio ou de teste** (ex.: o Supabase local,
+  `docs/supabase-local.md`).
 - O dump é feito com `--no-owner --no-privileges`: donos e permissões ficam com quem restaura.
 - ⚠️ Restaurar no Supabase da **nuvem** exige autorização explícita do usuário
   (`.claude/rules/multiplas-ias.md`).
