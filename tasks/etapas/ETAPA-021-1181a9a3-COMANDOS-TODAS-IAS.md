@@ -84,7 +84,7 @@ cópia desatualizada é recusado pelo `pre-push` com instrução de rodar `npm r
 
 ### SUB-60.5 — Aceite do usuário
 
-**Próximo passo:** 👀 o usuário chama `/proxima-task` (no Codex, `$proxima-task`) em pelo menos
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 20:14).
 uma ferramenta além do Claude Code (Antigravity, Cursor, Codex, Grok ou Gemini CLI) e responde "sim".
 
 - **Descrição:** o usuário chama `/proxima-task` (ou `$proxima-task` no Codex) em pelo menos uma
