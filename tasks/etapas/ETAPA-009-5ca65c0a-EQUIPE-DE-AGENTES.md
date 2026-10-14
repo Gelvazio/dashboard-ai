@@ -278,7 +278,7 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.4 — Agente `classificador-tarefas` (usa Laya, não Opus)
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 21:06).
 
 - **Descrição:** Criar `.agents/agents/classificador-tarefas.md` (`model: any`, `skills: [classificar-tarefa]`, ferramentas só de leitura + edição do quadro). Ele lê os blocos sem `Nível`, usa a skill `classificar-tarefa` (que chama o Laya Server) para definir o nível, grava o nível com justificativa e devolve a lista ao líder. Não faz Git. Rodar `npm run sync:agentes`.
 - **Critérios de Aceitação:** Frontmatter válido; cópia em `.claude/agents/`; integração com Laya funcional.
