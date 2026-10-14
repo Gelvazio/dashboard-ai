@@ -351,15 +351,35 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.10 — Instalação global em `~/.agents/` e `~/.claude/` (só com autorização)
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 21:11).
+**Próximo passo:** nenhum (concluída).
 
 - **Nível:** LEVE — copiar arquivos para pastas globais, sem lógica; exige autorização (dada) e o computador do usuário (sinais; Laya fora nesta sessão)
 - **Descrição:** Com **autorização explícita do usuário no passo**, copiar as skills e os agentes para `~/.agents/` (fonte global) e `~/.claude/skills/` + `~/.claude/agents/` (uso local em qualquer projeto). Para projetos na nuvem, documentar o uso do `npm run sync:agentes` (ou a cópia manual) em cada repositório.
 - **Critérios de Aceitação:** Arquivos presentes nas pastas globais; o procedimento para outros projetos fica descrito no plano.
-- **Commit:** pendente
+- **Commit:** `docs(SUB-47.10)` — **copiado para `C:\\Users\\gelva\\.agents\\`** (computador `geo`, ligado à sessão; autorização do usuário em 2026-10-13 21:03): `skills/proxima-task`, `skills/classificar-tarefa`, `skills/liderar-equipe` e `agents/` (`classificador-tarefas`, `executor-leve`, `executor-medio`, `executor-pesado`); nada existente foi sobrescrito (nenhum nome coincidia). **`~/.claude/` não:** pasta protegida, a sessão não consegue acessar → **SUB-47.16** (👀, comando pronto). **Outros projetos:** copiar a pasta `.agents/` e o `scripts/sincronizar-agentes.mjs` para o repositório, registrar `sync:agentes`/`check:agentes` no `package.json` e os hooks `.githooks/pre-commit` e `pre-push` (SUB-60/61); ou, sem Git, copiar de `~/.agents/` para a pasta de skills de cada ferramenta. **Anotação:** a cópia foi feita ~3 min antes do commit `lock:` desta subtarefa (deslize de ordem; nenhuma outra frente estava nela)
+- **Verificação:** hash SHA-256 de cada um dos 7 arquivos no computador do usuário igual ao da fonte `.agents/` desta sessão; `ls ~/.agents/skills` mostra as skills antigas do usuário intactas
 - **Anotação:** Plano em `docs/equipe-de-agentes.md`.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
+
+### SUB-47.16 — Copiar skills e agents para `~/.claude/` no computador do usuário
+
+**Próximo passo:** 👀 o usuário roda no PowerShell, em qualquer pasta (copia da instalação global
+`~/.agents/`, já feita na SUB-47.10, sem apagar nada):
+
+```powershell
+Copy-Item -Recurse -Force "$HOME\.agents\skills\proxima-task","$HOME\.agents\skills\classificar-tarefa","$HOME\.agents\skills\liderar-equipe" "$HOME\.claude\skills\"
+New-Item -ItemType Directory -Force "$HOME\.claude\agents" | Out-Null
+Copy-Item -Force "$HOME\.agents\agents\*.md" "$HOME\.claude\agents\"
+```
+
+- **Nível:** LEVE — copiar arquivos, sem lógica.
+- **Descrição:** criada em 2026-10-13 21:11 por Claude Code (Opus 5.5) (nuvem · main): a sessão ligada ao
+  computador do usuário não pode acessar `~/.claude` (pasta protegida do próprio Claude), então essa
+  metade da SUB-47.10 fica com o usuário.
+- **Critérios de Aceitação:** `/proxima-task`, `/classificar-tarefa` e `/liderar-equipe` aparecem
+  no Claude Code fora deste projeto; "sim" do usuário.
+- **Entrega:** — · **Verificação:** —
 
 ### SUB-47.11 — Piloto da equipe em 1 item livre + aceite do usuário
 
