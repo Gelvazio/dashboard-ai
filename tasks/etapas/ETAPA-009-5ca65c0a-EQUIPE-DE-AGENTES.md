@@ -300,7 +300,7 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.6 — Skill `liderar-equipe` (fluxo do líder)
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** executar no modo decidido pelo usuário em 2026-10-13 21:04: **1 tarefa por vez, pasta única** ("1 por vez, pasta única") — sem executores em paralelo.
 
 - **Descrição:** ⚠️ O modo de execução (1 tarefa por vez em pasta única, 3 clones independentes, ou até 3 em paralelo) **depende de decisão do usuário**; ajustar este bloco antes de começar. Texto original: criar `.agents/skills/liderar-equipe/SKILL.md`: fetch + pull, chamar o classificador nos blocos sem nível, escolher até 3 itens livres por prioridade e com arquivos diferentes, travar (commit + push), disparar os executores em paralelo pelo nível, validar cada entrega (`npm run validar`), commit por tarefa, mover para `task_complete.md`, push. Tarefa de banco: o próprio líder, na sessão que tiver acesso a banco. Rodar `npm run sync:agentes`.
 - **Critérios de Aceitação:** Fluxo coerente com as seções 1, 1.1 e 1.2 do `AGENTS.md`; cópia em `.claude/skills/`.
@@ -311,7 +311,7 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.7 — Regra nova no `AGENTS.md`: campo `Nível`, matriz e equipe
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** escrever a regra em `.claude/rules/multiplas-ias.md` e o ponteiro no `AGENTS.md` (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 21:04).
 
 - **Descrição:** Acrescentar ao `AGENTS.md` (seção nova 1.4): todo bloco tem `Nível:` abaixo de `Prioridade:`; quem cria ou subdivide classifica pela skill `classificar-tarefa` (que usa Laya Server); cada agente se identifica como ferramenta + modelo e só pega item até o nível máximo da sua linha na matriz (modelo forte pega item mais leve só se não houver item livre do seu nível); equipe do Claude Code: cada executor conta como um agente com nome próprio, e só o líder mexe no Git e no quadro.
 - **Critérios de Aceitação:** Sem contradição com as regras existentes; `npm run validar` verde.
@@ -344,7 +344,7 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.10 — Instalação global em `~/.agents/` e `~/.claude/` (só com autorização)
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** **autorizado pelo usuário em 2026-10-13 21:04** ("Sim, autorizo") copiar para `~/.agents/` e `~/.claude/`; precisa do computador do usuário ligado à sessão.
 
 - **Descrição:** Com **autorização explícita do usuário no passo**, copiar as skills e os agentes para `~/.agents/` (fonte global) e `~/.claude/skills/` + `~/.claude/agents/` (uso local em qualquer projeto). Para projetos na nuvem, documentar o uso do `npm run sync:agentes` (ou a cópia manual) em cada repositório.
 - **Critérios de Aceitação:** Arquivos presentes nas pastas globais; o procedimento para outros projetos fica descrito no plano.
