@@ -375,7 +375,7 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.18 — Worker classifica a task sem nível e grava `nivel_tarefa`
 
-**Próximo passo:** depende da SUB-47.17.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 21:13).
 
 - **Nível:** PESADO — mexe no fluxo do worker e grava no banco.
 - **Descrição:** ao carregar a task, se `nivel_tarefa` for nulo, chamar `classificar()` com título +
