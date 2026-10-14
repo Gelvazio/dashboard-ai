@@ -395,7 +395,24 @@ Copy-Item -Force "$HOME\.agents\agents\*.md" "$HOME\.claude\agents\"
 
 ### SUB-47.12 — Integrar classificação Laya no worker LangGraph
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** 👀 aprovação do plano abaixo pelo usuário.
+
+- **Plano (Claude Code (Opus 5.5) (nuvem · main), 2026-10-13 21:11; aguarda aprovação).** Tarefa grande (banco +
+  várias partes), dividida em 3 subtarefas:
+  - **SUB-47.17 (PESADO):** `database/09_tasks_nivel.sql`, idempotente, no padrão do `08`: coluna
+    `nivel_tarefa text` **opcional** (nula = ainda não classificada) com `check` em
+    `LEVE`/`MEDIO`/`PESADO`, e a mesma migração em `database/configlocal/supabase/migrations/`.
+    Rodar na suíte `database/tests/` se houver Postgres. **Não aplica na nuvem** (exige sua
+    autorização em separado).
+  - **SUB-47.18 (PESADO):** no worker, ao pegar uma task com `nivel_tarefa` nulo, chamar
+    `classificar()` (`worker/classificador.ts`) com título + instrução e gravar o nível na task; falha
+    do classificador **não** para a execução (segue sem nível e registra o motivo no evento).
+  - **SUB-47.19 (MEDIO):** `grafoFabrica.ts`/`planejar` escolhem o modelo pelo nível, com
+    `WORKER_MODELO_LEVE`, `WORKER_MODELO_MEDIO` e `WORKER_MODELO_PESADO` (cada um cai no
+    `WORKER_MODELO` se faltar; sem nível usa o do `MEDIO`). Testes existentes do worker seguem
+    passando (sem testes novos, regra do projeto).
+- **Riscos:** coluna nova na tabela mais usada → opcional e sem default, nada quebra; custo do Opus
+  no fallback → só quando o Laya tiver confiança baixa ou cair.
 
 - **Nível:** PESADO — campo novo na tabela `tasks` (banco/migração) + mudança no grafo do worker (sinais; Laya fora nesta sessão)
 - **Descrição:** Integrar a classificação do Laya no worker LangGraph: ao criar uma tarefa via `pegar_proxima_task` ou manualmente, chamar o wrapper do Laya para definir o nível automaticamente. Adicionar campo `nivel_tarefa` na tabela `tasks` (se não existir) ou usar o campo existente. Atualizar o nó `planejar` do worker para considerar o nível na distribuição por modelo (LEVE → modelos pequenos, MEDIO → modelos médios, PESADO → modelos grandes).
