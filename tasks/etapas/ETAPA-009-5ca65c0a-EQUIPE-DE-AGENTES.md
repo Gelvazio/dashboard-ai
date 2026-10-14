@@ -323,7 +323,7 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.8 — `proxima-task` filtra por nível
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 21:05).
 
 - **Descrição:** Ajustar o passo 3 de `.agents/skills/proxima-task/SKILL.md` para considerar o `Nível` e a matriz da skill `classificar-tarefa`. Rodar `npm run sync:agentes`.
 - **Critérios de Aceitação:** Passo 3 cita o nível; cópia atualizada.
