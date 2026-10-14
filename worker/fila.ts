@@ -1,10 +1,15 @@
 import { rpc } from '../api/_lib/supabase.js';
+import { ehNivel, type NivelTarefa } from './nivel.js';
 
 export interface TaskReivindicada {
   taskId: number;
   taskCodigo: string;
   tentativa: number;
   instrucao: string;
+  /** Título da task (só quando veio do banco). */
+  titulo?: string;
+  /** `nivel_tarefa` (SUB-47.17), só quando a task já foi classificada. */
+  nivel?: NivelTarefa;
 }
 
 /** Campos de `public.tasks` (setof devolvido por `pegar_proxima_task`) usados por `reivindicar`. */
@@ -13,6 +18,8 @@ interface LinhaTaskReivindicada {
   codigo: string;
   tentativas: number;
   instrucao: string;
+  titulo?: string | null;
+  nivel_tarefa?: string | null;
 }
 
 export interface FinalizarArgs {
@@ -57,6 +64,9 @@ export async function reivindicar(
     taskCodigo: task.codigo,
     tentativa: task.tentativas,
     instrucao: task.instrucao ?? '',
+    // Só aparecem quando existem: a task antiga (sem coluna ou sem nível) fica igual a antes.
+    ...(task.titulo ? { titulo: task.titulo } : {}),
+    ...(ehNivel(task.nivel_tarefa) ? { nivel: task.nivel_tarefa } : {}),
   };
 }
 

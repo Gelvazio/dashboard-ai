@@ -30,6 +30,11 @@ export const EstadoExecucao = Annotation.Root({
     reducer: (x, y) => y ?? x,
     default: () => '',
   }),
+  /** Nível da task (`LEVE`/`MEDIO`/`PESADO`; vazio = sem nível) — SUB-47.18. */
+  nivel: Annotation<string>({
+    reducer: (x, y) => y ?? x,
+    default: () => '',
+  }),
   plano: Annotation<string>({
     reducer: (x, y) => y ?? x,
     default: () => '',
@@ -60,6 +65,7 @@ export const EstadoSchema = z.object({
   tentativa: z.number(),
   execucaoId: z.string(),
   instrucao: z.string(),
+  nivel: z.string().optional(),
   plano: z.string(),
   passoAtual: z.string(),
   resultados: z.record(z.unknown()),

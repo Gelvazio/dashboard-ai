@@ -3,6 +3,7 @@ import { pathToFileURL } from 'node:url';
 import { executarUmaTask, type DepsExecucao, type GrafoExecucao, type ResultadoExecucao } from './executar.js';
 import { criarGrafoComCheckpointer } from './grafoFabrica.js';
 import { iniciarHeartbeat } from './heartbeat.js';
+import { garantirNivel } from './nivel.js';
 
 export interface OpcoesWorker {
   projeto: string;
@@ -71,7 +72,13 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
       process.exit(CODIGO_SAIDA_SINAL[sinal]);
     });
   }
-  rodarWorker(opcoes)
+  // Nível da task antes do grafo (SUB-47.18): classifica e grava quando a task chega sem nível.
+  const { agente, projeto } = opcoes;
+  const executarComNivel = (deps: DepsExecucao) => executarUmaTask({
+    ...deps,
+    definirNivel: (task) => garantirNivel(task, { agente, projeto }),
+  });
+  rodarWorker(opcoes, executarComNivel)
     .finally(pararHeartbeat)
     .catch((erro: unknown) => {
       console.error(`worker: ${erro instanceof Error ? erro.message : String(erro)}`);

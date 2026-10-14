@@ -1,6 +1,7 @@
 import { finalizar, reivindicar, type FinalizarArgs, type TaskReivindicada } from './fila.js';
 import { classificarFalha } from './falhas.js';
 import { reconciliar, type EsperadoReconciliacao, type Reconciliacao } from './reconciliar.js';
+import type { ResultadoNivel } from './nivel.js';
 
 /** Grafo compilado (ou falso nos testes): só o que a execução usa. */
 export interface GrafoExecucao {
@@ -14,6 +15,11 @@ export interface DepsExecucao {
   reivindicar?: (agente: string, projeto: string) => Promise<TaskReivindicada | null>;
   reconciliar?: (esperado: EsperadoReconciliacao) => Promise<Reconciliacao>;
   finalizar?: (args: FinalizarArgs) => Promise<void>;
+  /**
+   * Define o nível da task antes do grafo (SUB-47.18; `garantirNivel` no CLI). Sem ele, vale o
+   * `nivel` que veio do banco. Não pode lançar (o `garantirNivel` não lança).
+   */
+  definirNivel?: (task: TaskReivindicada) => Promise<ResultadoNivel>;
 }
 
 export interface ResultadoExecucao {
@@ -48,6 +54,8 @@ export async function executarUmaTask(deps: DepsExecucao): Promise<ResultadoExec
     return { taskId: task.taskId, execucaoId, situacao: 'abortada', motivo: reconciliacao.motivo };
   }
 
+  const nivel = deps.definirNivel ? (await deps.definirNivel(task)).nivel : task.nivel;
+
   try {
     await deps.grafo.invoke(
       {
@@ -58,6 +66,7 @@ export async function executarUmaTask(deps: DepsExecucao): Promise<ResultadoExec
         tentativa: task.tentativa,
         execucaoId,
         instrucao: task.instrucao,
+        nivel: nivel ?? '',
       },
       { configurable: { thread_id: execucaoId } },
     );

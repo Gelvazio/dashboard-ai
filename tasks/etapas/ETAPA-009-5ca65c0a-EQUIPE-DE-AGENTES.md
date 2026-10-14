@@ -375,14 +375,14 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.18 — Worker classifica a task sem nível e grava `nivel_tarefa`
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 21:13).
+**Próximo passo:** nenhum (concluída).
 
 - **Nível:** PESADO — mexe no fluxo do worker e grava no banco.
 - **Descrição:** ao carregar a task, se `nivel_tarefa` for nulo, chamar `classificar()` com título +
   instrução e gravar o nível; falha do classificador não interrompe a execução (segue sem nível e
   registra o motivo). O nível vai para o estado do grafo.
 - **Critérios de Aceitação:** typecheck do worker; testes existentes do worker passando.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-47.18)` — `worker/nivel.ts` (`garantirNivel`: usa o nível do banco ou classifica com `classificar()` e grava `nivel_tarefa`; emite evento `progresso`/`classificar`; nunca lança), `fila.ts` (lê `titulo` e `nivel_tarefa` só quando vêm), `executar.ts` (`definirNivel` opcional; `nivel` vai para o grafo), `estado.ts` (campo `nivel`) e `index.ts` (o CLI liga o `garantirNivel`). **Decisão:** se a gravação falhar (ex.: `09` ainda não aplicado na nuvem), o nível classificado vale nesta execução e o motivo vai para o evento · **Verificação:** `tsc` 6.0 do worker inteiro com declarações provisórias de Supabase/LangChain: o mesmo conjunto de 12 linhas de erro de antes da mudança (todas do `zod`, que não resolve sem `node_modules`), nenhuma nos arquivos alterados. Com `tsx` e um Supabase falso temporário fora do repositório: os casos dos testes `worker-fila` e `worker-executarUmaTask` continuam iguais (objeto da task antiga idêntico; `invoke` com `thread_id`); mais 7 casos de `garantirNivel` (já tem nível → não classifica; classifica e grava; classificador falha → null + evento; resposta inválida; gravação falha → mantém o nível com motivo; evento falha → não lança; `update tasks set nivel_tarefa … where id`). Vitest não roda nesta sessão (sem `node_modules`) — rodar `npm test` no ambiente local
 
 ### SUB-47.19 — Nó `planejar` escolhe o modelo pelo nível
 
