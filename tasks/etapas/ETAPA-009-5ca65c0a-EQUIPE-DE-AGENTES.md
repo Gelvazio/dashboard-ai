@@ -362,6 +362,38 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
 
+### SUB-47.17 — SQL `database/09_tasks_nivel.sql`: coluna `nivel_tarefa` + migração local
+
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 21:12).
+
+- **Nível:** PESADO — SQL em `database/` (schema da tabela `tasks`).
+- **Descrição:** script idempotente no padrão do `08_projects_campos.sql`: `nivel_tarefa text` opcional
+  com `check` em `LEVE`/`MEDIO`/`PESADO` e `comment on column`; cópia como migração em
+  `database/configlocal/supabase/migrations/`; linha no `database/README.md`. Não aplicar na nuvem.
+- **Critérios de Aceitação:** roda 2× sem erro num Postgres; nada aplicado na nuvem.
+- **Entrega:** — · **Verificação:** —
+
+### SUB-47.18 — Worker classifica a task sem nível e grava `nivel_tarefa`
+
+**Próximo passo:** depende da SUB-47.17.
+
+- **Nível:** PESADO — mexe no fluxo do worker e grava no banco.
+- **Descrição:** ao carregar a task, se `nivel_tarefa` for nulo, chamar `classificar()` com título +
+  instrução e gravar o nível; falha do classificador não interrompe a execução (segue sem nível e
+  registra o motivo). O nível vai para o estado do grafo.
+- **Critérios de Aceitação:** typecheck do worker; testes existentes do worker passando.
+- **Entrega:** — · **Verificação:** —
+
+### SUB-47.19 — Nó `planejar` escolhe o modelo pelo nível
+
+**Próximo passo:** depende da SUB-47.18.
+
+- **Nível:** MEDIO — lógica em 1 a 2 arquivos do worker, sem banco nem chave nova.
+- **Descrição:** `WORKER_MODELO_LEVE`, `WORKER_MODELO_MEDIO`, `WORKER_MODELO_PESADO` (cada um cai no
+  `WORKER_MODELO`; sem nível → `MEDIO`); variáveis no `.env.example`.
+- **Critérios de Aceitação:** typecheck do worker; testes existentes passando.
+- **Entrega:** — · **Verificação:** —
+
 ### SUB-47.16 — Copiar skills e agents para `~/.claude/` no computador do usuário
 
 **Próximo passo:** 👀 o usuário roda no PowerShell, em qualquer pasta (copia da instalação global
