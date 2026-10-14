@@ -364,14 +364,14 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.17 — SQL `database/09_tasks_nivel.sql`: coluna `nivel_tarefa` + migração local
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 21:12).
+**Próximo passo:** nenhum (concluída).
 
 - **Nível:** PESADO — SQL em `database/` (schema da tabela `tasks`).
 - **Descrição:** script idempotente no padrão do `08_projects_campos.sql`: `nivel_tarefa text` opcional
   com `check` em `LEVE`/`MEDIO`/`PESADO` e `comment on column`; cópia como migração em
   `database/configlocal/supabase/migrations/`; linha no `database/README.md`. Não aplicar na nuvem.
 - **Critérios de Aceitação:** roda 2× sem erro num Postgres; nada aplicado na nuvem.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-47.17)` — `database/09_tasks_nivel.sql`, cópia idêntica em `database/configlocal/supabase/migrations/20261013000009_09_tasks_nivel.sql` e `database/README.md` (tabela, ordem e faixa das migrações). **Não aplicado no Supabase da nuvem** (exige autorização à parte) · **Verificação:** Postgres 16 descartável nesta sessão: `00` + `01` + `09` **2×** sem erro (idempotente); coluna `text`, nula, sem default; 1 constraint `tasks_nivel_tarefa_check`; comentário gravado; insert sem nível → null, com `MEDIO` → ok, com `medio` → recusado pelo check. A suíte completa `database/tests/run_tests.sh` não roda aqui (o stub e o `03` exigem a extensão pgvector, que não está instalada); rodar no Supabase local
 
 ### SUB-47.18 — Worker classifica a task sem nível e grava `nivel_tarefa`
 

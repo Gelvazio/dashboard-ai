@@ -21,6 +21,7 @@ atualizam instalações da versão anterior (sem `project_id`).
 | `06_messages_rules.sql` | `agent_messages` (recados entre agentes, por projeto/task) e `project_rules` (regras do repositório por seção, com `md5`), `ler_recados()`, `conferir_regras()` e a RLS dessas tabelas |
 | `07_agent_events.sql` | `agent_events` (eventos dos agentes para o monitor em tempo real), trigger `validar_agent_event`, RLS, publicação no Supabase Realtime e `atividade_atual_agentes()` |
 | `08_projects_campos.sql` | Campos de `public.projects`: responsável, prazo, cor, ícone, URLs, prioridade e tags; checks e índice GIN |
+| `09_tasks_nivel.sql` | Coluna opcional `tasks.nivel_tarefa` (`LEVE`/`MEDIO`/`PESADO`; null = não classificada) e check (SUB-47.17) |
 
 ## Modelo de acesso
 
@@ -91,7 +92,7 @@ não mexem na trava nem nas tentativas (exceto zerar ao reabrir) e só concluem 
 ## Como aplicar
 
 **Supabase (produção/nuvem):** abra *SQL Editor* e execute os arquivos na ordem acima
-(`00_projects_roles.sql` → `08_projects_campos.sql`).
+(`00_projects_roles.sql` → `09_tasks_nivel.sql`).
 
 **Supabase local (Docker):** para desenvolvimento e testes offline, os mesmos scripts são aplicados
 como **migrations** — veja a seção seguinte.
@@ -135,7 +136,7 @@ os projetos visíveis ao usuário.
 
 - As migrations locais são **cópias idênticas** dos scripts de produção, com o prefixo de versão
   `<AAAAMMDDHHMMSS>_` para o Supabase aplicar na ordem certa:
-  `20261013000000_00_projects_roles.sql` até `20261013000008_08_projects_campos.sql`.
+  `20261013000000_00_projects_roles.sql` até `20261013000009_09_tasks_nivel.sql`.
 - Mudou um script de produção? Atualize também a migration correspondente em
   `database/configlocal/supabase/migrations/` (ou crie uma nova); senão o banco local fica diferente
   do de produção.
