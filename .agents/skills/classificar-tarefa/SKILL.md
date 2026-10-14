@@ -63,6 +63,7 @@ Confirmada pelo usuário em 2026-10-13 (SUB-47.2). `⛔` = não pega.
 | **DeepSeek** | DeepSeek V4.1 Flash | modelo de raciocínio | ⛔ |
 | **Codex** (Free) | ✅ | ✅ | ⛔ |
 | **Cursor** (free) | ✅ | ✅ | ⛔ |
+| **Qoder** | ✅ | ✅ | ⛔ |
 | **Devin** (Free) | ✅ | ⛔ | ⛔ |
 | **Grok Bot** | ✅ | ⛔ | ⛔ |
 

@@ -52,8 +52,8 @@
 - **Nível:** LEVE — só `.md` (`README.md`, `database/README.md`).
 - **Descrição:** explicar em um lugar só: o cadastro cria o usuário no **Auth**; o acesso vem de `user_roles` (admin/member) e `project_members` (owner/editor/viewer), gravados por um **administrador**; incluir o exemplo de `insert` para liberar, com o aviso de que é banco de produção (autorização do usuário).
 - **Critérios de Aceitação:** links relativos funcionando; texto coerente com o `database/README.md` ("Primeiro administrador e membros").
-- **Próximo passo:** executar conforme a descrição (depois da aprovação do plano).
-- **Anotação:** pendente
+- **Próximo passo:** escrever no `README.md` a seção "Usuário criado ≠ acesso liberado" (Auth × `user_roles`/`project_members`, exemplo de `insert` com aviso de produção) e linkar de "4. Cadastro de usuários"; no `database/README.md`, linkar de "Primeiro administrador e membros".
+- **Anotação:** 🔄 reservada em 2026-10-13 22:01 por **Qoder (local · main)** — a prioridade 🟢 Baixa foi pega com **orientação explícita do usuário** no chat ("SUB-62.3"), como exige `tasks/frentes-e-reserva.md` item 3. O usuário também autorizou executar esta subtarefa de `.md` **sem esperar o "sim" do plano da mãe** (62.1/62.2 continuam PESADO e aguardando). Nível **LEVE** conforme a matriz: a frente Qoder ficou limitada a **LEVE** por decisão do usuário nesta sessão.
 
 ### SUB-62.4 — Aceite do usuário
 
@@ -66,3 +66,5 @@
 ### Decisões
 
 - **2026-10-13 (abertura da tarefa):** o usuário pediu que o caso relatado virasse tarefa no quadro ("atualize as tasks") e, antes, pediu para eu **não** executar sem o "sim" de tarefa grande (regra do projeto). Classificação PESADO feita **pelos sinais** da skill `classificar-tarefa` (o Laya não foi consultado nesta sessão) — pela matriz, **`PESADO` é só do Claude Code com Opus 5.5 ou superior, ou Fable**. Registrado por DeepSeek Harness (deepseek-flash) (local · main).
+- **2026-10-13 22:01 (conserto do quadro):** ao reservar a SUB-62.3, a frente Qoder encontrou **duas linhas corrompidas** no `tasks/STATUS.md` (58 e 59): a linha da mãe SUB-62 tinha dentro de si as subtarefas 62.1 a 62.4 colapsadas em texto corrido (`| | SUB-62.1 | …`), e a mesma repetição na linha seguinte. Cada subtarefa voltou a ter **uma linha própria**, sem mudar prioridade, dependência ou status de ninguém. Registrado por Qoder (local · main).
+- **2026-10-13 22:05 (Qoder na matriz):** pedido pelo usuário no chat ("adicione na seção de classificação de IAs que o Qoder deve pegar tarefas leves ou médias, deixe isso gravado"). Entrou uma linha **`Qoder`** na matriz ferramenta × modelo × nível da skill `classificar-tarefa` (fonte `.agents/skills/`): **LEVE ✅, MEDIO ✅, PESADO ⛔** — o mesmo padrão de Codex e Cursor; `PESADO` continua só do Claude Code com Opus 5.5+/Fable. A reserva da SUB-62.3 (LEVE) segue válida. Registrado por Qoder (local · main).
