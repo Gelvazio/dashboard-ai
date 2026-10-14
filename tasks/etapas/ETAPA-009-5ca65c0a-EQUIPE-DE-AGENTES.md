@@ -336,7 +336,7 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.9 — Classificar os blocos pendentes do quadro
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 21:07).
 
 - **Descrição:** Rodar o `classificador-tarefas` em todos os blocos pendentes do `task-principal.md` (exceto os sob 🔒 trava especial e os travados por outro agente) e gravar `Nível:` + justificativa.
 - **Critérios de Aceitação:** Todo bloco pendente elegível tem `Nível:`; o diff só acrescenta linhas de nível e justificativa.
