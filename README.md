@@ -313,6 +313,7 @@ Configure as seguintes variáveis no painel da Vercel (*Settings > Environment V
 | `MCP_ALLOWED_PROJECTS` | (opcional) Slugs permitidos | Ex: `meu-app,outro-app` |
 | `LANGGRAPH_DATABASE_URL` | Connection string Postgres | Para checkpointer do worker (opcional) |
 | `WORKER_MODELO` | Modelo do worker LangGraph | Ex: `gpt-4o-mini` (opcional) |
+| `WORKER_MODELO_LEVE` / `_MEDIO` / `_PESADO` | Modelo do planejamento por nível da task (SUB-47.19); vazio usa `WORKER_MODELO`; task sem nível usa o do `MEDIO` | Opcional |
 
 **Variáveis do frontend** (bundle, começam com `VITE_`):
 
@@ -403,6 +404,8 @@ node --max-old-space-size=2G worker/index.ts -- --projeto default --agente "Work
 - `OPENAI_API_KEY`: obrigatório para o modelo
 - `LANGGRAPH_DATABASE_URL`: obrigatório para checkpointer durável
 - `WORKER_MODELO`: opcional (padrão `gpt-4o-mini`)
+- `WORKER_MODELO_LEVE`, `WORKER_MODELO_MEDIO`, `WORKER_MODELO_PESADO`: opcionais, modelo por nível
+  da task (`tasks.nivel_tarefa`); vazios usam o `WORKER_MODELO`
 
 ## Agentes de IA (fila via MCP)
 

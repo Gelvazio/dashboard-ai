@@ -4,7 +4,7 @@ import { comEventos, type EventosDeps } from './eventos.js';
 import { carregarContexto, type DepsContexto } from './nos/carregarContexto.js';
 import { executar, type DepsExecutar } from './nos/executar.js';
 import { finalizarNode, type DepsFinalizar } from './nos/finalizar.js';
-import { criarNoPlanejar, type ModeloPlano } from './nos/planejar.js';
+import { criarNoPlanejar, type ModeloPlano, type ModelosPorNivel } from './nos/planejar.js';
 import { politica, type PedirAprovacao } from './nos/politica.js';
 import { OPCOES_REVISAO_PADRAO, revisar, type OpcoesRevisao } from './nos/revisar.js';
 
@@ -13,6 +13,8 @@ type Estado = typeof EstadoExecucao.State;
 /** Dependências injetáveis do grafo; omitidas usam as implementações reais dos nós. */
 export interface DepsGrafo {
   modelo: ModeloPlano;
+  /** Modelo por nível da task (SUB-47.19); nível sem modelo usa `modelo`. */
+  modelosPorNivel?: ModelosPorNivel;
   checkpointer?: BaseCheckpointSaver;
   contexto?: DepsContexto;
   pedirAprovacao?: PedirAprovacao;
@@ -38,7 +40,10 @@ export function criarGrafo(deps: DepsGrafo) {
   const ev = deps.eventos;
   return new StateGraph(EstadoExecucao)
     .addNode('carregarContexto', comEventos('carregarContexto', (state: Estado) => carregarContexto(state, deps.contexto), ev))
-    .addNode('planejar', comEventos('planejar', criarNoPlanejar(deps.modelo), ev))
+    .addNode(
+      'planejar',
+      comEventos('planejar', criarNoPlanejar(deps.modelo, deps.modelosPorNivel), ev),
+    )
     .addNode('politica', comEventos('politica', (state: Estado) => politica(state, deps.pedirAprovacao), ev))
     .addNode('executar', comEventos('executar', (state: Estado) => executar(state, deps.executar), ev))
     .addNode(

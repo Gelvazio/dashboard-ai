@@ -1,5 +1,5 @@
 import { rpc } from '../api/_lib/supabase.js';
-import { ehNivel, type NivelTarefa } from './nivel.js';
+import { ehNivel, type NivelTarefa } from './niveis.js';
 
 export interface TaskReivindicada {
   taskId: number;

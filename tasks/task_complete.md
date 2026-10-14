@@ -110,6 +110,7 @@
 | SUB-47.12 | Integrar classificação Laya no worker LangGraph | 🟡 Média | SUB-47.15 | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-47.17 | SQL `database/09_tasks_nivel.sql`: coluna `nivel_tarefa` (LEVE/MEDIO/PESADO) + migração local | 🟡 Média | SUB-47.12 | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-47.18 | Worker classifica a task sem nível (`classificar()`) e grava `nivel_tarefa` | 🟡 Média | SUB-47.17 | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+| SUB-47.19 | Nó `planejar` escolhe o modelo pelo nível (`WORKER_MODELO_LEVE/MEDIO/PESADO`) | 🟡 Média | SUB-47.18 | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 
 ---
 

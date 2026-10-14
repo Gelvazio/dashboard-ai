@@ -145,6 +145,7 @@ O worker LangGraph (`worker/index.ts`) executa tasks de IA automaticamente com p
 |---|---|---|
 | `OPENAI_API_KEY` | Chave da API OpenAI para o modelo do planner (padrão `gpt-4o-mini`) | Sim |
 | `WORKER_MODELO` | Modelo usado pelo planner (padrão `gpt-4o-mini`) | Não |
+| `WORKER_MODELO_LEVE` / `_MEDIO` / `_PESADO` | Modelo do planner por nível da task; vazio usa `WORKER_MODELO` | Não |
 | `LANGGRAPH_DATABASE_URL` | Connection string PostgreSQL para o checkpointer durável (schema `langgraph`) | Sim |
 | `SUPABASE_URL` | URL do projeto Supabase usado pelo worker para reivindicar e finalizar tasks | Sim |
 | `SUPABASE_SERVICE_ROLE_KEY` | Chave service_role para RPCs da fila (não usar anon no worker) | Sim |

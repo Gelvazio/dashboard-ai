@@ -386,13 +386,13 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.19 — Nó `planejar` escolhe o modelo pelo nível
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Sonnet · executor-medio) (nuvem · main) em 2026-10-13 21:17).
+**Próximo passo:** nenhum (concluída).
 
 - **Nível:** MEDIO — lógica em 1 a 2 arquivos do worker, sem banco nem chave nova.
 - **Descrição:** `WORKER_MODELO_LEVE`, `WORKER_MODELO_MEDIO`, `WORKER_MODELO_PESADO` (cada um cai no
   `WORKER_MODELO`; sem nível → `MEDIO`); variáveis no `.env.example`.
 - **Critérios de Aceitação:** typecheck do worker; testes existentes passando.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commit `feat(SUB-47.19)` — **executado pelo `executor-medio` (Sonnet), conferido e commitado pelo líder** (piloto da SUB-47.11): `planejar.ts` (`escolherModelo`, `ModelosPorNivel`; `criarNoPlanejar(modelo, modelosPorNivel?)`; `planejar(state, modelo)` igual), `grafo.ts` (`modelosPorNivel` opcional), `grafoFabrica.ts` (`criarModelos`: `WORKER_MODELO_LEVE/MEDIO/PESADO`, um `ChatOpenAI` por nome distinto), `.env.example`. **Ajustes do líder:** módulo puro `worker/niveis.ts` (tipo e `ehNivel`) para `planejar`, `grafoFabrica` e `fila` não carregarem banco/classificador (ponto levantado pelo próprio executor); `nivel.ts` reexporta; variáveis no `README.md` e `api/README.md` · **Verificação:** líder: diff só nos 4 arquivos permitidos; `tsc` 6.0 do worker inteiro (declarações provisórias de Supabase/LangChain + `zod` real): **0 erros**; com `tsx`: `escolherModelo` → LEVE/PESADO usam o próprio modelo, MEDIO/vazio/inválido usam o padrão, sem mapa → padrão; o nó usa o modelo do nível e `planejar(state, modelo)` antigo continua; casos da SUB-47.18 seguem iguais. Vitest não roda nesta sessão — rodar `npm test` local
 
 ### SUB-47.16 — Copiar skills e agents para `~/.claude/` no computador do usuário
 

@@ -12,8 +12,9 @@ import {
 } from './classificador.js';
 import { emitirEvento, type EventoWorker } from './eventos.js';
 
-export const NIVEIS = ['LEVE', 'MEDIO', 'PESADO'] as const;
-export type NivelTarefa = (typeof NIVEIS)[number];
+import { ehNivel, type NivelTarefa } from './niveis.js';
+
+export { NIVEIS, ehNivel, type NivelTarefa } from './niveis.js';
 
 const TAMANHO_MAXIMO_INSTRUCAO = 4_000;
 const ETAPA_EVENTO = 'classificar';
@@ -54,15 +55,6 @@ export interface DependenciasNivel {
   classificar?: (pedido: PedidoClassificacao) => Promise<DecisaoClassificacao>;
   gravar?: (taskId: number, nivel: NivelTarefa) => Promise<void>;
   emitir?: (evento: EventoWorker) => Promise<unknown>;
-}
-
-/**
- * Diz se um valor é um nível válido.
- * @param valor - Valor qualquer (ex.: `nivel_tarefa` do banco).
- * @returns true para `LEVE`, `MEDIO` ou `PESADO`.
- */
-export function ehNivel(valor: unknown): valor is NivelTarefa {
-  return typeof valor === 'string' && (NIVEIS as readonly string[]).includes(valor);
 }
 
 /**
