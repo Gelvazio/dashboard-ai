@@ -301,12 +301,13 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.6 — Skill `liderar-equipe` (fluxo do líder)
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 21:08).
+**Próximo passo:** nenhum (concluída).
 
 - **Nível:** MEDIO — só `.md`, mas define o fluxo de Git e do quadro da equipe inteira; na dúvida, sobe (sinais; Laya fora nesta sessão)
 - **Descrição:** ⚠️ O modo de execução (1 tarefa por vez em pasta única, 3 clones independentes, ou até 3 em paralelo) **depende de decisão do usuário**; ajustar este bloco antes de começar. Texto original: criar `.agents/skills/liderar-equipe/SKILL.md`: fetch + pull, chamar o classificador nos blocos sem nível, escolher até 3 itens livres por prioridade e com arquivos diferentes, travar (commit + push), disparar os executores em paralelo pelo nível, validar cada entrega (`npm run validar`), commit por tarefa, mover para `task_complete.md`, push. Tarefa de banco: o próprio líder, na sessão que tiver acesso a banco. Rodar `npm run sync:agentes`.
 - **Critérios de Aceitação:** Fluxo coerente com as seções 1, 1.1 e 1.2 do `AGENTS.md`; cópia em `.claude/skills/`.
-- **Commit:** pendente
+- **Commit:** `feat(SUB-47.6)` — `.agents/skills/liderar-equipe/SKILL.md` (cópias pelo `pre-commit`). Modo **1 subtarefa por vez, pasta única** (decisão do usuário): o texto original (até 3 em paralelo, arquivos diferentes) não foi seguido nesse ponto
+- **Verificação:** frontmatter lido pelo PyYAML; leitura cruzada com `git-quick.md` (lock só com o `STATUS.md`, 1 commit por subtarefa com o quadro, pendentes depois do push), `frentes-e-reserva.md` (reserva antes de começar, 1 por frente, nome da frente), `ciclo-da-task.md` (tarefa grande pede plano), `multiplas-ias.md` (nível, banco, exceção do classificador) e os agentes `executor-*` (o líder reserva em nome deles e eles não usam Git): sem contradição; `npm run check:agentes` OK depois do commit. Piloto real fica na SUB-47.11
 - **Anotação:** Plano em `docs/equipe-de-agentes.md`.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
