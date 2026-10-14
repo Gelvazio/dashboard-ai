@@ -8,8 +8,8 @@ description: Mostra o que fazer agora no quadro do projeto (tasks/STATUS.md) - f
 Fonte das regras: `AGENTS.md` → `.claude/rules/tasks/` (quadro, reserva, ciclo). Esta skill só **lê**
 o quadro; para pegar uma subtarefa, siga `.claude/rules/tasks/frentes-e-reserva.md`.
 
-> Fonte única desta skill: `.agents/skills/proxima-task/SKILL.md`. A cópia em
-> `.claude/skills/proxima-task/` existe só porque o Claude Code lê skills de lá — **não editar a cópia**.
+> Fonte única desta skill: `.agents/skills/proxima-task/SKILL.md`. As cópias em `.claude/`, `.grok/`
+> e `.gemini/commands/` são geradas no commit — **não editar as cópias**.
 
 ## Processo
 
@@ -30,6 +30,13 @@ o quadro; para pegar uma subtarefa, siga `.claude/rules/tasks/frentes-e-reserva.
    🟢 Baixa só entra se o usuário tiver orientado. Marcar **(banco)** nas subtarefas de banco de
    dados — qualquer IA pode pegá-las; o acesso ao banco depende da sessão
    (`.claude/rules/multiplas-ias.md`).
+   - **Nível:** ler o `- **Nível:**` da seção da subtarefa na etapa e mostrar `[LEVE]`, `[MEDIO]`
+     ou `[PESADO]`. Sem o campo → `[sem nível]` (classificar com a skill `classificar-tarefa` antes
+     de pegar).
+   - **Filtro pela frente atual:** pela matriz da skill `classificar-tarefa`, mostrar primeiro as
+     livres do nível máximo da sua linha; as de nível **acima** do seu máximo vão para
+     "Livres para outra ferramenta" (não pegue); as **abaixo** só valem se não houver nenhuma do seu
+     nível. Sem saber a frente atual, mostrar todas com o nível.
 5. **Aguardando o usuário:** linhas `👀` e itens `👀` das etapas (aprovações, aceites).
 6. **Mostrar** no formato abaixo. Não reservar nada sem o usuário pedir.
 
@@ -42,10 +49,13 @@ o quadro; para pegar uma subtarefa, siga `.claude/rules/tasks/frentes-e-reserva.
    Subtarefa: SUB-41.1 (ETAPA-005) · 🔄 Em execução
    ➡️ Próximo: mover a seção 1 do plano para docs/...
 
-🟢 Livres agora (por prioridade)
-   🔴 SUB-38.1 — Verificação geral (ETAPA-002)
-   🟡 SUB-48.1 — Estrutura projects/ (ETAPA-010)
-   🟡 SUB-45.19 — Revisar SQL da SUB-45.1 (ETAPA-007) (banco)
+🟢 Livres agora para você (por prioridade)
+   🔴 SUB-38.1 [MEDIO] — Verificação geral (ETAPA-002)
+   🟡 SUB-48.1 [LEVE] — Estrutura projects/ (ETAPA-010)
+   🟡 SUB-45.19 [PESADO] — Revisar SQL da SUB-45.1 (ETAPA-007) (banco)
+
+🔒 Livres para outra ferramenta (nível acima do seu)
+   🟡 SUB-47.12 [PESADO] — Integrar o Laya no worker (ETAPA-009)
 
 👀 Aguardando você
    SUB-47.x — aprovação do plano (ETAPA-009)

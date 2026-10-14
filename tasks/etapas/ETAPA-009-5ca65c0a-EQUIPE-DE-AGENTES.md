@@ -323,11 +323,12 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.8 — `proxima-task` filtra por nível
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 21:05).
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** Ajustar o passo 3 de `.agents/skills/proxima-task/SKILL.md` para considerar o `Nível` e a matriz da skill `classificar-tarefa`. Rodar `npm run sync:agentes`.
 - **Critérios de Aceitação:** Passo 3 cita o nível; cópia atualizada.
-- **Commit:** pendente
+- **Commit:** `feat(SUB-47.8)` — passo 4 (lista de livres; era o "passo 3" na numeração antiga) mostra `[nível]`, filtra pela linha da frente atual na matriz e separa "Livres para outra ferramenta"; `[sem nível]` manda classificar antes; aviso de cópias atualizado (`.claude/`, `.grok/`, `.gemini/`). Cópias geradas pelo `pre-commit`
+- **Verificação:** leitura do passo 4 contra a regra da SUB-47.7 e a matriz da skill `classificar-tarefa`; `npm run check:agentes` OK depois do commit (cópias iguais à fonte)
 - **Anotação:** Plano em `docs/equipe-de-agentes.md`.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
