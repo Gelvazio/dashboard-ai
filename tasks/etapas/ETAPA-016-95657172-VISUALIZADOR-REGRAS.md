@@ -109,6 +109,7 @@ gerador e sem dados embutidos.
 
 **Próximo passo:** depois da 55.5, o usuário abre a página no navegador e confere as duas abas.
 
+- **Nível:** LEVE — aceite do usuário, sem mudança de arquivo (sinais; Laya fora nesta sessão)
 - **Descrição:** conferência visual (a IA não abre navegador).
 - **Critérios de Aceitação:** aceite registrado nas Decisões desta etapa.
 - **Entrega:** — · **Verificação:** —

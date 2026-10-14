@@ -303,6 +303,7 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 **Próximo passo:** executar no modo decidido pelo usuário em 2026-10-13 21:04: **1 tarefa por vez, pasta única** ("1 por vez, pasta única") — sem executores em paralelo.
 
+- **Nível:** MEDIO — só `.md`, mas define o fluxo de Git e do quadro da equipe inteira; na dúvida, sobe (sinais; Laya fora nesta sessão)
 - **Descrição:** ⚠️ O modo de execução (1 tarefa por vez em pasta única, 3 clones independentes, ou até 3 em paralelo) **depende de decisão do usuário**; ajustar este bloco antes de começar. Texto original: criar `.agents/skills/liderar-equipe/SKILL.md`: fetch + pull, chamar o classificador nos blocos sem nível, escolher até 3 itens livres por prioridade e com arquivos diferentes, travar (commit + push), disparar os executores em paralelo pelo nível, validar cada entrega (`npm run validar`), commit por tarefa, mover para `task_complete.md`, push. Tarefa de banco: o próprio líder, na sessão que tiver acesso a banco. Rodar `npm run sync:agentes`.
 - **Critérios de Aceitação:** Fluxo coerente com as seções 1, 1.1 e 1.2 do `AGENTS.md`; cópia em `.claude/skills/`.
 - **Commit:** pendente
@@ -336,11 +337,13 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.9 — Classificar os blocos pendentes do quadro
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 21:07).
+**Próximo passo:** nenhum (concluída).
 
+- **Nível:** LEVE — só acrescenta linhas `Nível` nas etapas (sinais; Laya fora nesta sessão)
 - **Descrição:** Rodar o `classificador-tarefas` em todos os blocos pendentes do `task-principal.md` (exceto os sob 🔒 trava especial e os travados por outro agente) e gravar `Nível:` + justificativa.
 - **Critérios de Aceitação:** Todo bloco pendente elegível tem `Nível:`; o diff só acrescenta linhas de nível e justificativa.
-- **Commit:** pendente
+- **Commit:** `docs(SUB-47.9)` — `Nível` gravado nas 7 subtarefas pendentes elegíveis: SUB-45.18 PESADO, SUB-47.6 MEDIO, SUB-47.9 LEVE, SUB-47.10 LEVE, SUB-47.11 PESADO, SUB-47.12 PESADO, SUB-55.6 LEVE. Puladas: SUB-55.5 (reservada por Claude Code (Opus 5.5) (local · main)) e KIRO-DEV-CLONE.1 a .30 (🔒 trava especial). A descrição citava o `task-principal.md` (quadro antigo); feito no quadro novo (`tasks/STATUS.md` + etapas)
+- **Verificação:** classificação pelos sinais da skill `classificar-tarefa` por Opus 5.5 (o Laya não está acessível nesta sessão; a skill permite decidir pelos sinais quando a frente é Opus 5.5+); diff das etapas só acrescenta as 7 linhas `- **Nível:**` (conferido com `git diff -U0`)
 - **Anotação:** Plano em `docs/equipe-de-agentes.md`.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
@@ -349,6 +352,7 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 **Próximo passo:** **autorizado pelo usuário em 2026-10-13 21:04** ("Sim, autorizo") copiar para `~/.agents/` e `~/.claude/`; precisa do computador do usuário ligado à sessão.
 
+- **Nível:** LEVE — copiar arquivos para pastas globais, sem lógica; exige autorização (dada) e o computador do usuário (sinais; Laya fora nesta sessão)
 - **Descrição:** Com **autorização explícita do usuário no passo**, copiar as skills e os agentes para `~/.agents/` (fonte global) e `~/.claude/skills/` + `~/.claude/agents/` (uso local em qualquer projeto). Para projetos na nuvem, documentar o uso do `npm run sync:agentes` (ou a cópia manual) em cada repositório.
 - **Critérios de Aceitação:** Arquivos presentes nas pastas globais; o procedimento para outros projetos fica descrito no plano.
 - **Commit:** pendente
@@ -360,6 +364,7 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 **Próximo passo:** executar conforme a descrição.
 
+- **Nível:** PESADO — o líder roda a equipe de ponta a ponta com commits e push; o item do piloto pode ter qualquer nível (sinais; Laya fora nesta sessão)
 - **Descrição:** Rodar a equipe (skill `liderar-equipe`) em 1 item livre do quadro, de ponta a ponta. Anotar o consumo, os problemas e os ajustes. Pedir o aceite do usuário.
 - **Critérios de Aceitação:** Item entregue pela equipe com o protocolo completo; aceite do usuário registrado.
 - **Commit:** pendente
@@ -371,6 +376,7 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 **Próximo passo:** executar conforme a descrição.
 
+- **Nível:** PESADO — campo novo na tabela `tasks` (banco/migração) + mudança no grafo do worker (sinais; Laya fora nesta sessão)
 - **Descrição:** Integrar a classificação do Laya no worker LangGraph: ao criar uma tarefa via `pegar_proxima_task` ou manualmente, chamar o wrapper do Laya para definir o nível automaticamente. Adicionar campo `nivel_tarefa` na tabela `tasks` (se não existir) ou usar o campo existente. Atualizar o nó `planejar` do worker para considerar o nível na distribuição por modelo (LEVE → modelos pequenos, MEDIO → modelos médios, PESADO → modelos grandes).
 - **Critérios de Aceitação:** Classificação automática integrada; campo `nivel_tarefa` presente; nó `planejar` atualizado; testes do worker passam.
 - **Commit:** pendente

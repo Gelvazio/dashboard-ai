@@ -251,6 +251,7 @@ mantido abaixo só como histórico.
 
 **Próximo passo:** executar conforme a descrição.
 
+- **Nível:** PESADO — login como admin e validação de tela gravando no Supabase da nuvem (banco real + autenticação) (sinais; Laya fora nesta sessão)
 - **Descrição:** Com `npm run preview` contra o Supabase do Dashboard AI (já com o `08` aplicado), entrar como admin, criar, editar, inativar e reativar um projeto de teste, em 1280x800 e 390x844; conferir que o projeto aparece no seletor e que uma task nova fica ligada a ele. Registrar no `docs/VALIDACAO.md` (sem screenshots grandes). Apagar o projeto de teste só com autorização do usuário.
 - **Critérios de Aceitação:** Sem erros no console; checklist registrado.
 - **Commit:** pendente

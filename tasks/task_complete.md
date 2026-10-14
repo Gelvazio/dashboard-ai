@@ -104,6 +104,7 @@
 | SUB-47.7 | Regra nova no `AGENTS.md`: campo `Nível`, matriz e equipe | 🟡 Média | SUB-47.2 | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-47.8 | `proxima-task` filtra por nível | 🟡 Média | SUB-47.7 | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-47.4 | Agente `classificador-tarefas` (usa Laya, não Opus) | 🟡 Média | SUB-47.2, SUB-47.3 | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+| SUB-47.9 | Classificar os blocos pendentes do quadro | 🟡 Média | SUB-47.4, SUB-47.7 | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 
 ---
 
