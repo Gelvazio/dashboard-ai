@@ -21,11 +21,12 @@ Fonte das regras do quadro: `AGENTS.md` → `.claude/rules/tasks/`. Esta skill s
 
 ## Ordem de decisão
 
-1. **A regra mais restritiva vence:** basta um sinal de `PESADO` ("1 arquivo, mas é SQL" = `PESADO`).
+1. **A regra mais restritiva vence:** basta um sinal de `PESADO`
+   ("1 arquivo, mas é SQL" = `PESADO`).
 2. **Na dúvida, sobe o nível** (`LEVE` → `MEDIO` → `PESADO`).
-3. **Pergunte ao Laya** (abaixo) quando ele estiver no ar. Se a confiança (`answer_confidence`) ficar
-   **abaixo de 0,7**, ou o Laya estiver fora, decida pelos sinais da tabela — e, se você não for
-   Claude Code com Opus 5.5+ ou Fable, aplique o passo 2.
+3. **Pergunte ao Laya** (abaixo) quando ele estiver no ar. Se a confiança (`answer_confidence`)
+   ficar **abaixo de 0,7**, ou o Laya estiver fora, decida pelos sinais da tabela — e, se você
+   não for Claude Code com Opus 5.5+ ou Fable, aplique o passo 2.
 4. Se o Laya e os sinais discordarem, **vale o nível mais alto** dos dois.
 
 ### Pergunta ao Laya Server
@@ -35,14 +36,15 @@ descrição e os arquivos da subtarefa:
 
 ```bash
 AUTENTICACAO=(); [ -n "$LAYA_API_KEY" ] && AUTENTICACAO=(-H "Authorization: Bearer $LAYA_API_KEY")
-curl -s "${LAYA_SERVER_URL:-http://localhost:8000}/v1/systemone" -H 'content-type: application/json' \
+curl -s "${LAYA_SERVER_URL:-http://localhost:8000}/v1/systemone" \
+  -H 'content-type: application/json' \
   "${AUTENTICACAO[@]}" --data '{
   "state": {"titulo": "<título>", "descricao": "<descrição>", "arquivos": ["<caminho>"]},
   "questions": {"nivel": {"type": "choice", "instructions": "Qual o nível de esforço e risco?",
     "criteria": {
       "LEVE": "só documentação, textos, formatação ou configuração simples sem lógica",
       "MEDIO": "código com lógica em 1 a 3 arquivos, sem banco, segurança nem chaves",
-      "PESADO": "banco, SQL, segurança, login, chaves, migração, arquitetura ou mais de 3 arquivos"}}}}'
+      "PESADO": "banco, SQL, segurança, login, chaves, migração, arquitetura, 4+ arquivos"}}}}'
 ```
 
 Leia `answers.nivel.choice` e `answers.nivel.answer_confidence`. No código do worker, o mesmo vem
@@ -64,7 +66,8 @@ Confirmada pelo usuário em 2026-10-13 (SUB-47.2). `⛔` = não pega.
 | **Devin** (Free) | ✅ | ⛔ | ⛔ |
 | **Grok Bot** | ✅ | ⛔ | ⛔ |
 
-- **`PESADO` é só do Claude Code com Opus 5.5 ou superior, ou Fable.** Nenhuma outra ferramenta pega.
+- **`PESADO` é só do Claude Code com Opus 5.5 ou superior, ou Fable.** Nenhuma outra ferramenta
+  pega.
 - Cada agente se identifica como **ferramenta + modelo** (o nome da frente) e só pega subtarefa com
   nível **igual ou abaixo** do máximo da sua linha.
 - Modelo forte pega subtarefa mais leve **só se** não houver nenhuma livre do seu nível (a fila não
