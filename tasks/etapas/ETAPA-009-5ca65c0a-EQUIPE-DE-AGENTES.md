@@ -301,7 +301,7 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.6 — Skill `liderar-equipe` (fluxo do líder)
 
-**Próximo passo:** executar no modo decidido pelo usuário em 2026-10-13 21:04: **1 tarefa por vez, pasta única** ("1 por vez, pasta única") — sem executores em paralelo.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 21:08).
 
 - **Nível:** MEDIO — só `.md`, mas define o fluxo de Git e do quadro da equipe inteira; na dúvida, sobe (sinais; Laya fora nesta sessão)
 - **Descrição:** ⚠️ O modo de execução (1 tarefa por vez em pasta única, 3 clones independentes, ou até 3 em paralelo) **depende de decisão do usuário**; ajustar este bloco antes de começar. Texto original: criar `.agents/skills/liderar-equipe/SKILL.md`: fetch + pull, chamar o classificador nos blocos sem nível, escolher até 3 itens livres por prioridade e com arquivos diferentes, travar (commit + push), disparar os executores em paralelo pelo nível, validar cada entrega (`npm run validar`), commit por tarefa, mover para `task_complete.md`, push. Tarefa de banco: o próprio líder, na sessão que tiver acesso a banco. Rodar `npm run sync:agentes`.
