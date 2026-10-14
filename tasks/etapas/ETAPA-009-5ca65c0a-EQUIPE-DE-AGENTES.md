@@ -415,12 +415,28 @@ Copy-Item -Force "$HOME\.agents\agents\*.md" "$HOME\.claude\agents\"
 
 ### SUB-47.11 — Piloto da equipe em 1 item livre + aceite do usuário
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 21:17).
+**Próximo passo:** 👀 aceite do usuário ("sim") ao relatório do piloto abaixo.
 
 - **Nível:** PESADO — o líder roda a equipe de ponta a ponta com commits e push; o item do piloto pode ter qualquer nível (sinais; Laya fora nesta sessão)
 - **Descrição:** Rodar a equipe (skill `liderar-equipe`) em 1 item livre do quadro, de ponta a ponta. Anotar o consumo, os problemas e os ajustes. Pedir o aceite do usuário.
 - **Critérios de Aceitação:** Item entregue pela equipe com o protocolo completo; aceite do usuário registrado.
-- **Commit:** pendente
+- **Commit:** piloto feito em 2026-10-13 21:20 na **SUB-47.19** (nível `MEDIO`), entregue em `feat(SUB-47.19)`; lição
+  registrada na skill `liderar-equipe` (`docs(SUB-47.11)`).
+- **Relatório do piloto (líder: Claude Code (Opus 5.5) (nuvem · main)):**
+  - **Fluxo seguido:** sincronizar → reserva do líder (47.11) → reserva em nome do executor
+    (`Claude Code (Sonnet · executor-medio) (nuvem · main)`, commit `lock:` + push) → delegação com
+    código, descrição, critérios e lista de 4 arquivos → conferência do diff (só os 4 arquivos) →
+    ajuste do líder → validação → 1 commit com o quadro → push.
+  - **Consumo do executor:** ~104 mil tokens, 18 chamadas de ferramenta, ~44 s.
+  - **Problemas:** (1) o tipo `executor-medio` não estava disponível nesta sessão na nuvem (o
+    repositório não foi registrado como raiz) → agente geral com Sonnet e o texto do
+    `executor-medio.md`; (2) sem `node_modules`, o executor não conseguiu rodar o `tsx` (conferiu por
+    leitura; o líder rodou com dependências provisórias); (3) acoplamento `planejar` → `nivel.ts` →
+    banco, apontado pelo executor.
+  - **Ajustes:** módulo puro `worker/niveis.ts` (líder); variáveis no `README.md`/`api/README.md`
+    (líder, a partir das pendências do executor); 2 casos especiais novos na skill `liderar-equipe`.
+  - **Avaliação:** o executor respeitou o escopo, as proibições (sem Git, sem quadro) e as regras de
+    código, e devolveu pendências úteis. O modo "1 por vez" não teve conflito nenhum.
 - **Anotação:** Plano em `docs/equipe-de-agentes.md`.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE

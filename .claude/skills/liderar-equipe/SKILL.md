@@ -58,6 +58,11 @@ foi entregue (commit + push) ou liberada. Assim não há dois agentes nos mesmos
   usuário.
 - **Executor travou ou a subtarefa é maior que o nível:** liberar a reserva (`—` + `⬜ Pendente`),
   dividir ou reclassificar, anotar na seção e voltar ao passo 1.
+- **Tipo de subagente indisponível** (ex.: sessão na nuvem sem o repositório registrado como raiz):
+  usar um agente geral com o **modelo do nível** e o texto do `executor-*.md` correspondente no
+  pedido (piloto SUB-47.11).
+- **Executor aponta problema fora da lista de arquivos:** o líder decide; se corrigir, registra no
+  campo de entrega como "ajuste do líder".
 - **Push recusado:** `fetch` + `pull --rebase`, reler o quadro e repetir o push. Nunca `--force`.
 
 ## Proibido
