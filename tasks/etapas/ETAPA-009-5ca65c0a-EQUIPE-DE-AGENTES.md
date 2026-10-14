@@ -415,7 +415,7 @@ Copy-Item -Force "$HOME\.agents\agents\*.md" "$HOME\.claude\agents\"
 
 ### SUB-47.11 — Piloto da equipe em 1 item livre + aceite do usuário
 
-**Próximo passo:** executar conforme a descrição.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 21:17).
 
 - **Nível:** PESADO — o líder roda a equipe de ponta a ponta com commits e push; o item do piloto pode ter qualquer nível (sinais; Laya fora nesta sessão)
 - **Descrição:** Rodar a equipe (skill `liderar-equipe`) em 1 item livre do quadro, de ponta a ponta. Anotar o consumo, os problemas e os ajustes. Pedir o aceite do usuário.
