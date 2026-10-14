@@ -386,7 +386,7 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.19 — Nó `planejar` escolhe o modelo pelo nível
 
-**Próximo passo:** depende da SUB-47.18.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Sonnet · executor-medio) (nuvem · main) em 2026-10-13 21:17).
 
 - **Nível:** MEDIO — lógica em 1 a 2 arquivos do worker, sem banco nem chave nova.
 - **Descrição:** `WORKER_MODELO_LEVE`, `WORKER_MODELO_MEDIO`, `WORKER_MODELO_PESADO` (cada um cai no
