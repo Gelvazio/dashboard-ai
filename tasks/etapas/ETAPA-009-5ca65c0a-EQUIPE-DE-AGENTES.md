@@ -278,11 +278,12 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.4 — Agente `classificador-tarefas` (usa Laya, não Opus)
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 21:06).
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** Criar `.agents/agents/classificador-tarefas.md` (`model: any`, `skills: [classificar-tarefa]`, ferramentas só de leitura + edição do quadro). Ele lê os blocos sem `Nível`, usa a skill `classificar-tarefa` (que chama o Laya Server) para definir o nível, grava o nível com justificativa e devolve a lista ao líder. Não faz Git. Rodar `npm run sync:agentes`.
 - **Critérios de Aceitação:** Frontmatter válido; cópia em `.claude/agents/`; integração com Laya funcional.
-- **Commit:** pendente
+- **Commit:** `feat(SUB-47.4)` — `.agents/agents/classificador-tarefas.md` (cópia em `.claude/agents/` pelo `pre-commit`). **Desvios:** `model: haiku` em vez de `model: any` (a documentação do Claude Code aceita `sonnet`/`opus`/`haiku`/`fable`/`inherit`/ID completo; `any` seria ignorado em silêncio) — o Laya decide e, sem ele, a skill manda subir o nível na dúvida; regra da SUB-47.7 ajustada para a exceção do classificador gravar só a linha `Nível` nas etapas
+- **Verificação:** frontmatter lido pelo PyYAML (`name`, `tools`, `model: haiku`, `skills: [classificar-tarefa]`), campos conferidos em code.claude.com/docs/en/sub-agents (`skills` pré-carrega a skill inteira); `npm run check:agentes` OK depois do commit. Integração com o Laya: o agente usa o `curl` da skill, conferido na SUB-47.2; não rodado contra o Laya real (sem Docker nesta sessão)
 - **Anotação:** Plano em `docs/equipe-de-agentes.md`. Atualizado para usar Laya Server em vez de Opus (custo zero, < 1s).
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE

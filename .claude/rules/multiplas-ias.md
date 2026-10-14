@@ -21,7 +21,8 @@ Regras **deste projeto** que completam `tasks/frentes-e-reserva.md` (genérico).
 - **`PESADO` é só do Claude Code com Opus 5.5 ou superior, ou Fable.**
 - **Equipe do Claude Code** (skill `liderar-equipe`): **uma subtarefa por vez, na mesma pasta**
   (decisão do usuário, 2026-10-13); cada executor conta como frente com nome próprio; só o líder
-  mexe no Git e no quadro.
+  mexe no Git e no quadro — exceto o agente `classificador-tarefas`, que só acrescenta a linha
+  `- **Nível:**` nas seções das etapas (o líder commita).
 
 ## Tarefas de banco de dados: qualquer IA pode pegar
 
