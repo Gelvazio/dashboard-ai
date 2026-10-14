@@ -351,7 +351,7 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.10 — Instalação global em `~/.agents/` e `~/.claude/` (só com autorização)
 
-**Próximo passo:** **autorizado pelo usuário em 2026-10-13 21:04** ("Sim, autorizo") copiar para `~/.agents/` e `~/.claude/`; precisa do computador do usuário ligado à sessão.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 21:11).
 
 - **Nível:** LEVE — copiar arquivos para pastas globais, sem lógica; exige autorização (dada) e o computador do usuário (sinais; Laya fora nesta sessão)
 - **Descrição:** Com **autorização explícita do usuário no passo**, copiar as skills e os agentes para `~/.agents/` (fonte global) e `~/.claude/skills/` + `~/.claude/agents/` (uso local em qualquer projeto). Para projetos na nuvem, documentar o uso do `npm run sync:agentes` (ou a cópia manual) em cada repositório.
