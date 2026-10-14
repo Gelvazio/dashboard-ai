@@ -55,6 +55,11 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-55 | **Visualizador de regras e tarefas lendo os `.md` direto (`.claude/rules/index.html`)** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-55.5 | Documentar no `README.md` como abrir o visualizador | 🟡 Média | SUB-55.4 | 🔄 Em execução | Claude Code (Opus 5.5) (local · main) (desde 2026-10-13 16:17) | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-55.6 | Aceite do usuário | 🟡 Média | SUB-55.5 | ⬜ Pendente | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
+| SUB-62 | **Cadastro de usuários: mensagem enganosa e acesso após o cadastro** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) | | SUB-62.1 | Cadastro: não afirmar "criado" quando o e-mail já existe | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) | | SUB-62.2 | Logado sem acesso: dizer que falta um administrador liberar | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) | | SUB-62.3 | Documentar: usuário criado ≠ acesso liberado (`README.md` e `database/README.md`) | 🟢 Baixa | Nenhuma | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) | | SUB-62.4 | Aceite do usuário | 🟡 Média | SUB-62.3 | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
+| SUB-62.1 | Cadastro: não afirmar "criado" quando o e-mail já existe | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) | | SUB-62.2 | Logado sem acesso: dizer que falta um administrador liberar | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) | | SUB-62.3 | Documentar: usuário criado ≠ acesso liberado (`README.md` e `database/README.md`) | 🟢 Baixa | Nenhuma | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) | | SUB-62.4 | Aceite do usuário | 🟡 Média | SUB-62.3 | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
+| SUB-62.2 | Logado sem acesso: dizer que falta um administrador liberar | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
+| SUB-62.3 | Documentar: usuário criado ≠ acesso liberado (`README.md` e `database/README.md`) | 🟢 Baixa | Nenhuma | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
+| SUB-62.4 | Aceite do usuário | 🟡 Média | SUB-62.3 | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
 
 ## Escopo do projeto
 
@@ -88,6 +93,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | 020-83241354 | SUB-59: Hooks que obrigam o Claude Code a registrar a tarefa no quadro antes de editar | [ETAPA-020-83241354-HOOK-EXIGIR-TASK.md](etapas/ETAPA-020-83241354-HOOK-EXIGIR-TASK.md) |
 | 021-1181a9a3 | SUB-60: Comandos (skills) para todas as IAs, sempre sincronizados | [ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md](etapas/ETAPA-021-1181a9a3-COMANDOS-TODAS-IAS.md) |
 | 022-c00b3c7f | SUB-61: Sincronia automática das skills no commit e Gemini CLI lendo o `AGENTS.md` | [ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md](etapas/ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md) |
+| 023-a43de45a | SUB-62: Cadastro de usuários (mensagem enganosa e acesso após o cadastro) | [ETAPA-023-a43de45a-CADASTRO-USUARIOS.md](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
 
 **Histórico (antes de 2026-10-13, congelado — não editar):** quadro antigo, concluídas e etapas 1 a 9 do
 `STATUS.md` antigo estão em [`historico/`](historico/).
