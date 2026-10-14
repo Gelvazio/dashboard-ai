@@ -30,7 +30,8 @@ foi entregue (commit + push) ou liberada. Assim não há dois agentes nos mesmos
    `tasks/STATUS.md` e `tasks/RECADOS.md`.
 2. **Classificar:** subtarefas livres sem `- **Nível:**` → subagente `classificador-tarefas` com a
    lista de códigos. Conferir o relatório (nível plausível pelos sinais da skill
-   `classificar-tarefa`; na dúvida, subir) e commitar: `docs(board): classificar <códigos> por <líder>`.
+   `classificar-tarefa`; na dúvida, subir) e commitar:
+   `docs(board): classificar <códigos> por <líder>`.
 3. **Escolher UMA** subtarefa livre pela skill `proxima-task` (prioridade, dependências ✅, sem
    reserva nem 🔒). Tarefa **grande** (`ciclo-da-task.md`) sem plano aprovado → parar e pedir ao
    usuário.
@@ -45,15 +46,16 @@ foi entregue (commit + push) ou liberada. Assim não há dois agentes nos mesmos
 7. **Validar** conforme `.claude/rules/testes-validacao.md` (`npm run validar` quando mexer em
    código). Falhou → devolver ao executor com o erro (até 2 vezes) ou assumir a correção.
 8. **Entregar:** seção da subtarefa com entrega e verificação; linha ✅ movida para o
-   `tasks/task_complete.md`; **1 commit** `feat(<COD>): … por <frente do executor>` com os arquivos +
-   quadro; push; mostrar a tela de pendentes (`git-quick.md`).
-9. **Próxima:** voltar ao passo 1. Parar quando não houver subtarefa livre, quando o usuário pedir, ou
-   quando a próxima precisar de decisão/autorização do usuário.
+   `tasks/task_complete.md`; **1 commit** `feat(<COD>): … por <frente do executor>` com os
+   arquivos + quadro; push; mostrar a tela de pendentes (`git-quick.md`).
+9. **Próxima:** voltar ao passo 1. Parar quando não houver subtarefa livre, quando o usuário pedir,
+   ou quando a próxima precisar de decisão/autorização do usuário.
 
 ## Casos especiais
 
-- **Banco de dados** (SQL, RLS, migração, `database/`): o próprio líder faz, se a sessão tiver acesso
-  ao banco; senão, liberar e anotar (`multiplas-ias.md`). Produção exige autorização do usuário.
+- **Banco de dados** (SQL, RLS, migração, `database/`): o próprio líder faz, se a sessão tiver
+  acesso ao banco; senão, liberar e anotar (`multiplas-ias.md`). Produção exige autorização do
+  usuário.
 - **Executor travou ou a subtarefa é maior que o nível:** liberar a reserva (`—` + `⬜ Pendente`),
   dividir ou reclassificar, anotar na seção e voltar ao passo 1.
 - **Push recusado:** `fetch` + `pull --rebase`, reler o quadro e repetir o push. Nunca `--force`.
