@@ -107,6 +107,7 @@
 | SUB-47.9 | Classificar os blocos pendentes do quadro | 🟡 Média | SUB-47.4, SUB-47.7 | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-47.6 | Skill `liderar-equipe` (fluxo do líder) | 🟡 Média | SUB-47.4, SUB-47.5 | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-47.10 | Instalação global em `~/.agents/` e `~/.claude/` (só com autorização) | 🟡 Média | SUB-47.6 | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+| SUB-47.12 | Integrar classificação Laya no worker LangGraph | 🟡 Média | SUB-47.15 | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 
 ---
 

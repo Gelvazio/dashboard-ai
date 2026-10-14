@@ -395,7 +395,7 @@ Copy-Item -Force "$HOME\.agents\agents\*.md" "$HOME\.claude\agents\"
 
 ### SUB-47.12 — Integrar classificação Laya no worker LangGraph
 
-**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 21:12).
+**Próximo passo:** nenhum (concluída).
 
 - **Plano (Claude Code (Opus 5.5) (nuvem · main); **aprovado pelo usuário em 2026-10-13 21:12**: "Sim, pode executar").** Tarefa grande (banco +
   várias partes), dividida em 3 subtarefas:
@@ -417,7 +417,8 @@ Copy-Item -Force "$HOME\.agents\agents\*.md" "$HOME\.claude\agents\"
 - **Nível:** PESADO — campo novo na tabela `tasks` (banco/migração) + mudança no grafo do worker (sinais; Laya fora nesta sessão)
 - **Descrição:** Integrar a classificação do Laya no worker LangGraph: ao criar uma tarefa via `pegar_proxima_task` ou manualmente, chamar o wrapper do Laya para definir o nível automaticamente. Adicionar campo `nivel_tarefa` na tabela `tasks` (se não existir) ou usar o campo existente. Atualizar o nó `planejar` do worker para considerar o nível na distribuição por modelo (LEVE → modelos pequenos, MEDIO → modelos médios, PESADO → modelos grandes).
 - **Critérios de Aceitação:** Classificação automática integrada; campo `nivel_tarefa` presente; nó `planejar` atualizado; testes do worker passam.
-- **Commit:** pendente
+- **Commit:** `docs(SUB-47.12)` — plano aprovado e dividido: a execução fica nas SUB-47.17 (SQL `nivel_tarefa`), SUB-47.18 (worker classifica e grava) e SUB-47.19 (`planejar` escolhe o modelo pelo nível). Nome da coluna mantido como na descrição (`nivel_tarefa`)
+- **Verificação:** plano conferido contra `database/01_tasks_schema.sql` (coluna ainda não existe), `worker/grafoFabrica.ts` (um modelo só, `WORKER_MODELO`) e `worker/nos/planejar.ts`; aprovação registrada
 - **Anotação:** Integrado da SUB-51 para que o worker LangGraph também use o Laya Server. ⚠️ **Tarefa de banco** (coluna `nivel_tarefa` na tabela `tasks`): **qualquer IA pode pegar** (o acesso ao banco depende da sessão); SQL idempotente em `database/`; aplicar no Supabase **só com autorização explícita do usuário**. Nível `PESADO`. Se quiser separar a parte do worker (sem banco), subdividir antes de começar.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE
