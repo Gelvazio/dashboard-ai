@@ -395,9 +395,9 @@ Copy-Item -Force "$HOME\.agents\agents\*.md" "$HOME\.claude\agents\"
 
 ### SUB-47.12 — Integrar classificação Laya no worker LangGraph
 
-**Próximo passo:** 👀 aprovação do plano abaixo pelo usuário.
+**Próximo passo:** executar a descrição abaixo (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 21:12).
 
-- **Plano (Claude Code (Opus 5.5) (nuvem · main), 2026-10-13 21:11; aguarda aprovação).** Tarefa grande (banco +
+- **Plano (Claude Code (Opus 5.5) (nuvem · main); **aprovado pelo usuário em 2026-10-13 21:12**: "Sim, pode executar").** Tarefa grande (banco +
   várias partes), dividida em 3 subtarefas:
   - **SUB-47.17 (PESADO):** `database/09_tasks_nivel.sql`, idempotente, no padrão do `08`: coluna
     `nivel_tarefa text` **opcional** (nula = ainda não classificada) com `check` em
