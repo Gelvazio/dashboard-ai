@@ -311,11 +311,12 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.7 — Regra nova no `AGENTS.md`: campo `Nível`, matriz e equipe
 
-**Próximo passo:** escrever a regra em `.claude/rules/multiplas-ias.md` e o ponteiro no `AGENTS.md` (reservada por Claude Code (Opus 5.5) (nuvem · main) em 2026-10-13 21:04).
+**Próximo passo:** nenhum (concluída).
 
 - **Descrição:** Acrescentar ao `AGENTS.md` (seção nova 1.4): todo bloco tem `Nível:` abaixo de `Prioridade:`; quem cria ou subdivide classifica pela skill `classificar-tarefa` (que usa Laya Server); cada agente se identifica como ferramenta + modelo e só pega item até o nível máximo da sua linha na matriz (modelo forte pega item mais leve só se não houver item livre do seu nível); equipe do Claude Code: cada executor conta como um agente com nome próprio, e só o líder mexe no Git e no quadro.
 - **Critérios de Aceitação:** Sem contradição com as regras existentes; `npm run validar` verde.
-- **Commit:** pendente
+- **Commit:** `feat(SUB-47.7)` — seção "Nível das subtarefas" em `.claude/rules/multiplas-ias.md`; `AGENTS.md` (linha 6) e `INDEX.md` apontam para ela; decisão no `STATUS.md`. **Adaptação:** a descrição pedia "seção 1.4 no `AGENTS.md`", mas hoje o `AGENTS.md` não guarda regras (só aponta) e o `INDEX.md` proíbe regra repetida, então a regra foi para o arquivo do assunto; e o `Nível` fica na seção da subtarefa na etapa (no quadro novo a prioridade está na linha do `STATUS.md`)
+- **Verificação:** leitura cruzada com `quadro.md`, `frentes-e-reserva.md`, `ciclo-da-task.md` e a skill: sem contradição (a matriz só existe na skill); `multiplas-ias.md` com 4,0 KB (< 5 KB) e linhas ≤ 100. `npm run validar` nesta sessão: `env`, `agentes` e `python` OK; `typecheck`, `testes`, `build`, `chunks` e `audit` não rodam (sem `node_modules`: o npm não alcança o registro) — a mudança é só de `.md`
 - **Anotação:** Plano em `docs/equipe-de-agentes.md`. Atualizado para mencionar Laya Server.
 - **STATUS-TAREFA-CONFIRMADO-CONCLUIDO:** PENDENTE
 - **VERIFICADOR-CLAUDE:** PENDENTE

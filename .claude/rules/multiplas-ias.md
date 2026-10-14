@@ -9,6 +9,20 @@ Regras **deste projeto** que completam `tasks/frentes-e-reserva.md` (genérico).
 - Percebeu que é maior → **dividir** antes de codificar (novas linhas no `STATUS.md`), em vez de
   entregar pela metade.
 
+## Nível das subtarefas (SUB-47)
+
+- Toda subtarefa tem um **nível** — `LEVE` (fácil), `MEDIO` (média) ou `PESADO` (difícil) — como 1º
+  item da sua seção na etapa: `- **Nível:** MEDIO — motivo curto`. Quem cria ou divide a subtarefa
+  classifica pela skill [`classificar-tarefa`](../../.agents/skills/classificar-tarefa/SKILL.md)
+  (Laya + sinais; na dúvida, sobe o nível). Subtarefa antiga sem nível: classificar antes de pegar.
+- Cada frente se identifica como **ferramenta + modelo** (o nome da frente) e só pega subtarefa com
+  nível **até o máximo da sua linha** na matriz da skill (fonte única da matriz). Modelo forte pega
+  nível mais leve **só se** não houver subtarefa livre do seu nível.
+- **`PESADO` é só do Claude Code com Opus 5.5 ou superior, ou Fable.**
+- **Equipe do Claude Code** (skill `liderar-equipe`): **uma subtarefa por vez, na mesma pasta**
+  (decisão do usuário, 2026-10-13); cada executor conta como frente com nome próprio; só o líder
+  mexe no Git e no quadro.
+
 ## Tarefas de banco de dados: qualquer IA pode pegar
 
 - **Não existe reserva por IA:** desde **2026-10-13**, a pedido do usuário, caiu a regra que dava as

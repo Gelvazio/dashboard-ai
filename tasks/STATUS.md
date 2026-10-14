@@ -61,7 +61,6 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-47 | **Equipe de agentes: classificar tarefas por nível com Laya Server (System-One)** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-47.4 | Agente `classificador-tarefas` (usa Laya, não Opus) | 🟡 Média | SUB-47.2, SUB-47.3 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-47.6 | Skill `liderar-equipe` (fluxo do líder) | 🟡 Média | SUB-47.4, SUB-47.5 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
-| SUB-47.7 | Regra nova no `AGENTS.md`: campo `Nível`, matriz e equipe | 🟡 Média | SUB-47.2 | 🔄 Em execução | Claude Code (Opus 5.5) (nuvem · main) (desde 2026-10-13 21:04) | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-47.8 | `proxima-task` filtra por nível | 🟡 Média | SUB-47.7 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-47.9 | Classificar os blocos pendentes do quadro | 🟡 Média | SUB-47.4, SUB-47.7 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-47.10 | Instalação global em `~/.agents/` e `~/.claude/` (só com autorização) | 🟡 Média | SUB-47.6 | ⬜ Pendente | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
@@ -125,6 +124,7 @@ Decisões de 2026-10-12 a 2026-10-13 12:10: ver `historico/STATUS-antigo.md`. Da
 
 | Data | Decisão | Quem | Por quê |
 |---|---|---|---|
+| 2026-10-13 21:05 | Toda subtarefa tem `Nível` (LEVE/MEDIO/PESADO) na sua seção da etapa; cada frente só pega até o nível da sua linha na matriz da skill `classificar-tarefa`; equipe do Claude Code faz 1 subtarefa por vez na mesma pasta (regra em `.claude/rules/multiplas-ias.md`, SUB-47.7) | Gelvazio | Matriz confirmada no chat (SUB-47.2) e "1 por vez, pasta única" |
 | 2026-10-13 20:14 | `pre-commit` sincroniza as skills sozinho quando o commit mexe em `.agents/`; `GEMINI.md` importa o `AGENTS.md` para o Gemini CLI (SUB-61) | Gelvazio | Pedido no chat ("Sim") e plano aprovado |
 | 2026-10-13 20:05 | Skills/comandos com fonte única em `.agents/skills/`; cópias geradas em `.claude/`, `.grok/` e `.gemini/commands/` por `npm run sync:agentes`; o `pre-push` recusa push com cópia desatualizada (SUB-60) | Gelvazio | Pedido no chat: "crie versões de comandos pra todas e deixe eles sincronizados"; plano aprovado |
 | 2026-10-13 19:51 | Hooks do Claude Code exigem subtarefa reservada antes de editar arquivo fora de `tasks/` e lembram a regra a cada pedido (SUB-59; regra em `.claude/rules/multiplas-ias.md`) | Gelvazio | Pedido no chat: "E o hook pra gravar a task no quadro" → "Faça isso"; plano aprovado |

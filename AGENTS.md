@@ -23,7 +23,7 @@ só**, dentro de [`.claude/rules/`](.claude/rules/INDEX.md).
 | 3 | [`.claude/rules/tasks/quadro.md`](.claude/rules/tasks/quadro.md) | Onde fica cada informação; tarefa × subtarefa |
 | 4 | [`.claude/rules/tasks/frentes-e-reserva.md`](.claude/rules/tasks/frentes-e-reserva.md) | Pegar e reservar subtarefa, prioridade, limites |
 | 5 | [`.claude/rules/tasks/ciclo-da-task.md`](.claude/rules/tasks/ciclo-da-task.md) | Abrir, plano na etapa, executar, encerrar, retomar |
-| 6 | [`.claude/rules/multiplas-ias.md`](.claude/rules/multiplas-ias.md) | Tarefa de banco (qualquer IA; produção exige autorização do usuário), trava especial, tamanho das subtarefas |
+| 6 | [`.claude/rules/multiplas-ias.md`](.claude/rules/multiplas-ias.md) | **Nível** de cada subtarefa e quem pode pegar (matriz na skill [`classificar-tarefa`](.agents/skills/classificar-tarefa/SKILL.md)), tarefa de banco (produção exige autorização do usuário), trava especial, tamanho das subtarefas |
 | 7 | [`.claude/rules/testes-validacao.md`](.claude/rules/testes-validacao.md) | Nunca abrir navegador; nunca escrever testes (exceto bug) |
 | 8 | [`.claude/rules/codigo-solid.md`](.claude/rules/codigo-solid.md) e [`codigo-limites-nomes.md`](.claude/rules/codigo-limites-nomes.md) | Como escrever código |
 
