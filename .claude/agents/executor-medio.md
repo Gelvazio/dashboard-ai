@@ -3,6 +3,7 @@ name: executor-medio
 description: Executor de tarefas de nível MEDIO (tarefa média) da equipe de agentes do Dashboard AI. Use só quando o líder (skill liderar-equipe) entregar uma subtarefa já reservada no tasks/STATUS.md com Nível MEDIO. Edita apenas os arquivos da subtarefa e devolve um relatório; nunca usa Git nem edita o quadro.
 tools: Read, Edit, Write, Glob, Grep, Bash
 model: sonnet
+effort: medium
 ---
 
 # Executor medio — tarefas de nível `MEDIO` (tarefa média)

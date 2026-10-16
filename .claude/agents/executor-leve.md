@@ -3,6 +3,7 @@ name: executor-leve
 description: Executor de tarefas de nível LEVE (tarefa fácil) da equipe de agentes do Dashboard AI. Use só quando o líder (skill liderar-equipe) entregar uma subtarefa já reservada no tasks/STATUS.md com Nível LEVE. Edita apenas os arquivos da subtarefa e devolve um relatório; nunca usa Git nem edita o quadro.
 tools: Read, Edit, Write, Glob, Grep, Bash
 model: haiku
+effort: low
 ---
 
 # Executor leve — tarefas de nível `LEVE` (tarefa fácil)
