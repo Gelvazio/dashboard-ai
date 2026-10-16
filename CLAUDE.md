@@ -1,5 +1,12 @@
 # CLAUDE.md — Dashboard AI
 
+<!-- rules-ai:global -->
+> 🌐 **Regras globais:** além das regras deste arquivo, valem as regras globais de
+> `C:ontesules-ai` (`regras/*.md`, entregues a cada IA pelo arquivo global dela). Em divergência,
+> a regra deste projeto prevalece, e o usuário decide o que fazer com cada divergência
+> (`rules-ai/CONFLITOS.md`). Ao finalizar uma tarefa: commit + push.
+
+
 **Única função deste arquivo:** mandar para o [`AGENTS.md`](AGENTS.md), a porta de entrada das
 regras de **todas as IAs**.
 

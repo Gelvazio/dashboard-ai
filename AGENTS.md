@@ -1,5 +1,12 @@
 # 🤖 AGENTS.md — Porta de entrada para todas as IAs (Dashboard AI)
 
+<!-- rules-ai:global -->
+> 🌐 **Regras globais:** além das regras deste arquivo, valem as regras globais de
+> `C:ontesules-ai` (`regras/*.md`, entregues a cada IA pelo arquivo global dela). Em divergência,
+> a regra deste projeto prevalece, e o usuário decide o que fazer com cada divergência
+> (`rules-ai/CONFLITOS.md`). Ao finalizar uma tarefa: commit + push.
+
+
 Vale para **todas as IAs** (Claude, Gemini, Grok, Copilot, Devin, DeepSeek, Antigravity etc.).
 Este arquivo **não repete regras**: ele diz onde cada uma está. Cada regra existe em **um arquivo
 só**, dentro de [`.claude/rules/`](.claude/rules/INDEX.md).
