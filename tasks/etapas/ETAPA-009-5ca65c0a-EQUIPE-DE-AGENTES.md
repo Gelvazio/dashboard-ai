@@ -396,7 +396,10 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.16 — Copiar skills e agents para `~/.claude/` no computador do usuário
 
-**Próximo passo:** 👀 o usuário roda no PowerShell, em qualquer pasta (copia da instalação global
+**Próximo passo:** Claude Code (Opus 5.5) (local · main) copia para `~/.claude`,
+`~/.claude-contaA`, `~/.claude-contaB` e `~/.claude-contaC` (pedido do usuário em 2026-10-17 21:40:
+"copie para as duas pastas e tambem para ~/.claude-contaB e ~/.claude-contaC"). Comando original,
+que o usuário rodaria no PowerShell, em qualquer pasta (copia da instalação global
 `~/.agents/`, já feita na SUB-47.10, sem apagar nada):
 
 ```powershell
