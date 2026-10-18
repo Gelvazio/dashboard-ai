@@ -30,12 +30,16 @@ permanece acessível pelo índice de etapas. Nenhum conteúdo ou anotação é p
 
 ### Aprovação
 
-Pendente do usuário. A mudança em massa só começa depois de um “sim” claro ao plano.
+Aprovado pelo usuário em 2026-10-17 21:35 (“faca a task sub-63”), registrado por
+Claude Code (Opus 5.5) (local · main).
+
+- **Decisão (2026-10-17, Claude Code):** o destino é `tasks/TASK_IGNORED.md`, ao lado do
+  `task_complete.md`; o arquivo já existia vazio e sem versionar nessa pasta.
 
 ### SUB-63.1 — Transferir KIRO-DEV-CLONE inteira para TASK_IGNORED.md
 
-**Próximo passo:** aguardar aprovação explícita do usuário; depois, um executor permitido reserva
-a subtarefa, move os conteúdos e confere a preservação de todos os 31 IDs e detalhes da etapa.
+**Próximo passo:** mover as 31 linhas e o conteúdo da ETAPA-008 para `tasks/TASK_IGNORED.md` e
+conferir a preservação de todos os IDs.
 
 - **Nível:** PESADO — mudança em massa de uma tarefa com 30 subtarefas em vários arquivos.
 - **Modelo:** só Claude Code com Opus 5.5 ou superior, ou Fable.

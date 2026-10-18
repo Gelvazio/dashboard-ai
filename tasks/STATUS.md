@@ -59,8 +59,8 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-62.2 | Logado sem acesso: dizer que falta um administrador liberar · `MEDIO · effort medium` | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
 | SUB-62.3 | Documentar: usuário criado ≠ acesso liberado (`README.md` e `database/README.md`) | 🟢 Baixa | Nenhuma | 🔄 Em execução | Qoder (local · main) (desde 2026-10-13 22:01) | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
 | SUB-62.4 | Aceite do usuário · `LEVE · effort low` | 🟡 Média | SUB-62.3 | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
-| SUB-63 | **Mover KIRO-DEV-CLONE para `TASK_IGNORED.md`** · `PESADO · effort high` | 🟡 Média | Nenhuma | 👀 Aguardando aprovação do plano | — (não reservável) | [ETAPA-024](etapas/ETAPA-024-9c11a6d2-KIRO-IGNORADA.md) |
-| SUB-63.1 | Transferir a tarefa KIRO-DEV-CLONE inteira para `TASK_IGNORED.md` · `PESADO · effort high` | 🟡 Média | Nenhuma | 👀 Aguardando aprovação do plano | — | [ETAPA-024](etapas/ETAPA-024-9c11a6d2-KIRO-IGNORADA.md) |
+| SUB-63 | **Mover KIRO-DEV-CLONE para `TASK_IGNORED.md`** · `PESADO · effort high` | 🟡 Média | Nenhuma | 🔄 Em andamento | — (não reservável) | [ETAPA-024](etapas/ETAPA-024-9c11a6d2-KIRO-IGNORADA.md) |
+| SUB-63.1 | Transferir a tarefa KIRO-DEV-CLONE inteira para `TASK_IGNORED.md` · `PESADO · effort high` | 🟡 Média | Nenhuma | 🔄 Em execução | Claude Code (Opus 5.5) (local · main) (desde 2026-10-17 21:35) | [ETAPA-024](etapas/ETAPA-024-9c11a6d2-KIRO-IGNORADA.md) |
 | SUB-63.2 | Aceite do usuário | 🟡 Média | SUB-63.1 | ⬜ Pendente | — | [ETAPA-024](etapas/ETAPA-024-9c11a6d2-KIRO-IGNORADA.md) |
 
 ## Escopo do projeto
