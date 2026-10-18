@@ -26,7 +26,7 @@ Fonte das regras do quadro: `AGENTS.md` → `.claude/rules/tasks/`. Esta skill s
 2. **Na dúvida, sobe o nível** (`LEVE` → `MEDIO` → `PESADO`).
 3. **Pergunte ao Laya** (abaixo) quando ele estiver no ar. Se a confiança (`answer_confidence`)
    ficar **abaixo de 0,7**, ou o Laya estiver fora, decida pelos sinais da tabela — e, se você
-   não for Claude Code com Opus 5.5+ ou Fable, aplique o passo 2.
+não for Claude Code com Opus 5.5+ ou Fable nem DeepSeek (`PESADO`, C35), aplique o passo 2.
 4. Se o Laya e os sinais discordarem, **vale o nível mais alto** dos dois.
 
 ### Pergunta ao Laya Server
@@ -52,7 +52,8 @@ pronto em `classificar()` de `worker/classificador.ts` (Laya + Opus como revisor
 
 ## Matriz ferramenta × modelo × nível
 
-Confirmada pelo usuário em 2026-10-13 (SUB-47.2). `⛔` = não pega.
+Confirmada pelo usuário em 2026-10-13 (SUB-47.2); atualizada em 2026-10-18 (**C35**: DeepSeek em
+`PESADO`; **C37**: OpenCode com os modelos DeepSeek). `⛔` = não pega.
 
 | Ferramenta | `LEVE` | `MEDIO` | `PESADO` |
 |---|---|---|---|
@@ -60,15 +61,16 @@ Confirmada pelo usuário em 2026-10-13 (SUB-47.2). `⛔` = não pega.
 | **Gemini CLI** | modelo Flash | modelo Pro | ⛔ |
 | **Antigravity** (Starter Quota) | Gemini Flash | ⛔ | ⛔ |
 | **Grok** (SuperGrok) | modelo rápido | Grok 4.7 | ⛔ |
-| **DeepSeek** | DeepSeek V4.1 Flash | modelo de raciocínio | ⛔ |
+| **DeepSeek** | DeepSeek V4.1 Flash | modelo de raciocínio | ✅ |
+| **OpenCode** | DeepSeek V4.1 Flash (`deepseek-flash`) | DeepSeek V4.1 Flash com thinking (`deepseek-flash`) | **DeepSeek V4 Pro (`deepseek-v4-pro`)** |
 | **Codex** (Free) | ✅ | ✅ | ⛔ |
 | **Cursor** (free) | ✅ | ✅ | ⛔ |
 | **Qoder** | ✅ | ✅ | ⛔ |
 | **Devin** (Free) | ✅ | ⛔ | ⛔ |
 | **Grok Bot** | ✅ | ⛔ | ⛔ |
 
-- **`PESADO` é só do Claude Code com Opus 5.5 ou superior, ou Fable.** Nenhuma outra ferramenta
-  pega.
+- **`PESADO` é só do Claude Code com Opus 5.5 ou superior, Fable, ou DeepSeek** (C35) — no OpenCode,
+  com `deepseek-v4-pro` (C37). Nenhuma outra ferramenta pega.
 - Cada agente se identifica como **ferramenta + modelo** (o nome da frente) e só pega subtarefa com
   nível **igual ou abaixo** do máximo da sua linha.
 - Modelo forte pega subtarefa mais leve **só se** não houver nenhuma livre do seu nível (a fila não
