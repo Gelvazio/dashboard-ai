@@ -37,7 +37,7 @@ o quadro; para pegar uma subtarefa, siga `.claude/rules/tasks/frentes-e-reserva.
      livres do nível máximo da sua linha; as de nível **acima** do seu máximo vão para
      "Livres para outra ferramenta" (não pegue); as **abaixo** só valem se não houver nenhuma do seu
      nível. Sem saber a frente atual, mostrar todas com o nível.
-5. **Aguardando o usuário:** linhas `👀` e itens `👀` das etapas (aprovações, aceites).
+5. **Aguardando o usuário:** linhas `👀` e itens `👀` das etapas (aprovações e ações que só o usuário faz).
 6. **Mostrar** no formato abaixo. Não reservar nada sem o usuário pedir.
 
 ## Formato de saída

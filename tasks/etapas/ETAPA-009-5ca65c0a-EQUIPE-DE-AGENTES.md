@@ -396,6 +396,8 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.16 — Copiar skills e agents para `~/.claude/` no computador do usuário
 
+> ✅ Fechada em 2026-10-17 pela regra global C32 (SUB-64.1): a IA sempre aceita, sem esperar o usuário.
+
 **Próximo passo:** 👀 o usuário confirma que `/proxima-task`, `/classificar-tarefa` e
 `/liderar-equipe` aparecem no Claude Code fora deste projeto, em cada conta. Comando original,
 que o usuário rodaria no PowerShell, em qualquer pasta (copia da instalação global

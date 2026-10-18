@@ -113,6 +113,14 @@
 | SUB-47.19 | Nó `planejar` escolhe o modelo pelo nível (`WORKER_MODELO_LEVE/MEDIO/PESADO`) | 🟡 Média | SUB-47.18 | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-55.5 | Documentar no `README.md` como abrir o visualizador | 🟡 Média | SUB-55.4 | ✅ Concluído | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-63.1 | Transferir a tarefa KIRO-DEV-CLONE inteira para `TASK_IGNORED.md` · `PESADO · effort high` | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-024](etapas/ETAPA-024-9c11a6d2-KIRO-IGNORADA.md) |
+| SUB-47.16 | Copiar skills e agents para `~/.claude/` no computador do usuário | 🟡 Média | SUB-47.10 | ✅ Concluído (C32) | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
+| SUB-55.6 | Aceite do usuário | 🟡 Média | SUB-55.5 | ✅ Concluído (C32) | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
+| SUB-55 | **Visualizador de regras e tarefas lendo os `.md` direto (`.claude/rules/index.html`)** · `MEDIO · effort medium` | 🟡 Média | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
+| SUB-62.4 | Aceite do usuário · `LEVE · effort low` | 🟡 Média | SUB-62.3 | ✅ Dispensado (C32) | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
+| SUB-63.2 | Aceite do usuário | 🟡 Média | SUB-63.1 | ✅ Concluído (C32) | — | [ETAPA-024](etapas/ETAPA-024-9c11a6d2-KIRO-IGNORADA.md) |
+| SUB-63 | **Mover KIRO-DEV-CLONE para `TASK_IGNORED.md`** · `PESADO · effort high` | 🟡 Média | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-024](etapas/ETAPA-024-9c11a6d2-KIRO-IGNORADA.md) |
+| SUB-64.1 | Regra C32 nas regras do projeto e aceites fechados · `MEDIO · effort medium` | 🟠 Alta | Nenhuma | ✅ Concluído | — | [ETAPA-025](etapas/ETAPA-025-630177ec-SEM-ACEITE.md) |
+| SUB-64 | **A IA sempre aceita, nunca pede aceite (regra global C32)** · `MEDIO · effort medium` | 🟠 Alta | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-025](etapas/ETAPA-025-630177ec-SEM-ACEITE.md) |
 
 ---
 

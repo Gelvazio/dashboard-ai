@@ -14,12 +14,18 @@ que estão no quadro.
 
 ### SUB-64.1 — Regra C32 nas regras do projeto e aceites fechados
 
-**Próximo passo:** editar `ciclo-da-task.md`, `quadro.md` e a skill `proxima-task`; fechar os
-aceites SUB-47.16, SUB-55.6, SUB-62.4 e SUB-63.2.
+**Próximo passo:** — (entregue).
 
 - **Nível:** MEDIO — texto de 3 regras e movimento de linhas no quadro.
 - **Descrição:** tirar a subtarefa "Aceite do usuário" do ciclo e do modelo da etapa; fechar os
   aceites existentes (concluído quando a entrega já existe, dispensado quando a dependência está
   aberta).
 - **Critérios de Aceitação:** nenhuma regra do projeto manda criar aceite; nenhum aceite 👀 no quadro.
-- **Entrega:** pendente.
+- **Entrega:** commit `feat(SUB-64.1)`: C32 em `.claude/rules/tasks/ciclo-da-task.md` (item 2 de
+  Encerrar) e `.claude/rules/tasks/quadro.md` (modelo da etapa); skill `proxima-task` sem "aceites"
+  (cópias geradas pelo hook `pre-commit`). Aceites fechados: SUB-47.16, SUB-55.6 e SUB-63.2 →
+  ✅ Concluído (C32), o que fecha as mães SUB-55 e SUB-63; SUB-62.4 → ✅ Dispensado (C32), porque a
+  SUB-62.3 ainda está com o Qoder. Nota da C32 na seção de cada uma.
+- **Verificação:** `grep -i aceite` em `.claude/rules` e `.agents` só encontra o texto da C32; o
+  único 👀 que sobrou no quadro é a SUB-47.11, que tem o piloto da equipe para rodar (não é só
+  aceite).

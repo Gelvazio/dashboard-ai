@@ -19,19 +19,11 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-45 | **Cadastro de projetos (campos novos na tabela `projects` e tela `#/projetos`)** · `PESADO · effort high` | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-45.18 | Validação visual da tela Projetos · `MEDIO · effort medium` | 🟡 Média | SUB-45.6, SUB-45.16 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-4d9b03e6-CADASTRO-PROJETOS.md) |
 | SUB-47 | **Equipe de agentes: classificar tarefas por nível com Laya Server (System-One)** · `MEDIO · effort medium` | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
-| SUB-47.16 | Copiar skills e agents para `~/.claude/` no computador do usuário | 🟡 Média | SUB-47.10 | 👀 Aguardando aceite | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-47.11 | Piloto da equipe em 1 item livre + aceite do usuário | 🟡 Média | SUB-47.6, SUB-47.8, SUB-47.9 | 👀 Aguardando o usuário | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
-| SUB-55 | **Visualizador de regras e tarefas lendo os `.md` direto (`.claude/rules/index.html`)** · `MEDIO · effort medium` | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
-| SUB-55.6 | Aceite do usuário | 🟡 Média | SUB-55.5 | 👀 Aguardando aceite | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
 | SUB-62 | **Cadastro de usuários: mensagem enganosa e acesso após o cadastro** · `MEDIO · effort medium` | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
 | SUB-62.1 | Cadastro: não afirmar "criado" quando o e-mail já existe · `MEDIO · effort medium` | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
 | SUB-62.2 | Logado sem acesso: dizer que falta um administrador liberar · `MEDIO · effort medium` | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
 | SUB-62.3 | Documentar: usuário criado ≠ acesso liberado (`README.md` e `database/README.md`) | 🟢 Baixa | Nenhuma | 🔄 Em execução | Qoder (local · main) (desde 2026-10-13 22:01) | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
-| SUB-62.4 | Aceite do usuário · `LEVE · effort low` | 🟡 Média | SUB-62.3 | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
-| SUB-63 | **Mover KIRO-DEV-CLONE para `TASK_IGNORED.md`** · `PESADO · effort high` | 🟡 Média | Nenhuma | 🔄 Em andamento | — (não reservável) | [ETAPA-024](etapas/ETAPA-024-9c11a6d2-KIRO-IGNORADA.md) |
-| SUB-63.2 | Aceite do usuário | 🟡 Média | SUB-63.1 | 👀 Aguardando aceite | — | [ETAPA-024](etapas/ETAPA-024-9c11a6d2-KIRO-IGNORADA.md) |
-| SUB-64 | **A IA sempre aceita, nunca pede aceite (regra global C32)** · `MEDIO · effort medium` | 🟠 Alta | Nenhuma | 🔄 Em andamento | — (não reservável) | [ETAPA-025](etapas/ETAPA-025-630177ec-SEM-ACEITE.md) |
-| SUB-64.1 | Regra C32 nas regras do projeto e aceites fechados · `MEDIO · effort medium` | 🟠 Alta | Nenhuma | 🔄 Em execução | Claude Code (Opus 5.5) (local · main) (desde 2026-10-17 22:02) | [ETAPA-025](etapas/ETAPA-025-630177ec-SEM-ACEITE.md) |
 
 ## Escopo do projeto
 
@@ -90,6 +82,7 @@ Decisões de 2026-10-12 a 2026-10-13 12:10: ver `historico/STATUS-antigo.md`. Da
 
 | Data | Decisão | Quem | Por quê |
 |---|---|---|---|
+| 2026-10-17 21:50 | Regra global C32 aplicada: a IA sempre aceita e nunca pede aceite; aceites do quadro fechados (SUB-64) | Gelvazio | "1-SEMPRE ACEITE,NUNCA PERGUNTE;2-SIM;3-SIM" |
 | 2026-10-13 21:05 | Toda subtarefa tem `Nível` (LEVE/MEDIO/PESADO) na sua seção da etapa; cada frente só pega até o nível da sua linha na matriz da skill `classificar-tarefa`; equipe do Claude Code faz 1 subtarefa por vez na mesma pasta (regra em `.claude/rules/multiplas-ias.md`, SUB-47.7) | Gelvazio | Matriz confirmada no chat (SUB-47.2) e "1 por vez, pasta única" |
 | 2026-10-13 20:14 | `pre-commit` sincroniza as skills sozinho quando o commit mexe em `.agents/`; `GEMINI.md` importa o `AGENTS.md` para o Gemini CLI (SUB-61) | Gelvazio | Pedido no chat ("Sim") e plano aprovado |
 | 2026-10-13 20:05 | Skills/comandos com fonte única em `.agents/skills/`; cópias geradas em `.claude/`, `.grok/` e `.gemini/commands/` por `npm run sync:agentes`; o `pre-push` recusa push com cópia desatualizada (SUB-60) | Gelvazio | Pedido no chat: "crie versões de comandos pra todas e deixe eles sincronizados"; plano aprovado |

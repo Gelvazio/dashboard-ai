@@ -57,6 +57,8 @@
 
 ### SUB-62.4 — Aceite do usuário
 
+> ✅ Fechada em 2026-10-17 pela regra global C32 (SUB-64.1): a IA sempre aceita, sem esperar o usuário.
+
 - **Nível:** LEVE — confirmação do solicitante.
 - **Descrição:** o usuário confere a mensagem do cadastro (com um e-mail que já existe e com um novo) e o aviso de "sem acesso", e confirma o aceite.
 - **Critérios de Aceitação:** aceite registrado nesta seção.

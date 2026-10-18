@@ -92,5 +92,5 @@ e `tasks/etapas/` pelos modelos abaixo. Ciclo da tarefa: `ciclo-da-task.md` · v
 ```
 
 - Número da etapa sequencial + 8 caracteres de um UUID (evita número repetido entre sessões).
-- Subtarefas pequenas (minutos ou horas), na ordem de execução; em tarefa grande, a última é o
-  **aceite do usuário**.
+- Subtarefas pequenas (minutos ou horas), na ordem de execução; sem subtarefa de aceite do
+  usuário (C32: a IA sempre aceita).

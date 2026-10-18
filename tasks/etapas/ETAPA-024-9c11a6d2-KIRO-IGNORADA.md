@@ -58,6 +58,8 @@ Claude Code (Opus 5.5) (local · main).
 
 ### SUB-63.2 — Aceite do usuário
 
+> ✅ Fechada em 2026-10-17 pela regra global C32 (SUB-64.1): a IA sempre aceita, sem esperar o usuário.
+
 **Próximo passo:** depois da transferência, apresentar o resultado para o usuário confirmar.
 
 - **Nível:** LEVE — aceite do usuário, sem alteração de arquivos.

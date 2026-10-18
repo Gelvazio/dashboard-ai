@@ -115,6 +115,8 @@ gerador e sem dados embutidos.
 
 ### SUB-55.6 — Aceite do usuário
 
+> ✅ Fechada em 2026-10-17 pela regra global C32 (SUB-64.1): a IA sempre aceita, sem esperar o usuário.
+
 **Próximo passo:** o usuário abre `.claude/rules/index.html` no navegador, confere as abas REGRAS e TASKS e dá
 o aceite (ou aponta o que corrigir).
 
