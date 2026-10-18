@@ -396,9 +396,8 @@ automática ainda depende das SUB-47.1 e SUB-47.12.
 
 ### SUB-47.16 — Copiar skills e agents para `~/.claude/` no computador do usuário
 
-**Próximo passo:** Claude Code (Opus 5.5) (local · main) copia para `~/.claude`,
-`~/.claude-contaA`, `~/.claude-contaB` e `~/.claude-contaC` (pedido do usuário em 2026-10-17 21:40:
-"copie para as duas pastas e tambem para ~/.claude-contaB e ~/.claude-contaC"). Comando original,
+**Próximo passo:** 👀 o usuário confirma que `/proxima-task`, `/classificar-tarefa` e
+`/liderar-equipe` aparecem no Claude Code fora deste projeto, em cada conta. Comando original,
 que o usuário rodaria no PowerShell, em qualquer pasta (copia da instalação global
 `~/.agents/`, já feita na SUB-47.10, sem apagar nada):
 
@@ -414,7 +413,17 @@ Copy-Item -Force "$HOME\.agents\agents\*.md" "$HOME\.claude\agents\"
   metade da SUB-47.10 fica com o usuário.
 - **Critérios de Aceitação:** `/proxima-task`, `/classificar-tarefa` e `/liderar-equipe` aparecem
   no Claude Code fora deste projeto; "sim" do usuário.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** 2026-10-17 21:41, Claude Code (Opus 5.5) (local · main), a pedido do usuário
+  ("copie para as duas pastas e tambem para ~/.claude-contaB e ~/.claude-contaC"): as 3 skills e os
+  4 agents de `~/.agents/` copiados para `~/.claude`, `~/.claude-contaA`, `~/.claude-contaB` e
+  `~/.claude-contaC` (pastas `agents/` criadas). Nada fora do repositório entra no Git.
+- **Verificação:** `diff`/`cmp` de cada skill e agent contra `~/.agents/`: iguais nas 4 pastas. Na
+  sessão com `CLAUDE_CONFIG_DIR=~/.claude-contaA` as 3 skills passaram a aparecer na lista.
+- **Anotação:** `~/.claude/skills/proxima-task` já existia (versão de 2026-10-13 08:55, com
+  `evals/` e `test_output.md`) e o `SKILL.md` foi sobrescrito pela cópia. A versão antiga foi
+  recuperada do commit `bd670f8b` do `aulasenai`, que criou os mesmos três arquivos (os outros dois
+  são idênticos), e guardada em `~/.claude/backup-skills/proxima-task-2026-10-13/SKILL.md`.
+  `evals/` e `test_output.md` antigos continuam na pasta da skill.
 
 ### SUB-47.11 — Piloto da equipe em 1 item livre + aceite do usuário
 
