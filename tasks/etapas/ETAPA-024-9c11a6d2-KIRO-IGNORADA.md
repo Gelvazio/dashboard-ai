@@ -38,8 +38,7 @@ Claude Code (Opus 5.5) (local · main).
 
 ### SUB-63.1 — Transferir KIRO-DEV-CLONE inteira para TASK_IGNORED.md
 
-**Próximo passo:** mover as 31 linhas e o conteúdo da ETAPA-008 para `tasks/TASK_IGNORED.md` e
-conferir a preservação de todos os IDs.
+**Próximo passo:** nenhum; entregue. Falta só o aceite (SUB-63.2).
 
 - **Nível:** PESADO — mudança em massa de uma tarefa com 30 subtarefas em vários arquivos.
 - **Modelo:** só Claude Code com Opus 5.5 ou superior, ou Fable.
@@ -49,7 +48,13 @@ conferir a preservação de todos os IDs.
   quadro ativo sem linhas KIRO; referência da etapa acessível; diff conferido.
 - **Verificação:** comparar as linhas e seções de origem com o destino por leitura e contagem; não
   executar testes nem abrir navegador.
-- **Entrega:** pendente.
+- **Entrega:** commit `feat(SUB-63.1)` (2026-10-17, Claude Code (Opus 5.5) (local · main)).
+- **Verificação:** script de comparação (fora do repositório) contra o `HEAD` antes da mudança:
+  as 31 linhas KIRO saíram do `STATUS.md` e estão **idênticas** em `tasks/TASK_IGNORED.md`
+  (31 IDs, de `KIRO-DEV-CLONE` a `.30`, 31 travas especiais); o texto da ETAPA-008 está
+  **íntegro** no destino (só o link `../STATUS.md` virou `STATUS.md`, por causa da pasta); o
+  `STATUS.md` ficou sem linhas KIRO em "📌 Tarefas" e mantém a linha 008 no índice de etapas, que
+  agora aponta para o arquivo de ignoradas. Sem testes e sem navegador.
 
 ### SUB-63.2 — Aceite do usuário
 

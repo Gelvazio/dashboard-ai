@@ -112,6 +112,7 @@
 | SUB-47.18 | Worker classifica a task sem nível (`classificar()`) e grava `nivel_tarefa` | 🟡 Média | SUB-47.17 | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-47.19 | Nó `planejar` escolhe o modelo pelo nível (`WORKER_MODELO_LEVE/MEDIO/PESADO`) | 🟡 Média | SUB-47.18 | ✅ Concluído | — | [ETAPA-009](etapas/ETAPA-009-5ca65c0a-EQUIPE-DE-AGENTES.md) |
 | SUB-55.5 | Documentar no `README.md` como abrir o visualizador | 🟡 Média | SUB-55.4 | ✅ Concluído | — | [ETAPA-016](etapas/ETAPA-016-95657172-VISUALIZADOR-REGRAS.md) |
+| SUB-63.1 | Transferir a tarefa KIRO-DEV-CLONE inteira para `TASK_IGNORED.md` · `PESADO · effort high` | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-024](etapas/ETAPA-024-9c11a6d2-KIRO-IGNORADA.md) |
 
 ---
 
