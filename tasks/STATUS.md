@@ -30,6 +30,8 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-62.4 | Aceite do usuário · `LEVE · effort low` | 🟡 Média | SUB-62.3 | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
 | SUB-63 | **Mover KIRO-DEV-CLONE para `TASK_IGNORED.md`** · `PESADO · effort high` | 🟡 Média | Nenhuma | 🔄 Em andamento | — (não reservável) | [ETAPA-024](etapas/ETAPA-024-9c11a6d2-KIRO-IGNORADA.md) |
 | SUB-63.2 | Aceite do usuário | 🟡 Média | SUB-63.1 | 👀 Aguardando aceite | — | [ETAPA-024](etapas/ETAPA-024-9c11a6d2-KIRO-IGNORADA.md) |
+| SUB-64 | **A IA sempre aceita, nunca pede aceite (regra global C32)** · `MEDIO · effort medium` | 🟠 Alta | Nenhuma | 🔄 Em andamento | — (não reservável) | [ETAPA-025](etapas/ETAPA-025-630177ec-SEM-ACEITE.md) |
+| SUB-64.1 | Regra C32 nas regras do projeto e aceites fechados · `MEDIO · effort medium` | 🟠 Alta | Nenhuma | 🔄 Em execução | Claude Code (Opus 5.5) (local · main) (desde 2026-10-17 22:02) | [ETAPA-025](etapas/ETAPA-025-630177ec-SEM-ACEITE.md) |
 
 ## Escopo do projeto
 
@@ -65,6 +67,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | 022-c00b3c7f | SUB-61: Sincronia automática das skills no commit e Gemini CLI lendo o `AGENTS.md` | [ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md](etapas/ETAPA-022-c00b3c7f-SINCRONIA-AUTOMATICA.md) |
 | 023-a43de45a | SUB-62: Cadastro de usuários (mensagem enganosa e acesso após o cadastro) | [ETAPA-023-a43de45a-CADASTRO-USUARIOS.md](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
 | 024-9c11a6d2 | SUB-63: Mover KIRO-DEV-CLONE para `TASK_IGNORED.md` | [ETAPA-024-9c11a6d2-KIRO-IGNORADA.md](etapas/ETAPA-024-9c11a6d2-KIRO-IGNORADA.md) |
+| 025-630177ec | SUB-64: A IA sempre aceita, nunca pede aceite (C32) | [ETAPA-025-630177ec-SEM-ACEITE.md](etapas/ETAPA-025-630177ec-SEM-ACEITE.md) |
 
 **Histórico (antes de 2026-10-13, congelado — não editar):** quadro antigo, concluídas e etapas 1 a 9 do
 `STATUS.md` antigo estão em [`historico/`](historico/).
