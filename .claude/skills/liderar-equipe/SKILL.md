@@ -1,6 +1,6 @@
 ---
 name: liderar-equipe
-description: Fluxo do líder da equipe de agentes do Claude Code no Dashboard AI - sincroniza, classifica o nível das subtarefas livres, reserva UMA por vez, delega ao executor do nível (executor-leve, executor-medio ou executor-pesado), confere e valida a entrega, commita e segue para a próxima. Use quando o usuário pedir "rode a equipe", "lidere a equipe", "faça as tarefas com os agentes" ou "/liderar-equipe". Só para o Claude Code com Opus 5.5 ou superior, ou Fable, como líder.
+description: Fluxo do líder da equipe de agentes do Claude Code no Dashboard AI - sincroniza, classifica o nível das subtarefas livres, reserva UMA por vez, delega ao executor do nível (executor-leve, executor-medio ou executor-pesado), confere e valida a entrega, commita e segue para a próxima. Use quando o usuário pedir "rode a equipe", "lidere a equipe", "faça as tarefas com os agentes" ou "/liderar-equipe". Só para o Claude Code com Opus 5.5 ou superior, ou Fable, como líder. Também cobre o modo sargento (líder só gerencia, agentes em paralelo, VIGIA e FINANCEIRO).
 ---
 
 # Liderar a equipe (liderar-equipe)
@@ -18,6 +18,8 @@ subtarefas" de `.claude/rules/multiplas-ias.md`. Esta skill só descreve **o tra
 | **Líder** | esta sessão (Claude Code com Opus 5.5+ ou Fable) | Git, quadro, validar, decidir |
 | `classificador-tarefas` | subagente (Haiku + Jev) | só acrescentar `- **Nível:**` nas etapas |
 | `executor-leve` / `executor-medio` / `executor-pesado` | subagentes (Haiku / Sonnet / Opus) | só editar os arquivos da subtarefa |
+| `VIGIA` (modo sargento) | subagente (Haiku) | só avisar o líder se um agente está parado ou travado |
+| `FINANCEIRO` (modo sargento) | subagente (Haiku) | só acompanhar o uso restante e avisar o líder |
 
 ## Modo: **uma subtarefa por vez, na mesma pasta**
 
@@ -67,7 +69,78 @@ foi entregue (commit + push) ou liberada. Assim não há dois agentes nos mesmos
 
 ## Proibido
 
-- ⛔ Mais de uma subtarefa em andamento ao mesmo tempo.
+- ⛔ Mais de uma subtarefa em andamento ao mesmo tempo
+  (fora do modo sargento: ver "Líder sargento" abaixo).
 - ⛔ Executor ou classificador usando Git ou editando o quadro (fora a linha `Nível`).
 - ⛔ Pular a reserva, o commit por subtarefa ou a validação.
 - ⛔ Mudar prioridade, ou pegar subtarefa reservada por outra frente ou sob 🔒 trava especial.
+
+## Líder sargento: equipe em paralelo, VIGIA e FINANCEIRO
+
+Use este modo quando o usuário pedir que o líder aja como "sargento" ou "chief of staff", ou
+quando apontar o `PROMPT_PARA_O_LIDER.md`. Ele muda só o que está escrito aqui. O resto da
+skill (classificar, reservar, conferir, commitar) continua igual.
+
+### 1. O líder só gerencia
+
+- O líder levanta as subtarefas, define o objetivo e o critério de pronto de cada uma.
+- O líder confere cada entrega, cuida do quadro e do Git, e commita.
+- ⛔ O líder **não executa** subtarefa, nem a `PESADO`. Cada uma vai ao agente do nível (C22).
+
+### 2. Paralelo
+
+- Pode haver vários agentes ao mesmo tempo, mas **só** em subtarefas que:
+  - não mexem nos mesmos arquivos;
+  - não dependem uma da outra.
+- Cada agente tem a sua reserva, com nome próprio.
+- O líder commita **uma subtarefa por vez**, mesmo quando os agentes trabalharam juntos.
+- Esta é uma exceção explícita ao "Modo: uma subtarefa por vez, na mesma pasta" acima.
+  Só vale quando o modo sargento for pedido.
+
+### 3. Onde rodam os agentes
+
+- **No PC:** terminais do herdr
+  (`rules-local/regras/herdr.md`). Um agente Claude Code por painel, com a
+  conta e o modelo do nível (`LEVE` = Haiku, `MEDIO` = Sonnet, `PESADO` = Opus 5.5+ ou Fable).
+- **Na nuvem (sem herdr):** subagentes do Claude Code do nível (`executor-leve`,
+  `executor-medio`, `executor-pesado`).
+- Painel novo só dentro do herdr e com pedido do usuário.
+
+### 4. VIGIA (Haiku)
+
+- Único papel: avisar o líder se um agente está **parado** ou **travado**.
+- Critério sugerido: sem saída nem mudança de arquivo há **10 min**.
+  - No herdr: o painel não muda há 10 min.
+  - Na nuvem: o agente não manda notificação há 10 min.
+- ⛔ O VIGIA não executa nada: não edita arquivo, não reserva e não commita.
+- Ao receber o aviso, o líder cobra o agente. Se ele não responder, o líder o substitui:
+  libera a reserva (`—` + `⬜ Pendente`) e manda outro agente do mesmo nível.
+
+### 5. FINANCEIRO (Haiku)
+
+- Único papel: acompanhar o uso restante da sessão de 5 horas e da semana de cada conta
+  ou terminal.
+  - No PC: lê o uso que cada terminal mostra.
+  - Na nuvem: soma os tokens que cada subagente informa e compara com o orçamento
+    que o usuário deu.
+- ⛔ O FINANCEIRO não executa nada.
+- Avisa o líder quando o uso chegar a **85%** do limite (critério sugerido).
+- Ao receber o aviso, o líder:
+  1. manda **cada agente** gravar a sua seção em `tasks/STATUS_TAREFAS_ANDAMENTO.md`;
+  2. para de disparar agentes novos.
+- Formato da seção de cada agente:
+  - título: `## <agente> (<modelo> · <painel ou nuvem>) — <código>: <título>`;
+  - `- **Situação:**` (em andamento, pronta, parada);
+  - `- **Feito:**` (arquivos alterados);
+  - `- **Verificação feita:**` (o que foi conferido);
+  - `- **Falta:**`;
+  - `- **Próximo passo:**` (ação exata para retomar).
+- O líder commita esse arquivo. Só o líder mexe no Git.
+
+### 6. Retomar
+
+1. Quando os créditos voltarem, o líder lê `tasks/STATUS_TAREFAS_ANDAMENTO.md` primeiro.
+2. Reabre os agentes, cada um no terminal ou conta que tem crédito.
+3. Manda cada agente retomar pela própria seção, do ponto anotado em "Próximo passo".
+4. Quem retoma não refaz o que já está em "Feito".
+5. Depois segue o ciclo normal: conferir, validar e commitar uma subtarefa por vez.
