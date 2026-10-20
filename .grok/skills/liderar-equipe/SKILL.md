@@ -16,7 +16,7 @@ subtarefas" de `.claude/rules/multiplas-ias.md`. Esta skill só descreve **o tra
 | Papel | Quem | Pode |
 |---|---|---|
 | **Líder** | esta sessão (Claude Code com Opus 5.5+ ou Fable) | Git, quadro, validar, decidir |
-| `classificador-tarefas` | subagente (Haiku + Laya) | só acrescentar `- **Nível:**` nas etapas |
+| `classificador-tarefas` | subagente (Haiku + Jev) | só acrescentar `- **Nível:**` nas etapas |
 | `executor-leve` / `executor-medio` / `executor-pesado` | subagentes (Haiku / Sonnet / Opus) | só editar os arquivos da subtarefa |
 
 ## Modo: **uma subtarefa por vez, na mesma pasta**

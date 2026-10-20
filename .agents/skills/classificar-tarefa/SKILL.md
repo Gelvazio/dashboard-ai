@@ -1,6 +1,6 @@
 ---
 name: classificar-tarefa
-description: Classifica uma subtarefa do quadro (tasks/STATUS.md + etapa) no nível LEVE (fácil), MEDIO (média) ou PESADO (difícil) pelo Laya Server ou pelos sinais desta skill, e diz qual ferramenta e modelo de IA pode pegá-la (matriz ferramenta × modelo × nível). Use ao criar ou dividir subtarefa, quando perguntarem "qual o nível desta tarefa?", "quem pode pegar?", "esta tarefa é para mim?" ou "/classificar-tarefa".
+description: Classifica uma subtarefa do quadro (tasks/STATUS.md + etapa) no nível LEVE (fácil), MEDIO (média) ou PESADO (difícil) pelo Jev ou pelos sinais desta skill, e diz qual ferramenta e modelo de IA pode pegá-la (matriz ferramenta × modelo × nível). Use ao criar ou dividir subtarefa, quando perguntarem "qual o nível desta tarefa?", "quem pode pegar?", "esta tarefa é para mim?" ou "/classificar-tarefa".
 ---
 
 # Classificar tarefa (classificar-tarefa)
@@ -24,31 +24,30 @@ Fonte das regras do quadro: `AGENTS.md` → `.claude/rules/tasks/`. Esta skill s
 1. **A regra mais restritiva vence:** basta um sinal de `PESADO`
    ("1 arquivo, mas é SQL" = `PESADO`).
 2. **Na dúvida, sobe o nível** (`LEVE` → `MEDIO` → `PESADO`).
-3. **Pergunte ao Laya** (abaixo) quando ele estiver no ar. Se a confiança (`answer_confidence`)
-   ficar **abaixo de 0,7**, ou o Laya estiver fora, decida pelos sinais da tabela — e, se você
-não for Claude Code com Opus 5.5+ ou Fable nem DeepSeek (`PESADO`, C35), aplique o passo 2.
-4. Se o Laya e os sinais discordarem, **vale o nível mais alto** dos dois.
+3. **Pergunte ao Jev** (abaixo). Se a confiança (`confianca`) ficar **abaixo de 0,60**, ou o Jev
+   estiver fora, decida pelos sinais da tabela — e, se você não for Claude Code com Opus 5.5+ ou
+   Fable nem DeepSeek (`PESADO`, C35), aplique o passo 2.
+4. Se o Jev e os sinais discordarem, **vale o nível mais alto** dos dois.
 
-### Pergunta ao Laya Server
+### Pergunta ao Jev
 
-Servidor: `docker-compose.laya.yml` (`docs/laya-server.md`). Monte o `state` com o título, a
-descrição e os arquivos da subtarefa:
+Antes de decidir só pelos sinais, tente o **Jev** (C39, C42, C43; regra em
+`C:/fontes/rules-ai/regras/jev.md`). Somente leitura: não grava no quadro e não reserva.
 
 ```bash
-AUTENTICACAO=(); [ -n "$LAYA_API_KEY" ] && AUTENTICACAO=(-H "Authorization: Bearer $LAYA_API_KEY")
-curl -s "${LAYA_SERVER_URL:-http://localhost:8000}/v1/systemone" \
-  -H 'content-type: application/json' \
-  "${AUTENTICACAO[@]}" --data '{
-  "state": {"titulo": "<título>", "descricao": "<descrição>", "arquivos": ["<caminho>"]},
-  "questions": {"nivel": {"type": "choice", "instructions": "Qual o nível de esforço e risco?",
-    "criteria": {
-      "LEVE": "só documentação, textos, formatação ou configuração simples sem lógica",
-      "MEDIO": "código com lógica em 1 a 3 arquivos, sem banco, segurança nem chaves",
-      "PESADO": "banco, SQL, segurança, login, chaves, migração, arquitetura, 4+ arquivos"}}}}'
+node C:/fontes/rules-ai/scripts/jev.mjs classificar --id <ID> --quadro tasks/STATUS.md --json
 ```
 
-Leia `answers.nivel.choice` e `answers.nivel.answer_confidence`. No código do worker, o mesmo vem
-pronto em `classificar()` de `worker/classificador.ts` (Laya + Opus como revisor).
+- A chave `TYPESAFE_API_KEY` fica **só** no `rules-ai` (ambiente ou `.env` da raiz dele). ⛔ Nunca
+  copiar a chave para este projeto.
+- Leia `nivel_final_proposto`, `confianca` e `acao` da saída.
+- `confianca` **abaixo de 0,60** (ou `acao: humano`) → decida pelos sinais e peça a conferência
+  do usuário.
+- Se o Jev e os sinais discordarem, **vale o nível mais alto** dos dois. O Jev nunca rebaixa nível.
+- Falhou (código 1 sem chave, 2 com `JEV_MODO=off`, 5 Jev indisponível) → **só os sinais** desta
+  skill; na dúvida, sobe o nível. Nunca há outro servidor de reserva.
+- Mensagem do usuário: o gancho do Jev (C43) já põe a sugestão de nível e modelo no contexto da
+  IA; para **subtarefa do quadro**, a sugestão continua sendo só conselho.
 
 ## Matriz ferramenta × modelo × nível
 
@@ -96,10 +95,10 @@ Na **seção da subtarefa** dentro da etapa (`tasks/etapas/…`), como primeiro 
 prioridade fica na linha do `STATUS.md`):
 
 ```markdown
-- **Nível:** MEDIO — código com lógica em 1 arquivo de `worker/`, sem chave (Laya 0,82)
+- **Nível:** MEDIO — código com lógica em 1 arquivo de `worker/`, sem chave (Jev 0,91)
 ```
 
-A justificativa é curta: o sinal que decidiu e, se usou o Laya, a confiança. Gravar o nível segue o
+A justificativa é curta: o sinal que decidiu e, se usou o Jev, a confiança. Gravar o nível segue o
 ciclo normal (commit com o quadro; `docs(board): …` se for só classificar).
 
 ## Proibido
