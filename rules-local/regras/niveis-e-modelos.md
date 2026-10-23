@@ -17,7 +17,7 @@ forte fique com as difíceis. Vale para **todas as IAs**. Reserva: `frentes-e-re
 
 | Ferramenta | `LEVE` | `MEDIO` | `PESADO` |
 |---|---|---|---|
-| **Claude Code** | Haiku | Sonnet | **Opus 5.5 ou superior, ou Fable** |
+| **Claude Code** | Haiku | Sonnet | **Sonnet, Opus 5.5 ou superior, ou Fable** |
 | **Gemini CLI** | Flash | Pro | ⛔ |
 | **Antigravity** | Gemini Flash | ⛔ | ⛔ |
 | **Grok** | rápido | principal | ⛔ |
@@ -27,12 +27,12 @@ forte fique com as difíceis. Vale para **todas as IAs**. Reserva: `frentes-e-re
 | **Qoder** | ✅ | ✅ | ⛔ |
 | **Devin** / **Copilot** | ✅ | ⛔ | ⛔ |
 
-- `PESADO` exige **Claude Code com Opus 5.5 ou superior, Fable, ou DeepSeek** — no **OpenCode**,
+- `PESADO` exige **Claude Code com Sonnet, Opus 5.5 ou superior, ou Fable, ou DeepSeek** — no **OpenCode**,
   com `deepseek-v4-pro` (C35 e C37, 2026-10-18; altera a C22: o DeepSeek deixou de ser `⛔` em
-  `PESADO`).
+  `PESADO`; C48, 2026-10-22: o Sonnet também pega `PESADO`).
 - ⛔ **NUNCA executar subtarefa que não é do seu modelo** (C2, 2026-10-16 22:53): cada IA só pega
-  os níveis marcados na **sua** linha — no Claude Code, Haiku **só** `LEVE`, Sonnet **só** `MEDIO`,
-  Opus 5.5+/Fable **só** `PESADO`. Nem acima nem abaixo, e **sem exceção** (nem com autorização).
+  os níveis marcados na **sua** linha — no Claude Code, Haiku **só** `LEVE`, Sonnet `MEDIO` **e** `PESADO`
+  (C48), Opus 5.5+/Fable **só** `PESADO`. Nem acima nem abaixo, e **sem exceção** (nem com autorização).
 - A tabela é do usuário: mudança nela vai para o "Registro de decisões" do `tasks/STATUS.md`.
 - Regras de banco (quem pode falar com o banco, produção) são do projeto.
 
@@ -48,6 +48,15 @@ forte fique com as difíceis. Vale para **todas as IAs**. Reserva: `frentes-e-re
   de pegar.
 - Subtarefa de outro nível → liberar a reserva, reclassificar ou dividir; ⛔ nunca mudar o nível
   para caber na sua ferramenta.
+
+## Quem classifica: o Jev (C47)
+
+- Subtarefa **sem nível** é classificada pelo Jev (`node scripts/jev.mjs classificar --gravar`,
+  `jev.md`): com confiança ≥ 0,80 ele grava nível, modelo e `effort`, podendo **subir ou baixar**;
+  abaixo disso, ou se falhar, vale o sinal mais restritivo (**na dúvida, sobe o nível**).
+- Fica em cada subtarefa o campo `JEV-AI-SUGGESTION: SIM|NAO` (`SIM` = o Jev escolheu).
+- Nível escrito por pessoa não é reclassificado sem `--reclassificar` pedido pelo usuário. A matriz
+  "quem pega cada nível" continua do usuário; o Jev não a altera.
 
 ## Equipe de agentes do Claude Code
 

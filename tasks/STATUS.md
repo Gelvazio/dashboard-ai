@@ -24,6 +24,8 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-62.1 | Cadastro: não afirmar "criado" quando o e-mail já existe · `MEDIO · effort medium` | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
 | SUB-62.2 | Logado sem acesso: dizer que falta um administrador liberar · `MEDIO · effort medium` | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
 | SUB-62.3 | Documentar: usuário criado ≠ acesso liberado (`README.md` e `database/README.md`) | 🟢 Baixa | Nenhuma | 🔄 Em execução | Qoder (local · main) (desde 2026-10-13 22:01) | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
+| **RL-4F19D945-NIVEIS-E-MODELOS** | **Ajustar o projeto à regra niveis-e-modelos.md (rules-local 2026-10-23-4f19d945)** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-027](etapas/ETAPA-027-d6731c13-RL-4F19D945-NIVEIS-E-MODELOS.md) |
+| RL-4F19D945-NIVEIS-E-MODELOS.1 | Alinhar a matriz de níveis do projeto à C48 · `LEVE · effort low` | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-027](etapas/ETAPA-027-d6731c13-RL-4F19D945-NIVEIS-E-MODELOS.md) |
 
 ## Escopo do projeto
 
