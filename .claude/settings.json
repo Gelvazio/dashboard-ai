@@ -77,6 +77,26 @@
             "timeout": 30
           }
         ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "C:\\Users\\gelva\\AppData\\Local\\Programs\\ai-memory\\ai-memory.exe",
+            "args": [
+              "--data-dir",
+              "C:\\Users\\gelva\\AppData\\Local\\ai-memory",
+              "hook",
+              "--event",
+              "session-start",
+              "--agent",
+              "claude-code",
+              "--server-url",
+              "http://127.0.0.1:49374"
+            ]
+          }
+        ]
       }
     ],
     "UserPromptSubmit": [
@@ -107,6 +127,28 @@
             "type": "command",
             "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/exigir-reserva.mjs\"",
             "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "C:\\Users\\gelva\\AppData\\Local\\Programs\\ai-memory\\ai-memory.exe",
+            "args": [
+              "--data-dir",
+              "C:\\Users\\gelva\\AppData\\Local\\ai-memory",
+              "hook",
+              "--event",
+              "post-tool-use",
+              "--agent",
+              "claude-code",
+              "--server-url",
+              "http://127.0.0.1:49374"
+            ]
           }
         ]
       }
