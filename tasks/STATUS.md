@@ -24,6 +24,8 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-62.1 | Cadastro: não afirmar "criado" quando o e-mail já existe · `MEDIO · effort medium` | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
 | SUB-62.2 | Logado sem acesso: dizer que falta um administrador liberar · `MEDIO · effort medium` | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
 | SUB-62.3 | Documentar: usuário criado ≠ acesso liberado (`README.md` e `database/README.md`) | 🟢 Baixa | Nenhuma | 🔄 Em execução | Qoder (local · main) (desde 2026-10-13 22:01) | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
+| **COMMIT.INICIAL.RULES-AI** | **Commit e push inicial do quadro com a tarefa COMMIT.INICIAL.RULES-AI (mudança em massa em 5 repositórios)** | 🟡 Média | Nenhuma | ⬜ Pendente | — (não reservável) | [ETAPA-026](etapas/ETAPA-026-722fcf66-COMMIT-INICIAL-RULES-AI.md) |
+| COMMIT.INICIAL.RULES-AI.1 | Registrar a tarefa no quadro, commit e push na `main` · `PESADO · effort high` | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-026](etapas/ETAPA-026-722fcf66-COMMIT-INICIAL-RULES-AI.md) |
 
 ## Escopo do projeto
 
@@ -60,6 +62,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | 023-a43de45a | SUB-62: Cadastro de usuários (mensagem enganosa e acesso após o cadastro) | [ETAPA-023-a43de45a-CADASTRO-USUARIOS.md](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
 | 024-9c11a6d2 | SUB-63: Mover KIRO-DEV-CLONE para `TASK_IGNORED.md` | [ETAPA-024-9c11a6d2-KIRO-IGNORADA.md](etapas/ETAPA-024-9c11a6d2-KIRO-IGNORADA.md) |
 | 025-630177ec | SUB-64: A IA sempre aceita, nunca pede aceite (C32) | [ETAPA-025-630177ec-SEM-ACEITE.md](etapas/ETAPA-025-630177ec-SEM-ACEITE.md) |
+| 026-722fcf66 | COMMIT.INICIAL.RULES-AI: commit e push inicial do quadro | [ETAPA-026-722fcf66-COMMIT-INICIAL-RULES-AI.md](etapas/ETAPA-026-722fcf66-COMMIT-INICIAL-RULES-AI.md) |
 
 **Histórico (antes de 2026-10-13, congelado — não editar):** quadro antigo, concluídas e etapas 1 a 9 do
 `STATUS.md` antigo estão em [`historico/`](historico/).
