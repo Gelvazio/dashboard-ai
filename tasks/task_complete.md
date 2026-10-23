@@ -3704,3 +3704,5 @@
 - **VERIFICADOR-CLAUDE:** PENDENTE
 | **COMMIT.INICIAL.RULES-AI** | **Commit e push inicial do quadro com a tarefa COMMIT.INICIAL.RULES-AI (mudança em massa em 5 repositórios)** | 🟡 Média | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-026](etapas/ETAPA-026-722fcf66-COMMIT-INICIAL-RULES-AI.md) |
 | COMMIT.INICIAL.RULES-AI.1 | Registrar a tarefa no quadro, commit e push na `main` · `PESADO · effort high` | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-026](etapas/ETAPA-026-722fcf66-COMMIT-INICIAL-RULES-AI.md) |
+| **VERCEL-SEM-DEPLOY-DE-CONTROLE** | **`tasks/` e `rules-local/` não geram deploy na Vercel (C46)** | 🟡 Média | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-029](etapas/ETAPA-029-b7e41c93-VERCEL-SEM-DEPLOY-DE-CONTROLE.md) |
+| VERCEL-SEM-DEPLOY-DE-CONTROLE.1 | Acrescentar `ignoreCommand` no `vercel.json` e `rules-local/` no `.vercelignore` · `MEDIO · effort medium` | 🟡 Média | Nenhuma | ✅ Concluído | — | [ETAPA-029](etapas/ETAPA-029-b7e41c93-VERCEL-SEM-DEPLOY-DE-CONTROLE.md) |

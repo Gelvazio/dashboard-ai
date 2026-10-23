@@ -66,6 +66,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | 025-630177ec | SUB-64: A IA sempre aceita, nunca pede aceite (C32) | [ETAPA-025-630177ec-SEM-ACEITE.md](etapas/ETAPA-025-630177ec-SEM-ACEITE.md) |
 | 026-722fcf66 | COMMIT.INICIAL.RULES-AI: commit e push inicial do quadro | [ETAPA-026-722fcf66-COMMIT-INICIAL-RULES-AI.md](etapas/ETAPA-026-722fcf66-COMMIT-INICIAL-RULES-AI.md) |
 | 028-5ed68e33 | JEV-NAO: Marcar JEV-AI-SUGGESTION: NAO nas etapas do projeto (C47) | [ETAPA-028-5ed68e33-JEV-NAO-MARCAR-SUGESTAO.md](etapas/ETAPA-028-5ed68e33-JEV-NAO-MARCAR-SUGESTAO.md) |
+| 029-b7e41c93 | VERCEL-SEM-DEPLOY-DE-CONTROLE: `tasks/` e `rules-local/` não geram deploy na Vercel (C46) | [ETAPA-029-b7e41c93-VERCEL-SEM-DEPLOY-DE-CONTROLE.md](etapas/ETAPA-029-b7e41c93-VERCEL-SEM-DEPLOY-DE-CONTROLE.md) |
 
 **Histórico (antes de 2026-10-13, congelado — não editar):** quadro antigo, concluídas e etapas 1 a 9 do
 `STATUS.md` antigo estão em [`historico/`](historico/).
