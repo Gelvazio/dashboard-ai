@@ -26,6 +26,8 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-62.3 | Documentar: usuário criado ≠ acesso liberado (`README.md` e `database/README.md`) | 🟢 Baixa | Nenhuma | 🔄 Em execução | Qoder (local · main) (desde 2026-10-13 22:01) | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
 | **RL-4F19D945-NIVEIS-E-MODELOS** | **Ajustar o projeto à regra niveis-e-modelos.md (rules-local 2026-10-23-4f19d945)** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-027](etapas/ETAPA-027-d6731c13-RL-4F19D945-NIVEIS-E-MODELOS.md) |
 | RL-4F19D945-NIVEIS-E-MODELOS.1 | Alinhar a matriz de níveis do projeto à C48 · `LEVE · effort low` | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-027](etapas/ETAPA-027-d6731c13-RL-4F19D945-NIVEIS-E-MODELOS.md) |
+| **JEV-NAO** | **Marcar JEV-AI-SUGGESTION: NAO nas etapas do projeto (C47)** | 🟡 Média | Nenhuma | ⬜ Pendente (mãe: pegue uma subtarefa) | — (não reservável) | [ETAPA-028](etapas/ETAPA-028-5ed68e33-JEV-NAO-MARCAR-SUGESTAO.md) |
+| JEV-NAO.1 | Rodar o script que marca JEV-AI-SUGGESTION: NAO nas subtarefas · `LEVE · effort low` | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-028](etapas/ETAPA-028-5ed68e33-JEV-NAO-MARCAR-SUGESTAO.md) |
 
 ## Escopo do projeto
 
@@ -63,6 +65,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | 024-9c11a6d2 | SUB-63: Mover KIRO-DEV-CLONE para `TASK_IGNORED.md` | [ETAPA-024-9c11a6d2-KIRO-IGNORADA.md](etapas/ETAPA-024-9c11a6d2-KIRO-IGNORADA.md) |
 | 025-630177ec | SUB-64: A IA sempre aceita, nunca pede aceite (C32) | [ETAPA-025-630177ec-SEM-ACEITE.md](etapas/ETAPA-025-630177ec-SEM-ACEITE.md) |
 | 026-722fcf66 | COMMIT.INICIAL.RULES-AI: commit e push inicial do quadro | [ETAPA-026-722fcf66-COMMIT-INICIAL-RULES-AI.md](etapas/ETAPA-026-722fcf66-COMMIT-INICIAL-RULES-AI.md) |
+| 028-5ed68e33 | JEV-NAO: Marcar JEV-AI-SUGGESTION: NAO nas etapas do projeto (C47) | [ETAPA-028-5ed68e33-JEV-NAO-MARCAR-SUGESTAO.md](etapas/ETAPA-028-5ed68e33-JEV-NAO-MARCAR-SUGESTAO.md) |
 
 **Histórico (antes de 2026-10-13, congelado — não editar):** quadro antigo, concluídas e etapas 1 a 9 do
 `STATUS.md` antigo estão em [`historico/`](historico/).
