@@ -19,10 +19,10 @@
 
 ### COMMIT.INICIAL.RULES-AI.1 — Registrar a tarefa no quadro, commit e push
 
-**Próximo passo:** reservar, entregar e mover as linhas para `task_complete.md`.
+**Próximo passo:** nenhum — entregue.
 
 - **Nível:** PESADO — faz parte de uma mudança em massa (5 repositórios).
 - **Modelo:** só Sonnet, Opus 5.5+ ou Fable — nunca outro
 - **Effort:** high
 - **Critérios de aceitação:** commits na `main` com só os arquivos de `tasks/`; push feito; repositório sem commits à frente do `origin/main`.
-- **Entrega:** — · **Verificação:** —
+- **Entrega:** commits `d6e0fdc` (criar) e `0cf689e` (reservar) e o commit desta entrega, na `main` · **Verificação:** `git push` sem erro e `git rev-list @{u}..HEAD` = 0 (2026-10-23 09:38).

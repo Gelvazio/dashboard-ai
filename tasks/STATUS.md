@@ -24,8 +24,6 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | SUB-62.1 | Cadastro: não afirmar "criado" quando o e-mail já existe · `MEDIO · effort medium` | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
 | SUB-62.2 | Logado sem acesso: dizer que falta um administrador liberar · `MEDIO · effort medium` | 🟡 Média | Nenhuma | ⬜ Pendente | — | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
 | SUB-62.3 | Documentar: usuário criado ≠ acesso liberado (`README.md` e `database/README.md`) | 🟢 Baixa | Nenhuma | 🔄 Em execução | Qoder (local · main) (desde 2026-10-13 22:01) | [ETAPA-023](etapas/ETAPA-023-a43de45a-CADASTRO-USUARIOS.md) |
-| **COMMIT.INICIAL.RULES-AI** | **Commit e push inicial do quadro com a tarefa COMMIT.INICIAL.RULES-AI (mudança em massa em 5 repositórios)** | 🟡 Média | Nenhuma | 🔄 Em execução | — (não reservável) | [ETAPA-026](etapas/ETAPA-026-722fcf66-COMMIT-INICIAL-RULES-AI.md) |
-| COMMIT.INICIAL.RULES-AI.1 | Registrar a tarefa no quadro, commit e push na `main` · `PESADO · effort high` | 🟡 Média | Nenhuma | 🔄 Em execução | Claude Code (Sonnet 5.5) (local · main) (desde 2026-10-23 09:38) · 0% | [ETAPA-026](etapas/ETAPA-026-722fcf66-COMMIT-INICIAL-RULES-AI.md) |
 
 ## Escopo do projeto
 
